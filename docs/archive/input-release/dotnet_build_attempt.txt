@@ -1,0 +1,2 @@
+UNVERIFIED: dotnet SDK is not installed in this environment.
+exit_code=2

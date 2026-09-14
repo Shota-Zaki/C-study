@@ -1,0 +1,98 @@
+[
+  {
+    "slug": "learning-workflow",
+    "title": "教材の使い方と手元での検証",
+    "summary": "読む・予想する・下書きする・ビルドする・観察する・修正する、を別々の操作として身につける。",
+    "refs": [
+      "sdk",
+      "install",
+      "top",
+      "project"
+    ]
+  },
+  {
+    "slug": "runtime-memory",
+    "title": "コンパイル・呼び出し・メモリのつながり",
+    "summary": "C#の文章が動くまでと、値・参照・寿命の違いを、一つの実行の流れから理解する。",
+    "refs": [
+      "types",
+      "value",
+      "params",
+      "using",
+      "gc",
+      "managed",
+      "aot"
+    ]
+  },
+  {
+    "slug": "reading-code",
+    "title": "コード・構文・処理順の読み方",
+    "summary": "記号を丸暗記せず、宣言・式・文・呼び出し・状態変更の単位でC#を読む。",
+    "refs": [
+      "types",
+      "method",
+      "selection",
+      "loop",
+      "params"
+    ]
+  },
+  {
+    "slug": "errors",
+    "title": "エラーの原因・確認箇所・修正",
+    "summary": "文法・型・null・範囲・状態・非同期・HTTPの失敗を、発生した段階から切り分ける。",
+    "refs": [
+      "numeric",
+      "nullable",
+      "array",
+      "loop",
+      "value",
+      "equality",
+      "async",
+      "exception",
+      "http"
+    ]
+  },
+  {
+    "slug": "choosing-features",
+    "title": "似た機能の違いと選び方",
+    "summary": "型・コレクション・引数・寿命・非同期・HTTPを、目的と変更範囲から選ぶ。",
+    "refs": [
+      "class",
+      "value",
+      "record",
+      "collection",
+      "interface",
+      "params",
+      "readonly",
+      "async",
+      "http-semantics",
+      "http-patch"
+    ]
+  },
+  {
+    "slug": "async-timeline",
+    "title": "非同期処理の時間軸と状態",
+    "summary": "開始・未完了・再開・成功・失敗・中止を、スレッドとTaskを混同せずに追う。",
+    "refs": [
+      "async",
+      "whenall",
+      "cancellation",
+      "gc"
+    ]
+  },
+  {
+    "slug": "http-di-path",
+    "title": "HTTP要求・DI・保存・応答の全体像",
+    "summary": "画面の入力がAPIへ届き、型・サービス・状態・HTTP応答へ変わるまでを一つの流れで追う。",
+    "refs": [
+      "http",
+      "minimal",
+      "binding",
+      "responses",
+      "di",
+      "integration",
+      "middleware",
+      "http-semantics"
+    ]
+  }
+]

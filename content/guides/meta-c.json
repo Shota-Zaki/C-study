@@ -1,0 +1,28 @@
+[
+  {
+    "slug": "async-timeline",
+    "title": "非同期処理の時間軸と状態",
+    "summary": "開始・未完了・再開・成功・失敗・中止を、スレッドとTaskを混同せずに追う。",
+    "refs": [
+      "async",
+      "whenall",
+      "cancellation",
+      "gc"
+    ]
+  },
+  {
+    "slug": "http-di-path",
+    "title": "HTTP要求・DI・保存・応答の全体像",
+    "summary": "画面の入力がAPIへ届き、型・サービス・状態・HTTP応答へ変わるまでを一つの流れで追う。",
+    "refs": [
+      "http",
+      "minimal",
+      "binding",
+      "responses",
+      "di",
+      "integration",
+      "middleware",
+      "http-semantics"
+    ]
+  }
+]

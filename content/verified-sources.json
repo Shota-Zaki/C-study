@@ -1,0 +1,67 @@
+{
+  "gc": {
+    "title": "GCの基礎",
+    "url": "https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/fundamentals",
+    "checked": "2026-09-14"
+  },
+  "managed": {
+    "title": "マネージ実行の流れ",
+    "url": "https://learn.microsoft.com/en-us/dotnet/standard/managed-execution-process",
+    "checked": "2026-09-14"
+  },
+  "aot": {
+    "title": "Native AOT",
+    "url": "https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/",
+    "checked": "2026-09-14"
+  },
+  "cancellation": {
+    "title": "協調的キャンセル",
+    "url": "https://learn.microsoft.com/en-us/dotnet/standard/threading/cancellation-in-managed-threads",
+    "checked": "2026-09-14"
+  },
+  "binding": {
+    "title": "Minimal APIのパラメーターバインド",
+    "url": "https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis/parameter-binding?view=aspnetcore-10.0",
+    "checked": "2026-09-14"
+  },
+  "middleware": {
+    "title": "ASP.NET Coreのミドルウェア",
+    "url": "https://learn.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-10.0",
+    "checked": "2026-09-14"
+  },
+  "http-semantics": {
+    "title": "HTTP Semantics — RFC 9110",
+    "url": "https://www.rfc-editor.org/rfc/rfc9110.html",
+    "checked": "2026-09-14"
+  },
+  "http-patch": {
+    "title": "PATCH Method for HTTP — RFC 5789",
+    "url": "https://www.rfc-editor.org/info/rfc5789/",
+    "checked": "2026-09-14"
+  },
+  "logging": {
+    "title": "ASP.NET Coreのログ",
+    "url": "https://learn.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-10.0",
+    "checked": "2026-09-14"
+  },
+  "http-factory": {
+    "title": "IHttpClientFactory",
+    "url": "https://learn.microsoft.com/en-us/dotnet/core/extensions/httpclient-factory",
+    "checked": "2026-09-14"
+  },
+  "boxing": {
+    "title": "ボックス化とボックス化解除",
+    "url": "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/types/boxing-and-unboxing",
+    "checked": "2026-09-14"
+  },
+  "struct": {
+    "title": "構造体",
+    "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/struct",
+    "checked": "2026-09-14"
+  },
+  "dispose": {
+    "title": "Disposeパターン",
+    "url": "https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/implementing-dispose",
+    "checked": "2026-09-14"
+  }
+}

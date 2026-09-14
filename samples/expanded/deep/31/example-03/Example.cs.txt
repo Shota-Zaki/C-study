@@ -1,0 +1,8 @@
+builder.Services.AddScoped<RequestWork>();
+builder.Services.AddSingleton<GlobalService>();
+
+public sealed class RequestWork { }
+public sealed class GlobalService
+{
+    public GlobalService(RequestWork work) { }
+}

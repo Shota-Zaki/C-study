@@ -1,0 +1,208 @@
+<!doctype html>
+
+
+<html data-theme="light" lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="List・Dictionary・HashSetを、データの使い方から選ぶ。" name="description"/><meta content="#4f46e5" name="theme-color"/><meta content="website" property="og:type"/><meta content="15 ジェネリックとコレクション — 詳細解説" property="og:title"/><meta content="List・Dictionary・HashSetを、データの使い方から選ぶ。" property="og:description"/><meta content="C# Learning Lab" property="og:site_name"/><meta content="summary" name="twitter:card"/><link href="../assets/icons/favicon.svg" rel="icon"/><link href="../assets/css/site.css" rel="stylesheet"/><title>15 ジェネリックとコレクション — 詳細解説 | C# Learning Lab</title><link href="../assets/css/expanded.css" rel="stylesheet"/></head><body data-base="../" data-current-lesson="15" data-deep-lesson="15" data-page-kind="詳細解説"><a class="skip-link" href="#main">本文へスキップ</a><header class="topbar"><button aria-controls="course-nav" aria-expanded="false" aria-label="コースメニューを開く" class="icon-btn mobile-only" data-drawer="open" type="button">☰</button><a class="brand" href="../index.html"><span class="brand-mark">C#</span><span>C# Learning Lab</span></a><div class="top-actions"><button class="search-btn" data-open-search="" type="button"><span>教材を検索</span><kbd>Ctrl K</kbd>⌕</button><a aria-label="設定" class="icon-btn" href="../settings.html">⚙</a></div></header><div class="layout"><div aria-label="現在の読書位置" class="reading-position" role="navigation"><a href="#main">先頭</a><span class="reading-title">15 ジェネリックとコレクション — 詳細解説</span><span data-reading-count=""></span><button class="position-menu" data-show-toc="" type="button">目次</button><span aria-hidden="true" class="reading-track"><span data-reading-progress=""></span></span></div><nav aria-label="コースナビゲーション" class="left-nav" id="course-nav"><button class="plain-btn drawer-close" data-drawer="close" type="button">閉じる</button><div class="nav-heading">32 Lessons</div><div class="chapter-group"><div class="chapter-title">1. C#の入口</div><a class="lesson-link" href="../lessons/01.html"><span class="num">01</span><span>C#と.NET、最初の実行</span></a><a class="lesson-link" href="../lessons/02.html"><span class="num">02</span><span>Program・名前空間・using</span></a><a class="lesson-link" href="../lessons/03.html"><span class="num">03</span><span>型・var・定数</span></a><a class="lesson-link" href="../lessons/04.html"><span class="num">04</span><span>文字列と入力の変換</span></a></div><div class="chapter-group"><div class="chapter-title">2. 基本文法をつなぐ</div><a class="lesson-link" href="../lessons/05.html"><span class="num">05</span><span>条件分岐とパターン</span></a><a class="lesson-link" href="../lessons/06.html"><span class="num">06</span><span>配列と繰り返し</span></a><a class="lesson-link" href="../lessons/07.html"><span class="num">07</span><span>メソッドと引数</span></a><a class="lesson-link" href="../lessons/08.html"><span class="num">08</span><span>nullを型と分岐で扱う</span></a></div><div class="chapter-group"><div class="chapter-title">3. オブジェクト指向</div><a class="lesson-link" href="../lessons/09.html"><span class="num">09</span><span>クラスとコンストラクター</span></a><a class="lesson-link" href="../lessons/10.html"><span class="num">10</span><span>プロパティとカプセル化</span></a><a class="lesson-link" href="../lessons/11.html"><span class="num">11</span><span>継承・virtual・override</span></a><a class="lesson-link" href="../lessons/12.html"><span class="num">12</span><span>インターフェイスと差し替え</span></a></div><div class="chapter-group"><div class="chapter-title">4. C#らしい型の使い方</div><a class="lesson-link" href="../lessons/13.html"><span class="num">13</span><span>値型と参照型</span></a><a class="lesson-link" href="../lessons/14.html"><span class="num">14</span><span>recordと等値性</span></a><a aria-current="page" class="lesson-link" href="../lessons/15.html"><span class="num">15</span><span>ジェネリックとコレクション</span></a><a class="lesson-link" href="../lessons/16.html"><span class="num">16</span><span>例外処理とusing</span></a></div><div class="chapter-group"><div class="chapter-title">5. データを扱うLINQ</div><a class="lesson-link" href="../lessons/17.html"><span class="num">17</span><span>ラムダ・デリゲート・イベント</span></a><a class="lesson-link" href="../lessons/18.html"><span class="num">18</span><span>LINQで絞り込み・変換</span></a><a class="lesson-link" href="../lessons/19.html"><span class="num">19</span><span>遅延実行と集計</span></a><a class="lesson-link" href="../lessons/20.html"><span class="num">20</span><span>enum・タプル・拡張メソッド</span></a></div><div class="chapter-group"><div class="chapter-title">6. 保存と非同期処理</div><a class="lesson-link" href="../lessons/21.html"><span class="num">21</span><span>ファイルとJSON</span></a><a class="lesson-link" href="../lessons/22.html"><span class="num">22</span><span>日時とカルチャー</span></a><a class="lesson-link" href="../lessons/23.html"><span class="num">23</span><span>asyncとawait</span></a><a class="lesson-link" href="../lessons/24.html"><span class="num">24</span><span>複数タスクとキャンセル</span></a></div><div class="chapter-group"><div class="chapter-title">7. 実務への橋渡し</div><a class="lesson-link" href="../lessons/25.html"><span class="num">25</span><span>プロジェクトとNuGet</span></a><a class="lesson-link" href="../lessons/26.html"><span class="num">26</span><span>デバッグと単体テスト</span></a><a class="lesson-link" href="../lessons/27.html"><span class="num">27</span><span>責務の分離と入力検証</span></a><a class="lesson-link" href="../lessons/28.html"><span class="num">28</span><span>HttpClientでHTTPを扱う</span></a></div><div class="chapter-group"><div class="chapter-title">8. Web APIを作る</div><a class="lesson-link" href="../lessons/29.html"><span class="num">29</span><span>ASP.NET Coreの最小API</span></a><a class="lesson-link" href="../lessons/30.html"><span class="num">30</span><span>入力検証とHTTPステータス</span></a><a class="lesson-link" href="../lessons/31.html"><span class="num">31</span><span>DI・設定・ログ</span></a><a class="lesson-link" href="../lessons/32.html"><span class="num">32</span><span>APIの検証と制作への仕上げ</span></a></div><div class="nav-footer"><a class="lesson-link" href="../projects/index.html">制作課題 3件</a><a class="lesson-link" href="../settings.html">学習データ設定</a><div class="progress-label"><span>進捗</span><strong data-progress-text="">0 / 32</strong></div><div class="mini-progress"><span data-progress-bar=""></span></div><p class="supplement-nav"><a href="../guides/index.html">詳細解説・学習ガイド</a><a href="../guides/glossary.html">用語集</a><a href="../guides/errors.html">エラーの調べ方</a></p></div></nav><main class="content-wrap" id="main"><article class="article"><div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../guides/index.html">学習ガイド</a> / 詳細解説</div><header class="lesson-head"><div class="eyebrow">C# Learning Lab · 詳細解説</div><h1>15 ジェネリックとコレクション — 詳細解説</h1><p class="lead">List・<a class="term-link" href="#local-term-156" title="キーから値を引く対応表です。Addは重複で失敗、添字代入は追加または上書き、TryAddは追加成否、TryGetValueは検索成否を返すなど、操作の契約が違います。キーが未登録の状態と、登録済みで値がnullの状態は同じではないため、検索の成否を分けて扱います。">Dictionary</a>・<a class="term-link" href="#local-term-157" title="等値性とハッシュに基づく重複のない集合です。Containsによる存在確認や入力タグの重複除去に向きます。表示順を必要とする場合は別途並べ替え、キーの等値性に関わる値を登録後に変更しないようにします。">HashSet</a>を、データの使い方から選ぶ。</p><div class="meta-row"><span class="badge">.NET 10 / C# 14</span><span class="badge">読むペースは自由</span></div></header><details class="compact-toc"><summary>このページの目次</summary><nav aria-label="ページ内目次"><a href="#connections">前後の学習とのつながり</a><a href="#local-terms">このページで押さえる用語</a><a href="#detail-h2-01">コレクションを選ぶ前に、必要な操作を決める</a><a href="#detail-h2-02">Listの状態を一操作ずつ追う</a><a href="#detail-h2-03">Dictionary：位置ではなくキーで探す</a><a href="#detail-h2-04">実用例：コマンドの件数を数える</a><a href="#detail-h2-05">IEnumerable・ICollection・Listを区別する</a><a href="#detail-h2-06">自分でジェネリックな型を作る</a><a href="#detail-h2-07">間違い：列挙中にListを追加・削除する</a><a href="#detail-h2-08">間違い：ないキーをインデクサーで読む</a><a href="#detail-h2-09">段階別の練習</a><a href="#apply">自分でコードを書く</a><a href="#sources">確認に使用した一次情報</a></nav></details><p class="route-card"><a href="../lessons/15.html">← Lesson 15 の本編</a> ／ <a href="../lessons/15.html#exercises">三段階の演習</a> ／ <a href="../lessons/15.html#quiz">確認問題</a></p><aside class="callout verification-note"><strong>コード検証の読み方</strong><p>出力はコードから説明した想定結果です。この制作環境では.NET SDKを利用できず、C#のビルド・実行は未検証です。コード下書きはブラウザーで動作しません。手元で確かめる手順は<a href="../guides/learning-workflow.html">教材の使い方と検証</a>にあります。</p></aside><section class="learning-bridge"><h2 id="connections">前後の学習とのつながり</h2><dl><dt>ここまで</dt><dd><a href="../lessons/14.html">recordと等値性</a>：データの一致と、同じオブジェクトであることを使い分ける。</dd><dt>今回</dt><dd>List・Dictionary・HashSetを、データの使い方から選ぶ。</dd><dt>次に</dt><dd><a href="../lessons/16.html">例外処理とusing</a>：失敗への対応と、リソースの確実な後始末を切り分ける。</dd></dl></section><section class="local-terms"><h2 id="local-terms">このページで押さえる用語</h2><p>まず短い定義を読み、必要に応じて開くと、役割・必要性・具体例を確認できます。本文中の用語リンクも、このページ内の説明につながります。</p><details class="term-entry details" data-term="ジェネリック" id="local-term-155"><summary><b>ジェネリック</b><span class="term-definition">入力と出力に共通する型を型パラメーターで表します。List&lt;int&gt;はint以外の要素追加をコンパイル時に拒否できます。Tに何の操作が可能かを保証するには制約を付ける場合があります。</span></summary><div><dl><dt>役割</dt><dd>利用する型をパラメーターにして部品を定義する。</dd><dt>なぜ必要か</dt><dd>要素型ごとの重複実装を減らし、型安全性を保つ。</dd><dt>具体例</dt><dd>where T : IComparable&lt;T&gt;</dd><dt>つながる学習</dt><dd><a href="../lessons/15.html">Lesson 15 の本編</a> ／ <a href="../deep-dives/15.html">詳細解説</a></dd></dl><p class="term-caution"><b>混同しやすい点：</b>C#では値型も参照型も型引数として扱えます。制約が必要ならwhere句で、利用できる操作の前提を型として表します。</p></div></details><details class="term-entry details" data-term="コレクション" id="local-term-065"><summary><b>コレクション</b><span class="term-definition">複数の要素をまとめて扱うデータ構造です。</span></summary><div><dl><dt>役割</dt><dd>追加・検索・列挙などを行います。</dd><dt>なぜ必要か</dt><dd>複数の商品や利用者を、一つずつ別変数で持たずに済みます。</dd><dt>具体例</dt><dd>List&lt;Product&gt;に商品の一覧を保持する。</dd><dt>つながる学習</dt><dd><a href="../lessons/15.html">Lesson 15 の本編</a> ／ <a href="../deep-dives/15.html">詳細解説</a></dd></dl></div></details><details class="term-entry details" data-term="List&lt;T&gt;" id="local-term-066"><summary><b>List&lt;T&gt;</b><span class="term-definition">要素数を増減でき、順序と添字を持つコレクションです。</span></summary><div><dl><dt>役割</dt><dd>一覧の追加・削除や順番による参照を行います。</dd><dt>なぜ必要か</dt><dd>処理中に件数が変わるデータを扱いやすくします。</dd><dt>具体例</dt><dd>new List&lt;int&gt; { 1,2 };にAdd(3)する。</dd><dt>つながる学習</dt><dd><a href="../lessons/15.html">Lesson 15 の本編</a> ／ <a href="../deep-dives/15.html">詳細解説</a></dd></dl></div></details><details class="term-entry details" data-term="Dictionary" id="local-term-156"><summary><b>Dictionary</b><span class="term-definition">キーから値を引く対応表です。Addは重複で失敗、添字代入は追加または上書き、TryAddは追加成否、TryGetValueは検索成否を返すなど、操作の契約が違います。キーが未登録の状態と、登録済みで値がnullの状態は同じではないため、検索の成否を分けて扱います。</span></summary><div><dl><dt>役割</dt><dd>キーから対応する値を探す。</dd><dt>なぜ必要か</dt><dd>IDとデータなど、順番より識別子で参照したいデータを扱う。</dd><dt>具体例</dt><dd>if (map.TryGetValue(key, out var value)) { /* 使用 */ }</dd><dt>つながる学習</dt><dd><a href="../lessons/15.html">Lesson 15 の本編</a> ／ <a href="../deep-dives/15.html">詳細解説</a></dd></dl><p class="term-caution"><b>混同しやすい点：</b>大小文字の比較規則と未登録時の扱いを明示。</p></div></details><details class="term-entry details" data-term="HashSet" id="local-term-157"><summary><b>HashSet</b><span class="term-definition">等値性とハッシュに基づく重複のない集合です。Containsによる存在確認や入力タグの重複除去に向きます。表示順を必要とする場合は別途並べ替え、キーの等値性に関わる値を登録後に変更しないようにします。</span></summary><div><dl><dt>役割</dt><dd>重複しない要素の集合を管理する。</dd><dt>なぜ必要か</dt><dd>存在確認や重複排除の意図をデータ構造で表す。</dd><dt>具体例</dt><dd>var tags = new HashSet&lt;string&gt;(StringComparer.OrdinalIgnoreCase);</dd><dt>つながる学習</dt><dd><a href="../lessons/15.html">Lesson 15 の本編</a> ／ <a href="../deep-dives/15.html">詳細解説</a></dd></dl><p class="term-caution"><b>混同しやすい点：</b>集合の同一視ルールと保存する表記は別の検討。</p></div></details><details class="term-entry details" data-term="IEnumerable&lt;T&gt;" id="local-term-164"><summary><b>IEnumerable&lt;T&gt;</b><span class="term-definition">Tの列を順に読み出せることを表す契約です。Listかもしれず、その場で値を生成する処理かもしれません。Countとforeachなどの複数列挙で、処理が再実行される費用や副作用を考えます。</span></summary><div><dl><dt>役割</dt><dd>型Tの要素を順に取り出せる契約を表す。</dd><dt>なぜ必要か</dt><dd>配列・List・計算で生成する並びを共通の読み方で扱う。</dd><dt>具体例</dt><dd>IEnumerable&lt;int&gt; query = values.Where(x =&gt; x &gt;= 0);</dd><dt>つながる学習</dt><dd><a href="../lessons/19.html">Lesson 19 の本編</a> ／ <a href="../deep-dives/19.html">詳細解説</a></dd></dl><p class="term-caution"><b>混同しやすい点：</b>保存済み・有限・再列挙が安いという保証は型名だけにはない。</p></div></details><details class="term-entry details" data-term="ICollection&lt;T&gt;" id="local-term-067"><summary><b>ICollection&lt;T&gt;</b><span class="term-definition">要素数や追加・削除などの操作を表すインターフェイスです。</span></summary><div><dl><dt>役割</dt><dd>列挙だけより多い操作の契約を示します。</dd><dt>なぜ必要か</dt><dd>呼び出し側が何を必要とするかを型で明確にします。</dd><dt>具体例</dt><dd>CountやContainsを使う。変更が許されるかは実装と契約を確認する。</dd><dt>つながる学習</dt><dd><a href="../lessons/15.html">Lesson 15 の本編</a> ／ <a href="../deep-dives/15.html">詳細解説</a></dd></dl></div></details><details class="term-entry details" data-term="IReadOnlyList&lt;T&gt;" id="local-term-068"><summary><b>IReadOnlyList&lt;T&gt;</b><span class="term-definition">要素数と添字による読み取りの契約です。</span></summary><div><dl><dt>役割</dt><dd>利用側へ更新メソッドを公開しない形で一覧を渡します。</dd><dt>なぜ必要か</dt><dd>読み取り用の型と、実体まで不変であることを区別できます。</dd><dt>具体例</dt><dd>Listをこの型で渡しても、元のList側からは更新できる。</dd><dt>つながる学習</dt><dd><a href="../lessons/15.html">Lesson 15 の本編</a> ／ <a href="../deep-dives/15.html">詳細解説</a></dd></dl></div></details><details class="term-entry details" data-term="インデックス" id="local-term-064"><summary><b>インデックス</b><span class="term-definition">並びの中の位置を示す番号です。C#の配列やListの通常の添字は0から始まります。</span></summary><div><dl><dt>役割</dt><dd>特定の要素を指定します。</dd><dt>なぜ必要か</dt><dd>要素数と最後の位置を取り違えると範囲外になります。</dd><dt>具体例</dt><dd>要素数3なら有効な添字は0、1、2。</dd><dt>つながる学習</dt><dd><a href="../lessons/06.html">Lesson 06 の本編</a> ／ <a href="../deep-dives/06.html">詳細解説</a></dd></dl></div></details><details class="term-entry details" data-term="ハッシュコード" id="local-term-062"><summary><b>ハッシュコード</b><span class="term-definition">等値比較を使う集合などで、探索を助ける整数値です。</span></summary><div><dl><dt>役割</dt><dd>候補を絞ってキーを探します。</dd><dt>なぜ必要か</dt><dd>Dictionaryなどの効率と、キー変更の危険性を理解します。</dd><dt>具体例</dt><dd>等しいと判定する値は同じハッシュコードを返す契約が必要。</dd><dt>つながる学習</dt><dd><a href="../lessons/15.html">Lesson 15 の本編</a> ／ <a href="../deep-dives/15.html">詳細解説</a></dd></dl></div></details><p><a href="../guides/glossary.html">180語の用語集で調べる →</a></p></section><section class="detail-section"><h2 id="detail-h2-01">コレクションを選ぶ前に、必要な操作を決める</h2>
+<p><a class="term-link" href="#local-term-065" title="複数の要素をまとめて扱うデータ構造です。">コレクション</a>は複数の要素をまとめて扱う部品です。配列は長さが固定、Listは順序付きで追加・削除ができ、Dictionaryはキーから値を探すことに向いています。「複数だから何でもList」と決めるのではなく、順序・重複・検索方法・更新方法を先に考えます。</p>
+<p><a class="term-link" href="#local-term-155" title="入力と出力に共通する型を型パラメーターで表します。List&lt;int&gt;はint以外の要素追加をコンパイル時に拒否できます。Tに何の操作が可能かを保証するには制約を付ける場合があります。">ジェネリック</a>は、扱う型を引数として受け取れる型やメソッドの仕組みです。<code>List&lt;int&gt;</code>はintを要素とするList、<code>List&lt;string&gt;</code>はstringを要素とするListです。<code>T</code>はその型のための仮の名前です。要素の型を保てるため、取り出すたびにobjectから変換したり、違う型を入れた誤りを実行時まで持ち越したりしにくくなります。</p>
+</section><section class="detail-section"><h2 id="detail-h2-02">Listの状態を一操作ずつ追う</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp">var numbers = new List&lt;int&gt; { 1, 2, 3 };
+numbers.Add(4);
+numbers.Remove(2);
+numbers[0] = 10;
+Console.WriteLine(string.Join(",", numbers));
+Console.WriteLine(numbers.Count);</code></pre></div>
+<p>期待出力は<code>10,3,4</code>、3です。Addは末尾へ追加、Removeは一致する最初の要素を削除、<code>[0]</code>は先頭要素へのアクセスです。Countは現在入っている要素数です。</p>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">操作</th>
+<th scope="col">前の状態</th>
+<th scope="col">後の状態</th>
+<th scope="col" style="text-align:right">Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>初期化</td>
+<td>なし</td>
+<td>[1,2,3]</td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td>Add(4)</td>
+<td>[1,2,3]</td>
+<td>[1,2,3,4]</td>
+<td style="text-align:right">4</td>
+</tr>
+<tr>
+<td>Remove(2)</td>
+<td>[1,2,3,4]</td>
+<td>[1,3,4]</td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td>[0]=10</td>
+<td>[1,3,4]</td>
+<td>[10,3,4]</td>
+<td style="text-align:right">3</td>
+</tr>
+</tbody>
+</table></div>
+<p>Listは通常、内部の配列に要素を保存します。Capacityは内部で確保している要素の収納能力、Countは現在入っている要素数です。Capacityを100にしても、要素が100個あるとは限りません。追加時に容量が足りなければ、より大きな領域へ要素をコピーする場合があります。具体的な容量増加の数値へ依存したコードは書きません。</p>
+<figure class="concept-diagram flow"><figcaption>処理の流れ</figcaption><ol><li><span class="step-number">1</span><div><b>Count=3のList</b><p>3個の要素を保持</p></div></li><li><span class="step-number">2</span><div><b>Add(4)</b><p>末尾へ追加する場所を確保</p></div></li><li><span class="step-number">3</span><div><b>容量が足りる場合</b><p>既存領域へ追加</p></div></li><li><span class="step-number">4</span><div><b>容量が足りない場合</b><p>新しい内部配列へコピーして追加</p></div></li><li><span class="step-number">5</span><div><b>Count=4</b><p>利用可能な要素が一つ増える</p></div></li></ol></figure><p>末尾追加は通常効率的ですが、途中のInsertやRemoveAtでは後ろの要素をずらす処理が必要です。要素が少なければ読みやすさを優先し、非常に大量のデータでは操作回数や計算量を測ります。計算量とは要素数に応じて必要な処理がどう増えるかという見方です。</p>
+</section><section class="detail-section"><h2 id="detail-h2-03">Dictionary：位置ではなくキーで探す</h2>
+<p>キーは値を取り出すための識別子です。商品コードから在庫を探すなら、何番目の商品かを覚えるよりDictionaryが自然です。通常、同じキーを二つ同時に登録できません。何を「同じキー」とするかには等値性と比較規則が関係します。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp">var stock = new Dictionary&lt;string, int&gt;(StringComparer.OrdinalIgnoreCase)
+{
+    ["PEN"] = 5,
+    ["BOOK"] = 2
+};
+stock["PEN"] = stock["PEN"] - 1;
+if (stock.TryGetValue("pen", out int quantity))
+{
+    Console.WriteLine(quantity);
+}
+Console.WriteLine(stock.TryGetValue("CLIP", out _));</code></pre></div>
+<p>期待出力は4、Falseです。<code>Dictionary&lt;string,int&gt;</code>はキーがstring、値がintの型です。OrdinalIgnoreCaseはこの教材のコード識別子を大文字小文字を区別せず比較する指定です。<code>out _</code>は取得した値を使わず、成功したかだけ受け取る書き方です。</p>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">時点</th>
+<th scope="col" style="text-align:right">PEN</th>
+<th scope="col" style="text-align:right">BOOK</th>
+<th scope="col">CLIP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>初期化</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">2</td>
+<td>登録なし</td>
+</tr>
+<tr>
+<td>PENを減らす</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">2</td>
+<td>登録なし</td>
+</tr>
+<tr>
+<td>penで検索</td>
+<td style="text-align:right">4を取得</td>
+<td style="text-align:right">変化なし</td>
+<td>登録なし</td>
+</tr>
+<tr>
+<td>CLIPで検索</td>
+<td style="text-align:right">変化なし</td>
+<td style="text-align:right">変化なし</td>
+<td>false、追加はしない</td>
+</tr>
+</tbody>
+</table></div>
+<p>Dictionaryはハッシュを利用して候補を探し、等値性の比較でキーを識別します。<a class="term-link" href="#local-term-062" title="等値比較を使う集合などで、探索を助ける整数値です。">ハッシュコード</a>が同じだけで同じキーと決めるわけではありません。列挙順を表示仕様の保証として使わず、順序が必要なら明示的に並べ替えます。</p>
+</section><section class="detail-section"><h2 id="detail-h2-04">実用例：コマンドの件数を数える</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp">string[] commands = { "save", "load", "save", "SAVE", "load" };
+var counts = new Dictionary&lt;string, int&gt;(StringComparer.OrdinalIgnoreCase);
+foreach (string command in commands)
+{
+    counts.TryGetValue(command, out int current);
+    counts[command] = current + 1;
+}
+Console.WriteLine($"save={counts["save"]}");
+Console.WriteLine($"load={counts["load"]}");</code></pre></div>
+<p>期待出力は<code>save=3</code>、<code>load=2</code>です。初回はキーがないためTryGetValueはfalseを返し、currentはintの既定値0になります。この例では「未登録なら0回」という仕様なので、その0を利用して1を設定して構いません。変換失敗時の0を無条件で使う例とは、0の意味が明確な点が違います。</p>
+<p>最初のsaveで1、loadで1、二度目のsaveで2、SAVEでも同じキーとして3、最後のloadで2になります。インデクサー<code>counts[command] = ...</code>は、キーがなければ追加し、既存なら値を更新します。Addは重複キーを拒否する操作なので、どちらを選ぶかで不正入力の検出方法が変わります。</p>
+</section><section class="detail-section"><h2 id="detail-h2-05">IEnumerable・ICollection・Listを区別する</h2>
+<p>インターフェイスは利用できる操作の契約です。<code>IEnumerable&lt;T&gt;</code>は順に要素を取り出せることを表します。CountやAddが必ずある契約ではありません。<code>ICollection&lt;T&gt;</code>はCountや追加・削除などの操作を持ちますが、実装によっては読み取り専用で、変更操作が許されない場合があります。Listはそれらを実装する具体的なコレクションです。</p>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">型</th>
+<th scope="col">主に表すもの</th>
+<th scope="col">選択場面</th>
+<th scope="col">注意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T[]</td>
+<td>長さ固定の具体的配列</td>
+<td>要素数が決まる結果</td>
+<td>要素は変更可能</td>
+</tr>
+<tr>
+<td><a class="term-link" href="#local-term-066" title="要素数を増減でき、順序と添字を持つコレクションです。">List&lt;T&gt;</a></td>
+<td>変更可能な順序付きコレクション</td>
+<td>追加・削除しながら作るデータ</td>
+<td>CapacityとCountは別</td>
+</tr>
+<tr>
+<td>Dictionary&lt;K,V&gt;</td>
+<td>キーと値の対応</td>
+<td>コードやIDで検索</td>
+<td>重複キーの扱いを決める</td>
+</tr>
+<tr>
+<td><a class="term-link" href="#local-term-164" title="Tの列を順に読み出せることを表す契約です。Listかもしれず、その場で値を生成する処理かもしれません。Countとforeachなどの複数列挙で、処理が再実行される費用や副作用を考えます。">IEnumerable&lt;T&gt;</a></td>
+<td>順に列挙できる契約</td>
+<td>読み取り処理の入力</td>
+<td>遅延処理や一度しか使えない列挙もあり得る</td>
+</tr>
+<tr>
+<td><a class="term-link" href="#local-term-067" title="要素数や追加・削除などの操作を表すインターフェイスです。">ICollection&lt;T&gt;</a></td>
+<td>件数・変更操作などの契約</td>
+<td>その能力が必要</td>
+<td>IsReadOnlyを含む実装の条件に注意</td>
+</tr>
+<tr>
+<td><a class="term-link" href="#local-term-068" title="要素数と添字による読み取りの契約です。">IReadOnlyList&lt;T&gt;</a></td>
+<td>件数と位置による読み取り契約</td>
+<td>変更を要求しない利用側</td>
+<td>実体そのものの不変性は保証しない</td>
+</tr>
+</tbody>
+</table></div>
+<p>後のLINQは主にIEnumerableを入力として処理をつなぎます。Listを渡しても、IEnumerableとして受けるメソッドからはList固有のAddを契約として要求しません。利用側が本当に必要な能力だけを受け取る設計へつながります。</p>
+</section><section class="detail-section"><h2 id="detail-h2-06">自分でジェネリックな型を作る</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp">var numberBox = new Box&lt;int&gt;(10);
+var nameBox = new Box&lt;string&gt;("Aoi");
+Console.WriteLine(numberBox.Value);
+Console.WriteLine(nameBox.Value);
+
+public class Box&lt;T&gt;
+{
+    public T Value { get; }
+    public Box(T value)
+    {
+        Value = value;
+    }
+}</code></pre></div>
+<p>期待出力は10、Aoiです。Tは実際に使う型へ置き換わる型パラメーターです。実行時には構築されたジェネリック型の情報も扱われます。値型と参照型でJITがコードを共有・特殊化する方法は異なる場合がありますが、学習の中心は型安全な再利用です。</p>
+<p>Tに何の制約もなければ、Tが必ずLengthやPriceを持つとは言えません。<code>where T : IHasPrice</code>のような制約は、Tが満たす能力を指定する仕組みです。必要な操作をコンパイラーへ示せます。ただし、まだ必要でない拡張を見越して複雑な制約を増やすのではなく、具体的な重複と契約から導きます。</p>
+</section><section class="detail-section"><h2 id="detail-h2-07">間違い：列挙中にListを追加・削除する</h2>
+<div class="codebox" data-code-kind="csharp-error"><div class="codehead"><span>C# · 失敗を学ぶ例（そのまま起動しない）</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp-error">var values = new List&lt;int&gt; { 1, 2, 3, 4 };
+foreach (int value in values)
+{
+    if (value % 2 == 0) values.Remove(value);
+}</code></pre></div>
+<p>Listをforeachで列挙している途中に構造を変更すると、通常は列挙子が変更を検出してInvalidOperationExceptionになります。削除によって位置がずれることもあり、どの要素が次かという前提を壊すからです。更新箇所と列挙対象が同じ実体かを確認します。</p>
+<p>修正位置は削除方法です。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp">var values = new List&lt;int&gt; { 1, 2, 3, 4 };
+values.RemoveAll(value =&gt; value % 2 == 0);
+Console.WriteLine(string.Join(",", values));</code></pre></div>
+<p>期待出力は<code>1,3</code>です。<code>value =&gt; ...</code>は条件を判定する処理を値として渡すラムダ式です。Lesson 17で詳しく扱います。ここではRemoveAllに「削除する要素の条件」を渡しています。別解は後ろから位置を調べてRemoveAtする方法で、削除後のずれが未処理部分へ影響しない順にします。</p>
+</section><section class="detail-section"><h2 id="detail-h2-08">間違い：ないキーをインデクサーで読む</h2>
+<div class="codebox" data-code-kind="csharp-error"><div class="codehead"><span>C# · 失敗を学ぶ例（そのまま起動しない）</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp-error">var stock = new Dictionary&lt;string, int&gt;();
+Console.WriteLine(stock["PEN"]);</code></pre></div>
+<p>この読み取りは登録がないためKeyNotFoundExceptionになります。空のDictionaryだから0を返すわけではありません。ないことが通常の入力ならTryGetValueで分けます。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp">var stock = new Dictionary&lt;string, int&gt;();
+if (stock.TryGetValue("PEN", out int quantity))
+    Console.WriteLine(quantity);
+else
+    Console.WriteLine("商品コードが未登録です");</code></pre></div>
+<p>期待出力は<code>商品コードが未登録です</code>です。見つからない場合を0と扱うか、未登録として返すかは仕様次第です。「在庫0の商品」と「存在しない商品」は異なる状態なので、業務上必要なら区別を残します。</p>
+</section><section class="detail-section"><h2 id="detail-h2-09">段階別の練習</h2>
+<p>基礎はListへAdd・Remove・インデクサー代入を順に行い、各時点のCountを追う課題です。標準は商品コードの件数集計を、大文字小文字を区別する仕様へ変更する課題です。Ordinalを使うとsaveとSAVEは別のキーで、save=2、SAVE=1となります。</p>
+<p>応用は、Listの先頭要素の削除を繰り返す処理と、先頭から読み進める処理の違いを考える課題です。大量の先頭削除は要素移動を繰り返すため、先入れ先出しが目的ならQueueという専用コレクションも候補です。構文だけでなく、行いたい操作から部品を選ぶことが目標です。次のLesson 16では、コレクション操作などで起きる例外をどこで受け取り、資源をどう片付けるかを学びます。</p>
+</section><section><h2 id="apply">自分でコードを書く</h2><p>本文の小さな実験を終えたら、本編の下書き欄へ進みます。解答を写す前に、入力・必要な状態・出力を自分の言葉で整理してください。</p><div class="practice-links"><a href="../lessons/15.html#exercise-1">基礎演習</a><a href="../lessons/15.html#exercise-2">標準演習</a><a href="../lessons/15.html#exercise-3">応用演習</a></div></section><section class="source-section"><h2 id="sources">確認に使用した一次情報</h2><p>確認日：2026年9月14日。本文の理解を補うための資料です。学習対象は.NET 10 / C# 14です。パッチ番号は固定しません。</p><ul><li><a href="https://learn.microsoft.com/ja-jp/dotnet/csharp/language-reference/builtin-types/collections" rel="noopener noreferrer" target="_blank">コレクション</a></li><li><a href="https://learn.microsoft.com/ja-jp/dotnet/csharp/fundamentals/types/generics" rel="noopener noreferrer" target="_blank">ジェネリック</a></li></ul></section><nav aria-label="詳細解説の前後" class="prev-next"><a href="14.html">← 前の詳細解説<br/>recordと等値性</a><a href="16.html">次の詳細解説 →<br/>例外処理とusing</a></nav></article></main><aside aria-label="ページ内目次" class="right-toc"><h2>このページの目次</h2><nav aria-label="詳細なページ内目次"><a href="#connections">前後の学習とのつながり</a><a href="#local-terms">このページで押さえる用語</a><a href="#detail-h2-01">コレクションを選ぶ前に、必要な操作を決める</a><a href="#detail-h2-02">Listの状態を一操作ずつ追う</a><a href="#detail-h2-03">Dictionary：位置ではなくキーで探す</a><a href="#detail-h2-04">実用例：コマンドの件数を数える</a><a href="#detail-h2-05">IEnumerable・ICollection・Listを区別する</a><a href="#detail-h2-06">自分でジェネリックな型を作る</a><a href="#detail-h2-07">間違い：列挙中にListを追加・削除する</a><a href="#detail-h2-08">間違い：ないキーをインデクサーで読む</a><a href="#detail-h2-09">段階別の練習</a><a href="#apply">自分でコードを書く</a><a href="#sources">確認に使用した一次情報</a></nav></aside></div><dialog aria-label="教材検索" class="dialog" id="search-dialog"><div class="dialog-head"><input aria-label="教材を検索" placeholder="型、LINQ、async、Web API…" type="search"/><button class="plain-btn" onclick="this.closest('dialog').close()" type="button">閉じる</button></div><div class="dialog-body" data-search-results=""><p>検索語を入力してください。</p></div></dialog><script src="../assets/js/course-meta.js"></script><script src="../assets/js/search-index.js"></script><script src="../assets/js/site.js"></script><script defer="" src="../assets/js/expanded.js"></script><p aria-live="polite" class="storage-warning" data-storage-warning="" hidden="" role="status"></p></body></html>

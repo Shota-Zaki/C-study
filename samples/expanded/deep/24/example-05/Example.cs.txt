@@ -1,0 +1,9 @@
+using var source = new CancellationTokenSource();
+source.Cancel();
+await LoadAsync(source.Token);
+
+static async Task LoadAsync(CancellationToken token)
+{
+    await Task.Delay(100);
+    Console.WriteLine("中止要求を無視して完了");
+}

@@ -1,0 +1,10 @@
+bool saved = false;
+try
+{
+    throw new IOException("保存先へ書き込めません");
+}
+catch
+{
+    saved = true;
+}
+Console.WriteLine(saved);

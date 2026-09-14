@@ -1,0 +1,6 @@
+var stock = new Stock();
+stock.Quantity = -10;
+public class Stock
+{
+    public int Quantity { get; private set; } = 5;
+}

@@ -1,0 +1,1316 @@
+{
+  "browser": "Chromium /usr/bin/chromium",
+  "mode": "Direct DOM injection of generated HTML/CSS/JS. Memory-only localStorage adapter for logic testing.",
+  "nativeNavigation": "UNVERIFIED: all URLs blocked by browser administrative policy; HTTP and file:// attempts failed",
+  "nativePersistence": "UNVERIFIED: real origin reload/storage and downloaded export file were not tested",
+  "physicalDevices": "UNVERIFIED: no physical tablet/mobile/Safari",
+  "pageChecks": 80,
+  "results": [
+    {
+      "page": "404.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/01.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/02.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/03.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/04.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/05.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/06.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/07.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/08.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/09.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/10.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/11.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/12.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/13.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/14.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/15.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/16.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/17.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/18.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/19.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/20.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/21.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/22.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/23.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/24.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/25.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/26.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/27.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/28.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/29.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/30.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/31.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "deep-dives/32.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "guides/async-timeline.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "guides/choosing-features.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "guides/errors.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "guides/glossary.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "guides/http-di-path.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "guides/index.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "guides/learning-workflow.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "guides/reading-code.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "guides/runtime-memory.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "index.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/01.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/02.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/03.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/04.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/05.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/06.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/07.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/08.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/09.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/10.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/11.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/12.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/13.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/14.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/15.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/16.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/17.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/18.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/19.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/20.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/21.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/22.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/23.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/24.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/25.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/26.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/27.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/28.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/29.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/30.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/31.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "lessons/32.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "projects/expense-cli.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "projects/index.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "projects/task-api.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "projects/task-cli.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    },
+    {
+      "page": "settings.html",
+      "viewport": "tablet",
+      "width": 834,
+      "height": 1112,
+      "metrics": {
+        "bodyWidth": 834,
+        "viewport": 834,
+        "overflow": [],
+        "position": true,
+        "h1": 1
+      },
+      "issues": [],
+      "status": "PASS"
+    }
+  ],
+  "interactions": [
+    {
+      "name": "draft serialization and restoration",
+      "status": "PASS",
+      "detail": "DOM rendering / memory-storage adapter"
+    },
+    {
+      "name": "v2 progress restoration",
+      "status": "PASS",
+      "detail": "DOM rendering / memory-storage adapter"
+    },
+    {
+      "name": "all 20 option explanations visible",
+      "status": "PASS",
+      "detail": "DOM rendering / memory-storage adapter"
+    },
+    {
+      "name": "quiz and draft distinguished",
+      "status": "PASS",
+      "detail": "DOM rendering / memory-storage adapter"
+    },
+    {
+      "name": "search includes detailed content",
+      "status": "PASS",
+      "detail": "DOM rendering / memory-storage adapter"
+    },
+    {
+      "name": "local definition opens through hash link",
+      "status": "PASS",
+      "detail": "DOM rendering / memory-storage adapter"
+    },
+    {
+      "name": "code wrapping",
+      "status": "PASS",
+      "detail": "DOM rendering / memory-storage adapter"
+    },
+    {
+      "name": "anchor position matches current heading",
+      "status": "PASS",
+      "detail": "DOM rendering / memory-storage adapter"
+    },
+    {
+      "name": "copy denial does not crash page",
+      "status": "PASS",
+      "detail": "Clipboard is blocked by policy; success is not claimed."
+    },
+    {
+      "name": "glossary filtering",
+      "status": "PASS",
+      "detail": "DOM rendering / memory-storage adapter"
+    },
+    {
+      "name": "dark theme",
+      "status": "PASS",
+      "detail": "DOM rendering / memory-storage adapter"
+    },
+    {
+      "name": "theme restoration",
+      "status": "PASS",
+      "detail": "DOM rendering / memory-storage adapter"
+    },
+    {
+      "name": "invalid import preserves previous values",
+      "status": "PASS",
+      "detail": "DOM rendering / memory-storage adapter"
+    },
+    {
+      "name": "valid import validates and stores values",
+      "status": "PASS",
+      "detail": "DOM rendering / memory-storage adapter"
+    },
+    {
+      "name": "save failure is visible and input remains",
+      "status": "PASS",
+      "detail": "DOM rendering / memory-storage adapter"
+    },
+    {
+      "name": "mobile navigation opens",
+      "status": "PASS",
+      "detail": "DOM rendering / memory-storage adapter"
+    },
+    {
+      "name": "mobile Escape restores focus",
+      "status": "PASS",
+      "detail": "DOM rendering / memory-storage adapter"
+    },
+    {
+      "name": "320px width reflow",
+      "status": "PASS",
+      "detail": "DOM rendering / memory-storage adapter"
+    },
+    {
+      "name": "CSS 200 percent zoom reflow",
+      "status": "PASS",
+      "detail": "CSS zoom simulation, not native browser UI zoom"
+    }
+  ],
+  "screenshots": [
+    "tablet-13-detail-h2-03.png",
+    "tablet-19-quiz.png",
+    "tablet-async-timeline-guide-h2-02.png",
+    "desktop-home.png",
+    "desktop-detail-top.png",
+    "desktop-glossary.png"
+  ],
+  "status": "PASS"
+}

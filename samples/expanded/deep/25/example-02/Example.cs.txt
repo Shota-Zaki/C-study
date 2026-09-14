@@ -1,0 +1,7 @@
+public static class PriceCalculator
+{
+    public static int Total(int unitPrice, int quantity)
+    {
+        return checked(unitPrice * quantity);
+    }
+}

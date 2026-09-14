@@ -1,0 +1,486 @@
+{
+  "mode": "Python urllib through actual loopback HTTP, not browser navigation",
+  "status": "PASS",
+  "results": [
+    {
+      "page": "404.html",
+      "status": 200,
+      "bytes": 8369,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/01.html",
+      "status": 200,
+      "bytes": 45095,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/02.html",
+      "status": 200,
+      "bytes": 40021,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/03.html",
+      "status": 200,
+      "bytes": 40369,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/04.html",
+      "status": 200,
+      "bytes": 38848,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/05.html",
+      "status": 200,
+      "bytes": 35297,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/06.html",
+      "status": 200,
+      "bytes": 36081,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/07.html",
+      "status": 200,
+      "bytes": 40590,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/08.html",
+      "status": 200,
+      "bytes": 37525,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/09.html",
+      "status": 200,
+      "bytes": 37885,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/10.html",
+      "status": 200,
+      "bytes": 38240,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/11.html",
+      "status": 200,
+      "bytes": 32335,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/12.html",
+      "status": 200,
+      "bytes": 35207,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/13.html",
+      "status": 200,
+      "bytes": 40925,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/14.html",
+      "status": 200,
+      "bytes": 35761,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/15.html",
+      "status": 200,
+      "bytes": 41215,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/16.html",
+      "status": 200,
+      "bytes": 37105,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/17.html",
+      "status": 200,
+      "bytes": 34625,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/18.html",
+      "status": 200,
+      "bytes": 36081,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/19.html",
+      "status": 200,
+      "bytes": 36805,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/20.html",
+      "status": 200,
+      "bytes": 33319,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/21.html",
+      "status": 200,
+      "bytes": 35891,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/22.html",
+      "status": 200,
+      "bytes": 34790,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/23.html",
+      "status": 200,
+      "bytes": 36326,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/24.html",
+      "status": 200,
+      "bytes": 34467,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/25.html",
+      "status": 200,
+      "bytes": 39150,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/26.html",
+      "status": 200,
+      "bytes": 33713,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/27.html",
+      "status": 200,
+      "bytes": 33138,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/28.html",
+      "status": 200,
+      "bytes": 39409,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/29.html",
+      "status": 200,
+      "bytes": 34385,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/30.html",
+      "status": 200,
+      "bytes": 33749,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/31.html",
+      "status": 200,
+      "bytes": 36272,
+      "ok": true
+    },
+    {
+      "page": "deep-dives/32.html",
+      "status": 200,
+      "bytes": 41597,
+      "ok": true
+    },
+    {
+      "page": "guides/async-timeline.html",
+      "status": 200,
+      "bytes": 25306,
+      "ok": true
+    },
+    {
+      "page": "guides/choosing-features.html",
+      "status": 200,
+      "bytes": 29767,
+      "ok": true
+    },
+    {
+      "page": "guides/errors.html",
+      "status": 200,
+      "bytes": 40827,
+      "ok": true
+    },
+    {
+      "page": "guides/glossary.html",
+      "status": 200,
+      "bytes": 150705,
+      "ok": true
+    },
+    {
+      "page": "guides/http-di-path.html",
+      "status": 200,
+      "bytes": 27746,
+      "ok": true
+    },
+    {
+      "page": "guides/index.html",
+      "status": 200,
+      "bytes": 22256,
+      "ok": true
+    },
+    {
+      "page": "guides/learning-workflow.html",
+      "status": 200,
+      "bytes": 24751,
+      "ok": true
+    },
+    {
+      "page": "guides/reading-code.html",
+      "status": 200,
+      "bytes": 23971,
+      "ok": true
+    },
+    {
+      "page": "guides/runtime-memory.html",
+      "status": 200,
+      "bytes": 25615,
+      "ok": true
+    },
+    {
+      "page": "index.html",
+      "status": 200,
+      "bytes": 13466,
+      "ok": true
+    },
+    {
+      "page": "lessons/01.html",
+      "status": 200,
+      "bytes": 67439,
+      "ok": true
+    },
+    {
+      "page": "lessons/02.html",
+      "status": 200,
+      "bytes": 64407,
+      "ok": true
+    },
+    {
+      "page": "lessons/03.html",
+      "status": 200,
+      "bytes": 62676,
+      "ok": true
+    },
+    {
+      "page": "lessons/04.html",
+      "status": 200,
+      "bytes": 60178,
+      "ok": true
+    },
+    {
+      "page": "lessons/05.html",
+      "status": 200,
+      "bytes": 58112,
+      "ok": true
+    },
+    {
+      "page": "lessons/06.html",
+      "status": 200,
+      "bytes": 55856,
+      "ok": true
+    },
+    {
+      "page": "lessons/07.html",
+      "status": 200,
+      "bytes": 62809,
+      "ok": true
+    },
+    {
+      "page": "lessons/08.html",
+      "status": 200,
+      "bytes": 57488,
+      "ok": true
+    },
+    {
+      "page": "lessons/09.html",
+      "status": 200,
+      "bytes": 63309,
+      "ok": true
+    },
+    {
+      "page": "lessons/10.html",
+      "status": 200,
+      "bytes": 62551,
+      "ok": true
+    },
+    {
+      "page": "lessons/11.html",
+      "status": 200,
+      "bytes": 57499,
+      "ok": true
+    },
+    {
+      "page": "lessons/12.html",
+      "status": 200,
+      "bytes": 59820,
+      "ok": true
+    },
+    {
+      "page": "lessons/13.html",
+      "status": 200,
+      "bytes": 62077,
+      "ok": true
+    },
+    {
+      "page": "lessons/14.html",
+      "status": 200,
+      "bytes": 58094,
+      "ok": true
+    },
+    {
+      "page": "lessons/15.html",
+      "status": 200,
+      "bytes": 62449,
+      "ok": true
+    },
+    {
+      "page": "lessons/16.html",
+      "status": 200,
+      "bytes": 58593,
+      "ok": true
+    },
+    {
+      "page": "lessons/17.html",
+      "status": 200,
+      "bytes": 57546,
+      "ok": true
+    },
+    {
+      "page": "lessons/18.html",
+      "status": 200,
+      "bytes": 55819,
+      "ok": true
+    },
+    {
+      "page": "lessons/19.html",
+      "status": 200,
+      "bytes": 57328,
+      "ok": true
+    },
+    {
+      "page": "lessons/20.html",
+      "status": 200,
+      "bytes": 56708,
+      "ok": true
+    },
+    {
+      "page": "lessons/21.html",
+      "status": 200,
+      "bytes": 60429,
+      "ok": true
+    },
+    {
+      "page": "lessons/22.html",
+      "status": 200,
+      "bytes": 56517,
+      "ok": true
+    },
+    {
+      "page": "lessons/23.html",
+      "status": 200,
+      "bytes": 59879,
+      "ok": true
+    },
+    {
+      "page": "lessons/24.html",
+      "status": 200,
+      "bytes": 57945,
+      "ok": true
+    },
+    {
+      "page": "lessons/25.html",
+      "status": 200,
+      "bytes": 62043,
+      "ok": true
+    },
+    {
+      "page": "lessons/26.html",
+      "status": 200,
+      "bytes": 56734,
+      "ok": true
+    },
+    {
+      "page": "lessons/27.html",
+      "status": 200,
+      "bytes": 59302,
+      "ok": true
+    },
+    {
+      "page": "lessons/28.html",
+      "status": 200,
+      "bytes": 68789,
+      "ok": true
+    },
+    {
+      "page": "lessons/29.html",
+      "status": 200,
+      "bytes": 61088,
+      "ok": true
+    },
+    {
+      "page": "lessons/30.html",
+      "status": 200,
+      "bytes": 62322,
+      "ok": true
+    },
+    {
+      "page": "lessons/31.html",
+      "status": 200,
+      "bytes": 60555,
+      "ok": true
+    },
+    {
+      "page": "lessons/32.html",
+      "status": 200,
+      "bytes": 62230,
+      "ok": true
+    },
+    {
+      "page": "projects/expense-cli.html",
+      "status": 200,
+      "bytes": 19367,
+      "ok": true
+    },
+    {
+      "page": "projects/index.html",
+      "status": 200,
+      "bytes": 9468,
+      "ok": true
+    },
+    {
+      "page": "projects/task-api.html",
+      "status": 200,
+      "bytes": 21479,
+      "ok": true
+    },
+    {
+      "page": "projects/task-cli.html",
+      "status": 200,
+      "bytes": 22401,
+      "ok": true
+    },
+    {
+      "page": "settings.html",
+      "status": 200,
+      "bytes": 9370,
+      "ok": true
+    }
+  ]
+}

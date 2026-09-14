@@ -1,0 +1,6 @@
+var stock = new Stock();
+stock._count = -1;
+class Stock
+{
+    private int _count = 5;
+}

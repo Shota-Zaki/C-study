@@ -1,0 +1,1 @@
+Console.WriteLine(PriceCalculator.Total(120, 3));

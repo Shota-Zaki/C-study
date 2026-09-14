@@ -1,0 +1,168 @@
+<!doctype html>
+
+
+<html data-theme="light" lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="入力・業務ルール・表示を分け、小さな変更に強いコードを作る。" name="description"/><meta content="#4f46e5" name="theme-color"/><meta content="website" property="og:type"/><meta content="27 責務の分離と入力検証 — 詳細解説" property="og:title"/><meta content="入力・業務ルール・表示を分け、小さな変更に強いコードを作る。" property="og:description"/><meta content="C# Learning Lab" property="og:site_name"/><meta content="summary" name="twitter:card"/><link href="../assets/icons/favicon.svg" rel="icon"/><link href="../assets/css/site.css" rel="stylesheet"/><title>27 責務の分離と入力検証 — 詳細解説 | C# Learning Lab</title><link href="../assets/css/expanded.css" rel="stylesheet"/></head><body data-base="../" data-current-lesson="27" data-deep-lesson="27" data-page-kind="詳細解説"><a class="skip-link" href="#main">本文へスキップ</a><header class="topbar"><button aria-controls="course-nav" aria-expanded="false" aria-label="コースメニューを開く" class="icon-btn mobile-only" data-drawer="open" type="button">☰</button><a class="brand" href="../index.html"><span class="brand-mark">C#</span><span>C# Learning Lab</span></a><div class="top-actions"><button class="search-btn" data-open-search="" type="button"><span>教材を検索</span><kbd>Ctrl K</kbd>⌕</button><a aria-label="設定" class="icon-btn" href="../settings.html">⚙</a></div></header><div class="layout"><div aria-label="現在の読書位置" class="reading-position" role="navigation"><a href="#main">先頭</a><span class="reading-title">27 責務の分離と入力検証 — 詳細解説</span><span data-reading-count=""></span><button class="position-menu" data-show-toc="" type="button">目次</button><span aria-hidden="true" class="reading-track"><span data-reading-progress=""></span></span></div><nav aria-label="コースナビゲーション" class="left-nav" id="course-nav"><button class="plain-btn drawer-close" data-drawer="close" type="button">閉じる</button><div class="nav-heading">32 Lessons</div><div class="chapter-group"><div class="chapter-title">1. C#の入口</div><a class="lesson-link" href="../lessons/01.html"><span class="num">01</span><span>C#と.NET、最初の実行</span></a><a class="lesson-link" href="../lessons/02.html"><span class="num">02</span><span>Program・名前空間・using</span></a><a class="lesson-link" href="../lessons/03.html"><span class="num">03</span><span>型・var・定数</span></a><a class="lesson-link" href="../lessons/04.html"><span class="num">04</span><span>文字列と入力の変換</span></a></div><div class="chapter-group"><div class="chapter-title">2. 基本文法をつなぐ</div><a class="lesson-link" href="../lessons/05.html"><span class="num">05</span><span>条件分岐とパターン</span></a><a class="lesson-link" href="../lessons/06.html"><span class="num">06</span><span>配列と繰り返し</span></a><a class="lesson-link" href="../lessons/07.html"><span class="num">07</span><span>メソッドと引数</span></a><a class="lesson-link" href="../lessons/08.html"><span class="num">08</span><span>nullを型と分岐で扱う</span></a></div><div class="chapter-group"><div class="chapter-title">3. オブジェクト指向</div><a class="lesson-link" href="../lessons/09.html"><span class="num">09</span><span>クラスとコンストラクター</span></a><a class="lesson-link" href="../lessons/10.html"><span class="num">10</span><span>プロパティとカプセル化</span></a><a class="lesson-link" href="../lessons/11.html"><span class="num">11</span><span>継承・virtual・override</span></a><a class="lesson-link" href="../lessons/12.html"><span class="num">12</span><span>インターフェイスと差し替え</span></a></div><div class="chapter-group"><div class="chapter-title">4. C#らしい型の使い方</div><a class="lesson-link" href="../lessons/13.html"><span class="num">13</span><span>値型と参照型</span></a><a class="lesson-link" href="../lessons/14.html"><span class="num">14</span><span>recordと等値性</span></a><a class="lesson-link" href="../lessons/15.html"><span class="num">15</span><span>ジェネリックとコレクション</span></a><a class="lesson-link" href="../lessons/16.html"><span class="num">16</span><span>例外処理とusing</span></a></div><div class="chapter-group"><div class="chapter-title">5. データを扱うLINQ</div><a class="lesson-link" href="../lessons/17.html"><span class="num">17</span><span>ラムダ・デリゲート・イベント</span></a><a class="lesson-link" href="../lessons/18.html"><span class="num">18</span><span>LINQで絞り込み・変換</span></a><a class="lesson-link" href="../lessons/19.html"><span class="num">19</span><span>遅延実行と集計</span></a><a class="lesson-link" href="../lessons/20.html"><span class="num">20</span><span>enum・タプル・拡張メソッド</span></a></div><div class="chapter-group"><div class="chapter-title">6. 保存と非同期処理</div><a class="lesson-link" href="../lessons/21.html"><span class="num">21</span><span>ファイルとJSON</span></a><a class="lesson-link" href="../lessons/22.html"><span class="num">22</span><span>日時とカルチャー</span></a><a class="lesson-link" href="../lessons/23.html"><span class="num">23</span><span>asyncとawait</span></a><a class="lesson-link" href="../lessons/24.html"><span class="num">24</span><span>複数タスクとキャンセル</span></a></div><div class="chapter-group"><div class="chapter-title">7. 実務への橋渡し</div><a class="lesson-link" href="../lessons/25.html"><span class="num">25</span><span>プロジェクトとNuGet</span></a><a class="lesson-link" href="../lessons/26.html"><span class="num">26</span><span>デバッグと単体テスト</span></a><a aria-current="page" class="lesson-link" href="../lessons/27.html"><span class="num">27</span><span>責務の分離と入力検証</span></a><a class="lesson-link" href="../lessons/28.html"><span class="num">28</span><span>HttpClientでHTTPを扱う</span></a></div><div class="chapter-group"><div class="chapter-title">8. Web APIを作る</div><a class="lesson-link" href="../lessons/29.html"><span class="num">29</span><span>ASP.NET Coreの最小API</span></a><a class="lesson-link" href="../lessons/30.html"><span class="num">30</span><span>入力検証とHTTPステータス</span></a><a class="lesson-link" href="../lessons/31.html"><span class="num">31</span><span>DI・設定・ログ</span></a><a class="lesson-link" href="../lessons/32.html"><span class="num">32</span><span>APIの検証と制作への仕上げ</span></a></div><div class="nav-footer"><a class="lesson-link" href="../projects/index.html">制作課題 3件</a><a class="lesson-link" href="../settings.html">学習データ設定</a><div class="progress-label"><span>進捗</span><strong data-progress-text="">0 / 32</strong></div><div class="mini-progress"><span data-progress-bar=""></span></div><p class="supplement-nav"><a href="../guides/index.html">詳細解説・学習ガイド</a><a href="../guides/glossary.html">用語集</a><a href="../guides/errors.html">エラーの調べ方</a></p></div></nav><main class="content-wrap" id="main"><article class="article"><div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../guides/index.html">学習ガイド</a> / 詳細解説</div><header class="lesson-head"><div class="eyebrow">C# Learning Lab · 詳細解説</div><h1>27 責務の分離と入力検証 — 詳細解説</h1><p class="lead">入力・業務ルール・表示を分け、小さな変更に強いコードを作る。</p><div class="meta-row"><span class="badge">.NET 10 / C# 14</span><span class="badge">読むペースは自由</span></div></header><details class="compact-toc"><summary>このページの目次</summary><nav aria-label="ページ内目次"><a href="#connections">前後の学習とのつながり</a><a href="#local-terms">このページで押さえる用語</a><a href="#detail-h2-01">一つのメソッドへ全てを詰め込むと何が困るか</a><a href="#detail-h2-02">最小例：計算と表示を分ける</a><a href="#detail-h2-03">実用例：入力・業務・表示の三つの境界</a><a href="#detail-h2-04">間違い：先に状態を変更してから検証する</a><a href="#detail-h2-05">入口の検証だけで守れない理由</a><a href="#detail-h2-06">保存を差し替えるときinterfaceが役立つ</a><a href="#detail-h2-07">同時実行では検証と変更の間も守る</a><a href="#detail-h2-08">責務を点検する質問</a><a href="#detail-h2-09">3段階の練習</a><a href="#apply">自分でコードを書く</a><a href="#sources">確認に使用した一次情報</a></nav></details><p class="route-card"><a href="../lessons/27.html">← Lesson 27 の本編</a> ／ <a href="../lessons/27.html#exercises">三段階の演習</a> ／ <a href="../lessons/27.html#quiz">確認問題</a></p><aside class="callout verification-note"><strong>コード検証の読み方</strong><p>出力はコードから説明した想定結果です。この制作環境では.NET SDKを利用できず、C#のビルド・実行は未検証です。コード下書きはブラウザーで動作しません。手元で確かめる手順は<a href="../guides/learning-workflow.html">教材の使い方と検証</a>にあります。</p></aside><section class="learning-bridge"><h2 id="connections">前後の学習とのつながり</h2><dl><dt>ここまで</dt><dd><a href="../lessons/26.html">デバッグと単体テスト</a>：値の流れを観察し、境界条件を自動で確かめる。</dd><dt>今回</dt><dd>入力・業務ルール・表示を分け、小さな変更に強いコードを作る。</dd><dt>次に</dt><dd><a href="../lessons/28.html">HttpClientでHTTPを扱う</a>：HTTP応答・JSON・タイムアウトを、外部システムとの境界として学ぶ。</dd></dl></section><section class="local-terms"><h2 id="local-terms">このページで押さえる用語</h2><p>まず短い定義を読み、必要に応じて開くと、役割・必要性・具体例を確認できます。本文中の用語リンクも、このページ内の説明につながります。</p><details class="term-entry details" data-term="責務" id="local-term-099"><summary><b>責務</b><span class="term-definition">その部品が担当する仕事の範囲です。</span></summary><div><dl><dt>役割</dt><dd>変更やテストの境界を作ります。</dd><dt>なぜ必要か</dt><dd>一つの修正が無関係な処理へ広がる問題を減らします。</dd><dt>具体例</dt><dd>入力変換と在庫更新を別の役割として扱う。</dd><dt>つながる学習</dt><dd><a href="../lessons/27.html">Lesson 27 の本編</a> ／ <a href="../deep-dives/27.html">詳細解説</a></dd></dl></div></details><details class="term-entry details" data-term="カプセル化" id="local-term-051"><summary><b>カプセル化</b><span class="term-definition">状態と操作をまとめ、外部から許す操作を限定する設計です。</span></summary><div><dl><dt>役割</dt><dd>不正な状態変更を入口で防ぎます。</dd><dt>なぜ必要か</dt><dd>在庫を自由に負数へ書き換えられるような問題を避けます。</dd><dt>具体例</dt><dd>フィールドをprivateにし、TryTakeでだけ減算する。</dd><dt>つながる学習</dt><dd><a href="../lessons/10.html">Lesson 10 の本編</a> ／ <a href="../deep-dives/10.html">詳細解説</a></dd></dl></div></details><details class="term-entry details" data-term="不変条件" id="local-term-058"><summary><b>不変条件</b><span class="term-definition">オブジェクトが正しくあるために、常に維持したい規則です。</span></summary><div><dl><dt>役割</dt><dd>許される状態を定義します。</dd><dt>なぜ必要か</dt><dd>メソッドごとに意味の違う状態を作らないようにします。</dd><dt>具体例</dt><dd>在庫数は0以上という規則。</dd><dt>つながる学習</dt><dd><a href="../lessons/27.html">Lesson 27 の本編</a> ／ <a href="../deep-dives/27.html">詳細解説</a></dd></dl></div></details><details class="term-entry details" data-term="入力検証" id="local-term-120"><summary><b>入力検証</b><span class="term-definition">受け取ったデータが、形式や業務上の条件を満たすか調べることです。</span></summary><div><dl><dt>役割</dt><dd>不正な状態を作る前に要求を拒否します。</dd><dt>なぜ必要か</dt><dd>型へ変換できても、負の注文数などは業務上不正な場合があります。</dd><dt>具体例</dt><dd>空白だけのタイトルを400で拒否して保存しない。</dd><dt>つながる学習</dt><dd><a href="../lessons/30.html">Lesson 30 の本編</a> ／ <a href="../deep-dives/30.html">詳細解説</a></dd></dl></div></details><details class="term-entry details" data-term="副作用" id="local-term-100"><summary><b>副作用</b><span class="term-definition">戻り値の計算以外に、外部から観察できる状態へ働きかけることです。</span></summary><div><dl><dt>役割</dt><dd>計算だけの処理と、状態変更やI/Oを区別します。</dd><dt>なぜ必要か</dt><dd>テストの再現性や安全な再実行を考えるために使います。</dd><dt>具体例</dt><dd>ファイル保存、ログ出力、共有在庫の変更。</dd><dt>つながる学習</dt><dd><a href="../lessons/27.html">Lesson 27 の本編</a> ／ <a href="../deep-dives/27.html">詳細解説</a></dd></dl></div></details><details class="term-entry details" data-term="依存関係" id="local-term-098"><summary><b>依存関係</b><span class="term-definition">ある部品が動くために別の部品を必要とする関係です。</span></summary><div><dl><dt>役割</dt><dd>構成や変更の影響を表します。</dd><dt>なぜ必要か</dt><dd>必要な型やサービスがどこから来るかを追えるようにします。</dd><dt>具体例</dt><dd>OrderServiceが通知用のINotifierを使う。</dd><dt>つながる学習</dt><dd><a href="../lessons/31.html">Lesson 31 の本編</a> ／ <a href="../deep-dives/31.html">詳細解説</a></dd></dl></div></details><details class="term-entry details" data-term="単体テスト" id="local-term-175"><summary><b>単体テスト</b><span class="term-definition">小さな対象へ入力を渡し、仕様から決めた期待値と実際の値を自動比較します。Arrange・Act・Assertに分け、境界と失敗条件も確認します。不具合修正では旧実装で失敗することを確かめます。</span></summary><div><dl><dt>役割</dt><dd>小さな部品へ入力を与え、期待される振る舞いを確認する。</dd><dt>なぜ必要か</dt><dd>問題の原因を絞り、変更しても規則が保たれるかを繰り返し調べる。</dd><dt>具体例</dt><dd>Assert.Equal(0, Shipping(3000));</dd><dt>つながる学習</dt><dd><a href="../lessons/26.html">Lesson 26 の本編</a> ／ <a href="../deep-dives/26.html">詳細解説</a></dd></dl><p class="term-caution"><b>混同しやすい点：</b>関数呼び出しだけではHTTPルートやJSONバインドを検証していない。</p></div></details><details class="term-entry details" data-term="トランザクション" id="local-term-125"><summary><b>トランザクション</b><span class="term-definition">複数の保存操作などを、一まとまりの成功・失敗として扱う仕組みです。</span></summary><div><dl><dt>役割</dt><dd>途中だけ反映される不整合を防ぎます。</dd><dt>なぜ必要か</dt><dd>在庫だけ減って注文が保存されないなどの問題を避けます。</dd><dt>具体例</dt><dd>注文保存と在庫更新をDBの一つの単位として確定する。</dd><dt>つながる学習</dt><dd><a href="../lessons/32.html">Lesson 32 の本編</a> ／ <a href="../deep-dives/32.html">詳細解説</a></dd></dl></div></details><p><a href="../guides/glossary.html">180語の用語集で調べる →</a></p></section><section class="detail-section"><h2 id="detail-h2-01">一つのメソッドへ全てを詰め込むと何が困るか</h2>
+<p>入力を読む、数値へ変換する、値の範囲を確認する、在庫を変える、画面へ表示する、という処理を一つへ集めると、画面を変えたいだけでも業務ルールへ触れやすくなります。<a class="term-link" href="#local-term-099" title="その部品が担当する仕事の範囲です。">責務</a>とは、その部品が担当する仕事と判断の範囲です。責務を分ける目的はファイル数を増やすことではなく、変更する理由を分かりやすくすることです。</p>
+<p><a class="term-link" href="#local-term-120" title="受け取ったデータが、形式や業務上の条件を満たすか調べることです。">入力検証</a>にも種類があります。「整数に変換できるか」は形式の検証、「数量は正か」は値の検証、「在庫以内か」は現在の状態を含む業務上の検証です。表面だけで全てを検証しても、別の入口から呼ばれたときに業務状態が壊れるなら不十分です。</p>
+<figure class="concept-diagram flow"><figcaption>処理の流れ</figcaption><ol><li><span class="step-number">1</span><div><b>入口</b><p>文字列・HTTP・ファイルなどから受け取る</p></div></li><li><span class="step-number">2</span><div><b>形式を整える</b><p>null、空白、数値変換を確認</p></div></li><li><span class="step-number">3</span><div><b>業務ルール</b><p>正の数量、在庫以内などを判断</p></div></li><li><span class="step-number">4</span><div><b>変更を確定</b><p>成功するときだけ状態を変える</p></div></li><li><span class="step-number">5</span><div><b>結果を返す</b><p>成功・拒否理由を入口向けに表現</p></div></li></ol></figure></section><section class="detail-section"><h2 id="detail-h2-02">最小例：計算と表示を分ける</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp">int total = CalculateTotal(120, 3);
+Console.WriteLine($"合計:{total}");
+
+static int CalculateTotal(int unitPrice, int quantity)
+{
+    if (unitPrice &lt; 0) throw new ArgumentOutOfRangeException(nameof(unitPrice));
+    if (quantity &lt;= 0) throw new ArgumentOutOfRangeException(nameof(quantity));
+    return checked(unitPrice * quantity);
+}</code></pre></div>
+<p>期待出力は合計:360です。CalculateTotalはConsoleへ表示せず、値を返します。画面、ファイル、Web APIのどこから呼んでも同じ計算を利用できます。nameofは変数やメンバーの名前を文字列として得る構文です。引数名を直接文字列で重複記述するより、名前変更に追随しやすくなります。</p>
+<p>このメソッドはプログラム内部から不適切な引数を渡された場合を例外で示します。利用者が何度も入力を間違える通常の流れでは、入口でTryParseしたり、成功・失敗を結果として返したりする設計も適しています。例外と結果型を目的で使い分けます。</p>
+</section><section class="detail-section"><h2 id="detail-h2-03">実用例：入力・業務・表示の三つの境界</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp">var stock = new StockService(5);
+HandleInput("2", stock);
+HandleInput("10", stock);
+HandleInput("abc", stock);
+Console.WriteLine($"最終在庫:{stock.Count}");
+
+static void HandleInput(string text, StockService stock)
+{
+    if (!int.TryParse(text, out int quantity))
+    {
+        Console.WriteLine("整数で入力してください");
+        return;
+    }
+    TakeResult result = stock.Take(quantity);
+    Console.WriteLine(result.Message);
+}
+
+public record TakeResult(bool Accepted, string Message);
+
+public sealed class StockService
+{
+    public int Count { get; private set; }
+    public StockService(int count)
+    {
+        if (count &lt; 0) throw new ArgumentOutOfRangeException(nameof(count));
+        Count = count;
+    }
+    public TakeResult Take(int quantity)
+    {
+        if (quantity &lt;= 0) return new(false, "数量は1以上です");
+        if (quantity &gt; Count) return new(false, "在庫不足です");
+        Count -= quantity;
+        return new(true, $"{quantity}個を受け付けました");
+    }
+}</code></pre></div>
+<p>期待出力は2個を受け付けました、在庫不足です、整数で入力してください、最終在庫:3です。new(false, ...)は、戻り値のTakeResult型が分かる位置なので型名を省略したnewです。同じ部分をnew TakeResult(false, ...)と書いても構いません。</p>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">入力</th>
+<th scope="col">形式の検証</th>
+<th scope="col">業務の検証</th>
+<th scope="col">在庫の前→後</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"2"</td>
+<td>整数2にできる</td>
+<td>正数、5以内</td>
+<td>5→3</td>
+</tr>
+<tr>
+<td>"10"</td>
+<td>整数10にできる</td>
+<td>3を超える</td>
+<td>3→3</td>
+</tr>
+<tr>
+<td>"abc"</td>
+<td>整数にできない</td>
+<td>業務を呼ばない</td>
+<td>3→3</td>
+</tr>
+</tbody>
+</table></div>
+<p>この例のMessageは学習用に表示文までまとめています。複数言語やHTTPへ展開する場合は、結果に失敗理由のenumなどを持たせ、表示文やHTTPステータスへの変換を入口で行うと、業務層が表現方法へ依存しにくくなります。</p>
+</section><section class="detail-section"><h2 id="detail-h2-04">間違い：先に状態を変更してから検証する</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp">var stock = new Stock(3);
+Console.WriteLine(stock.Take(5));
+Console.WriteLine(stock.Count);
+
+public sealed class Stock
+{
+    public int Count { get; private set; }
+    public Stock(int count) =&gt; Count = count;
+    public bool Take(int quantity)
+    {
+        Count -= quantity;
+        if (Count &lt; 0) return false;
+        return true;
+    }
+}</code></pre></div>
+<p>観察結果はFalse、-2です。失敗と返しているのに、状態は既に壊れています。確認する箇所はreturn falseだけでなく、その前に実行された代入です。修正では変更できる条件を先に確認し、成功する場合だけ更新します。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp">var stock = new Stock(3);
+Console.WriteLine(stock.Take(5));
+Console.WriteLine(stock.Count);
+
+public sealed class Stock
+{
+    public int Count { get; private set; }
+    public Stock(int count)
+    {
+        if (count &lt; 0) throw new ArgumentOutOfRangeException(nameof(count));
+        Count = count;
+    }
+    public bool Take(int quantity)
+    {
+        if (quantity &lt;= 0 || quantity &gt; Count) return false;
+        Count -= quantity;
+        return true;
+    }
+}</code></pre></div>
+<p>修正後の期待出力はFalse、3です。成功時だけ変えるというルールを、実際の命令順で保証しています。</p>
+</section><section class="detail-section"><h2 id="detail-h2-05">入口の検証だけで守れない理由</h2>
+<p>コンソールの入力で正数を確認していても、後からWeb API、バッチ処理、テストコードなどがStock.Takeを直接呼ぶことがあります。バッチ処理とは、まとめられたデータを決められた手順で処理する実行方式です。どの入口から呼んでも在庫が負にならないことはStock自身が守るべき制約です。</p>
+<p>一方、表示するエラーメッセージやHTTPの詳細をStockへ全て持たせると、業務の仕組みが特定の画面へ結びつきます。形式は入口、状態の正しさは業務、保存方法は保存担当というように、誰が最終的に保証するかを整理します。</p>
+</section><section class="detail-section"><h2 id="detail-h2-06">保存を差し替えるときinterfaceが役立つ</h2>
+<p>リポジトリという言葉は、ここではデータを保存・取得する操作をまとめた部品を意味します。ソースコードを管理するRepositoryとは文脈が異なります。メモリのListへ保存する実装と、ファイルへ保存する実装を同じ約束で差し替えたいとき、interfaceが役立ちます。</p>
+<p>ただし、最初から全てに抽象化を追加すると、処理を追うために多くのファイルを移動することになります。差し替え、外部依存の分離、テストの再現性など具体的な理由がある境界から導入します。実装が一つでも外部I/Oを隔離する価値はありますが、「将来何かあるかもしれない」だけで層を増やしません。</p>
+</section><section class="detail-section"><h2 id="detail-h2-07">同時実行では検証と変更の間も守る</h2>
+<p>上のStockは単一の処理の流れを前提にしています。複数のHTTPリクエストが同時に在庫を読むと、両方が「まだ3ある」と判断して更新する可能性があります。検証してから変更する順序は必要ですが、それだけで同時実行に安全になるわけではありません。</p>
+<p>共有するメモリならロック、データベースなら<a class="term-link" href="#local-term-125" title="複数の保存操作などを、一まとまりの成功・失敗として扱う仕組みです。">トランザクション</a>や更新条件など、保存方式に合った仕組みが必要です。ロックは一定の区間へ同時に入る流れを制限するもの、トランザクションは複数のデータ操作を一まとまりとして扱う仕組みです。第29レッスン以降では共有状態を扱う範囲を明示します。</p>
+</section><section class="detail-section"><h2 id="detail-h2-08">責務を点検する質問</h2>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">質問</th>
+<th scope="col">改善の手がかり</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>表示文を変えるために計算も編集するか</td>
+<td>計算結果と表示を分ける</td>
+</tr>
+<tr>
+<td>在庫不足時に状態が変わっていないか</td>
+<td>検証と確定の順を確認</td>
+</tr>
+<tr>
+<td>同じルールが複数の入口に散らばっているか</td>
+<td>保証する部品を一つにする</td>
+</tr>
+<tr>
+<td>テストに毎回ファイルや通信が必要か</td>
+<td>純粋な判断と外部I/Oを分ける</td>
+</tr>
+<tr>
+<td>抽象化が多く処理の入口が不明か</td>
+<td>具体的な利用経路を整理</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="detail-section"><h2 id="detail-h2-09">3段階の練習</h2>
+<p><strong>基礎</strong>：CalculateTotalへ負の価格を渡した場合と正常値を渡した場合の仕様を説明します。正常時360、負の価格はArgumentOutOfRangeExceptionです。表示失敗と計算ルール違反を混同しません。</p>
+<p><strong>標準</strong>：在庫3に対し、要求0、-1、3、4を独立した初期状態で試すテストを考えます。0と-1と4は拒否・在庫3、3は成功・在庫0です。一つのStockへ順に試す場合は途中の状態が変わるので、初期状態を明示してください。</p>
+<p><strong>応用</strong>：TakeResultのMessageをReasonというenumへ置き換え、コンソール表示を入口へ移す設計にします。None、InvalidQuantity、InsufficientStockなどを定義し、AcceptedとReasonが矛盾しない生成方法を検討します。レコードを作るだけで全ての不整合が防げるとは限らないため、作成場所も管理します。</p>
+</section><section><h2 id="apply">自分でコードを書く</h2><p>本文の小さな実験を終えたら、本編の下書き欄へ進みます。解答を写す前に、入力・必要な状態・出力を自分の言葉で整理してください。</p><div class="practice-links"><a href="../lessons/27.html#exercise-1">基礎演習</a><a href="../lessons/27.html#exercise-2">標準演習</a><a href="../lessons/27.html#exercise-3">応用演習</a></div></section><section class="source-section"><h2 id="sources">確認に使用した一次情報</h2><p>確認日：2026年9月14日。本文の理解を補うための資料です。学習対象は.NET 10 / C# 14です。パッチ番号は固定しません。</p><ul><li><a href="https://learn.microsoft.com/ja-jp/dotnet/csharp/programming-guide/classes-and-structs/methods" rel="noopener noreferrer" target="_blank">メソッド</a></li><li><a href="https://learn.microsoft.com/ja-jp/dotnet/core/extensions/dependency-injection" rel="noopener noreferrer" target="_blank">.NETの依存性注入</a></li><li><a href="https://learn.microsoft.com/ja-jp/dotnet/csharp/fundamentals/exceptions/" rel="noopener noreferrer" target="_blank">例外処理</a></li></ul></section><nav aria-label="詳細解説の前後" class="prev-next"><a href="26.html">← 前の詳細解説<br/>デバッグと単体テスト</a><a href="28.html">次の詳細解説 →<br/>HttpClientでHTTPを扱う</a></nav></article></main><aside aria-label="ページ内目次" class="right-toc"><h2>このページの目次</h2><nav aria-label="詳細なページ内目次"><a href="#connections">前後の学習とのつながり</a><a href="#local-terms">このページで押さえる用語</a><a href="#detail-h2-01">一つのメソッドへ全てを詰め込むと何が困るか</a><a href="#detail-h2-02">最小例：計算と表示を分ける</a><a href="#detail-h2-03">実用例：入力・業務・表示の三つの境界</a><a href="#detail-h2-04">間違い：先に状態を変更してから検証する</a><a href="#detail-h2-05">入口の検証だけで守れない理由</a><a href="#detail-h2-06">保存を差し替えるときinterfaceが役立つ</a><a href="#detail-h2-07">同時実行では検証と変更の間も守る</a><a href="#detail-h2-08">責務を点検する質問</a><a href="#detail-h2-09">3段階の練習</a><a href="#apply">自分でコードを書く</a><a href="#sources">確認に使用した一次情報</a></nav></aside></div><dialog aria-label="教材検索" class="dialog" id="search-dialog"><div class="dialog-head"><input aria-label="教材を検索" placeholder="型、LINQ、async、Web API…" type="search"/><button class="plain-btn" onclick="this.closest('dialog').close()" type="button">閉じる</button></div><div class="dialog-body" data-search-results=""><p>検索語を入力してください。</p></div></dialog><script src="../assets/js/course-meta.js"></script><script src="../assets/js/search-index.js"></script><script src="../assets/js/site.js"></script><script defer="" src="../assets/js/expanded.js"></script><p aria-live="polite" class="storage-warning" data-storage-warning="" hidden="" role="status"></p></body></html>

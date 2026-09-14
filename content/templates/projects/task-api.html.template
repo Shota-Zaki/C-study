@@ -1,0 +1,79 @@
+<!doctype html><html lang="ja" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="CRUD・入力検証・DI・HTTPステータスを、ローカルAPIとして組み合わせる。"><meta name="theme-color" content="#4f46e5"><meta property="og:type" content="website"><meta property="og:title" content="タスク管理Web API"><meta property="og:description" content="CRUD・入力検証・DI・HTTPステータスを、ローカルAPIとして組み合わせる。"><meta property="og:site_name" content="C# Learning Lab"><meta name="twitter:card" content="summary"><link rel="canonical" href="./task-api.html"><link rel="icon" href="../assets/icons/favicon.svg"><link rel="stylesheet" href="../assets/css/site.css"><title>タスク管理Web API | C# Learning Lab</title></head><body data-base="../"><a class="skip-link" href="#main">本文へスキップ</a><header class="topbar"><button class="icon-btn mobile-only" type="button" data-drawer="open" aria-label="コースメニューを開く" aria-controls="course-nav" aria-expanded="false">☰</button><a class="brand" href="../index.html"><span class="brand-mark">C#</span><span>C# Learning Lab</span></a><div class="top-actions"><button class="search-btn" type="button" data-open-search><span>教材を検索</span><kbd>Ctrl K</kbd>⌕</button><a class="icon-btn" href="../settings.html" aria-label="設定">⚙</a></div></header><div class="layout"><nav id="course-nav" class="left-nav" aria-label="コースナビゲーション"><button class="plain-btn drawer-close" type="button" data-drawer="close">閉じる</button><div class="nav-heading">32 Lessons</div><div class="chapter-group"><div class="chapter-title">1. C#の入口</div><a class="lesson-link" href="../lessons/01.html"><span class="num">01</span><span>C#と.NET、最初の実行</span></a><a class="lesson-link" href="../lessons/02.html"><span class="num">02</span><span>Program・名前空間・using</span></a><a class="lesson-link" href="../lessons/03.html"><span class="num">03</span><span>型・var・定数</span></a><a class="lesson-link" href="../lessons/04.html"><span class="num">04</span><span>文字列と入力の変換</span></a></div><div class="chapter-group"><div class="chapter-title">2. 基本文法をつなぐ</div><a class="lesson-link" href="../lessons/05.html"><span class="num">05</span><span>条件分岐とパターン</span></a><a class="lesson-link" href="../lessons/06.html"><span class="num">06</span><span>配列と繰り返し</span></a><a class="lesson-link" href="../lessons/07.html"><span class="num">07</span><span>メソッドと引数</span></a><a class="lesson-link" href="../lessons/08.html"><span class="num">08</span><span>nullを型と分岐で扱う</span></a></div><div class="chapter-group"><div class="chapter-title">3. オブジェクト指向</div><a class="lesson-link" href="../lessons/09.html"><span class="num">09</span><span>クラスとコンストラクター</span></a><a class="lesson-link" href="../lessons/10.html"><span class="num">10</span><span>プロパティとカプセル化</span></a><a class="lesson-link" href="../lessons/11.html"><span class="num">11</span><span>継承・virtual・override</span></a><a class="lesson-link" href="../lessons/12.html"><span class="num">12</span><span>インターフェイスと差し替え</span></a></div><div class="chapter-group"><div class="chapter-title">4. C#らしい型の使い方</div><a class="lesson-link" href="../lessons/13.html"><span class="num">13</span><span>値型と参照型</span></a><a class="lesson-link" href="../lessons/14.html"><span class="num">14</span><span>recordと等値性</span></a><a class="lesson-link" href="../lessons/15.html"><span class="num">15</span><span>ジェネリックとコレクション</span></a><a class="lesson-link" href="../lessons/16.html"><span class="num">16</span><span>例外処理とusing</span></a></div><div class="chapter-group"><div class="chapter-title">5. データを扱うLINQ</div><a class="lesson-link" href="../lessons/17.html"><span class="num">17</span><span>ラムダ・デリゲート・イベント</span></a><a class="lesson-link" href="../lessons/18.html"><span class="num">18</span><span>LINQで絞り込み・変換</span></a><a class="lesson-link" href="../lessons/19.html"><span class="num">19</span><span>遅延実行と集計</span></a><a class="lesson-link" href="../lessons/20.html"><span class="num">20</span><span>enum・タプル・拡張メソッド</span></a></div><div class="chapter-group"><div class="chapter-title">6. 保存と非同期処理</div><a class="lesson-link" href="../lessons/21.html"><span class="num">21</span><span>ファイルとJSON</span></a><a class="lesson-link" href="../lessons/22.html"><span class="num">22</span><span>日時とカルチャー</span></a><a class="lesson-link" href="../lessons/23.html"><span class="num">23</span><span>asyncとawait</span></a><a class="lesson-link" href="../lessons/24.html"><span class="num">24</span><span>複数タスクとキャンセル</span></a></div><div class="chapter-group"><div class="chapter-title">7. 実務への橋渡し</div><a class="lesson-link" href="../lessons/25.html"><span class="num">25</span><span>プロジェクトとNuGet</span></a><a class="lesson-link" href="../lessons/26.html"><span class="num">26</span><span>デバッグと単体テスト</span></a><a class="lesson-link" href="../lessons/27.html"><span class="num">27</span><span>責務の分離と入力検証</span></a><a class="lesson-link" href="../lessons/28.html"><span class="num">28</span><span>HttpClientでHTTPを扱う</span></a></div><div class="chapter-group"><div class="chapter-title">8. Web APIを作る</div><a class="lesson-link" href="../lessons/29.html"><span class="num">29</span><span>ASP.NET Coreの最小API</span></a><a class="lesson-link" href="../lessons/30.html"><span class="num">30</span><span>入力検証とHTTPステータス</span></a><a class="lesson-link" href="../lessons/31.html"><span class="num">31</span><span>DI・設定・ログ</span></a><a class="lesson-link" href="../lessons/32.html"><span class="num">32</span><span>APIの検証と制作への仕上げ</span></a></div><div class="nav-footer"><a class="lesson-link" href="../projects/index.html">制作課題 3件</a><a class="lesson-link" href="../settings.html">学習データ設定</a><div class="progress-label"><span>進捗</span><strong data-progress-text>0 / 32</strong></div><div class="mini-progress"><span data-progress-bar></span></div></div></nav><main id="main" class="content-wrap"><article class="article"><div class="breadcrumb"><a href="index.html">Projects</a> / 03</div><header class="lesson-head"><div class="eyebrow">Project 03</div><h1>タスク管理Web API</h1><p class="lead">CRUD・入力検証・DI・HTTPステータスを、ローカルAPIとして組み合わせる。</p></header><section id="goals"><h2>ゴール</h2><ul><li>HTTPからタスクを作成・取得・完了・削除する</li><li>共有ストアの操作を同期する</li><li>正常系と400・404を確認する</li></ul></section><section id="steps"><h2>実装手順</h2><ol><li>GET /healthとGET /tasksを作る。</li><li>POST /tasksでタイトルを検証し、201とLocationを返す。</li><li>PUTによる完了とDELETEによる削除を追加する。</li><li>別ターミナルからPowerShellでHTTP契約を確認する。</li></ol></section><section id="guide"><h2>設計と実装の考え方</h2><h3>① エンドポイントと状態遷移を設計する</h3><p>GET /healthは稼働確認、GET /tasksは一覧、GET /tasks/{id:int}は個別取得、POST /tasksは作成、PUT /tasks/{id:int}/completeは完了、DELETE /tasks/{id:int}は削除です。先にこの表と期待ステータスを確定させ、ルートごとに必要な入力と出力を書きます。</p><p>TaskItemはId、Title、Doneを持ちます。完了操作は反転ではなくtrueへの設定なので同じPUTを繰り返しても状態は変わりません。DELETEの二回目が404になることは、削除対象が存在しないという今回の応答契約です。HTTP上の冪等性はレスポンスの数字が毎回同じという意味ではなく、効果に注目します。</p><h3>② 要求DTOと保存データを分ける</h3><p>CreateTaskRequestはTitleだけを受け取り、IdとDoneはサーバー側で決めます。利用者が任意のIDや完了状態を作成要求で直接上書きする設計にしないことで、書き込み可能な項目を限定します。タイトルは空白不可、Trim後100文字以内という契約です。</p><p>IDは今回のプロセス内の連番で、最大値と件数上限を確認します。再起動後も世界で一意な識別子ではありません。外部へ公開するシステムへ移すなら、保存先、採番、認証済み利用者の所有権を設計し、連番かGUIDかだけでセキュリティが完成すると考えないでください。</p><h3>③ ハンドラーとTaskStoreの責務</h3><p>ハンドラーは入力の解釈・検証を行い、TaskStoreの結果を200・201・204・400・404・409へ変換します。TaskStoreはDictionaryと採番の状態を管理し、HTTPのResultsを返しません。そのため、ストアの振る舞いをHTTPから独立してテストできます。</p><p>TaskStore.Addがnullを返すのは件数上限または採番上限という、この実装の限定された契約です。将来失敗理由が増えたら結果型へ分けてください。ストアが検証済みタイトルだけを受け取る前提も明示し、別の呼び出し入口が増えた場合はどこで同じ不変条件を守るかを見直します。</p><h3>④ Singletonとlockの範囲を読む</h3><p>TaskStoreはSingletonなので複数要求から同時に使われます。Dictionaryの読み書き、採番、件数チェックと追加を同じgateのlockで保護します。特に「1000件未満か確認→IDを増やす→追加」は一つの論理操作であり、別々の保護では間に他の要求が入る可能性があります。</p><p>Allはlockの中で配列へコピーして返し、外側がDictionaryの列挙中に更新される問題を避けます。TaskItemは不変な位置指定recordとして扱うため、この用途ではコピーした配列から変更可能な共有Listを露出しません。lock内でHTTP通信や長時間I/O、awaitをしない設計です。複数プロセス間の排他にはこのlockは届きません。</p><h3>⑤ HTTPで作成から削除まで一本通す</h3><p>新規起動→空一覧200→POSTで201→LocationへGET200→PUTでDone=true→同じPUTを再送してtrue維持→DELETE204→GET404、という順を一本のシナリオにします。IDを1と決め打ちせず、作成応答から取得したIDを後続へ渡すと再実行しやすくなります。</p><p>不正タイトルのPOSTは400になるだけでなく一覧件数を変えないことを確認します。ルートのabcは:intへ一致せず404、POSTへtext/plainを送った場合は期待するJSON Content-Typeの契約に合わず415になることを確認します。フレームワークが先に拒否した場合と自作検証で拒否した場合は、本文形式が異なる可能性も記録します。</p><h3>⑥ テストを層ごとに分ける</h3><p>単体ではTaskStoreの追加・取得・完了・削除・上限を検証します。統合では実際のHTTPへ要求を送り、ルーティング、JSONバインド、ステータス、ヘッダーを確認します。WebApplicationFactoryへ移すときはWebプロジェクト参照と対応するテストパッケージを追加し、テストごとにストアの状態を初期化します。</p><p>この配布物にはPython標準ライブラリでローカル起動中APIへ要求する検証スクリプトも含めます。スクリプトは学習用のタスクを作成して操作するため、使い捨ての本サンプルAPIにだけ向けてください。サイトのJavaScriptが動いたことは、このC# APIが起動したことの代わりにはなりません。</p><h3>⑦ 公開前に残る設計を列挙する</h3><p>再起動でデータが消えるのでDBと移行・バックアップが必要です。利用者ごとの認証と対象タスクの所有権確認、HTTPS、要求サイズやレートの制限、秘密情報の管理、ログと監視も未実装です。TaskStoreへlockがあるからインターネット公開して安全という判断はできません。</p><p>次に進むなら、一度に全部ではなく「ストアをSQLite等へ差し替えてAPI契約を維持する」「認証と所有権の拒否ケースを追加する」など一つの縦の変更へ絞ります。まず今回のローカルCRUDをテスト表どおりに再現し、何ができて何ができていないか説明して完了にします。</p></section><section id="code"><h2>サンプル実装</h2><div class="codebox"><div class="codehead"><span>csharp</span><button class="copy-btn" type="button" data-copy>Copy</button></div><pre><code>var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddSingleton&lt;TaskStore&gt;();
+builder.Services.AddProblemDetails();
+var app = builder.Build();
+app.UseExceptionHandler();
+app.MapGet(&quot;/health&quot;, () =&gt; Results.Ok(new { status = &quot;ok&quot; }));
+app.MapGet(&quot;/tasks&quot;, (TaskStore store) =&gt; Results.Ok(store.All()));
+app.MapGet(&quot;/tasks/{id:int}&quot;, GetTask);
+app.MapPost(&quot;/tasks&quot;, CreateTask);
+app.MapPut(&quot;/tasks/{id:int}/complete&quot;, CompleteTask);
+app.MapDelete(&quot;/tasks/{id:int}&quot;, DeleteTask);
+app.Run(&quot;http://127.0.0.1:5080&quot;);
+
+static IResult GetTask(int id, TaskStore store)
+{
+    var task = store.Find(id);
+    return task is null ? Results.NotFound() : Results.Ok(task);
+}
+static IResult CreateTask(CreateTaskRequest input, TaskStore store)
+{
+    if (string.IsNullOrWhiteSpace(input.Title) || input.Title.Trim().Length &gt; 100)
+        return Results.BadRequest(new { error = &quot;タイトルは1〜100文字です。&quot; });
+    var task = store.Add(input.Title.Trim());
+    return task is null
+        ? Results.Conflict(new { error = &quot;登録できるタスク数の上限に達しました。&quot; })
+        : Results.Created($&quot;/tasks/{task.Id}&quot;, task);
+}
+static IResult CompleteTask(int id, TaskStore store)
+{
+    var task = store.Complete(id);
+    return task is null ? Results.NotFound() : Results.Ok(task);
+}
+static IResult DeleteTask(int id, TaskStore store)
+    =&gt; store.Delete(id) ? Results.NoContent() : Results.NotFound();
+
+public record CreateTaskRequest(string? Title);
+public record TaskItem(int Id, string Title, bool Done);
+public sealed class TaskStore
+{
+    private readonly object gate = new();
+    private readonly Dictionary&lt;int, TaskItem&gt; tasks = new();
+    private int nextId;
+    public TaskItem[] All()
+    {
+        lock (gate) return tasks.Values.OrderBy(x =&gt; x.Id).ToArray();
+    }
+    public TaskItem? Find(int id)
+    {
+        lock (gate) return tasks.GetValueOrDefault(id);
+    }
+    public TaskItem? Add(string title)
+    {
+        lock (gate)
+        {
+            if (tasks.Count &gt;= 1000 || nextId == int.MaxValue) return null;
+            var task = new TaskItem(++nextId, title, false);
+            tasks.Add(task.Id, task);
+            return task;
+        }
+    }
+    public TaskItem? Complete(int id)
+    {
+        lock (gate)
+        {
+            if (!tasks.TryGetValue(id, out var task)) return null;
+            return tasks[id] = task with { Done = true };
+        }
+    }
+    public bool Delete(int id)
+    {
+        lock (gate) return tasks.Remove(id);
+    }
+}
+</code></pre></div><div class="codebox"><div class="codehead"><span>Terminal</span><button class="copy-btn" type="button" data-copy>Copy</button></div><pre><code>dotnet run --project samples/projects/task-api
+# 別のPowerShellで実行
+$t = Invoke-RestMethod http://127.0.0.1:5080/tasks -Method Post -ContentType &quot;application/json&quot; -Body &#x27;{&quot;title&quot;:&quot;Learn CSharp&quot;}&#x27;
+Invoke-RestMethod http://127.0.0.1:5080/tasks
+Invoke-RestMethod &quot;http://127.0.0.1:5080/tasks/$($t.id)/complete&quot; -Method Put
+Invoke-RestMethod &quot;http://127.0.0.1:5080/tasks/$($t.id)&quot; -Method Delete</code></pre></div></section><section id="acceptance"><h2>完成条件</h2><ul><li>POST /tasksで201、Locationに新しいタスクのURLが入る。</li><li>空白タイトルは400、存在しないIDは404になる。</li><li>完了操作の再実行でも完了状態を維持する。</li><li>削除成功は204、削除後の取得は404になる。</li><li>再起動でデータが消えることを説明できる。</li></ul><aside class="callout warn"><strong>制約・対象外</strong><p>メモリ保存の学習用APIです。再起動でデータは消えます。認証・権限管理・永続DB・インターネット公開は対象外です。127.0.0.1だけで待ち受けます。</p></aside></section><section id="tests"><h2>テスト観点</h2><div class="table-scroll"><table><thead><tr><th scope="col">ケース</th><th scope="col">期待結果</th><th scope="col">目的</th></tr></thead><tbody><tr><td>GET /health</td><td>200、status=ok</td><td>到達性</td></tr><tr><td>新規起動後GET /tasks</td><td>200、[]</td><td>空一覧の契約</td></tr><tr><td>POST Title=&quot; C# &quot;</td><td>201、Title=C#、Done=false</td><td>正規化と初期状態</td></tr><tr><td>LocationへGET</td><td>200、作成応答と同じID</td><td>作成の参照先</td></tr><tr><td>POST Title=null/空白</td><td>400、一覧件数不変</td><td>失敗時に変更しない</td></tr><tr><td>Title100文字/101文字</td><td>201 / 400</td><td>長さの境界</td></tr><tr><td>PUT completeを二回</td><td>両方200、Done=true</td><td>冪等な効果</td></tr><tr><td>DELETE作成ID</td><td>204、空本文</td><td>削除成功</td></tr><tr><td>削除後GET/再DELETE</td><td>404 / 404</td><td>不在の契約</td></tr><tr><td>GET /tasks/abc</td><td>404</td><td>ルート制約</td></tr><tr><td>PATCH /tasks</td><td>405</td><td>許可外メソッド</td></tr><tr><td>POST text/plain</td><td>415</td><td>本文形式の契約</td></tr><tr><td>POST application/jsonで壊れたJSON</td><td>400</td><td>バインドの失敗</td></tr><tr><td>アプリ再起動</td><td>一覧空へ戻る</td><td>永続化がないことを確認</td></tr></tbody></table></div></section></article></main><aside class="right-toc" aria-label="ページ内目次"><h2>On this page</h2><a href="#goals">ゴール</a><a href="#steps">実装手順</a><a href="#guide">設計と実装の考え方</a><a href="#code">サンプル実装</a><a href="#acceptance">完成条件</a><a href="#tests">テスト観点</a></aside></div><dialog id="search-dialog" class="dialog" aria-label="教材検索"><div class="dialog-head"><input type="search" aria-label="教材を検索" placeholder="型、LINQ、async、Web API…"><button class="plain-btn" type="button" onclick="this.closest('dialog').close()">閉じる</button></div><div class="dialog-body" data-search-results><p>検索語を入力してください。</p></div></dialog><script src="../assets/js/course-meta.js"></script><script src="../assets/js/search-index.js"></script><script src="../assets/js/site.js"></script></body></html>

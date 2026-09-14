@@ -1,0 +1,93 @@
+<!doctype html><html lang="ja" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="追加・一覧・完了・削除を実装し、アプリを終了してもデータを残す。"><meta name="theme-color" content="#4f46e5"><meta property="og:type" content="website"><meta property="og:title" content="JSON保存付きタスク管理"><meta property="og:description" content="追加・一覧・完了・削除を実装し、アプリを終了してもデータを残す。"><meta property="og:site_name" content="C# Learning Lab"><meta name="twitter:card" content="summary"><link rel="canonical" href="./task-cli.html"><link rel="icon" href="../assets/icons/favicon.svg"><link rel="stylesheet" href="../assets/css/site.css"><title>JSON保存付きタスク管理 | C# Learning Lab</title></head><body data-base="../"><a class="skip-link" href="#main">本文へスキップ</a><header class="topbar"><button class="icon-btn mobile-only" type="button" data-drawer="open" aria-label="コースメニューを開く" aria-controls="course-nav" aria-expanded="false">☰</button><a class="brand" href="../index.html"><span class="brand-mark">C#</span><span>C# Learning Lab</span></a><div class="top-actions"><button class="search-btn" type="button" data-open-search><span>教材を検索</span><kbd>Ctrl K</kbd>⌕</button><a class="icon-btn" href="../settings.html" aria-label="設定">⚙</a></div></header><div class="layout"><nav id="course-nav" class="left-nav" aria-label="コースナビゲーション"><button class="plain-btn drawer-close" type="button" data-drawer="close">閉じる</button><div class="nav-heading">32 Lessons</div><div class="chapter-group"><div class="chapter-title">1. C#の入口</div><a class="lesson-link" href="../lessons/01.html"><span class="num">01</span><span>C#と.NET、最初の実行</span></a><a class="lesson-link" href="../lessons/02.html"><span class="num">02</span><span>Program・名前空間・using</span></a><a class="lesson-link" href="../lessons/03.html"><span class="num">03</span><span>型・var・定数</span></a><a class="lesson-link" href="../lessons/04.html"><span class="num">04</span><span>文字列と入力の変換</span></a></div><div class="chapter-group"><div class="chapter-title">2. 基本文法をつなぐ</div><a class="lesson-link" href="../lessons/05.html"><span class="num">05</span><span>条件分岐とパターン</span></a><a class="lesson-link" href="../lessons/06.html"><span class="num">06</span><span>配列と繰り返し</span></a><a class="lesson-link" href="../lessons/07.html"><span class="num">07</span><span>メソッドと引数</span></a><a class="lesson-link" href="../lessons/08.html"><span class="num">08</span><span>nullを型と分岐で扱う</span></a></div><div class="chapter-group"><div class="chapter-title">3. オブジェクト指向</div><a class="lesson-link" href="../lessons/09.html"><span class="num">09</span><span>クラスとコンストラクター</span></a><a class="lesson-link" href="../lessons/10.html"><span class="num">10</span><span>プロパティとカプセル化</span></a><a class="lesson-link" href="../lessons/11.html"><span class="num">11</span><span>継承・virtual・override</span></a><a class="lesson-link" href="../lessons/12.html"><span class="num">12</span><span>インターフェイスと差し替え</span></a></div><div class="chapter-group"><div class="chapter-title">4. C#らしい型の使い方</div><a class="lesson-link" href="../lessons/13.html"><span class="num">13</span><span>値型と参照型</span></a><a class="lesson-link" href="../lessons/14.html"><span class="num">14</span><span>recordと等値性</span></a><a class="lesson-link" href="../lessons/15.html"><span class="num">15</span><span>ジェネリックとコレクション</span></a><a class="lesson-link" href="../lessons/16.html"><span class="num">16</span><span>例外処理とusing</span></a></div><div class="chapter-group"><div class="chapter-title">5. データを扱うLINQ</div><a class="lesson-link" href="../lessons/17.html"><span class="num">17</span><span>ラムダ・デリゲート・イベント</span></a><a class="lesson-link" href="../lessons/18.html"><span class="num">18</span><span>LINQで絞り込み・変換</span></a><a class="lesson-link" href="../lessons/19.html"><span class="num">19</span><span>遅延実行と集計</span></a><a class="lesson-link" href="../lessons/20.html"><span class="num">20</span><span>enum・タプル・拡張メソッド</span></a></div><div class="chapter-group"><div class="chapter-title">6. 保存と非同期処理</div><a class="lesson-link" href="../lessons/21.html"><span class="num">21</span><span>ファイルとJSON</span></a><a class="lesson-link" href="../lessons/22.html"><span class="num">22</span><span>日時とカルチャー</span></a><a class="lesson-link" href="../lessons/23.html"><span class="num">23</span><span>asyncとawait</span></a><a class="lesson-link" href="../lessons/24.html"><span class="num">24</span><span>複数タスクとキャンセル</span></a></div><div class="chapter-group"><div class="chapter-title">7. 実務への橋渡し</div><a class="lesson-link" href="../lessons/25.html"><span class="num">25</span><span>プロジェクトとNuGet</span></a><a class="lesson-link" href="../lessons/26.html"><span class="num">26</span><span>デバッグと単体テスト</span></a><a class="lesson-link" href="../lessons/27.html"><span class="num">27</span><span>責務の分離と入力検証</span></a><a class="lesson-link" href="../lessons/28.html"><span class="num">28</span><span>HttpClientでHTTPを扱う</span></a></div><div class="chapter-group"><div class="chapter-title">8. Web APIを作る</div><a class="lesson-link" href="../lessons/29.html"><span class="num">29</span><span>ASP.NET Coreの最小API</span></a><a class="lesson-link" href="../lessons/30.html"><span class="num">30</span><span>入力検証とHTTPステータス</span></a><a class="lesson-link" href="../lessons/31.html"><span class="num">31</span><span>DI・設定・ログ</span></a><a class="lesson-link" href="../lessons/32.html"><span class="num">32</span><span>APIの検証と制作への仕上げ</span></a></div><div class="nav-footer"><a class="lesson-link" href="../projects/index.html">制作課題 3件</a><a class="lesson-link" href="../settings.html">学習データ設定</a><div class="progress-label"><span>進捗</span><strong data-progress-text>0 / 32</strong></div><div class="mini-progress"><span data-progress-bar></span></div></div></nav><main id="main" class="content-wrap"><article class="article"><div class="breadcrumb"><a href="index.html">Projects</a> / 02</div><header class="lesson-head"><div class="eyebrow">Project 02</div><h1>JSON保存付きタスク管理</h1><p class="lead">追加・一覧・完了・削除を実装し、アプリを終了してもデータを残す。</p></header><section id="goals"><h2>ゴール</h2><ul><li>コマンドごとに役割を分ける</li><li>JSONで保存と復元を行う</li><li>破損ファイルを勝手に上書きしない</li></ul></section><section id="steps"><h2>実装手順</h2><ol><li>TaskItemをrecordで定義し、メモリ上で追加・完了を動かす。</li><li>list/add/done/deleteコマンドを作る。</li><li>JSONの保存と読み込みを追加する。</li><li>ファイル不存在と破損を分け、エラー時に既存データを保護する。</li></ol></section><section id="guide"><h2>設計と実装の考え方</h2><h3>① ID・表示番号・データの寿命</h3><p>TaskItemはGuid Id、string Title、bool Done、DateTimeOffset CreatedAtを持ちます。IDはタスクを識別する値であり、一覧の行番号ではありません。途中のタスクを削除しても、残ったタスクのIDを書き換えません。タイトルが同じ二件も、別のIDを持つ別タスクです。</p><p>作成時刻はUTCで保存し、必要に応じて表示時にローカルへ変換します。recordのwithで完了状態を変えるときは元のIDと作成時刻を維持します。完了はtoggleではなくDone=trueとするので、同じdoneコマンドを二回実行しても未完了へ戻りません。</p><h3>② コマンドと検証の表を先に書く</h3><p>listは追加引数なし、addはタイトル一つ、doneとdeleteはGUID一つを要求します。タイトルはTrim後1〜100コード単位、件数上限は1000です。タイトル内の空白を一引数として渡すため、シェルでは引用符で囲みます。利用者入力の失敗をIndexOutOfRangeExceptionで発見するのではなく、引数数を先に検査します。</p><p>whereは保存先を表示するだけ、helpは使い方だけを表示します。これらは保存データを読む必要がありません。不明コマンドも、ファイル操作より前に拒否します。副作用が不要な操作を先に分けることで、誤入力が保存へ到達しにくくなります。</p><h3>③ 保存場所と読込の契約</h3><p>保存先はLocalApplicationData/CSharpLearningLab/tasks.jsonです。dotnet runの作業場所に依存しない個人用データ領域を使い、whereで実際のパスを表示します。別のPCや別ユーザーでは別の領域です。教材フォルダーをコピーしただけでタスクデータも移るわけではありません。</p><p>Loadではファイルなし・フォルダーなしだけを初回として空Listへ変換します。それ以外のアクセス失敗やJSON破損はエラーとして止めます。json.Lengthで確認する上限は読んだ文字列の長さであり、ファイルを読む前のバイト上限ではありません。巨大入力を扱う本番設計なら、ストリームや読み込み前の制限を別に検討します。</p><h3>④ 読めたJSONの中身も検証する</h3><p>Deserialize&lt;List&lt;TaskItem&gt;&gt;が成功しても、null、空GUID、空白タイトル、100文字超、既定の作成時刻、重複IDなどを許してはいけません。サンプルはこれらをLoadの境界で検査し、使えるListだけをアプリへ返します。復元したListへnullの要素が混ざる可能性も条件に含めています。</p><p>型名がTaskItemだから正しいタスクだと考えないことが重要です。手編集や旧形式でデータが変わる可能性があります。将来スキーマを変更するときは、保存形式のバージョンと移行処理を設計し、わからない形式を既定値で埋めて無言で上書きしないようにします。</p><h3>⑤ 保存の成功前と成功後を分ける</h3><p>追加・完了・削除をメモリ内で行い、Saveが成功した後に成功メッセージを出します。保存できていないのに「追加しました」と表示すると、利用者はデータが残ったと誤認します。Saveは同じディレクトリに一時ファイルを書き、書き終えた後にFile.Moveで置き換えます。</p><p>この方式は直接上書きの途中破損を減らす狙いですが、停電時の耐久性、二つのプロセスから同時保存したときの競合、OSごとの全条件を保証しません。二プロセスが同じ初期Listを読み、順に別内容を保存すると、後勝ちで更新を失い得ます。単一プロセス限定という条件をREADMEにも残します。</p><h3>⑥ データ破損の検証を安全に行う</h3><p>既に使っているtasks.jsonへ直接不正文字を書かないでください。専用OSアカウント・使い捨て環境か、保存先をテスト用ディレクトリへ差し替えられるリファクタリングで隔離します。テスト前後でファイル内容を比較し、読込失敗によって空JSONへ置き換わっていないことを確認します。</p><p>正常な再起動確認も重要です。一回目のプロセスでadd→終了→二回目のプロセスでlistとして、メモリ内だけに残っているのではないことを確かめます。削除テストは今回作成したIDに限定し、別の練習データを勝手に消さないようにします。</p></section><section id="code"><h2>サンプル実装</h2><div class="codebox"><div class="codehead"><span>csharp</span><button class="copy-btn" type="button" data-copy>Copy</button></div><pre><code>using System.Text.Json;
+
+string root = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+    &quot;CSharpLearningLab&quot;);
+string path = Path.Combine(root, &quot;tasks.json&quot;);
+string command = args.FirstOrDefault()?.ToLowerInvariant() ?? &quot;help&quot;;
+if (command == &quot;where&quot;) { Console.WriteLine(path); return 0; }
+if (command == &quot;help&quot;)
+{
+    Console.WriteLine(&quot;コマンド: list / add \&quot;タイトル\&quot; / done ID / delete ID / where&quot;);
+    return 0;
+}
+if (command is not (&quot;list&quot; or &quot;add&quot; or &quot;done&quot; or &quot;delete&quot;))
+{
+    Console.Error.WriteLine(&quot;不明なコマンドです。引数なしで使い方を表示します。&quot;);
+    return 1;
+}
+try
+{
+    List&lt;TaskItem&gt; tasks = Load(path);
+    switch (command)
+    {
+        case &quot;list&quot;:
+            if (args.Length != 1) throw new ArgumentException(&quot;listに追加の引数は不要です。&quot;);
+            foreach (var item in tasks.OrderBy(x =&gt; x.CreatedAt))
+                Console.WriteLine($&quot;[{(item.Done ? &quot;x&quot; : &quot; &quot;)}] {item.Id} {item.Title}&quot;);
+            Console.WriteLine($&quot;{tasks.Count}件 / 完了{tasks.Count(x =&gt; x.Done)}件&quot;);
+            return 0;
+        case &quot;add&quot;:
+            if (args.Length != 2 || string.IsNullOrWhiteSpace(args[1]) || args[1].Trim().Length &gt; 100)
+                throw new ArgumentException(&quot;タイトルは1〜100文字。空白を含む場合は引用符で囲んでください。&quot;);
+            if (tasks.Count &gt;= 1000) throw new ArgumentException(&quot;タスクは1000件までです。&quot;);
+            var added = new TaskItem(Guid.NewGuid(), args[1].Trim(), false, DateTimeOffset.UtcNow);
+            tasks.Add(added);
+            Save(path, tasks);
+            Console.WriteLine($&quot;追加: {added.Id} {added.Title}&quot;);
+            return 0;
+        default:
+            if (args.Length != 2 || !Guid.TryParse(args[1], out Guid id))
+                throw new ArgumentException(&quot;listに表示された有効なIDを指定してください。&quot;);
+            int index = tasks.FindIndex(x =&gt; x.Id == id);
+            if (index &lt; 0) throw new ArgumentException(&quot;対象のタスクがありません。&quot;);
+            if (command == &quot;done&quot;) tasks[index] = tasks[index] with { Done = true };
+            else tasks.RemoveAt(index);
+            Save(path, tasks);
+            Console.WriteLine(command == &quot;done&quot; ? &quot;完了にしました。&quot; : &quot;削除しました。&quot;);
+            return 0;
+    }
+}
+catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or JsonException or ArgumentException)
+{
+    Console.Error.WriteLine($&quot;処理を中断しました: {ex.Message}&quot;);
+    Console.Error.WriteLine($&quot;保存先: {path}&quot;);
+    return 1;
+}
+
+static List&lt;TaskItem&gt; Load(string path)
+{
+    string json;
+    try { json = File.ReadAllText(path); }
+    catch (FileNotFoundException) { return new List&lt;TaskItem&gt;(); }
+    catch (DirectoryNotFoundException) { return new List&lt;TaskItem&gt;(); }
+    if (json.Length &gt; 2_000_000) throw new JsonException(&quot;保存データが大きすぎます。&quot;);
+    var tasks = JsonSerializer.Deserialize&lt;List&lt;TaskItem&gt;&gt;(json)
+        ?? throw new JsonException(&quot;保存データがnullです。初期化せず中断します。&quot;);
+    if (tasks.Count &gt; 1000 || tasks.Any(x =&gt; x is null || x.Id == Guid.Empty ||
+        string.IsNullOrWhiteSpace(x.Title) || x.Title.Length &gt; 100 || x.CreatedAt == default) ||
+        tasks.Select(x =&gt; x.Id).Distinct().Count() != tasks.Count)
+        throw new JsonException(&quot;保存データの内容に不正があります。初期化せず中断します。&quot;);
+    return tasks;
+}
+static void Save(string path, List&lt;TaskItem&gt; tasks)
+{
+    Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+    string temporary = path + &quot;.&quot; + Guid.NewGuid().ToString(&quot;N&quot;) + &quot;.tmp&quot;;
+    try
+    {
+        File.WriteAllText(temporary, JsonSerializer.Serialize(tasks,
+            new JsonSerializerOptions { WriteIndented = true }));
+        // 同一ディレクトリの一時ファイルから置き換える。複数プロセスの排他制御ではない。
+        File.Move(temporary, path, overwrite: true);
+    }
+    finally
+    {
+        if (File.Exists(temporary)) File.Delete(temporary);
+    }
+}
+public record TaskItem(Guid Id, string Title, bool Done, DateTimeOffset CreatedAt);
+</code></pre></div><div class="codebox"><div class="codehead"><span>Terminal</span><button class="copy-btn" type="button" data-copy>Copy</button></div><pre><code>dotnet run --project samples/projects/task-cli -- add &quot;C#を30分学習&quot;
+dotnet run --project samples/projects/task-cli -- list
+dotnet run --project samples/projects/task-cli -- where
+# listで表示されたIDを使用
+dotnet run --project samples/projects/task-cli -- done ID</code></pre></div></section><section id="acceptance"><h2>完成条件</h2><ul><li>add &quot;C#を30分学習&quot;の後、別の実行でlistすると同じタスクが残る。</li><li>done IDで完了状態になり、delete IDで削除できる。</li><li>壊れたJSONを読み込むとエラーで終了し、元ファイルを上書きしない。</li><li>whereで実際の保存パスを表示できる。</li></ul><aside class="callout warn"><strong>制約・対象外</strong><p>単一ユーザー・単一プロセス向けです。同時起動した複数プロセスの競合制御や、停電時の完全な永続性は保証しません。重要データは別途バックアップしてください。</p></aside></section><section id="tests"><h2>テスト観点</h2><div class="table-scroll"><table><thead><tr><th scope="col">ケース</th><th scope="col">期待結果</th><th scope="col">目的</th></tr></thead><tbody><tr><td>where</td><td>実際の保存パスを表示</td><td>作業場所との混同を防ぐ</td></tr><tr><td>初回list</td><td>0件 / 完了0件</td><td>未作成のみを空データとする</td></tr><tr><td>add &quot; C# &quot;</td><td>Trim後C#、GUIDと時刻を保持</td><td>正規化と識別</td></tr><tr><td>別起動でlist</td><td>同じIDとタイトル</td><td>永続化の確認</td></tr><tr><td>同じタイトルを二回add</td><td>異なるGUIDの二件</td><td>表示名とIDを分ける</td></tr><tr><td>done 有効IDを二回</td><td>Done=trueを維持</td><td>冪等な完了操作</td></tr><tr><td>delete 有効ID→list</td><td>対象だけ消える</td><td>他IDを維持</td></tr><tr><td>GUIDでない入力</td><td>エラー、終了1</td><td>解析境界</td></tr><tr><td>有効形式だが未登録GUID</td><td>エラー、ファイル不変</td><td>存在検証</td></tr><tr><td>空白タイトル</td><td>拒否、保存しない</td><td>入力不正</td></tr><tr><td>使い捨ての壊れたJSON</td><td>エラー、元データ不変</td><td>破損を黙って初期化しない</td></tr><tr><td>重複ID/JSON null</td><td>エラー、上書きしない</td><td>構文以外の検証</td></tr></tbody></table></div></section></article></main><aside class="right-toc" aria-label="ページ内目次"><h2>On this page</h2><a href="#goals">ゴール</a><a href="#steps">実装手順</a><a href="#guide">設計と実装の考え方</a><a href="#code">サンプル実装</a><a href="#acceptance">完成条件</a><a href="#tests">テスト観点</a></aside></div><dialog id="search-dialog" class="dialog" aria-label="教材検索"><div class="dialog-head"><input type="search" aria-label="教材を検索" placeholder="型、LINQ、async、Web API…"><button class="plain-btn" type="button" onclick="this.closest('dialog').close()">閉じる</button></div><div class="dialog-body" data-search-results><p>検索語を入力してください。</p></div></dialog><script src="../assets/js/course-meta.js"></script><script src="../assets/js/search-index.js"></script><script src="../assets/js/site.js"></script></body></html>

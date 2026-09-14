@@ -1,0 +1,5 @@
+var values = new List<int> { 1, 2, 3, 4 };
+foreach (int value in values)
+{
+    if (value % 2 == 0) values.Remove(value);
+}

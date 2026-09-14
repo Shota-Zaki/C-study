@@ -1,0 +1,18 @@
+{
+  "date": "2026-09-14T10:02:18.963556+00:00",
+  "target": ".NET 10 / C# 14",
+  "sdkPath": null,
+  "projectsInManifest": 236,
+  "builds": [],
+  "runs": [],
+  "status": "UNVERIFIED",
+  "reason": "dotnet command is unavailable. No compilation or execution occurred.",
+  "attempt": {
+    "command": [
+      "dotnet",
+      "--info"
+    ],
+    "status": "UNVERIFIED",
+    "error": "[Errno 2] No such file or directory: 'dotnet'"
+  }
+}

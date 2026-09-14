@@ -1,0 +1,3 @@
+var reader = new StringReader("C#");
+reader.Dispose();
+Console.WriteLine(reader.ReadLine());

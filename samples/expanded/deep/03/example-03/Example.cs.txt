@@ -1,0 +1,2 @@
+var count = 3;
+count = "三個";

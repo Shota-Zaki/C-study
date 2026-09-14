@@ -1,0 +1,12 @@
+using System.Net;
+using System.Net.Http.Json;
+using System.Text;
+
+using var response = new HttpResponseMessage(HttpStatusCode.NotFound)
+{
+    Content = new StringContent("not found", Encoding.UTF8, "text/plain")
+};
+Item? item = await response.Content.ReadFromJsonAsync<Item>();
+Console.WriteLine(item?.Name);
+
+public record Item(int Id, string Name);

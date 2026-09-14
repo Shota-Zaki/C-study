@@ -1,0 +1,5 @@
+using System.Globalization;
+
+string input = "14/09/2026";
+DateTime date = DateTime.Parse(input, CultureInfo.GetCultureInfo("en-US"));
+Console.WriteLine(date);

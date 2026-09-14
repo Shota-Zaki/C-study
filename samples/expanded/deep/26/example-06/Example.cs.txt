@@ -1,0 +1,17 @@
+using Xunit;
+
+public sealed class AsyncTests
+{
+    [Fact]
+    public async Task LoadReturnsSeven()
+    {
+        int actual = await LoadAsync();
+        Assert.Equal(7, actual);
+    }
+
+    private static async Task<int> LoadAsync()
+    {
+        await Task.Delay(1);
+        return 7;
+    }
+}

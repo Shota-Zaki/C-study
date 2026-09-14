@@ -1,0 +1,1 @@
+logger.LogInformation("Todo {TodoId} was created", item.Id);

@@ -1,0 +1,6 @@
+Console.WriteLine(Counter.Read());
+class Counter
+{
+    public int Value = 3;
+    public static int Read() => Value;
+}

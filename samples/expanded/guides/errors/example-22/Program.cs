@@ -1,0 +1,7 @@
+await ShowAsync();
+Console.WriteLine("メイン終了");
+static async Task ShowAsync()
+{
+    await Task.Delay(100);
+    Console.WriteLine("保存相当の処理が完了");
+}

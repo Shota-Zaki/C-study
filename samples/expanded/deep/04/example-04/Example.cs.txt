@@ -1,0 +1,3 @@
+string input = "abc";
+int quantity = int.Parse(input);
+Console.WriteLine(quantity * 120);

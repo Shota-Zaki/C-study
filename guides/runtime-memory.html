@@ -1,0 +1,103 @@
+<!doctype html>
+
+
+<html data-theme="light" lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="C#の文章が動くまでと、値・参照・寿命の違いを、一つの実行の流れから理解する。" name="description"/><meta content="#4f46e5" name="theme-color"/><meta content="website" property="og:type"/><meta content="コンパイル・呼び出し・メモリのつながり" property="og:title"/><meta content="C#の文章が動くまでと、値・参照・寿命の違いを、一つの実行の流れから理解する。" property="og:description"/><meta content="C# Learning Lab" property="og:site_name"/><meta content="summary" name="twitter:card"/><link href="../assets/icons/favicon.svg" rel="icon"/><link href="../assets/css/site.css" rel="stylesheet"/><title>コンパイル・呼び出し・メモリのつながり | C# Learning Lab</title><link href="../assets/css/expanded.css" rel="stylesheet"/></head><body data-base="../" data-page-kind="補助教材"><a class="skip-link" href="#main">本文へスキップ</a><header class="topbar"><button aria-controls="course-nav" aria-expanded="false" aria-label="コースメニューを開く" class="icon-btn mobile-only" data-drawer="open" type="button">☰</button><a class="brand" href="../index.html"><span class="brand-mark">C#</span><span>C# Learning Lab</span></a><div class="top-actions"><button class="search-btn" data-open-search="" type="button"><span>教材を検索</span><kbd>Ctrl K</kbd>⌕</button><a aria-label="設定" class="icon-btn" href="../settings.html">⚙</a></div></header><div class="layout"><div aria-label="現在の読書位置" class="reading-position" role="navigation"><a href="#main">先頭</a><span class="reading-title">コンパイル・呼び出し・メモリのつながり</span><span data-reading-count=""></span><button class="position-menu" data-show-toc="" type="button">目次</button><span aria-hidden="true" class="reading-track"><span data-reading-progress=""></span></span></div><nav aria-label="コースナビゲーション" class="left-nav" id="course-nav"><button class="plain-btn drawer-close" data-drawer="close" type="button">閉じる</button><div class="nav-heading">32 Lessons</div><div class="chapter-group"><div class="chapter-title">1. C#の入口</div><a class="lesson-link" href="../lessons/01.html"><span class="num">01</span><span>C#と.NET、最初の実行</span></a><a class="lesson-link" href="../lessons/02.html"><span class="num">02</span><span>Program・名前空間・using</span></a><a class="lesson-link" href="../lessons/03.html"><span class="num">03</span><span>型・var・定数</span></a><a class="lesson-link" href="../lessons/04.html"><span class="num">04</span><span>文字列と入力の変換</span></a></div><div class="chapter-group"><div class="chapter-title">2. 基本文法をつなぐ</div><a class="lesson-link" href="../lessons/05.html"><span class="num">05</span><span>条件分岐とパターン</span></a><a class="lesson-link" href="../lessons/06.html"><span class="num">06</span><span>配列と繰り返し</span></a><a class="lesson-link" href="../lessons/07.html"><span class="num">07</span><span>メソッドと引数</span></a><a class="lesson-link" href="../lessons/08.html"><span class="num">08</span><span>nullを型と分岐で扱う</span></a></div><div class="chapter-group"><div class="chapter-title">3. オブジェクト指向</div><a class="lesson-link" href="../lessons/09.html"><span class="num">09</span><span>クラスとコンストラクター</span></a><a class="lesson-link" href="../lessons/10.html"><span class="num">10</span><span>プロパティとカプセル化</span></a><a class="lesson-link" href="../lessons/11.html"><span class="num">11</span><span>継承・virtual・override</span></a><a class="lesson-link" href="../lessons/12.html"><span class="num">12</span><span>インターフェイスと差し替え</span></a></div><div class="chapter-group"><div class="chapter-title">4. C#らしい型の使い方</div><a class="lesson-link" href="../lessons/13.html"><span class="num">13</span><span>値型と参照型</span></a><a class="lesson-link" href="../lessons/14.html"><span class="num">14</span><span>recordと等値性</span></a><a class="lesson-link" href="../lessons/15.html"><span class="num">15</span><span>ジェネリックとコレクション</span></a><a class="lesson-link" href="../lessons/16.html"><span class="num">16</span><span>例外処理とusing</span></a></div><div class="chapter-group"><div class="chapter-title">5. データを扱うLINQ</div><a class="lesson-link" href="../lessons/17.html"><span class="num">17</span><span>ラムダ・デリゲート・イベント</span></a><a class="lesson-link" href="../lessons/18.html"><span class="num">18</span><span>LINQで絞り込み・変換</span></a><a class="lesson-link" href="../lessons/19.html"><span class="num">19</span><span>遅延実行と集計</span></a><a class="lesson-link" href="../lessons/20.html"><span class="num">20</span><span>enum・タプル・拡張メソッド</span></a></div><div class="chapter-group"><div class="chapter-title">6. 保存と非同期処理</div><a class="lesson-link" href="../lessons/21.html"><span class="num">21</span><span>ファイルとJSON</span></a><a class="lesson-link" href="../lessons/22.html"><span class="num">22</span><span>日時とカルチャー</span></a><a class="lesson-link" href="../lessons/23.html"><span class="num">23</span><span>asyncとawait</span></a><a class="lesson-link" href="../lessons/24.html"><span class="num">24</span><span>複数タスクとキャンセル</span></a></div><div class="chapter-group"><div class="chapter-title">7. 実務への橋渡し</div><a class="lesson-link" href="../lessons/25.html"><span class="num">25</span><span>プロジェクトとNuGet</span></a><a class="lesson-link" href="../lessons/26.html"><span class="num">26</span><span>デバッグと単体テスト</span></a><a class="lesson-link" href="../lessons/27.html"><span class="num">27</span><span>責務の分離と入力検証</span></a><a class="lesson-link" href="../lessons/28.html"><span class="num">28</span><span>HttpClientでHTTPを扱う</span></a></div><div class="chapter-group"><div class="chapter-title">8. Web APIを作る</div><a class="lesson-link" href="../lessons/29.html"><span class="num">29</span><span>ASP.NET Coreの最小API</span></a><a class="lesson-link" href="../lessons/30.html"><span class="num">30</span><span>入力検証とHTTPステータス</span></a><a class="lesson-link" href="../lessons/31.html"><span class="num">31</span><span>DI・設定・ログ</span></a><a class="lesson-link" href="../lessons/32.html"><span class="num">32</span><span>APIの検証と制作への仕上げ</span></a></div><div class="nav-footer"><a class="lesson-link" href="../projects/index.html">制作課題 3件</a><a class="lesson-link" href="../settings.html">学習データ設定</a><div class="progress-label"><span>進捗</span><strong data-progress-text="">0 / 32</strong></div><div class="mini-progress"><span data-progress-bar=""></span></div><p class="supplement-nav"><a href="../guides/index.html">詳細解説・学習ガイド</a><a href="../guides/glossary.html">用語集</a><a href="../guides/errors.html">エラーの調べ方</a></p></div></nav><main class="content-wrap" id="main"><article class="article"><div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../guides/index.html">学習ガイド</a> / 補助教材</div><header class="lesson-head"><div class="eyebrow">C# Learning Lab · 補助教材</div><h1>コンパイル・呼び出し・メモリのつながり</h1><p class="lead">C#の文章が動くまでと、値・参照・寿命の違いを、一つの実行の流れから理解する。</p><div class="meta-row"><span class="badge">.NET 10 / C# 14</span><span class="badge">読むペースは自由</span></div></header><details class="compact-toc"><summary>このページの目次</summary><nav aria-label="ページ内目次"><a href="#guide-h2-01">ソースと実行中の状態を分ける</a><a href="#guide-h2-02">メソッドへ渡るのは何か</a><a href="#guide-h2-03">値型と参照型は「コピーされるもの」で区別する</a><a href="#guide-h2-04">structにも参照は含まれる</a><a href="#guide-h2-05">GCが追うのは到達できる実体</a><a href="#guide-h2-06">DisposeとGCは別の責任</a><a href="#guide-h2-07">自分で説明する練習</a><a href="#sources">確認に使用した一次情報</a></nav></details><aside class="callout verification-note"><strong>コード検証の読み方</strong><p>出力はコードから説明した想定結果です。この制作環境では.NET SDKを利用できず、C#のビルド・実行は未検証です。コード下書きはブラウザーで動作しません。手元で確かめる手順は<a href="../guides/learning-workflow.html">教材の使い方と検証</a>にあります。</p></aside><section class="detail-section"><h2 id="guide-h2-01">ソースと実行中の状態を分ける</h2>
+<p><code>Program.cs</code>はディスクに保存された文章です。実行中の変数の値は、プログラムが起動した後の状態です。同じソースでも、入力が異なれば変数の値は変わります。コードの文字を読むことと、その時点の状態を読むことを分けると、デバッグがしやすくなります。</p>
+<p>C#は型や構文の規則、.NET SDKはビルドなどの道具、Runtimeは実行する基盤です。通常の.NETアプリでは、コンパイラーがILという中間命令と型の情報を含むアセンブリを作り、実行時のCLRがそれを扱います。JITは必要な機械語への変換を担い、GCは管理対象のメモリ回収を担います。一つの道具が全て同じタイミングで行うわけではありません。</p>
+<figure class="concept-diagram flow"><figcaption>処理の流れ</figcaption><ol><li><span class="step-number">1</span><div><b>コードを保存</b><p>Program.csはディスク上の文章</p></div></li><li><span class="step-number">2</span><div><b>ビルド</b><p>文法・型を検査してアセンブリを作る</p></div></li><li><span class="step-number">3</span><div><b>起動</b><p>実行中のプロセスが生まれる</p></div></li><li><span class="step-number">4</span><div><b>呼び出し</b><p>メソッドへ入力を渡し処理する</p></div></li><li><span class="step-number">5</span><div><b>状態変化</b><p>値の計算・代入・オブジェクト更新を行う</p></div></li><li><span class="step-number">6</span><div><b>終了</b><p>プロセス内の状態は永続保存とは別に失われる</p></div></li></ol></figure><p>この図は学習用の通常のビルドと実行です。配布前に機械語を作るNative AOTや各種最適化もあるため、「必ず起動時に全コードを一度だけ変換する」とは説明しません。初めはIL命令の暗記ではなく、<strong>ビルド時のエラーと起動後の失敗を区別できること</strong>が重要です。</p>
+</section><section class="detail-section"><h2 id="guide-h2-02">メソッドへ渡るのは何か</h2>
+<p>メソッドは名前を付けた処理です。呼び出し側が渡す値を引数、受け取る側の型と名前をパラメーター、返す結果を戻り値といいます。次の例では、呼び出し側のtotalと、Addのaは別の変数です。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp">int total = 10;
+int result = Add(total, 5);
+Console.WriteLine(total);
+Console.WriteLine(result);
+
+static int Add(int a, int b)
+{
+    a += b;
+    return a;
+}</code></pre></div>
+<p>期待される出力は10、15です。①totalに10を保存、②Addへ10と5を渡す、③aとbが受け取る、④aを15へ変える、⑤returnで15を返す、⑥resultへ15を保存、⑦二つを表示、の順です。aへの代入は呼び出し側totalへ代入したことにはなりません。</p>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">時点</th>
+<th scope="col" style="text-align:right">total</th>
+<th scope="col" style="text-align:right">Add内のa</th>
+<th scope="col" style="text-align:right">Add内のb</th>
+<th scope="col" style="text-align:right">result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>呼び出し前</td>
+<td style="text-align:right">10</td>
+<td style="text-align:right">まだない</td>
+<td style="text-align:right">まだない</td>
+<td style="text-align:right">まだない</td>
+</tr>
+<tr>
+<td>引数を受け取る</td>
+<td style="text-align:right">10</td>
+<td style="text-align:right">10</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">まだない</td>
+</tr>
+<tr>
+<td>aへ加算</td>
+<td style="text-align:right">10</td>
+<td style="text-align:right">15</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">まだない</td>
+</tr>
+<tr>
+<td>戻る</td>
+<td style="text-align:right">10</td>
+<td style="text-align:right">この呼び出しは終了</td>
+<td style="text-align:right">この呼び出しは終了</td>
+<td style="text-align:right">15</td>
+</tr>
+</tbody>
+</table></div>
+<p>この呼び出しの積み重なりを追うために、呼び出しスタックという見方を使います。最適化によるインライン化などがあるため、ソースのメソッド呼び出し全てが実際の機械語上で同じ形の領域を必ず作る、とまでは断定しません。</p>
+</section><section class="detail-section"><h2 id="guide-h2-03">値型と参照型は「コピーされるもの」で区別する</h2>
+<p>値型は代入時に値がコピーされます。参照型は通常、実体へアクセスするための参照の値がコピーされます。<strong>値型は必ずスタック、参照型の変数は必ずヒープという暗記は不正確です。</strong> 値型のフィールドはオブジェクトや配列の一部にもなり、ローカル値は最適化でレジスターに置かれることもあります。分類が決める中心は、代入や引数での意味です。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp">int first = 3;
+int second = first;
+second = 9;
+
+var a = new List&lt;int&gt; { 3 };
+var b = a;
+b.Add(9);
+Console.WriteLine($"{first}/{second}");
+Console.WriteLine(string.Join(",", a));</code></pre></div>
+<p>期待される出力は<code>3/9</code>と<code>3,9</code>です。secondはfirstの値3を受け取った別の変数なので、secondだけを9にしてもfirstは3です。一方、aとbが参照するListの実体は一つです。b経由で要素を増やすと、aから見ても増えています。</p>
+<figure class="concept-diagram memory"><figcaption>値と参照の関係（概念図。物理的な配置を断定する図ではありません）</figcaption><ol><li><span class="step-number">1</span><div><b>first</b><p>値3</p></div></li><li><span class="step-number">2</span><div><b>second</b><p>コピー後に9へ変更</p></div></li><li><span class="step-number">3</span><div><b>変数aの参照</b><p>実体L：[3,9]</p></div></li><li><span class="step-number">4</span><div><b>変数bの参照</b><p>同じ実体L：[3,9]</p></div></li></ol></figure><p>参照図の矢印はアクセス先の関係です。参照を、生のメモリアドレスとして自由に計算できる数値だとは扱いません。また、変数b自体を<code>new List&lt;int&gt;()</code>で別の実体へ付け替えることと、bの現在の参照先を更新することは別です。</p>
+</section><section class="detail-section"><h2 id="guide-h2-04">structにも参照は含まれる</h2>
+<p>structは値型ですが、フィールドやプロパティにListなどの参照型を持つことがあります。この場合、structをコピーすると、そのメンバーに含まれる参照の値もコピーされます。内部のList全体が自動的に複製されるわけではありません。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp">var original = new Basket(new List&lt;string&gt; { "本" });
+var copied = original;
+copied.Items.Add("ペン");
+Console.WriteLine(string.Join(",", original.Items));
+
+readonly record struct Basket(List&lt;string&gt; Items);</code></pre></div>
+<p>期待される出力は<code>本,ペン</code>です。Basketの値は二つありますが、それぞれのItemsは同じListを参照しています。<code>readonly</code>という語があっても、そのListへAddすることまでは禁止しません。「外側が値型」「外側の再代入を制限」「内部が不変」の三つを分けます。</p>
+<p>独立したListが必要なら、<code>new List&lt;string&gt;(original.Items)</code>で要素をコピーしたListを作り、それを新しいBasketへ渡します。ただし要素が変更可能なclassなら、その要素の実体はさらに共有されます。独立させたい境界を決め、必要な深さだけ明示的に複製します。</p>
+</section><section class="detail-section"><h2 id="guide-h2-05">GCが追うのは到達できる実体</h2>
+<p>GCは、生きている実行やstaticの参照などを起点として、参照を辿れる管理対象オブジェクトを調べます。辿れないものは回収対象になり得ます。単に変数名が見えなくなった瞬間に、その実体のメモリが必ず解放されるわけではありません。回収の時点は実行基盤が判断します。</p>
+<figure class="concept-diagram memory"><figcaption>値と参照の関係（概念図。物理的な配置を断定する図ではありません）</figcaption><ol><li><span class="step-number">1</span><div><b>長寿命のサービス</b><p>イベント通知の登録一覧を保持</p></div></li><li><span class="step-number">2</span><div><b>登録された処理</b><p>画面オブジェクトへの参照を保持し得る</p></div></li><li><span class="step-number">3</span><div><b>画面オブジェクト</b><p>画面を閉じても登録が残れば到達できる場合がある</p></div></li><li><span class="step-number">4</span><div><b>購読を解除</b><p>不要な参照経路を切る設計になる</p></div></li></ol></figure><p>オブジェクト同士が循環して参照していても、起点からどちらにも到達できなければ回収可能です。反対に、使うつもりのないオブジェクトでも長寿命の集合やイベントから参照され続けると、GCにとっては到達可能な対象です。GCがあることと、不要な参照を持ち続けてよいことは同じではありません。</p>
+<p>学習段階では<code>GC.Collect()</code>で無理に回収を起こす習慣を付けません。まず、誰がその実体を保持しているか、保持する期間は適切かを考えます。性能問題は測定してから調べ、図から正確なメモリ使用量を推測しないようにします。</p>
+</section><section class="detail-section"><h2 id="guide-h2-06">DisposeとGCは別の責任</h2>
+<p>メモリが将来回収されることと、開いたファイルなどの利用を今終えることは別です。<code>IDisposable</code>は使い終えた資源を解放する契約で、<code>using</code>は終了時にDisposeを呼ぶ構文です。usingという名前は、名前空間を指定する宣言にも使われますが、役割は異なります。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp">using System.IO;
+using (var reader = new StringReader("一行目\n二行目"))
+{
+    Console.WriteLine(reader.ReadLine());
+    Console.WriteLine(reader.ReadLine());
+}
+Console.WriteLine("読み取り終了");</code></pre></div>
+<p>期待される出力は一行目、二行目、読み取り終了です。usingのブロックを抜けるときにreaderをDisposeします。途中で例外が伝わる場合にも、通常のスタック巻き戻しで解放処理が行われます。ただしプロセスの強制終了など全ての状況で必ず最後まで動くという保証ではありません。</p>
+</section><section class="detail-section"><h2 id="guide-h2-07">自分で説明する練習</h2>
+<p>次の問いは、図を描いて説明してから<a href="../lessons/13.html">Lesson 13</a>と<a href="../lessons/16.html">Lesson 16</a>で確認します。aとbが同じListを参照するとき、①b.Add(1)、②bを別のListへ代入、③aをnullにする、の各操作が、実体と参照に何をするか説明してください。</p>
+<p>解答の要点は、①現在の共有実体を更新、②bの参照先だけを変更、③aの参照だけを切る、です。③で他に参照が残っていれば実体はまだ到達可能です。どの場合も、「変数名の数＝実体の数」「null代入＝即座にGC」のようには結び付けません。</p>
+</section><section class="source-section"><h2 id="sources">確認に使用した一次情報</h2><p>確認日：2026年9月14日。本文の理解を補うための資料です。学習対象は.NET 10 / C# 14です。パッチ番号は固定しません。</p><ul><li><a href="https://learn.microsoft.com/ja-jp/dotnet/csharp/fundamentals/types/" rel="noopener noreferrer" target="_blank">C#の型システム</a></li><li><a href="https://learn.microsoft.com/ja-jp/dotnet/csharp/language-reference/builtin-types/value-types" rel="noopener noreferrer" target="_blank">値型</a></li><li><a href="https://learn.microsoft.com/ja-jp/dotnet/csharp/language-reference/keywords/method-parameters" rel="noopener noreferrer" target="_blank">メソッドのパラメーター</a></li><li><a href="https://learn.microsoft.com/ja-jp/dotnet/csharp/language-reference/statements/using" rel="noopener noreferrer" target="_blank">usingステートメント</a></li><li><a href="https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/fundamentals" rel="noopener noreferrer" target="_blank">GCの基礎</a></li><li><a href="https://learn.microsoft.com/en-us/dotnet/standard/managed-execution-process" rel="noopener noreferrer" target="_blank">マネージ実行の流れ</a></li><li><a href="https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/" rel="noopener noreferrer" target="_blank">Native AOT</a></li></ul></section><p><a href="index.html">学習ガイド一覧へ →</a></p></article></main><aside aria-label="ページ内目次" class="right-toc"><h2>このページの目次</h2><nav aria-label="詳細なページ内目次"><a href="#guide-h2-01">ソースと実行中の状態を分ける</a><a href="#guide-h2-02">メソッドへ渡るのは何か</a><a href="#guide-h2-03">値型と参照型は「コピーされるもの」で区別する</a><a href="#guide-h2-04">structにも参照は含まれる</a><a href="#guide-h2-05">GCが追うのは到達できる実体</a><a href="#guide-h2-06">DisposeとGCは別の責任</a><a href="#guide-h2-07">自分で説明する練習</a><a href="#sources">確認に使用した一次情報</a></nav></aside></div><dialog aria-label="教材検索" class="dialog" id="search-dialog"><div class="dialog-head"><input aria-label="教材を検索" placeholder="型、LINQ、async、Web API…" type="search"/><button class="plain-btn" onclick="this.closest('dialog').close()" type="button">閉じる</button></div><div class="dialog-body" data-search-results=""><p>検索語を入力してください。</p></div></dialog><script src="../assets/js/course-meta.js"></script><script src="../assets/js/search-index.js"></script><script src="../assets/js/site.js"></script><script defer="" src="../assets/js/expanded.js"></script><p aria-live="polite" class="storage-warning" data-storage-warning="" hidden="" role="status"></p></body></html>

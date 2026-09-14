@@ -1,0 +1,233 @@
+{
+  "resources_checked": 45,
+  "resource_failures": 0,
+  "missing_path_status": 404,
+  "failures": [],
+  "results": [
+    {
+      "path": "/404.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/assets/css/site.css",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/assets/icons/favicon.svg",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/assets/js/course-meta.js",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/assets/js/search-index.js",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/assets/js/site.js",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/index.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/01.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/02.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/03.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/04.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/05.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/06.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/07.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/08.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/09.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/10.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/11.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/12.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/13.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/14.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/15.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/16.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/17.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/18.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/19.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/20.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/21.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/22.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/23.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/24.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/25.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/26.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/27.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/28.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/29.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/30.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/31.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/lessons/32.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/projects/expense-cli.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/projects/index.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/projects/task-api.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/projects/task-cli.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "path": "/settings.html",
+      "status": 200,
+      "ok": true
+    }
+  ]
+}

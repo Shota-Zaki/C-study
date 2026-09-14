@@ -1,0 +1,3 @@
+Console.WriteLine(Inventory.Product.Label());
+namespace Inventory { public static class Product { public static string Label() => "在庫"; } }
+namespace Orders { public static class Product { public static string Label() => "注文"; } }

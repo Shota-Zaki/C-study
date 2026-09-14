@@ -1,0 +1,35 @@
+[
+  {
+    "slug": "errors",
+    "title": "エラーの原因・確認箇所・修正",
+    "summary": "文法・型・null・範囲・状態・非同期・HTTPの失敗を、発生した段階から切り分ける。",
+    "refs": [
+      "numeric",
+      "nullable",
+      "array",
+      "loop",
+      "value",
+      "equality",
+      "async",
+      "exception",
+      "http"
+    ]
+  },
+  {
+    "slug": "choosing-features",
+    "title": "似た機能の違いと選び方",
+    "summary": "型・コレクション・引数・寿命・非同期・HTTPを、目的と変更範囲から選ぶ。",
+    "refs": [
+      "class",
+      "value",
+      "record",
+      "collection",
+      "interface",
+      "params",
+      "readonly",
+      "async",
+      "http-semantics",
+      "http-patch"
+    ]
+  }
+]

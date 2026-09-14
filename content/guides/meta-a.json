@@ -1,0 +1,39 @@
+[
+  {
+    "slug": "learning-workflow",
+    "title": "教材の使い方と手元での検証",
+    "summary": "読む・予想する・下書きする・ビルドする・観察する・修正する、を別々の操作として身につける。",
+    "refs": [
+      "sdk",
+      "install",
+      "top",
+      "project"
+    ]
+  },
+  {
+    "slug": "runtime-memory",
+    "title": "コンパイル・呼び出し・メモリのつながり",
+    "summary": "C#の文章が動くまでと、値・参照・寿命の違いを、一つの実行の流れから理解する。",
+    "refs": [
+      "types",
+      "value",
+      "params",
+      "using",
+      "gc",
+      "managed",
+      "aot"
+    ]
+  },
+  {
+    "slug": "reading-code",
+    "title": "コード・構文・処理順の読み方",
+    "summary": "記号を丸暗記せず、宣言・式・文・呼び出し・状態変更の単位でC#を読む。",
+    "refs": [
+      "types",
+      "method",
+      "selection",
+      "loop",
+      "params"
+    ]
+  }
+]

@@ -1,0 +1,4 @@
+using System.Linq;
+
+int[] scores = Array.Empty<int>();
+Console.WriteLine(scores.Average());

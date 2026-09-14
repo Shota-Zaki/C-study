@@ -1,0 +1,5 @@
+Console.WriteLine(Product.Name);
+public class Product
+{
+    public string Name { get; } = "ノート";
+}

@@ -1,0 +1,2 @@
+var stock = new Dictionary<string, int>();
+Console.WriteLine(stock["PEN"]);

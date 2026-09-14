@@ -1,0 +1,19 @@
+using Xunit;
+
+public sealed class ShippingTests
+{
+    [Theory]
+    [InlineData(4999, 500)]
+    [InlineData(5000, 0)]
+    [InlineData(5001, 0)]
+    public void FeeDependsOnThreshold(int subtotal, int expected)
+    {
+        int actual = ShippingFee(subtotal);
+        Assert.Equal(expected, actual);
+    }
+
+    private static int ShippingFee(int subtotal)
+    {
+        return subtotal >= 5000 ? 0 : 500;
+    }
+}

@@ -1,0 +1,170 @@
+<!doctype html>
+
+
+<html data-theme="light" lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="小さな型の道具を使い、意味の曖昧な値を減らす。" name="description"/><meta content="#4f46e5" name="theme-color"/><meta content="website" property="og:type"/><meta content="20 enum・タプル・拡張メソッド — 詳細解説" property="og:title"/><meta content="小さな型の道具を使い、意味の曖昧な値を減らす。" property="og:description"/><meta content="C# Learning Lab" property="og:site_name"/><meta content="summary" name="twitter:card"/><link href="../assets/icons/favicon.svg" rel="icon"/><link href="../assets/css/site.css" rel="stylesheet"/><title>20 enum・タプル・拡張メソッド — 詳細解説 | C# Learning Lab</title><link href="../assets/css/expanded.css" rel="stylesheet"/></head><body data-base="../" data-current-lesson="20" data-deep-lesson="20" data-page-kind="詳細解説"><a class="skip-link" href="#main">本文へスキップ</a><header class="topbar"><button aria-controls="course-nav" aria-expanded="false" aria-label="コースメニューを開く" class="icon-btn mobile-only" data-drawer="open" type="button">☰</button><a class="brand" href="../index.html"><span class="brand-mark">C#</span><span>C# Learning Lab</span></a><div class="top-actions"><button class="search-btn" data-open-search="" type="button"><span>教材を検索</span><kbd>Ctrl K</kbd>⌕</button><a aria-label="設定" class="icon-btn" href="../settings.html">⚙</a></div></header><div class="layout"><div aria-label="現在の読書位置" class="reading-position" role="navigation"><a href="#main">先頭</a><span class="reading-title">20 enum・タプル・拡張メソッド — 詳細解説</span><span data-reading-count=""></span><button class="position-menu" data-show-toc="" type="button">目次</button><span aria-hidden="true" class="reading-track"><span data-reading-progress=""></span></span></div><nav aria-label="コースナビゲーション" class="left-nav" id="course-nav"><button class="plain-btn drawer-close" data-drawer="close" type="button">閉じる</button><div class="nav-heading">32 Lessons</div><div class="chapter-group"><div class="chapter-title">1. C#の入口</div><a class="lesson-link" href="../lessons/01.html"><span class="num">01</span><span>C#と.NET、最初の実行</span></a><a class="lesson-link" href="../lessons/02.html"><span class="num">02</span><span>Program・名前空間・using</span></a><a class="lesson-link" href="../lessons/03.html"><span class="num">03</span><span>型・var・定数</span></a><a class="lesson-link" href="../lessons/04.html"><span class="num">04</span><span>文字列と入力の変換</span></a></div><div class="chapter-group"><div class="chapter-title">2. 基本文法をつなぐ</div><a class="lesson-link" href="../lessons/05.html"><span class="num">05</span><span>条件分岐とパターン</span></a><a class="lesson-link" href="../lessons/06.html"><span class="num">06</span><span>配列と繰り返し</span></a><a class="lesson-link" href="../lessons/07.html"><span class="num">07</span><span>メソッドと引数</span></a><a class="lesson-link" href="../lessons/08.html"><span class="num">08</span><span>nullを型と分岐で扱う</span></a></div><div class="chapter-group"><div class="chapter-title">3. オブジェクト指向</div><a class="lesson-link" href="../lessons/09.html"><span class="num">09</span><span>クラスとコンストラクター</span></a><a class="lesson-link" href="../lessons/10.html"><span class="num">10</span><span>プロパティとカプセル化</span></a><a class="lesson-link" href="../lessons/11.html"><span class="num">11</span><span>継承・virtual・override</span></a><a class="lesson-link" href="../lessons/12.html"><span class="num">12</span><span>インターフェイスと差し替え</span></a></div><div class="chapter-group"><div class="chapter-title">4. C#らしい型の使い方</div><a class="lesson-link" href="../lessons/13.html"><span class="num">13</span><span>値型と参照型</span></a><a class="lesson-link" href="../lessons/14.html"><span class="num">14</span><span>recordと等値性</span></a><a class="lesson-link" href="../lessons/15.html"><span class="num">15</span><span>ジェネリックとコレクション</span></a><a class="lesson-link" href="../lessons/16.html"><span class="num">16</span><span>例外処理とusing</span></a></div><div class="chapter-group"><div class="chapter-title">5. データを扱うLINQ</div><a class="lesson-link" href="../lessons/17.html"><span class="num">17</span><span>ラムダ・デリゲート・イベント</span></a><a class="lesson-link" href="../lessons/18.html"><span class="num">18</span><span>LINQで絞り込み・変換</span></a><a class="lesson-link" href="../lessons/19.html"><span class="num">19</span><span>遅延実行と集計</span></a><a aria-current="page" class="lesson-link" href="../lessons/20.html"><span class="num">20</span><span>enum・タプル・拡張メソッド</span></a></div><div class="chapter-group"><div class="chapter-title">6. 保存と非同期処理</div><a class="lesson-link" href="../lessons/21.html"><span class="num">21</span><span>ファイルとJSON</span></a><a class="lesson-link" href="../lessons/22.html"><span class="num">22</span><span>日時とカルチャー</span></a><a class="lesson-link" href="../lessons/23.html"><span class="num">23</span><span>asyncとawait</span></a><a class="lesson-link" href="../lessons/24.html"><span class="num">24</span><span>複数タスクとキャンセル</span></a></div><div class="chapter-group"><div class="chapter-title">7. 実務への橋渡し</div><a class="lesson-link" href="../lessons/25.html"><span class="num">25</span><span>プロジェクトとNuGet</span></a><a class="lesson-link" href="../lessons/26.html"><span class="num">26</span><span>デバッグと単体テスト</span></a><a class="lesson-link" href="../lessons/27.html"><span class="num">27</span><span>責務の分離と入力検証</span></a><a class="lesson-link" href="../lessons/28.html"><span class="num">28</span><span>HttpClientでHTTPを扱う</span></a></div><div class="chapter-group"><div class="chapter-title">8. Web APIを作る</div><a class="lesson-link" href="../lessons/29.html"><span class="num">29</span><span>ASP.NET Coreの最小API</span></a><a class="lesson-link" href="../lessons/30.html"><span class="num">30</span><span>入力検証とHTTPステータス</span></a><a class="lesson-link" href="../lessons/31.html"><span class="num">31</span><span>DI・設定・ログ</span></a><a class="lesson-link" href="../lessons/32.html"><span class="num">32</span><span>APIの検証と制作への仕上げ</span></a></div><div class="nav-footer"><a class="lesson-link" href="../projects/index.html">制作課題 3件</a><a class="lesson-link" href="../settings.html">学習データ設定</a><div class="progress-label"><span>進捗</span><strong data-progress-text="">0 / 32</strong></div><div class="mini-progress"><span data-progress-bar=""></span></div><p class="supplement-nav"><a href="../guides/index.html">詳細解説・学習ガイド</a><a href="../guides/glossary.html">用語集</a><a href="../guides/errors.html">エラーの調べ方</a></p></div></nav><main class="content-wrap" id="main"><article class="article"><div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../guides/index.html">学習ガイド</a> / 詳細解説</div><header class="lesson-head"><div class="eyebrow">C# Learning Lab · 詳細解説</div><h1>20 enum・タプル・拡張メソッド — 詳細解説</h1><p class="lead">小さな型の道具を使い、意味の曖昧な値を減らす。</p><div class="meta-row"><span class="badge">.NET 10 / C# 14</span><span class="badge">読むペースは自由</span></div></header><details class="compact-toc"><summary>このページの目次</summary><nav aria-label="ページ内目次"><a href="#connections">前後の学習とのつながり</a><a href="#local-terms">このページで押さえる用語</a><a href="#detail-h2-01">名前のない数値や複数の戻り値を整理する</a><a href="#detail-h2-02">enumの最小例と状態の変化</a><a href="#detail-h2-03">間違い：整数から変換できれば定義済みだと思う</a><a href="#detail-h2-04">タプル：複数の結果を返す</a><a href="#detail-h2-05">間違い：同じ型の要素を逆順に返す</a><a href="#detail-h2-06">拡張メソッド：型を変更せず便利な操作を置く</a><a href="#detail-h2-07">拡張メソッドとLINQがつながる</a><a href="#detail-h2-08">選択基準：何でも同じ仕組みで解決しない</a><a href="#detail-h2-09">3段階の練習</a><a href="#apply">自分でコードを書く</a><a href="#sources">確認に使用した一次情報</a></nav></details><p class="route-card"><a href="../lessons/20.html">← Lesson 20 の本編</a> ／ <a href="../lessons/20.html#exercises">三段階の演習</a> ／ <a href="../lessons/20.html#quiz">確認問題</a></p><aside class="callout verification-note"><strong>コード検証の読み方</strong><p>出力はコードから説明した想定結果です。この制作環境では.NET SDKを利用できず、C#のビルド・実行は未検証です。コード下書きはブラウザーで動作しません。手元で確かめる手順は<a href="../guides/learning-workflow.html">教材の使い方と検証</a>にあります。</p></aside><section class="learning-bridge"><h2 id="connections">前後の学習とのつながり</h2><dl><dt>ここまで</dt><dd><a href="../lessons/19.html">遅延実行と集計</a>：クエリを作る時点と、実際に読む時点の違いをつかむ。</dd><dt>今回</dt><dd>小さな型の道具を使い、意味の曖昧な値を減らす。</dd><dt>次に</dt><dd><a href="../lessons/21.html">ファイルとJSON</a>：アプリを閉じても残るデータを、読み書きの境界として扱う。</dd></dl></section><section class="local-terms"><h2 id="local-terms">このページで押さえる用語</h2><p>まず短い定義を読み、必要に応じて開くと、役割・必要性・具体例を確認できます。本文中の用語リンクも、このページ内の説明につながります。</p><details class="term-entry details" data-term="タプル" id="local-term-165"><summary><b>タプル</b><span class="term-definition">関連する少数の値を一時的にまとめます。名前付き要素や分解代入で読みやすくできます。公開APIで検証や振る舞いが必要な長期的モデルには専用recordやclassが適する場合があります。</span></summary><div><dl><dt>役割</dt><dd>少数の値を一つの値のまとまりとして受け渡す。</dd><dt>なぜ必要か</dt><dd>合計と件数など、局所的な複数結果を返す。</dd><dt>具体例</dt><dd>(int Count, int Total) result = (3, 120);</dd><dt>つながる学習</dt><dd><a href="../lessons/20.html">Lesson 20 の本編</a> ／ <a href="../deep-dives/20.html">詳細解説</a></dd></dl><p class="term-caution"><b>混同しやすい点：</b>要素名だけで業務型の違いを強く区別できるとは限らない。</p></div></details><details class="term-entry details" data-term="拡張メソッド" id="local-term-166"><summary><b>拡張メソッド</b><span class="term-definition">静的メソッドを対象.Method()の形で呼ぶ仕組みで、従来の構文はstaticクラスの第一引数にthisを付けます。元の型の実装は変えず、privateへの特別な権限も得ません。</span></summary><div><dl><dt>役割</dt><dd>既存型を変更せず、その型に対する操作を呼びやすくする。</dd><dt>なぜ必要か</dt><dd>共通処理を整理し、既存のメンバーとの解決規則を理解する。</dd><dt>具体例</dt><dd>public static string Clean(this string? value) =&gt; value?.Trim() ?? "";</dd><dt>つながる学習</dt><dd><a href="../lessons/20.html">Lesson 20 の本編</a> ／ <a href="../deep-dives/20.html">詳細解説</a></dd></dl><p class="term-caution"><b>混同しやすい点：</b>インスタンスメンバーのoverrideではない。C#14には拡張ブロックもある。</p></div></details><details class="term-entry details" data-term="struct" id="local-term-151"><summary><b>struct</b><span class="term-definition">ユーザー定義の値型です。代入時に値をコピーしますが、参照型フィールドがあればその参照値もコピーされ、子オブジェクトは共有され得ます。大きく可変なstructはコピーと変更の見落としに注意します。</span></summary><div><dl><dt>役割</dt><dd>値としてコピーされるまとまりを定義する。</dd><dt>なぜ必要か</dt><dd>小さな値の組を独立した値として扱う選択肢を持つ。</dd><dt>具体例</dt><dd>public readonly record struct Point(int X, int Y);</dd><dt>つながる学習</dt><dd><a href="../lessons/13.html">Lesson 13 の本編</a> ／ <a href="../deep-dives/13.html">詳細解説</a></dd></dl><p class="term-caution"><b>混同しやすい点：</b>「常にスタックに置く型」という暗記だけで説明しない。</p></div></details><details class="term-entry details" data-term="キャスト" id="local-term-031"><summary><b>キャスト</b><span class="term-definition">変換先の型を明示して、値をその型として扱う操作です。</span></summary><div><dl><dt>役割</dt><dd>必要な数値変換や参照の変換などを指定します。</dd><dt>なぜ必要か</dt><dd>変換が常に成功するわけではなく、失われる情報や失敗を検討します。</dd><dt>具体例</dt><dd>(double)5 / 2は割り算前にdoubleへ変換する。</dd><dt>つながる学習</dt><dd><a href="../lessons/13.html">Lesson 13 の本編</a> ／ <a href="../deep-dives/13.html">詳細解説</a></dd></dl></div></details><details class="term-entry details" data-term="パターンマッチング" id="local-term-138"><summary><b>パターンマッチング</b><span class="term-definition">値の形に応じて判定し、一致した型の変数を取り出せます。is int numberなら型確認と取り出しをまとめられます。null・型・範囲・プロパティなどの条件を組み合わせても、条件の順序と境界を読めることが重要です。</span></summary><div><dl><dt>役割</dt><dd>値が型や条件に一致するかを調べ、必要なら値を取り出す。</dd><dt>なぜ必要か</dt><dd>条件判定と安全な値の利用を結び付ける。</dd><dt>具体例</dt><dd>if (value is int number and &gt;= 0) { /* numberを使う */ }</dd><dt>つながる学習</dt><dd><a href="../lessons/05.html">Lesson 05 の本編</a> ／ <a href="../deep-dives/05.html">詳細解説</a></dd></dl><p class="term-caution"><b>混同しやすい点：</b>複雑なパターンはテスト表で一致範囲を確認。</p></div></details><p><a href="../guides/glossary.html">180語の用語集で調べる →</a></p></section><section class="detail-section"><h2 id="detail-h2-01">名前のない数値や複数の戻り値を整理する</h2>
+<p>enumは関連する定数へ名前を付けた型、<a class="term-link" href="#local-term-165" title="関連する少数の値を一時的にまとめます。名前付き要素や分解代入で読みやすくできます。公開APIで検証や振る舞いが必要な長期的モデルには専用recordやclassが適する場合があります。">タプル</a>は複数の値を一時的にまとめる型、<a class="term-link" href="#local-term-166" title="静的メソッドを対象.Method()の形で呼ぶ仕組みで、従来の構文はstaticクラスの第一引数にthisを付けます。元の型の実装は変えず、privateへの特別な権限も得ません。">拡張メソッド</a>は既存の型に対してメソッド風に呼べる処理を追加する仕組みです。それぞれ「状態の選択肢」「小さな結果の組」「処理の置き場所」という異なる問題を解決します。</p>
+<p>業務コードに0、1、2だけが並ぶと、どれが未着手でどれが完了か読み取りにくくなります。enumを使うと、意味を型と名前で表現できます。ただし、enumを使えば外部入力が自動で正しい値になるわけではありません。</p>
+</section><section class="detail-section"><h2 id="detail-h2-02">enumの最小例と状態の変化</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp">WorkStatus status = WorkStatus.Todo;
+Console.WriteLine(status);
+status = WorkStatus.Doing;
+Console.WriteLine(status);
+status = WorkStatus.Done;
+Console.WriteLine((int)status);
+
+public enum WorkStatus
+{
+    Todo = 0,
+    Doing = 1,
+    Done = 2
+}</code></pre></div>
+<p>期待出力はTodo、Doing、2です。enumの基になる整数型は指定しなければintです。<code>(int)status</code>は名前ではなく対応する数値を取り出します。初期状態TodoからDoing、Doneへ代入で変化しています。enum自身が順序や遷移の可否を判断しているのではありません。</p>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">状態</th>
+<th scope="col" style="text-align:right">値</th>
+<th scope="col">この教材での意味</th>
+<th scope="col">次に許可する状態の例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Todo</td>
+<td style="text-align:right">0</td>
+<td>まだ開始していない</td>
+<td>Doing</td>
+</tr>
+<tr>
+<td>Doing</td>
+<td style="text-align:right">1</td>
+<td>作業中</td>
+<td>Done / Todo</td>
+</tr>
+<tr>
+<td>Done</td>
+<td style="text-align:right">2</td>
+<td>完了</td>
+<td>業務ルール次第</td>
+</tr>
+</tbody>
+</table></div>
+<p>状態遷移とは、現在の状態から別の状態へ移ることです。DoneからTodoへ戻せるかはenum宣言ではなく業務の処理で決めます。</p>
+</section><section class="detail-section"><h2 id="detail-h2-03">間違い：整数から変換できれば定義済みだと思う</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp">WorkStatus status = (WorkStatus)99;
+Console.WriteLine(status);
+Console.WriteLine(Enum.IsDefined(status));
+
+public enum WorkStatus { Todo, Doing, Done }</code></pre></div>
+<p>観察結果は99、Falseです。定義されていない整数もenum型の値にできるため、外から受け取った値は検証します。Enum.IsDefinedは、その値が宣言されているかを確認します。TryParseで変換が成功した場合でも、数値文字列によって未定義の値になる場合があります。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp">string input = "99";
+if (Enum.TryParse&lt;WorkStatus&gt;(input, ignoreCase: true, out var status)
+    &amp;&amp; Enum.IsDefined(status))
+{
+    Console.WriteLine(status);
+}
+else
+{
+    Console.WriteLine("状態を確認してください");
+}
+
+public enum WorkStatus { Todo, Doing, Done }</code></pre></div>
+<p>期待出力は状態を確認してくださいです。入力をDoneへ変えるとDoneになります。Flags属性を使う組み合わせ型では、単一の定義に一致するかとは別の検証が必要です。属性は宣言へ追加情報を付ける構文です。権限の組み合わせなどを学ぶときに、許可するビットの範囲を別途設計します。現段階では単一選択のenumを確実に検証します。</p>
+</section><section class="detail-section"><h2 id="detail-h2-04">タプル：複数の結果を返す</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp">var result = Calculate(new[] { 10, 20, 30 });
+Console.WriteLine($"件数:{result.Count}, 合計:{result.Total}");
+(int count, int total) = Calculate(new[] { 4, 5 });
+Console.WriteLine($"件数:{count}, 合計:{total}");
+
+static (int Count, int Total) Calculate(int[] values)
+{
+    int total = 0;
+    foreach (int value in values)
+    {
+        total += value;
+    }
+    return (values.Length, total);
+}</code></pre></div>
+<p>期待出力は件数:3, 合計:60、件数:2, 合計:9です。戻り値の型<code>(int Count, int Total)</code>は二つのintをまとめ、各要素へ名前を付けています。<code>return (values.Length, total)</code>で一組の値を返します。二つ目の呼び出しでは分解し、countとtotalという別の変数へ受け取っています。</p>
+<p>タプル構文で一般に使うSystem.ValueTupleは値型です。代入ではタプルの値がコピーされますが、内部の要素が参照型なら参照がコピーされます。要素名は読みやすさを助けますが、別の業務型として厳密に区別するものではありません。長期間使う公開データや複雑な制約には、専用のclassやrecordのほうが意図を表しやすい場合があります。</p>
+</section><section class="detail-section"><h2 id="detail-h2-05">間違い：同じ型の要素を逆順に返す</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp">var result = Calculate();
+Console.WriteLine($"件数:{result.Count}, 合計:{result.Total}");
+
+static (int Count, int Total) Calculate()
+{
+    int count = 3;
+    int total = 60;
+    return (total, count);
+}</code></pre></div>
+<p>観察結果は件数:60, 合計:3です。両方intなので、型の検査だけでは入れ替えを検出できません。修正する場所はreturnの並びです。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp">var result = Calculate();
+Console.WriteLine($"件数:{result.Count}, 合計:{result.Total}");
+
+static (int Count, int Total) Calculate()
+{
+    int count = 3;
+    int total = 60;
+    return (Count: count, Total: total);
+}</code></pre></div>
+<p>修正後は件数:3, 合計:60です。要素名を明示し、値の意味が合うか確認します。テストでも件数だけでなく合計も検証します。分解先の変数名を変えるだけでは、返す値の入れ替わりは直りません。</p>
+</section><section class="detail-section"><h2 id="detail-h2-06">拡張メソッド：型を変更せず便利な操作を置く</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp">string text = "  C#  ";
+Console.WriteLine(text.NormalizeLabel());
+Console.WriteLine(LabelExtensions.NormalizeLabel(text));
+
+public static class LabelExtensions
+{
+    public static string NormalizeLabel(this string value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+        return value.Trim();
+    }
+}</code></pre></div>
+<p>期待出力はC#、C#です。二つの呼び出しはこの例では同じ静的メソッドを呼びます。static classはインスタンスを作らず使う型です。従来形式の拡張メソッドではstaticメソッドの最初の引数にthisを付け、どの型を受け手として使うかを示します。<code>text.NormalizeLabel()</code>ではtextがvalueへ渡ります。</p>
+<p>拡張メソッドはstringの実装そのものを書き換えたり、stringへ新しいフィールドを追加したりしません。呼び出し候補の解決はコンパイル時の型などに基づきます。通常の適用可能なインスタンスメソッドがあればそちらが優先されます。見た目だけでvirtualのような実行時の差し替えと同じだと思わないでください。</p>
+<p>.NET 10 / C# 14ではextensionブロックによる拡張メンバーの記述も利用できます。本教材ではまず広く読まれるthis引数形式を基礎にします。新しい構文へ移っても、元の型のprivateな状態を自由に触れる仕組みに変わるわけではありません。</p>
+</section><section class="detail-section"><h2 id="detail-h2-07">拡張メソッドとLINQがつながる</h2>
+<p>WhereやSelectが配列やListからメソッドのように呼べるのは、Enumerableが提供する拡張メソッドだからです。必要な名前空間System.Linqがスコープ内にあると候補になります。名前空間をusingすることと、外部パッケージを追加することは別です。</p>
+<figure class="concept-diagram flow"><figcaption>処理の流れ</figcaption><ol><li><span class="step-number">1</span><div><b>numbers.Where(...)</b><p>受け手はIEnumerable&lt;int&gt;として扱える</p></div></li><li><span class="step-number">2</span><div><b>拡張メソッドの解決</b><p>EnumerableのWhereが候補になる</p></div></li><li><span class="step-number">3</span><div><b>静的メソッドへ引数を渡す</b><p>numbersと条件デリゲートを受け取る</p></div></li><li><span class="step-number">4</span><div><b>戻り値を得る</b><p>条件で抽出できる列を返す</p></div></li></ol></figure></section><section class="detail-section"><h2 id="detail-h2-08">選択基準：何でも同じ仕組みで解決しない</h2>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">やりたいこと</th>
+<th scope="col">候補</th>
+<th scope="col">理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>状態を有限の名前で表す</td>
+<td>enum</td>
+<td>意味のある選択肢を表せる</td>
+</tr>
+<tr>
+<td>メソッドから小さな結果を二つ返す</td>
+<td>名前付きタプル</td>
+<td>一時的な組を簡単に表せる</td>
+</tr>
+<tr>
+<td>検証や振る舞いを持つ業務データ</td>
+<td>class / record</td>
+<td>名前と責務を独立させる</td>
+</tr>
+<tr>
+<td>型を変更せず自然な補助操作を置く</td>
+<td>拡張メソッド</td>
+<td>共通処理の呼び出しを整理</td>
+</tr>
+<tr>
+<td>実行時に実装を差し替える</td>
+<td>interface / virtual</td>
+<td>拡張メソッドとは役割が違う</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="detail-section"><h2 id="detail-h2-09">3段階の練習</h2>
+<p><strong>基礎</strong>：PriorityをLow=0、Normal=1、High=2で宣言し、入力Highを変換・検証してください。Enum.TryParseとEnum.IsDefinedを両方確認します。未定義整数の入力でも成功扱いにしないのが目的です。</p>
+<p><strong>標準</strong>：{2,4,6}の件数と合計を名前付きタプルで返してください。解答は(Count:3, Total:12)です。空の配列なら(0,0)と定義すると、呼び出し側で結果の意味を統一できます。</p>
+<p><strong>応用</strong>：stringに対する補助処理として、Trimした結果が空なら「未入力」を返すNormalizeLabelを作ってください。<code>string trimmed = value.Trim(); return trimmed.Length == 0 ? "未入力" : trimmed;</code>が中心です。三項演算子の<code>条件 ? 真の値 : 偽の値</code>はifで書く別解もあります。nullを許可するなら引数をstring?へ変え、先にnullの扱いを定義してください。</p>
+</section><section><h2 id="apply">自分でコードを書く</h2><p>本文の小さな実験を終えたら、本編の下書き欄へ進みます。解答を写す前に、入力・必要な状態・出力を自分の言葉で整理してください。</p><div class="practice-links"><a href="../lessons/20.html#exercise-1">基礎演習</a><a href="../lessons/20.html#exercise-2">標準演習</a><a href="../lessons/20.html#exercise-3">応用演習</a></div></section><section class="source-section"><h2 id="sources">確認に使用した一次情報</h2><p>確認日：2026年9月14日。本文の理解を補うための資料です。学習対象は.NET 10 / C# 14です。パッチ番号は固定しません。</p><ul><li><a href="https://learn.microsoft.com/ja-jp/dotnet/csharp/language-reference/builtin-types/enum" rel="noopener noreferrer" target="_blank">列挙型</a></li><li><a href="https://learn.microsoft.com/ja-jp/dotnet/csharp/language-reference/builtin-types/value-tuples" rel="noopener noreferrer" target="_blank">タプル型</a></li><li><a href="https://learn.microsoft.com/ja-jp/dotnet/csharp/programming-guide/classes-and-structs/extension-methods" rel="noopener noreferrer" target="_blank">拡張メンバー</a></li><li><a href="https://learn.microsoft.com/ja-jp/dotnet/csharp/whats-new/csharp-14" rel="noopener noreferrer" target="_blank">C# 14 の新機能</a></li></ul></section><nav aria-label="詳細解説の前後" class="prev-next"><a href="19.html">← 前の詳細解説<br/>遅延実行と集計</a><a href="21.html">次の詳細解説 →<br/>ファイルとJSON</a></nav></article></main><aside aria-label="ページ内目次" class="right-toc"><h2>このページの目次</h2><nav aria-label="詳細なページ内目次"><a href="#connections">前後の学習とのつながり</a><a href="#local-terms">このページで押さえる用語</a><a href="#detail-h2-01">名前のない数値や複数の戻り値を整理する</a><a href="#detail-h2-02">enumの最小例と状態の変化</a><a href="#detail-h2-03">間違い：整数から変換できれば定義済みだと思う</a><a href="#detail-h2-04">タプル：複数の結果を返す</a><a href="#detail-h2-05">間違い：同じ型の要素を逆順に返す</a><a href="#detail-h2-06">拡張メソッド：型を変更せず便利な操作を置く</a><a href="#detail-h2-07">拡張メソッドとLINQがつながる</a><a href="#detail-h2-08">選択基準：何でも同じ仕組みで解決しない</a><a href="#detail-h2-09">3段階の練習</a><a href="#apply">自分でコードを書く</a><a href="#sources">確認に使用した一次情報</a></nav></aside></div><dialog aria-label="教材検索" class="dialog" id="search-dialog"><div class="dialog-head"><input aria-label="教材を検索" placeholder="型、LINQ、async、Web API…" type="search"/><button class="plain-btn" onclick="this.closest('dialog').close()" type="button">閉じる</button></div><div class="dialog-body" data-search-results=""><p>検索語を入力してください。</p></div></dialog><script src="../assets/js/course-meta.js"></script><script src="../assets/js/search-index.js"></script><script src="../assets/js/site.js"></script><script defer="" src="../assets/js/expanded.js"></script><p aria-live="polite" class="storage-warning" data-storage-warning="" hidden="" role="status"></p></body></html>
