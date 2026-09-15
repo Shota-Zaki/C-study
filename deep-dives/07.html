@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="引数から戻り値まで。" name="description"/><meta content="#4f46e5" name="theme-color"/><meta content="website" property="og:type"/><meta content="07 メソッドと引数 — 詳細解説" property="og:title"/><meta content="戻り値・オプション引数・outを整理し、処理に名前を付ける。" property="og:description"/><meta content="C# Learning Lab" property="og:site_name"/><meta content="summary" name="twitter:card"/><link href="../assets/icons/favicon.svg" rel="icon"/><link href="../assets/css/site.css" rel="stylesheet"/><title>07 メソッドと引数 — 詳細解説 | C# Learning Lab</title><link href="../assets/css/expanded.css" rel="stylesheet"/><link href="../assets/css/visual.css" rel="stylesheet"/></head><body data-base="../" data-current-lesson="07" data-deep-lesson="07" data-page-kind="詳細解説"><a class="skip-link" href="#main">本文へスキップ</a><header class="topbar"><button aria-controls="course-nav" aria-expanded="false" aria-label="コースメニューを開く" class="icon-btn mobile-only" data-drawer="open" type="button">☰</button><a class="brand" href="../index.html"><span class="brand-mark">C#</span><span>C# Learning Lab</span></a><div class="top-actions"><button class="search-btn" data-open-search="" type="button"><span>教材を検索</span><kbd>Ctrl K</kbd>⌕</button><a aria-label="設定" class="icon-btn" href="../settings.html">⚙</a></div></header><div class="layout"><div aria-label="現在の読書位置" class="reading-position" role="navigation"><a href="#main">先頭</a><span class="reading-title">07 メソッドと引数 — 詳細解説</span><span data-reading-count=""></span><button class="position-menu" data-show-toc="" type="button">目次</button><span aria-hidden="true" class="reading-track"><span data-reading-progress=""></span></span></div><nav aria-label="コースナビゲーション" class="left-nav" id="course-nav"><button class="plain-btn drawer-close" data-drawer="close" type="button">閉じる</button><div class="nav-heading">LESSONS <span>32</span></div><details class="chapter-group" data-chapter="1"><summary class="chapter-title"><span class="chapter-number">Chapter 01</span><span>C#と.NETの基礎</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/01.html"><span class="num">01</span><span>C#と.NET、最初の実行</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/02.html"><span class="num">02</span><span>Program・名前空間・using</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/03.html"><span class="num">03</span><span>型・var・定数</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/04.html"><span class="num">04</span><span>文字列と入力の変換</span></a></div></details><details class="chapter-group current-chapter" data-chapter="2" open=""><summary class="chapter-title"><span class="chapter-number">Chapter 02</span><span>条件分岐・反復・メソッド</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/05.html"><span class="num">05</span><span>条件分岐とパターン</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/06.html"><span class="num">06</span><span>配列と繰り返し</span></a></div><div class="lesson-item current-lesson"><a class="lesson-link" href="../lessons/07.html"><span class="num">07</span><span>メソッドと引数</span></a><a aria-current="page" class="detail-nav-link" href="../deep-dives/07.html">詳細解説</a><nav aria-label="このページの目次" class="lesson-toc"><div class="toc-label">このページの目次</div><a href="#visual-heading">図解：引数から戻り値まで</a><a href="#detail-h2-01">メソッドの入力・処理・戻り値</a><a href="#detail-h2-02">構文を一つずつ読む</a><a href="#detail-h2-03">呼び出しのStackを概念として理解する</a><a href="#detail-h2-04">値渡し：パラメーターは原則コピーを受け取る</a><a href="#detail-h2-05">参照型でも「参照の値」がコピーされる</a><a href="#detail-h2-06">ref・out・inの選び方</a><a href="#detail-h2-07">実用例：税抜き合計をメソッドへ分離する</a><a href="#detail-h2-08">戻り値の捨て忘れ・引数の順番</a><a href="#detail-h2-09">段階別の練習</a><a href="#worked-detail-heading">境界・比較例：値のコピーと呼び出し元</a><a href="#sources">公式資料</a></nav></div><div class="lesson-item"><a class="lesson-link" href="../lessons/08.html"><span class="num">08</span><span>nullを型と分岐で扱う</span></a></div></details><details class="chapter-group" data-chapter="3"><summary class="chapter-title"><span class="chapter-number">Chapter 03</span><span>オブジェクト指向</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/09.html"><span class="num">09</span><span>クラスとコンストラクター</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/10.html"><span class="num">10</span><span>プロパティとカプセル化</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/11.html"><span class="num">11</span><span>継承・virtual・override</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/12.html"><span class="num">12</span><span>インターフェイスと差し替え</span></a></div></details><details class="chapter-group" data-chapter="4"><summary class="chapter-title"><span class="chapter-number">Chapter 04</span><span>型・コレクション・例外</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/13.html"><span class="num">13</span><span>値型と参照型</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/14.html"><span class="num">14</span><span>recordと等値性</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/15.html"><span class="num">15</span><span>ジェネリックとコレクション</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/16.html"><span class="num">16</span><span>例外処理とusing</span></a></div></details><details class="chapter-group" data-chapter="5"><summary class="chapter-title"><span class="chapter-number">Chapter 05</span><span>ラムダ式とLINQ</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/17.html"><span class="num">17</span><span>ラムダ・デリゲート・イベント</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/18.html"><span class="num">18</span><span>LINQで絞り込み・変換</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/19.html"><span class="num">19</span><span>遅延実行と集計</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/20.html"><span class="num">20</span><span>enum・タプル・拡張メソッド</span></a></div></details><details class="chapter-group" data-chapter="6"><summary class="chapter-title"><span class="chapter-number">Chapter 06</span><span>保存・日時・非同期処理</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/21.html"><span class="num">21</span><span>ファイルとJSON</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/22.html"><span class="num">22</span><span>日時とカルチャー</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/23.html"><span class="num">23</span><span>asyncとawait</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/24.html"><span class="num">24</span><span>複数タスクとキャンセル</span></a></div></details><details class="chapter-group" data-chapter="7"><summary class="chapter-title"><span class="chapter-number">Chapter 07</span><span>構成・テスト・HTTP</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/25.html"><span class="num">25</span><span>プロジェクトとNuGet</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/26.html"><span class="num">26</span><span>デバッグと単体テスト</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/27.html"><span class="num">27</span><span>責務の分離と入力検証</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/28.html"><span class="num">28</span><span>HttpClientでHTTPを扱う</span></a></div></details><details class="chapter-group" data-chapter="8"><summary class="chapter-title"><span class="chapter-number">Chapter 08</span><span>ASP.NET Core Web API</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/29.html"><span class="num">29</span><span>ASP.NET Coreの最小API</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/30.html"><span class="num">30</span><span>入力検証とHTTPステータス</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/31.html"><span class="num">31</span><span>DI・設定・ログ</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/32.html"><span class="num">32</span><span>APIの検証と統合</span></a></div></details><div class="nav-footer"><a class="lesson-link" href="../projects/index.html">制作課題 3件</a><a class="lesson-link" href="../settings.html">学習データ設定</a><div class="progress-label"><span>進捗</span><strong data-progress-text="">0 / 32</strong></div><div class="mini-progress"><span data-progress-bar=""></span></div><p class="supplement-nav"><a href="../guides/index.html">詳細解説・学習ガイド</a><a href="../guides/glossary.html">用語集</a><a href="../guides/errors.html">エラーの調べ方</a></p></div></nav><main class="content-wrap" id="main"><article class="article"><div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../guides/index.html">学習ガイド</a> / 詳細解説</div><header class="lesson-head"><div class="eyebrow">C# Learning Lab · 詳細解説</div><h1>07 メソッドと引数 — 詳細解説</h1><p class="lead">引数から戻り値まで。</p><div class="meta-row"><span class="badge">.NET 10 / C# 14</span></div></header><nav aria-label="レッスンのページ" class="lesson-tabs"><a href="../lessons/07.html">本文・演習</a><a aria-current="page" href="../deep-dives/07.html">詳細解説</a></nav><aside class="key-point"><span>重要</span><strong>通常の引数では値がコピーされます。メソッド内の引数への再代入だけでは呼び出し元の変数は変わりません。</strong></aside><section class="visual-section" id="visual-model"><h2 id="visual-heading">図解：引数から戻り値まで</h2><figure class="lesson-diagram"><div aria-label="引数から戻り値まで" class="diagram-scroll" role="region" tabindex="0"><img alt="引数から戻り値まで。呼び出し元：AddTax(1000m, 0.10m)。パラメーター：price=1000 / rate=0.10。計算：price × (1 + rate)。戻り値：1100を受け取る" height="350" loading="lazy" src="../assets/diagrams/lesson-07.svg" width="760"/></div><figcaption>引数は呼び出し時に渡す値、パラメーターは受け取る変数です。returnで呼び出し元へ結果を返します。</figcaption></figure></section><section class="detail-section"><h2 id="detail-h2-01">メソッドの入力・処理・戻り値</h2>
+<p><a class="term-link" href="#local-term-037" title="名前と入力・出力の規則を持つ処理のまとまりです。">メソッド</a>は、何度も使う手順や一つの役割に名前を付けた処理です。合計の計算を三か所へコピーすると、仕様変更時に三か所を同じように直す必要があります。メソッドへまとめると呼び出し側は目的を名前で読み、実装は一か所へ集められます。ただし、何でも大きな共通処理へ詰め込むと逆に理解しにくくなるため、入力と出力を説明できる単位にします。</p>
+<p>引数は呼び出しで渡す値、<a class="term-link" href="#local-term-039" title="メソッド側で受け取る入力の名前と型です。">パラメーター</a>は定義側でその値を受け取る変数です。戻り値は処理の結果として呼び出し側へ返す値です。たとえば<code>CalculateTotal(120, 3)</code>の120と3が引数、定義にある<code>unitPrice</code>と<code>quantity</code>がパラメーター、360が戻り値になります。</p>
+</section><section class="detail-section"><h2 id="detail-h2-02">構文を一つずつ読む</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CalculateTotal</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">CalculateTotal</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">unitPrice</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">quantity</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unitPrice</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">quantity</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">total</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<p>期待出力は360です。<code>static int CalculateTotal</code>の<code>int</code>は戻り値の型です。かっこ内の二つの<code>int</code>は受け取る値の型です。<code>return total;</code>はtotalを結果として返し、メソッドの処理を終えます。ここで定義しているのはトップレベル文から呼べるstaticローカル関数です。型に属するメソッドにも、引数と戻り値の考え方は共通です。</p>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">順序</th>
+<th scope="col">実行する場所</th>
+<th scope="col">状態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>①</td>
+<td>呼び出し側</td>
+<td>引数120と3を用意</td>
+</tr>
+<tr>
+<td>②</td>
+<td>CalculateTotalに入る</td>
+<td>unitPrice=120, quantity=3</td>
+</tr>
+<tr>
+<td>③</td>
+<td>メソッド内</td>
+<td>total=360</td>
+</tr>
+<tr>
+<td>④</td>
+<td>return</td>
+<td>360を呼び出し側へ返す</td>
+</tr>
+<tr>
+<td>⑤</td>
+<td>呼び出し側</td>
+<td>result=360として受け取る</td>
+</tr>
+<tr>
+<td>⑥</td>
+<td>表示</td>
+<td>360</td>
+</tr>
+</tbody>
+</table></div>
+<p>メソッド内の<code>total</code>と呼び出し側の<code>result</code>は別の変数です。同じ名前にしても自動的に共有されるわけではありません。<a class="term-link" href="#local-term-025" title="名前を参照できるコード上の範囲です。">スコープ</a>とは名前を使える範囲です。メソッドのパラメーターとローカル変数はそのメソッドの中で利用し、外から直接名前で読むことはできません。</p>
+</section><section class="detail-section"><h2 id="detail-h2-03">呼び出しのStackを概念として理解する</h2>
+<p>実行中のメソッドには、どこへ戻るかや処理に必要な状態があります。呼び出しが重なる関係はコール<a class="term-link" href="#local-term-014" title="呼び出しに伴う作業領域などを管理する仕組みです。">スタック</a>で観察できます。Stackは後から積んだものから戻る構造です。AがBを呼び、BがCを呼べば、通常はCからB、BからAへ戻ります。デバッガーのコールスタックは、エラーがどの呼び出し経路から来たかを調べるのに役立ちます。</p>
+<figure class="concept-diagram flow"><figcaption>処理の流れ</figcaption><ol><li><span class="step-number">1</span><div><b>入口</b><p>CalculateTotalを呼ぶ</p></div></li><li><span class="step-number">2</span><div><b>CalculateTotal</b><p>引数を受け取り計算</p></div></li><li><span class="step-number">3</span><div><b>return 360</b><p>呼び出し元へ結果を渡す</p></div></li><li><span class="step-number">4</span><div><b>入口の続き</b><p>resultへ代入し表示</p></div></li></ol></figure><p>これは呼び出しの概念図です。JITによるインライン化で実際の呼び出し構造が最適化されることもあります。ローカル変数が必ず一つずつ物理Stack上の箱に置かれる、とまでは考えません。初心者段階では「変数の有効範囲」「どこへ戻るか」「何が渡るか」が説明できることを優先します。</p>
+</section><section class="detail-section"><h2 id="detail-h2-04">値渡し：パラメーターは原則コピーを受け取る</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">int</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="n">Increase</span><span class="p">(</span><span class="n">score</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">score</span><span class="p">);</span>
+
+<span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Increase</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="k">value</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="k">value</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+<p>期待出力は15、次の行に10です。<code>void</code>は戻り値がないことを示します。パラメーターvalueはscoreの値10のコピーを受け取り、15へ変わりますが、呼び出し側のscoreは10のままです。変更した値を利用したいなら、戻り値で返すと分かりやすくなります。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">int</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="n">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Increase</span><span class="p">(</span><span class="n">score</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">score</span><span class="p">);</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">Increase</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="k">value</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<p>修正後の期待出力は15です。修正位置は戻り値の型・return・呼び出し側の代入の三か所です。変更した結果を返して明示的に受け取るため、どの変数が更新されるかを読み取りやすくなります。</p>
+</section><section class="detail-section"><h2 id="detail-h2-05">参照型でも「参照の値」がコピーされる</h2>
+<p>配列は参照型です。参照とは配列の実体を指し示す値です。通常の引数ではこの参照がコピーされます。そのため要素の変更は同じ実体へ届きますが、パラメーターを別の配列へ差し替えても、呼び出し側の変数そのものは差し替わりません。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">};</span>
+<span class="n">Change</span><span class="p">(</span><span class="n">values</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Join</span><span class="p">(</span><span class="s">","</span><span class="p">,</span><span class="w"> </span><span class="n">values</span><span class="p">));</span>
+
+<span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Change</span><span class="p">(</span><span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="p">;</span>
+<span class="w">    </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Join</span><span class="p">(</span><span class="s">","</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">));</span>
+<span class="p">}</span></code></pre></div>
+<p>期待出力は<code>7,8</code>、次の行に<code>9,2</code>です。<code>string.Join</code>は複数の値を区切り文字で結合した文字列を返します。メソッド内でdataが新しい配列を参照しても、valuesは最初の配列を参照したままです。</p>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">時点</th>
+<th scope="col">values</th>
+<th scope="col">data</th>
+<th scope="col">何が変わったか</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>呼び出し前</td>
+<td>配列A [1,2]</td>
+<td>まだない</td>
+<td>なし</td>
+</tr>
+<tr>
+<td>呼び出し直後</td>
+<td>配列A</td>
+<td>配列A</td>
+<td>参照のコピー</td>
+</tr>
+<tr>
+<td>data[0]=9</td>
+<td>配列A [9,2]</td>
+<td>配列A [9,2]</td>
+<td>共有する要素</td>
+</tr>
+<tr>
+<td>dataへnewを代入</td>
+<td>配列A [9,2]</td>
+<td>配列B [7,8]</td>
+<td>dataだけ差し替え</td>
+</tr>
+<tr>
+<td>呼び出し後</td>
+<td>配列A [9,2]</td>
+<td>利用範囲を終える</td>
+<td>valuesはAのまま</td>
+</tr>
+</tbody>
+</table></div>
+<p>「参照型だから自動的に<a class="term-link" href="#local-term-141" title="呼び出し元の変数そのものを参照して読み書きできる形です。通常の引数渡しでは変数の値をコピーするため、参照型を渡すこととrefを付けることは同義ではありません。呼び出し前に変数を初期化し、呼び出し側にもrefを書くことで変更される引数だと示します。">ref</a>渡し」という説明は誤りです。型が<a class="term-link" href="#local-term-048" title="代入などで、その値をコピーする型です。">値型</a>か参照型かと、引数を値渡しするか参照渡しするかは別の軸です。Lesson 13でも同じ図を使えるよう、変数と実体を分けて描きます。</p>
+</section><section class="detail-section"><h2 id="detail-h2-06">ref・out・inの選び方</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="n">Increase</span><span class="p">(</span><span class="k">ref</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">count</span><span class="p">);</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">int</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="s">"12"</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">parsed</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"{success}, {parsed}"</span><span class="p">);</span>
+
+<span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Increase</span><span class="p">(</span><span class="k">ref</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="k">value</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">value</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<p>期待出力は6、次の行に<code>True, 12</code>です。<code>ref</code>は呼び出し側の保存場所を参照して扱います。値を読む可能性があるため、呼び出す前に変数を初期化します。<code>out</code>は呼び出し先が値を設定して返す形式で、メソッドは正常に戻るすべての経路で値を設定する必要があります。</p>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">形式</th>
+<th scope="col">呼び出し前の初期化</th>
+<th scope="col">呼び出し先での代入</th>
+<th scope="col">選ぶ場面</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>通常</td>
+<td>値を渡すため必要</td>
+<td>パラメーターの再代入は呼び出し側を変えない</td>
+<td>原則の選択、戻り値と組み合わせる</td>
+</tr>
+<tr>
+<td>ref</td>
+<td>必要</td>
+<td>呼び出し側の変数へ書き戻せる</td>
+<td>既存値を直接更新することが明確なAPI</td>
+</tr>
+<tr>
+<td>out</td>
+<td>不要</td>
+<td>正常終了までに必ず設定</td>
+<td>TryParseのような追加の出力</td>
+</tr>
+<tr>
+<td>in</td>
+<td>値を用意する</td>
+<td>パラメーターへ再代入できない</td>
+<td>大きな値型を読み取り専用参照で受ける検討</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>in</code>は参照先のすべてを深く不変にする機能ではありません。参照型のオブジェクトの内部状態まで凍結する意味ではありません。また、小さなintを何でもinにして速くなると決めつけません。複雑さと性能の効果を測り、APIの意図が伝わる選択をします。</p>
+</section><section class="detail-section"><h2 id="detail-h2-07">実用例：税抜き合計をメソッドへ分離する</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="n">prices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w"> </span><span class="mi">180</span><span class="w"> </span><span class="p">};</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">subtotal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sum</span><span class="p">(</span><span class="n">prices</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">discount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">payment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ApplyDiscount</span><span class="p">(</span><span class="n">subtotal</span><span class="p">,</span><span class="w"> </span><span class="n">discount</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"小計={subtotal}, 支払={payment}"</span><span class="p">);</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">Sum</span><span class="p">(</span><span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="n">values</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">values</span><span class="p">)</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="k">value</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">total</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">ApplyDiscount</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">discount</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">discount</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<p>期待出力は<code>小計=550, 支払=500</code>です。<code>?:</code>は条件で二つの値を選ぶ演算子で、resultが負なら0、そうでなければresultを返します。入力配列を合計する役割と、割引を適用する役割を分けました。画面へ表示する処理は入口に残しています。</p>
+<p>この分離ならSumへ空配列を渡したときに0、ApplyDiscountへ100と150を渡したときに0、という小さな検証ができます。一つのメソッドで入力・計算・表示をすべて行うと、自動的に検証するためにも入力や画面が必要になります。副作用の少ない計算を分けることがLesson 26のテストへつながります。</p>
+</section><section class="detail-section"><h2 id="detail-h2-08">戻り値の捨て忘れ・引数の順番</h2>
+<p>計算メソッドを呼んでも、戻り値を使わなければ呼び出し側の変数は更新されません。<code>ApplyDiscount(subtotal, 50);</code>と書くだけでsubtotalが減るとは限りません。<code>int payment = ApplyDiscount(subtotal, 50);</code>と受け取り、元値と結果を分けます。</p>
+<p>同じ型の引数が複数あると順番を逆にしてもコンパイルできることがあります。名前付き引数<code>ApplyDiscount(total: 550, discount: 50)</code>なら役割が明確になります。省略可能引数は呼び出しを短くできますが、どの値が既定で入るかを理解して使います。<a class="term-link" href="#local-term-042" title="同じ名前で、パラメーターの組み合わせが異なるメソッドを定義することです。">オーバーロード</a>は同じ名前でパラメーターの組み合わせが異なるメソッドを定義する仕組みで、戻り値の型だけを変えて区別することはできません。</p>
+</section><section class="detail-section"><h2 id="detail-h2-09">段階別の練習</h2>
+<p>基礎は<code>Square(int value)</code>で二乗を返す課題です。入力4なら16です。解答例は<code>static int Square(int value) =&gt; value * value;</code>で、呼び出し側が戻り値を表示します。メソッド内で表示するだけの解答は「返す」という要件と異なります。</p>
+<p>標準は配列の60以上の件数を返すメソッドです。<code>{40,60,80}</code>なら2、空配列なら0です。前のレッスンのループをメソッド内へ移し、引数の配列を変更せず、件数をreturnします。入力と出力を日本語で説明してからコードを書きます。</p>
+<p>応用は、通常の引数版とref版の更新の違いを説明する課題です。開始値10へ5を加え、通常版は戻り値を受け取らなければ10、ref版は15になります。よくある誤解は「staticだから共有される」です。staticと参照渡しは別で、どの保存場所へ書くかを根拠に説明します。</p>
+</section><section class="worked-example" id="worked-detail"><div class="section-kicker">境界値・比較</div><h2 id="worked-detail-heading">境界・比較例：値のコピーと呼び出し元</h2><p>valueとstockは別の変数です。stockを更新するならstock = SellOne(stock);と戻り値を代入します。</p><div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · Program.cs</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre tabindex="0"><code class="language-csharp syntax-code"><span class="kt">int</span><span class="w"> </span><span class="n">stock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">remaining</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SellOne</span><span class="p">(</span><span class="n">stock</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"元: {stock}"</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"戻り値: {remaining}"</span><span class="p">);</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">SellOne</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="k">value</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">value</span><span class="o">--</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">value</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div><div class="expected-result"><h3 id="section-12">想定出力</h3><pre tabindex="0"><code>元: 10
+戻り値: 9</code></pre></div><a class="sample-download" download="" href="../samples/visual/07/detail/example.zip">サンプル一式</a> <a class="sample-download" download="Lesson07-detail.cs" href="../samples/visual/07/detail/Program.cs">Program.cs</a></section><section class="source-section"><h2 id="sources">公式資料</h2><p>確認日：2026年9月14日。本文の理解を補うための資料です。学習対象は.NET 10 / C# 14です。パッチ番号は固定しません。</p><ul><li><a href="https://learn.microsoft.com/ja-jp/dotnet/csharp/programming-guide/classes-and-structs/methods" rel="noopener noreferrer" target="_blank">メソッド</a></li><li><a href="https://learn.microsoft.com/ja-jp/dotnet/csharp/language-reference/keywords/method-parameters" rel="noopener noreferrer" target="_blank">メソッドのパラメーター</a></li></ul></section><nav aria-label="詳細解説の前後" class="prev-next"><a href="06.html">← 前の詳細解説<br/>配列と繰り返し</a><a href="08.html">次の詳細解説 →<br/>nullを型と分岐で扱う</a></nav></article></main><aside aria-label="用語" class="right-toc glossary-rail"><details class="glossary-panel" id="page-terms" open=""><summary>このページの用語 <span aria-hidden="true">＋</span></summary><h2>このページで押さえる用語</h2><section class="rail-terms"><details class="term-entry details" data-term="メソッド" id="local-term-037"><summary><b>メソッド</b><span class="term-definition">名前と入力・出力の規則を持つ処理のまとまりです。</span></summary><div><dl><dt>役割</dt><dd>同じ仕事を呼び出して再利用します。</dd><dt>なぜ必要か</dt><dd>処理を重複させず、意味のある単位でコードを読みます。</dd><dt>具体例</dt><dd>int Add(int a,int b)は二つの整数から合計を返す。</dd></dl></div></details><details class="term-entry details" data-term="引数" id="local-term-038"><summary><b>引数</b><span class="term-definition">メソッドを呼び出す際に渡す値です。</span></summary><div><dl><dt>役割</dt><dd>呼び出す処理へ必要な入力を渡します。</dd><dt>なぜ必要か</dt><dd>同じ処理を異なるデータに対して使えるようにします。</dd><dt>具体例</dt><dd>Add(2,3)の2と3。</dd></dl></div></details><details class="term-entry details" data-term="パラメーター" id="local-term-039"><summary><b>パラメーター</b><span class="term-definition">メソッド側で受け取る入力の名前と型です。</span></summary><div><dl><dt>役割</dt><dd>渡された値を処理内部で参照します。</dd><dt>なぜ必要か</dt><dd>呼び出し元の値と、受け取る側の変数を分けて追います。</dd><dt>具体例</dt><dd>int Add(int a,int b)のaとb。</dd></dl></div></details><details class="term-entry details" data-term="戻り値" id="local-term-040"><summary><b>戻り値</b><span class="term-definition">呼び出したメソッドから受け取る結果の値です。</span></summary><div><dl><dt>役割</dt><dd>処理結果を次の計算や表示へ渡します。</dd><dt>なぜ必要か</dt><dd>内部で計算しただけでは、呼び出し元が結果を利用できないためです。</dd><dt>具体例</dt><dd>int total = Add(2,3);で受け取る5。</dd></dl></div></details><details class="term-entry details" data-term="void" id="local-term-041"><summary><b>void</b><span class="term-definition">通常の戻り値を返さないことを示す戻り値型の指定です。</span></summary><div><dl><dt>役割</dt><dd>結果の値ではなく、操作を行うメソッドの契約を表します。</dd><dt>なぜ必要か</dt><dd>全てのメソッドが代入可能な値を返すとは限らないためです。</dd><dt>具体例</dt><dd>Console.WriteLineは通常の値を返さない。</dd></dl></div></details><details class="term-entry details" data-term="スコープ" id="local-term-025"><summary><b>スコープ</b><span class="term-definition">名前を参照できるコード上の範囲です。</span></summary><div><dl><dt>役割</dt><dd>変数やメンバーをどこから使えるかを決めます。</dd><dt>なぜ必要か</dt><dd>同じ名前の衝突や、範囲外の変数を使うミスを防ぎます。</dd><dt>具体例</dt><dd>ifのブロック内で宣言した変数は通常その外から参照できない。</dd></dl></div></details><details class="term-entry details" data-term="スタック" id="local-term-014"><summary><b>スタック</b><span class="term-definition">呼び出しに伴う作業領域などを管理する仕組みです。</span></summary><div><dl><dt>役割</dt><dd>呼び出し元へ戻る情報や実行中の処理を支えます。</dd><dt>なぜ必要か</dt><dd>メソッドを呼んで戻る関係や再帰の深さを理解するために使います。</dd><dt>具体例</dt><dd>AがBを呼び、Bが戻るとAの続きへ進む。</dd></dl></div></details><details class="term-entry details" data-term="オーバーロード" id="local-term-042"><summary><b>オーバーロード</b><span class="term-definition">同じ名前で、パラメーターの組み合わせが異なるメソッドを定義することです。</span></summary><div><dl><dt>役割</dt><dd>同じ意味の操作に複数の入力形を用意します。</dd><dt>なぜ必要か</dt><dd>異なる入力ごとに無関係な名前を増やさずに済みます。</dd><dt>具体例</dt><dd>intを受け取るPrintとstringを受け取るPrint。</dd></dl></div></details><details class="term-entry details" data-term="ref" id="local-term-141"><summary><b>ref</b><span class="term-definition">呼び出し元の変数そのものを参照して読み書きできる形です。通常の引数渡しでは変数の値をコピーするため、参照型を渡すこととrefを付けることは同義ではありません。呼び出し前に変数を初期化し、呼び出し側にもrefを書くことで変更される引数だと示します。</span></summary><div><dl><dt>役割</dt><dd>変数そのものを参照として受け渡す。</dd><dt>なぜ必要か</dt><dd>メソッド内の代入を呼び出し元の変数にも反映したい場合を表す。</dd><dt>具体例</dt><dd>static void AddOne(ref int value) =&gt; value++;</dd></dl><p class="term-caution"><b>混同しやすい点：</b>変更が呼び出し側へ伝わることを契約として明示する。</p></div></details><details class="term-entry details" data-term="out" id="local-term-140"><summary><b>out</b><span class="term-definition">呼び出し元の変数へ結果を書き込む引数です。メソッド側は正常に返る経路で値を設定する必要があります。TryParseの成否と値のように、複数の情報を返す契約に使われます。呼び出し前に値を準備する必要はなく、呼び出し後は成否を判定してから値を使います。</span></summary><div><dl><dt>役割</dt><dd>呼び出した側の変数へメソッドから値を設定する契約を表す。</dd><dt>なぜ必要か</dt><dd>成功可否と変換値など、通常の戻り値とは別の値を受け取る。</dd><dt>具体例</dt><dd>bool ok = int.TryParse("80", out int score);</dd></dl><p class="term-caution"><b>混同しやすい点：</b>boolを無視すると失敗時の値を正常扱いする。</p></div></details><details class="term-entry details" data-term="参照" id="local-term-046"><summary><b>参照</b><span class="term-definition">参照型の実体へアクセスするための値です。</span></summary><div><dl><dt>役割</dt><dd>変数からオブジェクトへ到達します。</dd><dt>なぜ必要か</dt><dd>参照のコピーでは実体全体を複製しないことを理解します。</dd><dt>具体例</dt><dd>var b = a;の後、aとbが同じListを指す。</dd></dl></div></details><details class="term-entry details" data-term="値型" id="local-term-048"><summary><b>値型</b><span class="term-definition">代入などで、その値をコピーする型です。</span></summary><div><dl><dt>役割</dt><dd>小さな値や値のまとまりを扱います。</dd><dt>なぜ必要か</dt><dd>別の変数への代入後にどこまで独立するかを判断します。</dd><dt>具体例</dt><dd>int、bool、struct。struct内の参照は参照の値としてコピーされる。</dd></dl></div></details></section></details></aside></div><dialog aria-label="教材検索" class="dialog" id="search-dialog"><div class="dialog-head"><input aria-label="教材を検索" placeholder="型、LINQ、async、Web API…" type="search"/><button class="plain-btn" onclick="this.closest('dialog').close()" type="button">閉じる</button></div><div class="dialog-body" data-search-results=""><p>検索語を入力してください。</p></div></dialog><script src="../assets/js/course-meta.js"></script><script src="../assets/js/search-index.js"></script><script src="../assets/js/site.js"></script><script defer="" src="../assets/js/expanded.js"></script><p aria-live="polite" class="storage-warning" data-storage-warning="" hidden="" role="status"></p><script defer="" src="../assets/js/visual.js"></script></body></html>

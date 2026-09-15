@@ -1,0 +1,6 @@
+200: True
+201: True
+204: True
+400: False
+404: False
+500: False

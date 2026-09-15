@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="未指定・空文字・空白の違い。" name="description"/><meta content="#4f46e5" name="theme-color"/><meta content="website" property="og:type"/><meta content="08 nullを型と分岐で扱う — 詳細解説" property="og:title"/><meta content="string?、int?、?.、??を混同せず、null参照を防ぐ。" property="og:description"/><meta content="C# Learning Lab" property="og:site_name"/><meta content="summary" name="twitter:card"/><link href="../assets/icons/favicon.svg" rel="icon"/><link href="../assets/css/site.css" rel="stylesheet"/><title>08 nullを型と分岐で扱う — 詳細解説 | C# Learning Lab</title><link href="../assets/css/expanded.css" rel="stylesheet"/><link href="../assets/css/visual.css" rel="stylesheet"/></head><body data-base="../" data-current-lesson="08" data-deep-lesson="08" data-page-kind="詳細解説"><a class="skip-link" href="#main">本文へスキップ</a><header class="topbar"><button aria-controls="course-nav" aria-expanded="false" aria-label="コースメニューを開く" class="icon-btn mobile-only" data-drawer="open" type="button">☰</button><a class="brand" href="../index.html"><span class="brand-mark">C#</span><span>C# Learning Lab</span></a><div class="top-actions"><button class="search-btn" data-open-search="" type="button"><span>教材を検索</span><kbd>Ctrl K</kbd>⌕</button><a aria-label="設定" class="icon-btn" href="../settings.html">⚙</a></div></header><div class="layout"><div aria-label="現在の読書位置" class="reading-position" role="navigation"><a href="#main">先頭</a><span class="reading-title">08 nullを型と分岐で扱う — 詳細解説</span><span data-reading-count=""></span><button class="position-menu" data-show-toc="" type="button">目次</button><span aria-hidden="true" class="reading-track"><span data-reading-progress=""></span></span></div><nav aria-label="コースナビゲーション" class="left-nav" id="course-nav"><button class="plain-btn drawer-close" data-drawer="close" type="button">閉じる</button><div class="nav-heading">LESSONS <span>32</span></div><details class="chapter-group" data-chapter="1"><summary class="chapter-title"><span class="chapter-number">Chapter 01</span><span>C#と.NETの基礎</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/01.html"><span class="num">01</span><span>C#と.NET、最初の実行</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/02.html"><span class="num">02</span><span>Program・名前空間・using</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/03.html"><span class="num">03</span><span>型・var・定数</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/04.html"><span class="num">04</span><span>文字列と入力の変換</span></a></div></details><details class="chapter-group current-chapter" data-chapter="2" open=""><summary class="chapter-title"><span class="chapter-number">Chapter 02</span><span>条件分岐・反復・メソッド</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/05.html"><span class="num">05</span><span>条件分岐とパターン</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/06.html"><span class="num">06</span><span>配列と繰り返し</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/07.html"><span class="num">07</span><span>メソッドと引数</span></a></div><div class="lesson-item current-lesson"><a class="lesson-link" href="../lessons/08.html"><span class="num">08</span><span>nullを型と分岐で扱う</span></a><a aria-current="page" class="detail-nav-link" href="../deep-dives/08.html">詳細解説</a><nav aria-label="このページの目次" class="lesson-toc"><div class="toc-label">このページの目次</div><a href="#visual-heading">図解：未指定・空文字・空白の違い</a><a href="#detail-h2-01">null・空文字・0の違い</a><a href="#detail-h2-02">string?とint?は同じ仕組みではない</a><a href="#detail-h2-03">最小例：分岐で安全な経路を作る</a><a href="#detail-h2-04">?. と ?? を別々に読む</a><a href="#detail-h2-05">実用例：表示名の正規化</a><a href="#detail-h2-06">間違い：!で問題を解決したつもりになる</a><a href="#detail-h2-07">間違い：Nullable値型のValueを無条件に読む</a><a href="#detail-h2-08">null対策を選ぶ基準</a><a href="#detail-h2-09">段階別の練習</a><a href="#worked-detail-heading">境界・比較例：null条件演算子と既定値</a><a href="#sources">公式資料</a></nav></div></details><details class="chapter-group" data-chapter="3"><summary class="chapter-title"><span class="chapter-number">Chapter 03</span><span>オブジェクト指向</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/09.html"><span class="num">09</span><span>クラスとコンストラクター</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/10.html"><span class="num">10</span><span>プロパティとカプセル化</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/11.html"><span class="num">11</span><span>継承・virtual・override</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/12.html"><span class="num">12</span><span>インターフェイスと差し替え</span></a></div></details><details class="chapter-group" data-chapter="4"><summary class="chapter-title"><span class="chapter-number">Chapter 04</span><span>型・コレクション・例外</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/13.html"><span class="num">13</span><span>値型と参照型</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/14.html"><span class="num">14</span><span>recordと等値性</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/15.html"><span class="num">15</span><span>ジェネリックとコレクション</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/16.html"><span class="num">16</span><span>例外処理とusing</span></a></div></details><details class="chapter-group" data-chapter="5"><summary class="chapter-title"><span class="chapter-number">Chapter 05</span><span>ラムダ式とLINQ</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/17.html"><span class="num">17</span><span>ラムダ・デリゲート・イベント</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/18.html"><span class="num">18</span><span>LINQで絞り込み・変換</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/19.html"><span class="num">19</span><span>遅延実行と集計</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/20.html"><span class="num">20</span><span>enum・タプル・拡張メソッド</span></a></div></details><details class="chapter-group" data-chapter="6"><summary class="chapter-title"><span class="chapter-number">Chapter 06</span><span>保存・日時・非同期処理</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/21.html"><span class="num">21</span><span>ファイルとJSON</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/22.html"><span class="num">22</span><span>日時とカルチャー</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/23.html"><span class="num">23</span><span>asyncとawait</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/24.html"><span class="num">24</span><span>複数タスクとキャンセル</span></a></div></details><details class="chapter-group" data-chapter="7"><summary class="chapter-title"><span class="chapter-number">Chapter 07</span><span>構成・テスト・HTTP</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/25.html"><span class="num">25</span><span>プロジェクトとNuGet</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/26.html"><span class="num">26</span><span>デバッグと単体テスト</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/27.html"><span class="num">27</span><span>責務の分離と入力検証</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/28.html"><span class="num">28</span><span>HttpClientでHTTPを扱う</span></a></div></details><details class="chapter-group" data-chapter="8"><summary class="chapter-title"><span class="chapter-number">Chapter 08</span><span>ASP.NET Core Web API</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/29.html"><span class="num">29</span><span>ASP.NET Coreの最小API</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/30.html"><span class="num">30</span><span>入力検証とHTTPステータス</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/31.html"><span class="num">31</span><span>DI・設定・ログ</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/32.html"><span class="num">32</span><span>APIの検証と統合</span></a></div></details><div class="nav-footer"><a class="lesson-link" href="../projects/index.html">制作課題 3件</a><a class="lesson-link" href="../settings.html">学習データ設定</a><div class="progress-label"><span>進捗</span><strong data-progress-text="">0 / 32</strong></div><div class="mini-progress"><span data-progress-bar=""></span></div><p class="supplement-nav"><a href="../guides/index.html">詳細解説・学習ガイド</a><a href="../guides/glossary.html">用語集</a><a href="../guides/errors.html">エラーの調べ方</a></p></div></nav><main class="content-wrap" id="main"><article class="article"><div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../guides/index.html">学習ガイド</a> / 詳細解説</div><header class="lesson-head"><div class="eyebrow">C# Learning Lab · 詳細解説</div><h1>08 nullを型と分岐で扱う — 詳細解説</h1><p class="lead">未指定・空文字・空白の違い。</p><div class="meta-row"><span class="badge">.NET 10 / C# 14</span></div></header><nav aria-label="レッスンのページ" class="lesson-tabs"><a href="../lessons/08.html">本文・演習</a><a aria-current="page" href="../deep-dives/08.html">詳細解説</a></nav><aside class="key-point"><span>重要</span><strong>null、空文字、空白だけの文字列は異なります。必要な規則に合う判定方法を選びます。</strong></aside><section class="visual-section" id="visual-model"><h2 id="visual-heading">図解：未指定・空文字・空白の違い</h2><figure class="lesson-diagram"><div aria-label="未指定・空文字・空白の違い" class="diagram-scroll" role="region" tabindex="0"><img alt='未指定・空文字・空白の違い。null：文字列の参照がない。""：長さ0の文字列。"   "：空白3文字を持つ。"Aoi"：名前の文字列' height="350" loading="lazy" src="../assets/diagrams/lesson-08.svg" width="760"/></div><figcaption>??はnullだけを対象にします。空文字や空白も未入力とするなら、IsNullOrWhiteSpaceなどで別に判定します。</figcaption></figure></section><section class="detail-section"><h2 id="detail-h2-01">null・空文字・0の違い</h2>
+<p>参照型の変数はオブジェクトをたどるための参照を保持します。オブジェクトとは実行中に存在する型の実体です。<code>string</code>の文字列も参照型です。<code>null</code>はその参照がどの実体も指していないことを表します。<code>""</code>は長さ0の文字列という実体があり、<code>"null"</code>は四文字の普通の文字列です。</p>
+<p>nullを無視すると、存在しない相手に対してLengthを読んだりメソッドを呼んだりして、<code>NullReferenceException</code>が起こります。これはコンパイル後の実行時に起こる<a class="term-link" href="#local-term-033" title="通常の戻り値とは別に、処理の失敗などを伝えて実行経路を変える仕組みです。">例外</a>です。一方、nullable reference typesは、nullの可能性をソース上の型へ注釈し、危険な使い方をコンパイラーが警告する機能です。実行時に新しい別の参照型を作る機能ではありません。</p>
+<figure class="concept-diagram flow"><figcaption>処理の流れ</figcaption><ol><li><span class="step-number">1</span><div><b>string? name</b><p>文字列またはnullの可能性</p></div></li><li><span class="step-number">2</span><div><b>nullの確認</b><p>今この経路で実体があるか</p></div></li><li><span class="step-number">3</span><div><b>ある経路</b><p>Lengthやメソッドを安全に利用</p></div></li><li><span class="step-number">4</span><div><b>ない経路</b><p>入力を求める・既定値を選ぶ・終了する</p></div></li></ol></figure><p><code>.csproj</code>で<code>&lt;Nullable&gt;enable&lt;/Nullable&gt;</code>を有効にして学習します。警告は実行を必ず止めるものではなく、設定によっては警告があってもビルドできます。null非許容と書けば外部データから絶対にnullが来ない、という実行時の保証にはなりません。</p>
+</section><section class="detail-section"><h2 id="detail-h2-02">string?とint?は同じ仕組みではない</h2>
+<p><code>string?</code>は参照型のnull許容注釈です。<code>string</code>と<code>string?</code>は実行時には同じ型で、コンパイラーが意図と経路を検査します。<code>int?</code>は<code>Nullable&lt;int&gt;</code>という<a class="term-link" href="#local-term-048" title="代入などで、その値をコピーする型です。">値型</a>で、整数値と値が存在するかという情報を扱います。普通のintはnullを保持できません。</p>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">記述</th>
+<th scope="col">何を表すか</th>
+<th scope="col">主な扱い方</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>string</code></td>
+<td>nullでないことを意図する参照</td>
+<td>null警告を減らして契約を明示</td>
+</tr>
+<tr>
+<td><code>string?</code></td>
+<td>nullを含み得る参照</td>
+<td>使用前に経路や代替値を決める</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td>整数値</td>
+<td>0も有効な整数</td>
+</tr>
+<tr>
+<td><code>int?</code></td>
+<td>値なし、または整数</td>
+<td><code>HasValue</code>やパターン、<code>??</code>を使う</td>
+</tr>
+</tbody>
+</table></div>
+<p>0を「値がない」の代わりに使うと、無料価格0や点数0と区別できないことがあります。<code>int?</code>なら値なしと0を別の状態として保持できます。ただしnullを認めればよいのではなく、その状態が業務として何を意味するかも定義します。</p>
+</section><section class="detail-section"><h2 id="detail-h2-03">最小例：分岐で安全な経路を作る</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="err">#</span><span class="n">nullable</span><span class="w"> </span><span class="n">enable</span>
+<span class="kt">string?</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"名前がありません"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">name</span><span class="p">.</span><span class="n">Length</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+<p>期待出力は<code>名前がありません</code>です。<code>is null</code>はnullのパターン判定です。else側ではnameがnullでないことが分かるため、コンパイラーもその経路のLengthアクセスを安全と判断できます。このように各経路でnullの可能性を追うことをフロー解析と呼びます。</p>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">入力</th>
+<th scope="col">判定</th>
+<th scope="col">通る経路</th>
+<th scope="col">出力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>null</td>
+<td>true</td>
+<td>最初のブロック</td>
+<td>名前がありません</td>
+</tr>
+<tr>
+<td><code>""</code></td>
+<td>false</td>
+<td>else</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>"Aoi"</code></td>
+<td>false</td>
+<td>else</td>
+<td>3</td>
+</tr>
+</tbody>
+</table></div>
+<p>同じ変数でも、ifの前とelseの中では分かっている情報が違います。いったんnullを除外しても、後でその変数へnullを再代入すれば状況は変わります。古い確認を根拠に、その後すべてのアクセスが安全だとは判断しません。</p>
+</section><section class="detail-section"><h2 id="detail-h2-04">?. と ?? を別々に読む</h2>
+<p>null条件演算子<code>?.</code>は、左側がnullなら右のメンバーへアクセスせずnullを返します。null合体演算子<code>??</code>は、左の値がnullの場合に右の代替値を使います。この二つを組み合わせると、値なしの扱いを小さな式で書けます。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">string?</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="kt">int?</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="o">?.</span><span class="n">Length</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">displayLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="kt">string</span><span class="w"> </span><span class="n">displayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s">"未登録"</span><span class="p">;</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">length</span><span class="p">.</span><span class="n">HasValue</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">displayLength</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">displayName</span><span class="p">);</span></code></pre></div>
+<p>期待出力はFalse、0、未登録です。通常の<code>Length</code>はintですが、<code>?.</code>で呼ばれなかった場合も表すため、この式の結果はint?になります。<code>HasValue</code>はNullable値型に実際の値があるかを読むプロパティです。</p>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">時点</th>
+<th scope="col">name</th>
+<th scope="col">length</th>
+<th scope="col">displayLength</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>初期化</td>
+<td>null</td>
+<td>未宣言</td>
+<td>未宣言</td>
+</tr>
+<tr>
+<td><code>name?.Length</code></td>
+<td>null</td>
+<td>null</td>
+<td>未宣言</td>
+</tr>
+<tr>
+<td><code>length ?? 0</code></td>
+<td>null</td>
+<td>nullのまま</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>??</code>は左の変数を自動的に書き換えません。代入もしたい場合の<code>??=</code>は別の演算子です。たとえば<code>name ??= "未登録";</code>ならnameがnullのときだけ代替値を代入します。</p>
+<p>空文字を「未登録」にしたいなら<code>??</code>だけでは足りません。<code>""</code>はnullではないのでそのまま返ります。<code>string.IsNullOrWhiteSpace(name)</code>はnull・空文字・空白だけをまとめて調べるメソッドです。これらを同じ扱いにするかどうかは入力仕様で決めます。</p>
+</section><section class="detail-section"><h2 id="detail-h2-05">実用例：表示名の正規化</h2>
+<p>正規化とは、複数の表記を扱いやすい形へ揃えることです。この例では前後の空白を除き、null・空文字・空白だけは<code>匿名</code>へ統一します。元の入力を壊さず、表示用の結果を戻します。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">string?</span><span class="p">[]</span><span class="w"> </span><span class="n">inputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w"> </span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="s">"   "</span><span class="p">,</span><span class="w"> </span><span class="s">"  Aoi  "</span><span class="w"> </span><span class="p">};</span>
+<span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">string?</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">inputs</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">GetDisplayName</span><span class="p">(</span><span class="n">input</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDisplayName</span><span class="p">(</span><span class="kt">string?</span><span class="w"> </span><span class="n">input</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrWhiteSpace</span><span class="p">(</span><span class="n">input</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">"匿名"</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">Trim</span><span class="p">();</span>
+<span class="p">}</span></code></pre></div>
+<p>期待出力は匿名、匿名、匿名、Aoiです。<code>string?[]</code>はnullになり得る文字列を要素に持つ配列です。メソッドの戻り値はstringなので、このメソッドはnullではなく表示可能な文字列を返す契約になります。引数はstring?なので、呼び出し側は値がない場合も渡せます。</p>
+<p>判定を先に行ってreturnする書き方をガード節と呼びます。不正や特別な条件を早めに処理して戻る方法です。残りの本体では有効な入力に集中できます。標準ライブラリのnull解析用の注釈により、<code>IsNullOrWhiteSpace</code>がfalseだった経路のinputはnullでないと解析できます。</p>
+</section><section class="detail-section"><h2 id="detail-h2-06">間違い：!で問題を解決したつもりになる</h2>
+<div class="codebox" data-code-kind="csharp-error"><div class="codehead"><span>C# · 失敗を学ぶ例（そのまま起動しない）</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp-error syntax-code"><span class="err">#</span><span class="n">nullable</span><span class="w"> </span><span class="n">enable</span>
+<span class="kt">string?</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">name</span><span class="o">!</span><span class="p">.</span><span class="n">Length</span><span class="p">);</span></code></pre></div>
+<p><code>!</code>はここではnull抑制演算子で、コンパイラーへnullではないと扱うよう伝えます。値を生成したり、nullを空文字へ変換したり、実行時の検査を追加したりしません。そのため上のコードは警告を抑えられても、実行時にはNullReferenceExceptionが起こります。</p>
+<p>修正位置はLengthを読む前の処理です。値なしを0文字として表示する仕様なら次のように書きます。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">string?</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">name</span><span class="o">?.</span><span class="n">Length</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span></code></pre></div>
+<p>期待出力は0です。名前が必須の処理なら0を補うのではなく、入力を要求するか、呼び出しを拒否する必要があります。正しい修正はnullを隠すことではなく、「ない場合に何をすべきか」を決めることです。</p>
+</section><section class="detail-section"><h2 id="detail-h2-07">間違い：Nullable値型のValueを無条件に読む</h2>
+<div class="codebox" data-code-kind="csharp-error"><div class="codehead"><span>C# · 失敗を学ぶ例（そのまま起動しない）</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp-error syntax-code"><span class="kt">int?</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">score</span><span class="p">.</span><span class="n">Value</span><span class="p">);</span></code></pre></div>
+<p>これは参照がnullである例とは違い、値を持たないNullableからValueを取得しようとしています。実行時には通常<code>InvalidOperationException</code>になります。例外の型まで同じだと決めつけず、対象が参照型なのかNullable値型なのかを確認します。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">int?</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">actualScore</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">actualScore</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"未受験"</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+<p>期待出力は<code>未受験</code>です。<code>is int actualScore</code>は実際の整数値があるときに、その値をactualScoreへ受け取るパターンです。score=0なら0を表示できるので、未受験と0点を区別できます。別解はHasValueを確認してからValueを読む方法です。</p>
+</section><section class="detail-section"><h2 id="detail-h2-08">null対策を選ぶ基準</h2>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">方法</th>
+<th scope="col">選ぶ場面</th>
+<th scope="col">避けたい使い方</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ガード節</td>
+<td>値なしでは本体を進められない</td>
+<td>何も説明せず黙って失敗を隠す</td>
+</tr>
+<tr>
+<td><code>?.</code></td>
+<td>値があればアクセスする</td>
+<td>必須処理の未実行を見逃す</td>
+</tr>
+<tr>
+<td><code>??</code></td>
+<td>適切な代替値が決まっている</td>
+<td>値なしと本当の0を不用意に同一視</td>
+</tr>
+<tr>
+<td>nullable注釈</td>
+<td>APIの契約を示す</td>
+<td>外部データの実行時検証の代用</td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>他の仕組みで非nullを保証でき、その根拠がある</td>
+<td>警告を一括で消すために乱用</td>
+</tr>
+</tbody>
+</table></div>
+<p>GCは不要なオブジェクトのメモリを再利用可能にする仕組みです。変数へnullを代入すると、その変数からは元の実体へ到達できなくなります。しかし別の参照が残っていれば、実体はそこから利用できます。nullを代入した瞬間にオブジェクトが必ず削除されるわけではありません。</p>
+</section><section class="detail-section"><h2 id="detail-h2-09">段階別の練習</h2>
+<p>基礎課題はnull・空文字・<code>"0"</code>を区別することです。<code>name?.Length ?? -1</code>なら順に-1・0・1になります。-1はこの練習で値なしを識別する表示上の値であり、文字列の実際の長さではありません。</p>
+<p>標準課題は未受験を表す<code>int? score</code>から表示用の文字列を返すことです。nullなら<code>未受験</code>、0なら<code>0点</code>、80なら<code>80点</code>が要件です。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">FormatScore</span><span class="p">(</span><span class="k">null</span><span class="p">));</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">FormatScore</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">FormatScore</span><span class="p">(</span><span class="mi">80</span><span class="p">));</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">FormatScore</span><span class="p">(</span><span class="kt">int?</span><span class="w"> </span><span class="n">score</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">$"{value}点"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">"未受験"</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<p>応用課題は表示名の正規化へ最大20文字という教材上の制約を加えることです。この段階ではLengthによるUTF-16コード単位数を基準とする、と要件へ明示します。null確認前にLengthを読むと本末転倒です。まず正規化し、返された非nullの文字列へ長さの規則を適用します。ユーザーが見る文字数で制限する場合は別の文字の数え方を検討します。</p>
+</section><section class="worked-example" id="worked-detail"><div class="section-kicker">境界値・比較</div><h2 id="worked-detail-heading">境界・比較例：null条件演算子と既定値</h2><p>?.は対象がnullなら後続のLengthへアクセスしません。空文字は存在する文字列なのでLengthの0が返ります。</p><div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · Program.cs</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre tabindex="0"><code class="language-csharp syntax-code"><span class="kt">string?</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="kt">string?</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">""</span><span class="p">;</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">first</span><span class="o">?.</span><span class="n">Length</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">second</span><span class="o">?.</span><span class="n">Length</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">);</span></code></pre></div><div class="expected-result"><h3 id="section-12">想定出力</h3><pre tabindex="0"><code>-1
+0</code></pre></div><a class="sample-download" download="" href="../samples/visual/08/detail/example.zip">サンプル一式</a> <a class="sample-download" download="Lesson08-detail.cs" href="../samples/visual/08/detail/Program.cs">Program.cs</a></section><section class="source-section"><h2 id="sources">公式資料</h2><p>確認日：2026年9月14日。本文の理解を補うための資料です。学習対象は.NET 10 / C# 14です。パッチ番号は固定しません。</p><ul><li><a href="https://learn.microsoft.com/ja-jp/dotnet/csharp/fundamentals/null-safety/nullable-reference-types" rel="noopener noreferrer" target="_blank">null許容参照型</a></li><li><a href="https://learn.microsoft.com/ja-jp/dotnet/csharp/language-reference/builtin-types/nullable-value-types" rel="noopener noreferrer" target="_blank">null許容値型</a></li></ul></section><nav aria-label="詳細解説の前後" class="prev-next"><a href="07.html">← 前の詳細解説<br/>メソッドと引数</a><a href="09.html">次の詳細解説 →<br/>クラスとコンストラクター</a></nav></article></main><aside aria-label="用語" class="right-toc glossary-rail"><details class="glossary-panel" id="page-terms" open=""><summary>このページの用語 <span aria-hidden="true">＋</span></summary><h2>このページで押さえる用語</h2><section class="rail-terms"><details class="term-entry details" data-term="参照" id="local-term-046"><summary><b>参照</b><span class="term-definition">参照型の実体へアクセスするための値です。</span></summary><div><dl><dt>役割</dt><dd>変数からオブジェクトへ到達します。</dd><dt>なぜ必要か</dt><dd>参照のコピーでは実体全体を複製しないことを理解します。</dd><dt>具体例</dt><dd>var b = a;の後、aとbが同じListを指す。</dd></dl></div></details><details class="term-entry details" data-term="null許容参照型" id="local-term-142"><summary><b>null許容参照型</b><span class="term-definition">nullableが有効なコードでstringとstring?を区別し、nullの可能性をコンパイル時に追います。実行時の別の参照型を作る仕組みではありません。外部入力や既存コードからの値には境界での検証が必要です。</span></summary><div><dl><dt>役割</dt><dd>参照がない可能性を型の注釈と解析で表す。</dd><dt>なぜ必要か</dt><dd>nullを確認せず利用する危険をコンパイル時の警告で見つける。</dd><dt>具体例</dt><dd>string? name = Console.ReadLine();</dd></dl><p class="term-caution"><b>混同しやすい点：</b>!は警告抑制でありnullを除去する実行処理ではない。</p></div></details><details class="term-entry details" data-term="null条件演算子 ?." id="local-term-143"><summary><b>null条件演算子 ?.</b><span class="term-definition">左がnullならメンバーへ触れずnullを返します。左が存在しているときは通常どおり呼び出すので、そのメソッド自身の例外まで捕捉するわけではありません。結果型がnullableになる場合も確認します。</span></summary><div><dl><dt>役割</dt><dd>参照がnullでなければメンバーへアクセスする。</dd><dt>なぜ必要か</dt><dd>参照がないケースと、あるケースの安全な読み取りを表す。</dd><dt>具体例</dt><dd>int? length = name?.Length;</dd></dl><p class="term-caution"><b>混同しやすい点：</b>業務上必須な欠損を無言で無視してよいかは別の判断。</p></div></details><details class="term-entry details" data-term="null合体演算子 ??" id="local-term-144"><summary><b>null合体演算子 ??</b><span class="term-definition">左がnullのときだけ右を評価して代替値を返します。空文字、false、0をnull扱いする演算子ではありません。既定値を補うと欠損の情報が失われるので、入力検証より前に安易に使わないようにします。</span></summary><div><dl><dt>役割</dt><dd>左辺がnullなら代わりの値を選ぶ。</dd><dt>なぜ必要か</dt><dd>欠損時に使う値を明確にし、nullを以降へ流さない判断を表す。</dd><dt>具体例</dt><dd>string label = name ?? "未入力";</dd></dl><p class="term-caution"><b>混同しやすい点：</b>name=""なら空文字のまま。</p></div></details><details class="term-entry details" data-term="例外" id="local-term-033"><summary><b>例外</b><span class="term-definition">通常の戻り値とは別に、処理の失敗などを伝えて実行経路を変える仕組みです。</span></summary><div><dl><dt>役割</dt><dd>現在の処理から適切なcatchまで失敗を伝えます。</dd><dt>なぜ必要か</dt><dd>ファイルが読めないなど、正常経路を続けられない状況を表します。</dd><dt>具体例</dt><dd>int.Parse("abc")は変換に失敗して例外になる。</dd></dl></div></details><details class="term-entry details" data-term="型" id="local-term-018"><summary><b>型</b><span class="term-definition">扱える値の種類と、その値に許される操作を定める規則です。</span></summary><div><dl><dt>役割</dt><dd>誤った値の組み合わせを防ぎ、コードの契約を示します。</dd><dt>なぜ必要か</dt><dd>点数の整数と利用者名の文字列では意味や操作が異なります。</dd><dt>具体例</dt><dd>int score = 80;ではscoreは整数の変数。</dd></dl></div></details><details class="term-entry details" data-term="値型" id="local-term-048"><summary><b>値型</b><span class="term-definition">代入などで、その値をコピーする型です。</span></summary><div><dl><dt>役割</dt><dd>小さな値や値のまとまりを扱います。</dd><dt>なぜ必要か</dt><dd>別の変数への代入後にどこまで独立するかを判断します。</dd><dt>具体例</dt><dd>int、bool、struct。struct内の参照は参照の値としてコピーされる。</dd></dl></div></details></section></details></aside></div><dialog aria-label="教材検索" class="dialog" id="search-dialog"><div class="dialog-head"><input aria-label="教材を検索" placeholder="型、LINQ、async、Web API…" type="search"/><button class="plain-btn" onclick="this.closest('dialog').close()" type="button">閉じる</button></div><div class="dialog-body" data-search-results=""><p>検索語を入力してください。</p></div></dialog><script src="../assets/js/course-meta.js"></script><script src="../assets/js/search-index.js"></script><script src="../assets/js/site.js"></script><script defer="" src="../assets/js/expanded.js"></script><p aria-live="polite" class="storage-warning" data-storage-warning="" hidden="" role="status"></p><script defer="" src="../assets/js/visual.js"></script></body></html>

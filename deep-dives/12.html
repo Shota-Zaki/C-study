@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="利用側と実装の間の契約。" name="description"/><meta content="#4f46e5" name="theme-color"/><meta content="website" property="og:type"/><meta content="12 インターフェイスと差し替え — 詳細解説" property="og:title"/><meta content="「何ができるか」を契約にし、外から実装を渡す。" property="og:description"/><meta content="C# Learning Lab" property="og:site_name"/><meta content="summary" name="twitter:card"/><link href="../assets/icons/favicon.svg" rel="icon"/><link href="../assets/css/site.css" rel="stylesheet"/><title>12 インターフェイスと差し替え — 詳細解説 | C# Learning Lab</title><link href="../assets/css/expanded.css" rel="stylesheet"/><link href="../assets/css/visual.css" rel="stylesheet"/></head><body data-base="../" data-current-lesson="12" data-deep-lesson="12" data-page-kind="詳細解説"><a class="skip-link" href="#main">本文へスキップ</a><header class="topbar"><button aria-controls="course-nav" aria-expanded="false" aria-label="コースメニューを開く" class="icon-btn mobile-only" data-drawer="open" type="button">☰</button><a class="brand" href="../index.html"><span class="brand-mark">C#</span><span>C# Learning Lab</span></a><div class="top-actions"><button class="search-btn" data-open-search="" type="button"><span>教材を検索</span><kbd>Ctrl K</kbd>⌕</button><a aria-label="設定" class="icon-btn" href="../settings.html">⚙</a></div></header><div class="layout"><div aria-label="現在の読書位置" class="reading-position" role="navigation"><a href="#main">先頭</a><span class="reading-title">12 インターフェイスと差し替え — 詳細解説</span><span data-reading-count=""></span><button class="position-menu" data-show-toc="" type="button">目次</button><span aria-hidden="true" class="reading-track"><span data-reading-progress=""></span></span></div><nav aria-label="コースナビゲーション" class="left-nav" id="course-nav"><button class="plain-btn drawer-close" data-drawer="close" type="button">閉じる</button><div class="nav-heading">LESSONS <span>32</span></div><details class="chapter-group" data-chapter="1"><summary class="chapter-title"><span class="chapter-number">Chapter 01</span><span>C#と.NETの基礎</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/01.html"><span class="num">01</span><span>C#と.NET、最初の実行</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/02.html"><span class="num">02</span><span>Program・名前空間・using</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/03.html"><span class="num">03</span><span>型・var・定数</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/04.html"><span class="num">04</span><span>文字列と入力の変換</span></a></div></details><details class="chapter-group" data-chapter="2"><summary class="chapter-title"><span class="chapter-number">Chapter 02</span><span>条件分岐・反復・メソッド</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/05.html"><span class="num">05</span><span>条件分岐とパターン</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/06.html"><span class="num">06</span><span>配列と繰り返し</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/07.html"><span class="num">07</span><span>メソッドと引数</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/08.html"><span class="num">08</span><span>nullを型と分岐で扱う</span></a></div></details><details class="chapter-group current-chapter" data-chapter="3" open=""><summary class="chapter-title"><span class="chapter-number">Chapter 03</span><span>オブジェクト指向</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/09.html"><span class="num">09</span><span>クラスとコンストラクター</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/10.html"><span class="num">10</span><span>プロパティとカプセル化</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/11.html"><span class="num">11</span><span>継承・virtual・override</span></a></div><div class="lesson-item current-lesson"><a class="lesson-link" href="../lessons/12.html"><span class="num">12</span><span>インターフェイスと差し替え</span></a><a aria-current="page" class="detail-nav-link" href="../deep-dives/12.html">詳細解説</a><nav aria-label="このページの目次" class="lesson-toc"><div class="toc-label">このページの目次</div><a href="#visual-heading">図解：利用側と実装の間の契約</a><a href="#detail-h2-01">インターフェイスと実装の契約</a><a href="#detail-h2-02">最小例：共通の型で実装を呼ぶ</a><a href="#detail-h2-03">依存関係をコンストラクターで受け取る</a><a href="#detail-h2-04">実用例：出力せず記録する部品へ差し替える</a><a href="#detail-h2-05">間違い：インターフェイスをnewする</a><a href="#detail-h2-06">間違い：実装のアクセス範囲が合わない</a><a href="#detail-h2-07">abstract classとの比較</a><a href="#detail-h2-08">段階別の練習</a><a href="#worked-detail-heading">境界・比較例：通知を記録するテスト用実装</a><a href="#sources">公式資料</a></nav></div></details><details class="chapter-group" data-chapter="4"><summary class="chapter-title"><span class="chapter-number">Chapter 04</span><span>型・コレクション・例外</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/13.html"><span class="num">13</span><span>値型と参照型</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/14.html"><span class="num">14</span><span>recordと等値性</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/15.html"><span class="num">15</span><span>ジェネリックとコレクション</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/16.html"><span class="num">16</span><span>例外処理とusing</span></a></div></details><details class="chapter-group" data-chapter="5"><summary class="chapter-title"><span class="chapter-number">Chapter 05</span><span>ラムダ式とLINQ</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/17.html"><span class="num">17</span><span>ラムダ・デリゲート・イベント</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/18.html"><span class="num">18</span><span>LINQで絞り込み・変換</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/19.html"><span class="num">19</span><span>遅延実行と集計</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/20.html"><span class="num">20</span><span>enum・タプル・拡張メソッド</span></a></div></details><details class="chapter-group" data-chapter="6"><summary class="chapter-title"><span class="chapter-number">Chapter 06</span><span>保存・日時・非同期処理</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/21.html"><span class="num">21</span><span>ファイルとJSON</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/22.html"><span class="num">22</span><span>日時とカルチャー</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/23.html"><span class="num">23</span><span>asyncとawait</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/24.html"><span class="num">24</span><span>複数タスクとキャンセル</span></a></div></details><details class="chapter-group" data-chapter="7"><summary class="chapter-title"><span class="chapter-number">Chapter 07</span><span>構成・テスト・HTTP</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/25.html"><span class="num">25</span><span>プロジェクトとNuGet</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/26.html"><span class="num">26</span><span>デバッグと単体テスト</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/27.html"><span class="num">27</span><span>責務の分離と入力検証</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/28.html"><span class="num">28</span><span>HttpClientでHTTPを扱う</span></a></div></details><details class="chapter-group" data-chapter="8"><summary class="chapter-title"><span class="chapter-number">Chapter 08</span><span>ASP.NET Core Web API</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/29.html"><span class="num">29</span><span>ASP.NET Coreの最小API</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/30.html"><span class="num">30</span><span>入力検証とHTTPステータス</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/31.html"><span class="num">31</span><span>DI・設定・ログ</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/32.html"><span class="num">32</span><span>APIの検証と統合</span></a></div></details><div class="nav-footer"><a class="lesson-link" href="../projects/index.html">制作課題 3件</a><a class="lesson-link" href="../settings.html">学習データ設定</a><div class="progress-label"><span>進捗</span><strong data-progress-text="">0 / 32</strong></div><div class="mini-progress"><span data-progress-bar=""></span></div><p class="supplement-nav"><a href="../guides/index.html">詳細解説・学習ガイド</a><a href="../guides/glossary.html">用語集</a><a href="../guides/errors.html">エラーの調べ方</a></p></div></nav><main class="content-wrap" id="main"><article class="article"><div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../guides/index.html">学習ガイド</a> / 詳細解説</div><header class="lesson-head"><div class="eyebrow">C# Learning Lab · 詳細解説</div><h1>12 インターフェイスと差し替え — 詳細解説</h1><p class="lead">利用側と実装の間の契約。</p><div class="meta-row"><span class="badge">.NET 10 / C# 14</span></div></header><nav aria-label="レッスンのページ" class="lesson-tabs"><a href="../lessons/12.html">本文・演習</a><a aria-current="page" href="../deep-dives/12.html">詳細解説</a></nav><aside class="key-point"><span>重要</span><strong>インターフェイスは呼び出せる操作の契約です。利用側を具体的な実装から切り離せます。</strong></aside><section class="visual-section" id="visual-model"><h2 id="visual-heading">図解：利用側と実装の間の契約</h2><figure class="lesson-diagram"><div aria-label="利用側と実装の間の契約" class="diagram-scroll" role="region" tabindex="0"><img alt="利用側と実装の間の契約。OrderService：通知先の詳細を知らない。INotifier：Send(string)を定義。ConsoleNotifier：画面へ出力する実装。別の実装：契約を満たせば差し替え" height="350" loading="lazy" src="../assets/diagrams/lesson-12.svg" width="760"/></div><figcaption>利用側が依存するのはINotifierです。コンストラクターで実装を受け取ると、利用側でnewする依存を減らせます。</figcaption></figure></section><section class="detail-section"><h2 id="detail-h2-01">インターフェイスと実装の契約</h2>
+<p>インターフェイスは、型が提供する操作などの契約を定義する仕組みです。通知を利用する処理にとって重要なのは「指定した文字列を通知できること」であり、毎回具体的な出力先の内部を知る必要はありません。利用側が契約だけを受け取れば、実際の部品を差し替えられます。</p>
+<p>実装とは、契約で要求された操作を具体的なコードで提供することです。<code>INotifier</code>に<code>Send(string message)</code>があれば、それを実装するクラスは対応する操作を提供します。名前の先頭のIはインターフェイスを識別しやすくする慣習で、文法上の必須条件ではありません。</p>
+<p>契約は「どんなメンバーが存在するか」だけではありません。何を受け取り、何を行い、失敗をどう知らせるかも、設計上の約束です。同じSendでも、一方は空文字を無視し、もう一方は例外を投げるなら、利用側はその違いを理解する必要があります。シグネチャとは名前・パラメーターなどメンバーを識別する構造で、振る舞いの契約すべてを表すものではありません。</p>
+</section><section class="detail-section"><h2 id="detail-h2-02">最小例：共通の型で実装を呼ぶ</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="n">INotifier</span><span class="w"> </span><span class="n">notifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ConsoleNotifier</span><span class="p">();</span>
+<span class="n">notifier</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="s">"保存しました"</span><span class="p">);</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">INotifier</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Send</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ConsoleNotifier</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">INotifier</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Send</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"通知: {message}"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<p>期待出力は<code>通知: 保存しました</code>です。<code>interface</code>で契約を宣言し、クラス名の後の<code>: INotifier</code>で実装することを示します。通常の暗黙的実装では要求されるメンバーをpublicとして提供します。<code>void</code>は戻り値を返さない指定です。</p>
+<figure class="concept-diagram flow"><figcaption>処理の流れ</figcaption><ol><li><span class="step-number">1</span><div><b>利用側</b><p>INotifier.Sendを必要とする</p></div></li><li><span class="step-number">2</span><div><b>INotifier</b><p>Send(string)という契約</p></div></li><li><span class="step-number">3</span><div><b>ConsoleNotifierの実体</b><p>Sendの具体的な実装</p></div></li><li><span class="step-number">4</span><div><b>画面表示</b><p>「通知: 保存しました」</p></div></li></ol></figure><p>notifier変数の宣言型はINotifier、実体はConsoleNotifierです。コンパイラーは契約を通して使える操作を確認し、実行時はその実体の実装へ呼び出しをつなぎます。<a class="term-link" href="#local-term-149" title="利用側に必要な操作の契約を型として表します。具象実装を差し替えたり、テスト用の実装を渡したりできます。ただしすべての小さなクラスへ機械的にinterfaceを増やす必要はありません。">interface</a>という独立した送信機械が裏側で生成されるわけではありません。</p>
+</section><section class="detail-section"><h2 id="detail-h2-03">依存関係をコンストラクターで受け取る</h2>
+<p><a class="term-link" href="#local-term-098" title="ある部品が動くために別の部品を必要とする関係です。">依存関係</a>とは、ある処理が動くために必要とする別の部品です。ReportServiceが通知部品を必要とするなら、通知部品への依存があります。依存性の注入、DIは、その部品を内部で固定してnewするのではなく外から渡す設計です。特定のフレームワークがなくても、コンストラクターで手渡せばDIになります。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">var</span><span class="w"> </span><span class="n">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ReportService</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ConsoleNotifier</span><span class="p">());</span>
+<span class="n">service</span><span class="p">.</span><span class="n">Complete</span><span class="p">(</span><span class="s">"売上集計"</span><span class="p">);</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">INotifier</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Send</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ConsoleNotifier</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">INotifier</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Send</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"通知: {message}"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ReportService</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">INotifier</span><span class="w"> </span><span class="n">_notifier</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">ReportService</span><span class="p">(</span><span class="n">INotifier</span><span class="w"> </span><span class="n">notifier</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_notifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">notifier</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Complete</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">reportName</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_notifier</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="s">$"{reportName}が完了しました"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<p>期待出力は<code>通知: 売上集計が完了しました</code>です。まず通知部品を作り、その参照をReportServiceへ渡します。コンストラクターで_notifierへ保存し、Completeで利用します。<code>readonly</code>はこのフィールドを後から別の参照へ差し替える箇所を制限します。参照先の部品の内部状態まで変更不能になるわけではありません。</p>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">時点</th>
+<th scope="col">生成・処理</th>
+<th scope="col">保持する関係</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>①</td>
+<td>ConsoleNotifierを生成</td>
+<td>通知実体A</td>
+</tr>
+<tr>
+<td>②</td>
+<td>ReportServiceを生成</td>
+<td>サービスBがAを参照</td>
+</tr>
+<tr>
+<td>③</td>
+<td>Completeを呼ぶ</td>
+<td>通知文を組み立てる</td>
+</tr>
+<tr>
+<td>④</td>
+<td>_notifier.Sendを呼ぶ</td>
+<td>Aが表示処理を行う</td>
+</tr>
+</tbody>
+</table></div>
+<p>ASP.NET CoreではDIコンテナーという「登録に基づき部品を生成・供給する仕組み」を使えますが、その前にこの手渡しの関係を理解します。Lesson 31の登録・解決・寿命も、魔法ではなくこのオブジェクトのつながりの管理です。</p>
+</section><section class="detail-section"><h2 id="detail-h2-04">実用例：出力せず記録する部品へ差し替える</h2>
+<p>検証では、画面や外部サービスへ本当に通知せず、どんな内容が渡されたかを調べたいことがあります。この例は最後のメッセージを保持する実装に差し替えます。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">var</span><span class="w"> </span><span class="n">recorder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RecordingNotifier</span><span class="p">();</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ReportService</span><span class="p">(</span><span class="n">recorder</span><span class="p">);</span>
+<span class="n">service</span><span class="p">.</span><span class="n">Complete</span><span class="p">(</span><span class="s">"在庫集計"</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">recorder</span><span class="p">.</span><span class="n">LastMessage</span><span class="p">);</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">INotifier</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Send</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">RecordingNotifier</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">INotifier</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string?</span><span class="w"> </span><span class="n">LastMessage</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Send</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">LastMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">message</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ReportService</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">INotifier</span><span class="w"> </span><span class="n">_notifier</span><span class="p">;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">ReportService</span><span class="p">(</span><span class="n">INotifier</span><span class="w"> </span><span class="n">notifier</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_notifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">notifier</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Complete</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">reportName</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_notifier</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="s">$"{reportName}が完了しました"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<p>期待出力は<code>在庫集計が完了しました</code>です。通知の呼び出し前はLastMessage=null、呼び出し後は組み立てられた文字列です。ReportServiceのコードは通知先の変更を知る必要がありません。記録する実装を利用して、正しいメッセージが渡されたかを検証できます。これがLesson 26の<a class="term-link" href="#local-term-175" title="小さな対象へ入力を渡し、仕様から決めた期待値と実際の値を自動比較します。Arrange・Act・Assertに分け、境界と失敗条件も確認します。不具合修正では旧実装で失敗することを確かめます。">単体テスト</a>へつながります。</p>
+<p>この小さな実装は最後の一件だけを記録します。呼び出し回数やすべての通知内容を検証するなら、Listなどで履歴を持つ設計へ広げます。何を検証したいかによってテスト用の部品の状態も決めます。</p>
+</section><section class="detail-section"><h2 id="detail-h2-05">間違い：インターフェイスをnewする</h2>
+<div class="codebox" data-code-kind="csharp-error"><div class="codehead"><span>C# · 失敗を学ぶ例（そのまま起動しない）</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp-error syntax-code"><span class="n">INotifier</span><span class="w"> </span><span class="n">notifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">INotifier</span><span class="p">();</span>
+<span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">INotifier</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Send</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+<p>インターフェイスは通常の具体的な実体を直接生成する型ではないため、コンパイルエラーになります。契約だけでは、通知の具体的な処理とインスタンスの作り方が決まっていません。</p>
+<p>修正位置はnewの型です。最小例のように<code>new ConsoleNotifier()</code>を生成し、INotifier型の変数で受け取ります。DIコンテナーを使う場合も、裏側では登録した具体的な実装を選んで生成します。登録なしでも名前だけで都合のよい実装が見つかる、とは考えません。</p>
+</section><section class="detail-section"><h2 id="detail-h2-06">間違い：実装のアクセス範囲が合わない</h2>
+<div class="codebox" data-code-kind="csharp-error"><div class="codehead"><span>C# · 失敗を学ぶ例（そのまま起動しない）</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp-error syntax-code"><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">INotifier</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Send</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ConsoleNotifier</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">INotifier</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Send</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<p>この例は通常の暗黙的実装として契約を満たしません。外から呼べる契約なのに、対応するメソッドをprivateにしています。修正位置は実装のアクセス修飾子です。<code>public void Send</code>へ変えます。</p>
+<p>明示的インターフェイス実装という別の書き方もあります。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="n">INotifier</span><span class="w"> </span><span class="n">notifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ConsoleNotifier</span><span class="p">();</span>
+<span class="n">notifier</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="s">"確認"</span><span class="p">);</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">INotifier</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Send</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ConsoleNotifier</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">INotifier</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="n">INotifier</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<p>期待出力は確認です。<code>void INotifier.Send</code>はインターフェイス経由で利用する明示的な実装です。このメソッドへ通常のpublic/privateを付ける書き方ではありません。具体型からそのまま<code>new ConsoleNotifier().Send(...)</code>とは呼べない点も、暗黙的実装と異なります。</p>
+</section><section class="detail-section"><h2 id="detail-h2-07">abstract classとの比較</h2>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">観点</th>
+<th scope="col">抽象クラス</th>
+<th scope="col">インターフェイス</th>
+<th scope="col">判断の目安</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主な目的</td>
+<td>共通の土台と状態・実装をまとめる</td>
+<td>必要な能力・操作の契約を定める</td>
+<td>共有したいのは実装か、契約か</td>
+</tr>
+<tr>
+<td>クラスからの利用</td>
+<td>直接の基底クラスは一つ</td>
+<td>複数を実装できる</td>
+<td>別系統の型にも契約を付けたいか</td>
+</tr>
+<tr>
+<td>インスタンス状態</td>
+<td>フィールドやコンストラクターを持てる</td>
+<td>通常のインスタンスフィールドは持たない</td>
+<td>共通の保存状態が必要か</td>
+</tr>
+<tr>
+<td>実装</td>
+<td>一部を共通化できる</td>
+<td>既定実装を持てる機能もある</td>
+<td>機能があることと乱用することは別</td>
+</tr>
+</tbody>
+</table></div>
+<p>現行C#のインターフェイスは「すべて本体なしのメソッドだけ」とは限りません。既定実装やstatic関連のメンバーもあります。ただし、この段階ではインスタンス操作の契約と、別のクラスによる実装という基本に集中します。複雑な機能を知っていても、利用側に不要な操作を大量に要求する契約は避けます。</p>
+<p>インターフェイスを全クラスへ機械的に一つずつ作る必要もありません。差し替え、テスト、複数実装、外部部品との境界など、実際の変更理由を考えます。小さな内部計算だけに一対一の契約を増やすと、追うファイルが増えるだけの場合があります。</p>
+</section><section class="detail-section"><h2 id="detail-h2-08">段階別の練習</h2>
+<p>基礎課題は、接頭辞<code>記録:</code>を付けて画面へ表示する別のINotifier実装を作ることです。ReportServiceを変更せず、生成箇所だけ差し替えて結果を確かめます。</p>
+<p>標準課題はRecordingNotifierへ呼び出し回数Countを追加します。Completeを二回呼ぶ入力に対してCount=2、LastMessageは二回目の通知です。増分処理はSend内に置き、ReportService側が記録用の型を知らなくても状態が更新されるようにします。</p>
+<p>応用課題はReportServiceのコンストラクターでnullを拒否することです。<code>_notifier = notifier ?? throw new ArgumentNullException(nameof(notifier));</code>が解答例です。null合体で、値があれば保存し、なければ例外で生成を拒否します。非null注釈だけに依存せず、部品を受け取る境界を明確にします。</p>
+</section><section class="worked-example" id="worked-detail"><div class="section-kicker">境界値・比較</div><h2 id="worked-detail-heading">境界・比較例：通知を記録するテスト用実装</h2><p>外部へ送信しない実装でも、INotifierの契約を満たします。テストでは保存されたLastMessageを期待値と比較できます。</p><div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · Program.cs</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre tabindex="0"><code class="language-csharp syntax-code"><span class="kt">var</span><span class="w"> </span><span class="n">notifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RecordingNotifier</span><span class="p">();</span>
+<span class="n">notifier</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="s">"発送完了"</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">notifier</span><span class="p">.</span><span class="n">LastMessage</span><span class="p">);</span>
+<span class="k">interface</span><span class="w"> </span><span class="n">INotifier</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="n">Send</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">RecordingNotifier</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">INotifier</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string?</span><span class="w"> </span><span class="n">LastMessage</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Send</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">LastMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">message</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span></code></pre></div><div class="expected-result"><h3 id="section-11">想定出力</h3><pre tabindex="0"><code>発送完了</code></pre></div><a class="sample-download" download="" href="../samples/visual/12/detail/example.zip">サンプル一式</a> <a class="sample-download" download="Lesson12-detail.cs" href="../samples/visual/12/detail/Program.cs">Program.cs</a></section><section class="source-section"><h2 id="sources">公式資料</h2><p>確認日：2026年9月14日。本文の理解を補うための資料です。学習対象は.NET 10 / C# 14です。パッチ番号は固定しません。</p><ul><li><a href="https://learn.microsoft.com/ja-jp/dotnet/csharp/language-reference/keywords/interface" rel="noopener noreferrer" target="_blank">インターフェイス</a></li><li><a href="https://learn.microsoft.com/ja-jp/dotnet/core/extensions/dependency-injection" rel="noopener noreferrer" target="_blank">.NETの依存性注入</a></li></ul></section><nav aria-label="詳細解説の前後" class="prev-next"><a href="11.html">← 前の詳細解説<br/>継承・virtual・override</a><a href="13.html">次の詳細解説 →<br/>値型と参照型</a></nav></article></main><aside aria-label="用語" class="right-toc glossary-rail"><details class="glossary-panel" id="page-terms" open=""><summary>このページの用語 <span aria-hidden="true">＋</span></summary><h2>このページで押さえる用語</h2><section class="rail-terms"><details class="term-entry details" data-term="interface" id="local-term-149"><summary><b>interface</b><span class="term-definition">利用側に必要な操作の契約を型として表します。具象実装を差し替えたり、テスト用の実装を渡したりできます。ただしすべての小さなクラスへ機械的にinterfaceを増やす必要はありません。</span></summary><div><dl><dt>役割</dt><dd>利用側へ、必要な操作の契約を提示する。</dd><dt>なぜ必要か</dt><dd>具体的な保存先や通知先を固定せずに呼び出す。</dd><dt>具体例</dt><dd>public interface IClock { DateOnly Today { get; } }</dd></dl><p class="term-caution"><b>混同しやすい点：</b>変更理由や依存の境界がある場所へ導入する。</p></div></details><details class="term-entry details" data-term="依存関係" id="local-term-098"><summary><b>依存関係</b><span class="term-definition">ある部品が動くために別の部品を必要とする関係です。</span></summary><div><dl><dt>役割</dt><dd>構成や変更の影響を表します。</dd><dt>なぜ必要か</dt><dd>必要な型やサービスがどこから来るかを追えるようにします。</dd><dt>具体例</dt><dd>OrderServiceが通知用のINotifierを使う。</dd></dl></div></details><details class="term-entry details" data-term="DI（依存性注入）" id="local-term-150"><summary><b>DI（依存性注入）</b><span class="term-definition">必要な相手を内部で固定してnewする代わりに、外部から渡します。手動のコンストラクター注入でもDIであり、コンテナーはその生成と寿命管理を助ける道具です。時計やデータ取得先を差し替える例では、本番の依存と固定値を返すテスト用の依存を同じ契約で使えます。</span></summary><div><dl><dt>役割</dt><dd>必要な部品を利用する部品の外から渡す。</dd><dt>なぜ必要か</dt><dd>本番用の実装とテスト用の実装を、利用側を書き換えずに切り替える。</dd><dt>具体例</dt><dd>public Service(IClock clock) { /* 依存を受け取る */ }</dd></dl><p class="term-caution"><b>混同しやすい点：</b>依存の取得を内部へ隠すService Locatorとは分ける。</p></div></details><details class="term-entry details" data-term="デリゲート" id="local-term-073"><summary><b>デリゲート</b><span class="term-definition">入力と戻り値が決まった、呼び出せる処理を表す型です。</span></summary><div><dl><dt>役割</dt><dd>メソッドなどを値として受け渡します。</dd><dt>なぜ必要か</dt><dd>処理を後から選ぶ・登録する・組み合わせるために使います。</dd><dt>具体例</dt><dd>Func&lt;int,bool&gt;が整数から真偽値を返す処理を表す。</dd></dl></div></details><details class="term-entry details" data-term="ポリモーフィズム" id="local-term-055"><summary><b>ポリモーフィズム</b><span class="term-definition">共通の型の操作を通じて、具体的な実体ごとの処理が選ばれる性質です。</span></summary><div><dl><dt>役割</dt><dd>呼び出し側を具体的な型ごとの分岐から切り離します。</dd><dt>なぜ必要か</dt><dd>対象が増えても共通の呼び出し方を維持できます。</dd><dt>具体例</dt><dd>ShapeのAreaを呼ぶとCircleのoverrideが動く。</dd></dl></div></details><details class="term-entry details" data-term="単体テスト" id="local-term-175"><summary><b>単体テスト</b><span class="term-definition">小さな対象へ入力を渡し、仕様から決めた期待値と実際の値を自動比較します。Arrange・Act・Assertに分け、境界と失敗条件も確認します。不具合修正では旧実装で失敗することを確かめます。</span></summary><div><dl><dt>役割</dt><dd>小さな部品へ入力を与え、期待される振る舞いを確認する。</dd><dt>なぜ必要か</dt><dd>問題の原因を絞り、変更しても規則が保たれるかを繰り返し調べる。</dd><dt>具体例</dt><dd>Assert.Equal(0, Shipping(3000));</dd></dl><p class="term-caution"><b>混同しやすい点：</b>関数呼び出しだけではHTTPルートやJSONバインドを検証していない。</p></div></details></section></details></aside></div><dialog aria-label="教材検索" class="dialog" id="search-dialog"><div class="dialog-head"><input aria-label="教材を検索" placeholder="型、LINQ、async、Web API…" type="search"/><button class="plain-btn" onclick="this.closest('dialog').close()" type="button">閉じる</button></div><div class="dialog-body" data-search-results=""><p>検索語を入力してください。</p></div></dialog><script src="../assets/js/course-meta.js"></script><script src="../assets/js/search-index.js"></script><script src="../assets/js/site.js"></script><script defer="" src="../assets/js/expanded.js"></script><p aria-live="polite" class="storage-warning" data-storage-warning="" hidden="" role="status"></p><script defer="" src="../assets/js/visual.js"></script></body></html>

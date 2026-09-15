@@ -1,9 +1,0 @@
-_site/
-.preview/
-.test-results/
-node_modules/
-__pycache__/
-*.pyc
-**/bin/
-**/obj/
-.DS_Store

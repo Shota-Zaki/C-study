@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="画面の入力がAPIへ届き、型・サービス・状態・HTTP応答へ変わるまでを一つの流れで追う。" name="description"/><meta content="#4f46e5" name="theme-color"/><meta content="website" property="og:type"/><meta content="HTTP要求・DI・保存・応答の全体像" property="og:title"/><meta content="画面の入力がAPIへ届き、型・サービス・状態・HTTP応答へ変わるまでを一つの流れで追う。" property="og:description"/><meta content="C# Learning Lab" property="og:site_name"/><meta content="summary" name="twitter:card"/><link href="../assets/icons/favicon.svg" rel="icon"/><link href="../assets/css/site.css" rel="stylesheet"/><title>HTTP要求・DI・保存・応答の全体像 | C# Learning Lab</title><link href="../assets/css/expanded.css" rel="stylesheet"/><link href="../assets/css/visual.css" rel="stylesheet"/></head><body data-base="../" data-page-kind="補助教材"><a class="skip-link" href="#main">本文へスキップ</a><header class="topbar"><button aria-controls="course-nav" aria-expanded="false" aria-label="コースメニューを開く" class="icon-btn mobile-only" data-drawer="open" type="button">☰</button><a class="brand" href="../index.html"><span class="brand-mark">C#</span><span>C# Learning Lab</span></a><div class="top-actions"><button class="search-btn" data-open-search="" type="button"><span>教材を検索</span><kbd>Ctrl K</kbd>⌕</button><a aria-label="設定" class="icon-btn" href="../settings.html">⚙</a></div></header><div class="layout"><div aria-label="現在の読書位置" class="reading-position" role="navigation"><a href="#main">先頭</a><span class="reading-title">HTTP要求・DI・保存・応答の全体像</span><span data-reading-count=""></span><button class="position-menu" data-show-toc="" type="button">目次</button><span aria-hidden="true" class="reading-track"><span data-reading-progress=""></span></span></div><nav aria-label="コースナビゲーション" class="left-nav" id="course-nav"><button class="plain-btn drawer-close" data-drawer="close" type="button">閉じる</button><div class="nav-heading">LESSONS <span>32</span></div><details class="chapter-group" data-chapter="1"><summary class="chapter-title"><span class="chapter-number">Chapter 01</span><span>C#と.NETの基礎</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/01.html"><span class="num">01</span><span>C#と.NET、最初の実行</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/02.html"><span class="num">02</span><span>Program・名前空間・using</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/03.html"><span class="num">03</span><span>型・var・定数</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/04.html"><span class="num">04</span><span>文字列と入力の変換</span></a></div></details><details class="chapter-group" data-chapter="2"><summary class="chapter-title"><span class="chapter-number">Chapter 02</span><span>条件分岐・反復・メソッド</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/05.html"><span class="num">05</span><span>条件分岐とパターン</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/06.html"><span class="num">06</span><span>配列と繰り返し</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/07.html"><span class="num">07</span><span>メソッドと引数</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/08.html"><span class="num">08</span><span>nullを型と分岐で扱う</span></a></div></details><details class="chapter-group" data-chapter="3"><summary class="chapter-title"><span class="chapter-number">Chapter 03</span><span>オブジェクト指向</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/09.html"><span class="num">09</span><span>クラスとコンストラクター</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/10.html"><span class="num">10</span><span>プロパティとカプセル化</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/11.html"><span class="num">11</span><span>継承・virtual・override</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/12.html"><span class="num">12</span><span>インターフェイスと差し替え</span></a></div></details><details class="chapter-group" data-chapter="4"><summary class="chapter-title"><span class="chapter-number">Chapter 04</span><span>型・コレクション・例外</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/13.html"><span class="num">13</span><span>値型と参照型</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/14.html"><span class="num">14</span><span>recordと等値性</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/15.html"><span class="num">15</span><span>ジェネリックとコレクション</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/16.html"><span class="num">16</span><span>例外処理とusing</span></a></div></details><details class="chapter-group" data-chapter="5"><summary class="chapter-title"><span class="chapter-number">Chapter 05</span><span>ラムダ式とLINQ</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/17.html"><span class="num">17</span><span>ラムダ・デリゲート・イベント</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/18.html"><span class="num">18</span><span>LINQで絞り込み・変換</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/19.html"><span class="num">19</span><span>遅延実行と集計</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/20.html"><span class="num">20</span><span>enum・タプル・拡張メソッド</span></a></div></details><details class="chapter-group" data-chapter="6"><summary class="chapter-title"><span class="chapter-number">Chapter 06</span><span>保存・日時・非同期処理</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/21.html"><span class="num">21</span><span>ファイルとJSON</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/22.html"><span class="num">22</span><span>日時とカルチャー</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/23.html"><span class="num">23</span><span>asyncとawait</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/24.html"><span class="num">24</span><span>複数タスクとキャンセル</span></a></div></details><details class="chapter-group" data-chapter="7"><summary class="chapter-title"><span class="chapter-number">Chapter 07</span><span>構成・テスト・HTTP</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/25.html"><span class="num">25</span><span>プロジェクトとNuGet</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/26.html"><span class="num">26</span><span>デバッグと単体テスト</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/27.html"><span class="num">27</span><span>責務の分離と入力検証</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/28.html"><span class="num">28</span><span>HttpClientでHTTPを扱う</span></a></div></details><details class="chapter-group" data-chapter="8"><summary class="chapter-title"><span class="chapter-number">Chapter 08</span><span>ASP.NET Core Web API</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/29.html"><span class="num">29</span><span>ASP.NET Coreの最小API</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/30.html"><span class="num">30</span><span>入力検証とHTTPステータス</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/31.html"><span class="num">31</span><span>DI・設定・ログ</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/32.html"><span class="num">32</span><span>APIの検証と統合</span></a></div></details><details class="page-nav" open=""><summary>このページの目次</summary><a href="#guide-h2-01">「APIを呼ぶ」と「メソッドを呼ぶ」の間にあるもの</a><a href="#guide-h2-02">一つの作成要求を状態表で読む</a><a href="#guide-h2-03">DTOと保存用モデルを分ける理由</a><a href="#guide-h2-04">DIはまず「外から渡す」と理解する</a><a href="#guide-h2-05">DIの寿命は「共有する範囲」</a><a href="#guide-h2-06">HTTPの失敗を原因の層で分ける</a><a href="#guide-h2-07">ミドルウェアは行きと帰りのある流れ</a><a href="#guide-h2-08">単体・統合・実ネットワークの検査を分ける</a><a href="#guide-h2-09">作成から削除までの確認課題</a><a href="#sources">公式資料</a></details><div class="nav-footer"><a class="lesson-link" href="../projects/index.html">制作課題 3件</a><a class="lesson-link" href="../settings.html">学習データ設定</a><div class="progress-label"><span>進捗</span><strong data-progress-text="">0 / 32</strong></div><div class="mini-progress"><span data-progress-bar=""></span></div><p class="supplement-nav"><a href="../guides/index.html">詳細解説・学習ガイド</a><a href="../guides/glossary.html">用語集</a><a href="../guides/errors.html">エラーの調べ方</a></p></div></nav><main class="content-wrap" id="main"><article class="article"><div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../guides/index.html">学習ガイド</a> / 補助教材</div><header class="lesson-head"><div class="eyebrow">C# Learning Lab · 補助教材</div><h1>HTTP要求・DI・保存・応答の全体像</h1><p class="lead">画面の入力がAPIへ届き、型・サービス・状態・HTTP応答へ変わるまでを一つの流れで追う。</p><div class="meta-row"><span class="badge">.NET 10 / C# 14</span></div></header><section class="detail-section"><h2 id="guide-h2-01">「APIを呼ぶ」と「メソッドを呼ぶ」の間にあるもの</h2>
+<p>メソッドを直接呼ぶ場合、同じプログラムの中で型に合った値を渡します。HTTP APIでは、別のプログラムからメソッド・URL・ヘッダー・本文という形で要求が届きます。ASP.NET Coreが要求を受け、対応する処理を選び、入力をC#の型へ対応付けた後で、業務のメソッドを呼びます。</p>
+<p>HTTPは要求と応答の通信規則、APIは他のプログラムから利用するための機能の入口です。JSONは本文に使えるデータ形式であり、HTTPそのものでもC#のオブジェクトそのものでもありません。DTOは受け渡すデータの項目を定義する型です。これらを別の層として読むと、失敗した場所を絞れます。</p>
+<figure class="concept-diagram flow"><figcaption>処理の流れ</figcaption><ol><li><span class="step-number">1</span><div><b>クライアント</b><p>POST /todosとJSONを送る</p></div></li><li><span class="step-number">2</span><div><b>接続・待ち受け</b><p>対象サーバーとポートで要求を受ける</p></div></li><li><span class="step-number">3</span><div><b>共通処理</b><p>例外処理、必要な認証などを通る</p></div></li><li><span class="step-number">4</span><div><b>ルート選択</b><p>メソッドとパスから入口を選ぶ</p></div></li><li><span class="step-number">5</span><div><b>入力の対応付け</b><p>JSONをDTOへ、パスをIDへ変換する</p></div></li><li><span class="step-number">6</span><div><b>入力・業務検証</b><p>空白や在庫不足などを拒否する</p></div></li><li><span class="step-number">7</span><div><b>サービスと保存</b><p>必要な部品を使い、成功時だけ状態を変える</p></div></li><li><span class="step-number">8</span><div><b>応答を作る</b><p>ステータス、ヘッダー、JSONを返す</p></div></li><li><span class="step-number">9</span><div><b>クライアント</b><p>ステータスを確かめて結果を表示する</p></div></li></ol></figure><p>図の認証は概念上の位置づけです。教材のローカル用サンプルに認証が自動的に実装されるという意味ではありません。実際のミドルウェアの順序は構成によって重要になるため、必要な機能を登録した上で、公式の順序と実動作を確認します。</p>
+</section><section class="detail-section"><h2 id="guide-h2-02">一つの作成要求を状態表で読む</h2>
+<p>開始時の保存データが空、次のIDが1とします。<code>{"title":"C#を学ぶ"}</code>という本文を受け取ると、JSONのTitleを読み、空白だけではないかを確認します。正常ならID1のTodoを保存し、201とLocationを返します。次のIDは2になります。</p>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">段階</th>
+<th scope="col">入力・ローカル</th>
+<th scope="col">保存済みデータ</th>
+<th scope="col" style="text-align:right">次ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>要求前</td>
+<td>まだ入力なし</td>
+<td>空</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>JSONを読む</td>
+<td>Title="C#を学ぶ"</td>
+<td>空</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>条件確認</td>
+<td>使用するtitleを確定</td>
+<td>空</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>保存</td>
+<td>Todo(1,title,false)</td>
+<td>ID1の一件</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td>応答</td>
+<td>201、Location=/todos/1</td>
+<td>ID1の一件</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td>続くGET</td>
+<td>ID1を探す</td>
+<td>ID1の一件</td>
+<td style="text-align:right">2</td>
+</tr>
+</tbody>
+</table></div>
+<p>空白だけのタイトルなら検証段階で400を返し、保存と採番へ進ませません。「不正な入力のときにエラーを返した」という確認だけでなく、<strong>在庫や件数などの状態が変わっていないこと</strong>まで検査します。</p>
+</section><section class="detail-section"><h2 id="guide-h2-03">DTOと保存用モデルを分ける理由</h2>
+<p>外から受け取るタイトルと、サーバーが決めるIDは責任が違います。利用者がIDや所有者など内部で決める項目を自由に指定できると、意図しない上書きや権限の問題につながります。小さな学習アプリでも、何を入力として許すかを型で分けると契約が明確になります。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">var</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CreateInput</span><span class="p">(</span><span class="s">"  学習  "</span><span class="p">);</span>
+<span class="kt">string?</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">Title</span><span class="o">?.</span><span class="n">Trim</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrWhiteSpace</span><span class="p">(</span><span class="n">title</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"入力不正"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">saved</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Todo</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="k">false</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"{saved.Id}:{saved.Title}:{saved.Done}"</span><span class="p">);</span>
+
+<span class="k">record</span><span class="w"> </span><span class="nf">CreateInput</span><span class="p">(</span><span class="kt">string?</span><span class="w"> </span><span class="n">Title</span><span class="p">);</span>
+<span class="k">record</span><span class="w"> </span><span class="nf">Todo</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">Id</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Title</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">Done</span><span class="p">);</span></code></pre></div>
+<p>これは通信を行わないコンソール例です。期待される出力は<code>1:学習:False</code>です。入力の空白を除去し、欠損や空白だけを拒否してから保存用の値を作っています。実際のID生成や永続保存はこの例では行っておらず、HTTP全経路を検証したことにもなりません。完成した学習用APIは<a href="../deep-dives/32.html">Lesson 32の詳細</a>で扱います。</p>
+</section><section class="detail-section"><h2 id="guide-h2-04">DIはまず「外から渡す」と理解する</h2>
+<p>依存関係とは、ある部品が働くために別の部品を必要とする関係です。DIは必要な部品を利用する側の外から渡すことです。DIコンテナーは、登録した規則に基づいて部品を作り、必要な場所へ渡す仕組みです。DIとコンテナーは同じ意味ではなく、手でコンストラクターへ渡すだけでも依存を注入できます。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">var</span><span class="w"> </span><span class="n">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GreetingService</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">FixedNameSource</span><span class="p">());</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">service</span><span class="p">.</span><span class="n">Create</span><span class="p">());</span>
+
+<span class="k">interface</span><span class="w"> </span><span class="n">INameSource</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetName</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FixedNameSource</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">INameSource</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetName</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"学習者"</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">GreetingService</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">INameSource</span><span class="w"> </span><span class="n">_source</span><span class="p">;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">GreetingService</span><span class="p">(</span><span class="n">INameSource</span><span class="w"> </span><span class="n">source</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">_source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">source</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">Create</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">$"こんにちは、{_source.GetName()}"</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<p>期待される出力はこんにちは、学習者です。GreetingServiceは具体的な取得元をnewしていません。①外側でFixedNameSourceを作る、②GreetingServiceへ渡す、③Createが契約のGetNameを呼ぶ、④文字列を返す、となります。テストでは同じ契約の別実装を渡せるため、実際の通信や時刻に依存せずに振る舞いを調べられます。</p>
+</section><section class="detail-section"><h2 id="guide-h2-05">DIの寿命は「共有する範囲」</h2>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">寿命</th>
+<th scope="col">基本の再利用範囲</th>
+<th scope="col">Webでの例</th>
+<th scope="col">誤解すると起きること</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Singleton</td>
+<td>コンテナー全体で一つ</td>
+<td>スレッド安全に設計した共有サービス</td>
+<td>利用者の状態が要求間で混ざる</td>
+</tr>
+<tr>
+<td>Scoped</td>
+<td>同じスコープの中</td>
+<td>通常は同じHTTP要求内</td>
+<td>終了した要求の部品を後で使う</td>
+</tr>
+<tr>
+<td>Transient</td>
+<td>解決するごと</td>
+<td>独立した短い処理部品</td>
+<td>同じ状態を共有していると勘違いする</td>
+</tr>
+</tbody>
+</table></div>
+<p>Webの通常の要求はスコープを持ち、終了時にその範囲の管理対象の解放が行われます。ScopedをSingletonへ保持すると、短い寿命のものを長く使う不適切な依存になり得ます。検査で検出される構成もありますが、何でも実行基盤が安全に変換してくれるわけではありません。</p>
+<p>教材の共有TodoStoreがSingletonなら、複数要求が同じDictionaryを操作します。採番、保存、取得の各操作は共有状態です。lockなどで必要な範囲を守り、一覧のコピーも保護内で作ることで、列挙中に更新される問題を避けます。プロセス間で共有されるわけではないので、複数サーバーや再起動をまたぐ保存はDBなど別の基盤が必要です。</p>
+</section><section class="detail-section"><h2 id="guide-h2-06">HTTPの失敗を原因の層で分ける</h2>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">状況</th>
+<th scope="col">見る層</th>
+<th scope="col">教材の基本的な応答・扱い</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>端末名が見つからない</td>
+<td>DNSなど接続前</td>
+<td>HTTPコード自体を受け取れない場合がある</td>
+</tr>
+<tr>
+<td>相手へ接続できない</td>
+<td>ネットワーク・待ち受け</td>
+<td>通信例外や期限切れを調べる</td>
+</tr>
+<tr>
+<td>/todos/abcがint制約に不一致</td>
+<td>ルーティング</td>
+<td>対応ルートがなければ通常404</td>
+</tr>
+<tr>
+<td>JSONが壊れている</td>
+<td>本文の読み取り・対応付け</td>
+<td>基本的に400の入力失敗</td>
+</tr>
+<tr>
+<td>タイトルが空白</td>
+<td>入力・業務検証</td>
+<td>400と修正できる情報</td>
+</tr>
+<tr>
+<td>指定IDがない</td>
+<td>保存データの検索</td>
+<td>404</td>
+</tr>
+<tr>
+<td>重複するコードがある</td>
+<td>現在の保存状態との衝突</td>
+<td>契約に応じて409</td>
+</tr>
+<tr>
+<td>予期しない例外</td>
+<td>サーバー内部</td>
+<td>内部情報を漏らさない500などとログ</td>
+</tr>
+</tbody>
+</table></div>
+<p>同じ400でも、JSONを読めなかった場合と独自検証で拒否した場合では本文の形が同一とは限りません。利用するフレームワークの設定を確認し、統一したいならエラー契約を実装して検査します。nullable注釈だけでHTTP入力の全てが検証されると考えません。</p>
+</section><section class="detail-section"><h2 id="guide-h2-07">ミドルウェアは行きと帰りのある流れ</h2>
+<p>ミドルウェアは次の処理を呼ぶ前後に共通の処理を置いたり、途中で応答を完了したりする部品です。AがBを呼び、Bがエンドポイントを呼ぶなら、後処理はエンドポイントからB、Aへ戻る順になります。この形で例外処理や計測などを共通化できます。</p>
+<figure class="concept-diagram flow"><figcaption>処理の流れ</figcaption><ol><li><span class="step-number">1</span><div><b>Aの前処理</b><p>次のBを呼ぶ</p></div></li><li><span class="step-number">2</span><div><b>Bの前処理</b><p>次のエンドポイントを呼ぶ</p></div></li><li><span class="step-number">3</span><div><b>エンドポイント</b><p>入力を使って結果を返す</p></div></li><li><span class="step-number">4</span><div><b>Bの後処理</b><p>エンドポイントから戻る</p></div></li><li><span class="step-number">5</span><div><b>Aの後処理</b><p>Bから戻って応答を終える</p></div></li></ol></figure><p>途中で応答を返して次を呼ばなければ、後ろの処理は通りません。この性質は認証やエラー応答などで重要です。認証は本人確認、認可はその操作の権限確認です。ログインしているだけで全てのデータを編集できてよいわけではありません。教材の範囲を外部へ公開するときは、この二つを別々に設計します。</p>
+</section><section class="detail-section"><h2 id="guide-h2-08">単体・統合・実ネットワークの検査を分ける</h2>
+<p>純粋な在庫計算を直接呼べば、入力と出力、状態変化を小さく検査できます。しかしその検査だけでは、URLが正しい処理へ届くかやJSONが引数へ変わるかは確認できません。HTTP統合テストでは、複数の部品を通してステータスと本文の契約を検査します。</p>
+<p>テスト用ホストを使うHTTP統合テストも、実際のDNS・TLS・公開サーバーのファイアウォールまで自動的に検証するものではありません。偽HttpMessageHandlerはさらに範囲が狭く、クライアントへ固定応答を渡す検査です。何を通したかを記録すると、確認済みの範囲を過大に報告せずに済みます。</p>
+</section><section class="detail-section"><h2 id="guide-h2-09">作成から削除までの確認課題</h2>
+<p>目的は一連のAPI契約と状態を確かめることです。最初に一覧GETで200と空配列を確認し、正常なPOSTで201とID、Locationを受け取ります。そのLocationをGETして同じ値を確かめ、完了状態を指定して更新し、もう一度同じ指定を送って結果が崩れないことを確かめます。最後にDELETEして204、その後の個別GETで404を確認します。</p>
+<p>別の入力として空白タイトルを送ります。期待するのは400と、件数が増えていないことです。不正JSON、欠損、存在しないID、繰り返し更新、サーバー再起動も別々のケースにします。メモリ上の保存なら再起動で失われることを、バグではなく現在の保存契約として明記します。この経路を説明できれば、Web APIを単なるMapGetの文法としてではなく、入力・型・サービス・状態・応答の接続として理解できます。</p>
+</section><section class="source-section"><h2 id="sources">公式資料</h2><p>確認日：2026年9月14日。本文の理解を補うための資料です。学習対象は.NET 10 / C# 14です。パッチ番号は固定しません。</p><ul><li><a href="https://learn.microsoft.com/ja-jp/dotnet/fundamentals/networking/http/httpclient-guidelines" rel="noopener noreferrer" target="_blank">HttpClientのガイドライン</a></li><li><a href="https://learn.microsoft.com/ja-jp/aspnet/core/tutorials/min-web-api?view=aspnetcore-10.0" rel="noopener noreferrer" target="_blank">最小APIの作成チュートリアル</a></li><li><a href="https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis/parameter-binding?view=aspnetcore-10.0" rel="noopener noreferrer" target="_blank">Minimal APIのパラメーターバインド</a></li><li><a href="https://learn.microsoft.com/ja-jp/aspnet/core/fundamentals/minimal-apis/responses?view=aspnetcore-10.0" rel="noopener noreferrer" target="_blank">最小APIの応答</a></li><li><a href="https://learn.microsoft.com/ja-jp/dotnet/core/extensions/dependency-injection" rel="noopener noreferrer" target="_blank">.NETの依存性注入</a></li><li><a href="https://learn.microsoft.com/ja-jp/aspnet/core/test/integration-tests?view=aspnetcore-10.0" rel="noopener noreferrer" target="_blank">ASP.NET Coreの統合テスト</a></li><li><a href="https://learn.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-10.0" rel="noopener noreferrer" target="_blank">ASP.NET Coreのミドルウェア</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc9110.html" rel="noopener noreferrer" target="_blank">HTTP Semantics — RFC 9110</a></li></ul></section><p><a href="index.html">学習ガイド一覧へ →</a></p></article></main><aside aria-label="用語" class="right-toc glossary-rail"><details class="glossary-panel" id="page-terms" open=""><summary>このページの用語 <span aria-hidden="true">＋</span></summary><h2>用語・補足</h2><div class="rail-resources"><a href="../guides/glossary.html">C#用語集 <span>180語</span></a><a href="../guides/errors.html">コンパイル・実行時エラー</a><a href="../guides/runtime-memory.html">実行環境とメモリ</a></div></details></aside></div><dialog aria-label="教材検索" class="dialog" id="search-dialog"><div class="dialog-head"><input aria-label="教材を検索" placeholder="型、LINQ、async、Web API…" type="search"/><button class="plain-btn" onclick="this.closest('dialog').close()" type="button">閉じる</button></div><div class="dialog-body" data-search-results=""><p>検索語を入力してください。</p></div></dialog><script src="../assets/js/course-meta.js"></script><script src="../assets/js/search-index.js"></script><script src="../assets/js/site.js"></script><script defer="" src="../assets/js/expanded.js"></script><p aria-live="polite" class="storage-warning" data-storage-warning="" hidden="" role="status"></p><script defer="" src="../assets/js/visual.js"></script></body></html>

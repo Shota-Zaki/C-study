@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="文字列を数量として受け付ける条件。" name="description"/><meta content="#4f46e5" name="theme-color"/><meta content="website" property="og:type"/><meta content="04 文字列と入力の変換 — 詳細解説" property="og:title"/><meta content="文字列補間、等値比較、TryParseで安全に入力を扱う。" property="og:description"/><meta content="C# Learning Lab" property="og:site_name"/><meta content="summary" name="twitter:card"/><link href="../assets/icons/favicon.svg" rel="icon"/><link href="../assets/css/site.css" rel="stylesheet"/><title>04 文字列と入力の変換 — 詳細解説 | C# Learning Lab</title><link href="../assets/css/expanded.css" rel="stylesheet"/><link href="../assets/css/visual.css" rel="stylesheet"/></head><body data-base="../" data-current-lesson="04" data-deep-lesson="04" data-page-kind="詳細解説"><a class="skip-link" href="#main">本文へスキップ</a><header class="topbar"><button aria-controls="course-nav" aria-expanded="false" aria-label="コースメニューを開く" class="icon-btn mobile-only" data-drawer="open" type="button">☰</button><a class="brand" href="../index.html"><span class="brand-mark">C#</span><span>C# Learning Lab</span></a><div class="top-actions"><button class="search-btn" data-open-search="" type="button"><span>教材を検索</span><kbd>Ctrl K</kbd>⌕</button><a aria-label="設定" class="icon-btn" href="../settings.html">⚙</a></div></header><div class="layout"><div aria-label="現在の読書位置" class="reading-position" role="navigation"><a href="#main">先頭</a><span class="reading-title">04 文字列と入力の変換 — 詳細解説</span><span data-reading-count=""></span><button class="position-menu" data-show-toc="" type="button">目次</button><span aria-hidden="true" class="reading-track"><span data-reading-progress=""></span></span></div><nav aria-label="コースナビゲーション" class="left-nav" id="course-nav"><button class="plain-btn drawer-close" data-drawer="close" type="button">閉じる</button><div class="nav-heading">LESSONS <span>32</span></div><details class="chapter-group current-chapter" data-chapter="1" open=""><summary class="chapter-title"><span class="chapter-number">Chapter 01</span><span>C#と.NETの基礎</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/01.html"><span class="num">01</span><span>C#と.NET、最初の実行</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/02.html"><span class="num">02</span><span>Program・名前空間・using</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/03.html"><span class="num">03</span><span>型・var・定数</span></a></div><div class="lesson-item current-lesson"><a class="lesson-link" href="../lessons/04.html"><span class="num">04</span><span>文字列と入力の変換</span></a><a aria-current="page" class="detail-nav-link" href="../deep-dives/04.html">詳細解説</a><nav aria-label="このページの目次" class="lesson-toc"><div class="toc-label">このページの目次</div><a href="#visual-heading">図解：文字列を数量として受け付ける条件</a><a href="#detail-h2-01">文字列と数値の違い</a><a href="#detail-h2-02">入力の三つの状態</a><a href="#detail-h2-03">TryParseの文法と処理順</a><a href="#detail-h2-04">実用例：数量を受け取って合計する</a><a href="#detail-h2-05">間違い：Parseを無条件に使う</a><a href="#detail-h2-06">間違い：Trimの結果を捨てる</a><a href="#detail-h2-07">書式と文字の比較</a><a href="#detail-h2-08">段階別の練習</a><a href="#worked-detail-heading">境界・比較例：識別子の前後空白と大文字小文字</a><a href="#sources">公式資料</a></nav></div></details><details class="chapter-group" data-chapter="2"><summary class="chapter-title"><span class="chapter-number">Chapter 02</span><span>条件分岐・反復・メソッド</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/05.html"><span class="num">05</span><span>条件分岐とパターン</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/06.html"><span class="num">06</span><span>配列と繰り返し</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/07.html"><span class="num">07</span><span>メソッドと引数</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/08.html"><span class="num">08</span><span>nullを型と分岐で扱う</span></a></div></details><details class="chapter-group" data-chapter="3"><summary class="chapter-title"><span class="chapter-number">Chapter 03</span><span>オブジェクト指向</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/09.html"><span class="num">09</span><span>クラスとコンストラクター</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/10.html"><span class="num">10</span><span>プロパティとカプセル化</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/11.html"><span class="num">11</span><span>継承・virtual・override</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/12.html"><span class="num">12</span><span>インターフェイスと差し替え</span></a></div></details><details class="chapter-group" data-chapter="4"><summary class="chapter-title"><span class="chapter-number">Chapter 04</span><span>型・コレクション・例外</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/13.html"><span class="num">13</span><span>値型と参照型</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/14.html"><span class="num">14</span><span>recordと等値性</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/15.html"><span class="num">15</span><span>ジェネリックとコレクション</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/16.html"><span class="num">16</span><span>例外処理とusing</span></a></div></details><details class="chapter-group" data-chapter="5"><summary class="chapter-title"><span class="chapter-number">Chapter 05</span><span>ラムダ式とLINQ</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/17.html"><span class="num">17</span><span>ラムダ・デリゲート・イベント</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/18.html"><span class="num">18</span><span>LINQで絞り込み・変換</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/19.html"><span class="num">19</span><span>遅延実行と集計</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/20.html"><span class="num">20</span><span>enum・タプル・拡張メソッド</span></a></div></details><details class="chapter-group" data-chapter="6"><summary class="chapter-title"><span class="chapter-number">Chapter 06</span><span>保存・日時・非同期処理</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/21.html"><span class="num">21</span><span>ファイルとJSON</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/22.html"><span class="num">22</span><span>日時とカルチャー</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/23.html"><span class="num">23</span><span>asyncとawait</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/24.html"><span class="num">24</span><span>複数タスクとキャンセル</span></a></div></details><details class="chapter-group" data-chapter="7"><summary class="chapter-title"><span class="chapter-number">Chapter 07</span><span>構成・テスト・HTTP</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/25.html"><span class="num">25</span><span>プロジェクトとNuGet</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/26.html"><span class="num">26</span><span>デバッグと単体テスト</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/27.html"><span class="num">27</span><span>責務の分離と入力検証</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/28.html"><span class="num">28</span><span>HttpClientでHTTPを扱う</span></a></div></details><details class="chapter-group" data-chapter="8"><summary class="chapter-title"><span class="chapter-number">Chapter 08</span><span>ASP.NET Core Web API</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/29.html"><span class="num">29</span><span>ASP.NET Coreの最小API</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/30.html"><span class="num">30</span><span>入力検証とHTTPステータス</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/31.html"><span class="num">31</span><span>DI・設定・ログ</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/32.html"><span class="num">32</span><span>APIの検証と統合</span></a></div></details><div class="nav-footer"><a class="lesson-link" href="../projects/index.html">制作課題 3件</a><a class="lesson-link" href="../settings.html">学習データ設定</a><div class="progress-label"><span>進捗</span><strong data-progress-text="">0 / 32</strong></div><div class="mini-progress"><span data-progress-bar=""></span></div><p class="supplement-nav"><a href="../guides/index.html">詳細解説・学習ガイド</a><a href="../guides/glossary.html">用語集</a><a href="../guides/errors.html">エラーの調べ方</a></p></div></nav><main class="content-wrap" id="main"><article class="article"><div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../guides/index.html">学習ガイド</a> / 詳細解説</div><header class="lesson-head"><div class="eyebrow">C# Learning Lab · 詳細解説</div><h1>04 文字列と入力の変換 — 詳細解説</h1><p class="lead">文字列を数量として受け付ける条件。</p><div class="meta-row"><span class="badge">.NET 10 / C# 14</span></div></header><nav aria-label="レッスンのページ" class="lesson-tabs"><a href="../lessons/04.html">本文・演習</a><a aria-current="page" href="../deep-dives/04.html">詳細解説</a></nav><aside class="key-point"><span>重要</span><strong>TryParseの成功と、業務上有効な値であることは別々に確認します。</strong></aside><section class="visual-section" id="visual-model"><h2 id="visual-heading">図解：文字列を数量として受け付ける条件</h2><figure class="lesson-diagram"><div aria-label="文字列を数量として受け付ける条件" class="diagram-scroll" role="region" tabindex="0"><img alt='文字列を数量として受け付ける条件。入力 "3"：外部から来る文字列。TryParse：intに変換できるか。1以上か：業務上の範囲を検査。受け付け：両方に成功した値' height="350" loading="lazy" src="../assets/diagrams/lesson-04.svg" width="760"/></div><figcaption>"abc"は変換に失敗します。"0"は変換に成功しますが、購入数量を1以上に限定する規則には違反します。</figcaption></figure></section><section class="detail-section"><h2 id="detail-h2-01">文字列と数値の違い</h2>
+<p>画面で見える<code>120</code>は文字の並びとして表現されます。<code>string text = "120";</code>は文字列、<code>int number = 120;</code>は整数です。文字列の<code>+</code>は結合、整数の<code>+</code>は加算なので、<code>"12" + "3"</code>は<code>"123"</code>、<code>12 + 3</code>は15になります。入力を計算へ使うには、文字列の意味を読み取って数値へ変換する必要があります。この読み取りを解析、英語でparseと呼びます。</p>
+<p>文字列は<code>string</code>型の値です。C#の<code>string</code>は内容をその場で変更できない性質を持ちます。この性質を不変と呼びます。<code>Trim</code>や<code>Replace</code>は元の文字列の内容を書き換えるのではなく、結果となる文字列を返します。変数へ別の文字列を再代入することはできます。<strong>内容が不変であることと、変数へ再代入できないことは別です。</strong></p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">string</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"  C#  "</span><span class="p">;</span>
+<span class="kt">string</span><span class="w"> </span><span class="n">cleaned</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="n">Trim</span><span class="p">();</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"[{text}]"</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"[{cleaned}]"</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">text</span><span class="p">.</span><span class="n">Length</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">cleaned</span><span class="p">.</span><span class="n">Length</span><span class="p">);</span></code></pre></div>
+<p>期待される出力：</p>
+<div class="codebox" data-code-kind="text"><div class="codehead"><span>想定される出力 / データ</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-text syntax-code">[  C#  ]
+[C#]
+6
+2</code></pre></div>
+<p><code>Trim()</code>は前後の空白を除いた結果を返します。<code>[]</code>を付けるのは、目に見えにくい空白の違いを観察するためです。<code>Length</code>は文字列の長さを読むプロパティで、UTF-16コード単位の数です。UTF-16は文字を数値単位で表現する方式で、絵文字などは見た目の一文字が複数単位になる場合があります。人が見た一文字を数えたい場合は単純な<code>Length</code>と要件が一致するか検討します。</p>
+</section><section class="detail-section"><h2 id="detail-h2-02">入力の三つの状態</h2>
+<p><code>Console.ReadLine()</code>は通常、一行の入力を文字列で返します。何も入力せずにEnterを押すと空文字列<code>""</code>になります。入力の終わりを受け取った場合は<code>null</code>を返し得ます。<code>null</code>は文字列の内容ではなく「参照する値がない」ことを表す特別な値です。空文字、空白だけの文字列、nullは別々に考えます。</p>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">値</th>
+<th scope="col">意味</th>
+<th scope="col">数値へ変換できるか</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"25"</code></td>
+<td>二つの文字からなる入力</td>
+<td>intの範囲なら変換できる</td>
+</tr>
+<tr>
+<td><code>""</code></td>
+<td>長さ0の文字列</td>
+<td>数字がなく失敗</td>
+</tr>
+<tr>
+<td><code>"   "</code></td>
+<td>空白だけの文字列</td>
+<td>数字がなく失敗</td>
+</tr>
+<tr>
+<td><code>"abc"</code></td>
+<td>数字でない文字列</td>
+<td>失敗</td>
+</tr>
+<tr>
+<td><code>null</code></td>
+<td>入力終端などで文字列自体がない</td>
+<td>TryParseは失敗として扱える</td>
+</tr>
+<tr>
+<td><code>"9999999999999999"</code></td>
+<td>数字だがintの範囲外</td>
+<td>失敗</td>
+</tr>
+</tbody>
+</table></div>
+<p>この段階では、<code>string?</code>の<code>?</code>はnullの可能性を表す注釈、と理解してください。詳しいコンパイラーの検査はLesson 08で扱います。どんな入力も必ず数値になると仮定せず、成功と失敗の二つの流れを設計することが重要です。</p>
+</section><section class="detail-section"><h2 id="detail-h2-03">TryParseの文法と処理順</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">string?</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"25"</span><span class="p">;</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">int</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">quantity</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">success</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">quantity</span><span class="p">);</span></code></pre></div>
+<p>期待出力は<code>True</code>、次の行に25です。<code>TryParse</code>は成功したかを<code>bool</code>で返します。<code>bool</code>は<code>true</code>または<code>false</code>の二値を扱う型です。変換された整数は<code>out</code>を付けた変数へ書き出されます。<code>out</code>はメソッドから呼び出し側へ値を書き戻す引数の形式で、Lesson 07で詳しく学びます。</p>
+<figure class="concept-diagram flow"><figcaption>処理の流れ</figcaption><ol><li><span class="step-number">1</span><div><b>文字列を用意</b><p>input = "25"</p></div></li><li><span class="step-number">2</span><div><b>TryParseに渡す</b><p>数字の形式と範囲を検査</p></div></li><li><span class="step-number">3</span><div><b>二つの結果を受け取る</b><p>success = true / quantity = 25</p></div></li><li><span class="step-number">4</span><div><b>成功を確認</b><p>成功時だけ数値を利用</p></div></li><li><span class="step-number">5</span><div><b>表示または計算</b><p>結果を次の処理へ渡す</p></div></li></ol></figure><p>入力を<code>"abc"</code>へ変えた場合、<code>success</code>はfalse、<code>quantity</code>は0になります。0は変換に成功した値とは限りません。<code>"0"</code>を渡した場合もquantityは0ですが、successはtrueです。そのため結果の数値だけで成功したかを判断してはいけません。</p>
+</section><section class="detail-section"><h2 id="detail-h2-04">実用例：数量を受け取って合計する</h2>
+<p>次の例は対話入力を行います。入力を待つため、実行したターミナルに値を入力してEnterを押します。ブラウザー内の下書き欄ではこの処理は動きません。</p>
+<div class="codebox" data-code-kind="csharp-input"><div class="codehead"><span>C# · 入力を伴う例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp-input syntax-code"><span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"数量を入力: "</span><span class="p">);</span>
+<span class="kt">string?</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">int</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">quantity</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"整数を入力してください"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">quantity</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">quantity</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"数量は1〜100で入力してください"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">quantity</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">120</span><span class="p">;</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"合計: {total}円"</span><span class="p">);</span></code></pre></div>
+<p>入力例は3、出力例は<code>合計: 360円</code>です。<code>Console.Write</code>は改行せず表示します。<code>!</code>はtrue/falseを反転する演算子なので、最初の<code>if</code>は変換失敗時に入る分岐です。<code>return</code>は現在の処理を終了して戻る文で、ここではアプリの入口を終えます。<code>||</code>は「どちらかがtrue」を表し、数量が範囲外なら計算へ進みません。これらの条件の読み方はLesson 05で扱います。</p>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">入力</th>
+<th scope="col">変換結果</th>
+<th scope="col">範囲の判定</th>
+<th scope="col">最終結果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>成功、quantity=3</td>
+<td>範囲内</td>
+<td>360円</td>
+</tr>
+<tr>
+<td>abc</td>
+<td>失敗、quantity=0</td>
+<td>判定まで進まない</td>
+<td>整数を入力してください</td>
+</tr>
+<tr>
+<td>0</td>
+<td>成功、quantity=0</td>
+<td>範囲外</td>
+<td>数量は1〜100で入力してください</td>
+</tr>
+<tr>
+<td>100</td>
+<td>成功、quantity=100</td>
+<td>範囲内</td>
+<td>12000円</td>
+</tr>
+<tr>
+<td>101</td>
+<td>成功、quantity=101</td>
+<td>範囲外</td>
+<td>数量は1〜100で入力してください</td>
+</tr>
+</tbody>
+</table></div>
+<p>処理は「文字列として受け取る→整数にできるか→数量として妥当か→計算→表示」の順です。整数へ変換できることと注文として受け付けてよいことは別の検証です。この分離はWeb APIで受け取る入力にもそのまま役立ちます。</p>
+</section><section class="detail-section"><h2 id="detail-h2-05">間違い：Parseを無条件に使う</h2>
+<div class="codebox" data-code-kind="csharp-error"><div class="codehead"><span>C# · 失敗を学ぶ例（そのまま起動しない）</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp-error syntax-code"><span class="kt">string</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"abc"</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">quantity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">int</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">quantity</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">120</span><span class="p">);</span></code></pre></div>
+<p>これはコンパイルできても、整数として読めない文字列を<code>Parse</code>へ渡すため実行時に<code>FormatException</code>が起こります。範囲外の整数文字列なら<code>OverflowException</code>になり得ます。例外は通常の次の文へ進めない異常を伝える仕組みです。入力文字列、例外の型、発生した行の三点を確認します。</p>
+<p>修正位置は変換と、その結果を使う前の確認です。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">string</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"abc"</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">quantity</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">quantity</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">120</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"数量の形式が正しくありません"</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+<p>期待出力は<code>数量の形式が正しくありません</code>です。変換の失敗を普通に予想する入力では<code>TryParse</code>が流れを明確にします。<code>Parse</code>が常に悪いのではなく、内部の保証されたデータを読み、失敗を異常として扱いたい場面などでは選択肢になります。利用場面の失敗の扱いを先に決めます。</p>
+</section><section class="detail-section"><h2 id="detail-h2-06">間違い：Trimの結果を捨てる</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"  Aoi  "</span><span class="p">;</span>
+<span class="n">name</span><span class="p">.</span><span class="n">Trim</span><span class="p">();</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"[{name}]"</span><span class="p">);</span></code></pre></div>
+<p>このコードは正常な構文ですが、期待した空白除去は保存されません。期待される実際の出力は<code>[  Aoi  ]</code>です。<code>Trim</code>の戻り値を受け取らず捨てているからです。修正位置はメソッド呼び出しの行です。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"  Aoi  "</span><span class="p">;</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">.</span><span class="n">Trim</span><span class="p">();</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"[{name}]"</span><span class="p">);</span></code></pre></div>
+<p>修正後の期待出力は<code>[Aoi]</code>です。変数<code>name</code>が参照する文字列が変わり、元の文字列を直接削っているわけではありません。戻り値とは呼び出した処理が返す値です。文字列を操作するときは、そのメソッドが結果を返すのか、対象を変更するのかを確認します。</p>
+</section><section class="detail-section"><h2 id="detail-h2-07">書式と文字の比較</h2>
+<p>表示のために数値を文字へ変えることと、入力を数値へ解析することは逆向きの処理です。<code>$"{price:F2}"</code>は小数二桁の見た目を作りますが、元の数値の型や値を文字列型へ変えるわけではありません。数値の小数点や桁区切りは環境の<a class="term-link" href="#local-term-084" title="数値や日時などの表示・解析に用いる文化的な書式規則です。">カルチャー</a>に影響されるため、保存形式と人向けの表示を分けます。</p>
+<p>識別子や固定のコマンドを比較するなら、文化的な並び順ではなく明示的な文字比較を選びます。<code>string.Equals(input, "quit", StringComparison.OrdinalIgnoreCase)</code>は大文字小文字を区別しないOrdinal比較です。Ordinalとは文字のコード上の値に基づく比較で、言語文化による単語の扱いに依存させたくない識別子に向きます。人名の並び順などは別の要件です。</p>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">操作</th>
+<th scope="col">使うもの</th>
+<th scope="col">選ぶ理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文字と値を読みやすく組み合わせる</td>
+<td>文字列補間</td>
+<td>どこに何が入るか分かる</td>
+</tr>
+<tr>
+<td>ユーザーの整数入力を調べる</td>
+<td>TryParse</td>
+<td>成功と失敗を分けやすい</td>
+</tr>
+<tr>
+<td>前後の空白を取り除く</td>
+<td>Trimの戻り値</td>
+<td>元文字列が変わると誤認しない</td>
+</tr>
+<tr>
+<td>大文字小文字を無視したコマンド比較</td>
+<td>OrdinalIgnoreCase</td>
+<td>比較規則を明示できる</td>
+</tr>
+<tr>
+<td>大量に文字を追加する</td>
+<td>StringBuilderを検討</td>
+<td>連続生成のコストを抑えられる場合がある</td>
+</tr>
+</tbody>
+</table></div>
+<p>StringBuilderは変更可能な文字列組み立て用の部品です。短い表示文まで何でも置き換える必要はありません。まず読みやすいコードを作り、量や性能に問題がある場合に選びます。</p>
+</section><section class="detail-section"><h2 id="detail-h2-08">段階別の練習</h2>
+<p>基礎課題は<code>"12" + "3"</code>と<code>12 + 3</code>の結果を説明することです。前者は文字列結合で123、後者は数値加算で15になります。出力だけが似ていても、保存している型と操作の意味が違います。</p>
+<p>標準課題は、固定入力<code>" 42 "</code>を<code>int.TryParse</code>で読み、成功なら2倍を表示することです。期待出力は84です。通常の整数解析では前後の空白は許容されますが、入力全体の仕様として空白を禁止するなら追加検証が必要です。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">string</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">" 42 "</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="k">value</span><span class="p">))</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="k">value</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"変換できません"</span><span class="p">);</span></code></pre></div>
+<p>応用課題は、数量入力例の仕様へ「前後の空白は許可、範囲は1〜100、abcと0で別のメッセージ」を保ったまま、単価を変数へ分けることです。計算行だけでなく、入力チェックの順序が変わっていないか確認します。よくある間違いは、TryParseのboolを確認せずquantity=0を利用し、形式エラーも範囲エラーとして表示してしまうことです。</p>
+</section><section class="worked-example" id="worked-detail"><div class="section-kicker">境界値・比較</div><h2 id="worked-detail-heading">境界・比較例：識別子の前後空白と大文字小文字</h2><p>Trimは前後の空白を除いた文字列を返します。OrdinalIgnoreCaseはこのコマンド名を大文字小文字を区別せず比較します。</p><div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · Program.cs</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre tabindex="0"><code class="language-csharp syntax-code"><span class="kt">string</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"  SAVE  "</span><span class="p">;</span>
+<span class="kt">string</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">Trim</span><span class="p">();</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">isSave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="p">.</span><span class="n">Equals</span><span class="p">(</span><span class="n">command</span><span class="p">,</span><span class="w"> </span><span class="s">"save"</span><span class="p">,</span><span class="w"> </span><span class="n">StringComparison</span><span class="p">.</span><span class="n">OrdinalIgnoreCase</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">command</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">isSave</span><span class="p">);</span></code></pre></div><div class="expected-result"><h3 id="section-11">想定出力</h3><pre tabindex="0"><code>SAVE
+True</code></pre></div><a class="sample-download" download="" href="../samples/visual/04/detail/example.zip">サンプル一式</a> <a class="sample-download" download="Lesson04-detail.cs" href="../samples/visual/04/detail/Program.cs">Program.cs</a></section><section class="source-section"><h2 id="sources">公式資料</h2><p>確認日：2026年9月14日。本文の理解を補うための資料です。学習対象は.NET 10 / C# 14です。パッチ番号は固定しません。</p><ul><li><a href="https://learn.microsoft.com/ja-jp/dotnet/csharp/language-reference/tokens/interpolated" rel="noopener noreferrer" target="_blank">文字列補間</a></li><li><a href="https://learn.microsoft.com/ja-jp/dotnet/standard/base-types/parsing-numeric" rel="noopener noreferrer" target="_blank">数値文字列の解析</a></li><li><a href="https://learn.microsoft.com/ja-jp/dotnet/csharp/language-reference/operators/equality-operators" rel="noopener noreferrer" target="_blank">等値演算子</a></li></ul></section><nav aria-label="詳細解説の前後" class="prev-next"><a href="03.html">← 前の詳細解説<br/>型・var・定数</a><a href="05.html">次の詳細解説 →<br/>条件分岐とパターン</a></nav></article></main><aside aria-label="用語" class="right-toc glossary-rail"><details class="glossary-panel" id="page-terms" open=""><summary>このページの用語 <span aria-hidden="true">＋</span></summary><h2>このページで押さえる用語</h2><section class="rail-terms"><details class="term-entry details" data-term="型" id="local-term-018"><summary><b>型</b><span class="term-definition">扱える値の種類と、その値に許される操作を定める規則です。</span></summary><div><dl><dt>役割</dt><dd>誤った値の組み合わせを防ぎ、コードの契約を示します。</dd><dt>なぜ必要か</dt><dd>点数の整数と利用者名の文字列では意味や操作が異なります。</dd><dt>具体例</dt><dd>int score = 80;ではscoreは整数の変数。</dd></dl></div></details><details class="term-entry details" data-term="文字列補間" id="local-term-136"><summary><b>文字列補間</b><span class="term-definition">文字列内の式を評価して結果を埋め込む構文です。代入時に作った文字列が、元変数の変更に合わせて自動更新されるわけではありません。書式指定で表示を調整できますが計算値そのものとは別です。</span></summary><div><dl><dt>役割</dt><dd>値を文章中へ埋め込んで文字列を作る。</dd><dt>なぜ必要か</dt><dd>表示内容と値の位置を読みやすく記述する。</dd><dt>具体例</dt><dd>string label = $"得点: {score}";</dd></dl><p class="term-caution"><b>混同しやすい点：</b>ログでは構造化テンプレートとの使い分けを確認。</p></div></details><details class="term-entry details" data-term="TryParse" id="local-term-135"><summary><b>TryParse</b><span class="term-definition">変換できたかのboolと、outへ設定された値をセットで利用します。失敗時の既定値0を有効な入力0と混同しないよう、成功を確認してから後続へ進めます。範囲や業務ルールは変換後に別途検証します。</span></summary><div><dl><dt>役割</dt><dd>文字列を解析し、成功か失敗かと変換後の値を受け渡す。</dd><dt>なぜ必要か</dt><dd>通常の入力ミスを例外に依存せず分岐で扱う。</dd><dt>具体例</dt><dd>if (int.TryParse(text, out int value)) { /* valueを使う */ }</dd></dl><p class="term-caution"><b>混同しやすい点：</b>数値や日時ではカルチャーと許す書式も契約に含める。</p></div></details><details class="term-entry details" data-term="out" id="local-term-140"><summary><b>out</b><span class="term-definition">呼び出し元の変数へ結果を書き込む引数です。メソッド側は正常に返る経路で値を設定する必要があります。TryParseの成否と値のように、複数の情報を返す契約に使われます。呼び出し前に値を準備する必要はなく、呼び出し後は成否を判定してから値を使います。</span></summary><div><dl><dt>役割</dt><dd>呼び出した側の変数へメソッドから値を設定する契約を表す。</dd><dt>なぜ必要か</dt><dd>成功可否と変換値など、通常の戻り値とは別の値を受け取る。</dd><dt>具体例</dt><dd>bool ok = int.TryParse("80", out int score);</dd></dl><p class="term-caution"><b>混同しやすい点：</b>boolを無視すると失敗時の値を正常扱いする。</p></div></details><details class="term-entry details" data-term="null許容参照型" id="local-term-142"><summary><b>null許容参照型</b><span class="term-definition">nullableが有効なコードでstringとstring?を区別し、nullの可能性をコンパイル時に追います。実行時の別の参照型を作る仕組みではありません。外部入力や既存コードからの値には境界での検証が必要です。</span></summary><div><dl><dt>役割</dt><dd>参照がない可能性を型の注釈と解析で表す。</dd><dt>なぜ必要か</dt><dd>nullを確認せず利用する危険をコンパイル時の警告で見つける。</dd><dt>具体例</dt><dd>string? name = Console.ReadLine();</dd></dl><p class="term-caution"><b>混同しやすい点：</b>!は警告抑制でありnullを除去する実行処理ではない。</p></div></details><details class="term-entry details" data-term="カルチャー" id="local-term-084"><summary><b>カルチャー</b><span class="term-definition">数値や日時などの表示・解析に用いる文化的な書式規則です。</span></summary><div><dl><dt>役割</dt><dd>入力の解釈や利用者向けの表示を制御します。</dd><dt>なぜ必要か</dt><dd>小数点や日月の順が環境で変わる問題を避けます。</dd><dt>具体例</dt><dd>InvariantCultureで機械保存用の書式を固定する。</dd></dl></div></details><details class="term-entry details" data-term="不変オブジェクト" id="local-term-059"><summary><b>不変オブジェクト</b><span class="term-definition">生成後に観察できる状態が変わらないよう設計されたオブジェクトです。</span></summary><div><dl><dt>役割</dt><dd>共有しても更新による干渉を減らします。</dd><dt>なぜ必要か</dt><dd>値を渡した後に別の場所から書き換わる問題を抑えます。</dd><dt>具体例</dt><dd>stringは文字列内容をその場で変更せず、加工結果を返す。</dd></dl></div></details></section></details></aside></div><dialog aria-label="教材検索" class="dialog" id="search-dialog"><div class="dialog-head"><input aria-label="教材を検索" placeholder="型、LINQ、async、Web API…" type="search"/><button class="plain-btn" onclick="this.closest('dialog').close()" type="button">閉じる</button></div><div class="dialog-body" data-search-results=""><p>検索語を入力してください。</p></div></dialog><script src="../assets/js/course-meta.js"></script><script src="../assets/js/search-index.js"></script><script src="../assets/js/site.js"></script><script defer="" src="../assets/js/expanded.js"></script><p aria-live="polite" class="storage-warning" data-storage-warning="" hidden="" role="status"></p><script defer="" src="../assets/js/visual.js"></script></body></html>

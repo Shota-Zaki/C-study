@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="配列の要素と合計の更新。" name="description"/><meta content="#4f46e5" name="theme-color"/><meta content="website" property="og:type"/><meta content="06 配列と繰り返し — 詳細解説" property="og:title"/><meta content="foreach、Length、インデックスを使い分け、集計を手で書く。" property="og:description"/><meta content="C# Learning Lab" property="og:site_name"/><meta content="summary" name="twitter:card"/><link href="../assets/icons/favicon.svg" rel="icon"/><link href="../assets/css/site.css" rel="stylesheet"/><title>06 配列と繰り返し — 詳細解説 | C# Learning Lab</title><link href="../assets/css/expanded.css" rel="stylesheet"/><link href="../assets/css/visual.css" rel="stylesheet"/></head><body data-base="../" data-current-lesson="06" data-deep-lesson="06" data-page-kind="詳細解説"><a class="skip-link" href="#main">本文へスキップ</a><header class="topbar"><button aria-controls="course-nav" aria-expanded="false" aria-label="コースメニューを開く" class="icon-btn mobile-only" data-drawer="open" type="button">☰</button><a class="brand" href="../index.html"><span class="brand-mark">C#</span><span>C# Learning Lab</span></a><div class="top-actions"><button class="search-btn" data-open-search="" type="button"><span>教材を検索</span><kbd>Ctrl K</kbd>⌕</button><a aria-label="設定" class="icon-btn" href="../settings.html">⚙</a></div></header><div class="layout"><div aria-label="現在の読書位置" class="reading-position" role="navigation"><a href="#main">先頭</a><span class="reading-title">06 配列と繰り返し — 詳細解説</span><span data-reading-count=""></span><button class="position-menu" data-show-toc="" type="button">目次</button><span aria-hidden="true" class="reading-track"><span data-reading-progress=""></span></span></div><nav aria-label="コースナビゲーション" class="left-nav" id="course-nav"><button class="plain-btn drawer-close" data-drawer="close" type="button">閉じる</button><div class="nav-heading">LESSONS <span>32</span></div><details class="chapter-group" data-chapter="1"><summary class="chapter-title"><span class="chapter-number">Chapter 01</span><span>C#と.NETの基礎</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/01.html"><span class="num">01</span><span>C#と.NET、最初の実行</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/02.html"><span class="num">02</span><span>Program・名前空間・using</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/03.html"><span class="num">03</span><span>型・var・定数</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/04.html"><span class="num">04</span><span>文字列と入力の変換</span></a></div></details><details class="chapter-group current-chapter" data-chapter="2" open=""><summary class="chapter-title"><span class="chapter-number">Chapter 02</span><span>条件分岐・反復・メソッド</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/05.html"><span class="num">05</span><span>条件分岐とパターン</span></a></div><div class="lesson-item current-lesson"><a class="lesson-link" href="../lessons/06.html"><span class="num">06</span><span>配列と繰り返し</span></a><a aria-current="page" class="detail-nav-link" href="../deep-dives/06.html">詳細解説</a><nav aria-label="このページの目次" class="lesson-toc"><div class="toc-label">このページの目次</div><a href="#visual-heading">図解：配列の要素と合計の更新</a><a href="#detail-h2-01">配列の要素・添字・長さ</a><a href="#detail-h2-02">文法と最小例</a><a href="#detail-h2-03">forを四つの仕事に分解する</a><a href="#detail-h2-04">foreach・while・doの選択</a><a href="#detail-h2-05">実用例：条件に合う日だけ集計する</a><a href="#detail-h2-06">間違い：Lengthを最後の位置だと思う</a><a href="#detail-h2-07">間違い：continueで更新を飛ばす</a><a href="#detail-h2-08">段階別の練習</a><a href="#worked-detail-heading">境界・比較例：添字が必要なループ</a><a href="#sources">公式資料</a></nav></div><div class="lesson-item"><a class="lesson-link" href="../lessons/07.html"><span class="num">07</span><span>メソッドと引数</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/08.html"><span class="num">08</span><span>nullを型と分岐で扱う</span></a></div></details><details class="chapter-group" data-chapter="3"><summary class="chapter-title"><span class="chapter-number">Chapter 03</span><span>オブジェクト指向</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/09.html"><span class="num">09</span><span>クラスとコンストラクター</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/10.html"><span class="num">10</span><span>プロパティとカプセル化</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/11.html"><span class="num">11</span><span>継承・virtual・override</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/12.html"><span class="num">12</span><span>インターフェイスと差し替え</span></a></div></details><details class="chapter-group" data-chapter="4"><summary class="chapter-title"><span class="chapter-number">Chapter 04</span><span>型・コレクション・例外</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/13.html"><span class="num">13</span><span>値型と参照型</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/14.html"><span class="num">14</span><span>recordと等値性</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/15.html"><span class="num">15</span><span>ジェネリックとコレクション</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/16.html"><span class="num">16</span><span>例外処理とusing</span></a></div></details><details class="chapter-group" data-chapter="5"><summary class="chapter-title"><span class="chapter-number">Chapter 05</span><span>ラムダ式とLINQ</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/17.html"><span class="num">17</span><span>ラムダ・デリゲート・イベント</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/18.html"><span class="num">18</span><span>LINQで絞り込み・変換</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/19.html"><span class="num">19</span><span>遅延実行と集計</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/20.html"><span class="num">20</span><span>enum・タプル・拡張メソッド</span></a></div></details><details class="chapter-group" data-chapter="6"><summary class="chapter-title"><span class="chapter-number">Chapter 06</span><span>保存・日時・非同期処理</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/21.html"><span class="num">21</span><span>ファイルとJSON</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/22.html"><span class="num">22</span><span>日時とカルチャー</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/23.html"><span class="num">23</span><span>asyncとawait</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/24.html"><span class="num">24</span><span>複数タスクとキャンセル</span></a></div></details><details class="chapter-group" data-chapter="7"><summary class="chapter-title"><span class="chapter-number">Chapter 07</span><span>構成・テスト・HTTP</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/25.html"><span class="num">25</span><span>プロジェクトとNuGet</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/26.html"><span class="num">26</span><span>デバッグと単体テスト</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/27.html"><span class="num">27</span><span>責務の分離と入力検証</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/28.html"><span class="num">28</span><span>HttpClientでHTTPを扱う</span></a></div></details><details class="chapter-group" data-chapter="8"><summary class="chapter-title"><span class="chapter-number">Chapter 08</span><span>ASP.NET Core Web API</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/29.html"><span class="num">29</span><span>ASP.NET Coreの最小API</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/30.html"><span class="num">30</span><span>入力検証とHTTPステータス</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/31.html"><span class="num">31</span><span>DI・設定・ログ</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/32.html"><span class="num">32</span><span>APIの検証と統合</span></a></div></details><div class="nav-footer"><a class="lesson-link" href="../projects/index.html">制作課題 3件</a><a class="lesson-link" href="../settings.html">学習データ設定</a><div class="progress-label"><span>進捗</span><strong data-progress-text="">0 / 32</strong></div><div class="mini-progress"><span data-progress-bar=""></span></div><p class="supplement-nav"><a href="../guides/index.html">詳細解説・学習ガイド</a><a href="../guides/glossary.html">用語集</a><a href="../guides/errors.html">エラーの調べ方</a></p></div></nav><main class="content-wrap" id="main"><article class="article"><div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../guides/index.html">学習ガイド</a> / 詳細解説</div><header class="lesson-head"><div class="eyebrow">C# Learning Lab · 詳細解説</div><h1>06 配列と繰り返し — 詳細解説</h1><p class="lead">配列の要素と合計の更新。</p><div class="meta-row"><span class="badge">.NET 10 / C# 14</span></div></header><nav aria-label="レッスンのページ" class="lesson-tabs"><a href="../lessons/06.html">本文・演習</a><a aria-current="page" href="../deep-dives/06.html">詳細解説</a></nav><aside class="key-point"><span>重要</span><strong>配列の要素番号は0からLength - 1までです。Length自身は有効な要素番号ではありません。</strong></aside><section class="visual-section" id="visual-model"><h2 id="visual-heading">図解：配列の要素と合計の更新</h2><figure class="lesson-diagram"><div aria-label="配列の要素と合計の更新" class="diagram-scroll" role="region" tabindex="0"><img alt="配列の要素と合計の更新。index 0：120分。index 1：90分。index 2：150分。total：0 → 120 → 210 → 360" height="350" loading="lazy" src="../assets/diagrams/lesson-06.svg" width="760"/></div><figcaption>foreachは要素を一つずつ受け取り、totalへ加算します。配列の長さ3と、最後の要素番号2を区別します。</figcaption></figure></section><section class="detail-section"><h2 id="detail-h2-01">配列の要素・添字・長さ</h2>
+<p><a class="term-link" href="#local-term-063" title="決まった長さの、同じ要素型の並びです。">配列</a>は要素を順序付きでまとめる型です。要素とは配列に入っている一つの値です。毎日の学習時間を<code>day1</code>、<code>day2</code>、<code>day3</code>という別の変数へ入れると、日数が増えるたびに変数と計算を追加する必要があります。配列なら一つの名前から各要素へアクセスし、同じ処理を繰り返せます。</p>
+<p>インデックスは要素の位置を示す整数です。C#の通常の一元配列では先頭が0、最後が<code>Length - 1</code>です。Lengthは要素数なので、要素数そのものの位置は存在しません。3要素なら位置は0・1・2です。この「個数」と「最後の位置」の違いが範囲外アクセスを防ぐ基礎です。</p>
+<p>配列の長さは生成後に変更できません。要素の値は代入で変更できます。配列変数へ別の配列を代入することもできますが、それは元の配列の長さを伸ばしたわけではありません。追加や削除を繰り返す場合に使う<code>List&lt;T&gt;</code>はLesson 15で扱います。</p>
+</section><section class="detail-section"><h2 id="detail-h2-02">文法と最小例</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="n">minutes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="p">};</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">minutes</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="n">minutes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="p">;</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">minutes</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">minutes</span><span class="p">.</span><span class="n">Length</span><span class="p">);</span></code></pre></div>
+<p>期待出力は20、40、3です。<code>int[]</code>はintの配列型、<code>{20,35,15}</code>は初期値の並び、<code>minutes[1]</code>は二番目の要素です。配列の名前自体と、要素へのアクセスを区別します。</p>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">順序</th>
+<th scope="col">操作</th>
+<th scope="col">配列の状態</th>
+<th scope="col">表示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>①</td>
+<td>初期化</td>
+<td>[20, 35, 15]</td>
+<td>なし</td>
+</tr>
+<tr>
+<td>②</td>
+<td>位置0を読む</td>
+<td>[20, 35, 15]</td>
+<td>20</td>
+</tr>
+<tr>
+<td>③</td>
+<td>位置1へ40を代入</td>
+<td>[20, 40, 15]</td>
+<td>なし</td>
+</tr>
+<tr>
+<td>④</td>
+<td>位置1を読む</td>
+<td>[20, 40, 15]</td>
+<td>40</td>
+</tr>
+<tr>
+<td>⑤</td>
+<td>Lengthを読む</td>
+<td>要素数は3のまま</td>
+<td>3</td>
+</tr>
+</tbody>
+</table></div>
+<p>配列は参照型であり、変数は配列の実体への参照を保持します。参照とは実体をたどるための値です。いまは「要素の変更」と「別の配列への差し替え」が異なる、と把握してください。コピー時の共有はLesson 13で詳しく確認します。</p>
+</section><section class="detail-section"><h2 id="detail-h2-03">forを四つの仕事に分解する</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="n">minutes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="p">};</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">minutes</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">minutes</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"i={i}, total={total}"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"合計={total}"</span><span class="p">);</span></code></pre></div>
+<p>期待される出力：</p>
+<div class="codebox" data-code-kind="text"><div class="codehead"><span>想定される出力 / データ</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-text syntax-code">i=0, total=20
+i=1, total=55
+i=2, total=70
+合計=70</code></pre></div>
+<p><code>for (初期化; 条件; 更新)</code>の初期化は最初に一度だけ行います。条件を検査してtrueなら本体、続いて更新、再び条件という順です。<code>i++</code>はiへ1を加える処理です。<code>total += minutes[i]</code>はこの例では現在のtotalと要素を加え、totalへ戻す意味です。</p>
+<figure class="concept-diagram flow"><figcaption>処理の流れ</figcaption><ol><li><span class="step-number">1</span><div><b>初期化</b><p>i=0、total=0</p></div></li><li><span class="step-number">2</span><div><b>条件</b><p>i &lt; Length ?</p></div></li><li><span class="step-number">3</span><div><b>本体</b><p>totalへminutes[i]を加える</p></div></li><li><span class="step-number">4</span><div><b>更新</b><p>iを1増やす</p></div></li><li><span class="step-number">5</span><div><b>条件へ戻る</b><p>falseになればループの外へ</p></div></li></ol></figure><div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">条件検査の時点</th>
+<th scope="col">条件</th>
+<th scope="col" style="text-align:right">加える値</th>
+<th scope="col" style="text-align:right">本体後のtotal</th>
+<th scope="col" style="text-align:right">更新後のi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>i=0</td>
+<td>0 &lt; 3、true</td>
+<td style="text-align:right">20</td>
+<td style="text-align:right">20</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>i=1</td>
+<td>1 &lt; 3、true</td>
+<td style="text-align:right">35</td>
+<td style="text-align:right">55</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td>i=2</td>
+<td>2 &lt; 3、true</td>
+<td style="text-align:right">15</td>
+<td style="text-align:right">70</td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td>i=3</td>
+<td>3 &lt; 3、false</td>
+<td style="text-align:right">読まない</td>
+<td style="text-align:right">70</td>
+<td style="text-align:right">更新しない</td>
+</tr>
+</tbody>
+</table></div>
+<p>最後の条件はfalseなので<code>minutes[3]</code>にはアクセスしません。条件が境界を守っています。最初から空の配列ならLengthが0なので、本体は一度も実行されずtotalは0です。0件の扱いも自然に設計できています。</p>
+</section><section class="detail-section"><h2 id="detail-h2-04">foreach・while・doの選択</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="n">minutes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="p">};</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">minutes</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="k">value</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">total</span><span class="p">);</span></code></pre></div>
+<p>期待出力は70です。<code>foreach</code>は対象から順に要素を受け取ります。<code>value</code>はその回の要素を読むための変数です。位置番号が不要なら、配列範囲の管理を自分で書かずに済みます。一般の<a class="term-link" href="#local-term-069" title="並びから順番に要素を取り出すことです。">列挙</a>可能な対象では「次の要素を求める」仕組みを利用しますが、配列ではコンパイラーが効率的な形へ変換する場合もあります。必ず列挙子オブジェクトが生成されるとは断定しません。</p>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">構文</th>
+<th scope="col">選ぶ場面</th>
+<th scope="col">主に管理するもの</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>for</td>
+<td>位置を使う、飛ばしながら処理する</td>
+<td>初期値・条件・更新</td>
+</tr>
+<tr>
+<td>foreach</td>
+<td>全要素を順に読む</td>
+<td>要素に対する処理</td>
+</tr>
+<tr>
+<td>while</td>
+<td>回数より終了条件が中心</td>
+<td>条件と状態更新</td>
+</tr>
+<tr>
+<td>do/while</td>
+<td>必ず一度は行ってから続行を判断</td>
+<td>初回処理と条件</td>
+</tr>
+</tbody>
+</table></div>
+<p>whileは条件がfalseなら一度も本体を実行しません。do/whileは本体の後で条件を検査するため、最低一回実行します。入力し直しを促す場合など、最初に必ず行いたい処理かどうかで選びます。</p>
+</section><section class="detail-section"><h2 id="detail-h2-05">実用例：条件に合う日だけ集計する</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="n">minutes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="p">};</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">activeDays</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">minutes</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">value</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">activeDays</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="n">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="k">value</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"学習日={activeDays}"</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"合計={total}"</span><span class="p">);</span></code></pre></div>
+<p>期待出力は<code>学習日=4</code>、<code>合計=105</code>です。<code>continue</code>はその回の残りを飛ばして次の繰り返しへ進みます。ループ全体を終わる<code>break</code>とは違います。0分の日は件数にも合計にも加えません。20の後は日数1・合計20、0の後も同じ、45の後は2・65、10の後は3・75、30の後は4・105です。</p>
+<p>業務では「複数データを確認し、条件に合うものを集計する」処理が頻繁に現れます。後でLINQを使うと短く表現できますが、このループを読めないまま式だけ覚えると、件数と合計の違いや除外条件を見失います。まず状態を一回ずつ追います。</p>
+</section><section class="detail-section"><h2 id="detail-h2-06">間違い：Lengthを最後の位置だと思う</h2>
+<div class="codebox" data-code-kind="csharp-error"><div class="codehead"><span>C# · 失敗を学ぶ例（そのまま起動しない）</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp-error syntax-code"><span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="p">};</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">values</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="p">}</span></code></pre></div>
+<p>10・20・30を表示した後、i=3でも条件がtrueになり、存在しない位置3を読みます。通常の配列アクセスで<code>IndexOutOfRangeException</code>が発生します。例外は実行中の異常を知らせる仕組みです。「最初の三つは表示できた」ことから、SDKよりループ終端を疑います。</p>
+<p>修正位置は条件の<code>&lt;=</code>です。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="p">};</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">values</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="p">}</span></code></pre></div>
+<p>修正後は10・20・30だけを表示します。別解はforeachです。手で固定値2まで回す修正は、要素数が変わると壊れるため、Lengthとの関係で条件を表します。0件・1件・複数件の入力で確認すると境界のミスを見つけやすくなります。</p>
+</section><section class="detail-section"><h2 id="detail-h2-07">間違い：continueで更新を飛ばす</h2>
+<div class="codebox" data-code-kind="csharp-error"><div class="codehead"><span>C# · 失敗を学ぶ例（そのまま起動しない）</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp-error syntax-code"><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="w">    </span><span class="n">i</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<p>0を表示してi=1になった後、continueがi++を飛ばします。次回もi=1なので同じ状態から抜けられず、無限ループになります。この例は停止しなくなるため、そのままの実行を課題にしません。既に動かした場合はターミナルでCtrl+Cなどを使って中断します。</p>
+<p>修正位置は更新の管理です。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+<p>期待出力は0、次の行に2です。forのcontinueは更新処理を経て次の条件検査へ進むため、iは増えます。防止するには、各経路で終了へ近づく状態変化があるかを調べます。whileで書く別解なら、continueする経路にも更新を入れる必要があります。</p>
+</section><section class="detail-section"><h2 id="detail-h2-08">段階別の練習</h2>
+<p>基礎課題は配列<code>{2,4,6}</code>の合計をforとforeachで求めることです。期待出力は12です。二つのコードが同じ結果でも、forは位置を管理しforeachは要素を直接読むという違いを説明します。</p>
+<p>標準課題は<code>{40,80,60,90}</code>から60以上の件数と合計を求めることです。期待は件数3、合計230です。合計用変数と件数用変数を分け、条件に合ったときだけ両方を更新します。すべてを加えてから不合格を引く別解より、条件に一致した要素を加える方が追跡しやすくなります。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="n">scores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="p">};</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">scores</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">60</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="n">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">score</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"件数={count}, 合計={total}"</span><span class="p">);</span></code></pre></div>
+<p>応用課題は、最初の60以上の点を見つけたら探索を終えることです。入力が<code>{40,80,60,90}</code>なら80、<code>{10,20}</code>なら「見つかりません」です。見つかったかを<code>bool found</code>で保持するか、見つかった位置を-1で初期化する方法があります。最初に見つけた後でbreakしないと、最後の一致へ変わってしまうので要件と停止条件を照合します。</p>
+</section><section class="worked-example" id="worked-detail"><div class="section-kicker">境界値・比較</div><h2 id="worked-detail-heading">境界・比較例：添字が必要なループ</h2><p>画面表示の番号だけi + 1にします。配列の参照はtasks[i]のままであり、i &lt;= tasks.Lengthにはしません。</p><div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · Program.cs</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre tabindex="0"><code class="language-csharp syntax-code"><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">tasks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"設計"</span><span class="p">,</span><span class="w"> </span><span class="s">"実装"</span><span class="p">,</span><span class="w"> </span><span class="s">"テスト"</span><span class="w"> </span><span class="p">};</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tasks</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"{i + 1}. {tasks[i]}"</span><span class="p">);</span></code></pre></div><div class="expected-result"><h3 id="section-11">想定出力</h3><pre tabindex="0"><code>1. 設計
+2. 実装
+3. テスト</code></pre></div><a class="sample-download" download="" href="../samples/visual/06/detail/example.zip">サンプル一式</a> <a class="sample-download" download="Lesson06-detail.cs" href="../samples/visual/06/detail/Program.cs">Program.cs</a></section><section class="source-section"><h2 id="sources">公式資料</h2><p>確認日：2026年9月14日。本文の理解を補うための資料です。学習対象は.NET 10 / C# 14です。パッチ番号は固定しません。</p><ul><li><a href="https://learn.microsoft.com/ja-jp/dotnet/csharp/language-reference/statements/iteration-statements" rel="noopener noreferrer" target="_blank">繰り返し文</a></li><li><a href="https://learn.microsoft.com/ja-jp/dotnet/csharp/language-reference/builtin-types/arrays" rel="noopener noreferrer" target="_blank">配列</a></li></ul></section><nav aria-label="詳細解説の前後" class="prev-next"><a href="05.html">← 前の詳細解説<br/>条件分岐とパターン</a><a href="07.html">次の詳細解説 →<br/>メソッドと引数</a></nav></article></main><aside aria-label="用語" class="right-toc glossary-rail"><details class="glossary-panel" id="page-terms" open=""><summary>このページの用語 <span aria-hidden="true">＋</span></summary><h2>このページで押さえる用語</h2><section class="rail-terms"><details class="term-entry details" data-term="配列" id="local-term-063"><summary><b>配列</b><span class="term-definition">決まった長さの、同じ要素型の並びです。</span></summary><div><dl><dt>役割</dt><dd>添字で要素を読み書きします。</dd><dt>なぜ必要か</dt><dd>件数が決まるデータを順序付きで保持できます。</dd><dt>具体例</dt><dd>int[] scores = { 70,80,90 };。</dd></dl></div></details><details class="term-entry details" data-term="インデックス" id="local-term-064"><summary><b>インデックス</b><span class="term-definition">並びの中の位置を示す番号です。C#の配列やListの通常の添字は0から始まります。</span></summary><div><dl><dt>役割</dt><dd>特定の要素を指定します。</dd><dt>なぜ必要か</dt><dd>要素数と最後の位置を取り違えると範囲外になります。</dd><dt>具体例</dt><dd>要素数3なら有効な添字は0、1、2。</dd></dl></div></details><details class="term-entry details" data-term="foreach" id="local-term-139"><summary><b>foreach</b><span class="term-definition">列挙可能な対象から要素を順番に取り出します。添字が不要な処理で意図が明確ですが、列挙中に元ListへAdd/Removeすると失敗する場合があります。参照型要素のメンバー更新と要素変数への再代入も別です。</span></summary><div><dl><dt>役割</dt><dd>並びの各要素を順に処理する。</dd><dt>なぜ必要か</dt><dd>添字の管理が不要な処理で範囲外のミスを減らす。</dd><dt>具体例</dt><dd>foreach (var item in items) Console.WriteLine(item);</dd></dl><p class="term-caution"><b>混同しやすい点：</b>列挙対象が遅延クエリなら実際の処理はこの時に進む。</p></div></details><details class="term-entry details" data-term="スコープ" id="local-term-025"><summary><b>スコープ</b><span class="term-definition">名前を参照できるコード上の範囲です。</span></summary><div><dl><dt>役割</dt><dd>変数やメンバーをどこから使えるかを決めます。</dd><dt>なぜ必要か</dt><dd>同じ名前の衝突や、範囲外の変数を使うミスを防ぎます。</dd><dt>具体例</dt><dd>ifのブロック内で宣言した変数は通常その外から参照できない。</dd></dl></div></details><details class="term-entry details" data-term="ブロック" id="local-term-026"><summary><b>ブロック</b><span class="term-definition">波かっこで囲んだ、文をまとめる部分です。</span></summary><div><dl><dt>役割</dt><dd>分岐や繰り返しなどで一まとまりに処理します。</dd><dt>なぜ必要か</dt><dd>どの行が条件付きで動くのかを明確にします。</dd><dt>具体例</dt><dd>if (ok) { total++; Console.WriteLine(total); }。</dd></dl></div></details><details class="term-entry details" data-term="列挙" id="local-term-069"><summary><b>列挙</b><span class="term-definition">並びから順番に要素を取り出すことです。</span></summary><div><dl><dt>役割</dt><dd>複数データを一つずつ処理します。</dd><dt>なぜ必要か</dt><dd>全件を一度に扱わず、現在の要素に対する処理を書けます。</dd><dt>具体例</dt><dd>foreachでListの各商品を表示する。</dd></dl></div></details><details class="term-entry details" data-term="コレクション" id="local-term-065"><summary><b>コレクション</b><span class="term-definition">複数の要素をまとめて扱うデータ構造です。</span></summary><div><dl><dt>役割</dt><dd>追加・検索・列挙などを行います。</dd><dt>なぜ必要か</dt><dd>複数の商品や利用者を、一つずつ別変数で持たずに済みます。</dd><dt>具体例</dt><dd>List&lt;Product&gt;に商品の一覧を保持する。</dd></dl></div></details></section></details></aside></div><dialog aria-label="教材検索" class="dialog" id="search-dialog"><div class="dialog-head"><input aria-label="教材を検索" placeholder="型、LINQ、async、Web API…" type="search"/><button class="plain-btn" onclick="this.closest('dialog').close()" type="button">閉じる</button></div><div class="dialog-body" data-search-results=""><p>検索語を入力してください。</p></div></dialog><script src="../assets/js/course-meta.js"></script><script src="../assets/js/search-index.js"></script><script src="../assets/js/site.js"></script><script defer="" src="../assets/js/expanded.js"></script><p aria-live="polite" class="storage-warning" data-storage-warning="" hidden="" role="status"></p><script defer="" src="../assets/js/visual.js"></script></body></html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="クエリ定義と列挙の時点。" name="description"/><meta content="#4f46e5" name="theme-color"/><meta content="website" property="og:type"/><meta content="19 遅延実行と集計 — 詳細解説" property="og:title"/><meta content="クエリを作る時点と、実際に読む時点の違いをつかむ。" property="og:description"/><meta content="C# Learning Lab" property="og:site_name"/><meta content="summary" name="twitter:card"/><link href="../assets/icons/favicon.svg" rel="icon"/><link href="../assets/css/site.css" rel="stylesheet"/><title>19 遅延実行と集計 — 詳細解説 | C# Learning Lab</title><link href="../assets/css/expanded.css" rel="stylesheet"/><link href="../assets/css/visual.css" rel="stylesheet"/></head><body data-base="../" data-current-lesson="19" data-deep-lesson="19" data-page-kind="詳細解説"><a class="skip-link" href="#main">本文へスキップ</a><header class="topbar"><button aria-controls="course-nav" aria-expanded="false" aria-label="コースメニューを開く" class="icon-btn mobile-only" data-drawer="open" type="button">☰</button><a class="brand" href="../index.html"><span class="brand-mark">C#</span><span>C# Learning Lab</span></a><div class="top-actions"><button class="search-btn" data-open-search="" type="button"><span>教材を検索</span><kbd>Ctrl K</kbd>⌕</button><a aria-label="設定" class="icon-btn" href="../settings.html">⚙</a></div></header><div class="layout"><div aria-label="現在の読書位置" class="reading-position" role="navigation"><a href="#main">先頭</a><span class="reading-title">19 遅延実行と集計 — 詳細解説</span><span data-reading-count=""></span><button class="position-menu" data-show-toc="" type="button">目次</button><span aria-hidden="true" class="reading-track"><span data-reading-progress=""></span></span></div><nav aria-label="コースナビゲーション" class="left-nav" id="course-nav"><button class="plain-btn drawer-close" data-drawer="close" type="button">閉じる</button><div class="nav-heading">LESSONS <span>32</span></div><details class="chapter-group" data-chapter="1"><summary class="chapter-title"><span class="chapter-number">Chapter 01</span><span>C#と.NETの基礎</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/01.html"><span class="num">01</span><span>C#と.NET、最初の実行</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/02.html"><span class="num">02</span><span>Program・名前空間・using</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/03.html"><span class="num">03</span><span>型・var・定数</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/04.html"><span class="num">04</span><span>文字列と入力の変換</span></a></div></details><details class="chapter-group" data-chapter="2"><summary class="chapter-title"><span class="chapter-number">Chapter 02</span><span>条件分岐・反復・メソッド</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/05.html"><span class="num">05</span><span>条件分岐とパターン</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/06.html"><span class="num">06</span><span>配列と繰り返し</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/07.html"><span class="num">07</span><span>メソッドと引数</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/08.html"><span class="num">08</span><span>nullを型と分岐で扱う</span></a></div></details><details class="chapter-group" data-chapter="3"><summary class="chapter-title"><span class="chapter-number">Chapter 03</span><span>オブジェクト指向</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/09.html"><span class="num">09</span><span>クラスとコンストラクター</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/10.html"><span class="num">10</span><span>プロパティとカプセル化</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/11.html"><span class="num">11</span><span>継承・virtual・override</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/12.html"><span class="num">12</span><span>インターフェイスと差し替え</span></a></div></details><details class="chapter-group" data-chapter="4"><summary class="chapter-title"><span class="chapter-number">Chapter 04</span><span>型・コレクション・例外</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/13.html"><span class="num">13</span><span>値型と参照型</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/14.html"><span class="num">14</span><span>recordと等値性</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/15.html"><span class="num">15</span><span>ジェネリックとコレクション</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/16.html"><span class="num">16</span><span>例外処理とusing</span></a></div></details><details class="chapter-group current-chapter" data-chapter="5" open=""><summary class="chapter-title"><span class="chapter-number">Chapter 05</span><span>ラムダ式とLINQ</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/17.html"><span class="num">17</span><span>ラムダ・デリゲート・イベント</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/18.html"><span class="num">18</span><span>LINQで絞り込み・変換</span></a></div><div class="lesson-item current-lesson"><a class="lesson-link" href="../lessons/19.html"><span class="num">19</span><span>遅延実行と集計</span></a><a aria-current="page" class="detail-nav-link" href="../deep-dives/19.html">詳細解説</a><nav aria-label="このページの目次" class="lesson-toc"><div class="toc-label">このページの目次</div><a href="#visual-heading">図解：クエリ定義と列挙の時点</a><a href="#detail-h2-01">IEnumerableと列挙時の処理</a><a href="#detail-h2-02">yield returnで一つずつ値を渡す</a><a href="#detail-h2-03">遅延実行で値を見る時点を追う</a><a href="#detail-h2-04">ToListでその時点の結果を保存する</a><a href="#detail-h2-05">間違い：同じ列挙結果が無料で再利用されると思う</a><a href="#detail-h2-06">遅延・逐次・一括保持を分ける</a><a href="#detail-h2-07">集計と空の列を一緒に設計する</a><a href="#detail-h2-08">間違い：空の平均をそのまま計算する</a><a href="#detail-h2-09">IEnumerableとIQueryableの境界</a><a href="#detail-h2-10">3段階の練習</a><a href="#worked-detail-heading">境界・比較例：カテゴリ別の合計</a><a href="#sources">公式資料</a></nav></div><div class="lesson-item"><a class="lesson-link" href="../lessons/20.html"><span class="num">20</span><span>enum・タプル・拡張メソッド</span></a></div></details><details class="chapter-group" data-chapter="6"><summary class="chapter-title"><span class="chapter-number">Chapter 06</span><span>保存・日時・非同期処理</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/21.html"><span class="num">21</span><span>ファイルとJSON</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/22.html"><span class="num">22</span><span>日時とカルチャー</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/23.html"><span class="num">23</span><span>asyncとawait</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/24.html"><span class="num">24</span><span>複数タスクとキャンセル</span></a></div></details><details class="chapter-group" data-chapter="7"><summary class="chapter-title"><span class="chapter-number">Chapter 07</span><span>構成・テスト・HTTP</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/25.html"><span class="num">25</span><span>プロジェクトとNuGet</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/26.html"><span class="num">26</span><span>デバッグと単体テスト</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/27.html"><span class="num">27</span><span>責務の分離と入力検証</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/28.html"><span class="num">28</span><span>HttpClientでHTTPを扱う</span></a></div></details><details class="chapter-group" data-chapter="8"><summary class="chapter-title"><span class="chapter-number">Chapter 08</span><span>ASP.NET Core Web API</span></summary><div class="lesson-item"><a class="lesson-link" href="../lessons/29.html"><span class="num">29</span><span>ASP.NET Coreの最小API</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/30.html"><span class="num">30</span><span>入力検証とHTTPステータス</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/31.html"><span class="num">31</span><span>DI・設定・ログ</span></a></div><div class="lesson-item"><a class="lesson-link" href="../lessons/32.html"><span class="num">32</span><span>APIの検証と統合</span></a></div></details><div class="nav-footer"><a class="lesson-link" href="../projects/index.html">制作課題 3件</a><a class="lesson-link" href="../settings.html">学習データ設定</a><div class="progress-label"><span>進捗</span><strong data-progress-text="">0 / 32</strong></div><div class="mini-progress"><span data-progress-bar=""></span></div><p class="supplement-nav"><a href="../guides/index.html">詳細解説・学習ガイド</a><a href="../guides/glossary.html">用語集</a><a href="../guides/errors.html">エラーの調べ方</a></p></div></nav><main class="content-wrap" id="main"><article class="article"><div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../guides/index.html">学習ガイド</a> / 詳細解説</div><header class="lesson-head"><div class="eyebrow">C# Learning Lab · 詳細解説</div><h1>19 遅延実行と集計 — 詳細解説</h1><p class="lead">クエリ定義と列挙の時点。</p><div class="meta-row"><span class="badge">.NET 10 / C# 14</span></div></header><nav aria-label="レッスンのページ" class="lesson-tabs"><a href="../lessons/19.html">本文・演習</a><a aria-current="page" href="../deep-dives/19.html">詳細解説</a></nav><aside class="key-point"><span>重要</span><strong>遅延実行のクエリは、作った時点ではなく列挙した時点のデータを読むことがあります。</strong></aside><section class="visual-section" id="visual-model"><h2 id="visual-heading">図解：クエリ定義と列挙の時点</h2><figure class="lesson-diagram"><div aria-label="クエリ定義と列挙の時点" class="diagram-scroll" role="region" tabindex="0"><img alt="クエリ定義と列挙の時点。クエリを定義：Whereの条件を保存。元データを変更：4を追加。foreachで列挙：この時点で条件を適用。ToListで確定：列挙結果を別のListへ" height="350" loading="lazy" src="../assets/diagrams/lesson-19.svg" width="760"/></div><figcaption>LINQ to ObjectsのWhereは遅延実行です。ToListなどで列挙した結果を保持すると、その後の追加は結果のListへ自動反映されません。</figcaption></figure></section><section class="detail-section"><h2 id="detail-h2-01">IEnumerableと列挙時の処理</h2>
+<p><a class="term-link" href="#local-term-164" title="Tの列を順に読み出せることを表す契約です。Listかもしれず、その場で値を生成する処理かもしれません。Countとforeachなどの複数列挙で、処理が再実行される費用や副作用を考えます。">IEnumerable&lt;T&gt;</a>は、T型の値を順に取り出せるという約束です。配列のように既に存在する値を読むことも、必要になるたびに値を計算することもできます。foreachは<a class="term-link" href="#local-term-069" title="並びから順番に要素を取り出すことです。">列挙</a>子と呼ばれる進行役を使って、次の要素へ進み、現在の要素を読みます。一般的にはGetEnumeratorで列挙子を取得し、MoveNextで次へ進み、Currentで値を読みます。配列などではコンパイラーが別の効率的な形へ変換する場合もあります。</p>
+<p>列挙子は「今どこまで読んだか」という状態を持ちます。IEnumerableとIEnumeratorを同じものと考えないでください。前者は読み進める仕組みを提供する側、後者は一回の読み進めを管理する側です。</p>
+</section><section class="detail-section"><h2 id="detail-h2-02">yield returnで一つずつ値を渡す</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"A:列を取得"</span><span class="p">);</span>
+<span class="n">IEnumerable</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CreateNumbers</span><span class="p">();</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"B:列挙を開始"</span><span class="p">);</span>
+<span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">numbers</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"受取:{number}"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="n">IEnumerable</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">CreateNumbers</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"C:生成開始"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"D:次へ進む"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<p>期待出力は次の順です。</p>
+<div class="codebox" data-code-kind="text"><div class="codehead"><span>想定される出力 / データ</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-text syntax-code">A:列を取得
+B:列挙を開始
+C:生成開始
+受取:10
+D:次へ進む
+受取:20</code></pre></div>
+<p>yield returnは、列挙している側へ一つ値を渡し、次に要求されたときに続きから進める構文です。通常のreturnのように処理全体を終了するわけではありません。コンパイラーは途中の位置や必要なローカル変数を保持できる形へ変換します。こうした「状態と、次にする処理を保持する仕組み」を状態機械と呼びます。asyncでも別の目的で似た発想が使われますが、yield自体が非同期になるわけではありません。</p>
+</section><section class="detail-section"><h2 id="detail-h2-03">遅延実行で値を見る時点を追う</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="k">using</span><span class="w"> </span><span class="nn">System.Linq</span><span class="p">;</span>
+
+<span class="kt">var</span><span class="w"> </span><span class="n">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">};</span>
+<span class="n">IEnumerable</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numbers</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">number</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="n">numbers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Join</span><span class="p">(</span><span class="s">","</span><span class="p">,</span><span class="w"> </span><span class="n">query</span><span class="p">));</span>
+<span class="n">numbers</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Join</span><span class="p">(</span><span class="s">","</span><span class="p">,</span><span class="w"> </span><span class="n">query</span><span class="p">));</span></code></pre></div>
+<p>期待出力は2,3,4、3,4です。Whereを呼んだ時点の要素を凍結しているのではありません。Joinが列挙するとき、その時点のListから条件に合う値を読みます。二回目の列挙ではListの状態が変わっています。</p>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">時点</th>
+<th scope="col">numbers</th>
+<th scope="col">queryについて起きたこと</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Whereを呼ぶ</td>
+<td>[1,2,3]</td>
+<td>抽出を表す列を作る</td>
+</tr>
+<tr>
+<td>Add(4)</td>
+<td>[1,2,3,4]</td>
+<td>まだ結果を保存していない</td>
+</tr>
+<tr>
+<td>1回目のJoin</td>
+<td>[1,2,3,4]</td>
+<td>2,3,4を取り出す</td>
+</tr>
+<tr>
+<td>Remove(2)</td>
+<td>[1,3,4]</td>
+<td>元のListを変更</td>
+</tr>
+<tr>
+<td>2回目のJoin</td>
+<td>[1,3,4]</td>
+<td>3,4を取り出す</td>
+</tr>
+</tbody>
+</table></div>
+<p>列挙中に同じListを変更すると、別の問題としてInvalidOperationExceptionが起きる場合があります。「列挙する前に変更する」と「列挙中に変更する」を区別します。</p>
+</section><section class="detail-section"><h2 id="detail-h2-04">ToListでその時点の結果を保存する</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="k">using</span><span class="w"> </span><span class="nn">System.Linq</span><span class="p">;</span>
+
+<span class="kt">var</span><span class="w"> </span><span class="n">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">};</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">snapshot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numbers</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">number</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">2</span><span class="p">).</span><span class="n">ToList</span><span class="p">();</span>
+<span class="n">numbers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Join</span><span class="p">(</span><span class="s">","</span><span class="p">,</span><span class="w"> </span><span class="n">snapshot</span><span class="p">));</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Join</span><span class="p">(</span><span class="s">","</span><span class="p">,</span><span class="w"> </span><span class="n">numbers</span><span class="p">));</span></code></pre></div>
+<p>期待出力は2,3、1,2,3,4です。ToListが呼び出されたところで最後まで列挙し、その結果を新しいListへ入れます。スナップショットとは、ある時点の状態を記録したものです。ただし、要素が参照型なら参照をコピーするため、オブジェクト内部まで独立した深いコピーにはなりません。第13・14レッスンのコピーの境界がここにもつながります。</p>
+</section><section class="detail-section"><h2 id="detail-h2-05">間違い：同じ列挙結果が無料で再利用されると思う</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="k">using</span><span class="w"> </span><span class="nn">System.Linq</span><span class="p">;</span>
+
+<span class="n">IEnumerable</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">}.</span><span class="n">Where</span><span class="p">(</span><span class="n">number</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"判定:{number}"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">});</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">query</span><span class="p">.</span><span class="n">Count</span><span class="p">());</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">query</span><span class="p">.</span><span class="n">Sum</span><span class="p">());</span></code></pre></div>
+<p>このWhereの例では、Countのために1、2、3を判定し、2を表示した後、Sumのために再び1、2、3を判定して5を表示します。一部の列や操作には要素を実際に読み進めず件数を得る最適化もあるため、「全てのCountが必ず全列挙」と一般化してはいけません。ここでは条件を評価するWhereに表示処理を入れて、読み直しを観察しています。</p>
+<p>一回の結果を複数回使うなら、用途に応じてToListで保存します。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="k">using</span><span class="w"> </span><span class="nn">System.Linq</span><span class="p">;</span>
+
+<span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">number</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">ToList</span><span class="p">();</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">Count</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">Sum</span><span class="p">());</span></code></pre></div>
+<p>期待出力は2、5です。ListのCountプロパティは保持している件数を読みます。必要以上のToListはメモリの使用と先行処理を増やすので、何回使うか、いつ確定したいかで選びます。</p>
+</section><section class="detail-section"><h2 id="detail-h2-06">遅延・逐次・一括保持を分ける</h2>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">操作</th>
+<th scope="col">主なタイミング</th>
+<th scope="col">結果を出すために必要なこと</th>
+<th scope="col">選ぶ目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Where / Select</td>
+<td>列挙時</td>
+<td>各要素を判定・変換</td>
+<td>順に加工</td>
+</tr>
+<tr>
+<td>Take(3)</td>
+<td>列挙時</td>
+<td>必要な先頭部分を読む</td>
+<td>先頭だけ欲しい</td>
+</tr>
+<tr>
+<td>OrderBy</td>
+<td>列挙時</td>
+<td>並べ替え対象を保持して整列</td>
+<td>全体の順序を決める</td>
+</tr>
+<tr>
+<td>ToList / ToArray</td>
+<td>呼び出し時</td>
+<td>最後まで読み結果を保存</td>
+<td>今の結果を再利用</td>
+</tr>
+<tr>
+<td>Any</td>
+<td>呼び出し時</td>
+<td>存在が分かれば止められる</td>
+<td>あるかどうか</td>
+</tr>
+<tr>
+<td>Sum / Average</td>
+<td>呼び出し時</td>
+<td>集計に必要な値を読む</td>
+<td>一つの集計値を得る</td>
+</tr>
+</tbody>
+</table></div>
+<p><a class="term-link" href="#local-term-163" title="クエリの規則を定義しただけでは列挙せず、foreachなどで読むときに処理します。定義後に元データを変えると結果が変わる場合があります。ToArrayはその時点で列挙して結果を保持します。">遅延実行</a>は「一つずつ低メモリで必ず処理する」という意味ではありません。OrderByも開始は遅延しますが、最初の結果を返すために入力を保持して並べる必要があります。</p>
+</section><section class="detail-section"><h2 id="detail-h2-07">集計と空の列を一緒に設計する</h2>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="k">using</span><span class="w"> </span><span class="nn">System.Linq</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="n">scores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="p">};</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">scores</span><span class="p">.</span><span class="n">Any</span><span class="p">(</span><span class="n">score</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">60</span><span class="p">));</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">scores</span><span class="p">.</span><span class="n">Sum</span><span class="p">());</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">scores</span><span class="p">.</span><span class="n">Average</span><span class="p">());</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">scores</span><span class="p">.</span><span class="n">Max</span><span class="p">());</span></code></pre></div>
+<p>期待出力はFalse、240、80、100です。Anyは条件を満たす値が存在するか、Sumは合計、Averageは平均、Maxは最大値です。Sumの返す型などは要素型により異なります。intのSumでは合計が範囲を超えると例外になるので、業務の最大値も検討します。</p>
+<div aria-label="比較・状態表。横に収まらない場合はこの枠内をスクロールできます" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">操作：intの列</th>
+<th scope="col">空の場合</th>
+<th scope="col">何を決めるべきか</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Any()</td>
+<td>false</td>
+<td>空を正常として扱うか</td>
+</tr>
+<tr>
+<td>Count()</td>
+<td>0</td>
+<td>件数の意味</td>
+</tr>
+<tr>
+<td>Sum()</td>
+<td>0</td>
+<td>空の合計0で業務上よいか</td>
+</tr>
+<tr>
+<td>Average() / Max()</td>
+<td>InvalidOperationException</td>
+<td>データなしを別表示にするか</td>
+</tr>
+<tr>
+<td>First()</td>
+<td>InvalidOperationException</td>
+<td>必ず一つ以上ある根拠</td>
+</tr>
+<tr>
+<td>FirstOrDefault()</td>
+<td>0</td>
+<td>本物の0と区別できるか</td>
+</tr>
+<tr>
+<td>Single()</td>
+<td>0件でも2件以上でも例外</td>
+<td>必ず一件という制約</td>
+</tr>
+</tbody>
+</table></div>
+<p>nullable数値用のオーバーロードなどは挙動が異なります。上表はintの列に範囲を限定しています。FirstOrDefaultに変えるだけで全て安全とは言えません。</p>
+</section><section class="detail-section"><h2 id="detail-h2-08">間違い：空の平均をそのまま計算する</h2>
+<div class="codebox" data-code-kind="csharp-error"><div class="codehead"><span>C# · 失敗を学ぶ例（そのまま起動しない）</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp-error syntax-code"><span class="k">using</span><span class="w"> </span><span class="nn">System.Linq</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="n">scores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Array</span><span class="p">.</span><span class="n">Empty</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">scores</span><span class="p">.</span><span class="n">Average</span><span class="p">());</span></code></pre></div>
+<p>コンパイル可能な形ですが、実行すると平均対象がなくInvalidOperationExceptionになります。確認するのは例外の行だけでなく、抽出後の件数です。次は「データなし」を別の状態として扱います。</p>
+<div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · 独立したコード例</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre aria-label="コード例。必要に応じて枠内を横スクロールできます" tabindex="0"><code class="language-csharp syntax-code"><span class="k">using</span><span class="w"> </span><span class="nn">System.Linq</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="n">scores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Array</span><span class="p">.</span><span class="n">Empty</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">scores</span><span class="p">.</span><span class="n">Length</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"平均なし"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">scores</span><span class="p">.</span><span class="n">Average</span><span class="p">());</span>
+<span class="p">}</span></code></pre></div>
+<p>期待出力は平均なしです。一般のIEnumerableをAnyとAverageで二回読む設計では、読み直せるか、入力が変わらないかも考えます。必要なら一度ToArrayなどで確定します。</p>
+</section><section class="detail-section"><h2 id="detail-h2-09">IEnumerableとIQueryableの境界</h2>
+<p><a class="term-link" href="#local-term-076" title="クエリを表す式を、提供側の仕組みで実行できる形の契約です。">IQueryable&lt;T&gt;</a>は、処理を表す式を受け取り、提供元が別の処理へ翻訳できる仕組みです。式とはここでは計算の構造をデータとして表したものです。データベース用の提供元ならSQLという問い合わせ命令へ翻訳する場合があります。ただし、全てのC#メソッドを翻訳できるわけではありません。</p>
+<p>本レッスンのEnumerableによるメモリ上の処理と、データベースへの問い合わせを同一視しないでください。まず「処理を組み立てる時点」と「結果が必要になる時点」を分けるところまで理解し、実際のデータベース連携で翻訳範囲と通信回数を学びます。</p>
+</section><section class="detail-section"><h2 id="detail-h2-10">3段階の練習</h2>
+<p><strong>基礎</strong>：{1,2,3}にWhere(n =&gt; n &gt; 1)を設定した後、列挙前に4を追加した結果を予想してください。2,3,4です。ToListを追加前に置いた別解では2,3になり、読む時点が異なります。</p>
+<p><strong>標準</strong>：空かもしれないint配列から最大値を表示し、空なら「対象なし」にしてください。Length==0で分岐した後にMaxを呼ぶ方法が解答です。例外を握りつぶして0にする方法では、負の値だけのデータと区別できません。</p>
+<p><strong>応用</strong>：商品一覧を価格順にして先頭3件を表示するとき、OrderByとTakeの順を交換したら何が変わるか説明してください。OrderBy→Takeは全体の安い3件、Take→OrderByは最初に並んでいた3件の中の並べ替えです。具体的に{500,400,300,100}なら前者は100,300,400、後者は300,400,500です。</p>
+</section><section class="worked-example" id="worked-detail"><div class="section-kicker">境界値・比較</div><h2 id="worked-detail-heading">境界・比較例：カテゴリ別の合計</h2><p>GroupByでカテゴリごとの集合を作り、それぞれをSumで集計します。表示順はOrdinalで明示しています。</p><div class="codebox" data-code-kind="csharp"><div class="codehead"><span>C# · Program.cs</span><button class="copy-btn" data-copy="" type="button">コピー</button><button aria-pressed="false" class="copy-btn" data-wrap-code="" type="button">折り返し</button></div><pre tabindex="0"><code class="language-csharp syntax-code"><span class="kt">var</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">(</span><span class="n">Category</span><span class="p">:</span><span class="w"> </span><span class="s">"本"</span><span class="p">,</span><span class="w"> </span><span class="n">Amount</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="n">Category</span><span class="p">:</span><span class="w"> </span><span class="s">"文具"</span><span class="p">,</span><span class="w"> </span><span class="n">Amount</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="n">Category</span><span class="p">:</span><span class="w"> </span><span class="s">"本"</span><span class="p">,</span><span class="w"> </span><span class="n">Amount</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">)</span><span class="w"> </span><span class="p">};</span>
+<span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">items</span><span class="p">.</span><span class="n">GroupBy</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">Category</span><span class="p">).</span><span class="n">OrderBy</span><span class="p">(</span><span class="n">g</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">g</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">StringComparer</span><span class="p">.</span><span class="n">Ordinal</span><span class="p">))</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"{group.Key}: {group.Sum(x =&gt; x.Amount)}円"</span><span class="p">);</span></code></pre></div><div class="expected-result"><h3 id="section-13">想定出力</h3><pre tabindex="0"><code>文具: 300円
+本: 1500円</code></pre></div><a class="sample-download" download="" href="../samples/visual/19/detail/example.zip">サンプル一式</a> <a class="sample-download" download="Lesson19-detail.cs" href="../samples/visual/19/detail/Program.cs">Program.cs</a></section><section class="source-section"><h2 id="sources">公式資料</h2><p>確認日：2026年9月14日。本文の理解を補うための資料です。学習対象は.NET 10 / C# 14です。パッチ番号は固定しません。</p><ul><li><a href="https://learn.microsoft.com/ja-jp/dotnet/csharp/linq/get-started/introduction-to-linq-queries" rel="noopener noreferrer" target="_blank">LINQクエリの概要</a></li><li><a href="https://learn.microsoft.com/ja-jp/dotnet/csharp/linq/get-started/write-linq-queries" rel="noopener noreferrer" target="_blank">LINQクエリの記述</a></li></ul></section><nav aria-label="詳細解説の前後" class="prev-next"><a href="18.html">← 前の詳細解説<br/>LINQで絞り込み・変換</a><a href="20.html">次の詳細解説 →<br/>enum・タプル・拡張メソッド</a></nav></article></main><aside aria-label="用語" class="right-toc glossary-rail"><details class="glossary-panel" id="page-terms" open=""><summary>このページの用語 <span aria-hidden="true">＋</span></summary><h2>このページで押さえる用語</h2><section class="rail-terms"><details class="term-entry details" data-term="列挙" id="local-term-069"><summary><b>列挙</b><span class="term-definition">並びから順番に要素を取り出すことです。</span></summary><div><dl><dt>役割</dt><dd>複数データを一つずつ処理します。</dd><dt>なぜ必要か</dt><dd>全件を一度に扱わず、現在の要素に対する処理を書けます。</dd><dt>具体例</dt><dd>foreachでListの各商品を表示する。</dd></dl></div></details><details class="term-entry details" data-term="IEnumerable&lt;T&gt;" id="local-term-164"><summary><b>IEnumerable&lt;T&gt;</b><span class="term-definition">Tの列を順に読み出せることを表す契約です。Listかもしれず、その場で値を生成する処理かもしれません。Countとforeachなどの複数列挙で、処理が再実行される費用や副作用を考えます。</span></summary><div><dl><dt>役割</dt><dd>型Tの要素を順に取り出せる契約を表す。</dd><dt>なぜ必要か</dt><dd>配列・List・計算で生成する並びを共通の読み方で扱う。</dd><dt>具体例</dt><dd>IEnumerable&lt;int&gt; query = values.Where(x =&gt; x &gt;= 0);</dd></dl><p class="term-caution"><b>混同しやすい点：</b>保存済み・有限・再列挙が安いという保証は型名だけにはない。</p></div></details><details class="term-entry details" data-term="IEnumerator&lt;T&gt;" id="local-term-070"><summary><b>IEnumerator&lt;T&gt;</b><span class="term-definition">列挙の現在位置と、次へ進む操作を表す契約です。</span></summary><div><dl><dt>役割</dt><dd>順に値を取り出す途中状態を管理します。</dd><dt>なぜ必要か</dt><dd>IEnumerableが並びを提供する契約なのに対し、実際に進む役割を理解します。</dd><dt>具体例</dt><dd>MoveNextが成功した後にCurrentを読む。</dd></dl></div></details><details class="term-entry details" data-term="イテレーター" id="local-term-071"><summary><b>イテレーター</b><span class="term-definition">要素を順に返す処理を記述する仕組みです。</span></summary><div><dl><dt>役割</dt><dd>必要なときに次の値を供給します。</dd><dt>なぜ必要か</dt><dd>巨大な中間リストを必ず作らずに並びを表現できます。</dd><dt>具体例</dt><dd>yield return n;で要素を一つ返す。</dd></dl></div></details><details class="term-entry details" data-term="遅延実行" id="local-term-163"><summary><b>遅延実行</b><span class="term-definition">クエリの規則を定義しただけでは列挙せず、foreachなどで読むときに処理します。定義後に元データを変えると結果が変わる場合があります。ToArrayはその時点で列挙して結果を保持します。</span></summary><div><dl><dt>役割</dt><dd>処理を作った時ではなく、結果を必要として列挙する時に進める。</dd><dt>なぜ必要か</dt><dd>定義後の元データ変更や繰り返し列挙による違いを理解する。</dd><dt>具体例</dt><dd>var query = values.Where(x =&gt; x &gt; 0);</dd></dl><p class="term-caution"><b>混同しやすい点：</b>遅延実行と、全体の保持が不要かどうかは別。OrderByは全体比較が必要。</p></div></details><details class="term-entry details" data-term="具象化" id="local-term-075"><summary><b>具象化</b><span class="term-definition">遅延した並びを列挙し、その時点の結果をコレクションなどに保持することです。</span></summary><div><dl><dt>役割</dt><dd>後の処理で使う結果を確定します。</dd><dt>なぜ必要か</dt><dd>元データの変更や繰り返し列挙による結果の違いを制御します。</dd><dt>具体例</dt><dd>query.ToList()で現時点の要素をListへ保存する。</dd></dl></div></details><details class="term-entry details" data-term="IQueryable&lt;T&gt;" id="local-term-076"><summary><b>IQueryable&lt;T&gt;</b><span class="term-definition">クエリを表す式を、提供側の仕組みで実行できる形の契約です。</span></summary><div><dl><dt>役割</dt><dd>DBなど別の実行基盤に問い合わせを渡します。</dd><dt>なぜ必要か</dt><dd>同じLINQの見た目でも、メモリ上の処理と実行方法が異なることを理解します。</dd><dt>具体例</dt><dd>提供側がWhereの条件をSQLなどへ変換する場合がある。</dd></dl></div></details><details class="term-entry details" data-term="副作用" id="local-term-100"><summary><b>副作用</b><span class="term-definition">戻り値の計算以外に、外部から観察できる状態へ働きかけることです。</span></summary><div><dl><dt>役割</dt><dd>計算だけの処理と、状態変更やI/Oを区別します。</dd><dt>なぜ必要か</dt><dd>テストの再現性や安全な再実行を考えるために使います。</dd><dt>具体例</dt><dd>ファイル保存、ログ出力、共有在庫の変更。</dd></dl></div></details></section></details></aside></div><dialog aria-label="教材検索" class="dialog" id="search-dialog"><div class="dialog-head"><input aria-label="教材を検索" placeholder="型、LINQ、async、Web API…" type="search"/><button class="plain-btn" onclick="this.closest('dialog').close()" type="button">閉じる</button></div><div class="dialog-body" data-search-results=""><p>検索語を入力してください。</p></div></dialog><script src="../assets/js/course-meta.js"></script><script src="../assets/js/search-index.js"></script><script src="../assets/js/site.js"></script><script defer="" src="../assets/js/expanded.js"></script><p aria-live="polite" class="storage-warning" data-storage-warning="" hidden="" role="status"></p><script defer="" src="../assets/js/visual.js"></script></body></html>
