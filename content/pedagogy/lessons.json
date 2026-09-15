@@ -1,0 +1,6305 @@
+{
+  "01": {
+    "opening": "最初は、画面に1行を表示するところから始めます。SDKの確認とプロジェクトの作成を済ませたら、短いコードを実行し、その後で「書いたコードがどう動くのか」を調べます。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "実行するための準備",
+        "parts": [
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "ビルドから実行までの役割分担",
+        "parts": [
+          7,
+          8
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "動かないときの調べ方",
+        "parts": [
+          9,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "example",
+      "walk",
+      "worked",
+      "g2",
+      "preview",
+      "g3",
+      "pitfall"
+    ],
+    "example_title": "3行のプログラムを実行する",
+    "preview_title": "コードの実行順と.NETの内部",
+    "rationale": "初回実行を先に経験し、IL・JITなどの内部用語は動作を見た後に説明する。",
+    "deep_overview_after": "detail-h2-02",
+    "main": [
+      {
+        "id": "p-01-main-setup",
+        "target": "#section-6",
+        "kind": "flow",
+        "title": "作業フォルダーから実行まで",
+        "before": "コマンドは同じ場所で一度に全部実行するのではなく、作成したプロジェクトへ移動して使います。",
+        "after": "最後のrunは必要なビルドも行います。実行に失敗したら、まず現在のフォルダーに.csprojがあるか確認します。",
+        "steps": [
+          [
+            "作る",
+            "dotnet new console -n FirstCSharp -f net10.0"
+          ],
+          [
+            "移動する",
+            "cd FirstCSharp"
+          ],
+          [
+            "編集して保存",
+            "Program.csを変更する"
+          ],
+          [
+            "実行する",
+            "dotnet run"
+          ]
+        ]
+      },
+      {
+        "id": "p-01-main-first-lines",
+        "target": "#example|code",
+        "kind": "trace",
+        "title": "書いた行と画面に出る行は一対一ではない",
+        "before": "次の表では、各行を実行した直後の状態を並べます。宣言だけの行では表示は増えません。",
+        "after": "上から順に実行すると表示は2行になります。変数へ値を入れる処理と、その値を表示する処理を区別してください。",
+        "headers": [
+          "実行する行",
+          "変数の状態",
+          "この行が追加する表示"
+        ],
+        "rows": [
+          [
+            "1: WriteLine",
+            "lessonsはまだ使わない",
+            "C#の学習を始めます"
+          ],
+          [
+            "2: int lessons = 32",
+            "lessons = 32",
+            "なし"
+          ],
+          [
+            "3: WriteLine",
+            "lessons = 32",
+            "全32レッスン"
+          ]
+        ]
+      },
+      {
+        "id": "p-01-main-failures",
+        "target": "#section-10",
+        "kind": "compare",
+        "title": "止まった段階で調べる場所を変える",
+        "before": "「動かない」という一つの結果でも、原因の候補は段階によって違います。",
+        "after": "表示内容だけが違う場合にSDKを入れ直しても、計算式は直りません。まずどの段階まで進んだかを確認します。",
+        "items": [
+          [
+            "起動前",
+            "dotnetが見つからない",
+            "SDKの導入とターミナルの環境を確認"
+          ],
+          [
+            "ビルド中",
+            "名前が存在しない／;が必要",
+            "エラーの行番号とコードを確認"
+          ],
+          [
+            "実行後",
+            "表示は出たが答えが違う",
+            "入力値と計算の順序を確認"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-01-deep-evaluation",
+        "target": "#detail-h2-04",
+        "kind": "flow",
+        "title": "代入は右辺の計算が先",
+        "before": "計算式を変数に保存するときは、代入先を先に変更するわけではありません。ここではint total = 7 * 30;の一文だけを分解します。",
+        "after": "totalが保持するのは計算結果210です。7や30を後で別の変数から変更しても、この保存済みの値が自動で再計算されることはありません。",
+        "steps": [
+          [
+            "右辺を読む",
+            "7 と 30"
+          ],
+          [
+            "演算する",
+            "7 × 30 = 210"
+          ],
+          [
+            "左辺へ代入",
+            "total = 210"
+          ]
+        ]
+      },
+      {
+        "id": "p-01-deep-artifact",
+        "target": "#detail-h2-03",
+        "kind": "compare",
+        "title": "編集するファイルと生成されるフォルダー",
+        "before": "プロジェクトを作った直後と、ビルドした後ではファイルの数が変わります。役割で分類すると迷いません。",
+        "after": "表示を変えたいときはProgram.csを修正して保存します。bin内の生成物を書き換えても、次のビルドで正本から作り直されます。",
+        "items": [
+          [
+            "Program.cs",
+            "自分で編集",
+            "実行したい処理を書く"
+          ],
+          [
+            ".csproj",
+            "設定として編集",
+            "対象フレームワークなどを指定"
+          ],
+          [
+            "bin / obj",
+            "ビルドが生成",
+            "実行用と中間の成果物"
+          ]
+        ]
+      },
+      {
+        "id": "p-01-deep-error-step",
+        "target": "#detail-h2-06",
+        "kind": "branch",
+        "title": "表示が出る前に止まったかを確認する",
+        "before": "コンパイルエラーと、実行中に起きる問題では、確認の入口が違います。",
+        "after": "この分岐は調査の入口です。画面出力のない正常なプログラムもあるため、出力の有無だけで最終判断せず、コマンドのエラーと終了状態も読みます。",
+        "condition": "dotnet buildは成功したか",
+        "yes": [
+          "はい",
+          "入力値・実行時の例外・想定した表示順を確認する"
+        ],
+        "no": [
+          "いいえ",
+          "先頭のエラー番号・ファイル名・行番号を確認する"
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-02"
+  },
+  "02": {
+    "opening": "同じConsole.WriteLineでも、ファイルの置き方やusingによって書ける場所が変わります。まず実行入口を確認し、次に「型を探す名前」と「ファイルの並び」を分けます。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "どこから実行が始まるか",
+        "parts": [
+          4,
+          7,
+          6
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "使う型を名前で指定する",
+        "parts": [
+          5,
+          8,
+          9
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "省略できる記述と省略できない依存関係",
+        "parts": [
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "preview",
+      "g2",
+      "example",
+      "walk",
+      "worked",
+      "g3",
+      "pitfall"
+    ],
+    "example_title": "StringBuilderを短い型名で使う",
+    "preview_title": "トップレベル文とMainの対応",
+    "rationale": "入口の規則を名前解決から分離し、別名の具体例を名前空間の説明の直後に置く。",
+    "deep_overview_after": "detail-h2-03",
+    "main": [
+      {
+        "id": "p-02-main-qualified-name",
+        "target": "#section-8",
+        "kind": "tokens",
+        "title": "完全修飾名を名前空間と型名に分ける",
+        "before": "System.Text.StringBuilderは、型の居場所を含めた名前です。ドットで区切って読みます。",
+        "after": "using System.Text;を置くと、曖昧でない範囲でStringBuilderと短く書けます。型そのものをコピーしたり追加インストールしたりする操作ではありません。",
+        "parts": [
+          [
+            "System.Text",
+            "名前空間"
+          ],
+          [
+            ".",
+            "名前の区切り"
+          ],
+          [
+            "StringBuilder",
+            "型名"
+          ]
+        ]
+      },
+      {
+        "id": "p-02-main-builder",
+        "target": "#example|code",
+        "kind": "flow",
+        "title": "Appendは同じバッファーへ順に追加する",
+        "before": "この例ではStringBuilderを一つ作り、その中の文字を2回増やしています。",
+        "after": "ToStringは組み立てた内容をstringとして取得する処理です。using行は文字列への追加処理には含まれません。",
+        "steps": [
+          [
+            "new StringBuilder()",
+            "内容は空"
+          ],
+          [
+            "Append(\"Hello\")",
+            "Hello"
+          ],
+          [
+            "Append(\" C#\")",
+            "Hello C#"
+          ],
+          [
+            "ToString()",
+            "表示するstringを得る"
+          ]
+        ]
+      },
+      {
+        "id": "p-02-main-file-order",
+        "target": "#pitfall",
+        "kind": "compare",
+        "title": "同じファイルでは実行文を型宣言より前に置く",
+        "before": "修正前後で変えているのは、Messageという型の内容ではなく、トップレベル文の位置です。",
+        "after": "Messageを別ファイルへ分けても、同じプロジェクトなら型として利用できます。ただし、別ファイルに二つ目のトップレベル実行文を追加してよいわけではありません。",
+        "items": [
+          [
+            "修正前",
+            "class Message { } → WriteLine",
+            "型宣言の後に実行文がありコンパイルエラー"
+          ],
+          [
+            "修正後",
+            "WriteLine → class Message { }",
+            "実行文を先に置き、型の定義を後に置く"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-02-deep-entry",
+        "target": "#detail-h2-02",
+        "kind": "compare",
+        "title": "二つの記述形式が持つ同じ役割",
+        "before": "トップレベル文ではMainが見えませんが、アプリに実行入口が不要になるわけではありません。",
+        "after": "この図は役割の対応であり、コンパイラーが生成するコードを厳密に再現したものではありません。入口を手書きする形式と短い形式を同じプロジェクトへ無造作に重ねないでください。",
+        "items": [
+          [
+            "トップレベル文",
+            "Console.WriteLine(\"開始\");",
+            "実行入口の生成はコンパイラーに任せる"
+          ],
+          [
+            "Mainを明示",
+            "static void Main() { … }",
+            "実行入口をコード上で宣言する"
+          ]
+        ]
+      },
+      {
+        "id": "p-02-deep-alias",
+        "target": "#detail-h2-04",
+        "kind": "tokens",
+        "title": "別名は既存の型を指す名前",
+        "before": "同じ名前の型を使い分けたいときは、どの完全修飾名に対応するかを明示します。例としてStringBuilderにTextBufferという別名を付けます。",
+        "after": "TextBufferでnewしても生成されるのはSystem.Text.StringBuilderです。別のクラスを定義しているわけではありません。",
+        "parts": [
+          [
+            "using",
+            "別名の宣言"
+          ],
+          [
+            "TextBuffer",
+            "このファイルで使う別名"
+          ],
+          [
+            "= System.Text.StringBuilder;",
+            "対応先の型"
+          ]
+        ]
+      },
+      {
+        "id": "p-02-deep-collision",
+        "target": "#detail-h2-06",
+        "kind": "branch",
+        "title": "短い型名が一意に決まるか",
+        "before": "二つの名前空間に同じ型名があると、usingを追加するほど選択肢が増えて曖昧になることがあります。",
+        "after": "ライブラリが存在しない場合と、複数の型が候補になる場合は別問題です。後者では完全修飾名や別名によって一つを選びます。",
+        "condition": "候補の型が一つに決まるか",
+        "yes": [
+          "はい",
+          "短い型名で参照できる"
+        ],
+        "no": [
+          "いいえ",
+          "完全修飾名を書く、または型ごとに別名を付ける"
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-05"
+  },
+  "03": {
+    "opening": "「7を2で割ると3.5になるはずなのに、3になる」という結果から型を考えます。変数の型、計算に使われる型、値を変更できる期間は別々の問題です。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "値の種類とvarの意味",
+        "parts": [
+          4,
+          9
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "割り算と金額計算に使う型",
+        "parts": [
+          5,
+          7,
+          8
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "値の変更と数値の範囲",
+        "parts": [
+          6,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "preview",
+      "g2",
+      "example",
+      "walk",
+      "worked",
+      "g3",
+      "pitfall"
+    ],
+    "example_title": "整数の商と小数の商を比べる",
+    "preview_title": "変数・式・代入の関係",
+    "rationale": "型の宣言→式の評価→丸め→変更制限の順。最初から全ての修飾子を暗記させない。",
+    "deep_overview_after": "detail-h2-04",
+    "main": [
+      {
+        "id": "p-03-main-declaration",
+        "target": "#section-4",
+        "kind": "tokens",
+        "title": "varでも変数の型は決まる",
+        "before": "var count = 3;を、名前・初期値・型の決定に分けます。",
+        "after": "右辺の3がintなのでcountもintになります。後からcountへ文字列\"3\"を代入できる、という意味ではありません。",
+        "parts": [
+          [
+            "var",
+            "初期化式から型を推論"
+          ],
+          [
+            "count",
+            "変数の名前"
+          ],
+          [
+            "= 3",
+            "intの値で初期化"
+          ],
+          [
+            ";",
+            "文の終端"
+          ]
+        ]
+      },
+      {
+        "id": "p-03-main-divide",
+        "target": "#example|code",
+        "kind": "compare",
+        "title": "割った後に小数型へ入れても端数は戻らない",
+        "before": "整数除算と小数除算では、演算を行う時点の型が異なります。",
+        "after": "小数の商が必要なら、計算前に片方をdoubleにします。結果の表示桁数を増やすだけでは整数除算の結果は変わりません。",
+        "items": [
+          [
+            "7 / 2",
+            "int / int → 3",
+            "整数除算の結果"
+          ],
+          [
+            "7 / 2.0",
+            "int / double → 3.5",
+            "小数を含む演算の結果"
+          ],
+          [
+            "double answer = 7 / 2",
+            "右辺は3 → answerは3.0",
+            "代入先だけ変えても遅い"
+          ]
+        ]
+      },
+      {
+        "id": "p-03-main-mutability",
+        "target": "#section-10",
+        "kind": "compare",
+        "title": "値の再代入と参照先の変更は別の制限",
+        "before": "const、readonly、通常の変数は、何をいつ設定できるかが違います。readonlyはフィールドに対する説明です。",
+        "after": "readonly List<int>が保持する参照を差し替えられなくても、参照先にAddできる場合があります。入れ物の内容まで不変とは限りません。",
+        "items": [
+          [
+            "const",
+            "コンパイル時に値が確定",
+            "宣言後は別の値を代入しない"
+          ],
+          [
+            "readonlyフィールド",
+            "宣言時や対応するコンストラクターで設定",
+            "参照先の可変オブジェクトまで固定しない"
+          ],
+          [
+            "通常の変数",
+            "有効な範囲内で再代入",
+            "同じ型のルールには従う"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-03-deep-expression",
+        "target": "#detail-h2-02",
+        "kind": "flow",
+        "title": "式の評価と代入の順序",
+        "before": "int quantity = 3; decimal total = 800m * quantity;という二つの文を例に、計算する型を追います。",
+        "after": "代入する前に右辺の型と結果が決まります。どんな結果になるかを調べるときは、左辺だけでなく演算に渡る値の型も確認します。",
+        "steps": [
+          [
+            "quantity",
+            "intの3"
+          ],
+          [
+            "800m * quantity",
+            "quantityをdecimalへ変換して乗算"
+          ],
+          [
+            "計算結果",
+            "decimalの2400"
+          ],
+          [
+            "totalへ代入",
+            "decimalの値を保持"
+          ]
+        ]
+      },
+      {
+        "id": "p-03-deep-overflow",
+        "target": "#detail-h2-07",
+        "kind": "boundary",
+        "title": "intの上限をまたぐ演算",
+        "before": "intには表現できる上限があります。ここでは変数に入った上限値へ1を足す場合を考えます。",
+        "after": "checkedは範囲外を検出するための仕組みです。値が大きくなる仕様ならlongなどの型の選択も必要で、例外を消すだけでは解決しません。",
+        "points": [
+          [
+            "2,147,483,646",
+            "上限の一つ前"
+          ],
+          [
+            "2,147,483,647",
+            "intの上限"
+          ],
+          [
+            "上限 + 1（checked）",
+            "OverflowException"
+          ],
+          [
+            "上限 + 1（unchecked）",
+            "-2,147,483,648"
+          ]
+        ]
+      },
+      {
+        "id": "p-03-deep-rounding",
+        "target": "#detail-h2-05",
+        "kind": "compare",
+        "title": "金額は型と丸め方の両方を決める",
+        "before": "decimalを選ぶことと、どの段階で端数を処理するかは別の設計です。1明細の税額が0.6円となる明細が2件あり、整数円へ四捨五入する例で比べます。",
+        "after": "この二つの方法は異なる結果になり得ます。以下の金額コードも、型だけでなく丸める位置と規則を確認して読みます。",
+        "items": [
+          [
+            "明細ごとに丸める",
+            "0.6→1、0.6→1",
+            "合計の税額は2円"
+          ],
+          [
+            "合計して丸める",
+            "0.6+0.6=1.2→1",
+            "合計の税額は1円"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-05"
+  },
+  "04": {
+    "opening": "キーボードから届く「3」は、そのままでは計算用の整数ではありません。入力の状態を見分け、数値に変換できたかを確かめてから、数量として使える範囲を調べます。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "受け取った文字列の状態を調べる",
+        "parts": [
+          4,
+          7
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "数値へ変換してから範囲を確認する",
+        "parts": [
+          5,
+          8,
+          9
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "表示用の文字列を整える",
+        "parts": [
+          6,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "preview",
+      "g2",
+      "example",
+      "worked",
+      "walk",
+      "pitfall",
+      "g3"
+    ],
+    "example_title": "文字列の入力をTryParseで受け取る",
+    "preview_title": "文字列と入力の三つの状態",
+    "rationale": "入力→変換の成否→業務上の範囲→表示の順。文字列操作と値の検証を混同しない。",
+    "deep_overview_after": "detail-h2-03",
+    "main": [
+      {
+        "id": "p-04-main-input-states",
+        "target": "#section-7",
+        "kind": "compare",
+        "title": "未入力と空の文字列は区別する",
+        "before": "入力値を見た目だけで判定せず、null・空文字・空白のある文字列に分けて考えます。",
+        "after": "Trimは前後空白を取り除いた結果を返しますが、nullに対してそのまま呼び出すことはできません。実際の外部入力では、まずnullの可能性を扱います。",
+        "items": [
+          [
+            "null",
+            "値への参照がない",
+            "メンバーをそのまま呼べない"
+          ],
+          [
+            "\"\"",
+            "長さ0の文字列",
+            "文字列は存在する"
+          ],
+          [
+            "\" 24 \"",
+            "前後に空白を含む文字列",
+            "Trimの結果は\"24\""
+          ]
+        ]
+      },
+      {
+        "id": "p-04-main-parse",
+        "target": "#example|code",
+        "kind": "flow",
+        "title": "今回の入力はどこで数値になるか",
+        "before": "このコードのrawは固定の文字列\" 24 \"です。入力文字列から表示までを分けて追います。",
+        "after": "TryParseの成功と、hoursが0以上という数量の条件は別々に確かめています。\"-1\"なら変換には成功しても範囲の検査で拒否されます。",
+        "steps": [
+          [
+            "raw",
+            "\" 24 \"：string"
+          ],
+          [
+            "Trim()",
+            "\"24\"：string"
+          ],
+          [
+            "TryParse",
+            "成功：hours = 24"
+          ],
+          [
+            "hours >= 0",
+            "trueなので学習時間を表示"
+          ]
+        ]
+      },
+      {
+        "id": "p-04-main-valid-number",
+        "target": "#section-9",
+        "kind": "branch",
+        "title": "変換できることと使ってよいことは違う",
+        "before": "整数へ変換できた後も、アプリの仕様に合うかを確認する必要があります。",
+        "after": "\"abc\"は変換の失敗、\"-1\"は変換後の範囲不正です。どちらも受け付けない場合でも、拒否している理由は違います。",
+        "condition": "変換後のhoursは0以上か",
+        "yes": [
+          "はい",
+          "数量として次の計算へ進む"
+        ],
+        "no": [
+          "いいえ",
+          "負の値なので入力し直してもらう"
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-04-deep-tryparse",
+        "target": "#detail-h2-03",
+        "kind": "branch",
+        "title": "TryParseの二つの返り道",
+        "before": "TryParseでは、戻り値のboolで成否を判断し、成功時の数値をoutの変数から読みます。",
+        "after": "失敗時のoutの値を有効な入力と誤認しないでください。入力された0と、変換失敗による既定値は、boolで区別します。",
+        "condition": "int.TryParseが成功したか",
+        "yes": [
+          "true",
+          "outの整数を読み、数量などの範囲を検証"
+        ],
+        "no": [
+          "false",
+          "数値として採用せず入力エラーへ進む"
+        ]
+      },
+      {
+        "id": "p-04-deep-trim",
+        "target": "#detail-h2-06",
+        "kind": "compare",
+        "title": "Trimは元のstring変数へ自動で代入しない",
+        "before": "stringは変更されない値です。Trimが返す結果を受け取ったかどうかを比べます。",
+        "after": "前後空白を除いた値で検証し、同じ値を計算や保存に使うと、検証した内容と採用する内容がずれません。",
+        "items": [
+          [
+            "raw.Trim();だけ",
+            "rawは\" 24 \"のまま",
+            "戻った結果を捨てている"
+          ],
+          [
+            "string clean = raw.Trim();",
+            "cleanは\"24\"",
+            "新しい結果を別の変数に受け取る"
+          ],
+          [
+            "raw = raw.Trim();",
+            "rawは\"24\"を指す",
+            "戻った結果をrawへ再代入する"
+          ]
+        ]
+      },
+      {
+        "id": "p-04-deep-parse-policy",
+        "target": "#detail-h2-05",
+        "kind": "compare",
+        "title": "不正入力を通常の分岐で扱うか",
+        "before": "利用者が文字を入力する場面では、数値にならない入力も想定内です。",
+        "after": "TryParseが業務上の制約まで調べるわけではありません。変換方法を選んだ後に、値の範囲や必須条件も確認します。",
+        "items": [
+          [
+            "Parse(\"abc\")",
+            "変換できず例外になる",
+            "例外として扱う前提が必要"
+          ],
+          [
+            "TryParse(\"abc\", out …)",
+            "falseが返る",
+            "入力し直す経路を明示しやすい"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-04"
+  },
+  "05": {
+    "opening": "点数や送料の条件は、書く順番によって選ばれる結果が変わります。まず条件を一つだけ判定し、次に複数の条件、境界値、switch式へと広げます。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "一つの条件から分岐を組み立てる",
+        "parts": [
+          4,
+          7,
+          8
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "複数の条件とパターンを安全に組み合わせる",
+        "parts": [
+          5,
+          6,
+          9,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "preview",
+      "worked",
+      "g2",
+      "example",
+      "walk",
+      "pitfall"
+    ],
+    "example_title": "条件がtrueになった経路をたどる",
+    "preview_title": "条件式の評価と最小の分岐",
+    "rationale": "単一条件と実行経路を先に理解し、短絡評価・パターンへ進む。境界の比較を実例に隣接させる。",
+    "deep_overview_after": "detail-h2-03",
+    "main": [
+      {
+        "id": "p-05-main-first-condition",
+        "target": "#section-7",
+        "kind": "branch",
+        "title": "まず一つの条件で道を分ける",
+        "before": "複数の条件を読む前に、score >= 80という条件だけを取り出します。",
+        "after": "判定式が返すのはtrueかfalseです。メッセージを決める処理は、その判定結果に対応する経路の中にあります。",
+        "condition": "score >= 80",
+        "yes": [
+          "true",
+          "80以上のときの処理を選ぶ"
+        ],
+        "no": [
+          "false",
+          "80未満のときの処理へ進む"
+        ]
+      },
+      {
+        "id": "p-05-main-score82",
+        "target": "#example|code",
+        "kind": "flow",
+        "title": "score = 82でswitch式を上から読む",
+        "before": "各パターンを上から調べ、最初に一致したところで結果が決まります。",
+        "after": "82は60以上でもありますが、>=80に先に一致します。二つのメッセージが順に出るわけではありません。",
+        "steps": [
+          [
+            "範囲外か",
+            "82は0〜100内 → 不一致"
+          ],
+          [
+            "80以上か",
+            "82 >= 80 → 一致"
+          ],
+          [
+            "結果を決定",
+            "\"よくできました\""
+          ],
+          [
+            "後続は選ばない",
+            ">=60と_へ進まない"
+          ]
+        ]
+      },
+      {
+        "id": "p-05-main-scores",
+        "target": "#walk",
+        "kind": "boundary",
+        "title": "分岐の境界は前後の値も確かめる",
+        "before": "点数の区分を確認するときは、代表的な点だけでなく境界の直前・境界・直後を並べます。この図は最小例のswitch式と同じ区分です。",
+        "after": "80点をどちらに含めるかは>=と>で変わります。範囲外の-1や101も、合否の条件より前に処理されることを確認します。",
+        "points": [
+          [
+            "59",
+            "再学習"
+          ],
+          [
+            "60",
+            "合格"
+          ],
+          [
+            "79",
+            "合格"
+          ],
+          [
+            "80",
+            "よくできました"
+          ],
+          [
+            "101",
+            "範囲外"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-05-deep-short-circuit",
+        "target": "#detail-h2-04",
+        "kind": "branch",
+        "title": "&&は左がfalseなら右を評価しない",
+        "before": "name is not null && name.Length > 0では、右側を安全に読むために左の存在確認が先です。",
+        "after": "右辺を実行しない経路があることが短絡評価です。&&を&へ機械的に置き換えると、右辺も評価されるため同じ意味にはなりません。",
+        "condition": "左：name is not null",
+        "yes": [
+          "true",
+          "右：name.Length > 0も評価する"
+        ],
+        "no": [
+          "false",
+          "右のLengthを読まず、全体がfalseになる"
+        ]
+      },
+      {
+        "id": "p-05-deep-wide-first",
+        "target": "#detail-h2-06",
+        "kind": "compare",
+        "title": "広い条件を先にすると後ろへ届かない",
+        "before": "if / else ifで82点を判定する二つの順序を比べます。",
+        "after": "これはif / else ifの分岐順の例です。switch式では到達不能なパターンがコンパイルエラーになる場合があり、同じ扱いだと混同しないでください。",
+        "items": [
+          [
+            ">=60を先に書く",
+            "82はここでtrue",
+            ">=80を調べず「合格」を選ぶ"
+          ],
+          [
+            ">=80を先に書く",
+            "82はここでtrue",
+            "細かい区分「よくできました」を選ぶ"
+          ]
+        ]
+      },
+      {
+        "id": "p-05-deep-intervals",
+        "target": "#detail-h2-03",
+        "kind": "matrix",
+        "title": "点数の区間に重なりと穴を作らない",
+        "before": "条件をコードへ変える前に、入力全体を区間へ分けます。",
+        "after": "表は仕様の確認用です。実際のコードでは上からの評価によって範囲が絞られるため、各条件だけでなく到達するまでの前提も読みます。",
+        "headers": [
+          "区間",
+          "含める端点",
+          "結果"
+        ],
+        "rows": [
+          [
+            "0〜59",
+            "0と59を含む",
+            "再学習"
+          ],
+          [
+            "60〜79",
+            "60と79を含む",
+            "合格"
+          ],
+          [
+            "80〜100",
+            "80と100を含む",
+            "よくできました"
+          ],
+          [
+            "0未満・100超",
+            "上記以外",
+            "範囲外"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-05"
+  },
+  "06": {
+    "opening": "同じ計算を3回書く代わりに、配列の値を一つずつ取り出します。「今は何番目か」「合計はいくつか」「いつ止まるか」を別々に追うと、繰り返しを読めます。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "配列の要素を位置で指定する",
+        "parts": [
+          4,
+          7
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "繰り返しの開始・判定・更新",
+        "parts": [
+          5,
+          8,
+          9
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "目的に合うループと終了条件",
+        "parts": [
+          6,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "preview",
+      "g2",
+      "example",
+      "walk",
+      "worked",
+      "g3",
+      "pitfall"
+    ],
+    "example_title": "配列を一周して結果を求める",
+    "preview_title": "添字と配列の最小例",
+    "rationale": "配列の位置→1回の反復→累積→終了判定を段階化する。配列の説明より先にループ全体を見せない。",
+    "deep_overview_after": "detail-h2-03",
+    "main": [
+      {
+        "id": "p-06-main-array",
+        "target": "#section-7",
+        "kind": "array",
+        "title": "添字とLengthは別の数",
+        "before": "3要素の配列scores = {70, 85, 90}を横に並べます。上段の数字は位置、下段は格納された値です。",
+        "after": "Lengthは3ですが、使える添字は0・1・2です。scores[3]は4番目を求めるため、この配列の範囲外です。",
+        "values": [
+          "70",
+          "85",
+          "90"
+        ]
+      },
+      {
+        "id": "p-06-main-sum",
+        "target": "#example|code",
+        "kind": "trace",
+        "title": "足す前の合計を次の反復へ渡す",
+        "before": "foreachではscoreに次の要素が入り、sumは前回までの合計を保持します。",
+        "after": "最後のscoreは90ですが、sumは全ての値を足した245です。「今回の値」と「ここまでの合計」を別の列で追います。",
+        "headers": [
+          "反復",
+          "score",
+          "計算前sum",
+          "計算後sum"
+        ],
+        "rows": [
+          [
+            "1回目",
+            "70",
+            "0",
+            "70"
+          ],
+          [
+            "2回目",
+            "85",
+            "70",
+            "155"
+          ],
+          [
+            "3回目",
+            "90",
+            "155",
+            "245"
+          ]
+        ]
+      },
+      {
+        "id": "p-06-main-for-cycle",
+        "target": "#section-8",
+        "kind": "loop",
+        "title": "forは判定と更新を繰り返す",
+        "before": "for (int i = 0; i < scores.Length; i++)を四つの仕事に分けます。",
+        "after": "初期化は最初の一度だけです。i++の後に本文へ直接戻るのではなく、i < Lengthをもう一度判定します。",
+        "initial": "i = 0（一度だけ）",
+        "condition": "i < scores.Length",
+        "body": "scores[i]を使う",
+        "update": "i++",
+        "exit": "falseならループを終了"
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-06-deep-cycle",
+        "target": "#detail-h2-03",
+        "kind": "loop",
+        "title": "iの更新後は必ず条件へ戻る",
+        "before": "forの中括弧の位置だけでなく、末尾からどこへ戻るかを確認します。ここではLengthが3の配列を考えます。",
+        "after": "iが2の本文を実行した後は、更新で3になります。3 < 3がfalseになるため、添字3の要素を読む前に止まります。",
+        "initial": "i = 0",
+        "condition": "i < 3",
+        "body": "添字iの要素を処理",
+        "update": "iを1増やす",
+        "exit": "i = 3で終了"
+      },
+      {
+        "id": "p-06-deep-loop-choice",
+        "target": "#detail-h2-04",
+        "kind": "compare",
+        "title": "取り出したい情報でループを選ぶ",
+        "before": "全てをforへ書き換える必要はありません。位置を使うのか、値だけ使うのかで選びます。",
+        "after": "whileでは更新を自分で記述します。continueが更新を飛ばして条件が変わらなくなる可能性に注意します。",
+        "items": [
+          [
+            "foreach",
+            "要素の値を順番に使う",
+            "添字そのものが不要"
+          ],
+          [
+            "for",
+            "添字と要素の両方を使う",
+            "位置を表示する・別配列へ代入する"
+          ],
+          [
+            "while",
+            "条件が成立する間続ける",
+            "回数より終了条件が中心"
+          ]
+        ]
+      },
+      {
+        "id": "p-06-deep-out-of-range",
+        "target": "#detail-h2-06",
+        "kind": "boundary",
+        "title": "Lengthを添字にすると一つ先を指す",
+        "before": "Lengthが3の配列について、実際に参照できる位置を確認します。",
+        "after": "条件i <= Lengthだとi=3も本文に入ってしまいます。i < Lengthにすれば、この余分な一回を防げます。",
+        "points": [
+          [
+            "-1",
+            "範囲外"
+          ],
+          [
+            "0",
+            "1番目"
+          ],
+          [
+            "1",
+            "2番目"
+          ],
+          [
+            "2",
+            "3番目"
+          ],
+          [
+            "3 = Length",
+            "範囲外"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-04"
+  },
+  "07": {
+    "opening": "同じ計算に名前を付け、別の場所から使えるようにします。呼び出す側から値を渡し、メソッドの中で計算し、戻ってきた結果を受け取る一往復を先に追います。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "呼び出しと戻り値の一往復",
+        "parts": [
+          4,
+          7
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "引数で渡る値と変更の届く範囲",
+        "parts": [
+          5,
+          8,
+          9
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "呼び出し方を読みやすくする",
+        "parts": [
+          6,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "worked",
+      "preview",
+      "g2",
+      "example",
+      "walk",
+      "pitfall",
+      "g3"
+    ],
+    "example_title": "渡した引数と返る結果を対応させる",
+    "preview_title": "メソッド宣言を入出力に分解する",
+    "rationale": "まず普通の値渡しを確かめ、参照のコピーを挟んでref/outへ進む。",
+    "deep_overview_after": "detail-h2-03",
+    "main": [
+      {
+        "id": "p-07-main-call",
+        "target": "#section-7",
+        "kind": "sequence",
+        "title": "メソッド呼び出しは行って戻る",
+        "before": "Add(5)が既定値step = 1を使う例で、呼び出す側と計算する側を分けます。",
+        "after": "returnで戻るのは呼び出した位置です。戻り値を受け取ってから、表示など次の処理へ進みます。",
+        "actors": [
+          "呼び出し側",
+          "Add"
+        ],
+        "steps": [
+          [
+            "呼び出し側",
+            "Add",
+            "5を渡す。stepは既定値1"
+          ],
+          [
+            "Add",
+            "Add",
+            "5 + 1を計算して6にする"
+          ],
+          [
+            "Add",
+            "呼び出し側",
+            "returnで6を返す"
+          ],
+          [
+            "呼び出し側",
+            "呼び出し側",
+            "受け取った6を表示する"
+          ]
+        ]
+      },
+      {
+        "id": "p-07-main-arguments",
+        "target": "#example|code",
+        "kind": "trace",
+        "title": "呼び出し方ごとに引数の対応を見る",
+        "before": "同じAddでも省略した引数と明示した引数では、計算に使うstepが違います。",
+        "after": "refを付けたIncrementは、通常の値渡しとは異なり呼び出し元の変数を参照します。Addの戻り値とは別の変更経路です。",
+        "headers": [
+          "呼び出し",
+          "メソッド内の値",
+          "返る結果・変更"
+        ],
+        "rows": [
+          [
+            "Add(5)",
+            "value=5 / step=1",
+            "6が戻る"
+          ],
+          [
+            "Add(value:5, step:3)",
+            "value=5 / step=3",
+            "8が戻る"
+          ],
+          [
+            "Increment(ref count)",
+            "countを参照（変更前1）",
+            "呼び出し元のcountが2になる"
+          ]
+        ]
+      },
+      {
+        "id": "p-07-main-value-ref",
+        "target": "#section-8",
+        "kind": "compare",
+        "title": "普通の引数とref引数の違い",
+        "before": "呼び出し前のcountを1として、メソッド側の変数へ1を足す場合を比べます。",
+        "after": "「参照型の変数を引数に渡す」ことと「refを付けて変数を参照渡しする」ことも別です。まず、この二つの変更経路を区別します。",
+        "items": [
+          [
+            "Increment(int value)",
+            "countの値1をコピー",
+            "valueだけ2になり、countは1のまま"
+          ],
+          [
+            "Increment(ref int value)",
+            "countという変数を参照",
+            "value経由の変更がcountへ届く"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-07-deep-call-stack",
+        "target": "#detail-h2-03",
+        "kind": "stack",
+        "title": "呼び出した処理が戻るまで待つ",
+        "before": "呼び出し側がCalculateを呼び、その中からAddを呼ぶ場合を概念的に描きます。",
+        "after": "Addが戻るとCalculateの続きへ、その後Calculateが戻ると最初の呼び出し位置の続きへ進みます。物理的なメモリ配置を断定する図ではありません。",
+        "frames": [
+          [
+            "呼び出し側",
+            "Calculateの結果を待つ"
+          ],
+          [
+            "Calculate",
+            "Addの結果を待つ"
+          ],
+          [
+            "Add",
+            "現在実行している計算"
+          ]
+        ]
+      },
+      {
+        "id": "p-07-deep-reference-parameter",
+        "target": "#detail-h2-05",
+        "kind": "memory",
+        "title": "参照のコピーでも同じListへ届く",
+        "before": "Listを通常の引数として渡した場合、パラメーターには参照の値がコピーされます。",
+        "after": "メソッド内のAddは共通のListを変更します。一方、パラメーターへnew List<int>()を再代入するだけなら、呼び出し元の変数が指す先は変わりません。",
+        "objects": [
+          [
+            "list-A",
+            "List A",
+            "[1, 2] → Add(3) → [1, 2, 3]"
+          ]
+        ],
+        "refs": [
+          [
+            "呼び出し元のitems",
+            "list-A",
+            "元の参照"
+          ],
+          [
+            "仮引数のvalues",
+            "list-A",
+            "コピーされた参照"
+          ]
+        ]
+      },
+      {
+        "id": "p-07-deep-modifiers",
+        "target": "#detail-h2-06",
+        "kind": "compare",
+        "title": "ref・out・inは目的で選ぶ",
+        "before": "引数の修飾子は省略できる記号ではなく、値の受け渡しの契約を変えます。",
+        "after": "複数の結果が欲しいだけなら、戻り値をまとめる方法もあります。修飾子を増やす前に、呼び出し側に何が起きるか読み取れる形を選びます。",
+        "items": [
+          [
+            "ref",
+            "呼び出し元で初期化して渡す",
+            "メソッド側が読み書きする"
+          ],
+          [
+            "out",
+            "結果を書き込んでもらう",
+            "正常に戻るまでに代入が必要"
+          ],
+          [
+            "in",
+            "変数を読み取り専用の参照として扱う",
+            "参照先オブジェクトの完全な不変性は保証しない"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-05"
+  },
+  "08": {
+    "opening": "表示名が未指定なのか、空文字なのか、空白だけなのかを区別します。その違いを確認してから、nullを持つ可能性がある型と、安全に値を読む方法を学びます。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "null・空文字・空白を区別する",
+        "parts": [
+          4,
+          7
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "存在を確かめてから値を読む",
+        "parts": [
+          5,
+          8,
+          9
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "警告の抑制と入力の正規化",
+        "parts": [
+          6,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "preview",
+      "g2",
+      "example",
+      "worked",
+      "walk",
+      "g3",
+      "pitfall"
+    ],
+    "example_title": "nullを安全な分岐へ分ける",
+    "preview_title": "string?とint?の違い",
+    "rationale": "欠損の具体例を先に置き、分岐→?.→??→警告の抑制の違いへ進む。",
+    "deep_overview_after": "detail-h2-04",
+    "main": [
+      {
+        "id": "p-08-main-empty",
+        "target": "#section-7",
+        "kind": "compare",
+        "title": "未指定・空文字・空白の三つを分ける",
+        "before": "表示名を受け取った場面を考えます。画面上で何も見えなくても、保持している値は同じとは限りません。",
+        "after": "??が代替するのはnullだけです。空文字や空白も未入力として扱うなら、IsNullOrWhiteSpaceなど別の条件が必要になります。",
+        "items": [
+          [
+            "null",
+            "参照する文字列がない",
+            "??で代替できる"
+          ],
+          [
+            "\"\"",
+            "長さ0の文字列がある",
+            "??では置き換わらない"
+          ],
+          [
+            "\" \"",
+            "空白1文字がある",
+            "Trimや空白検査を別に考える"
+          ]
+        ]
+      },
+      {
+        "id": "p-08-main-coalescing",
+        "target": "#example|code",
+        "kind": "flow",
+        "title": "?.と??を一つずつ評価する",
+        "before": "nameがnullのとき、name?.Length ?? 0を左から読みます。",
+        "after": "?.はアクセスの省略、??はnullだった結果の代替です。この二つを合わせてlengthが0になります。実際にnameへ空文字を代入したわけではありません。",
+        "steps": [
+          [
+            "name",
+            "null"
+          ],
+          [
+            "name?.Length",
+            "Lengthを読まず、結果はnull"
+          ],
+          [
+            "?? 0",
+            "結果がnullなので0を採用"
+          ],
+          [
+            "length",
+            "intの0"
+          ]
+        ]
+      },
+      {
+        "id": "p-08-main-flow-analysis",
+        "target": "#section-8",
+        "kind": "branch",
+        "title": "存在を確かめた経路だけでメンバーを読む",
+        "before": "if (name is not null)の中では、nullでないことを条件として処理できます。",
+        "after": "nullチェックをした場所から後の経路を読むことが重要です。別の分岐や再代入の後まで、常に安全だと一般化しないでください。",
+        "condition": "name is not null",
+        "yes": [
+          "true",
+          "この経路でname.Lengthを読む"
+        ],
+        "no": [
+          "false",
+          "Lengthを読まず、未指定として処理する"
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-08-deep-nullable-types",
+        "target": "#detail-h2-02",
+        "kind": "compare",
+        "title": "同じ?でも値型と参照型は仕組みが違う",
+        "before": "int?とstring?は、どちらも「nullの可能性」を表しますが、同じ新しい型の作り方ではありません。",
+        "after": "string?の注釈だけで実行時のnullを防げるわけではありません。型の注釈と、実際の入力確認を組み合わせます。",
+        "items": [
+          [
+            "int?",
+            "Nullable<int>",
+            "整数と値の欠損を表す値型"
+          ],
+          [
+            "string?",
+            "参照型のnull許容注釈",
+            "コンパイラーの解析・警告に使う"
+          ]
+        ]
+      },
+      {
+        "id": "p-08-deep-nullable-value",
+        "target": "#detail-h2-07",
+        "kind": "branch",
+        "title": "Valueを読む前に値の存在を確認する",
+        "before": "int? scoreには、整数かnullのどちらかが入ります。score.Valueは常に安全ではありません。",
+        "after": "代替値でよければscore ?? -1などの形もあります。欠損を0と同一視してよいかは、データの意味によって決めます。",
+        "condition": "score.HasValue",
+        "yes": [
+          "true",
+          "score.Valueから整数を取得できる"
+        ],
+        "no": [
+          "false",
+          "Valueを読むとInvalidOperationException"
+        ]
+      },
+      {
+        "id": "p-08-deep-suppression",
+        "target": "#detail-h2-06",
+        "kind": "compare",
+        "title": "!は実際のnullを別の値へ変えない",
+        "before": "name!はコンパイラーへのnull警告の抑制です。入力値を埋めたり、存在を確認したりする処理ではありません。",
+        "after": "外部入力がnullになり得るなら、分岐・代替値・入力拒否のどれかを仕様として選びます。警告が消えたことと安全になったことを区別します。",
+        "items": [
+          [
+            "name!.Length",
+            "警告を抑えてアクセスする",
+            "実際にnullならアクセスで例外になる"
+          ],
+          [
+            "name?.Length ?? 0",
+            "nullならアクセスを省略する",
+            "その場合は0を採用する"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-04"
+  },
+  "09": {
+    "opening": "名前と処理を持つ学習者を一人作り、続いて二人目を作ります。一つのクラスを使っていても、それぞれが自分の状態を持つことを出発点にします。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "クラスから個別の実体を作る",
+        "parts": [
+          4,
+          7
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "生成時に有効な状態を作る",
+        "parts": [
+          5,
+          8,
+          9
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "外部へ公開する範囲と共有する状態",
+        "parts": [
+          6,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "example",
+      "preview",
+      "walk",
+      "g2",
+      "worked",
+      "pitfall",
+      "g3"
+    ],
+    "example_title": "Learnerを生成して自己紹介を呼ぶ",
+    "preview_title": "二つのインスタンスの状態",
+    "rationale": "型名・変数名・実体を先に区別し、コンストラクター検証から公開範囲へ広げる。",
+    "deep_overview_after": "detail-h2-03",
+    "main": [
+      {
+        "id": "p-09-main-type-instance",
+        "target": "#section-7",
+        "kind": "compare",
+        "title": "型・変数・実体の三つを分ける",
+        "before": "var learner = new Learner(\"ざき\");という一行には、三つの異なる役割が現れます。",
+        "after": "同じLearner型を使ってもう一度newすると、別の実体を作れます。変数名が型名になったり、クラス定義が人ごとに増えたりするわけではありません。",
+        "items": [
+          [
+            "Learner",
+            "クラスという型",
+            "持つ状態と使える操作を定義"
+          ],
+          [
+            "new Learner(\"ざき\")",
+            "生成する処理",
+            "初期値を渡して個別の実体を作る"
+          ],
+          [
+            "learner",
+            "参照を保持する変数",
+            "作った実体を後から利用する"
+          ]
+        ]
+      },
+      {
+        "id": "p-09-main-construction",
+        "target": "#example|code",
+        "kind": "flow",
+        "title": "生成の条件を満たしてから利用する",
+        "before": "この例のコンストラクターは、渡された名前を確認してからNameへ保存します。",
+        "after": "空白だけの名前では正常な生成を終えず、例外を伝えます。Introduceが呼ばれるのは、有効な名前で生成が完了した後です。",
+        "steps": [
+          [
+            "引数を渡す",
+            "name = \"ざき\""
+          ],
+          [
+            "名前を検証",
+            "空白だけではない"
+          ],
+          [
+            "Nameへ保存",
+            "Trimした名前を保持"
+          ],
+          [
+            "Introduce()",
+            "保持したNameを使って文字列を返す"
+          ]
+        ]
+      },
+      {
+        "id": "p-09-main-this",
+        "target": "#section-9",
+        "kind": "memory",
+        "title": "thisは現在処理している実体を表す",
+        "before": "同じクラスから実体Aと実体Bを作った場合を考えます。メソッドをAに対して呼ぶかBに対して呼ぶかで、thisの対象が変わります。",
+        "after": "this.Name = name;の左辺はその実体のプロパティ、右辺は受け取った引数です。名前が似ていても、保存先と入力値は別です。",
+        "objects": [
+          [
+            "a",
+            "実体A",
+            "Name = \"Aさん\""
+          ],
+          [
+            "b",
+            "実体B",
+            "Name = \"Bさん\""
+          ]
+        ],
+        "refs": [
+          [
+            "first",
+            "a",
+            "Aのメソッド内ではthisもA"
+          ],
+          [
+            "second",
+            "b",
+            "Bのメソッド内ではthisもB"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-09-deep-new-order",
+        "target": "#detail-h2-03",
+        "kind": "flow",
+        "title": "newの式を生成の段階に分ける",
+        "before": "生成の式は、既存の値をただ参照するだけの操作ではありません。単純なクラスの生成を概念的に分解します。",
+        "after": "コンストラクターが例外で終わると、このnew式から呼び出し元へ正常な結果は返りません。生成後に必須の値を入れ忘れる設計と違い、入口で条件を守れます。",
+        "steps": [
+          [
+            "生成を要求",
+            "型とコンストラクター引数を決める"
+          ],
+          [
+            "初期化",
+            "フィールド初期化やコンストラクターが進む"
+          ],
+          [
+            "正常に完了",
+            "利用できる実体になる"
+          ],
+          [
+            "参照を受け取る",
+            "変数からその実体を利用する"
+          ]
+        ]
+      },
+      {
+        "id": "p-09-deep-static",
+        "target": "#detail-h2-05",
+        "kind": "compare",
+        "title": "個体ごとの値と型に属する値",
+        "before": "同じクラスのインスタンスを複数作るとき、全員で共有したい情報と、個別に持つ情報を分けます。",
+        "after": "staticを付けるとアクセスが簡単になる場合がありますが、利用者ごとの状態まで共有してよいとは限りません。共有の必要性を先に考えます。",
+        "items": [
+          [
+            "インスタンスのName",
+            "Aさん / Bさん",
+            "実体ごとにそれぞれ保持"
+          ],
+          [
+            "staticの情報",
+            "型に属する共通情報",
+            "個別の実体の状態ではない"
+          ]
+        ]
+      },
+      {
+        "id": "p-09-deep-assignment",
+        "target": "#detail-h2-07",
+        "kind": "compare",
+        "title": "同名の引数へ代入しても実体は変わらない",
+        "before": "フィールドも引数もnameという名前の場合、単にname = name;と書くと引数同士の代入になります。",
+        "after": "thisを付けると、その実体のメンバーを明示できます。あるいはフィールドを_nameのように命名し、入力と保存先を見分けやすくします。",
+        "items": [
+          [
+            "name = name;",
+            "引数 → 同じ引数",
+            "フィールドへ値が届かない"
+          ],
+          [
+            "this.name = name;",
+            "引数 → 実体のフィールド",
+            "作られる実体に値を保存する"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-04"
+  },
+  "10": {
+    "opening": "在庫数を誰でも自由に書き換えられると、負の在庫も作れてしまいます。読み取り用の入口と変更用の操作を分け、値を守る理由からプロパティを理解します。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "保存している値と公開する値",
+        "parts": [
+          4,
+          7
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "在庫を変更できる操作を限定する",
+        "parts": [
+          5,
+          8
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "初期化時と生成後の変更ルール",
+        "parts": [
+          6,
+          9,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "example",
+      "g2",
+      "worked",
+      "walk",
+      "preview",
+      "pitfall",
+      "g3"
+    ],
+    "example_title": "在庫をAdd経由で増やす",
+    "preview_title": "カプセル化と計算プロパティ",
+    "rationale": "在庫の不正状態という問題→操作による検証→アクセス修飾→init/requiredの順にする。",
+    "deep_overview_after": "detail-h2-04",
+    "main": [
+      {
+        "id": "p-10-main-read-write",
+        "target": "#section-7",
+        "kind": "flow",
+        "title": "読み取りと書き込みで通る入口が違う",
+        "before": "inventory.Countを読む場合と、Countへ値を設定する場合を区別します。プロパティの利用は単なるフィールドの別名とは限りません。",
+        "after": "getの中で計算するプロパティなら、保存している値をそのまま返すとは限りません。公開された値と内部の保存方法を分けられます。",
+        "steps": [
+          [
+            "値を読む",
+            "inventory.Count"
+          ],
+          [
+            "getへ進む",
+            "返す値を取得・計算"
+          ],
+          [
+            "呼び出し元へ",
+            "取得したintを返す"
+          ]
+        ]
+      },
+      {
+        "id": "p-10-main-inventory-add",
+        "target": "#example|code",
+        "kind": "branch",
+        "title": "変更する前に引数を検証する",
+        "before": "Add(3)では、amountが有効かを確かめてからCountを変更します。",
+        "after": "Countのsetterがprivateなので、利用側は直接負の値を代入するのではなくAddの入口を通ります。検証を通らなかった操作ではCountを変更しません。",
+        "condition": "amount > 0",
+        "yes": [
+          "true",
+          "Count += amountを実行する。今回は0→3"
+        ],
+        "no": [
+          "false",
+          "例外を伝える。Countは変更しない"
+        ]
+      },
+      {
+        "id": "p-10-main-initialization",
+        "target": "#section-9",
+        "kind": "compare",
+        "title": "いつ変更したいかで公開の形を選ぶ",
+        "before": "生成するときだけ設定したい値と、後から操作で更新したい値は異なります。",
+        "after": "initやprivate setだけで入力の内容まで正しくなるわけではありません。負数や空文字などの検証は、別途その型のルールとして用意します。",
+        "items": [
+          [
+            "getのみ",
+            "利用側へ読み取りを公開",
+            "値を読む役割に限定"
+          ],
+          [
+            "private set",
+            "型の内部で更新",
+            "検証付きの操作から変更"
+          ],
+          [
+            "init",
+            "オブジェクト初期化時などに設定",
+            "生成後の通常の再代入を制限"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-10-deep-stored-computed",
+        "target": "#detail-h2-02",
+        "kind": "compare",
+        "title": "保持する値と計算して返す値",
+        "before": "価格と数量を保持し、合計を読み取り時に計算する例を考えます。",
+        "after": "計算プロパティの値は、参照した時点の元の値から求められます。別のフィールドに保存した合計が勝手に更新される仕組みではありません。",
+        "items": [
+          [
+            "Price = 200 / Quantity = 3",
+            "保持している元データ",
+            "価格と数量を別々に持つ"
+          ],
+          [
+            "Total => Price * Quantity",
+            "取得時に計算するプロパティ",
+            "この条件では600を返す"
+          ]
+        ]
+      },
+      {
+        "id": "p-10-deep-sell",
+        "target": "#detail-h2-04",
+        "kind": "branch",
+        "title": "在庫を減らしてよい経路だけ更新へ進める",
+        "before": "在庫が5で、購入数量をquantityとして受け取る場面を考えます。",
+        "after": "検証を先に済ませることで、失敗時に負の在庫へしてから戻す処理を避けられます。共有される在庫なら、検証と更新の一体性も別に設計が必要です。",
+        "condition": "quantity > 0 かつ quantity <= 5",
+        "yes": [
+          "true",
+          "在庫を5 - quantityへ変更"
+        ],
+        "no": [
+          "false",
+          "受け付けず、在庫5を維持"
+        ]
+      },
+      {
+        "id": "p-10-deep-recursive-get",
+        "target": "#detail-h2-06",
+        "kind": "flow",
+        "title": "自分のgetterを読むと同じ場所へ戻る",
+        "before": "int Count { get => Count; }では、右辺のCountも同じプロパティです。値を取りに行く先が自分自身になっています。",
+        "after": "実際には終了条件がなく呼び出しが重なります。フィールドを返すか、自動実装プロパティを使い、同じgetterを再び呼ばない形へ直します。",
+        "initial": "Countを読む",
+        "condition": "getterへ入る（終了条件なし）",
+        "body": "右辺のCountを読む",
+        "update": "同じgetterがもう一度呼ばれる",
+        "exit": "このコードには正常終了する経路がない",
+        "steps": [
+          [
+            "Countを読む",
+            "getterを呼び出す"
+          ],
+          [
+            "getter内でCountを読む",
+            "同じgetterを再び呼ぶ"
+          ],
+          [
+            "さらにCountを読む",
+            "呼び出しが繰り返される"
+          ],
+          [
+            "終了条件がない",
+            "正常に値を返せない"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-04"
+  },
+  "11": {
+    "opening": "同じSendの呼び出しで、通常通知とメール通知を切り替えます。コード上の変数の型と、実際に作られたオブジェクトの型を分けることが、overrideを読む手掛かりです。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "基底型から派生型の処理を呼ぶ",
+        "parts": [
+          4,
+          5,
+          7,
+          8
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "継承で約束することと設計上の制限",
+        "parts": [
+          6,
+          9,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "example",
+      "walk",
+      "worked",
+      "preview",
+      "pitfall",
+      "g2"
+    ],
+    "example_title": "Notice型の変数からEmailNoticeを呼ぶ",
+    "preview_title": "virtual・overrideと基底型",
+    "rationale": "同じ呼び出しの結果を見てから呼び出し規則へ戻り、newとの違いを対比する。",
+    "deep_overview_after": "detail-h2-03",
+    "main": [
+      {
+        "id": "p-11-main-dispatch",
+        "target": "#example|code",
+        "kind": "sequence",
+        "title": "見える型と実行する実装を分ける",
+        "before": "noticeの変数の型はNoticeですが、newで作られている実体はEmailNoticeです。",
+        "after": "virtualをoverrideした呼び出しなので、実体に対応するEmailNotice.Sendが選ばれます。変数の型だけを見て通常通知になると判断しないでください。",
+        "actors": [
+          "呼び出し側",
+          "Noticeの契約",
+          "EmailNoticeの実装"
+        ],
+        "steps": [
+          [
+            "呼び出し側",
+            "Noticeの契約",
+            "notice.Send()を呼ぶ"
+          ],
+          [
+            "Noticeの契約",
+            "EmailNoticeの実装",
+            "実体のoverrideへ進む"
+          ],
+          [
+            "EmailNoticeの実装",
+            "呼び出し側",
+            "\"メール通知\"を返す"
+          ]
+        ]
+      },
+      {
+        "id": "p-11-main-two-types",
+        "target": "#section-5",
+        "kind": "compare",
+        "title": "変数の型と実体の型の役割",
+        "before": "Notice notice = new EmailNotice();の左側と右側を別々に読みます。",
+        "after": "基底型に存在しない派生型独自のメンバーは、基底型の変数からそのまま使えるわけではありません。呼び出せる範囲とoverrideの選択は別の規則です。",
+        "items": [
+          [
+            "変数の型：Notice",
+            "コンパイル時の利用範囲",
+            "どのメンバーを呼べるか"
+          ],
+          [
+            "実体の型：EmailNotice",
+            "生成された実体",
+            "virtual呼び出しで使うoverride"
+          ]
+        ]
+      },
+      {
+        "id": "p-11-main-reuse",
+        "target": "#section-7",
+        "kind": "compare",
+        "title": "継承の関係か、部品の利用か",
+        "before": "コードが似ているだけでは、継承を使う理由にはなりません。基底型として扱っても約束を守れるかを考えます。",
+        "after": "通知先を切り替えたいだけなら、インターフェイスや部品への委譲で表す方法もあります。どの関係を表したいかが選択の基準です。",
+        "items": [
+          [
+            "派生型は基底型の一種",
+            "EmailNoticeはNoticeとして使える",
+            "基底型が約束する振る舞いを守る"
+          ],
+          [
+            "別の部品を利用する",
+            "サービスが送信部品を持つ",
+            "利用関係を継承へ置き換えない"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-11-deep-new-override",
+        "target": "#detail-h2-03",
+        "kind": "compare",
+        "title": "overrideとnewは呼び出しの規則が違う",
+        "before": "同名のメソッドを派生型へ書く二つの方法を比較します。",
+        "after": "newは「新しいオブジェクトを作る式」のnewとは別の使い方です。ここでは、継承したメンバーを同名の別メンバーで隠す指定を指します。",
+        "items": [
+          [
+            "override",
+            "基底型のvirtualを上書き",
+            "基底型経由でも実体のoverrideが選ばれる"
+          ],
+          [
+            "newによる隠蔽",
+            "同名の別メンバーを宣言",
+            "変数のコンパイル時の型で呼び出すメンバーが変わる"
+          ]
+        ]
+      },
+      {
+        "id": "p-11-deep-base-constructor",
+        "target": "#detail-h2-05",
+        "kind": "flow",
+        "title": "コンストラクター本体は基底から派生へ",
+        "before": "単純な基底クラスと派生クラスについて、コンストラクター本体の実行順だけを示します。",
+        "after": "これはコンストラクター本体の順序を示す図です。フィールド初期化子や引数式も含めた全ての初期化処理が、この三箱だけで表されるわけではありません。",
+        "steps": [
+          [
+            "派生型をnew",
+            "派生の生成を要求"
+          ],
+          [
+            "基底の本体",
+            "基底側のコンストラクター本体を実行"
+          ],
+          [
+            "派生の本体",
+            "派生側のコンストラクター本体を実行"
+          ]
+        ]
+      },
+      {
+        "id": "p-11-deep-abstract",
+        "target": "#detail-h2-04",
+        "kind": "compare",
+        "title": "abstractで実装を派生型へ求める",
+        "before": "共通の型だけでは処理の内容を決められない場合は、抽象メソッドとして契約を表せます。",
+        "after": "abstract classは直接newして使う完成品ではありません。必要な抽象メンバーを実装した具象クラスを生成して利用します。",
+        "items": [
+          [
+            "抽象クラス側",
+            "操作の形を宣言",
+            "引数・戻り値などの契約"
+          ],
+          [
+            "具象の派生クラス側",
+            "overrideで実装",
+            "具体的な処理の内容"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-04"
+  },
+  "12": {
+    "opening": "通知先を画面から記録用の部品へ変えても、学習完了の処理は変えたくありません。利用側が必要とするSendだけを取り出し、実装を外から渡してみます。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "利用する操作を契約にする",
+        "parts": [
+          4,
+          7
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "実装を外から受け取る",
+        "parts": [
+          5,
+          8
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "テスト用の差し替えと抽象化の範囲",
+        "parts": [
+          6,
+          9,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "preview",
+      "g2",
+      "example",
+      "worked",
+      "walk",
+      "g3",
+      "pitfall"
+    ],
+    "example_title": "通知サービスへ実装を渡す",
+    "preview_title": "契約と実装の最小例",
+    "rationale": "差し替えたい具体的な処理から契約を導き、手動注入の後にテスト用実装へ進む。",
+    "deep_overview_after": "detail-h2-04",
+    "main": [
+      {
+        "id": "p-12-main-contract",
+        "target": "#section-7",
+        "kind": "compare",
+        "title": "利用側に必要なのはどの操作か",
+        "before": "学習完了を知らせるサービスは、画面へどう出力するかではなく、通知できることを必要とします。",
+        "after": "利用側がConsoleSender専用の操作を直接使い始めると、差し替えが難しくなります。契約に必要な操作を絞る意味をここで確認します。",
+        "items": [
+          [
+            "IMessageSender",
+            "Send(string message)",
+            "利用側が必要な操作の契約"
+          ],
+          [
+            "ConsoleSender",
+            "Console.WriteLineで表示",
+            "契約を実現する一つの実装"
+          ],
+          [
+            "StudyService",
+            "IMessageSenderを受け取る",
+            "どの実装かに依存せず通知する"
+          ]
+        ]
+      },
+      {
+        "id": "p-12-main-injection",
+        "target": "#example|code",
+        "kind": "sequence",
+        "title": "作る場所と使う場所を分ける",
+        "before": "この例では、プログラムの入口でConsoleSenderを作り、StudyServiceへ渡します。DIコンテナーは使っていません。",
+        "after": "依存性注入はまず普通の引数の受け渡しとして理解できます。サービス内部で通知先を固定しなければ、別の実装を入口から渡せます。",
+        "actors": [
+          "入口",
+          "StudyService",
+          "ConsoleSender"
+        ],
+        "steps": [
+          [
+            "入口",
+            "ConsoleSender",
+            "newで生成する"
+          ],
+          [
+            "入口",
+            "StudyService",
+            "生成した送信部品を渡す"
+          ],
+          [
+            "StudyService",
+            "ConsoleSender",
+            "CompleteからSendを呼ぶ"
+          ],
+          [
+            "ConsoleSender",
+            "ConsoleSender",
+            "学習完了を画面へ出す"
+          ]
+        ]
+      },
+      {
+        "id": "p-12-main-test-double",
+        "target": "#section-9",
+        "kind": "compare",
+        "title": "実装を変えても利用側の処理は同じ",
+        "before": "テストでは画面表示の代わりに、受け取ったメッセージを記録する実装を渡せます。",
+        "after": "記録用の実装で通知内容を確かめても、実際の外部送信が成功した証明にはなりません。何を差し替え、何を確認したかを分けます。",
+        "items": [
+          [
+            "実行時",
+            "ConsoleSenderを渡す",
+            "メッセージを表示する"
+          ],
+          [
+            "テスト時",
+            "RecordingSenderを渡す",
+            "メッセージを記録して比較する"
+          ],
+          [
+            "共通の利用側",
+            "StudyService.Complete()",
+            "Sendを呼ぶ手順は同じ"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-12-deep-constructor",
+        "target": "#detail-h2-03",
+        "kind": "sequence",
+        "title": "依存する部品が引数に現れる",
+        "before": "コンストラクターにIMessageSenderを置くと、サービスを作るために必要なものが宣言から分かります。",
+        "after": "内部から何でも探し出すのではなく、必要なものを引数として明示しています。注入する部品の生成責任は、サービスの利用側へ分かれます。",
+        "actors": [
+          "組み立て側",
+          "コンストラクター",
+          "サービス"
+        ],
+        "steps": [
+          [
+            "組み立て側",
+            "コンストラクター",
+            "送信部品を引数として渡す"
+          ],
+          [
+            "コンストラクター",
+            "サービス",
+            "受け取った参照を保存する"
+          ],
+          [
+            "サービス",
+            "サービス",
+            "必要なときに契約の操作を呼ぶ"
+          ]
+        ]
+      },
+      {
+        "id": "p-12-deep-instantiate",
+        "target": "#detail-h2-05",
+        "kind": "branch",
+        "title": "newするのは契約か実装か",
+        "before": "インターフェイスは利用できる操作の契約であり、それだけでは実際の処理を持つ個体を生成できません。",
+        "after": "IMessageSender sender = new ConsoleSender();では、左側で契約として受け取り、右側で具体的な実装を生成しています。",
+        "condition": "newの対象は具体的な実装クラスか",
+        "yes": [
+          "はい",
+          "実体を生成し、インターフェイス型で受け取れる"
+        ],
+        "no": [
+          "いいえ",
+          "インターフェイス自体は直接newできない"
+        ]
+      },
+      {
+        "id": "p-12-deep-interface-abstract",
+        "target": "#detail-h2-07",
+        "kind": "compare",
+        "title": "共通の契約と基底の状態を分ける",
+        "before": "実装を差し替える目的と、共通の状態や実装を継承する目的を分けて考えます。",
+        "after": "どちらが常に優れているわけではありません。利用側が必要な操作だけを表すのか、基底型との関係や共通状態が必要なのかで判断します。",
+        "items": [
+          [
+            "interface",
+            "利用できる操作の契約",
+            "異なるクラスを同じ操作で使う"
+          ],
+          [
+            "abstract class",
+            "継承の基底となる型",
+            "共通状態・実装と抽象メンバーをまとめる"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-05"
+  },
+  "13": {
+    "opening": "代入後に片方を変更したとき、もう片方にも変化が見えるでしょうか。値をコピーする例と参照をコピーする例を並べ、格納場所ではなく変更の届く範囲から比べます。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "値のコピーと参照のコピーを比べる",
+        "parts": [
+          4,
+          5,
+          7
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "入れ子の参照とコピーの深さ",
+        "parts": [
+          6,
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "example",
+      "walk",
+      "preview",
+      "worked",
+      "g2",
+      "pitfall"
+    ],
+    "example_title": "structとclassを同じ操作で比べる",
+    "preview_title": "代入で何がコピーされるか",
+    "rationale": "対照実験を中心にする。箱=スタックという断定を避け、参照を含むstructへ発展する。",
+    "deep_overview_after": "detail-h2-03",
+    "main": [
+      {
+        "id": "p-13-main-copy",
+        "target": "#section-7",
+        "kind": "compare",
+        "title": "代入でコピーされるものを比べる",
+        "before": "値型でも参照型でも、通常の代入では変数の値がコピーされます。その値が実体の内容なのか参照なのかが違います。",
+        "after": "参照型の代入を「オブジェクトを丸ごとコピーした」と読まないでください。共有される実体があるかどうかが、変更の届く範囲を決めます。",
+        "items": [
+          [
+            "値型の変数",
+            "値の内容をコピー",
+            "コピー先の値だけを変更できる"
+          ],
+          [
+            "参照型の変数",
+            "オブジェクトへの参照をコピー",
+            "二つの変数が同じ実体を指し得る"
+          ]
+        ]
+      },
+      {
+        "id": "p-13-main-contrast",
+        "target": "#example|code",
+        "kind": "trace",
+        "title": "同じ代入と変更でも結果が異なる",
+        "before": "Pointはstruct、Counterはclassとして定義されています。生成・代入・変更の順番は似ていますが、共有する対象が異なります。",
+        "after": "first.Xは1のまま、a.Valueは9になります。Pointの値が二つある場合と、Counterの同じ実体へ二つの参照がある場合の違いです。",
+        "headers": [
+          "段階",
+          "Point（値型）",
+          "Counter（参照型）"
+        ],
+        "rows": [
+          [
+            "生成",
+            "first.X = 1",
+            "a → 実体のValue = 1"
+          ],
+          [
+            "代入",
+            "secondへ値をコピー",
+            "bもaと同じ実体を参照"
+          ],
+          [
+            "片方で変更",
+            "second.X = 9",
+            "b経由で実体のValue = 9"
+          ],
+          [
+            "元の変数から読む",
+            "first.Xは1",
+            "a.Valueは9"
+          ]
+        ]
+      },
+      {
+        "id": "p-13-main-nested-reference",
+        "target": "#section-8",
+        "kind": "memory",
+        "title": "外側をコピーしても内側のListは共有し得る",
+        "before": "Listをメンバーに持つ値型をコピーした場面です。外側の値は二つになっても、その中の参照は同じListを指すことがあります。",
+        "after": "片方からList.Addを実行すると、もう片方からも要素追加が見えます。値型だから内部のあらゆるデータが独立すると一般化しないでください。",
+        "objects": [
+          [
+            "tags",
+            "共通のList",
+            "[\"C#\"] → [\"C#\", \"SQL\"]"
+          ]
+        ],
+        "refs": [
+          [
+            "コピー前の値のTags",
+            "tags",
+            "メンバーに保持する参照"
+          ],
+          [
+            "コピー後の値のTags",
+            "tags",
+            "コピーされた同じ参照"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-13-deep-alias",
+        "target": "#detail-h2-03",
+        "kind": "memory",
+        "title": "二つの変数が一つの実体を指す",
+        "before": "参照型の代入後に共有されるものを図にします。例としてfirstからsecondへListの参照を代入したと考えます。",
+        "after": "変数を二つ宣言しても、Listが自動で二つ生成されるわけではありません。新しい実体が必要なら生成やコピーの方法を別に指定します。",
+        "objects": [
+          [
+            "list",
+            "List A",
+            "二つの変数から同じ要素を読む"
+          ]
+        ],
+        "refs": [
+          [
+            "first",
+            "list",
+            "元の参照"
+          ],
+          [
+            "second",
+            "list",
+            "代入でコピーした参照"
+          ]
+        ]
+      },
+      {
+        "id": "p-13-deep-copy-depth",
+        "target": "#detail-h2-05",
+        "kind": "compare",
+        "title": "どこまで独立させるかを決める",
+        "before": "コピーには一つの深さしかないわけではありません。外側の一覧と、その要素の実体を分けます。",
+        "after": "new List<T>(元の一覧)などで一覧自体を分けても、Tが可変な参照型なら要素の実体を共有し得ます。独立性が必要な範囲を仕様として決めます。",
+        "items": [
+          [
+            "参照の代入",
+            "同じ一覧を参照",
+            "一覧の追加・削除も共有"
+          ],
+          [
+            "一覧だけ複製",
+            "別の一覧になる",
+            "参照型の要素は共有し得る"
+          ],
+          [
+            "要素も必要に応じて複製",
+            "要件に合わせて独立させる",
+            "循環参照なども含めて設計する"
+          ]
+        ]
+      },
+      {
+        "id": "p-13-deep-boxing",
+        "target": "#detail-h2-06",
+        "kind": "flow",
+        "title": "intをobjectとして扱うときのコピー",
+        "before": "int value = 3; object boxed = value;という例を使います。",
+        "after": "後でvalueへ9を代入しても、boxedから取り出す元のint値は3です。ボックス化は元の変数へ結び付く参照を作る処理ではありません。",
+        "steps": [
+          [
+            "value",
+            "intの3"
+          ],
+          [
+            "objectへ代入",
+            "ボックス化で値をコピー"
+          ],
+          [
+            "value = 9",
+            "元の変数だけを変更"
+          ],
+          [
+            "boxedからintへ",
+            "保持していた3を取り出す"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-05"
+  },
+  "14": {
+    "opening": "内容が同じ二つの成績を「同じ」と呼ぶとき、同じ実体なのか、同じ値なのかを決める必要があります。二つの比較結果を確認してから、withによる変更版の作成へ進みます。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "同じ実体と同じ内容を分ける",
+        "parts": [
+          4,
+          7,
+          8
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "元の値を残して変更版を作る",
+        "parts": [
+          5,
+          6,
+          9
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "入れ子のデータと等値性の限界",
+        "parts": [
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "example",
+      "preview",
+      "g2",
+      "walk",
+      "worked",
+      "g3",
+      "pitfall"
+    ],
+    "example_title": "同じ内容のrecordを二つ作る",
+    "preview_title": "classとrecordの比較",
+    "rationale": "等値性の二つの問い→withの変更→浅いコピーとコレクションの比較へ進む。",
+    "deep_overview_after": "detail-h2-04",
+    "main": [
+      {
+        "id": "p-14-main-identity",
+        "target": "#section-7",
+        "kind": "compare",
+        "title": "「同じか」の問いを先に決める",
+        "before": "同じ内容で別々にnewしたResultの二つを比較する場面です。",
+        "after": "recordの値の比較がtrueでも、実体が同一とは限りません。データとして同じ値なのか、同じ個体を操作しているのかを分けます。",
+        "items": [
+          [
+            "first == second",
+            "recordの等値性で比較",
+            "同じ型と構成値ならこの例ではtrue"
+          ],
+          [
+            "ReferenceEquals(first, second)",
+            "同じ実体を参照するか",
+            "別々にnewしたのでfalse"
+          ]
+        ]
+      },
+      {
+        "id": "p-14-main-with",
+        "target": "#example|code",
+        "kind": "trace",
+        "title": "元のrecordを残して変更版を作る",
+        "before": "first with { Score = 95 }は、firstのScoreを直接95へ書き換える式ではありません。",
+        "after": "元の成績80と改善後の成績95を同時に保持できます。ただし参照型メンバーの内側まで独立させる深いコピーではありません。",
+        "headers": [
+          "変数",
+          "Subject",
+          "Score",
+          "実体"
+        ],
+        "rows": [
+          [
+            "first",
+            "C#",
+            "80",
+            "元の実体A"
+          ],
+          [
+            "second",
+            "C#",
+            "80",
+            "別の実体B"
+          ],
+          [
+            "improved",
+            "C#",
+            "95",
+            "withで作る変更版C"
+          ]
+        ]
+      },
+      {
+        "id": "p-14-main-with-child",
+        "target": "#section-9",
+        "kind": "memory",
+        "title": "with後も子の参照を共有する場合がある",
+        "before": "recordにListのプロパティがある例を考えます。通常のwithコピーはそのListへの参照もコピーします。",
+        "after": "片方のTagsへAddすると、もう片方にも変更が見える場合があります。履歴を完全に固定したいなら、子のデータの可変性とコピー方法も考えます。",
+        "objects": [
+          [
+            "tags",
+            "TagsのList",
+            "共有される要素"
+          ]
+        ],
+        "refs": [
+          [
+            "元recordのTags",
+            "tags",
+            "元のメンバー参照"
+          ],
+          [
+            "コピーrecordのTags",
+            "tags",
+            "浅いコピーで同じ参照"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-14-deep-record-kind",
+        "target": "#detail-h2-03",
+        "kind": "compare",
+        "title": "recordの比較規則と型の分類は別",
+        "before": "recordという単語だけでは、代入で参照がコピーされるか値がコピーされるかを判断できません。",
+        "after": "record classとrecord structのどちらも値ベースの等値性を提供しますが、classとstructの基本的なコピーの性質まで同じになるわけではありません。",
+        "items": [
+          [
+            "record / record class",
+            "参照型",
+            "通常の代入では参照をコピー"
+          ],
+          [
+            "record struct",
+            "値型",
+            "通常の代入では値をコピー"
+          ]
+        ]
+      },
+      {
+        "id": "p-14-deep-array-equality",
+        "target": "#detail-h2-06",
+        "kind": "compare",
+        "title": "配列が同じ内容でも同じ参照とは限らない",
+        "before": "recordのメンバーが配列の場合、配列の既定の等値性を要素ごとの比較と同一視しないでください。",
+        "after": "要素の並びを比較したいならSequenceEqualなどを明示して使う考え方があります。どの比較を型の契約とするかを設計します。",
+        "items": [
+          [
+            "同じ配列への参照",
+            "二つのメンバーが配列Aを指す",
+            "参照が一致する"
+          ],
+          [
+            "別の配列に同じ要素",
+            "配列A=[1,2] / 配列B=[1,2]",
+            "既定の配列の比較は要素比較ではない"
+          ]
+        ]
+      },
+      {
+        "id": "p-14-deep-hash-key",
+        "target": "#detail-h2-08",
+        "kind": "flow",
+        "title": "キーの等値性に使う値を後から変えない",
+        "before": "辞書のキーを探す処理は、ハッシュ値と等値性の約束に依存します。",
+        "after": "これは検索を説明する概念図です。キーとして登録した後に比較対象の値を変更すると、登録時と検索時の前提がずれて見つからなくなる可能性があります。",
+        "steps": [
+          [
+            "登録時",
+            "キーの値からハッシュを求める"
+          ],
+          [
+            "保存",
+            "ハッシュに対応する場所で管理"
+          ],
+          [
+            "検索時",
+            "検索キーのハッシュと等値性を使う"
+          ],
+          [
+            "守る条件",
+            "登録中のキーの比較用の値を安定させる"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-05"
+  },
+  "15": {
+    "opening": "順番を保ちたいのか、名前で探したいのか、重複を取り除きたいのかで、適したコレクションは変わります。必要な操作を選んでから、型引数と未登録時の扱いを確認します。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "必要な操作から入れ物を選ぶ",
+        "parts": [
+          4,
+          7
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "キーの存在を調べて値を読む",
+        "parts": [
+          6,
+          9
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "型引数で要素の種類をそろえる",
+        "parts": [
+          5,
+          8,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "g2",
+      "example",
+      "walk",
+      "worked",
+      "g3",
+      "preview",
+      "pitfall"
+    ],
+    "example_title": "辞書の検索と集合の重複除去",
+    "preview_title": "Listの操作と選択基準",
+    "rationale": "用語一覧から始めず、検索・順序・重複という用途からコレクションを選ぶ。",
+    "deep_overview_after": "detail-h2-03",
+    "main": [
+      {
+        "id": "p-15-main-choose",
+        "target": "#section-7",
+        "kind": "compare",
+        "title": "必要な操作から型を選ぶ",
+        "before": "同じ文字列の集まりでも、何をしたいかによって使い分けます。",
+        "after": "Listは位置、Dictionaryはキー、HashSetは重複のない集合という違いが中心です。HashSetの列挙順を仕様として期待しないでください。",
+        "items": [
+          [
+            "List<T>",
+            "順番に並べる",
+            "添字で取り出す。重複も保持"
+          ],
+          [
+            "Dictionary<TKey,TValue>",
+            "キーから値を探す",
+            "名前と点数などの対応を保持"
+          ],
+          [
+            "HashSet<T>",
+            "重複をなくす",
+            "含まれるかを調べる"
+          ]
+        ]
+      },
+      {
+        "id": "p-15-main-lookup",
+        "target": "#example|code",
+        "kind": "branch",
+        "title": "キーがない可能性を分岐に含める",
+        "before": "scores.TryGetValue(\"C#\", out int score)では、戻り値が検索の成否を表します。",
+        "after": "今回の辞書にはC#があるためscoreは80です。ないキーのときのscoreの既定値0を、本当に0点のデータと混同しないように戻り値で判断します。",
+        "condition": "キー\"C#\"が登録されているか",
+        "yes": [
+          "true",
+          "scoreへ80を受け取り表示する"
+        ],
+        "no": [
+          "false",
+          "値を採用せず、未登録として扱う"
+        ]
+      },
+      {
+        "id": "p-15-main-generic",
+        "target": "#section-8",
+        "kind": "tokens",
+        "title": "型引数がキーと値の関係を決める",
+        "before": "Dictionary<string, int>では二つの型引数に異なる役割があります。",
+        "after": "キーには文字列、値には整数という組み合わせが型として保たれます。型引数は値の\"C#\"や80そのものではありません。",
+        "parts": [
+          [
+            "Dictionary",
+            "キーと値を対応させる型"
+          ],
+          [
+            "<string,",
+            "キーの型"
+          ],
+          [
+            "int>",
+            "値の型"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-15-deep-list-steps",
+        "target": "#detail-h2-02",
+        "kind": "trace",
+        "title": "Listを一操作ずつ変える",
+        "before": "ここでは空のList<int>へ追加し、先頭を削除する小さな例を使います。",
+        "after": "削除すると後続の要素の添字が変わります。添字は固定IDではなく、その時点の位置です。",
+        "headers": [
+          "操作",
+          "一覧の内容",
+          "Count"
+        ],
+        "rows": [
+          [
+            "生成",
+            "[]",
+            "0"
+          ],
+          [
+            "Add(10)",
+            "[10]",
+            "1"
+          ],
+          [
+            "Add(20)",
+            "[10, 20]",
+            "2"
+          ],
+          [
+            "RemoveAt(0)",
+            "[20]",
+            "1"
+          ]
+        ]
+      },
+      {
+        "id": "p-15-deep-dictionary-actions",
+        "target": "#detail-h2-03",
+        "kind": "compare",
+        "title": "新規追加と上書きは同じ操作ではない",
+        "before": "辞書へ同じキーをもう一度指定した場合の扱いを先に決めます。",
+        "after": "重複を拒否したい処理と、既存の値を更新したい処理では使う操作が違います。「値が入ったから成功」だけでは仕様を確認できません。",
+        "items": [
+          [
+            "Add(key, value)",
+            "未登録のキーを追加",
+            "重複すると例外"
+          ],
+          [
+            "TryAdd(key, value)",
+            "追加できたかをboolで受け取る",
+            "重複時はfalse"
+          ],
+          [
+            "dictionary[key] = value",
+            "指定キーへ代入",
+            "登録済みなら値を上書き"
+          ]
+        ]
+      },
+      {
+        "id": "p-15-deep-enumerating",
+        "target": "#detail-h2-07",
+        "kind": "compare",
+        "title": "列挙しながら同じListを構造変更しない",
+        "before": "foreachで要素を読んでいる途中に、同じListへ追加や削除を行う場面を考えます。",
+        "after": "削除対象を先に集めて後から削除するなど、読む工程と構造変更の工程を分けます。全てのコレクションや全ての変更が同じ挙動だと一般化せず、型の契約を確認します。",
+        "items": [
+          [
+            "列挙中にAdd / Remove",
+            "列挙の前提が変わる",
+            "Listの列挙継続時に例外になり得る"
+          ],
+          [
+            "対象を集めてから更新",
+            "読み取りを先に終える",
+            "別の工程で変更する"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-05"
+  },
+  "16": {
+    "opening": "失敗した行の次へそのまま進むとは限りません。例外が起きたときの経路を確認した後で、正常終了でも失敗でも後始末が必要な資源をusingで管理します。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "失敗をcatchへ伝える経路",
+        "parts": [
+          4,
+          7,
+          8
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "失敗を隠さず呼び出し元へ伝える",
+        "parts": [
+          5
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "資源を使える範囲と後始末",
+        "parts": [
+          6,
+          9,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "example",
+      "preview",
+      "g2",
+      "pitfall",
+      "g3",
+      "walk",
+      "worked"
+    ],
+    "example_title": "変換失敗をFormatExceptionで受け取る",
+    "preview_title": "try・catch・finallyの処理順",
+    "rationale": "例外の制御フローと資源の寿命を別段階で扱い、最後に早期returnとの関係へつなぐ。",
+    "deep_overview_after": "detail-h2-05",
+    "main": [
+      {
+        "id": "p-16-main-exception-route",
+        "target": "#section-7",
+        "kind": "flow",
+        "title": "例外が起きると通常の次の行を飛ばす",
+        "before": "tryの途中で例外が発生したとき、同じtryの後続行を続けるわけではありません。",
+        "after": "catch後の処理へ進めるか、呼び出し元へ例外を伝えるかは、処理の書き方に従います。エラーがあったのに成功時の処理を続けないように経路を読みます。",
+        "steps": [
+          [
+            "tryへ入る",
+            "通常の処理を進める"
+          ],
+          [
+            "例外が発生",
+            "try内の後続行を飛ばす"
+          ],
+          [
+            "対応するcatch",
+            "例外に合う処理へ移る"
+          ],
+          [
+            "後続へ",
+            "処理できた場合はtry/catchの後へ"
+          ]
+        ]
+      },
+      {
+        "id": "p-16-main-parse-failure",
+        "target": "#example|code",
+        "kind": "sequence",
+        "title": "Parseの次のWriteLineは呼ばれない",
+        "before": "この例では最初にC#を表示し、その後のint.ParseでFormatExceptionが発生します。",
+        "after": "valueを表示する行は飛ばされます。表示されるのは最初のC#と、catchに書いた「整数として読めませんでした」です。",
+        "actors": [
+          "通常の処理",
+          "Parse",
+          "catch"
+        ],
+        "steps": [
+          [
+            "通常の処理",
+            "通常の処理",
+            "readerからC#を読み表示"
+          ],
+          [
+            "通常の処理",
+            "Parse",
+            "\"not-a-number\"の変換を試す"
+          ],
+          [
+            "Parse",
+            "catch",
+            "FormatExceptionを伝える"
+          ],
+          [
+            "catch",
+            "通常の処理",
+            "入力エラーのメッセージを表示"
+          ]
+        ]
+      },
+      {
+        "id": "p-16-main-gc-dispose",
+        "target": "#section-9",
+        "kind": "compare",
+        "title": "メモリ回収と資源の後始末は別",
+        "before": "GCがあるからといって、ファイルや接続の後始末をいつでも任せてよいわけではありません。",
+        "after": "usingは、所有するIDisposableの資源を使い終える範囲をコードで示します。不要になったマネージドメモリの回収を管理するGCとは役割が異なります。",
+        "items": [
+          [
+            "GC",
+            "不要なマネージドオブジェクトのメモリを回収",
+            "回収時刻を通常は指定しない"
+          ],
+          [
+            "Dispose / using",
+            "使い終わった資源を解放する",
+            "処理の範囲に合わせて後始末する"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-16-deep-try-paths",
+        "target": "#detail-h2-02",
+        "kind": "trace",
+        "title": "成功した場合と例外が出た場合の順序",
+        "before": "通常の例外処理の範囲で、finallyを含む二つの経路を比べます。",
+        "after": "finallyは後始末を置く場所で、失敗した処理をやり直す場所ではありません。強制的なプロセス終了などまで含めて必ず動くと一般化しないでください。",
+        "headers": [
+          "段階",
+          "成功経路",
+          "対応するcatchで扱う例外経路"
+        ],
+        "rows": [
+          [
+            "try",
+            "最後まで進む",
+            "例外の行で後続を飛ばす"
+          ],
+          [
+            "catch",
+            "通らない",
+            "対応するcatchへ進む"
+          ],
+          [
+            "finally",
+            "後始末を行う",
+            "後始末を行う"
+          ],
+          [
+            "その後",
+            "try/finallyの外へ",
+            "再スローしなければ外へ進む"
+          ]
+        ]
+      },
+      {
+        "id": "p-16-deep-using-return",
+        "target": "#detail-h2-05",
+        "kind": "flow",
+        "title": "usingの範囲を離れると後始末する",
+        "before": "using宣言を持つスコープの途中でreturnする場合も、正常なスコープ離脱の処理としてDisposeが行われます。",
+        "after": "returnの後にDisposeを書くだけでは、その行へ到達できません。usingで範囲を表せば、早期returnや通常の例外伝播での離脱にも対応できます。",
+        "steps": [
+          [
+            "取得",
+            "using var resource = …"
+          ],
+          [
+            "利用",
+            "資源を必要な処理で使う"
+          ],
+          [
+            "returnで離脱",
+            "残りの本文を飛ばす"
+          ],
+          [
+            "後始末",
+            "離脱時にDisposeを呼ぶ"
+          ]
+        ]
+      },
+      {
+        "id": "p-16-deep-ownership",
+        "target": "#detail-h2-08",
+        "kind": "compare",
+        "title": "資源を使う期間より先に破棄しない",
+        "before": "資源を返す側でusingを終えてしまうと、受け取った側がすでに破棄済みの資源を使うことがあります。",
+        "after": "どの処理が資源を所有し、いつDisposeするかを明確にします。他から借りた資源を勝手に破棄してよいとは限りません。",
+        "items": [
+          [
+            "早すぎる後始末",
+            "戻す前にusingの範囲を出る",
+            "利用側が破棄済みの資源を受け取る"
+          ],
+          [
+            "所有者が範囲を管理",
+            "最後の利用後にDisposeする",
+            "必要な期間だけ利用できる"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-05"
+  },
+  "17": {
+    "opening": "数値だけでなく「数値をどう変えるか」という処理も渡せます。名前のあるメソッドとの対応を確認してラムダ式を読み、外側の変数やイベントの通知へ進みます。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "処理を値として受け渡す",
+        "parts": [
+          4,
+          7,
+          5,
+          8
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "外側の変数を使うラムダ式",
+        "parts": [
+          9
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "通知の購読と解除",
+        "parts": [
+          6,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "preview",
+      "example",
+      "g2",
+      "walk",
+      "worked",
+      "pitfall",
+      "g3"
+    ],
+    "example_title": "FuncとActionを呼び出す",
+    "preview_title": "名前のあるメソッドとラムダ式",
+    "rationale": "入出力の契約→ラムダ構文→キャプチャ→イベントの寿命という異なる問題を分離する。",
+    "deep_overview_after": "detail-h2-05",
+    "main": [
+      {
+        "id": "p-17-main-func-contract",
+        "target": "#section-7",
+        "kind": "tokens",
+        "title": "入力の型と結果の型を分けて読む",
+        "before": "Func<int, int>は、整数を一つ受け取り、整数を一つ返す処理の型です。数値を保存するintとは役割が違います。",
+        "after": "最後の型引数が戻り値の型です。Action<string>は文字列を受け取りますが、呼び出し結果の値は返しません。",
+        "parts": [
+          [
+            "Func<",
+            "値を返す処理の型"
+          ],
+          [
+            "int,",
+            "受け取る引数の型"
+          ],
+          [
+            "int>",
+            "返す値の型"
+          ],
+          [
+            "x => x * 2",
+            "実際に渡す処理"
+          ]
+        ]
+      },
+      {
+        "id": "p-17-main-captured-variable",
+        "target": "#example|code",
+        "kind": "trace",
+        "title": "ラムダはfactorの古い値を固定していない",
+        "before": "multiplyの作成後にfactorを2から3へ変更しています。呼び出し時にどの値を使うか、実行順に追います。",
+        "after": "この例は外側の変数factorを使います。ラムダ作成時の2を保存したつもりでも、multiply(4)の実行時には3を読み、12を返します。",
+        "headers": [
+          "順序",
+          "実行すること",
+          "factor",
+          "結果"
+        ],
+        "rows": [
+          [
+            "1",
+            "factor = 2",
+            "2",
+            "まだ呼ばない"
+          ],
+          [
+            "2",
+            "multiply = x => x * factor",
+            "2",
+            "処理を用意する"
+          ],
+          [
+            "3",
+            "factor = 3",
+            "3",
+            "変数を更新する"
+          ],
+          [
+            "4",
+            "multiply(4)",
+            "3",
+            "4 × 3 = 12"
+          ]
+        ]
+      },
+      {
+        "id": "p-17-main-event-lifetime",
+        "target": "#section-10",
+        "kind": "sequence",
+        "title": "通知を受け取る期間を決める",
+        "before": "イベントは、呼び出し元が一人の処理を直接選ぶ代わりに、登録された購読先へ通知する仕組みです。",
+        "after": "購読を解除する必要がある場合は、登録したものと対応するハンドラーを使います。発行側が長く生きると、解除しない購読先への参照も残り得ます。",
+        "actors": [
+          "購読側",
+          "発行側"
+        ],
+        "steps": [
+          [
+            "購読側",
+            "発行側",
+            "+= handler で登録する"
+          ],
+          [
+            "発行側",
+            "購読側",
+            "出来事が起きたらhandlerを呼ぶ"
+          ],
+          [
+            "購読側",
+            "発行側",
+            "-= handler で登録を解除する"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-17-deep-delegate-call",
+        "target": "#detail-h2-03",
+        "kind": "flow",
+        "title": "名前付きメソッドもラムダも、同じ入出力で呼べる",
+        "before": "整数を二倍にする処理をFunc<int, int>に入れた場合を考えます。",
+        "after": "呼び出し側は、受け取った処理へ引数を渡して結果を使います。ラムダ式を定義しただけでは、その中の計算を毎回実行したことにはなりません。",
+        "steps": [
+          [
+            "用意",
+            "名前付きメソッド / x => x * 2"
+          ],
+          [
+            "受け取る",
+            "Func<int, int> operation"
+          ],
+          [
+            "呼び出す",
+            "operation(4)"
+          ],
+          [
+            "結果",
+            "8を受け取る"
+          ]
+        ]
+      },
+      {
+        "id": "p-17-deep-for-capture",
+        "target": "#detail-h2-06",
+        "kind": "compare",
+        "title": "同じ変数を読むか、反復ごとの変数を読むか",
+        "before": "forの変数をラムダが参照し、ループ終了後に呼ぶ場合を分けます。",
+        "after": "0から2までのforでも、共有したiを終了後に読むと3になり得ます。反復内で別の変数へ値をコピーすると、その反復の値を保持する形にできます。",
+        "items": [
+          [
+            "iをそのまま参照",
+            "全て同じiを読む",
+            "実行時のiを使う"
+          ],
+          [
+            "反復内のlocalへコピー",
+            "その回で作ったlocalを読む",
+            "作成時の0 / 1 / 2を分けて保持"
+          ]
+        ]
+      },
+      {
+        "id": "p-17-deep-unsubscribe",
+        "target": "#detail-h2-08",
+        "kind": "compare",
+        "title": "同じ見た目のラムダを書き直しても対応するとは限らない",
+        "before": "登録と解除で別々にラムダ式を記述した場合、同じハンドラーを指定したと考えてはいけません。",
+        "after": "解除が必要な処理は、名前付きメソッドや保持したデリゲートを使い、登録と解除の対応を明確にします。見た目が同じコードであることは、購読の対応の保証ではありません。",
+        "items": [
+          [
+            "別の式で登録・解除",
+            "+= (...) => ... / -= (...) => ...",
+            "別のハンドラーとして扱われ得る"
+          ],
+          [
+            "同じ変数を使う",
+            "+= handler / -= handler",
+            "対応する購読を解除する"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-05"
+  },
+  "18": {
+    "opening": "商品一覧から安い商品だけを選び、価格順に並べ、商品名を取り出します。各段階の入力と出力を見てから、一続きのLINQへまとめます。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "残す要素と取り出す値を決める",
+        "parts": [
+          4,
+          5,
+          7,
+          10
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "並び順と元データへの影響を確認する",
+        "parts": [
+          6,
+          8,
+          9,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "preview",
+      "example",
+      "walk",
+      "worked",
+      "g2",
+      "pitfall"
+    ],
+    "example_title": "Where・OrderBy・Selectを順に通す",
+    "preview_title": "ループから抽出処理へ進む",
+    "rationale": "データの形と件数の変化を主線とし、メソッド名の暗記にしない。",
+    "deep_overview_after": "detail-h2-06",
+    "main": [
+      {
+        "id": "p-18-main-data-pipeline",
+        "target": "#example|code",
+        "kind": "flow",
+        "title": "件数と要素の型を各段階で確認する",
+        "before": "この例では、ノート200円・本1200円・ペン100円から、500円以下の商品名を価格順に取り出します。",
+        "after": "Whereは要素を残すか決め、OrderByは順序を決め、Selectは結果の形を変えます。ToListはその時点で列挙した結果を一覧として保持します。",
+        "steps": [
+          [
+            "入力：Product 3件",
+            "ノート200 / 本1200 / ペン100"
+          ],
+          [
+            "Where：Product 2件",
+            "ノート200 / ペン100"
+          ],
+          [
+            "OrderBy：Product 2件",
+            "ペン100 / ノート200"
+          ],
+          [
+            "Select：string 2件",
+            "ペン / ノート"
+          ],
+          [
+            "ToList",
+            "List<string>として保持"
+          ]
+        ]
+      },
+      {
+        "id": "p-18-main-where-select",
+        "target": "#section-7",
+        "kind": "compare",
+        "title": "条件を書いても、WhereとSelectでは結果が違う",
+        "before": "同じp.Price <= 500を指定した場合でも、使う操作によって出てくるデータの型が変わります。",
+        "after": "Selectで条件式を書くとtrue/falseの一覧になります。商品を残すためにはWhere、商品から値を取り出すためにはSelectを使う、という役割を確認します。",
+        "items": [
+          [
+            "Where(p => p.Price <= 500)",
+            "条件を満たすProductだけ",
+            "要素の型はProductのまま"
+          ],
+          [
+            "Select(p => p.Price <= 500)",
+            "各商品の判定結果",
+            "要素の型はboolになる"
+          ]
+        ]
+      },
+      {
+        "id": "p-18-main-sorting",
+        "target": "#section-9",
+        "kind": "compare",
+        "title": "表示順を変えることと元の一覧を並べ替えること",
+        "before": "OrderByを使ったクエリを列挙しても、元のListの並び順をその場で変更するわけではありません。",
+        "after": "結果の順序が変わったから元データも変わった、とは判断しないでください。元のListを直接並べ替えるSortとは、変更の届く範囲が違います。",
+        "items": [
+          [
+            "OrderByの結果",
+            "ペン → ノート → 本",
+            "価格順で列挙する結果"
+          ],
+          [
+            "元のproducts",
+            "ノート → 本 → ペン",
+            "元のListの順序は保持される"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-18-deep-where-path",
+        "target": "#detail-h2-04",
+        "kind": "branch",
+        "title": "Whereは要素ごとに残すかどうかを判定する",
+        "before": "500円以下の商品を残す条件を、一つの商品の処理として描きます。",
+        "after": "判定を商品ごとに繰り返した結果が抽出後の列になります。条件を満たさなかった商品を書き換えたり削除したりする処理ではありません。",
+        "condition": "その商品のPrice <= 500",
+        "yes": [
+          "true",
+          "そのProductを結果へ流す"
+        ],
+        "no": [
+          "false",
+          "そのProductを結果へ流さない"
+        ]
+      },
+      {
+        "id": "p-18-deep-projection",
+        "target": "#detail-h2-05",
+        "kind": "flow",
+        "title": "Selectで商品から必要な値へ変換する",
+        "before": "価格や名前を持つProductからNameだけが必要な場面です。",
+        "after": "入力の一要素に対して結果の一要素を作ります。複数の項目が必要なら新しいデータ形へ投影できますが、ここでは文字列への変換だけに注目します。",
+        "steps": [
+          [
+            "入力の要素",
+            "Product(Name=\"ペン\", Price=100)"
+          ],
+          [
+            "変換の指定",
+            "p => p.Name"
+          ],
+          [
+            "結果の要素",
+            "stringの\"ペン\""
+          ]
+        ]
+      },
+      {
+        "id": "p-18-deep-chain-sort",
+        "target": "#detail-h2-09",
+        "kind": "compare",
+        "title": "第2の条件を足すならThenByで続ける",
+        "before": "一次キーが同じ場合だけ、別の項目で順序を決めたい場面です。",
+        "after": "OrderByをもう一度使うと、新しく指定したキーを主な並び順として扱います。優先順位を重ねたい意図ならOrderBy(...).ThenBy(...)という関係を明示します。",
+        "items": [
+          [
+            "OrderBy(カテゴリ)",
+            "第1の並び順を決める",
+            "まずカテゴリで比較"
+          ],
+          [
+            "ThenBy(価格)",
+            "同じカテゴリ内の順を決める",
+            "第1の条件を保って価格で比較"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-07"
+  },
+  "19": {
+    "opening": "Whereを書いた時点と、結果を表示した時点の間で元データが変わるとどうなるでしょうか。時間の順番に沿って、クエリの定義・列挙・ToListによる保存を分けます。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "クエリを作る時点と結果を読む時点",
+        "parts": [
+          4,
+          7
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "列挙の回数と必要なデータ量",
+        "parts": [
+          5,
+          8,
+          10
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "集計と空のデータ",
+        "parts": [
+          6,
+          9,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "example",
+      "walk",
+      "preview",
+      "worked",
+      "g2",
+      "pitfall",
+      "g3"
+    ],
+    "example_title": "元データの追加前後で結果を比べる",
+    "preview_title": "IEnumerableとyield return",
+    "rationale": "時間軸上の実験→繰り返し列挙→空データの集計へ進める。",
+    "deep_overview_after": "detail-h2-04",
+    "main": [
+      {
+        "id": "p-19-main-query-time",
+        "target": "#example|code",
+        "kind": "timeline",
+        "title": "定義した条件と保存した結果の違い",
+        "before": "queryを作る操作とsnapshotを作る操作は、同じ時点の同じ処理ではありません。",
+        "after": "追加後にqueryを列挙すると2,3,4ですが、すでに作ったsnapshotは2,3です。この例の要素はintです。ToListが一般に要素オブジェクトまで深く複製するという意味ではありません。",
+        "columns": [
+          "① 用意",
+          "② ToList",
+          "③ Add(4)",
+          "④ 列挙"
+        ],
+        "rows": [
+          [
+            "values",
+            "1, 2, 3",
+            "変更なし",
+            "1, 2, 3, 4",
+            "現在の一覧"
+          ],
+          [
+            "query",
+            ">= 2という条件",
+            "ここで一度列挙",
+            "条件自体は同じ",
+            "2, 3, 4"
+          ],
+          [
+            "snapshot",
+            "まだない",
+            "2, 3を保存",
+            "変更なし",
+            "2, 3"
+          ]
+        ]
+      },
+      {
+        "id": "p-19-main-enumerate-cost",
+        "target": "#section-5",
+        "kind": "compare",
+        "title": "同じクエリを使っても結果が自動保存されるとは限らない",
+        "before": "IEnumerableのクエリをAny、Count、foreachなどで繰り返し読む場面を考えます。",
+        "after": "実際のコストは元の型や最適化によって変わりますが、毎回の列挙で処理や外部アクセスが再び起き得る点が重要です。一度固定する必要があるときにToListなどを検討します。",
+        "items": [
+          [
+            "その都度列挙",
+            "今の元データから結果を求め得る",
+            "計算・副作用が繰り返される場合がある"
+          ],
+          [
+            "一度実体化",
+            "結果の一覧を作ってから再利用",
+            "保存用のメモリが必要"
+          ]
+        ]
+      },
+      {
+        "id": "p-19-main-empty-aggregate",
+        "target": "#section-9",
+        "kind": "trace",
+        "title": "空の入力を先にテストする",
+        "before": "ここではLINQ to Objectsの空のint列を対象にします。0件の場合に返る値と、そもそも求められない値を区別します。",
+        "after": "「0なら正常な結果」か「0件なので計算できない」かは別の意味です。Averageなどを呼ぶ前に、空のときのアプリの振る舞いを決めます。",
+        "headers": [
+          "操作",
+          "空のint列での結果",
+          "確認すること"
+        ],
+        "rows": [
+          [
+            "Count()",
+            "0",
+            "件数が0である"
+          ],
+          [
+            "Any()",
+            "false",
+            "要素がない"
+          ],
+          [
+            "Sum()",
+            "0",
+            "合計の初期値0"
+          ],
+          [
+            "Average()",
+            "InvalidOperationException",
+            "平均を求める要素がない"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-19-deep-yield-demand",
+        "target": "#detail-h2-02",
+        "kind": "sequence",
+        "title": "列挙する側から次の要素を求める",
+        "before": "yield returnを使う列は、結果を全部作り終えてから一括で渡すとは限りません。",
+        "after": "yield returnで一つ返した後、次の要求でその続きへ進みます。途中で列挙をやめれば、後の要素を作る処理まで必ず実行されるわけではありません。",
+        "actors": [
+          "foreach側",
+          "列の生成側"
+        ],
+        "steps": [
+          [
+            "foreach側",
+            "列の生成側",
+            "次の要素を要求する"
+          ],
+          [
+            "列の生成側",
+            "foreach側",
+            "yield returnで一つ返す"
+          ],
+          [
+            "foreach側",
+            "列の生成側",
+            "次を必要としたら再び要求する"
+          ],
+          [
+            "列の生成側",
+            "foreach側",
+            "続きから進み、次の要素を返す"
+          ]
+        ]
+      },
+      {
+        "id": "p-19-deep-buffering",
+        "target": "#detail-h2-06",
+        "kind": "compare",
+        "title": "遅延実行でも、すぐ一要素を返せるとは限らない",
+        "before": "実行開始のタイミングと、結果を出すために必要な入力の量は別の軸です。",
+        "after": "Whereは条件に合う要素を探しながら順に返せます。OrderByの並び順を決めるには通常、対象の要素全体を確認する必要があります。どちらも遅延実行だから同じ処理量、とは考えません。",
+        "items": [
+          [
+            "Where",
+            "必要な要素を順に調べる",
+            "ストリーミング処理"
+          ],
+          [
+            "OrderBy",
+            "並べ替えに必要な要素を集める",
+            "バッファリングを伴う処理"
+          ]
+        ]
+      },
+      {
+        "id": "p-19-deep-query-provider",
+        "target": "#detail-h2-09",
+        "kind": "compare",
+        "title": "式の書き方が似ていても実行場所は違う",
+        "before": "Listに対するLINQと、データベース向けのIQueryableを同じ処理だと思わないようにします。",
+        "after": "IQueryableは提供元が式を解釈して実行します。C#で書ける任意のメソッドが、そのままSQLなどへ変換できるとは限りません。ここまでの具体例は主にメモリ上のLINQです。",
+        "items": [
+          [
+            "IEnumerable / LINQ to Objects",
+            "アプリ内の値を列挙する",
+            "C#の処理で要素を扱う"
+          ],
+          [
+            "IQueryable",
+            "式を提供元へ渡す",
+            "変換できる式や実行先は提供元に依存"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-05"
+  },
+  "20": {
+    "opening": "この単元では、異なる三つの困りごとを扱います。状態の数字に名前を付けるenum、複数の結果を返すタプル、既存の型を読みやすく使う拡張メソッドを、役割ごとに分けます。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "状態の数字へ名前を付ける",
+        "parts": [
+          4,
+          7
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "複数の結果をまとめて返す",
+        "parts": [
+          5,
+          8
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "既存の型へ呼び出し方を追加する",
+        "parts": [
+          6,
+          9,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "preview",
+      "g2",
+      "g3",
+      "example",
+      "walk",
+      "worked",
+      "pitfall"
+    ],
+    "example_title": "状態・集計結果・文字列の操作を使う",
+    "preview_title": "enumの状態と値",
+    "rationale": "三機能を一つのフローに混ぜず、それぞれの問題と最小構文を順に独立させる。",
+    "deep_overview_after": "detail-h2-06",
+    "main": [
+      {
+        "id": "p-20-main-enum-values",
+        "target": "#section-7",
+        "kind": "boundary",
+        "title": "名前を付けた値以外も作れてしまう",
+        "before": "この例のTaskStateはTodo、Doing、Doneの順で、明示しなければ0、1、2になります。",
+        "after": "整数99をキャストできることと、アプリで使える状態であることは別です。外部から受け取る値には、名前付きの状態として有効かの確認が必要です。",
+        "points": [
+          [
+            "0",
+            "Todo"
+          ],
+          [
+            "1",
+            "Doing"
+          ],
+          [
+            "2",
+            "Done"
+          ],
+          [
+            "99",
+            "キャストできても定義済みの状態ではない"
+          ]
+        ]
+      },
+      {
+        "id": "p-20-main-tuple-return",
+        "target": "#section-8",
+        "kind": "tokens",
+        "title": "戻り値を二つの役割に分ける",
+        "before": "件数と合計を返すメソッドでは、同じintでも意味が異なります。",
+        "after": "タプルの要素名は、読む人が結果の役割を区別する助けになります。二つのintを逆に入れても型だけでは検出できないため、返す順序とテストも確認します。",
+        "parts": [
+          [
+            "(int Count, int Total)",
+            "戻り値の二つの要素"
+          ],
+          [
+            "Count",
+            "集計した件数"
+          ],
+          [
+            "Total",
+            "値の合計"
+          ],
+          [
+            "(2, 30)",
+            "10と20を集計した結果"
+          ]
+        ]
+      },
+      {
+        "id": "p-20-main-extension-call",
+        "target": "#section-9",
+        "kind": "compare",
+        "title": "呼び出し方を追加してもstring自体を書き換えない",
+        "before": "HasTextを拡張メソッドとして呼ぶ例です。短く書けるようになる仕組みと、型を変更することを分けます。",
+        "after": "拡張メソッドは、受け取った値を使う静的なメソッドをインスタンスのような構文で呼べるようにします。stringの内部へ新しいメンバーを保存する操作ではありません。",
+        "items": [
+          [
+            "呼び出す側",
+            "\"C#\".HasText()",
+            "受け手を前に置く構文"
+          ],
+          [
+            "宣言する側",
+            "HasText(this string text)",
+            "先頭の引数で受け手を受け取る"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-20-deep-enum-guard",
+        "target": "#detail-h2-03",
+        "kind": "branch",
+        "title": "整数から状態へ変える境界で検証する",
+        "before": "外部入力をenumに変換した後、未定義の数値を後続へ渡さないための判断です。",
+        "after": "この図は通常の名前付き状態を想定します。Flags属性による組み合わせを許すenumでは、許可するビットの組み合わせを別に設計します。",
+        "condition": "アプリが許可する状態か",
+        "yes": [
+          "はい",
+          "状態に対応した処理へ進む"
+        ],
+        "no": [
+          "いいえ",
+          "入力エラーとして扱う"
+        ]
+      },
+      {
+        "id": "p-20-deep-tuple-mixup",
+        "target": "#detail-h2-05",
+        "kind": "compare",
+        "title": "同じ型の引数は意味の取り違えに注意する",
+        "before": "(int Count, int Total)へ(30, 2)を返してしまった場合を考えます。",
+        "after": "どちらもintなので、順序が逆でも型検査だけでは意図を判定できません。入力10と20からCount=2、Total=30になるテストが取り違えを見つけます。",
+        "items": [
+          [
+            "意図した戻り値",
+            "(2, 30)",
+            "Count=2 / Total=30"
+          ],
+          [
+            "取り違えた戻り値",
+            "(30, 2)",
+            "型は合っても意味が逆"
+          ]
+        ]
+      },
+      {
+        "id": "p-20-deep-choose-feature",
+        "target": "#detail-h2-08",
+        "kind": "compare",
+        "title": "解決したい問題が違う三つの機能",
+        "before": "一つの処理に全てを使う必要はありません。何を表したいのかで選びます。",
+        "after": "長期間やり取りする複雑なデータや、常に守りたいルールが増えるなら、専用の型を定義する選択もあります。記述が短くなることだけで選ばないでください。",
+        "items": [
+          [
+            "enum",
+            "決められた状態に名前を付ける",
+            "Todo / Doing / Done"
+          ],
+          [
+            "タプル",
+            "関連する少数の結果を返す",
+            "件数と合計"
+          ],
+          [
+            "拡張メソッド",
+            "既存の型を使う操作を読みやすくする",
+            "文字列が空でないか調べる"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-06"
+  },
+  "21": {
+    "opening": "アプリの変数とディスク上のファイルは別物です。まず値をJSON文字列へ変換し、その後で保存場所、読み込み、復元後の検証へ進みます。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "C#の値とJSON文字列を行き来する",
+        "parts": [
+          4,
+          5,
+          8
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "書き込むファイルの場所を決める",
+        "parts": [
+          7
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "読み込み失敗と不正データから守る",
+        "parts": [
+          6,
+          9,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "example",
+      "preview",
+      "g2",
+      "walk",
+      "worked",
+      "g3",
+      "pitfall"
+    ],
+    "example_title": "オブジェクトをJSONにして復元する",
+    "preview_title": "メモリ上の値と保存する文字列",
+    "rationale": "シリアル化をファイルI/Oから分離し、復元と業務検証はさらに別の段階として扱う。",
+    "deep_overview_after": "detail-h2-04",
+    "main": [
+      {
+        "id": "p-21-main-json-roundtrip",
+        "target": "#example|code",
+        "kind": "flow",
+        "title": "ここではまだファイルへ保存していない",
+        "before": "この最小例は、メモリ上のオブジェクトとJSON文字列を相互に変換します。Serializeだけでディスクへ保存されるわけではありません。",
+        "after": "ファイルへの書き込みは、この変換とは別にFile.WriteAllTextなどで行います。まず変換の入出力を確認すると、ファイルの場所の問題と混同せずに調べられます。",
+        "steps": [
+          [
+            "C#の値",
+            "StudyLog(\"CSharp\", 30)"
+          ],
+          [
+            "Serialize",
+            "JSONの文字列を作る"
+          ],
+          [
+            "Deserialize",
+            "文字列から値を復元する"
+          ],
+          [
+            "結果を読む",
+            "Minutesは30"
+          ]
+        ]
+      },
+      {
+        "id": "p-21-main-path",
+        "target": "#section-7",
+        "kind": "compare",
+        "title": "ファイル名と実際の保存場所を分ける",
+        "before": "\"logs.json\"のような相対パスでは、どのフォルダーを基準にするかが必要です。",
+        "after": "相対パスは通常、実行時のカレントディレクトリを基準に解釈されます。Program.csのある場所や実行ファイルの場所と必ず一致するわけではありません。",
+        "items": [
+          [
+            "相対パス",
+            "logs.json",
+            "基準フォルダーと合わせて場所が決まる"
+          ],
+          [
+            "絶対パス",
+            "場所全体を指定する",
+            "実行場所が変わっても同じ対象を示す"
+          ]
+        ]
+      },
+      {
+        "id": "p-21-main-validation-layers",
+        "target": "#section-9",
+        "kind": "flow",
+        "title": "読めたことと使ってよいことは別",
+        "before": "ファイルを読み込んで復元する処理には、異なる失敗の段階があります。",
+        "after": "たとえばMinutesが負でも、型に収まる数値ならJSONから復元できる場合があります。復元後に業務ルールを検証し、不正な状態をそのまま採用しないようにします。",
+        "steps": [
+          [
+            "ファイルを読む",
+            "存在・権限・I/Oを確認"
+          ],
+          [
+            "JSONを解釈",
+            "JSONとして読めるか"
+          ],
+          [
+            "型へ復元",
+            "型やnullを確認"
+          ],
+          [
+            "ルールを検証",
+            "学習時間などの値が有効か"
+          ],
+          [
+            "採用する",
+            "有効なデータだけを使う"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-21-deep-save-load",
+        "target": "#detail-h2-04",
+        "kind": "sequence",
+        "title": "保存と読み込みは逆向きの工程",
+        "before": "同じアプリを再起動してもデータを残すために、メモリとファイルをつなぎます。",
+        "after": "保存先が正しくても復元できるとは限りません。データ形式、文字コード、型の定義、検証を含めて、読み書きの組み合わせで確認します。",
+        "actors": [
+          "アプリの値",
+          "JSON文字列",
+          "ファイル"
+        ],
+        "steps": [
+          [
+            "アプリの値",
+            "JSON文字列",
+            "Serializeで文字列へ変換"
+          ],
+          [
+            "JSON文字列",
+            "ファイル",
+            "書き込んで残す"
+          ],
+          [
+            "ファイル",
+            "JSON文字列",
+            "読み込んで文字列を得る"
+          ],
+          [
+            "JSON文字列",
+            "アプリの値",
+            "Deserializeして検証する"
+          ]
+        ]
+      },
+      {
+        "id": "p-21-deep-preserve-file",
+        "target": "#detail-h2-08",
+        "kind": "branch",
+        "title": "読み込み失敗を空データで上書きしない",
+        "before": "壊れたJSONを読み込めなかった場合に、空の一覧を正常な読み込み結果として扱うとどうなるかを考えます。",
+        "after": "読み込み失敗をそのまま空として保存すると、復旧できたはずの元ファイルまで失います。失敗を通知し、元データを保持して復旧方針を選びます。",
+        "condition": "読み込みと検証に成功したか",
+        "yes": [
+          "成功",
+          "検証済みのデータを採用する"
+        ],
+        "no": [
+          "失敗",
+          "元ファイルを保持し、自動上書きを避ける"
+        ]
+      },
+      {
+        "id": "p-21-deep-valid-json",
+        "target": "#detail-h2-06",
+        "kind": "compare",
+        "title": "構文が正しくてもアプリのルールを守るとは限らない",
+        "before": "JSONの文法と、アプリが許すデータには別々の条件があります。",
+        "after": "型への変換だけで全ての入力検証が終わるわけではありません。必須項目、値の範囲、組み合わせの条件を、復元後にも確認します。",
+        "items": [
+          [
+            "JSONとして有効",
+            "数値として-30が書かれている",
+            "文法の問題ではない"
+          ],
+          [
+            "学習記録として無効",
+            "学習時間が負になっている",
+            "業務ルールで拒否する"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-04"
+  },
+  "22": {
+    "opening": "誕生日、世界共通の瞬間、45分という長さは、同じ「日時」ではありません。表したい意味から型を選び、同じ瞬間の表示を変える例でオフセットを確認します。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "日付・瞬間・期間を選び分ける",
+        "parts": [
+          4,
+          7
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "同じ瞬間を違うオフセットで表す",
+        "parts": [
+          5,
+          8
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "保存形式と表示形式を分ける",
+        "parts": [
+          6,
+          9,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "preview",
+      "g2",
+      "example",
+      "walk",
+      "worked",
+      "g3",
+      "pitfall"
+    ],
+    "example_title": "時刻の変換と経過時間を計算する",
+    "preview_title": "日付と瞬間の使い分け",
+    "rationale": "型一覧ではなくデータの意味→同一瞬間→期間→文字列形式の順で説明する。",
+    "deep_overview_after": "detail-h2-03",
+    "main": [
+      {
+        "id": "p-22-main-meanings",
+        "target": "#section-7",
+        "kind": "compare",
+        "title": "日付・瞬間・期間は質問が違う",
+        "before": "どの型を使うか決める前に、値が何を表すのかを言葉にします。",
+        "after": "時計の表示だけで世界共通の瞬間を決められるとは限りません。瞬間を扱うときはオフセットやタイムゾーンの扱いも必要です。",
+        "items": [
+          [
+            "DateOnly",
+            "2026年9月14日",
+            "何日かを表す"
+          ],
+          [
+            "DateTimeOffset",
+            "2026-09-14 09:00 +09:00",
+            "オフセット付きの日時で瞬間を表す"
+          ],
+          [
+            "TimeSpan",
+            "45分",
+            "どれだけの長さかを表す"
+          ]
+        ]
+      },
+      {
+        "id": "p-22-main-same-instant",
+        "target": "#example|code",
+        "kind": "timeline",
+        "title": "オフセットを変えても同じ瞬間を表せる",
+        "before": "この例の開始時刻は2026年9月14日9時、オフセットは+09:00です。",
+        "after": "UTCへ変換すると表示は0時になりますが、9時間前の別の出来事へ変わるわけではありません。45分を加えると、どちらの表示でも同じ長さだけ進みます。",
+        "columns": [
+          "開始の瞬間",
+          "45分後の瞬間"
+        ],
+        "rows": [
+          [
+            "+09:00表示",
+            "9月14日 09:00",
+            "9月14日 09:45"
+          ],
+          [
+            "UTC表示",
+            "9月14日 00:00",
+            "9月14日 00:45"
+          ],
+          [
+            "経過した長さ",
+            "開始",
+            "45分"
+          ]
+        ]
+      },
+      {
+        "id": "p-22-main-duration-parts",
+        "target": "#section-10",
+        "kind": "compare",
+        "title": "MinutesとTotalMinutesは同じ値ではない",
+        "before": "1時間30分という期間をTimeSpanで表した場合です。",
+        "after": "Minutesは時間などを除いた分の成分です。全体を分単位で扱う集計にはTotalMinutesを使うなど、取り出す値の意味を確認します。",
+        "items": [
+          [
+            "Minutes",
+            "30",
+            "分の成分"
+          ],
+          [
+            "TotalMinutes",
+            "90",
+            "期間全体を分に換算"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-22-deep-kind",
+        "target": "#detail-h2-04",
+        "kind": "compare",
+        "title": "DateTimeのKindを見ずに時差を足し引きしない",
+        "before": "同じ見た目の日時でも、UTCかローカルか未指定かで解釈の前提が変わります。",
+        "after": "Unspecifiedは「自動で日本時間になる」という意味ではありません。外部とのやり取りでは、値の意味と変換ルールを明示してから扱います。",
+        "items": [
+          [
+            "Utc",
+            "UTCとしての日時",
+            "共通基準で扱う"
+          ],
+          [
+            "Local",
+            "実行環境のローカル日時",
+            "環境の設定が関係する"
+          ],
+          [
+            "Unspecified",
+            "UTC/Localの指定なし",
+            "意味を別途決める必要がある"
+          ]
+        ]
+      },
+      {
+        "id": "p-22-deep-immutable-date",
+        "target": "#detail-h2-07",
+        "kind": "flow",
+        "title": "AddDaysの結果を受け取る",
+        "before": "DateOnlyなどの日時の値でAddDaysを呼ぶと、変更した値が戻り値として返ります。",
+        "after": "呼び出すだけで元の変数の値を書き換えたつもりにならないようにします。date = date.AddDays(1)のように戻り値を採用するか、別の変数へ保存します。",
+        "steps": [
+          [
+            "元のdate",
+            "9月14日"
+          ],
+          [
+            "date.AddDays(1)",
+            "9月15日という結果を作る"
+          ],
+          [
+            "戻り値を代入",
+            "dateへ新しい値を保存"
+          ],
+          [
+            "代入後のdate",
+            "9月15日"
+          ]
+        ]
+      },
+      {
+        "id": "p-22-deep-clock-duration",
+        "target": "#detail-h2-08",
+        "kind": "compare",
+        "title": "現在時刻と処理時間の測定を使い分ける",
+        "before": "記録に日時を残す目的と、処理が何秒かかったかを測る目的を分けます。",
+        "after": "時計は時刻調整の影響を受け得ます。処理の経過時間を測るときはStopwatch、記録する瞬間を表すときは日時の型、という使い分けをします。",
+        "items": [
+          [
+            "日時を記録",
+            "いつ起きたか",
+            "DateTimeOffsetなど"
+          ],
+          [
+            "経過時間を測定",
+            "何秒かかったか",
+            "Stopwatchなど"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-06"
+  },
+  "23": {
+    "opening": "読み込みが終わる前と後で、実行できる行が変わります。一つの非同期処理を使い、呼び出した直後に得るTaskと、await後に得る結果を分けて追います。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "開始した処理と完了後の結果",
+        "parts": [
+          4,
+          7,
+          8
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "待機・スレッド・例外を混同しない",
+        "parts": [
+          5,
+          6,
+          9,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "example",
+      "walk",
+      "preview",
+      "worked",
+      "g2",
+      "pitfall"
+    ],
+    "example_title": "一つの処理をawaitして結果を読む",
+    "preview_title": "待ち時間と処理開始の関係",
+    "rationale": "出力順→Taskと結果→待機中の継続→例外という時系列で説明する。",
+    "deep_overview_after": "detail-h2-03",
+    "main": [
+      {
+        "id": "p-23-main-await-order",
+        "target": "#example|code",
+        "kind": "timeline",
+        "title": "未完了のTaskをawaitしたときの実行順",
+        "before": "LoadAsyncの結果がまだない場合を描いています。Task.Delayはここでは待ち時間を作るための例です。",
+        "after": "awaitの後の行は、対象の処理が完了してから続きます。必ず新しいスレッドが作られる、または常に一度停止する、という意味ではありません。",
+        "columns": [
+          "① 開始",
+          "② 待機中",
+          "③ 完了",
+          "④ 再開"
+        ],
+        "rows": [
+          [
+            "呼び出し側",
+            "「開始」を表示して呼ぶ",
+            "awaitの後にはまだ進まない",
+            "結果を受け取れる状態",
+            "結果 →「完了」を表示"
+          ],
+          [
+            "LoadAsync",
+            "Delayを開始する",
+            "Delayの完了を待つ",
+            "文字列を返す",
+            "呼び出し側へ結果が伝わる"
+          ]
+        ]
+      },
+      {
+        "id": "p-23-main-task-result",
+        "target": "#section-7",
+        "kind": "compare",
+        "title": "Task<string>とstringを分ける",
+        "before": "非同期メソッドの呼び出し直後と、awaitした後では受け取るものが違います。",
+        "after": "Taskは処理の完了・結果・失敗を表します。Taskの参照を変数へ保存しただけで、文字列の結果を取得したことにはなりません。",
+        "items": [
+          [
+            "LoadAsync()の呼び出し",
+            "Task<string>",
+            "処理の完了を表すもの"
+          ],
+          [
+            "await LoadAsync()",
+            "string",
+            "成功して完了した処理の結果"
+          ]
+        ]
+      },
+      {
+        "id": "p-23-main-exception-await",
+        "target": "#section-8",
+        "kind": "sequence",
+        "title": "失敗もawaitした場所で受け取る",
+        "before": "Taskとして失敗が記録された非同期処理をawaitする場面です。",
+        "after": "呼び出し側は、awaitを含む範囲をtry/catchで囲んで失敗を扱います。結果を使いたい処理では、Taskを受け取るだけで放置しないようにします。",
+        "actors": [
+          "呼び出し側",
+          "非同期処理"
+        ],
+        "steps": [
+          [
+            "呼び出し側",
+            "非同期処理",
+            "処理を開始してTaskを受け取る"
+          ],
+          [
+            "非同期処理",
+            "呼び出し側",
+            "失敗した状態をTaskで表す"
+          ],
+          [
+            "呼び出し側",
+            "呼び出し側",
+            "awaitで例外を受け取りcatchへ進む"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-23-deep-state-resume",
+        "target": "#detail-h2-04",
+        "kind": "flow",
+        "title": "awaitの前後を続きとして保持する",
+        "before": "未完了の処理をawaitするとき、メソッドは必要な状態と続きの位置を保ちます。",
+        "after": "この図は状態遷移の概念図です。完了済みならそのまま続けられる場合があり、どのスレッドで再開するかも環境や文脈で異なります。",
+        "steps": [
+          [
+            "awaitより前",
+            "必要な処理を実行"
+          ],
+          [
+            "未完了のTask",
+            "状態と続きを保持"
+          ],
+          [
+            "Taskの完了",
+            "続きを実行できる状態になる"
+          ],
+          [
+            "awaitの後",
+            "保存した状態を使って続ける"
+          ]
+        ]
+      },
+      {
+        "id": "p-23-deep-wait-block",
+        "target": "#detail-h2-07",
+        "kind": "compare",
+        "title": "非同期の待機と同期的な待機を混ぜない",
+        "before": "結果が未完了のTaskを待つ場合を比べます。",
+        "after": "ResultやWaitで同期的に待つと、呼び出したスレッドを止めます。環境によってはデッドロックや処理能力の低下につながるため、非同期の経路ではawaitでつなぐことを基本にします。",
+        "items": [
+          [
+            "await task",
+            "完了後の続きとして扱う",
+            "待機中にスレッドを占有するとは限らない"
+          ],
+          [
+            "task.Result / task.Wait()",
+            "呼び出し側を同期的に待たせる",
+            "未完了ならそのスレッドをブロックする"
+          ]
+        ]
+      },
+      {
+        "id": "p-23-deep-io-cpu",
+        "target": "#detail-h2-08",
+        "kind": "compare",
+        "title": "待ち時間か、計算そのものかを見分ける",
+        "before": "ネットワークからの応答待ちと、大量の計算は異なる負荷です。",
+        "after": "asyncというキーワードだけで計算が軽くなるわけではありません。I/Oでは非同期APIを使い、CPU処理を別スレッドへ移すかは応答性や負荷を見て判断します。",
+        "items": [
+          [
+            "I/Oの待ち時間",
+            "ネットワーク・ファイルなど",
+            "対応する非同期APIで待つ"
+          ],
+          [
+            "CPUの計算",
+            "変換・探索などの計算そのもの",
+            "計算量や並列化の必要性を検討する"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-06"
+  },
+  "24": {
+    "opening": "二つの処理を並べる前に、一方の結果がもう一方に必要かを確認します。独立した処理を開始して合流させる話と、中止要求を処理側へ伝える話を分けます。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "独立した処理を開始して合流させる",
+        "parts": [
+          4,
+          7,
+          8
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "中止要求を処理側へ届ける",
+        "parts": [
+          5,
+          9
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "失敗と同時実行数を管理する",
+        "parts": [
+          6,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "preview",
+      "example",
+      "worked",
+      "g2",
+      "walk",
+      "g3",
+      "pitfall"
+    ],
+    "example_title": "WhenAllによる合流とTokenの受け渡し",
+    "preview_title": "依存関係と複数Taskの待機",
+    "rationale": "依存関係→開始→合流→協調キャンセル→上限の順。キャンセルを強制終了として描かない。",
+    "deep_overview_after": "detail-h2-03",
+    "main": [
+      {
+        "id": "p-24-main-join",
+        "target": "#example|code",
+        "kind": "timeline",
+        "title": "開始を二つ済ませてから合流する",
+        "before": "LoadAsync(10)とLoadAsync(20)は互いの結果を必要としないので、両方のTaskを作ってからWhenAllで待ちます。",
+        "after": "この図は順序関係を示し、完了時刻の保証ではありません。成功時の結果配列は渡したTaskの順序に対応するため、この例では10と20を合計して30になります。",
+        "columns": [
+          "開始",
+          "途中",
+          "合流"
+        ],
+        "rows": [
+          [
+            "first",
+            "LoadAsync(10)を開始",
+            "10を返して完了へ",
+            "results[0] = 10"
+          ],
+          [
+            "second",
+            "LoadAsync(20)を開始",
+            "20を返して完了へ",
+            "results[1] = 20"
+          ],
+          [
+            "呼び出し側",
+            "両方のTaskを用意",
+            "WhenAllをawait",
+            "両方の完了後に合計30"
+          ]
+        ]
+      },
+      {
+        "id": "p-24-main-cancel-token",
+        "target": "#section-9",
+        "kind": "sequence",
+        "title": "Cancelは処理側へ要求を伝える",
+        "before": "CancellationTokenSourceは中止を要求し、CancellationTokenはその要求を処理側へ伝えます。",
+        "after": "渡していないTokenでは中止要求は届きません。要求を受けた側が協力して停止する仕組みなので、Cancelが任意の処理を即座に強制終了するわけではありません。",
+        "actors": [
+          "要求側",
+          "Token",
+          "処理側"
+        ],
+        "steps": [
+          [
+            "要求側",
+            "Token",
+            "Source.Cancel()で中止を要求"
+          ],
+          [
+            "Token",
+            "処理側",
+            "APIへ渡したTokenが要求を伝える"
+          ],
+          [
+            "処理側",
+            "要求側",
+            "キャンセルとして完了し、awaitで通知される"
+          ]
+        ]
+      },
+      {
+        "id": "p-24-main-dependencies",
+        "target": "#section-7",
+        "kind": "compare",
+        "title": "同時に始めてよいかを先に判断する",
+        "before": "一つ目の結果が二つ目に必要な処理は、そのまま独立して開始できません。",
+        "after": "独立した処理だけを重ねます。Task.WhenAllはTaskを受け取って完了をまとめるもので、依存関係を自動的に解決する仕組みではありません。",
+        "items": [
+          [
+            "結果が必要",
+            "ユーザーIDを取得 → そのIDの詳細を取得",
+            "前の完了を待って次を開始"
+          ],
+          [
+            "互いに独立",
+            "商品一覧の取得 / カテゴリ一覧の取得",
+            "両方を開始してから合流できる"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-24-deep-result-order",
+        "target": "#detail-h2-03",
+        "kind": "compare",
+        "title": "完了順と結果の並び順を分ける",
+        "before": "Aを先に渡し、Bが先に完了する場合でも、WhenAllの成功結果は渡したTaskの順に並びます。",
+        "after": "「先に終わった結果が先頭」とは限りません。完了するたびに結果を処理する構成とは、別の待ち方であることを確認します。",
+        "items": [
+          [
+            "完了した順",
+            "B → A",
+            "処理時間により変わる"
+          ],
+          [
+            "WhenAll(A, B)の結果",
+            "[Aの結果, Bの結果]",
+            "入力したTaskの順に対応"
+          ]
+        ]
+      },
+      {
+        "id": "p-24-deep-outcomes",
+        "target": "#detail-h2-04",
+        "kind": "trace",
+        "title": "WhenAll全体の状態は各Taskの結果から決まる",
+        "before": "複数のTaskが全て完了した後の状態を整理します。",
+        "after": "失敗したTaskが一つでもあれば全体はFaultedです。失敗がなくキャンセルがあればCanceled、全て成功ならRanToCompletionになります。複数の失敗の確認方法とawaitで受ける例外は本文も合わせて読みます。",
+        "headers": [
+          "各Taskの状態",
+          "WhenAll全体の状態"
+        ],
+        "rows": [
+          [
+            "一つ以上が失敗",
+            "Faulted"
+          ],
+          [
+            "失敗はなく、一つ以上がキャンセル",
+            "Canceled"
+          ],
+          [
+            "全て成功",
+            "RanToCompletion"
+          ]
+        ]
+      },
+      {
+        "id": "p-24-deep-limit",
+        "target": "#detail-h2-07",
+        "kind": "flow",
+        "title": "処理へ入れる数を制限する",
+        "before": "例えば同時に二つまで実行する場合、処理へ入る前に枠を待ち、終わったら必ず返します。",
+        "after": "枠を得た後の処理をtry/finallyで囲み、成功でも失敗でもReleaseします。枠の取得に失敗したのに返すなど、取得と解放の対応がずれないようにします。",
+        "steps": [
+          [
+            "待つ",
+            "WaitAsyncで枠を取得"
+          ],
+          [
+            "実行する",
+            "同時に入れるのは上限まで"
+          ],
+          [
+            "終了する",
+            "成功・失敗・キャンセル"
+          ],
+          [
+            "枠を返す",
+            "finallyでRelease"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-07"
+  },
+  "25": {
+    "opening": "Program.csをコピーしただけでは、同じアプリを再現できないことがあります。フォルダー内の役割を確認し、ビルドの材料、参照、依存パッケージの復元を順に見ます。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "ソースとプロジェクト設定をそろえる",
+        "parts": [
+          4,
+          7
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "複数ファイルと参照の関係",
+        "parts": [
+          5,
+          8
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "パッケージ復元と環境差を調べる",
+        "parts": [
+          6,
+          9,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "preview",
+      "example",
+      "worked",
+      "g2",
+      "walk",
+      "g3",
+      "pitfall"
+    ],
+    "example_title": "プロジェクトに含まれるコードを実行する",
+    "preview_title": "最小の.csprojを読む",
+    "rationale": "ファイル構成→ビルドの工程→外部参照→復元失敗の切り分けという実務の手順に合わせる。",
+    "deep_overview_after": "detail-h2-04",
+    "main": [
+      {
+        "id": "p-25-main-build-stages",
+        "target": "#section-9",
+        "kind": "flow",
+        "title": "復元・ビルド・実行・配布の成果物を分ける",
+        "before": "dotnet run一つで進む場面でも、内部では異なる役割の工程があります。",
+        "after": "通常のbuildやrunは必要な復元などを暗黙に行うことがあります。失敗時には、どの工程で止まったかをログで区別すると原因を探しやすくなります。",
+        "steps": [
+          [
+            "restore",
+            "必要な依存パッケージをそろえる"
+          ],
+          [
+            "build",
+            "コードと設定から実行用の成果物を作る"
+          ],
+          [
+            "run",
+            "アプリを実行する"
+          ],
+          [
+            "publish",
+            "配布先で使う成果物をまとめる"
+          ]
+        ]
+      },
+      {
+        "id": "p-25-main-references",
+        "target": "#section-8",
+        "kind": "compare",
+        "title": "usingだけでは依存ライブラリーは増えない",
+        "before": "名前を省略する仕組みと、別のコードをプロジェクトで使えるようにする仕組みを区別します。",
+        "after": "usingを書いても、参照していないパッケージを自動で取得するわけではありません。型が見つからないときは、名前と参照の両方を調べます。",
+        "items": [
+          [
+            "using",
+            "型名を短く書くための名前解決",
+            "ソース内の記述"
+          ],
+          [
+            "ProjectReference",
+            "自分の別プロジェクトへの参照",
+            "プロジェクト同士の依存関係"
+          ],
+          [
+            "PackageReference",
+            "NuGetパッケージへの参照",
+            "必要なパッケージとバージョン"
+          ]
+        ]
+      },
+      {
+        "id": "p-25-main-reproduce",
+        "target": "#section-10",
+        "kind": "flow",
+        "title": "別のPCでも同じ前提で作れるようにする",
+        "before": "自分のPCで偶然動くことと、他の人が必要な材料から再現できることを分けます。",
+        "after": "生成物だけでなく、ソース・プロジェクト設定・必要なSDK・依存関係を管理します。バージョン固定やロックファイルの使い方はプロジェクトの運用方針に合わせます。",
+        "steps": [
+          [
+            "材料を共有",
+            "ソースと.csproj"
+          ],
+          [
+            "環境をそろえる",
+            "対象のSDKと設定"
+          ],
+          [
+            "依存を復元",
+            "指定されたパッケージ"
+          ],
+          [
+            "確認",
+            "ビルドとテストを実行"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-25-deep-compiler",
+        "target": "#detail-h2-04",
+        "kind": "flow",
+        "title": "ソースから動作するアプリへ進む",
+        "before": "ここでは一般的な.NETアプリのビルドと実行の役割を分けます。",
+        "after": "ビルドできたことだけでは、実行時の入力や外部サービスまで正しいとは分かりません。環境の準備、コンパイル、実行時の検証をそれぞれ行います。",
+        "steps": [
+          [
+            "ソースと設定",
+            "Program.cs / .csproj / 参照"
+          ],
+          [
+            "コンパイル",
+            "型や文法などを確認"
+          ],
+          [
+            "成果物",
+            "アセンブリなどを生成"
+          ],
+          [
+            "実行",
+            "ランタイムがアプリを動かす"
+          ]
+        ]
+      },
+      {
+        "id": "p-25-deep-duplicate-files",
+        "target": "#detail-h2-06",
+        "kind": "compare",
+        "title": "バックアップ用の.csもビルド対象になり得る",
+        "before": "SDK形式のプロジェクトでは、通常はプロジェクト配下の.csが自動で含まれます。",
+        "after": "同じ型やトップレベル文を持つファイルをコピーして置くと、ビルドが失敗する原因になります。過去版は履歴で管理するなど、ソースの入力範囲を明確にします。",
+        "items": [
+          [
+            "Program.cs",
+            "現在使うソース",
+            "コンパイルする"
+          ],
+          [
+            "Program_copy.cs",
+            "同じ入口や型を持つコピー",
+            "同時に含まれると重複になり得る"
+          ]
+        ]
+      },
+      {
+        "id": "p-25-deep-restore-error",
+        "target": "#detail-h2-09",
+        "kind": "branch",
+        "title": "復元で止まったなら、まず依存の取得を調べる",
+        "before": "ソースをコンパイルする前に、必要なパッケージがそろわず止まることがあります。",
+        "after": "パッケージ名やバージョン、取得元、ネットワーク、認証などを調べます。復元失敗なのにC#の文法だけを直し続けないようにします。",
+        "condition": "restoreが成功したか",
+        "yes": [
+          "成功",
+          "コンパイルのエラーを調べる工程へ"
+        ],
+        "no": [
+          "失敗",
+          "依存パッケージの取得条件を確認する"
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-07"
+  },
+  "26": {
+    "opening": "コードが実行できても、境界の値だけ間違っていることがあります。先に期待する答えを決め、実際の値との違いを確認してから、デバッガーと自動テストへ進みます。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "期待値と実際の値を比較する",
+        "parts": [
+          4,
+          7
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "境界で止めて原因を探す",
+        "parts": [
+          5,
+          8
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "同じ確認を自動で繰り返す",
+        "parts": [
+          6,
+          9,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "example",
+      "worked",
+      "g2",
+      "walk",
+      "pitfall",
+      "preview",
+      "g3"
+    ],
+    "example_title": "期待値から計算結果を検査する",
+    "preview_title": "期待結果を固定する最小テスト",
+    "rationale": "期待値の設定と失敗観察が先。テストツールの用語から入らずデバッグとの役割差を示す。",
+    "deep_overview_after": "detail-h2-03",
+    "main": [
+      {
+        "id": "p-26-main-test-boundaries",
+        "target": "#example|code",
+        "kind": "boundary",
+        "title": "60点以上という仕様を三つの入力で固定する",
+        "before": "IsPassedがscore >= 60を表すなら、境界の直前・境界・直後を分けて確認します。",
+        "after": "61だけでは、誤ってscore > 60と書いても失敗を見つけられません。期待値を実装と独立に決めることが、境界の間違いを検出する鍵です。",
+        "points": [
+          [
+            "59",
+            "期待値 false"
+          ],
+          [
+            "60",
+            "期待値 true"
+          ],
+          [
+            "61",
+            "期待値 true"
+          ]
+        ]
+      },
+      {
+        "id": "p-26-main-aaa",
+        "target": "#section-8",
+        "kind": "flow",
+        "title": "用意・実行・比較を一回分ずつ分ける",
+        "before": "一つのテストが何を確認するのかを読み取れる構成にします。",
+        "after": "期待値をテスト対象と同じロジックで計算すると、同じ間違いを再現して見逃し得ます。仕様から決めた値や観測可能な状態と比較します。",
+        "steps": [
+          [
+            "Arrange：用意",
+            "入力60 / 期待値true"
+          ],
+          [
+            "Act：実行",
+            "IsPassed(60)を一度呼ぶ"
+          ],
+          [
+            "Assert：比較",
+            "実際の結果がtrueか確かめる"
+          ]
+        ]
+      },
+      {
+        "id": "p-26-main-debug-test",
+        "target": "#section-10",
+        "kind": "compare",
+        "title": "デバッグと自動テストは役割が違う",
+        "before": "失敗の原因を探す作業と、同じ不具合が戻っていないかを繰り返し確かめる作業を分けます。",
+        "after": "デバッガーで原因を見つけたら、その条件をテストとして残すと再発を検出しやすくなります。どちらか一方だけで全てを置き換えるものではありません。",
+        "items": [
+          [
+            "デバッガー",
+            "途中の値と経路を観察する",
+            "原因の仮説を調べる"
+          ],
+          [
+            "自動テスト",
+            "期待する結果と比較する",
+            "修正後も同じ確認を繰り返す"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-26-deep-off-by-one",
+        "target": "#detail-h2-04",
+        "kind": "trace",
+        "title": ">と>=の違いは境界に現れる",
+        "before": "60点から合格という仕様に対し、誤った条件と修正した条件を比べます。",
+        "after": "実装の演算子を変えた後は、失敗していた60だけでなく、59と61も同じテストで確認します。一つを直して別の範囲を壊していないかを見るためです。",
+        "headers": [
+          "入力",
+          "仕様の期待値",
+          "score > 60",
+          "score >= 60"
+        ],
+        "rows": [
+          [
+            "59",
+            "false",
+            "false",
+            "false"
+          ],
+          [
+            "60",
+            "true",
+            "false：誤り",
+            "true"
+          ],
+          [
+            "61",
+            "true",
+            "true",
+            "true"
+          ]
+        ]
+      },
+      {
+        "id": "p-26-deep-debug-observe",
+        "target": "#detail-h2-05",
+        "kind": "flow",
+        "title": "処理が変わる直前で止めて比較する",
+        "before": "期待値と違う結果になったら、推測だけで複数箇所を変更するのではなく、入力と条件の値を観察します。",
+        "after": "停止位置で値を見て、次の行へ進んだときにどう変わるかを比べます。原因を絞ってから修正し、テストで結果を確認します。",
+        "steps": [
+          [
+            "再現する",
+            "失敗する入力を固定する"
+          ],
+          [
+            "止める",
+            "分岐や更新の前へブレークポイント"
+          ],
+          [
+            "観察する",
+            "変数・条件・呼び出し履歴を見る"
+          ],
+          [
+            "確認する",
+            "修正して同じテストを通す"
+          ]
+        ]
+      },
+      {
+        "id": "p-26-deep-async-test",
+        "target": "#detail-h2-08",
+        "kind": "timeline",
+        "title": "テスト終了より前に非同期処理を待つ",
+        "before": "Taskを返すテスト対象を呼び出すだけで、awaitせずにテストを終える場合を考えます。",
+        "after": "待たなければ、実際の完了や失敗より先にテストが終わってしまうことがあります。テスト側もTaskを返し、対象をawaitしてから期待結果を確認します。",
+        "columns": [
+          "開始",
+          "処理中",
+          "完了"
+        ],
+        "rows": [
+          [
+            "待たないテスト",
+            "対象を呼ぶ",
+            "テストが先に終わり得る",
+            "後の失敗を正しく検出できない場合"
+          ],
+          [
+            "awaitするテスト",
+            "対象を呼ぶ",
+            "完了を待つ",
+            "結果や例外を確認して終了"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-07"
+  },
+  "27": {
+    "opening": "入力を読み、検証し、計算し、表示する処理を一つに詰めると、どこを変更すればよいか分かりにくくなります。まず計算と表示を分け、値が境界を通る順序を確認します。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "入力・計算・表示を分ける",
+        "parts": [
+          4,
+          7,
+          8
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "不正な値で状態を変更しない",
+        "parts": [
+          5,
+          6,
+          9,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "preview",
+      "example",
+      "worked",
+      "g2",
+      "walk",
+      "pitfall"
+    ],
+    "example_title": "計算の部品と入力の処理を分ける",
+    "preview_title": "計算と表示を分離する理由",
+    "rationale": "短い分割例から始め、検証前の更新という具体的な失敗で責務の境界を確かめる。",
+    "deep_overview_after": "detail-h2-03",
+    "main": [
+      {
+        "id": "p-27-main-input-boundaries",
+        "target": "#example|code",
+        "kind": "flow",
+        "title": "文字列を計算の値へ変えてから渡す",
+        "before": "この例は入力\"3\"を数量へ変換し、単価500の合計を求めます。",
+        "after": "計算の部品へConsoleの入力や表示を混ぜないことで、例えば数量3の合計が1500になることを、画面操作なしでも確認できます。",
+        "steps": [
+          [
+            "入力",
+            "文字列\"3\"を受け取る"
+          ],
+          [
+            "変換と確認",
+            "TryParse成功 / 数量が正"
+          ],
+          [
+            "計算",
+            "Total(500, 3) → 1500"
+          ],
+          [
+            "表示",
+            "計算結果を文字列として出す"
+          ]
+        ]
+      },
+      {
+        "id": "p-27-main-guards",
+        "target": "#section-9",
+        "kind": "compare",
+        "title": "利用者向けの案内と内部のルールを両方考える",
+        "before": "画面の入力だけで検証しても、別の呼び出し元から計算の部品を使うときに不正な値が届く可能性があります。",
+        "after": "入口では直し方が分かる案内をし、内部の部品も自分の前提を守ります。二つの検証が同じ目的とは限らないことを確認します。",
+        "items": [
+          [
+            "入力の境界",
+            "文字列を読めるか、範囲が正しいか",
+            "利用者へエラーを案内"
+          ],
+          [
+            "計算や更新の部品",
+            "負の単価や無効な数量を受け付けない",
+            "別経路からの利用でも前提を守る"
+          ]
+        ]
+      },
+      {
+        "id": "p-27-main-validate-before-update",
+        "target": "#section-10",
+        "kind": "flow",
+        "title": "状態を書き換える前に全ての条件を確認する",
+        "before": "残高や在庫のように値を変更する処理では、途中で失敗した後に状態だけ変わることを避けます。",
+        "after": "検証と更新を一つの操作として扱う必要がある場合は、その範囲まで設計します。同時実行時には、チェック直後に他の処理が値を変える可能性も考えます。",
+        "steps": [
+          [
+            "受け取る",
+            "変更に必要な値"
+          ],
+          [
+            "検証する",
+            "範囲・存在・現在の状態"
+          ],
+          [
+            "更新する",
+            "条件を満たす場合だけ変更"
+          ],
+          [
+            "返す",
+            "確定した結果"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-27-deep-mutation-order",
+        "target": "#detail-h2-04",
+        "kind": "compare",
+        "title": "失敗した操作で状態が変わっていないか",
+        "before": "在庫から数量を引いた後で負の値を検出する構成と、引く前に確認する構成を比べます。",
+        "after": "エラーメッセージを返せても、状態が壊れたままなら処理は安全ではありません。失敗時に値が変わらないこともテスト対象です。",
+        "items": [
+          [
+            "更新 → 検証",
+            "先に在庫を減らす",
+            "失敗しても変更が残るおそれ"
+          ],
+          [
+            "検証 → 更新",
+            "必要な在庫があるか確認",
+            "不正なら変更せず終了"
+          ]
+        ]
+      },
+      {
+        "id": "p-27-deep-dependency",
+        "target": "#detail-h2-06",
+        "kind": "sequence",
+        "title": "保存先を変えても業務の処理を保つ",
+        "before": "同じ業務処理を、メモリ保存とファイル保存で使う場面を考えます。",
+        "after": "業務処理は契約を使い、具体的な保存先は外から渡します。単にクラスを増やすのではなく、変わる理由が異なる部分を分けるのが目的です。",
+        "actors": [
+          "業務処理",
+          "保存の契約",
+          "保存実装"
+        ],
+        "steps": [
+          [
+            "業務処理",
+            "保存の契約",
+            "必要な保存操作を呼ぶ"
+          ],
+          [
+            "保存の契約",
+            "保存実装",
+            "与えられた実装が処理する"
+          ],
+          [
+            "保存実装",
+            "業務処理",
+            "成功または失敗を返す"
+          ]
+        ]
+      },
+      {
+        "id": "p-27-deep-concurrent-update",
+        "target": "#detail-h2-07",
+        "kind": "timeline",
+        "title": "確認と更新の間に他の処理が入る場合",
+        "before": "在庫1の商品を、AとBがそれぞれ1個ずつ使おうとする例です。個々の条件だけでは同時実行の安全を保証できません。",
+        "after": "在庫の確認から更新までを必要な排他制御やトランザクションで守ります。読み取りと書き込みを個別に安全にしても、複数工程の組み合わせが自動で安全になるとは限りません。",
+        "columns": [
+          "① 確認",
+          "② 別の処理",
+          "③ 更新"
+        ],
+        "rows": [
+          [
+            "A",
+            "在庫1を確認",
+            "一旦止まる",
+            "古い確認結果で更新してしまう"
+          ],
+          [
+            "B",
+            "Aの処理中に入る",
+            "在庫1を使い切る",
+            "在庫0になる"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-06"
+  },
+  "28": {
+    "opening": "HTTPでは、要求を送れたこと、成功の応答が返ったこと、本文を読めたことは同じではありません。要求と応答を往復させ、どの段階で失敗したかを分けます。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "要求する側と応答する側",
+        "parts": [
+          4,
+          7
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "ステータスを確認して本文を読む",
+        "parts": [
+          5,
+          8
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "通信の寿命・キャンセル・再試行",
+        "parts": [
+          6,
+          9,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "preview",
+      "g2",
+      "example",
+      "walk",
+      "worked",
+      "pitfall",
+      "g3"
+    ],
+    "example_title": "HTTPの要求と応答をコードでたどる",
+    "preview_title": "HTTPメソッドとURLの役割",
+    "rationale": "通信の往復→成功段階の確認→JSON復元→接続管理へ進める。モックの成功を実通信と混同しない。",
+    "deep_overview_after": "detail-h2-04",
+    "main": [
+      {
+        "id": "p-28-main-mock-http",
+        "target": "#example|code",
+        "kind": "sequence",
+        "title": "この例の応答は外部サーバーではなくDemoHandlerが返す",
+        "before": "URLはexample.invalidですが、このコードでは差し替えたハンドラーが200とJSONを返します。実インターネットへの成功確認ではありません。",
+        "after": "ハンドラーを固定することで、通信境界の使い方を安定して練習できます。実サービスとの接続・認証・遅延などの確認は別に必要です。",
+        "actors": [
+          "アプリ",
+          "HttpClient",
+          "DemoHandler"
+        ],
+        "steps": [
+          [
+            "アプリ",
+            "HttpClient",
+            "GET /score を依頼"
+          ],
+          [
+            "HttpClient",
+            "DemoHandler",
+            "要求メッセージを渡す"
+          ],
+          [
+            "DemoHandler",
+            "HttpClient",
+            "200とScoreのJSONを返す"
+          ],
+          [
+            "HttpClient",
+            "アプリ",
+            "応答を返し、本文からValue=80を読む"
+          ]
+        ]
+      },
+      {
+        "id": "p-28-main-response-checks",
+        "target": "#section-7",
+        "kind": "flow",
+        "title": "失敗した段階を区別して調べる",
+        "before": "HTTP呼び出しが完了しても、成功ステータスとは限りません。さらに本文の形式や値にも確認が必要です。",
+        "after": "404などを期待する成功DTOへ無条件に読み込まないようにします。例外を一種類へまとめて隠すより、どの段階が失敗したか分かる形で扱います。",
+        "steps": [
+          [
+            "通信",
+            "応答を受け取れるか"
+          ],
+          [
+            "ステータス",
+            "期待する成功の応答か"
+          ],
+          [
+            "本文の形式",
+            "JSONとして型へ読めるか"
+          ],
+          [
+            "値の検証",
+            "必要な値が有効か"
+          ]
+        ]
+      },
+      {
+        "id": "p-28-main-response-lifetime",
+        "target": "#section-8",
+        "kind": "compare",
+        "title": "Clientと一回分の応答は寿命が違う",
+        "before": "HTTPを使うためのClientと、要求一回で受け取った応答を分けます。",
+        "after": "HttpClientは長く再利用する構成やIHttpClientFactoryなどで管理します。一回分のHttpResponseMessageは利用後に適切に破棄し、役割の違う資源を同じ寿命で扱わないようにします。",
+        "items": [
+          [
+            "HttpClient",
+            "複数の要求で利用する",
+            "接続の再利用や管理の方針を持つ"
+          ],
+          [
+            "HttpResponseMessage",
+            "一回の応答を扱う",
+            "本文を使い終えた範囲でDisposeする"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-28-deep-status-path",
+        "target": "#detail-h2-05",
+        "kind": "branch",
+        "title": "本文を読む前にステータスで経路を決める",
+        "before": "404の本文が成功時のJSONと同じ形であるとは限りません。",
+        "after": "本文が読めたことを成功とせず、まず応答の契約を確認します。エラー本文を読む場合も、成功DTOとは別の形式を想定して扱います。",
+        "condition": "期待する成功ステータスか",
+        "yes": [
+          "はい",
+          "成功DTOとして本文を読み、値を確認"
+        ],
+        "no": [
+          "いいえ",
+          "404などの状態に合った失敗処理へ"
+        ]
+      },
+      {
+        "id": "p-28-deep-timeout-cancel",
+        "target": "#detail-h2-07",
+        "kind": "compare",
+        "title": "再試行の前に失敗の性質を見る",
+        "before": "通信の失敗が全て、同じ要求をもう一度送ればよい状況とは限りません。",
+        "after": "要求がサーバーへ届いた後で応答だけ失われる場合もあります。再試行が重複登録などを起こさないか、HTTPメソッドとAPIの契約に合わせて判断します。",
+        "items": [
+          [
+            "中止要求",
+            "利用者などが処理をやめたい",
+            "Tokenで要求を伝える"
+          ],
+          [
+            "タイムアウト",
+            "許容する待ち時間を超えた",
+            "待つ上限と後続処理を決める"
+          ],
+          [
+            "再試行",
+            "一時的な失敗を再度試す",
+            "重複実行の安全性も確認"
+          ]
+        ]
+      },
+      {
+        "id": "p-28-deep-request-parts",
+        "target": "#detail-h2-02",
+        "kind": "flow",
+        "title": "HTTP要求の要素に役割を持たせる",
+        "before": "要求を一つのURL文字列だけとして捉えず、操作、対象、付加情報、送るデータを分けます。",
+        "after": "GETの検索条件をクエリへ置くなど、APIの契約に沿ってデータを配置します。認証情報を不用意にURLやログへ残さない配慮も必要です。",
+        "steps": [
+          [
+            "メソッド",
+            "何をするか：GETなど"
+          ],
+          [
+            "URL",
+            "どこを対象にするか"
+          ],
+          [
+            "ヘッダー",
+            "認証・形式などの情報"
+          ],
+          [
+            "本文",
+            "必要な場合に送るデータ"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-06"
+  },
+  "29": {
+    "opening": "ここからはHTTPを受け取る側を作ります。アプリ起動時に登録する処理と、要求が届くたびに実行される処理を分け、URLの値が引数へ渡るまでを追います。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "アプリを起動して処理を登録する",
+        "parts": [
+          4,
+          7
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "URLと引数を対応させる",
+        "parts": [
+          5,
+          8,
+          9
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "複数の要求で共有される状態",
+        "parts": [
+          6,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "example",
+      "preview",
+      "g2",
+      "walk",
+      "worked",
+      "pitfall",
+      "g3"
+    ],
+    "example_title": "最小APIへGETを送る",
+    "preview_title": "起動するAPIと要求の入口",
+    "rationale": "最小の起動体験→登録と実行の違い→ルート・クエリ→共有状態の順にする。",
+    "deep_overview_after": "detail-h2-03",
+    "main": [
+      {
+        "id": "p-29-main-startup-request",
+        "target": "#section-7",
+        "kind": "timeline",
+        "title": "MapGetの登録とハンドラーの実行を分ける",
+        "before": "起動時にはURLと処理を結び付けます。ハンドラーの中身は、対応する要求が来たときに実行されます。",
+        "after": "MapGetの行が実行された時点で、全てのリクエスト処理を実行するわけではありません。起動時に一度だけ行う準備と、要求ごとに行う処理を区別します。",
+        "columns": [
+          "起動の準備",
+          "待ち受け",
+          "要求が来る"
+        ],
+        "rows": [
+          [
+            "起動側",
+            "CreateBuilder → Build → MapGet",
+            "Runで待ち受ける",
+            "アプリは動き続ける"
+          ],
+          [
+            "要求側",
+            "まだ要求なし",
+            "ハンドラーはまだ呼ばれない",
+            "一致したハンドラーを実行して応答"
+          ]
+        ]
+      },
+      {
+        "id": "p-29-main-route-value",
+        "target": "#example|code",
+        "kind": "flow",
+        "title": "/lessons/3の3をint idへ渡す",
+        "before": "GET /lessons/3が来たとき、/lessons/{id:int}という経路と対応させます。",
+        "after": "この経路のint制約はルーティングの条件です。整数であることと、アプリが許可するIDであることは別なので、必要な範囲や存在の確認は処理側で行います。",
+        "steps": [
+          [
+            "要求",
+            "GET /lessons/3"
+          ],
+          [
+            "経路に一致",
+            "/lessons/{id:int}"
+          ],
+          [
+            "引数へ",
+            "int id に3が渡る"
+          ],
+          [
+            "ハンドラー",
+            "idを使った応答を返す"
+          ]
+        ]
+      },
+      {
+        "id": "p-29-main-locations",
+        "target": "#section-8",
+        "kind": "compare",
+        "title": "同じidでも置いた場所が違えば契約が違う",
+        "before": "URLの経路、クエリ文字列、JSON本文は、別々の入力元です。",
+        "after": "呼び出し側と受け取り側で位置をそろえます。/lessons/3を想定するAPIへ?id=3を付けるだけでは、同じ経路を呼んだことにはなりません。",
+        "items": [
+          [
+            "ルート",
+            "/lessons/3",
+            "経路中の値"
+          ],
+          [
+            "クエリ",
+            "/lessons?id=3",
+            "?以降のパラメーター"
+          ],
+          [
+            "本文",
+            "{\"id\":3}",
+            "要求の本文に入るJSONなど"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-29-deep-request-cycle",
+        "target": "#detail-h2-04",
+        "kind": "sequence",
+        "title": "一回の要求が応答になるまで",
+        "before": "要求を受け取ってから処理へ進む順を分けます。入力の位置と型をそろえておくと、失敗した段階を調べやすくなります。",
+        "after": "ルートに一致しない場合と、ハンドラーが実行されて対象なしを返す場合は別経路です。ステータスだけでなく、どこまで処理が進んだかも確認します。",
+        "actors": [
+          "クライアント",
+          "APIの経路",
+          "ハンドラー"
+        ],
+        "steps": [
+          [
+            "クライアント",
+            "APIの経路",
+            "メソッドとパスを送る"
+          ],
+          [
+            "APIの経路",
+            "ハンドラー",
+            "一致する経路を選び引数へ結び付ける"
+          ],
+          [
+            "ハンドラー",
+            "クライアント",
+            "結果をHTTP応答として返す"
+          ]
+        ]
+      },
+      {
+        "id": "p-29-deep-binding-mismatch",
+        "target": "#detail-h2-06",
+        "kind": "compare",
+        "title": "経路とクエリを取り違えない",
+        "before": "idを経路から受け取る設計と、クエリから受け取る設計を別々に読みます。",
+        "after": "型が同じintでも、どこから値を取るかという契約は異なります。明示的なバインディング属性を使う場合も、APIの仕様と一致させます。",
+        "items": [
+          [
+            "経路で受け取る",
+            "/lessons/{id:int}",
+            "呼び出し例 /lessons/3"
+          ],
+          [
+            "クエリで受け取る",
+            "/lessons とidのクエリ",
+            "呼び出し例 /lessons?id=3"
+          ]
+        ]
+      },
+      {
+        "id": "p-29-deep-shared-state",
+        "target": "#detail-h2-07",
+        "kind": "memory",
+        "title": "リクエストが別でも共有される実体はある",
+        "before": "起動時に作った一覧などを複数のハンドラーで使う場合の参照関係です。",
+        "after": "リクエストごとのローカル変数まで共有されるわけではありません。一方で、同じ実体へ同時にアクセスするなら、その実体の更新方法を安全に設計する必要があります。",
+        "objects": [
+          [
+            "store",
+            "起動時に作った共有の一覧",
+            "複数要求から利用する同じ実体"
+          ]
+        ],
+        "refs": [
+          [
+            "要求Aの処理",
+            "store",
+            "一覧への参照を使う"
+          ],
+          [
+            "要求Bの処理",
+            "store",
+            "同じ一覧への参照を使う"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-07"
+  },
+  "30": {
+    "opening": "APIへ送った入力が不正だったとき、エラーを返すだけでなく、保存データも変えないことが重要です。受け取り、正規化、検証、更新、応答の順序を確認します。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "入力の欠損と不正な値を区別する",
+        "parts": [
+          4,
+          7
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "保存の前に検証を終える",
+        "parts": [
+          5,
+          8
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "結果をHTTPの契約として返す",
+        "parts": [
+          6,
+          9,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "g1",
+      "preview",
+      "example",
+      "g2",
+      "walk",
+      "worked",
+      "pitfall",
+      "g3"
+    ],
+    "example_title": "要求DTOを受け取り検証する",
+    "preview_title": "入力不正と保存成功の違い",
+    "rationale": "入力状態→正規化と検証→変更→応答の因果関係を主線にする。",
+    "deep_overview_after": "detail-h2-05",
+    "main": [
+      {
+        "id": "p-30-main-preview-only",
+        "target": "#example|code",
+        "kind": "flow",
+        "title": "/previewは確認結果を返すだけで保存しない",
+        "before": "この最小例はTitleの空白と元の文字数を調べ、Trimしたタイトルを200で返すプレビューです。作成・保存するAPIとは区別します。",
+        "after": "このコードの文字数判定はTrimより前です。後の作成例では、正規化した値を検証し、その同じ値を保存する流れを確認します。",
+        "steps": [
+          [
+            "受け取る",
+            "CreateTaskRequest.Title"
+          ],
+          [
+            "検証",
+            "空白だけ / 元の長さが100を超えるなら400"
+          ],
+          [
+            "整える",
+            "Title.Trim()"
+          ],
+          [
+            "返す",
+            "200で確認結果を返す。保存はしない"
+          ]
+        ]
+      },
+      {
+        "id": "p-30-main-normalized-value",
+        "target": "#section-8",
+        "kind": "flow",
+        "title": "検証した値と保存する値を一致させる",
+        "before": "前後の空白を取り除いて保存する仕様なら、その結果の値を基準に検証します。",
+        "after": "元の入力を検証したのに別の値を保存したり、その逆になったりしないようにします。何文字を許すかも、正規化後の値に対する仕様として決めます。",
+        "steps": [
+          [
+            "元の入力",
+            "\"  学習  \""
+          ],
+          [
+            "正規化",
+            "Trim → \"学習\""
+          ],
+          [
+            "検証",
+            "正規化後の必須・長さを確認"
+          ],
+          [
+            "保存",
+            "確認した\"学習\"を保存"
+          ]
+        ]
+      },
+      {
+        "id": "p-30-main-response-contract",
+        "target": "#section-9",
+        "kind": "trace",
+        "title": "結果ごとにステータスと本文を決める",
+        "before": "成功か失敗かだけでなく、作成したのか、内容を返すのか、対象がないのかを伝えます。",
+        "after": "各APIで何を返すかは契約として固定します。204は本文を持たないため、クライアントは無条件にJSONとして読まないようにします。",
+        "headers": [
+          "状態",
+          "代表的なステータス",
+          "合わせて確認するもの"
+        ],
+        "rows": [
+          [
+            "正常に結果を返す",
+            "200",
+            "本文の形"
+          ],
+          [
+            "新しい対象を作成",
+            "201",
+            "作成結果とLocationなど"
+          ],
+          [
+            "成功し本文は返さない",
+            "204",
+            "本文なし"
+          ],
+          [
+            "入力が不正",
+            "400",
+            "直すための情報"
+          ],
+          [
+            "対象が見つからない",
+            "404",
+            "対象なしの扱い"
+          ],
+          [
+            "現在の状態と競合",
+            "409",
+            "競合の理由"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-30-deep-crud-states",
+        "target": "#detail-h2-05",
+        "kind": "timeline",
+        "title": "応答と保存状態の変化を対応させる",
+        "before": "一つの項目を作成し、取得し、削除する順序を概念的に示します。",
+        "after": "作成成功を返したのに直後の取得で見つからないなら、契約が成立していません。削除後の取得も確認し、応答コードだけでなく状態の変化まで調べます。",
+        "columns": [
+          "作成前",
+          "作成後",
+          "取得後",
+          "削除後"
+        ],
+        "rows": [
+          [
+            "保存状態",
+            "対象なし",
+            "新しい対象がある",
+            "対象は残る",
+            "対象なし"
+          ],
+          [
+            "要求と応答",
+            "準備",
+            "POST → 201",
+            "GET → 200",
+            "DELETE → 204"
+          ],
+          [
+            "その後の確認",
+            "—",
+            "Locationなどで参照する",
+            "内容が一致する",
+            "同じGET → 404"
+          ]
+        ]
+      },
+      {
+        "id": "p-30-deep-count-id",
+        "target": "#detail-h2-06",
+        "kind": "trace",
+        "title": "Count + 1は未使用のIDを保証しない",
+        "before": "IDが1、2、3の一覧からID=2を削除した例です。件数は減りますが、最大のIDが同じように減るとは限りません。",
+        "after": "Countは今ある要素の個数であって、次に使ってよい識別子ではありません。GUIDや永続化先の採番など、重複しない方針を設計します。",
+        "headers": [
+          "操作",
+          "残るID",
+          "Count",
+          "Count + 1"
+        ],
+        "rows": [
+          [
+            "最初",
+            "1, 2, 3",
+            "3",
+            "4"
+          ],
+          [
+            "ID=2を削除",
+            "1, 3",
+            "2",
+            "3：すでに存在"
+          ]
+        ]
+      },
+      {
+        "id": "p-30-deep-no-body",
+        "target": "#detail-h2-07",
+        "kind": "branch",
+        "title": "204の後でJSONを読まない",
+        "before": "削除成功を204 No Contentで返す契約を想定します。",
+        "after": "成功したのに本文の解析でエラーになる場合は、サーバーの失敗とは限りません。クライアントの読み方が契約に合っているかを確認します。",
+        "condition": "応答が204か",
+        "yes": [
+          "はい",
+          "本文なしとして削除成功を扱う"
+        ],
+        "no": [
+          "いいえ",
+          "そのステータスの契約に応じて本文を読む"
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-05"
+  },
+  "31": {
+    "opening": "必要な部品をサービスの内部で作る代わりに、外から渡します。手動の受け渡しを出発点に、DIコンテナー、共有する期間、設定、ログをそれぞれ分けて確認します。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "必要な部品を登録し受け取る",
+        "parts": [
+          4,
+          7
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "同じ実体を共有する期間",
+        "parts": [
+          8
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "環境ごとに変わる設定を渡す",
+        "parts": [
+          5,
+          9
+        ]
+      },
+      {
+        "key": "g4",
+        "title": "結果と調査に必要な情報を記録する",
+        "parts": [
+          6,
+          10,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "preview",
+      "g1",
+      "worked",
+      "example",
+      "g2",
+      "walk",
+      "pitfall",
+      "g3",
+      "g4"
+    ],
+    "example_title": "DIで受け取った共有カウンターを使う",
+    "preview_title": "手動で依存を渡す最小例",
+    "rationale": "手動注入→コンテナー→寿命→設定→ログの五段階。DIの説明に設定・ログを混ぜない。",
+    "deep_overview_after": "detail-h2-04",
+    "main": [
+      {
+        "id": "p-31-main-register-resolve",
+        "target": "#section-7",
+        "kind": "flow",
+        "title": "登録しただけでは、利用する全ての処理は実行されない",
+        "before": "DIコンテナーに必要なサービスを登録し、要求された場面で受け取って使います。",
+        "after": "登録・解決・利用を分けると、誰が生成し、どの実体が再利用されるかを調べやすくなります。登録方法やファクトリーによって生成タイミングが変わる場合があります。",
+        "steps": [
+          [
+            "登録",
+            "使う型と寿命を指定する"
+          ],
+          [
+            "解決",
+            "必要なサービスを要求する"
+          ],
+          [
+            "組み立て",
+            "必要な依存を受け渡す"
+          ],
+          [
+            "利用",
+            "受け取ったサービスを呼ぶ"
+          ]
+        ]
+      },
+      {
+        "id": "p-31-main-singleton-counter",
+        "target": "#example|code",
+        "kind": "timeline",
+        "title": "同じVisitCounterを複数の要求で使う",
+        "before": "AddSingletonで登録されたVisitCounterの実体は、このアプリのコンテナー内で共有されます。",
+        "after": "この例ではInterlocked.Incrementで更新します。Singletonが自動的にスレッド安全にするわけではありません。またメモリ上のカウントはアプリ再起動後には引き継がれません。",
+        "columns": [
+          "起動",
+          "要求1",
+          "要求2",
+          "再起動"
+        ],
+        "rows": [
+          [
+            "VisitCounter",
+            "Count=0",
+            "同じ実体を使う",
+            "同じ実体を使う",
+            "新しい実体"
+          ],
+          [
+            "カウント結果",
+            "まだ呼ばない",
+            "1",
+            "2",
+            "次の要求は1から"
+          ]
+        ]
+      },
+      {
+        "id": "p-31-main-structured-log",
+        "target": "#section-10",
+        "kind": "compare",
+        "title": "ログの出来事と値を分けて残す",
+        "before": "カウントを記録する場合、固定のメッセージと、その回のCountを別の役割として渡します。",
+        "after": "構造化された値は検索や集計に役立ちます。秘密情報や不要な個人情報を残さず、調査に必要な事実と識別情報を選んで記録します。",
+        "items": [
+          [
+            "メッセージの型",
+            "訪問回数 {Count}",
+            "起きた出来事を表す"
+          ],
+          [
+            "その回の値",
+            "Count = 2",
+            "後から検索・集計する項目"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-31-deep-lifetimes",
+        "target": "#detail-h2-05",
+        "kind": "memory",
+        "title": "要求ごとに分ける実体と共有する実体",
+        "before": "ここでは通常のASP.NET Coreのリクエストスコープを例に、ScopedとSingletonの関係を示します。",
+        "after": "Transientは解決するたびに新しく生成されます。Scopedは「常に全てのアプリでリクエスト単位」という意味ではなく、ここでは要求ごとに作られるスコープで説明しています。",
+        "objects": [
+          [
+            "scopeA",
+            "要求AのScoped",
+            "Aのスコープ内で共用"
+          ],
+          [
+            "scopeB",
+            "要求BのScoped",
+            "Bのスコープ内で共用"
+          ],
+          [
+            "app",
+            "Singleton",
+            "アプリのコンテナー内で共用"
+          ]
+        ],
+        "refs": [
+          [
+            "要求A → Scoped",
+            "scopeA",
+            "Aの処理で使う"
+          ],
+          [
+            "要求B → Scoped",
+            "scopeB",
+            "Bの処理で使う"
+          ],
+          [
+            "要求A → Singleton",
+            "app",
+            "同じ実体を使う"
+          ],
+          [
+            "要求B → Singleton",
+            "app",
+            "同じ実体を使う"
+          ]
+        ]
+      },
+      {
+        "id": "p-31-deep-captured-scoped",
+        "target": "#detail-h2-06",
+        "kind": "compare",
+        "title": "長く生きる部品に短い寿命の依存を保持させない",
+        "before": "SingletonのコンストラクターへScopedを直接受け取り、そのまま保持する構成を考えます。",
+        "after": "要求ごとに独立させたい実体が長く保持されるなど、想定した寿命を破ります。検証で検出される場合もあり、単に検証を無効化して解決したことにしないでください。",
+        "items": [
+          [
+            "Singleton",
+            "アプリのコンテナーの寿命で使う",
+            "長い期間保持される"
+          ],
+          [
+            "Scoped",
+            "スコープ内で使う",
+            "外へ持ち越すと寿命が一致しない"
+          ]
+        ]
+      },
+      {
+        "id": "p-31-deep-config-validation",
+        "target": "#detail-h2-08",
+        "kind": "flow",
+        "title": "設定も外部入力として起動時に検証する",
+        "before": "設定ファイルや環境変数の値を読むだけでは、使ってよい値であることは保証されません。",
+        "after": "必須値や範囲が不正なら、処理の途中で曖昧に失敗するより、起動時に原因を明確に検出できる設計が役立ちます。秘密は公開する設定やログへ含めません。",
+        "steps": [
+          [
+            "設定元",
+            "設定ファイル / 環境変数など"
+          ],
+          [
+            "型へ結び付ける",
+            "Optionsとして受け取る"
+          ],
+          [
+            "検証",
+            "必須・範囲などを確認"
+          ],
+          [
+            "利用",
+            "検証済みの設定をサービスへ渡す"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-08"
+  },
+  "32": {
+    "opening": "APIの最後の確認は、1回の成功応答だけでは足りません。作成したデータを取得し、削除した後は取得できないこと、不正入力では増えないことを一連の操作で確かめます。",
+    "groups": [
+      {
+        "key": "g1",
+        "title": "要求と応答の期待値を決める",
+        "parts": [
+          5,
+          7,
+          9
+        ]
+      },
+      {
+        "key": "g2",
+        "title": "どこまで実物を通して検証するか",
+        "parts": [
+          4,
+          8,
+          10
+        ]
+      },
+      {
+        "key": "g3",
+        "title": "作品の完成条件を確認する",
+        "parts": [
+          6,
+          11
+        ]
+      }
+    ],
+    "order": [
+      "preview",
+      "g1",
+      "example",
+      "walk",
+      "worked",
+      "pitfall",
+      "g2",
+      "g3"
+    ],
+    "example_title": "ルート制約とIDの範囲を検査する",
+    "preview_title": "APIの契約と処理全体の対応",
+    "rationale": "契約→操作列と状態→失敗ケース→検証範囲→完成条件という制作課題の順にまとめる。",
+    "deep_overview_after": "detail-h2-05",
+    "main": [
+      {
+        "id": "p-32-main-route-cases",
+        "target": "#example|code",
+        "kind": "boundary",
+        "title": "同じ404でも、どこで判定したかを分ける",
+        "before": "このAPIは/lessons/{id:int}で整数を受け取り、1から32の範囲だけ成功にしています。",
+        "after": "0や33はハンドラー内の範囲チェックで404です。abcはintの経路制約に一致しないため、そのハンドラーへ到達しません。境界と形式を分けて確認します。",
+        "points": [
+          [
+            "/lessons/0",
+            "範囲外 → 404"
+          ],
+          [
+            "/lessons/1",
+            "範囲内 → 200"
+          ],
+          [
+            "/lessons/32",
+            "範囲内 → 200"
+          ],
+          [
+            "/lessons/33",
+            "範囲外 → 404"
+          ],
+          [
+            "/lessons/abc",
+            "経路不一致 → 404"
+          ]
+        ]
+      },
+      {
+        "id": "p-32-main-contract-checks",
+        "target": "#section-7",
+        "kind": "flow",
+        "title": "画面に何か出たことだけで成功としない",
+        "before": "APIの一回の操作について、応答と内部の状態を組み合わせて確認します。",
+        "after": "POSTの成功応答だけでなく、続くGETで取得できるかなど、一連の操作の契約も確認します。異常な入力を送ったときに状態が変わらないことも対象です。",
+        "steps": [
+          [
+            "ステータス",
+            "200 / 201 / 400などが仕様通りか"
+          ],
+          [
+            "ヘッダー",
+            "Locationや形式が正しいか"
+          ],
+          [
+            "本文",
+            "項目名・型・値が正しいか"
+          ],
+          [
+            "状態",
+            "作成・更新・削除の結果が正しいか"
+          ]
+        ]
+      },
+      {
+        "id": "p-32-main-test-scope",
+        "target": "#section-8",
+        "kind": "compare",
+        "title": "どこまでを通したテストかを明示する",
+        "before": "計算だけを確かめるテストと、HTTPとして要求を送るテストでは、見つけられる問題が違います。",
+        "after": "外部サービスや実ブラウザーを使わないテストを、全経路の動作確認と呼ばないようにします。実行した範囲と代替した部分を記録すると、未確認の境界を把握できます。",
+        "items": [
+          [
+            "単体",
+            "計算や検証の部品",
+            "細かい分岐を速く確かめる"
+          ],
+          [
+            "統合",
+            "経路・DI・本文変換などの連携",
+            "アプリ内の境界をつなげて確認"
+          ],
+          [
+            "E2E",
+            "利用者の操作から一連の経路",
+            "対象にした環境全体の動作を確認"
+          ]
+        ]
+      }
+    ],
+    "deep": [
+      {
+        "id": "p-32-deep-snapshot-lock",
+        "target": "#detail-h2-05",
+        "kind": "flow",
+        "title": "共有一覧は保護した範囲で列挙を終える",
+        "before": "一覧を更新する処理と同時に応答用のデータを取り出す場合、どこで列挙するかが重要です。",
+        "after": "ロックの外へ遅延実行のクエリだけ返すと、列挙時には保護の範囲を外れます。必要な列挙をロック内でToArrayして確定します。ただし参照型要素の内側の変更まで深く複製するわけではありません。",
+        "steps": [
+          [
+            "保護を始める",
+            "lockの範囲へ入る"
+          ],
+          [
+            "列挙する",
+            "共有一覧を読む"
+          ],
+          [
+            "確定する",
+            "ToArrayで応答用の配列を作る"
+          ],
+          [
+            "保護を終える",
+            "配列を使って応答へ進む"
+          ]
+        ]
+      },
+      {
+        "id": "p-32-deep-failure-tests",
+        "target": "#detail-h2-08",
+        "kind": "trace",
+        "title": "失敗させた後に状態が変わっていないかを見る",
+        "before": "正しい操作だけでなく、入力不正と対象なしも同じ条件で繰り返し確認します。",
+        "after": "期待するステータスだけで終わらず、一覧や対象を取得して意図しない作成・更新・削除がないことも確認します。再実行する際は開始状態もそろえます。",
+        "headers": [
+          "テストの入力",
+          "応答の確認",
+          "状態の確認"
+        ],
+        "rows": [
+          [
+            "空のタイトルで作成",
+            "仕様に応じて400",
+            "項目が増えていない"
+          ],
+          [
+            "存在しないIDを取得",
+            "404",
+            "他の項目は変わらない"
+          ],
+          [
+            "存在しないIDを更新",
+            "404",
+            "別の項目を変更していない"
+          ],
+          [
+            "不正な値で更新",
+            "400",
+            "更新前の値が残る"
+          ]
+        ]
+      },
+      {
+        "id": "p-32-deep-restart",
+        "target": "#detail-h2-09",
+        "kind": "timeline",
+        "title": "メモリにあるデータは再起動すると失われる",
+        "before": "この教材のメモリ保存だけのAPIを、停止してもう一度起動した場合です。",
+        "after": "再起動後の404を通信障害と決めつけないようにします。永続化していないデータが消えたのか、サーバーへ到達できないのかを切り分けます。",
+        "columns": [
+          "起動",
+          "作成",
+          "停止",
+          "再起動"
+        ],
+        "rows": [
+          [
+            "プロセス",
+            "実行開始",
+            "動作中",
+            "終了",
+            "新しく実行開始"
+          ],
+          [
+            "メモリ保存",
+            "初期状態",
+            "作成した項目がある",
+            "メモリの状態を失う",
+            "初期状態から始まる"
+          ],
+          [
+            "取得の例",
+            "対象なし",
+            "保存したIDは取得可能",
+            "応答しない",
+            "以前のIDは対象なし"
+          ]
+        ]
+      }
+    ],
+    "detail_case_after": "detail-h2-08"
+  }
+}

@@ -1,8 +1,8 @@
 {
-  "version": "5.0.0",
+  "version": "5.1.0",
   "updated": "2026-09-15",
   "target": ".NET 10 / C# 14",
-  "edition": "図解・実例版",
+  "edition": "本文図解・単元別構成版",
   "chapters": [
     {
       "id": 1,
@@ -13850,6 +13850,8 @@
     "bugRepairs": 32,
     "sampleProjects": 192,
     "visualDiagrams": 32,
-    "additionalExamples": 64
+    "additionalExamples": 64,
+    "contextualDiagrams": 192,
+    "supplementDiagrams": 20
   }
 }

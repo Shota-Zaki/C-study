@@ -12,6 +12,7 @@ from pygments import highlight
 from pygments.lexers import CSharpLexer, PowerShellLexer, JsonLexer, TextLexer
 from pygments.formatters import HtmlFormatter
 from visual_components import diagram_svg,diagram_html,case_html
+from pedagogy import apply as apply_pedagogy, apply_supplement
 ROOT=Path(__file__).resolve().parents[1]
 E=html.escape
 
@@ -85,7 +86,6 @@ heading_replacements={
 remove_headings={'本編から詳細解説へ','この教材の使い方','仕組みを理解し、書いて確かめる','学び方の全体像','この教材で進める学習の一周','次へ進むかを判断する','ブラウザーのページとC#のアプリは別物','コードの種類を見分ける'}
 
 manifest=[]
-(ROOT/'assets/diagrams').mkdir(parents=True, exist_ok=True)
 for num,v in visual.items():
     (ROOT/f'assets/diagrams/lesson-{num}.svg').write_text(diagram_svg(num,v),encoding='utf-8')
     for kind in ('case','detail'):
@@ -239,6 +239,11 @@ for path in paths:
     # CSS loaded last; nav JS replaces original expanded behavior.
     append(s.head,f'<link rel="stylesheet" href="{base}assets/css/visual.css"/>')
     append(s.body,f'<script defer src="{base}assets/js/visual.js"></script>')
+    # Preserve existing anchors, then interleave topic-specific explanations.
+    if num:
+        apply_pedagogy(s,a,num,is_detail,base,visual[num])
+    else:
+        apply_supplement(s,a,rel,base)
     # Metadata is descriptive, not a second cache of old slogans.
     desc=s.select_one('meta[name="description"]')
     if desc:desc['content']=a.select_one('.lead').get_text(' ',strip=True) if a.select_one('.lead') else a.h1.get_text(' ',strip=True)
@@ -299,8 +304,10 @@ for rel,(s,a,base,num,is_detail) in pages.items():
     kind='detail' if is_detail else 'lesson' if num else 'guide' if rel.startswith('guides/') else 'project'
     index.append({'title':a.h1.get_text(' ',strip=True),'text':text,'url':rel,'kind':kind})
 (ROOT/'assets/js/search-index.js').write_text('window.CSTUDY_SEARCH_INDEX='+json.dumps(index,ensure_ascii=False,separators=(',',':'))+';\n',encoding='utf-8')
-course['version']='5.0.0';course['updated']='2026-09-15';course['edition']='図解・実例版'
+course['version']='5.1.0';course['updated']='2026-09-15';course['edition']='本文図解・単元別構成版'
 course['metrics']['visualDiagrams']=32;course['metrics']['additionalExamples']=64
+course['metrics']['contextualDiagrams']=sum(len(v['main'])+len(v['deep']) for v in json.loads((ROOT/'content/pedagogy/lessons.json').read_text()).values())
+course['metrics']['supplementDiagrams']=sum(len(v['diagrams']) for v in json.loads((ROOT/'content/pedagogy/supplements.json').read_text()).values()) if (ROOT/'content/pedagogy/supplements.json').exists() else 0
 (ROOT/'content/course.json').write_text(json.dumps(course,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 (ROOT/'.nojekyll').write_text('')
 print(f'Visual edition: {len(pages)} pages / 32 SVG diagrams / 64 added samples')
