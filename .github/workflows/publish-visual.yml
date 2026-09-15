@@ -34,7 +34,7 @@ jobs:
         run: |
           set -euo pipefail
           if compgen -G '.bootstrap/source.b64.part*' > /dev/null; then
-            cat .bootstrap/source.b64.part* | base64 --decode > "$RUNNER_TEMP/source.tar.gz"
+            cat .bootstrap/source.b64.part0 .bootstrap/source.b64.part1 .bootstrap/source.b64.part2 .bootstrap/source.b64.part3 .bootstrap/source.b64.part4a .bootstrap/source.b64.part4b .bootstrap/source.b64.part4c .bootstrap/source.b64.part4d | base64 --decode > "$RUNNER_TEMP/source.tar.gz"
             tar -xzf "$RUNNER_TEMP/source.tar.gz" -C .
             rm -rf .bootstrap
           fi
