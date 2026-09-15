@@ -1,13 +1,27 @@
-# 作業復元用の状態
+# AI_WORK_STATE
 
-- 対象：C# Learning Lab 詳細解説拡充版 4.0.0
-- 正本：`docs/work/state.json` と `docs/MAINTENANCE.md`
-- 入力：`C-study_release(1).zip`。SHA256はstate.jsonに記録
-- 現在：8章32本編＋32詳細＋7補助教材＋用語集を統合し、80公開HTMLを生成済み
-- 内容：96演習、160問・640選択肢、180語を補強済み
-- 完了：相対参照8642、実HTTP80、DOM表示240、操作ロジック20、コード表示一致240、再生成一致
-- 未検証：.NET実ビルド・実行、API実HTTP、実ブラウザーE2E・永続保存・実機
-- 重要判断：元教材を削らず、説明のまとまりで詳細ページを追加。出力は想定と実測を分離
-- 重要制約：C#単独の学習。ブラウザー入力欄は下書き。ページ数・文字数に上限を置かない
-- 配布：静的サイトZIP。GitHub commit/push/公開設定は実施しない
-- 次：`NEXT_WORK.md` のSDK実検証から開始。確認済みの内容は再質問しない
+- Project: C# Learning Lab
+- Version: 5.0.0 / 図解・実例版
+- Input: C-study_detailed_release(1).zip
+- Delivery: 公開用ZIP + 編集用ZIP
+- Repository operations: none
+- Current work: サイト改修済み。最終配布ファイルの状態は validation/visual/release-manifest.json を参照。
+
+## 完了
+
+80ページ、8章32レッスン、詳細解説32ページ。32SVGを64箇所へ配置し、64実例を追加。96演習・160問・180語は維持。目次は左の階層、用語は右。不要文言を整理し、強調・コード装飾・.cs保存を追加。
+
+構造検査: PASS、6,442ローカル参照、エラー0。
+DOM表示・操作と図版・コードの静的検査: 213/213 PASS。Chromiumのインメモリ読み込み、保存領域はテスト専用の代替。
+
+## 未実装・未検証
+
+ブラウザー内C#ランナーは未実装。.NET SDK不足と外部取得制約によりビルド・実行未検証。実オリジン永続保存、実機Safari/iPhone/iPad、実公開も未検証。無料枠で不可能と判断したわけではない。
+
+## 正本
+
+content/visual/lessons.json、content/visual/copy-edits.json、content/deep/、content/guides/、content/templates/、scripts/build_visual.py、scripts/visual_components.py、assets/css/visual.css、assets/js/expanded.js、assets/js/visual.js。
+
+## 再開
+
+NEXT_WORK.md → docs/VALIDATION.md → docs/MAINTENANCE.md の順に読み、実SDK検証から進めます。過去版の docs/archive/v4/ を現在版の証拠として使わないでください。

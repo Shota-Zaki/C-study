@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "counts": {
+    "pages": 80,
+    "local_references": 6442,
+    "exercises": 96,
+    "quiz_questions": 160,
+    "code_blocks": 717,
+    "diagram_placements": 64,
+    "additional_example_placements": 64,
+    "svg_files": 32
+  },
+  "errors": [],
+  "limits": "Structural checks only. Browser assertions use a separate in-memory rendering harness; C# build/run is not verified."
+}

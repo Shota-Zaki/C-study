@@ -1,0 +1,2 @@
+POST /tasks/validate / {"title":"  Review  "} → 200 / {"title":"Review"}
+POST /tasks/validate / {"title":"   "} → 400

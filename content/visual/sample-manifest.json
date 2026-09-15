@@ -1,0 +1,514 @@
+[
+  {
+    "lesson": "01",
+    "case": "case",
+    "title": "作業時間の集計",
+    "path": "samples/visual/01/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "01",
+    "case": "detail",
+    "title": "計算済みの値と再計算",
+    "path": "samples/visual/01/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "02",
+    "case": "case",
+    "title": "名前空間を使った文字列の組み立て",
+    "path": "samples/visual/02/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "02",
+    "case": "detail",
+    "title": "完全修飾名と別名",
+    "path": "samples/visual/02/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "03",
+    "case": "case",
+    "title": "商品の税込合計",
+    "path": "samples/visual/03/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "03",
+    "case": "detail",
+    "title": "丸める位置による違い",
+    "path": "samples/visual/03/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "04",
+    "case": "case",
+    "title": "購入数量の入力検証",
+    "path": "samples/visual/04/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "04",
+    "case": "detail",
+    "title": "識別子の前後空白と大文字小文字",
+    "path": "samples/visual/04/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "05",
+    "case": "case",
+    "title": "注文条件で送料を決める",
+    "path": "samples/visual/05/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "05",
+    "case": "detail",
+    "title": "境界値を表にする",
+    "path": "samples/visual/05/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "06",
+    "case": "case",
+    "title": "3日分の作業時間を集計する",
+    "path": "samples/visual/06/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "06",
+    "case": "detail",
+    "title": "添字が必要なループ",
+    "path": "samples/visual/06/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "07",
+    "case": "case",
+    "title": "金額計算をメソッドへ分ける",
+    "path": "samples/visual/07/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "07",
+    "case": "detail",
+    "title": "値のコピーと呼び出し元",
+    "path": "samples/visual/07/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "08",
+    "case": "case",
+    "title": "表示名の既定値",
+    "path": "samples/visual/08/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "08",
+    "case": "detail",
+    "title": "null条件演算子と既定値",
+    "path": "samples/visual/08/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "09",
+    "case": "case",
+    "title": "商品の名前と価格をまとめる",
+    "path": "samples/visual/09/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "09",
+    "case": "detail",
+    "title": "初期値の検証",
+    "path": "samples/visual/09/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "10",
+    "case": "case",
+    "title": "在庫数を負数にしない設計",
+    "path": "samples/visual/10/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "10",
+    "case": "detail",
+    "title": "計算プロパティ",
+    "path": "samples/visual/10/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "11",
+    "case": "case",
+    "title": "通知方法ごとの出力",
+    "path": "samples/visual/11/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "11",
+    "case": "detail",
+    "title": "基底処理を利用した拡張",
+    "path": "samples/visual/11/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "12",
+    "case": "case",
+    "title": "注文サービスへ通知処理を渡す",
+    "path": "samples/visual/12/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "12",
+    "case": "detail",
+    "title": "通知を記録するテスト用実装",
+    "path": "samples/visual/12/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "13",
+    "case": "case",
+    "title": "買い物リストの共有とコピー",
+    "path": "samples/visual/13/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "13",
+    "case": "detail",
+    "title": "struct内の参照型メンバー",
+    "path": "samples/visual/13/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "14",
+    "case": "case",
+    "title": "編集前後の商品データ",
+    "path": "samples/visual/14/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "14",
+    "case": "detail",
+    "title": "参照型メンバーが等値比較へ与える影響",
+    "path": "samples/visual/14/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "15",
+    "case": "case",
+    "title": "商品コードから価格を調べる",
+    "path": "samples/visual/15/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "15",
+    "case": "detail",
+    "title": "重複登録を集合で防ぐ",
+    "path": "samples/visual/15/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "16",
+    "case": "case",
+    "title": "一行ずつ読み、読み取りを終了する",
+    "path": "samples/visual/16/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "16",
+    "case": "detail",
+    "title": "例外時も呼ばれるDispose",
+    "path": "samples/visual/16/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "17",
+    "case": "case",
+    "title": "割引ルールを差し替える",
+    "path": "samples/visual/17/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "17",
+    "case": "detail",
+    "title": "キャプチャした変数の読み取り",
+    "path": "samples/visual/17/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "18",
+    "case": "case",
+    "title": "対象商品のラベルを作る",
+    "path": "samples/visual/18/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "18",
+    "case": "detail",
+    "title": "条件の違いと取得件数",
+    "path": "samples/visual/18/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "19",
+    "case": "case",
+    "title": "検索条件と検索結果を分ける",
+    "path": "samples/visual/19/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "19",
+    "case": "detail",
+    "title": "カテゴリ別の合計",
+    "path": "samples/visual/19/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "20",
+    "case": "case",
+    "title": "注文状態を表示用ラベルへ変換する",
+    "path": "samples/visual/20/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "20",
+    "case": "detail",
+    "title": "TryParseだけでは足りないenum検証",
+    "path": "samples/visual/20/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "21",
+    "case": "case",
+    "title": "タスクをJSONへ変換して復元する",
+    "path": "samples/visual/21/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "21",
+    "case": "detail",
+    "title": "壊れたJSONの扱い",
+    "path": "samples/visual/21/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "22",
+    "case": "case",
+    "title": "UTCの記録を+09:00で表示する",
+    "path": "samples/visual/22/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "22",
+    "case": "detail",
+    "title": "表示形式を固定した数値",
+    "path": "samples/visual/22/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "23",
+    "case": "case",
+    "title": "データ取得の完了を待つ",
+    "path": "samples/visual/23/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "23",
+    "case": "detail",
+    "title": "完了済みTaskの場合",
+    "path": "samples/visual/23/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "24",
+    "case": "case",
+    "title": "二つの取得結果をまとめる",
+    "path": "samples/visual/24/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "24",
+    "case": "detail",
+    "title": "キャンセル要求を受け取る処理",
+    "path": "samples/visual/24/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "25",
+    "case": "case",
+    "title": "依存パッケージなしの小さなアプリ",
+    "path": "samples/visual/25/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "25",
+    "case": "detail",
+    "title": "ファイルを分けても同じプロジェクト",
+    "path": "samples/visual/25/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "26",
+    "case": "case",
+    "title": "送料の境界を検査する",
+    "path": "samples/visual/26/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "26",
+    "case": "detail",
+    "title": "例外の期待条件を確認する",
+    "path": "samples/visual/26/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "27",
+    "case": "case",
+    "title": "入力検証付きの商品合計",
+    "path": "samples/visual/27/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "27",
+    "case": "detail",
+    "title": "空白除去と必須検証",
+    "path": "samples/visual/27/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "28",
+    "case": "case",
+    "title": "HTTP応答の処理を通信なしで確かめる",
+    "path": "samples/visual/28/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "28",
+    "case": "detail",
+    "title": "ステータスの成功判定",
+    "path": "samples/visual/28/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "29",
+    "case": "case",
+    "title": "稼働確認APIと商品取得API",
+    "path": "samples/visual/29/case",
+    "kind": "csharp-web",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "29",
+    "case": "detail",
+    "title": "ルートとは別の検索処理",
+    "path": "samples/visual/29/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "30",
+    "case": "case",
+    "title": "タイトルを検証するAPI",
+    "path": "samples/visual/30/case",
+    "kind": "csharp-web",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "30",
+    "case": "detail",
+    "title": "未入力と長さの検証",
+    "path": "samples/visual/30/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "31",
+    "case": "case",
+    "title": "時刻を外から渡せるサービス",
+    "path": "samples/visual/31/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "31",
+    "case": "detail",
+    "title": "依存する計算ルールを渡す",
+    "path": "samples/visual/31/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "32",
+    "case": "case",
+    "title": "追加と削除の状態を確かめる",
+    "path": "samples/visual/32/case",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  },
+  {
+    "lesson": "32",
+    "case": "detail",
+    "title": "失敗した操作が状態を変えないこと",
+    "path": "samples/visual/32/detail",
+    "kind": "csharp",
+    "status": "static-reviewed; dotnet build/run not performed"
+  }
+]

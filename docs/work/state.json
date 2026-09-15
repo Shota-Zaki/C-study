@@ -1,91 +1,36 @@
 {
   "project": "C# Learning Lab",
-  "version": "4.0.0",
-  "inputZip": "C-study_release(1).zip",
-  "inputSHA256": "a2a721b1222b023480a4d8b891018ee366826614d1897ba40ad6c969721793c1",
-  "delivery": "static site ZIP",
+  "version": "5.0.0",
+  "inputZip": "C-study_detailed_release(1).zip",
+  "inputSHA256": "ca401964b1eacdd0d82c61b24075c79683ac51573b6da9fc65f2bd913164e288",
   "repositoryOperations": false,
-  "contentStatus": "EXPANDED_AND_REVIEWED",
-  "releaseStatus": "READY_WITH_EXPLICIT_UNVERIFIED_CHECKS",
+  "status": "SITE_UPDATED_WITH_EXPLICIT_UNVERIFIED_ITEMS",
   "counts": {
+    "htmlPages": 80,
     "chapters": 8,
     "mainLessons": 32,
     "detailedLessons": 32,
-    "guides": 7,
-    "glossaryTerms": 180,
     "exercises": 96,
     "questions": 160,
-    "optionExplanations": 640,
-    "projects": 3,
-    "htmlPages": 80,
-    "independentCSharpProjects": 236
+    "glossaryTerms": 180,
+    "newDiagrams": 32,
+    "diagramPlacements": 64,
+    "newExamples": 64,
+    "independentCSharpProjects": 300
   },
-  "workUnits": [
-    {
-      "id": "WU1",
-      "title": "入力解析・一次情報照合",
-      "status": "done"
-    },
-    {
-      "id": "WU2",
-      "title": "第1〜2章の詳細化",
-      "status": "done"
-    },
-    {
-      "id": "WU3",
-      "title": "第3〜4章の詳細化",
-      "status": "done"
-    },
-    {
-      "id": "WU4",
-      "title": "第5〜6章の詳細化",
-      "status": "done"
-    },
-    {
-      "id": "WU5",
-      "title": "第7〜8章の詳細化",
-      "status": "done"
-    },
-    {
-      "id": "WU6",
-      "title": "補助教材・用語・問題・演習の補強",
-      "status": "done"
-    },
-    {
-      "id": "WU7",
-      "title": "生成・静的監査・DOM表示検査",
-      "status": "done"
-    },
-    {
-      "id": "WU8",
-      "title": "修復・再監査・ZIP作成",
-      "status": "done"
-    }
-  ],
   "verified": {
-    "staticReferences": 8642,
-    "httpPages": 80,
-    "domViewportChecks": 240,
-    "domLogicChecks": 20,
-    "codeParity": 240,
-    "reproducible": true
+    "localReferences": 6442,
+    "inMemoryUIAndStaticChecks": 213
   },
+  "browserCSharpRunner": "NOT_IMPLEMENTED",
   "unverified": [
-    ".NET SDK compilation and execution",
-    "C# API HTTP behavior",
-    "Native browser URL navigation and persistent storage",
-    "Actual clipboard/export download success",
-    "Physical iPhone/iPad/Safari and native 200% zoom",
-    "Learner comprehension trials"
+    "C# build/run",
+    "actual-origin persistence",
+    "physical Safari/iPhone/iPad",
+    "hosted URL navigation",
+    "actual deployment"
   ],
-  "nextWorkUnit": "SDKのある環境で236プロジェクトをビルドし、想定出力とAPI契約を実測照合する。続いて実ブラウザーE2Eを行う。",
-  "canonicalSources": [
-    "content/deep/*.md",
-    "content/guides/*.md",
-    "content/glossary-expanded.json",
-    "content/quiz_enrichment_*.json",
-    "content/exercise-coaching-*.json",
-    "content/templates/",
-    "scripts/build_expanded.py"
-  ]
+  "canonicalBuilder": "scripts/build_visual.py",
+  "currentReports": "validation/visual/",
+  "nextWork": "SDK build/run and real-origin browser E2E"
 }

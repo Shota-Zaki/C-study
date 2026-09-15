@@ -1,55 +1,55 @@
 {
-  "version": "4.0.0",
-  "updated": "2026-09-14",
+  "version": "5.0.0",
+  "updated": "2026-09-15",
   "target": ".NET 10 / C# 14",
-  "edition": "C#単独・詳細解説拡充版",
+  "edition": "図解・実例版",
   "chapters": [
     {
       "id": 1,
-      "title": "C#の入口",
-      "subtitle": "C#と.NETの全体像から、最初の実行へ",
+      "title": "C#と.NETの基礎",
+      "subtitle": "SDK・Program.cs・型・文字列",
       "icon": "terminal"
     },
     {
       "id": 2,
-      "title": "基本文法をつなぐ",
-      "subtitle": "分岐・繰り返し・メソッド・null",
+      "title": "条件分岐・反復・メソッド",
+      "subtitle": "if・switch・配列・引数・null",
       "icon": "code"
     },
     {
       "id": 3,
       "title": "オブジェクト指向",
-      "subtitle": "クラスから、差し替えられる設計へ",
+      "subtitle": "クラス・プロパティ・継承・インターフェイス",
       "icon": "layers"
     },
     {
       "id": 4,
-      "title": "C#らしい型の使い方",
-      "subtitle": "値・参照・データ・リソース",
+      "title": "型・コレクション・例外",
+      "subtitle": "値型と参照型・record・ジェネリック・using",
       "icon": "box"
     },
     {
       "id": 5,
-      "title": "データを扱うLINQ",
-      "subtitle": "関数とコレクションを組み合わせる",
+      "title": "ラムダ式とLINQ",
+      "subtitle": "デリゲート・抽出・遅延実行・enum",
       "icon": "filter"
     },
     {
       "id": 6,
-      "title": "保存と非同期処理",
-      "subtitle": "ファイル・時刻・待ち時間",
+      "title": "保存・日時・非同期処理",
+      "subtitle": "JSON・日時・Task・キャンセル",
       "icon": "zap"
     },
     {
       "id": 7,
-      "title": "実務への橋渡し",
-      "subtitle": "構成・テスト・設計・HTTP",
+      "title": "構成・テスト・HTTP",
+      "subtitle": ".csproj・NuGet・自動テスト・責務分離",
       "icon": "tool"
     },
     {
       "id": 8,
-      "title": "Web APIを作る",
-      "subtitle": "ASP.NET Coreで学びを形にする",
+      "title": "ASP.NET Core Web API",
+      "subtitle": "ルーティング・入力検証・DI・APIのテスト",
       "icon": "globe"
     }
   ],
@@ -12773,7 +12773,7 @@
     {
       "id": "32",
       "chapter": 8,
-      "title": "APIの検証と制作への仕上げ",
+      "title": "APIの検証と統合",
       "summary": "リクエストから応答まで確認し、学んだ機能を1つの作品へつなぐ。",
       "minutes": 90,
       "goals": [
@@ -13848,6 +13848,8 @@
     "exercises": 96,
     "workedExamples": 64,
     "bugRepairs": 32,
-    "sampleProjects": 192
+    "sampleProjects": 192,
+    "visualDiagrams": 32,
+    "additionalExamples": 64
   }
 }

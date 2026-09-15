@@ -1,0 +1,1762 @@
+{
+  "01": {
+    "point": "C#のソースを書くこと、ビルドすること、実行することは別の作業です。",
+    "diagram": {
+      "kind": "pipeline",
+      "title": "ソースから画面表示まで",
+      "nodes": [
+        [
+          "Program.cs",
+          "C#で記述した処理"
+        ],
+        [
+          "コンパイラー",
+          "構文と型を検査"
+        ],
+        [
+          "アセンブリ",
+          "ILと型の情報"
+        ],
+        [
+          ".NET Runtime",
+          "処理を実行"
+        ]
+      ],
+      "caption": "通常のマネージ実行の概念図です。ソースの保存→ビルド→実行の順に進みます。Native AOTなど、別の実行方式もあります。"
+    },
+    "case": {
+      "title": "作業時間の集計",
+      "context": "1日25分の作業を5日続けたときの合計を、分と時間で表示します。",
+      "code": "int minutesPerDay = 25;\nint days = 5;\nint totalMinutes = minutesPerDay * days;\nint hours = totalMinutes / 60;\nint minutes = totalMinutes % 60;\nConsole.WriteLine($\"合計: {totalMinutes}分\");\nConsole.WriteLine($\"{hours}時間{minutes}分\");",
+      "output": "合計: 125分\n2時間5分",
+      "walk": [
+        [
+          "25 × 5",
+          "totalMinutes に125を保存"
+        ],
+        [
+          "125 / 60",
+          "整数同士の除算なので hours は2"
+        ],
+        [
+          "125 % 60",
+          "割り切れずに残った5が minutes に入る"
+        ]
+      ],
+      "change": "daysを3にすると、合計75分、1時間15分になります。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "計算済みの値と再計算",
+      "code": "int days = 5;\nint total = days * 25;\ndays = 8;\nConsole.WriteLine(total);\ntotal = days * 25;\nConsole.WriteLine(total);",
+      "output": "125\n200",
+      "note": "daysだけを変更してもtotalは変わりません。右辺をもう一度評価して代入した時点で200になります。",
+      "kind": "csharp"
+    }
+  },
+  "02": {
+    "point": "usingは名前を省略するための宣言です。メソッドを呼び出す命令ではありません。",
+    "diagram": {
+      "kind": "scope",
+      "title": "型名が解決される範囲",
+      "nodes": [
+        [
+          "System",
+          "名前空間"
+        ],
+        [
+          "Console",
+          "名前空間内の型"
+        ],
+        [
+          "WriteLine",
+          "型が持つメソッド"
+        ],
+        [
+          "(\"Hello\")",
+          "呼び出し時の引数"
+        ]
+      ],
+      "caption": "System.Console.WriteLine(\"Hello\")の各部分を分けた図です。using System;があるとSystem.を省略できます。"
+    },
+    "case": {
+      "title": "名前空間を使った文字列の組み立て",
+      "context": "複数行の発送案内をStringBuilderで組み立てます。",
+      "code": "using System.Text;\nvar message = new StringBuilder();\nmessage.AppendLine(\"注文番号: A001\");\nmessage.AppendLine(\"商品: ノート\");\nmessage.Append(\"発送準備中\");\nConsole.WriteLine(message.ToString());",
+      "output": "注文番号: A001\n商品: ノート\n発送準備中",
+      "walk": [
+        [
+          "using System.Text",
+          "StringBuilderを短い型名で参照できるようにする"
+        ],
+        [
+          "new StringBuilder()",
+          "文字列を組み立てるためのオブジェクトを生成する"
+        ],
+        [
+          "AppendLineとAppend",
+          "改行あり・なしで順番に追加する"
+        ]
+      ],
+      "change": "最後もAppendLineにすると、組み立てた文字列の末尾に改行が追加されます。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "完全修飾名と別名",
+      "code": "using TextBuffer = System.Text.StringBuilder;\nvar a = new System.Text.StringBuilder(\"A\");\nvar b = new TextBuffer(\"B\");\nConsole.WriteLine(a.GetType() == b.GetType());\nConsole.WriteLine(a.ToString() + b.ToString());",
+      "output": "True\nAB",
+      "note": "別名を付けても別の型は作られません。aとbは両方ともSystem.Text.StringBuilderのインスタンスです。",
+      "kind": "csharp"
+    }
+  },
+  "03": {
+    "point": "代入先をdoubleにしても、先に終わった整数除算の小数部分は戻りません。",
+    "diagram": {
+      "kind": "compare",
+      "title": "整数除算と小数除算",
+      "nodes": [
+        [
+          "int / int",
+          "7 / 2 → 3"
+        ],
+        [
+          "doubleへ代入",
+          "3 → 3.0"
+        ],
+        [
+          "double / int",
+          "(double)7 / 2 → 3.5"
+        ],
+        [
+          "doubleへ代入",
+          "3.5をそのまま保存"
+        ]
+      ],
+      "caption": "式の計算が先、代入先への変換が後です。小数部分が必要なら、除算する前に少なくとも一方を小数型にします。"
+    },
+    "case": {
+      "title": "商品の税込合計",
+      "context": "単価198円の商品を3個購入します。この例の丸め規則は「税込合計の1円未満を切り捨て」です。",
+      "code": "decimal unitPrice = 198m;\nint quantity = 3;\nconst decimal TaxRate = 0.10m;\ndecimal subtotal = unitPrice * quantity;\ndecimal total = decimal.Floor(subtotal * (1m + TaxRate));\nConsole.WriteLine($\"小計: {subtotal}円\");\nConsole.WriteLine($\"税込: {total}円\");",
+      "output": "小計: 594円\n税込: 653円",
+      "walk": [
+        [
+          "198 × 3",
+          "小計は594円"
+        ],
+        [
+          "594 × 1.10",
+          "税込計算の途中結果は653.4円"
+        ],
+        [
+          "decimal.Floor",
+          "この例の規則に従い653円に切り捨てる"
+        ]
+      ],
+      "change": "quantityを5にすると小計990円、税込1089円です。丸め規則は業務ごとに決めます。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "丸める位置による違い",
+      "code": "decimal unitPrice = 105m;\nint quantity = 2;\ndecimal perItem = decimal.Floor(unitPrice * 1.10m) * quantity;\ndecimal perOrder = decimal.Floor(unitPrice * quantity * 1.10m);\nConsole.WriteLine($\"商品ごと: {perItem}\");\nConsole.WriteLine($\"注文全体: {perOrder}\");",
+      "output": "商品ごと: 230\n注文全体: 231",
+      "note": "decimalを使うだけでは丸め方は決まりません。商品の単位か、注文の単位かによって1円の差が生じます。",
+      "kind": "csharp"
+    }
+  },
+  "04": {
+    "point": "TryParseの成功と、業務上有効な値であることは別々に確認します。",
+    "diagram": {
+      "kind": "branch",
+      "title": "文字列を数量として受け付ける条件",
+      "nodes": [
+        [
+          "入力 \"3\"",
+          "外部から来る文字列"
+        ],
+        [
+          "TryParse",
+          "intに変換できるか"
+        ],
+        [
+          "1以上か",
+          "業務上の範囲を検査"
+        ],
+        [
+          "受け付け",
+          "両方に成功した値"
+        ]
+      ],
+      "caption": "\"abc\"は変換に失敗します。\"0\"は変換に成功しますが、購入数量を1以上に限定する規則には違反します。"
+    },
+    "case": {
+      "title": "購入数量の入力検証",
+      "context": "フォームで受け取った数量を想定します。変換失敗と範囲外で表示を分けます。",
+      "code": "string[] inputs = { \"3\", \"0\", \"abc\" };\nforeach (string input in inputs)\n{\n    if (!int.TryParse(input, out int quantity))\n        Console.WriteLine($\"{input}: 整数を入力してください\");\n    else if (quantity < 1)\n        Console.WriteLine($\"{input}: 1以上を入力してください\");\n    else\n        Console.WriteLine($\"{input}: {quantity}個を受け付けました\");\n}",
+      "output": "3: 3個を受け付けました\n0: 1以上を入力してください\nabc: 整数を入力してください",
+      "walk": [
+        [
+          "\"3\"",
+          "変換・範囲検査とも成功"
+        ],
+        [
+          "\"0\"",
+          "変換できるが1未満なので受け付けない"
+        ],
+        [
+          "\"abc\"",
+          "整数に変換できないので以降の範囲検査へ進まない"
+        ]
+      ],
+      "change": "入力に\"-2\"と\"2.5\"を追加すると、範囲違反と変換失敗の違いを比較できます。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "識別子の前後空白と大文字小文字",
+      "code": "string input = \"  SAVE  \";\nstring command = input.Trim();\nbool isSave = string.Equals(command, \"save\", StringComparison.OrdinalIgnoreCase);\nConsole.WriteLine(command);\nConsole.WriteLine(isSave);",
+      "output": "SAVE\nTrue",
+      "note": "Trimは前後の空白を除いた文字列を返します。OrdinalIgnoreCaseはこのコマンド名を大文字小文字を区別せず比較します。",
+      "kind": "csharp"
+    }
+  },
+  "05": {
+    "point": "if / else ifは最初に一致した分岐だけを実行します。条件の順番も動作の一部です。",
+    "diagram": {
+      "kind": "branch",
+      "title": "送料の分岐",
+      "nodes": [
+        [
+          "小計を確認",
+          "subtotal = 4200"
+        ],
+        [
+          "5000円以上?",
+          "false"
+        ],
+        [
+          "会員か?",
+          "true"
+        ],
+        [
+          "送料300円",
+          "一般は600円"
+        ]
+      ],
+      "caption": "5000円以上を最初に判定するので、その条件に一致する場合は会員かどうかにかかわらず送料無料です。"
+    },
+    "case": {
+      "title": "注文条件で送料を決める",
+      "context": "5000円以上は無料、それ未満なら会員300円、一般600円とします。",
+      "code": "int subtotal = 4200;\nbool isMember = true;\nint shipping;\nif (subtotal >= 5000)\n    shipping = 0;\nelse if (isMember)\n    shipping = 300;\nelse\n    shipping = 600;\nConsole.WriteLine($\"送料: {shipping}円\");\nConsole.WriteLine($\"支払合計: {subtotal + shipping}円\");",
+      "output": "送料: 300円\n支払合計: 4500円",
+      "walk": [
+        [
+          "4200 >= 5000",
+          "falseなので次の条件へ進む"
+        ],
+        [
+          "isMember",
+          "trueなのでshippingへ300を代入する"
+        ],
+        [
+          "else",
+          "すでに分岐が決まったため実行しない"
+        ]
+      ],
+      "change": "subtotalを5000にした場合とisMemberをfalseにした場合を別々に比べます。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "境界値を表にする",
+      "code": "foreach (int subtotal in new[] { 4999, 5000, 5001 })\n{\n    int shipping = subtotal >= 5000 ? 0 : 600;\n    Console.WriteLine($\"{subtotal}円 → 送料{shipping}円\");\n}",
+      "output": "4999円 → 送料600円\n5000円 → 送料0円\n5001円 → 送料0円",
+      "note": ">=と>ではちょうど5000円の扱いが変わります。境界の直前・境界・直後をセットで確認します。",
+      "kind": "csharp"
+    }
+  },
+  "06": {
+    "point": "配列の要素番号は0からLength - 1までです。Length自身は有効な要素番号ではありません。",
+    "diagram": {
+      "kind": "array",
+      "title": "配列の要素と合計の更新",
+      "nodes": [
+        [
+          "index 0",
+          "120分"
+        ],
+        [
+          "index 1",
+          "90分"
+        ],
+        [
+          "index 2",
+          "150分"
+        ],
+        [
+          "total",
+          "0 → 120 → 210 → 360"
+        ]
+      ],
+      "caption": "foreachは要素を一つずつ受け取り、totalへ加算します。配列の長さ3と、最後の要素番号2を区別します。"
+    },
+    "case": {
+      "title": "3日分の作業時間を集計する",
+      "context": "作業時間の配列から合計を求め、100分以上の日数も数えます。",
+      "code": "int[] minutes = { 120, 90, 150 };\nint total = 0;\nint longDays = 0;\nforeach (int value in minutes)\n{\n    total += value;\n    if (value >= 100) longDays++;\n}\nConsole.WriteLine($\"合計: {total}分\");\nConsole.WriteLine($\"100分以上: {longDays}日\");",
+      "output": "合計: 360分\n100分以上: 2日",
+      "walk": [
+        [
+          "120",
+          "total=120、longDays=1"
+        ],
+        [
+          "90",
+          "total=210、longDays=1"
+        ],
+        [
+          "150",
+          "total=360、longDays=2"
+        ]
+      ],
+      "change": "配列を空にするとループ本体は0回で、合計0分、100分以上0日になります。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "添字が必要なループ",
+      "code": "string[] tasks = { \"設計\", \"実装\", \"テスト\" };\nfor (int i = 0; i < tasks.Length; i++)\n    Console.WriteLine($\"{i + 1}. {tasks[i]}\");",
+      "output": "1. 設計\n2. 実装\n3. テスト",
+      "note": "画面表示の番号だけi + 1にします。配列の参照はtasks[i]のままであり、i <= tasks.Lengthにはしません。",
+      "kind": "csharp"
+    }
+  },
+  "07": {
+    "point": "通常の引数では値がコピーされます。メソッド内の引数への再代入だけでは呼び出し元の変数は変わりません。",
+    "diagram": {
+      "kind": "pipeline",
+      "title": "引数から戻り値まで",
+      "nodes": [
+        [
+          "呼び出し元",
+          "AddTax(1000m, 0.10m)"
+        ],
+        [
+          "パラメーター",
+          "price=1000 / rate=0.10"
+        ],
+        [
+          "計算",
+          "price × (1 + rate)"
+        ],
+        [
+          "戻り値",
+          "1100を受け取る"
+        ]
+      ],
+      "caption": "引数は呼び出し時に渡す値、パラメーターは受け取る変数です。returnで呼び出し元へ結果を返します。"
+    },
+    "case": {
+      "title": "金額計算をメソッドへ分ける",
+      "context": "同じ税計算を複数の商品に使います。表示と計算を別にします。",
+      "code": "decimal first = AddTax(1000m, 0.10m);\ndecimal second = AddTax(2500m, 0.10m);\nConsole.WriteLine($\"{first:0}円\");\nConsole.WriteLine($\"{second:0}円\");\n\nstatic decimal AddTax(decimal price, decimal rate)\n{\n    return price * (1m + rate);\n}",
+      "output": "1100円\n2750円",
+      "walk": [
+        [
+          "1回目",
+          "priceへ1000mを渡し1100mを返す"
+        ],
+        [
+          "2回目",
+          "同じ処理へ2500mを渡し2750mを返す"
+        ],
+        [
+          "Console.WriteLine",
+          "計算結果の表示だけを担当する"
+        ]
+      ],
+      "change": "税率を0.08mにした呼び出しを追加すると、メソッド本体を変えずに別の計算ができます。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "値のコピーと呼び出し元",
+      "code": "int stock = 10;\nint remaining = SellOne(stock);\nConsole.WriteLine($\"元: {stock}\");\nConsole.WriteLine($\"戻り値: {remaining}\");\nstatic int SellOne(int value)\n{\n    value--;\n    return value;\n}",
+      "output": "元: 10\n戻り値: 9",
+      "note": "valueとstockは別の変数です。stockを更新するならstock = SellOne(stock);と戻り値を代入します。",
+      "kind": "csharp"
+    }
+  },
+  "08": {
+    "point": "null、空文字、空白だけの文字列は異なります。必要な規則に合う判定方法を選びます。",
+    "diagram": {
+      "kind": "compare",
+      "title": "未指定・空文字・空白の違い",
+      "nodes": [
+        [
+          "null",
+          "文字列の参照がない"
+        ],
+        [
+          "\"\"",
+          "長さ0の文字列"
+        ],
+        [
+          "\"   \"",
+          "空白3文字を持つ"
+        ],
+        [
+          "\"Aoi\"",
+          "名前の文字列"
+        ]
+      ],
+      "caption": "??はnullだけを対象にします。空文字や空白も未入力とするなら、IsNullOrWhiteSpaceなどで別に判定します。"
+    },
+    "case": {
+      "title": "表示名の既定値",
+      "context": "名前が未指定・空文字・空白だけなら「ゲスト」を表示します。",
+      "code": "string?[] names = { null, \"\", \"   \", \" Aoi \" };\nforeach (string? name in names)\n{\n    string display = string.IsNullOrWhiteSpace(name)\n        ? \"ゲスト\"\n        : name.Trim();\n    Console.WriteLine(display);\n}",
+      "output": "ゲスト\nゲスト\nゲスト\nAoi",
+      "walk": [
+        [
+          "nullと空文字",
+          "どちらも未入力としてゲストにする"
+        ],
+        [
+          "空白だけ",
+          "Trimする前に未入力判定で処理する"
+        ],
+        [
+          "\" Aoi \"",
+          "前後空白を除いてAoiを表示する"
+        ]
+      ],
+      "change": "式をname ?? \"ゲスト\"へ変えると、空文字や空白だけの入力はゲストになりません。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "null条件演算子と既定値",
+      "code": "string? first = null;\nstring? second = \"\";\nConsole.WriteLine(first?.Length ?? -1);\nConsole.WriteLine(second?.Length ?? -1);",
+      "output": "-1\n0",
+      "note": "?.は対象がnullなら後続のLengthへアクセスしません。空文字は存在する文字列なのでLengthの0が返ります。",
+      "kind": "csharp"
+    }
+  },
+  "09": {
+    "point": "クラスは型の定義、インスタンスはその型から作った個別のオブジェクトです。",
+    "diagram": {
+      "kind": "objects",
+      "title": "一つのクラスから二つの個体を作る",
+      "nodes": [
+        [
+          "Product",
+          "名前と価格の定義"
+        ],
+        [
+          "new Product",
+          "コンストラクターへ値を渡す"
+        ],
+        [
+          "商品A",
+          "ノート / 200円"
+        ],
+        [
+          "商品B",
+          "ペン / 120円"
+        ]
+      ],
+      "caption": "同じクラスから生成しても、別のnewで作ったインスタンスはそれぞれの状態を持ちます。"
+    },
+    "case": {
+      "title": "商品の名前と価格をまとめる",
+      "context": "商品ごとに関連する値をProductへまとめ、一覧を表示します。",
+      "code": "var notebook = new Product(\"ノート\", 200);\nvar pen = new Product(\"ペン\", 120);\nConsole.WriteLine($\"{notebook.Name}: {notebook.Price}円\");\nConsole.WriteLine($\"{pen.Name}: {pen.Price}円\");\n\nclass Product\n{\n    public string Name { get; }\n    public int Price { get; }\n    public Product(string name, int price)\n    {\n        Name = name;\n        Price = price;\n    }\n}",
+      "output": "ノート: 200円\nペン: 120円",
+      "walk": [
+        [
+          "new Product",
+          "生成時にコンストラクターが呼ばれる"
+        ],
+        [
+          "NameとPrice",
+          "そのインスタンスの初期状態として保存する"
+        ],
+        [
+          "notebookとpen",
+          "二つの異なるオブジェクトを参照する"
+        ]
+      ],
+      "change": "同名・同価格のProductをもう一つnewしても、同じオブジェクトになるわけではありません。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "初期値の検証",
+      "code": "try { _ = new Product(-1); }\ncatch (ArgumentOutOfRangeException) { Console.WriteLine(\"価格が不正です\"); }\nclass Product\n{\n    public int Price { get; }\n    public Product(int price)\n    {\n        if (price < 0) throw new ArgumentOutOfRangeException(nameof(price));\n        Price = price;\n    }\n}",
+      "output": "価格が不正です",
+      "note": "生成時に不正な値を拒否すると、正常に生成できたProductは価格が0以上であるという前提を持てます。",
+      "kind": "csharp"
+    }
+  },
+  "10": {
+    "point": "状態の変更をメソッドへ集めると、検証を通らずに不正な値へ変わることを防げます。",
+    "diagram": {
+      "kind": "boundary",
+      "title": "在庫を変更する入口",
+      "nodes": [
+        [
+          "外部のコード",
+          "TryShip(3)を呼ぶ"
+        ],
+        [
+          "数量を検証",
+          "正の数か / 在庫以内か"
+        ],
+        [
+          "内部の状態",
+          "Quantityを更新"
+        ],
+        [
+          "外部からの参照",
+          "getだけを公開"
+        ]
+      ],
+      "caption": "Quantityのsetをprivateにし、発送処理をTryShipへ集めます。呼び出し元は成功・失敗だけを受け取ります。"
+    },
+    "case": {
+      "title": "在庫数を負数にしない設計",
+      "context": "発送数量を検証し、在庫不足なら状態を変更しません。",
+      "code": "var stock = new Stock(5);\nConsole.WriteLine(stock.TryShip(3));\nConsole.WriteLine(stock.TryShip(9));\nConsole.WriteLine(stock.Quantity);\nclass Stock\n{\n    public int Quantity { get; private set; }\n    public Stock(int quantity)\n    {\n        if (quantity < 0) throw new ArgumentOutOfRangeException(nameof(quantity));\n        Quantity = quantity;\n    }\n    public bool TryShip(int amount)\n    {\n        if (amount <= 0 || amount > Quantity) return false;\n        Quantity -= amount;\n        return true;\n    }\n}",
+      "output": "True\nFalse\n2",
+      "walk": [
+        [
+          "3個を発送",
+          "5個から3個減り2個になる"
+        ],
+        [
+          "9個を発送",
+          "在庫不足なのでfalseを返す"
+        ],
+        [
+          "失敗後の状態",
+          "減算していないため2個のまま"
+        ]
+      ],
+      "change": "0個と-1個の発送もfalseになり、在庫は変わりません。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "計算プロパティ",
+      "code": "var line = new OrderLine(120, 3);\nConsole.WriteLine(line.Total);\nclass OrderLine\n{\n    public int Price { get; }\n    public int Quantity { get; }\n    public int Total => Price * Quantity;\n    public OrderLine(int price, int quantity)\n    {\n        Price = price;\n        Quantity = quantity;\n    }\n}",
+      "output": "360",
+      "note": "Totalは保存済みの別フィールドではなく、取得時にPrice × Quantityを計算するプロパティです。",
+      "kind": "csharp"
+    }
+  },
+  "11": {
+    "point": "overrideの呼び出し先は、変数の宣言型ではなく実体の型に応じて決まります。",
+    "diagram": {
+      "kind": "dispatch",
+      "title": "共通の型から異なる処理を呼ぶ",
+      "nodes": [
+        [
+          "Notification型",
+          "共通の入口として保持"
+        ],
+        [
+          "Emailの実体",
+          "Sendをoverride"
+        ],
+        [
+          "Consoleの実体",
+          "Sendをoverride"
+        ],
+        [
+          "呼び分け",
+          "実体に対応するSend"
+        ]
+      ],
+      "caption": "継承関係とvirtual / overrideによって、同じSend呼び出しから実体ごとに異なる処理を実行します。"
+    },
+    "case": {
+      "title": "通知方法ごとの出力",
+      "context": "共通の通知型を使い、メール通知と画面通知を呼び分けます。実際の通信はしない例です。",
+      "code": "Notification[] items = { new EmailNotification(), new ScreenNotification() };\nforeach (Notification item in items) item.Send(\"発送完了\");\nabstract class Notification\n{\n    public abstract void Send(string message);\n}\nclass EmailNotification : Notification\n{\n    public override void Send(string message) => Console.WriteLine($\"メール: {message}\");\n}\nclass ScreenNotification : Notification\n{\n    public override void Send(string message) => Console.WriteLine($\"画面: {message}\");\n}",
+      "output": "メール: 発送完了\n画面: 発送完了",
+      "walk": [
+        [
+          "配列へ格納",
+          "宣言型はNotificationにそろえる"
+        ],
+        [
+          "1回目のSend",
+          "EmailNotificationの実装が実行される"
+        ],
+        [
+          "2回目のSend",
+          "ScreenNotificationの実装が実行される"
+        ]
+      ],
+      "change": "新しい通知クラスを追加して配列に入れても、foreachの本体を変える必要はありません。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "基底処理を利用した拡張",
+      "code": "BaseMessage message = new ShippingMessage();\nConsole.WriteLine(message.Build());\nclass BaseMessage\n{\n    public virtual string Build() => \"注文を確認しました\";\n}\nclass ShippingMessage : BaseMessage\n{\n    public override string Build() => base.Build() + \" / 発送待ち\";\n}",
+      "output": "注文を確認しました / 発送待ち",
+      "note": "base.Build()は基底クラスの実装を明示的に呼びます。override内から単にBuild()を呼ぶと、自分自身を呼ぶ形になり得ます。",
+      "kind": "csharp"
+    }
+  },
+  "12": {
+    "point": "インターフェイスは呼び出せる操作の契約です。利用側を具体的な実装から切り離せます。",
+    "diagram": {
+      "kind": "dispatch",
+      "title": "利用側と実装の間の契約",
+      "nodes": [
+        [
+          "OrderService",
+          "通知先の詳細を知らない"
+        ],
+        [
+          "INotifier",
+          "Send(string)を定義"
+        ],
+        [
+          "ConsoleNotifier",
+          "画面へ出力する実装"
+        ],
+        [
+          "別の実装",
+          "契約を満たせば差し替え"
+        ]
+      ],
+      "caption": "利用側が依存するのはINotifierです。コンストラクターで実装を受け取ると、利用側でnewする依存を減らせます。"
+    },
+    "case": {
+      "title": "注文サービスへ通知処理を渡す",
+      "context": "注文確定後の通知だけを別クラスへ分けます。",
+      "code": "var service = new OrderService(new ConsoleNotifier());\nservice.Confirm(\"A001\");\ninterface INotifier { void Send(string message); }\nclass ConsoleNotifier : INotifier\n{\n    public void Send(string message) => Console.WriteLine(message);\n}\nclass OrderService\n{\n    private readonly INotifier notifier;\n    public OrderService(INotifier notifier) { this.notifier = notifier; }\n    public void Confirm(string id) => notifier.Send($\"注文{id}を確定しました\");\n}",
+      "output": "注文A001を確定しました",
+      "walk": [
+        [
+          "実装を生成",
+          "ConsoleNotifierを用意する"
+        ],
+        [
+          "コンストラクター",
+          "OrderServiceへINotifierとして渡す"
+        ],
+        [
+          "Confirm",
+          "具体的な通知先を知らずにSendを呼ぶ"
+        ]
+      ],
+      "change": "テスト時には、通知内容を保存するだけの実装へ差し替えられます。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "通知を記録するテスト用実装",
+      "code": "var notifier = new RecordingNotifier();\nnotifier.Send(\"発送完了\");\nConsole.WriteLine(notifier.LastMessage);\ninterface INotifier { void Send(string message); }\nclass RecordingNotifier : INotifier\n{\n    public string? LastMessage { get; private set; }\n    public void Send(string message) { LastMessage = message; }\n}",
+      "output": "発送完了",
+      "note": "外部へ送信しない実装でも、INotifierの契約を満たします。テストでは保存されたLastMessageを期待値と比較できます。",
+      "kind": "csharp"
+    }
+  },
+  "13": {
+    "point": "参照型の代入でコピーされるのは参照です。オブジェクト全体を自動で複製するわけではありません。",
+    "diagram": {
+      "kind": "memory",
+      "title": "値のコピーと参照のコピー",
+      "nodes": [
+        [
+          "値型 a = 3",
+          "b = a → bだけ9に変更"
+        ],
+        [
+          "a = 3 / b = 9",
+          "二つの値は別々"
+        ],
+        [
+          "参照型 first",
+          "ListオブジェクトAへ"
+        ],
+        [
+          "参照型 second",
+          "同じオブジェクトAへ"
+        ]
+      ],
+      "caption": "これは代入の意味を表す概念図です。スタック・ヒープなど、物理的なメモリ配置を断定する図ではありません。"
+    },
+    "case": {
+      "title": "買い物リストの共有とコピー",
+      "context": "同じリストを参照する場合と、新しいリストへ要素をコピーする場合を比べます。",
+      "code": "var original = new List<string> { \"ノート\" };\nvar shared = original;\nvar copied = new List<string>(original);\nshared.Add(\"ペン\");\nConsole.WriteLine(string.Join(\", \", original));\nConsole.WriteLine(string.Join(\", \", copied));\nConsole.WriteLine(ReferenceEquals(original, shared));\nConsole.WriteLine(ReferenceEquals(original, copied));",
+      "output": "ノート, ペン\nノート\nTrue\nFalse",
+      "walk": [
+        [
+          "shared = original",
+          "同じリストへの参照をコピーする"
+        ],
+        [
+          "new List<string>",
+          "要素を持つ別のリストを作る"
+        ],
+        [
+          "shared.Add",
+          "共有している元リストの内容も変わる"
+        ]
+      ],
+      "change": "Listの要素が変更可能なオブジェクトなら、新しいListを作ってもその要素の参照は共有されます。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "struct内の参照型メンバー",
+      "code": "var first = new Basket(new List<string> { \"ノート\" });\nvar second = first;\nsecond.Items.Add(\"ペン\");\nConsole.WriteLine(first.Items.Count);\nrecord struct Basket(List<string> Items);",
+      "output": "2",
+      "note": "structのコピーでも、Itemsに入っている参照の値がコピーされます。リスト本体まで自動でコピーするわけではありません。",
+      "kind": "csharp"
+    }
+  },
+  "14": {
+    "point": "recordの値による等値性と、同一オブジェクトかどうかは別の判定です。",
+    "diagram": {
+      "kind": "compare",
+      "title": "等値性と参照の同一性",
+      "nodes": [
+        [
+          "record A",
+          "Id=1 / Name=ノート"
+        ],
+        [
+          "record B",
+          "Id=1 / Name=ノート"
+        ],
+        [
+          "A == B",
+          "値が同じ → True"
+        ],
+        [
+          "ReferenceEquals",
+          "別の実体 → False"
+        ]
+      ],
+      "caption": "この図はrecord classを別々にnewした例です。record structは値型であり、参照の同一性を同じように捉えません。"
+    },
+    "case": {
+      "title": "編集前後の商品データ",
+      "context": "with式で変更後のデータを作り、元データを残します。",
+      "code": "var original = new Product(1, \"ノート\", 200);\nvar same = new Product(1, \"ノート\", 200);\nvar updated = original with { Price = 220 };\nConsole.WriteLine(original == same);\nConsole.WriteLine(ReferenceEquals(original, same));\nConsole.WriteLine($\"変更前: {original.Price}円\");\nConsole.WriteLine($\"変更後: {updated.Price}円\");\nrecord Product(int Id, string Name, int Price);",
+      "output": "True\nFalse\n変更前: 200円\n変更後: 220円",
+      "walk": [
+        [
+          "値の比較",
+          "同じ型で各対象メンバーの値が等しいのでTrue"
+        ],
+        [
+          "参照の比較",
+          "別々にnewしたためFalse"
+        ],
+        [
+          "with",
+          "Priceを変えた新しいレコードを作る"
+        ]
+      ],
+      "change": "withは浅いコピーです。変更可能な参照型メンバーを持つ場合は、その内部オブジェクトの共有に注意します。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "参照型メンバーが等値比較へ与える影響",
+      "code": "var a = new Team(new List<string> { \"Aoi\" });\nvar b = new Team(new List<string> { \"Aoi\" });\nConsole.WriteLine(a == b);\nConsole.WriteLine(a.Members.SequenceEqual(b.Members));\nrecord Team(List<string> Members);",
+      "output": "False\nTrue",
+      "note": "List<T>の通常の等値比較は要素の列全体の比較ではありません。要素を比較したい場合はSequenceEqualなどを明示します。",
+      "kind": "csharp"
+    }
+  },
+  "15": {
+    "point": "Listは順序付きの列、Dictionaryはキーから値の検索、HashSetは重複しない集合に使います。",
+    "diagram": {
+      "kind": "collections",
+      "title": "データの形とコレクション",
+      "nodes": [
+        [
+          "List<string>",
+          "[ノート, ペン, ノート]"
+        ],
+        [
+          "Dictionary",
+          "P01 → 200円"
+        ],
+        [
+          "HashSet<string>",
+          "{ノート, ペン}"
+        ],
+        [
+          "型引数<T>",
+          "要素やキーの型を固定"
+        ]
+      ],
+      "caption": "同じデータでも用途によって適した形が違います。DictionaryのキーとHashSetの要素は重複の扱いが重要です。"
+    },
+    "case": {
+      "title": "商品コードから価格を調べる",
+      "context": "商品コードをキーとして価格を取得し、存在しないコードも扱います。",
+      "code": "var prices = new Dictionary<string, int>\n{\n    [\"P01\"] = 200,\n    [\"P02\"] = 120\n};\nforeach (string code in new[] { \"P01\", \"P99\" })\n{\n    if (prices.TryGetValue(code, out int price))\n        Console.WriteLine($\"{code}: {price}円\");\n    else\n        Console.WriteLine($\"{code}: 未登録\");\n}",
+      "output": "P01: 200円\nP99: 未登録",
+      "walk": [
+        [
+          "Dictionary<string, int>",
+          "キーをstring、値をintに固定する"
+        ],
+        [
+          "P01",
+          "キーがあるので200を取得する"
+        ],
+        [
+          "P99",
+          "存在しないのでfalseを使って分岐する"
+        ]
+      ],
+      "change": "prices[\"P99\"]のように存在しないキーを直接参照すると、例外になります。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "重複登録を集合で防ぐ",
+      "code": "var participants = new HashSet<string>(StringComparer.OrdinalIgnoreCase);\nConsole.WriteLine(participants.Add(\"Aoi\"));\nConsole.WriteLine(participants.Add(\"AOI\"));\nConsole.WriteLine(participants.Count);",
+      "output": "True\nFalse\n1",
+      "note": "比較方法を大文字小文字を区別しないものに設定しているため、2回目の追加は重複と判定されます。",
+      "kind": "csharp"
+    }
+  },
+  "16": {
+    "point": "usingによるDisposeと、GCによるメモリ回収は異なる役割です。",
+    "diagram": {
+      "kind": "resource",
+      "title": "例外が発生したときの資源の解放",
+      "nodes": [
+        [
+          "資源を取得",
+          "usingの範囲に入る"
+        ],
+        [
+          "本体を実行",
+          "途中で例外が発生"
+        ],
+        [
+          "Dispose",
+          "範囲を抜ける際に解放"
+        ],
+        [
+          "catch",
+          "呼び出し側で異常を処理"
+        ]
+      ],
+      "caption": "usingは終了時にDisposeを呼ぶための構文です。管理対象オブジェクトのメモリをGCが回収する時点とは別です。"
+    },
+    "case": {
+      "title": "一行ずつ読み、読み取りを終了する",
+      "context": "StringReaderを使い、外部ファイルを作らずに資源のスコープを確認します。",
+      "code": "using System.IO;\nusing (var reader = new StringReader(\"ノート\\nペン\"))\n{\n    string? line;\n    while ((line = reader.ReadLine()) is not null)\n        Console.WriteLine(line);\n}\nConsole.WriteLine(\"読み取り終了\");",
+      "output": "ノート\nペン\n読み取り終了",
+      "walk": [
+        [
+          "StringReader",
+          "文字列を行単位で読むオブジェクトを作る"
+        ],
+        [
+          "ReadLine",
+          "終端ではnullを返し、ループを終える"
+        ],
+        [
+          "usingの終端",
+          "readerのDisposeが呼ばれる"
+        ]
+      ],
+      "change": "文字列を空にするとReadLineは最初からnullで、読み取り終了だけを表示します。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "例外時も呼ばれるDispose",
+      "code": "try\n{\n    using var resource = new DemoResource();\n    throw new InvalidOperationException();\n}\ncatch (InvalidOperationException) { Console.WriteLine(\"catch\"); }\nclass DemoResource : IDisposable\n{\n    public void Dispose() => Console.WriteLine(\"Dispose\");\n}",
+      "output": "Dispose\ncatch",
+      "note": "例外で通常の処理を中断しても、usingの範囲を抜けるときにDisposeが呼ばれ、その後でcatchへ移ります。",
+      "kind": "csharp"
+    }
+  },
+  "17": {
+    "point": "ラムダ式は処理を表します。デリゲート変数を呼び出したときに、その処理が実行されます。",
+    "diagram": {
+      "kind": "pipeline",
+      "title": "処理を値として受け渡す",
+      "nodes": [
+        [
+          "入力の値",
+          "price = 1500"
+        ],
+        [
+          "Func<int, int>",
+          "intを受け取りintを返す"
+        ],
+        [
+          "ラムダ",
+          "amount => amount - 100"
+        ],
+        [
+          "実行結果",
+          "1400"
+        ]
+      ],
+      "caption": "ラムダを変数へ代入した時点では、入力値を使う計算はまだ実行しません。discount(1000)で呼び出します。"
+    },
+    "case": {
+      "title": "割引ルールを差し替える",
+      "context": "同じ価格に、100円引きと10%引きの異なる計算を適用します。",
+      "code": "Func<int, int> coupon = amount => Math.Max(0, amount - 100);\nFunc<int, int> tenPercent = amount => amount * 90 / 100;\nint price = 1500;\nConsole.WriteLine(coupon(price));\nConsole.WriteLine(tenPercent(price));",
+      "output": "1400\n1350",
+      "walk": [
+        [
+          "Func<int, int>",
+          "入力と戻り値の型がintの契約"
+        ],
+        [
+          "coupon",
+          "100円引き。ただし負数にならないよう0を下限にする"
+        ],
+        [
+          "tenPercent",
+          "価格の90%を整数計算する"
+        ]
+      ],
+      "change": "priceが100未満のときcouponは0になります。金額の丸めが必要な業務ではdecimalと丸め規則を検討します。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "キャプチャした変数の読み取り",
+      "code": "int discount = 100;\nFunc<int, int> apply = price => price - discount;\ndiscount = 200;\nConsole.WriteLine(apply(1000));",
+      "output": "800",
+      "note": "ラムダはdiscountの最初の値100を固定したコピーではなく、捕捉した変数を参照します。呼び出す時点では200です。",
+      "kind": "csharp"
+    }
+  },
+  "18": {
+    "point": "Whereは要素を選び、Selectは要素の形を変えます。元のリストを書き換える操作ではありません。",
+    "diagram": {
+      "kind": "linq",
+      "title": "絞り込みから表示用データまで",
+      "nodes": [
+        [
+          "入力",
+          "200 / 120 / 500"
+        ],
+        [
+          "Where",
+          "200円以上 → 200 / 500"
+        ],
+        [
+          "Select",
+          "名前と価格の表示へ変換"
+        ],
+        [
+          "ToArray",
+          "結果を配列に確定"
+        ]
+      ],
+      "caption": "この例では条件に一致する2商品だけを取り出します。パイプラインの各段階で、要素数と要素の型を区別します。"
+    },
+    "case": {
+      "title": "対象商品のラベルを作る",
+      "context": "200円以上の商品だけを選び、名前と価格を表示します。",
+      "code": "var products = new[]\n{\n    new Product(\"ノート\", 200),\n    new Product(\"ペン\", 120),\n    new Product(\"ファイル\", 500)\n};\nstring[] labels = products\n    .Where(p => p.Price >= 200)\n    .Select(p => $\"{p.Name}: {p.Price}円\")\n    .ToArray();\nforeach (string label in labels) Console.WriteLine(label);\nrecord Product(string Name, int Price);",
+      "output": "ノート: 200円\nファイル: 500円",
+      "walk": [
+        [
+          "Where",
+          "Productを受け取りboolを返す条件で絞る"
+        ],
+        [
+          "Select",
+          "Productからstringへ変換する"
+        ],
+        [
+          "ToArray",
+          "列挙してstring[]へ結果を格納する"
+        ]
+      ],
+      "change": "Whereの条件を>= 500へ変えると、ファイルだけになります。productsの3要素はそのままです。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "条件の違いと取得件数",
+      "code": "int[] prices = { 100, 200, 300, 400 };\nint[] result = prices.Where(p => p >= 200).Take(2).ToArray();\nConsole.WriteLine(string.Join(\", \", result));\nConsole.WriteLine(prices.Length);",
+      "output": "200, 300\n4",
+      "note": "Take(2)はその段階の列から先頭2件を取ります。元配列の長さを2へ変えるわけではありません。",
+      "kind": "csharp"
+    }
+  },
+  "19": {
+    "point": "遅延実行のクエリは、作った時点ではなく列挙した時点のデータを読むことがあります。",
+    "diagram": {
+      "kind": "timeline",
+      "title": "クエリ定義と列挙の時点",
+      "nodes": [
+        [
+          "クエリを定義",
+          "Whereの条件を保存"
+        ],
+        [
+          "元データを変更",
+          "4を追加"
+        ],
+        [
+          "foreachで列挙",
+          "この時点で条件を適用"
+        ],
+        [
+          "ToListで確定",
+          "列挙結果を別のListへ"
+        ]
+      ],
+      "caption": "LINQ to ObjectsのWhereは遅延実行です。ToListなどで列挙した結果を保持すると、その後の追加は結果のListへ自動反映されません。"
+    },
+    "case": {
+      "title": "検索条件と検索結果を分ける",
+      "context": "偶数を取るクエリと、先に取得した結果の違いを確認します。",
+      "code": "var numbers = new List<int> { 1, 2, 3 };\nvar query = numbers.Where(n => n % 2 == 0);\nvar snapshot = query.ToList();\nnumbers.Add(4);\nConsole.WriteLine($\"再評価: {string.Join(\", \", query)}\");\nConsole.WriteLine($\"保存済み: {string.Join(\", \", snapshot)}\");",
+      "output": "再評価: 2, 4\n保存済み: 2",
+      "walk": [
+        [
+          "query",
+          "条件付きの列挙を定義する"
+        ],
+        [
+          "snapshot",
+          "追加前に列挙して2だけを保存する"
+        ],
+        [
+          "numbers.Add(4)",
+          "queryの次回列挙には反映されるがsnapshotは変わらない"
+        ]
+      ],
+      "change": "もう一度query.ToList()すると、変更後の結果2, 4を持つ別のListができます。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "カテゴリ別の合計",
+      "code": "var items = new[] { (Category: \"本\", Amount: 1000), (Category: \"文具\", Amount: 300), (Category: \"本\", Amount: 500) };\nforeach (var group in items.GroupBy(x => x.Category).OrderBy(g => g.Key, StringComparer.Ordinal))\n    Console.WriteLine($\"{group.Key}: {group.Sum(x => x.Amount)}円\");",
+      "output": "文具: 300円\n本: 1500円",
+      "note": "GroupByでカテゴリごとの集合を作り、それぞれをSumで集計します。表示順はOrdinalで明示しています。",
+      "kind": "csharp"
+    }
+  },
+  "20": {
+    "point": "enumの名前付き定数だけで、外部から来た値が必ず有効になるわけではありません。",
+    "diagram": {
+      "kind": "compare",
+      "title": "注文状態を名前付きの値で表す",
+      "nodes": [
+        [
+          "Pending",
+          "受付直後"
+        ],
+        [
+          "Paid",
+          "支払い済み"
+        ],
+        [
+          "Shipped",
+          "発送済み"
+        ],
+        [
+          "外部入力",
+          "変換後も有効性を検証"
+        ]
+      ],
+      "caption": "enumは数値へ意味のある名前を付けます。任意の数値をキャストできるので、外部入力の検証は別に必要です。"
+    },
+    "case": {
+      "title": "注文状態を表示用ラベルへ変換する",
+      "context": "内部の状態と日本語の表示文字列を分けます。",
+      "code": "OrderStatus status = OrderStatus.Paid;\nConsole.WriteLine(status.ToLabel());\nenum OrderStatus { Pending, Paid, Shipped }\nstatic class OrderStatusExtensions\n{\n    public static string ToLabel(this OrderStatus status) => status switch\n    {\n        OrderStatus.Pending => \"支払い待ち\",\n        OrderStatus.Paid => \"支払い済み\",\n        OrderStatus.Shipped => \"発送済み\",\n        _ => \"不明な状態\"\n    };\n}",
+      "output": "支払い済み",
+      "walk": [
+        [
+          "enum",
+          "状態を定数名で表す"
+        ],
+        [
+          "拡張メソッド",
+          "既存の型にメンバー呼び出しの形で処理を提供する"
+        ],
+        [
+          "switch式",
+          "状態から表示文字列を一つ返す"
+        ]
+      ],
+      "change": "(OrderStatus)99を渡すと「不明な状態」になります。定義済みかどうかの検証も設計に含めます。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "TryParseだけでは足りないenum検証",
+      "code": "string input = \"99\";\nbool parsed = Enum.TryParse(input, out OrderStatus status);\nConsole.WriteLine(parsed);\nConsole.WriteLine(Enum.IsDefined(status));\nenum OrderStatus { Pending, Paid, Shipped }",
+      "output": "True\nFalse",
+      "note": "数値の文字列はenumへ変換できても、その値に対応する定義済みメンバーがあるとは限りません。",
+      "kind": "csharp"
+    }
+  },
+  "21": {
+    "point": "JSON文字列とC#オブジェクトは異なる表現です。保存・復元には変換と入力の検証が必要です。",
+    "diagram": {
+      "kind": "pipeline",
+      "title": "オブジェクトとJSONの変換",
+      "nodes": [
+        [
+          "C#オブジェクト",
+          "Id=1 / Done=false"
+        ],
+        [
+          "Serialize",
+          "JSON文字列へ変換"
+        ],
+        [
+          "保存・通信",
+          "テキストとして扱う"
+        ],
+        [
+          "Deserialize",
+          "C#の型として復元"
+        ]
+      ],
+      "caption": "JSONはデータの表現形式です。デシリアライズに成功しても、その値が業務の条件を満たすかは別に確認します。"
+    },
+    "case": {
+      "title": "タスクをJSONへ変換して復元する",
+      "context": "ブラウザ内実行にも適した、ディスクを使わない変換だけの例です。",
+      "code": "using System.Text.Json;\nvar task = new TaskItem(1, \"Review\", false);\nstring json = JsonSerializer.Serialize(task);\nConsole.WriteLine(json);\nTaskItem? restored = JsonSerializer.Deserialize<TaskItem>(json);\nConsole.WriteLine(restored?.Title ?? \"復元なし\");\nrecord TaskItem(int Id, string Title, bool Done);",
+      "output": "{\"Id\":1,\"Title\":\"Review\",\"Done\":false}\nReview",
+      "walk": [
+        [
+          "Serialize",
+          "プロパティの値をJSONへ変換する"
+        ],
+        [
+          "string json",
+          "この時点では単なる文字列として保持する"
+        ],
+        [
+          "Deserialize",
+          "指定したTaskItem型へ復元する"
+        ]
+      ],
+      "change": "jsonを\"null\"にすると、restoredはnullになります。後続処理でnullを考慮する必要があります。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "壊れたJSONの扱い",
+      "code": "using System.Text.Json;\nstring json = \"{broken}\";\ntry\n{\n    _ = JsonSerializer.Deserialize<Dictionary<string, string>>(json);\n}\ncatch (JsonException)\n{\n    Console.WriteLine(\"JSONの形式が不正です\");\n}",
+      "output": "JSONの形式が不正です",
+      "note": "JsonExceptionは構文などJSON読み取りの失敗を表します。元のファイルを壊れたと決めつけて上書きせず、内容を保全して原因を確認します。",
+      "kind": "csharp"
+    }
+  },
+  "22": {
+    "point": "時刻の値、UTCからの差、表示形式は別々の情報です。",
+    "diagram": {
+      "kind": "compare",
+      "title": "同じ瞬間の異なる表示",
+      "nodes": [
+        [
+          "UTC",
+          "2026-01-01 00:00 +00:00"
+        ],
+        [
+          "+09:00",
+          "2026-01-01 09:00 +09:00"
+        ],
+        [
+          "同じ瞬間",
+          "等値比較はTrue"
+        ],
+        [
+          "表示",
+          "形式とカルチャーで決定"
+        ]
+      ],
+      "caption": "DateTimeOffsetは日時とUTCオフセットを持ちます。+09:00はオフセットであり、地域のタイムゾーンルール全体を表すものではありません。"
+    },
+    "case": {
+      "title": "UTCの記録を+09:00で表示する",
+      "context": "固定の入力を使い、実行した日時や端末の地域設定に依存しない例です。",
+      "code": "using System.Globalization;\nvar utc = new DateTimeOffset(2026, 1, 1, 0, 0, 0, TimeSpan.Zero);\nvar local = utc.ToOffset(TimeSpan.FromHours(9));\nConsole.WriteLine(utc.ToString(\"yyyy-MM-dd HH:mm zzz\", CultureInfo.InvariantCulture));\nConsole.WriteLine(local.ToString(\"yyyy-MM-dd HH:mm zzz\", CultureInfo.InvariantCulture));\nConsole.WriteLine(utc == local);",
+      "output": "2026-01-01 00:00 +00:00\n2026-01-01 09:00 +09:00\nTrue",
+      "walk": [
+        [
+          "utc",
+          "オフセット0で値を生成する"
+        ],
+        [
+          "ToOffset",
+          "同じ瞬間を別のオフセットで表現する"
+        ],
+        [
+          "==",
+          "表記は違っても同じ瞬間なのでTrue"
+        ]
+      ],
+      "change": "ToOffsetは単に9時間後の別の瞬間を作る操作ではありません。時間を進めるAddHoursとの違いを確認します。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "表示形式を固定した数値",
+      "code": "using System.Globalization;\ndecimal value = 1234.5m;\nConsole.WriteLine(value.ToString(\"0.00\", CultureInfo.InvariantCulture));\nConsole.WriteLine(value.ToString(\"N2\", CultureInfo.InvariantCulture));",
+      "output": "1234.50\n1,234.50",
+      "note": "0.00は小数2桁、N2は桁区切り付き小数2桁です。InvariantCultureで実行環境の地域設定による表示の違いを避けています。",
+      "kind": "csharp"
+    }
+  },
+  "23": {
+    "point": "awaitは未完了のTaskを待つ間、呼び出し元へ制御を返せます。新しいスレッドを必ず作る命令ではありません。",
+    "diagram": {
+      "kind": "async",
+      "title": "開始・待機・再開の順序",
+      "nodes": [
+        [
+          "呼び出し元",
+          "非同期処理を呼ぶ"
+        ],
+        [
+          "非同期メソッド",
+          "最初の未完了awaitまで進む"
+        ],
+        [
+          "待機中",
+          "呼び出し元が別の処理"
+        ],
+        [
+          "完了後",
+          "awaitの続きが再開"
+        ]
+      ],
+      "caption": "Taskが既に完了していれば、awaitで中断せず進む場合もあります。CPU処理を自動で別スレッドへ移す図ではありません。"
+    },
+    "case": {
+      "title": "データ取得の完了を待つ",
+      "context": "Task.Delayで待ち時間を表現します。実際のネットワーク通信は行いません。",
+      "code": "Console.WriteLine(\"開始\");\nstring result = await LoadAsync();\nConsole.WriteLine(result);\nConsole.WriteLine(\"終了\");\nstatic async Task<string> LoadAsync()\n{\n    await Task.Delay(20);\n    return \"取得完了\";\n}",
+      "output": "開始\n取得完了\n終了",
+      "walk": [
+        [
+          "LoadAsync",
+          "完了を表すTask<string>を返す"
+        ],
+        [
+          "await",
+          "結果が利用可能になるまで、後続の表示へ進まない"
+        ],
+        [
+          "再開後",
+          "取得完了、終了の順に表示する"
+        ]
+      ],
+      "change": "Task.Delayのミリ秒数は正確な実測時間を保証しません。待機の意味と結果の順番を確かめる例です。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "完了済みTaskの場合",
+      "code": "Console.WriteLine(\"A\");\nint value = await Task.FromResult(42);\nConsole.WriteLine(value);\nConsole.WriteLine(\"B\");",
+      "output": "A\n42\nB",
+      "note": "Task.FromResultは完了済みのTaskを返します。awaitがあるという理由だけで、必ず一度中断すると判断しないでください。",
+      "kind": "csharp"
+    }
+  },
+  "24": {
+    "point": "Task.WhenAllは渡したすべてのTaskの完了を表します。Taskを並列化する命令そのものではありません。",
+    "diagram": {
+      "kind": "async",
+      "title": "独立した処理を開始して合流する",
+      "nodes": [
+        [
+          "処理Aを開始",
+          "Task<int>を取得"
+        ],
+        [
+          "処理Bを開始",
+          "Task<int>を取得"
+        ],
+        [
+          "WhenAll",
+          "両方の完了を待つ"
+        ],
+        [
+          "結果の配列",
+          "渡した順番で取得"
+        ]
+      ],
+      "caption": "結果配列の順番はTaskを渡した順番です。完了した順番ではありません。処理の独立性を確認してから同時に開始します。"
+    },
+    "case": {
+      "title": "二つの取得結果をまとめる",
+      "context": "待ち時間の異なる独立した処理から結果を集めます。",
+      "code": "Task<int> first = LoadAsync(10, 30);\nTask<int> second = LoadAsync(20, 10);\nint[] results = await Task.WhenAll(first, second);\nConsole.WriteLine(string.Join(\", \", results));\nstatic async Task<int> LoadAsync(int value, int delay)\n{\n    await Task.Delay(delay);\n    return value;\n}",
+      "output": "10, 20",
+      "walk": [
+        [
+          "二つの呼び出し",
+          "それぞれTaskを取得する"
+        ],
+        [
+          "WhenAll",
+          "両方の結果がそろうまで待つ"
+        ],
+        [
+          "results",
+          "完了順ではなくfirst、secondの指定順になる"
+        ]
+      ],
+      "change": "一方が失敗するとWhenAllのTaskも正常完了にはなりません。成功・失敗・中止のそれぞれを設計します。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "キャンセル要求を受け取る処理",
+      "code": "using var source = new CancellationTokenSource();\nsource.Cancel();\ntry\n{\n    await Task.Delay(100, source.Token);\n}\ncatch (OperationCanceledException)\n{\n    Console.WriteLine(\"中止を確認しました\");\n}",
+      "output": "中止を確認しました",
+      "note": "キャンセルは協調的な要求です。処理がTokenを確認する必要があり、Cancelが任意のコードを強制終了するわけではありません。",
+      "kind": "csharp"
+    }
+  },
+  "25": {
+    "point": "NuGetパッケージを追加すると依存関係が増えます。型を使うusingと、参照を追加する操作は別です。",
+    "diagram": {
+      "kind": "pipeline",
+      "title": "ソース・プロジェクト・依存関係",
+      "nodes": [
+        [
+          "Program.cs",
+          "実装するC#コード"
+        ],
+        [
+          ".csproj",
+          "対象と参照の宣言"
+        ],
+        [
+          "restore",
+          "必要な依存関係を復元"
+        ],
+        [
+          "build / run",
+          "ビルドして起動"
+        ]
+      ],
+      "caption": "usingを書くだけでは外部パッケージを取得しません。プロジェクトへ参照を追加し、復元できる状態にする必要があります。"
+    },
+    "case": {
+      "title": "依存パッケージなしの小さなアプリ",
+      "context": "まず標準ライブラリだけで日付付きメッセージを作ります。ConsoleプロジェクトのProgram.csに置く例です。",
+      "code": "using System.Globalization;\nvar date = new DateOnly(2026, 1, 1);\nstring label = date.ToString(\"yyyy-MM-dd\", CultureInfo.InvariantCulture);\nConsole.WriteLine($\"{label}: 集計完了\");",
+      "output": "2026-01-01: 集計完了",
+      "walk": [
+        [
+          "TargetFramework",
+          "プロジェクトの対象フレームワークを決める"
+        ],
+        [
+          "System.Globalization",
+          "標準ライブラリの名前空間を参照する"
+        ],
+        [
+          "DateOnly",
+          "日付のみを表す型で表示用文字列を作る"
+        ]
+      ],
+      "change": "標準ライブラリで要件を満たせる場合、外部パッケージを増やす必要はありません。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "ファイルを分けても同じプロジェクト",
+      "code": "// 同じプロジェクトの別ファイルへ分割することもできます。\nConsole.WriteLine(PriceCalculator.AddTax(1000));\nstatic class PriceCalculator\n{\n    public static int AddTax(int price) => price * 110 / 100;\n}",
+      "output": "1100",
+      "note": "この例をProgram.csとPriceCalculator.csへ分けても、同じプロジェクトで型を参照できます。同じProgramのトップレベル文を複数ファイルへ増やす操作ではありません。",
+      "kind": "csharp"
+    }
+  },
+  "26": {
+    "point": "テストは正常な値だけでなく、境界値・不正値・失敗後の状態も確認します。",
+    "diagram": {
+      "kind": "test",
+      "title": "Arrange・Act・Assert",
+      "nodes": [
+        [
+          "Arrange",
+          "入力と前提を準備"
+        ],
+        [
+          "Act",
+          "対象の処理を1回呼ぶ"
+        ],
+        [
+          "Assert",
+          "実際の値と期待値を比較"
+        ],
+        [
+          "不一致",
+          "条件を残して原因を調べる"
+        ]
+      ],
+      "caption": "テストの期待値は実装と同じ式を写すのではなく、仕様から決めます。誤った式を両方へコピーすると不具合を見逃します。"
+    },
+    "case": {
+      "title": "送料の境界を検査する",
+      "context": "外部テストライブラリなしで、入力と期待値を表にして比較します。",
+      "code": "var cases = new[] { (Price: 4999, Expected: 600), (Price: 5000, Expected: 0), (Price: 5001, Expected: 0) };\nforeach (var item in cases)\n{\n    int actual = Shipping(item.Price);\n    string result = actual == item.Expected ? \"PASS\" : \"FAIL\";\n    Console.WriteLine($\"{item.Price}: {result}\");\n}\nstatic int Shipping(int price) => price >= 5000 ? 0 : 600;",
+      "output": "4999: PASS\n5000: PASS\n5001: PASS",
+      "walk": [
+        [
+          "Arrange",
+          "3種類の入力と期待する送料を用意する"
+        ],
+        [
+          "Act",
+          "Shippingを呼びactualへ実際の結果を入れる"
+        ],
+        [
+          "Assert",
+          "actualとExpectedを比較して結果を表示する"
+        ]
+      ],
+      "change": "Shippingの>=を>へ変えると、5000のケースがFAILになります。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "例外の期待条件を確認する",
+      "code": "bool rejected = false;\ntry { _ = SquareRoot(-1); }\ncatch (ArgumentOutOfRangeException) { rejected = true; }\nConsole.WriteLine(rejected ? \"PASS\" : \"FAIL\");\nstatic double SquareRoot(double value)\n{\n    if (value < 0) throw new ArgumentOutOfRangeException(nameof(value));\n    return Math.Sqrt(value);\n}",
+      "output": "PASS",
+      "note": "「例外が出なかった」ことを成功にするのではなく、このケースでは指定した種類の例外が出ることを期待しています。",
+      "kind": "csharp"
+    }
+  },
+  "27": {
+    "point": "入力の整形、値の検証、計算、表示を分けると、変更の影響を小さくできます。",
+    "diagram": {
+      "kind": "boundary",
+      "title": "入力から結果までの責務",
+      "nodes": [
+        [
+          "入力を受け取る",
+          "文字列 \" 3 \""
+        ],
+        [
+          "変換・検証",
+          "整数か / 1以上か"
+        ],
+        [
+          "計算",
+          "単価 × 数量"
+        ],
+        [
+          "表示",
+          "結果またはエラー"
+        ]
+      ],
+      "caption": "責務を分けることは、必ず大量のクラスを増やすことではありません。小さなアプリではメソッド分割から始められます。"
+    },
+    "case": {
+      "title": "入力検証付きの商品合計",
+      "context": "文字列入力から金額計算までを、Try形式のメソッドへまとめます。",
+      "code": "if (TryCalculate(\" 3 \", 120m, out decimal total))\n    Console.WriteLine($\"合計: {total:0}円\");\nelse\n    Console.WriteLine(\"数量が不正です\");\nstatic bool TryCalculate(string input, decimal price, out decimal total)\n{\n    total = 0m;\n    if (price < 0m || !int.TryParse(input, out int quantity) || quantity < 1)\n        return false;\n    total = price * quantity;\n    return true;\n}",
+      "output": "合計: 360円",
+      "walk": [
+        [
+          "初期値",
+          "失敗経路でもout引数を確定させる"
+        ],
+        [
+          "検証",
+          "価格・変換・数量の条件を先に調べる"
+        ],
+        [
+          "計算",
+          "有効な条件でのみ合計を求める"
+        ]
+      ],
+      "change": "入力を\"0\"や\"abc\"へ変えても、不正な数量で計算する処理へは進みません。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "空白除去と必須検証",
+      "code": "Console.WriteLine(NormalizeTitle(\"  レビュー  \"));\nConsole.WriteLine(NormalizeTitle(\"   \") ?? \"入力エラー\");\nstatic string? NormalizeTitle(string? input)\n{\n    if (string.IsNullOrWhiteSpace(input)) return null;\n    return input.Trim();\n}",
+      "output": "レビュー\n入力エラー",
+      "note": "整形前に未入力を判定すると、null・空文字・空白を同じエラー経路で扱えます。長さ制限などの業務ルールは別に追加します。",
+      "kind": "csharp"
+    }
+  },
+  "28": {
+    "point": "HTTPは、要求を送ったことと、正常なステータスの応答を得たことを分けて扱います。",
+    "diagram": {
+      "kind": "http",
+      "title": "HTTP要求と応答の構成",
+      "nodes": [
+        [
+          "要求",
+          "GET /products/1"
+        ],
+        [
+          "サーバー",
+          "対象を検索する"
+        ],
+        [
+          "ステータス",
+          "200 / 404 / 500など"
+        ],
+        [
+          "本文",
+          "JSONなどのデータ"
+        ]
+      ],
+      "caption": "通信そのものの失敗とHTTPエラーステータスは異なります。正常な通信でも404などが返ることがあります。"
+    },
+    "case": {
+      "title": "HTTP応答の処理を通信なしで確かめる",
+      "context": "HttpResponseMessageを直接作り、404の分岐を確認します。実際の外部サーバーへはアクセスしません。",
+      "code": "using System.Net;\nusing System.Net.Http;\nusing var response = new HttpResponseMessage(HttpStatusCode.NotFound);\nif (response.IsSuccessStatusCode)\n    Console.WriteLine(\"取得成功\");\nelse if (response.StatusCode == HttpStatusCode.NotFound)\n    Console.WriteLine(\"対象が見つかりません\");\nelse\n    Console.WriteLine($\"HTTPエラー: {(int)response.StatusCode}\");",
+      "output": "対象が見つかりません",
+      "walk": [
+        [
+          "HttpResponseMessage",
+          "受け取る応答と同じ型を手元で生成する"
+        ],
+        [
+          "IsSuccessStatusCode",
+          "2xxかどうかを確認する"
+        ],
+        [
+          "404の分岐",
+          "不存在をほかのエラーと分ける"
+        ]
+      ],
+      "change": "NotFoundをOKへ変えると「取得成功」になります。この例は通信時間やCORSを検証するものではありません。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "ステータスの成功判定",
+      "code": "using System.Net;\nusing System.Net.Http;\nforeach (int code in new[] { 200, 201, 204, 400, 404, 500 })\n{\n    using var response = new HttpResponseMessage((HttpStatusCode)code);\n    Console.WriteLine($\"{code}: {response.IsSuccessStatusCode}\");\n}",
+      "output": "200: True\n201: True\n204: True\n400: False\n404: False\n500: False",
+      "note": "IsSuccessStatusCodeは200〜299を成功とします。ただし本文が必ずあるとは限らず、204のような応答もあります。",
+      "kind": "csharp"
+    }
+  },
+  "29": {
+    "point": "エンドポイントはHTTPメソッドとパスの組み合わせで、どの処理を呼ぶかを決めます。",
+    "diagram": {
+      "kind": "http",
+      "title": "Minimal APIの要求経路",
+      "nodes": [
+        [
+          "GET /health",
+          "HTTP要求を送る"
+        ],
+        [
+          "ルーティング",
+          "MapGetのパスに一致"
+        ],
+        [
+          "ハンドラー",
+          "応答データを作る"
+        ],
+        [
+          "200 + JSON",
+          "クライアントへ返す"
+        ]
+      ],
+      "caption": "ASP.NET Coreのサーバーで動作する経路です。静的ホスティングにHTMLを置くだけでこのAPIサーバーが動くわけではありません。"
+    },
+    "case": {
+      "title": "稼働確認APIと商品取得API",
+      "context": "ASP.NET Core WebプロジェクトのProgram.csに置くコードです。サーバー起動が必要です。",
+      "code": "var builder = WebApplication.CreateBuilder(args);\nvar app = builder.Build();\napp.MapGet(\"/health\", () => Results.Ok(new { status = \"ok\" }));\napp.MapGet(\"/products/{id:int}\", (int id) =>\n    id == 1\n        ? Results.Ok(new { id = 1, name = \"Notebook\" })\n        : Results.NotFound());\napp.Run();",
+      "output": "GET /health → 200 / {\"status\":\"ok\"}\nGET /products/1 → 200 / {\"id\":1,\"name\":\"Notebook\"}\nGET /products/9 → 404",
+      "walk": [
+        [
+          "MapGet",
+          "GETとパスに対応する処理を登録する"
+        ],
+        [
+          "{id:int}",
+          "ルートの値をintとして扱う制約"
+        ],
+        [
+          "Results",
+          "ステータスと本文を含むHTTP応答を作る"
+        ]
+      ],
+      "change": "この教材サイトの静的公開と、APIサンプルのサーバー実行は別です。APIはローカルの.NET SDKで動作を確認します。",
+      "kind": "csharp-web"
+    },
+    "detail": {
+      "title": "ルートとは別の検索処理",
+      "code": "Console.WriteLine(FindName(1) ?? \"見つかりません\");\nConsole.WriteLine(FindName(9) ?? \"見つかりません\");\nstatic string? FindName(int id) => id == 1 ? \"Notebook\" : null;",
+      "output": "Notebook\n見つかりません",
+      "note": "検索のルールだけならコンソールでも検査できます。HTTPルートやステータスの検証は、APIを起動した統合テストで別に行います。",
+      "kind": "csharp"
+    }
+  },
+  "30": {
+    "point": "400は入力の問題、404は対象の不存在、201は新規作成の成功を表すなど、応答の意味をそろえます。",
+    "diagram": {
+      "kind": "branch",
+      "title": "入力検証とHTTP応答",
+      "nodes": [
+        [
+          "POST /tasks/validate",
+          "JSONを受け取る"
+        ],
+        [
+          "タイトル検証",
+          "null・空白なら400"
+        ],
+        [
+          "正常な入力",
+          "前後の空白を取り除く"
+        ],
+        [
+          "200 OK",
+          "検証したタイトルを返す"
+        ]
+      ],
+      "caption": "この実例は検証だけを行うAPIです。作成用APIで201 Createdを返すケースとは区別します。"
+    },
+    "case": {
+      "title": "タイトルを検証するAPI",
+      "context": "最小の入力検証例です。保存処理は省き、入力と応答の契約だけを表します。",
+      "code": "var builder = WebApplication.CreateBuilder(args);\nvar app = builder.Build();\napp.MapPost(\"/tasks/validate\", (CreateTask request) =>\n{\n    if (string.IsNullOrWhiteSpace(request.Title))\n        return Results.ValidationProblem(new Dictionary<string, string[]>\n        {\n            [\"title\"] = new[] { \"タイトルは必須です\" }\n        });\n    return Results.Ok(new { title = request.Title.Trim() });\n});\napp.Run();\nrecord CreateTask(string? Title);",
+      "output": "POST /tasks/validate / {\"title\":\"  Review  \"} → 200 / {\"title\":\"Review\"}\nPOST /tasks/validate / {\"title\":\"   \"} → 400",
+      "walk": [
+        [
+          "入力の型",
+          "nullになり得るTitleとして受け取る"
+        ],
+        [
+          "失敗時",
+          "検証エラーを返して以降へ進まない"
+        ],
+        [
+          "成功時",
+          "空白を除いたタイトルを返す"
+        ]
+      ],
+      "change": "これは検証APIなので新規作成の201ではなく200を返します。実際に作成するエンドポイントとは契約を区別します。",
+      "kind": "csharp-web"
+    },
+    "detail": {
+      "title": "未入力と長さの検証",
+      "code": "foreach (string? title in new string?[] { null, \"  \", \"Review\", new string('A', 101) })\n{\n    string? normalized = title?.Trim();\n    bool valid = !string.IsNullOrEmpty(normalized) && normalized.Length <= 100;\n    Console.WriteLine(valid);\n}",
+      "output": "False\nFalse\nTrue\nFalse",
+      "note": "必須条件と100文字以内という長さの条件を分けています。この例のLengthはUTF-16のコード単位数であり、見た目の文字数とは一致しない場合があります。",
+      "kind": "csharp"
+    }
+  },
+  "31": {
+    "point": "DIは依存するオブジェクトを外から渡す仕組みです。共有する期間も設計に含まれます。",
+    "diagram": {
+      "kind": "pipeline",
+      "title": "登録した実装が要求処理へ渡る経路",
+      "nodes": [
+        [
+          "登録",
+          "IClock → FixedClock"
+        ],
+        [
+          "DIコンテナー",
+          "生成方法と寿命を管理"
+        ],
+        [
+          "エンドポイント",
+          "IClockを受け取る"
+        ],
+        [
+          "呼び出し",
+          "UtcNowを利用する"
+        ]
+      ],
+      "caption": "Singleton・Scoped・Transientはオブジェクトの寿命です。共有される変更可能な状態には、並行アクセスへの対応が必要です。"
+    },
+    "case": {
+      "title": "時刻を外から渡せるサービス",
+      "context": "固定時刻を返す実装を用意し、実行する日時に依存しない処理にします。DIコンテナーなしでも依存性の注入は行えます。",
+      "code": "var service = new ReportService(new FixedClock());\nConsole.WriteLine(service.Build());\ninterface IClock { DateTimeOffset UtcNow { get; } }\nclass FixedClock : IClock\n{\n    public DateTimeOffset UtcNow => new(2026, 1, 1, 0, 0, 0, TimeSpan.Zero);\n}\nclass ReportService\n{\n    private readonly IClock clock;\n    public ReportService(IClock clock) { this.clock = clock; }\n    public string Build() => $\"作成日: {clock.UtcNow:yyyy-MM-dd}\";\n}",
+      "output": "作成日: 2026-01-01",
+      "walk": [
+        [
+          "IClock",
+          "現在時刻を取得する操作を契約にする"
+        ],
+        [
+          "FixedClock",
+          "テスト用に固定の値を提供する"
+        ],
+        [
+          "ReportService",
+          "DateTimeOffset.UtcNowへ直接依存しない"
+        ]
+      ],
+      "change": "本番用の実装でDateTimeOffset.UtcNowを返すようにすれば、サービス本体を変えずに切り替えられます。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "依存する計算ルールを渡す",
+      "code": "var service = new PriceService(price => price + 100);\nConsole.WriteLine(service.Total(500));\nclass PriceService\n{\n    private readonly Func<int, int> calculate;\n    public PriceService(Func<int, int> calculate) { this.calculate = calculate; }\n    public int Total(int price) => calculate(price);\n}",
+      "output": "600",
+      "note": "依存性はインターフェイスだけでなくデリゲートとして渡すこともできます。規模と責務に合う最小限の形を選びます。",
+      "kind": "csharp"
+    }
+  },
+  "32": {
+    "point": "単体テストの成功だけでは、HTTP経路・入力変換・状態変化まで正しいとは限りません。",
+    "diagram": {
+      "kind": "test",
+      "title": "APIの操作と状態を連続して検証する",
+      "nodes": [
+        [
+          "作成",
+          "POST → 201 + Location"
+        ],
+        [
+          "取得",
+          "GET Location → 200"
+        ],
+        [
+          "削除",
+          "DELETE → 204"
+        ],
+        [
+          "再取得",
+          "GET → 404"
+        ]
+      ],
+      "caption": "各応答を単独で見るだけでなく、操作後に状態が期待どおり変わるかを検証します。失敗した操作が状態を変えていないことも確認します。"
+    },
+    "case": {
+      "title": "追加と削除の状態を確かめる",
+      "context": "HTTP層から独立した最小の状態テストです。APIの統合テストの前段として、保存処理の変化を確認します。",
+      "code": "var store = new Dictionary<int, string>();\nstore.Add(1, \"Review\");\nConsole.WriteLine(store.ContainsKey(1));\nConsole.WriteLine(store.Remove(1));\nConsole.WriteLine(store.ContainsKey(1));\nConsole.WriteLine(store.Remove(1));",
+      "output": "True\nTrue\nFalse\nFalse",
+      "walk": [
+        [
+          "作成後",
+          "キー1を取得できる"
+        ],
+        [
+          "1回目の削除",
+          "対象があったためtrue"
+        ],
+        [
+          "削除後",
+          "取得できず、再削除はfalseになる"
+        ]
+      ],
+      "change": "HTTP版では「成功した削除」「存在しない対象の削除」のステータスを仕様で決め、同じ状態変化を確認します。",
+      "kind": "csharp"
+    },
+    "detail": {
+      "title": "失敗した操作が状態を変えないこと",
+      "code": "var titles = new List<string>();\nbool added = TryAdd(titles, \"   \");\nConsole.WriteLine(added);\nConsole.WriteLine(titles.Count);\nstatic bool TryAdd(List<string> target, string? title)\n{\n    if (string.IsNullOrWhiteSpace(title)) return false;\n    target.Add(title.Trim());\n    return true;\n}",
+      "output": "False\n0",
+      "note": "検証に失敗したあと一覧件数が増えていないことまで確認します。エラーを返していても、先に状態を変更してしまう不具合はあり得ます。",
+      "kind": "csharp"
+    }
+  }
+}
