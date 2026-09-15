@@ -3,8 +3,8 @@
   "version": "5.0.0",
   "inputZip": "C-study_detailed_release(1).zip",
   "inputSHA256": "ca401964b1eacdd0d82c61b24075c79683ac51573b6da9fc65f2bd913164e288",
-  "repositoryOperations": false,
-  "status": "SITE_UPDATED_WITH_EXPLICIT_UNVERIFIED_ITEMS",
+  "repositoryOperations": true,
+  "status": "REPOSITORY_UPDATED_WITH_EXPLICIT_UNVERIFIED_ITEMS",
   "counts": {
     "htmlPages": 80,
     "chapters": 8,
@@ -20,15 +20,16 @@
   },
   "verified": {
     "localReferences": 6442,
-    "inMemoryUIAndStaticChecks": 213
+    "inMemoryUIAndStaticChecks": 213,
+    "githubMainTreeSHA": "f66b9934f32f224a59e2384c0023c9d4f18ab4dc",
+    "githubPagesDeployment": "SUCCESS"
   },
   "browserCSharpRunner": "NOT_IMPLEMENTED",
   "unverified": [
     "C# build/run",
     "actual-origin persistence",
     "physical Safari/iPhone/iPad",
-    "hosted URL navigation",
-    "actual deployment"
+    "hosted URL navigation"
   ],
   "canonicalBuilder": "scripts/build_visual.py",
   "currentReports": "validation/visual/",

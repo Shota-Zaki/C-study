@@ -1,7 +1,7 @@
 # NEXT_WORK
 
-対象: 添付ZIPを展開した C-study_visual_release / Version 5.0.0。
-リポジトリ操作は行っていません。次回もこのZIPの正本から再開してください。
+対象: `Shota-Zaki/C-study` / Version 5.0.0。
+`work` を開発・検証の正本、`main` を公開物の正本として再開してください。GitHub Pagesへのデプロイは成功済みです。
 
 ## 次のWork Unit
 

@@ -16,6 +16,9 @@
 | コード表示 | 717ブロック |
 | インメモリDOM表示・操作、図版・コードの静的検査 | 213項目中213項目PASS |
 | 表示幅 | 1536px・1024px・390px。代表14ページ×3幅 |
+| GitHub Actions再生成・監査 | Build / audit / package / `work` commit / `main` publish すべてPASS |
+| `main` 公開物一致 | Git tree SHA `f66b9934f32f224a59e2384c0023c9d4f18ab4dc`。ローカル公開物379ファイルから算出したSHAと一致 |
+| GitHub Pagesデプロイ | SUCCESS。deployment対象 `561457366dd78c50bf3bca1eaf535a157ad93745` |
 
 PythonのHTTPサーバーとurllibを使用した配信検査は `validation/visual/local-http.json` です。これはブラウザーの公開URL遷移やC# Web APIの検査ではありません。
 
@@ -32,7 +35,6 @@ Chromiumの通常のURL直接移動は管理ポリシーにより拒否されま
 - 公開URLの通常ナビゲーションと実オリジンでの永続保存。
 - Safari/iPhone/iPad実機、ネイティブの200%ズーム。
 - 300件のC#プロジェクトのコンパイル・実行と、WebサンプルのHTTP応答。
-- Cloudflare Pages / GitHub Pagesへの実際のデプロイ。
 
 64本の新規コードには文字列・コメント・括弧などの字句的な静的検査を行いました。これはC#コンパイラーの型検査でも、実行時の動作検証でもありません。`expected.txt` と画面の「想定出力」は、観測済みの実行結果ではありません。
 
