@@ -1,0 +1,86 @@
+name: Build and publish visual release
+
+on:
+  push:
+    branches:
+      - work
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: c-study-publish
+  cancel-in-progress: false
+
+jobs:
+  build-publish:
+    if: ${{ github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[skip publish]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out work
+        uses: actions/checkout@v7.0.1
+        with:
+          ref: work
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.13'
+
+      - name: Restore visual release source
+        shell: bash
+        run: |
+          set -euo pipefail
+          if compgen -G '.bootstrap/source.b64.part*' > /dev/null; then
+            cat .bootstrap/source.b64.part* | base64 --decode > "$RUNNER_TEMP/source.tar.gz"
+            tar -xzf "$RUNNER_TEMP/source.tar.gz" -C .
+            rm -rf .bootstrap
+          fi
+
+      - name: Install build dependencies
+        run: python -m pip install beautifulsoup4==4.14.3 markdown-it-py==4.2.0 Pygments==2.19.2
+
+      - name: Build and audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/build_visual.py
+          python scripts/audit_visual.py
+          node --check assets/js/site.js
+          node --check assets/js/expanded.js
+          node --check assets/js/visual.js
+
+      - name: Package public site
+        run: python scripts/package_public.py --output "$RUNNER_TEMP/public"
+
+      - name: Commit generated work tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m 'build: regenerate visual lesson edition [skip publish]'
+            git push origin HEAD:work
+          fi
+
+      - name: Publish public files to main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          main_dir="$RUNNER_TEMP/c-study-main"
+          git worktree add "$main_dir" origin/main
+          find "$main_dir" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -a "$RUNNER_TEMP/public/." "$main_dir/"
+          cd "$main_dir"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m 'chore: publish visual lesson edition'
+            git push origin HEAD:main
+          fi
