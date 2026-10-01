@@ -5,7 +5,7 @@
 
 ## 次のWork Unit
 
-.NET SDKが利用可能な環境で、既存236プロジェクトと追加64プロジェクトをビルドし、Consoleサンプルの想定出力とWebサンプルの応答を実測で照合します。現時点の想定出力を実測値として扱わないでください。
+2026-10-01に300プロジェクトの実ビルド、追加Console62件の出力一致、Web10例31HTTP検査が成功しました。証拠は `docs/validation/2026-10-01-dotnet/README.md`。次は既存Console/元教材プロジェクトの意味的な出力照合です。最新正本は `docs/project/NEXT_WORK.md`。
 
 続いて実HTTP/HTTPSでPCとSafariの操作、永続保存、サブパス配置を検査します。実機確認ではiPhone/iPadの狭幅表示、横スクロール表、本文途中の図解、Chapter内目次の操作を重点確認します。
 

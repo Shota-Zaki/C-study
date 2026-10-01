@@ -1,0 +1,1502 @@
+[
+  {
+    "project": "samples/expanded/deep/01/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/01/example-01/Example.csproj (in 28 ms).\n  Example -> /work/samples/expanded/deep/01/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.08\n"
+  },
+  {
+    "project": "samples/expanded/deep/01/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/01/example-02/Example.csproj (in 33 ms).\n  Example -> /work/samples/expanded/deep/01/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.10\n"
+  },
+  {
+    "project": "samples/expanded/deep/01/example-04/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/01/example-04/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/deep/01/example-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.09\n"
+  },
+  {
+    "project": "samples/expanded/deep/01/example-05/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/01/example-05/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/deep/01/example-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.11\n"
+  },
+  {
+    "project": "samples/expanded/deep/02/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/02/example-01/Example.csproj (in 22 ms).\n  Example -> /work/samples/expanded/deep/02/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/deep/02/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/02/example-02/Example.csproj (in 22 ms).\n  Example -> /work/samples/expanded/deep/02/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/deep/02/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/02/example-03/Example.csproj (in 26 ms).\n  Example -> /work/samples/expanded/deep/02/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.02\n"
+  },
+  {
+    "project": "samples/expanded/deep/02/example-05/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/02/example-05/Example.csproj (in 26 ms).\n  Example -> /work/samples/expanded/deep/02/example-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/deep/02/example-07/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/02/example-07/Example.csproj (in 22 ms).\n  Example -> /work/samples/expanded/deep/02/example-07/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/expanded/deep/03/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/03/example-01/Example.csproj (in 30 ms).\n  Example -> /work/samples/expanded/deep/03/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/expanded/deep/03/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/03/example-02/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/deep/03/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/deep/03/example-04/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/03/example-04/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/deep/03/example-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/deep/03/example-05/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/03/example-05/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/03/example-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/expanded/deep/03/example-06/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/03/example-06/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/deep/03/example-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/deep/03/example-07/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/03/example-07/Example.csproj (in 28 ms).\n  Example -> /work/samples/expanded/deep/03/example-07/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/deep/04/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/04/example-01/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/04/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.96\n"
+  },
+  {
+    "project": "samples/expanded/deep/04/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/04/example-02/Example.csproj (in 27 ms).\n  Example -> /work/samples/expanded/deep/04/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.05\n"
+  },
+  {
+    "project": "samples/expanded/deep/04/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/04/example-03/Example.csproj (in 26 ms).\n  Example -> /work/samples/expanded/deep/04/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.05\n"
+  },
+  {
+    "project": "samples/expanded/deep/04/example-05/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/04/example-05/Example.csproj (in 29 ms).\n  Example -> /work/samples/expanded/deep/04/example-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.05\n"
+  },
+  {
+    "project": "samples/expanded/deep/04/example-06/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/04/example-06/Example.csproj (in 30 ms).\n  Example -> /work/samples/expanded/deep/04/example-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.07\n"
+  },
+  {
+    "project": "samples/expanded/deep/04/example-07/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/04/example-07/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/04/example-07/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/deep/04/example-08/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/04/example-08/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/deep/04/example-08/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.02\n"
+  },
+  {
+    "project": "samples/expanded/deep/05/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/05/example-01/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/deep/05/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.94\n"
+  },
+  {
+    "project": "samples/expanded/deep/05/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/05/example-02/Example.csproj (in 26 ms).\n  Example -> /work/samples/expanded/deep/05/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n"
+  },
+  {
+    "project": "samples/expanded/deep/05/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/05/example-03/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/05/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.03\n"
+  },
+  {
+    "project": "samples/expanded/deep/05/example-04/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/05/example-04/Example.csproj (in 22 ms).\n  Example -> /work/samples/expanded/deep/05/example-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/expanded/deep/05/example-05/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/05/example-05/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/05/example-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/deep/05/example-06/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/05/example-06/Example.csproj (in 26 ms).\n  Example -> /work/samples/expanded/deep/05/example-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/deep/06/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/06/example-01/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/deep/06/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n"
+  },
+  {
+    "project": "samples/expanded/deep/06/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/06/example-02/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/06/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/deep/06/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/06/example-03/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/06/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n"
+  },
+  {
+    "project": "samples/expanded/deep/06/example-04/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/06/example-04/Example.csproj (in 27 ms).\n  Example -> /work/samples/expanded/deep/06/example-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.03\n"
+  },
+  {
+    "project": "samples/expanded/deep/06/example-06/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/06/example-06/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/deep/06/example-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n"
+  },
+  {
+    "project": "samples/expanded/deep/06/example-08/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/06/example-08/Example.csproj (in 26 ms).\n  Example -> /work/samples/expanded/deep/06/example-08/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.96\n"
+  },
+  {
+    "project": "samples/expanded/deep/06/example-09/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/06/example-09/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/deep/06/example-09/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/deep/07/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/07/example-01/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/07/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/expanded/deep/07/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/07/example-02/Example.csproj (in 33 ms).\n  Example -> /work/samples/expanded/deep/07/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.06\n"
+  },
+  {
+    "project": "samples/expanded/deep/07/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/07/example-03/Example.csproj (in 44 ms).\n  Example -> /work/samples/expanded/deep/07/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.08\n"
+  },
+  {
+    "project": "samples/expanded/deep/07/example-04/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/07/example-04/Example.csproj (in 31 ms).\n  Example -> /work/samples/expanded/deep/07/example-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.03\n"
+  },
+  {
+    "project": "samples/expanded/deep/07/example-05/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/07/example-05/Example.csproj (in 31 ms).\n  Example -> /work/samples/expanded/deep/07/example-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.09\n"
+  },
+  {
+    "project": "samples/expanded/deep/07/example-06/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/07/example-06/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/deep/07/example-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/deep/08/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/08/example-01/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/deep/08/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/deep/08/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/08/example-02/Example.csproj (in 22 ms).\n  Example -> /work/samples/expanded/deep/08/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n"
+  },
+  {
+    "project": "samples/expanded/deep/08/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/08/example-03/Example.csproj (in 30 ms).\n  Example -> /work/samples/expanded/deep/08/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.96\n"
+  },
+  {
+    "project": "samples/expanded/deep/08/example-05/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/08/example-05/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/deep/08/example-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n"
+  },
+  {
+    "project": "samples/expanded/deep/08/example-07/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/08/example-07/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/08/example-07/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.96\n"
+  },
+  {
+    "project": "samples/expanded/deep/08/example-08/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/08/example-08/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/deep/08/example-08/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/deep/09/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/09/example-01/Example.csproj (in 28 ms).\n  Example -> /work/samples/expanded/deep/09/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n"
+  },
+  {
+    "project": "samples/expanded/deep/09/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/09/example-02/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/09/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/deep/09/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/09/example-03/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/deep/09/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n"
+  },
+  {
+    "project": "samples/expanded/deep/09/example-05/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/09/example-05/Example.csproj (in 28 ms).\n  Example -> /work/samples/expanded/deep/09/example-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/deep/09/example-06/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/09/example-06/Example.csproj (in 24 ms).\n/work/samples/expanded/deep/09/example-06/Program.cs(9,9): warning CS1717: Assignment made to same variable; did you mean to assign something else? [/work/samples/expanded/deep/09/example-06/Example.csproj]\n  Example -> /work/samples/expanded/deep/09/example-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n\n/work/samples/expanded/deep/09/example-06/Program.cs(9,9): warning CS1717: Assignment made to same variable; did you mean to assign something else? [/work/samples/expanded/deep/09/example-06/Example.csproj]\n    1 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.96\n"
+  },
+  {
+    "project": "samples/expanded/deep/09/example-07/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/09/example-07/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/09/example-07/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/expanded/deep/10/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/10/example-01/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/10/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/expanded/deep/10/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/10/example-02/Example.csproj (in 28 ms).\n  Example -> /work/samples/expanded/deep/10/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/deep/10/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/10/example-03/Example.csproj (in 31 ms).\n  Example -> /work/samples/expanded/deep/10/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.03\n"
+  },
+  {
+    "project": "samples/expanded/deep/10/example-05/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/10/example-05/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/deep/10/example-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/deep/11/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/11/example-01/Example.csproj (in 26 ms).\n  Example -> /work/samples/expanded/deep/11/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/deep/11/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/11/example-02/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/deep/11/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/deep/11/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/11/example-03/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/deep/11/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/deep/11/example-04/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/11/example-04/Example.csproj (in 26 ms).\n  Example -> /work/samples/expanded/deep/11/example-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.07\n"
+  },
+  {
+    "project": "samples/expanded/deep/11/example-05/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/11/example-05/Example.csproj (in 26 ms).\n  Example -> /work/samples/expanded/deep/11/example-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.07\n"
+  },
+  {
+    "project": "samples/expanded/deep/12/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/12/example-01/Example.csproj (in 28 ms).\n  Example -> /work/samples/expanded/deep/12/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.07\n"
+  },
+  {
+    "project": "samples/expanded/deep/12/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/12/example-02/Example.csproj (in 37 ms).\n  Example -> /work/samples/expanded/deep/12/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.06\n"
+  },
+  {
+    "project": "samples/expanded/deep/12/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/12/example-03/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/12/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.03\n"
+  },
+  {
+    "project": "samples/expanded/deep/12/example-06/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/12/example-06/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/12/example-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/deep/13/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/13/example-01/Example.csproj (in 22 ms).\n  Example -> /work/samples/expanded/deep/13/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/deep/13/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/13/example-02/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/deep/13/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/deep/13/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/13/example-03/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/deep/13/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/deep/13/example-04/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/13/example-04/Example.csproj (in 35 ms).\n  Example -> /work/samples/expanded/deep/13/example-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/deep/13/example-05/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/13/example-05/Example.csproj (in 22 ms).\n  Example -> /work/samples/expanded/deep/13/example-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/deep/13/example-06/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/13/example-06/Example.csproj (in 26 ms).\n  Example -> /work/samples/expanded/deep/13/example-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/deep/13/example-07/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/13/example-07/Example.csproj (in 46 ms).\n  Example -> /work/samples/expanded/deep/13/example-07/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.07\n"
+  },
+  {
+    "project": "samples/expanded/deep/14/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/14/example-01/Example.csproj (in 32 ms).\n  Example -> /work/samples/expanded/deep/14/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.06\n"
+  },
+  {
+    "project": "samples/expanded/deep/14/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/14/example-02/Example.csproj (in 40 ms).\n  Example -> /work/samples/expanded/deep/14/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.11\n"
+  },
+  {
+    "project": "samples/expanded/deep/14/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/14/example-03/Example.csproj (in 29 ms).\n  Example -> /work/samples/expanded/deep/14/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.11\n"
+  },
+  {
+    "project": "samples/expanded/deep/14/example-04/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/14/example-04/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/14/example-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.02\n"
+  },
+  {
+    "project": "samples/expanded/deep/14/example-05/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/14/example-05/Example.csproj (in 27 ms).\n  Example -> /work/samples/expanded/deep/14/example-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/deep/14/example-06/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/14/example-06/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/14/example-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/deep/15/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/15/example-01/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/15/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/deep/15/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/15/example-02/Example.csproj (in 27 ms).\n  Example -> /work/samples/expanded/deep/15/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.02\n"
+  },
+  {
+    "project": "samples/expanded/deep/15/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/15/example-03/Example.csproj (in 22 ms).\n  Example -> /work/samples/expanded/deep/15/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/deep/15/example-04/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/15/example-04/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/deep/15/example-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/deep/15/example-06/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/15/example-06/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/deep/15/example-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/expanded/deep/15/example-08/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/15/example-08/Example.csproj (in 26 ms).\n  Example -> /work/samples/expanded/deep/15/example-08/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.02\n"
+  },
+  {
+    "project": "samples/expanded/deep/16/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/16/example-01/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/deep/16/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n"
+  },
+  {
+    "project": "samples/expanded/deep/16/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/16/example-02/Example.csproj (in 30 ms).\n  Example -> /work/samples/expanded/deep/16/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.96\n"
+  },
+  {
+    "project": "samples/expanded/deep/16/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/16/example-03/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/16/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/expanded/deep/16/example-04/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/16/example-04/Example.csproj (in 26 ms).\n  Example -> /work/samples/expanded/deep/16/example-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/deep/16/example-05/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/16/example-05/Example.csproj (in 26 ms).\n  Example -> /work/samples/expanded/deep/16/example-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/expanded/deep/16/example-06/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/16/example-06/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/16/example-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.03\n"
+  },
+  {
+    "project": "samples/expanded/deep/16/example-07/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/16/example-07/Example.csproj (in 34 ms).\n  Example -> /work/samples/expanded/deep/16/example-07/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.04\n"
+  },
+  {
+    "project": "samples/expanded/deep/16/example-09/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/16/example-09/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/16/example-09/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.96\n"
+  },
+  {
+    "project": "samples/expanded/deep/17/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/17/example-01/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/17/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/deep/17/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/17/example-02/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/17/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/deep/17/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/17/example-03/Example.csproj (in 27 ms).\n  Example -> /work/samples/expanded/deep/17/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/deep/17/example-04/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/17/example-04/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/deep/17/example-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.94\n"
+  },
+  {
+    "project": "samples/expanded/deep/17/example-05/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/17/example-05/Example.csproj (in 28 ms).\n  Example -> /work/samples/expanded/deep/17/example-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/deep/17/example-06/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/17/example-06/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/deep/17/example-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/deep/17/example-07/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/17/example-07/Example.csproj (in 28 ms).\n  Example -> /work/samples/expanded/deep/17/example-07/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n"
+  },
+  {
+    "project": "samples/expanded/deep/18/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/18/example-01/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/18/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.95\n"
+  },
+  {
+    "project": "samples/expanded/deep/18/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/18/example-02/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/18/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/expanded/deep/18/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/18/example-03/Example.csproj (in 27 ms).\n  Example -> /work/samples/expanded/deep/18/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/deep/18/example-04/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/18/example-04/Example.csproj (in 27 ms).\n  Example -> /work/samples/expanded/deep/18/example-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/deep/18/example-05/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/18/example-05/Example.csproj (in 22 ms).\n  Example -> /work/samples/expanded/deep/18/example-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.04\n"
+  },
+  {
+    "project": "samples/expanded/deep/18/example-06/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/18/example-06/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/18/example-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/deep/18/example-07/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/18/example-07/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/18/example-07/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/deep/18/example-08/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/18/example-08/Example.csproj (in 21 ms).\n  Example -> /work/samples/expanded/deep/18/example-08/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/deep/18/example-09/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/18/example-09/Example.csproj (in 26 ms).\n  Example -> /work/samples/expanded/deep/18/example-09/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.07\n"
+  },
+  {
+    "project": "samples/expanded/deep/19/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/19/example-01/Example.csproj (in 29 ms).\n  Example -> /work/samples/expanded/deep/19/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.09\n"
+  },
+  {
+    "project": "samples/expanded/deep/19/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/19/example-02/Example.csproj (in 28 ms).\n  Example -> /work/samples/expanded/deep/19/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.07\n"
+  },
+  {
+    "project": "samples/expanded/deep/19/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/19/example-03/Example.csproj (in 35 ms).\n  Example -> /work/samples/expanded/deep/19/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.09\n"
+  },
+  {
+    "project": "samples/expanded/deep/19/example-04/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/19/example-04/Example.csproj (in 26 ms).\n  Example -> /work/samples/expanded/deep/19/example-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/deep/19/example-05/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/19/example-05/Example.csproj (in 37 ms).\n  Example -> /work/samples/expanded/deep/19/example-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/deep/19/example-06/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/19/example-06/Example.csproj (in 20 ms).\n  Example -> /work/samples/expanded/deep/19/example-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n"
+  },
+  {
+    "project": "samples/expanded/deep/19/example-08/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/19/example-08/Example.csproj (in 36 ms).\n  Example -> /work/samples/expanded/deep/19/example-08/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/deep/20/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/20/example-01/Example.csproj (in 32 ms).\n  Example -> /work/samples/expanded/deep/20/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/deep/20/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/20/example-02/Example.csproj (in 29 ms).\n  Example -> /work/samples/expanded/deep/20/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/deep/20/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/20/example-03/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/deep/20/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/deep/20/example-04/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/20/example-04/Example.csproj (in 21 ms).\n  Example -> /work/samples/expanded/deep/20/example-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.96\n"
+  },
+  {
+    "project": "samples/expanded/deep/20/example-05/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/20/example-05/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/deep/20/example-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/deep/20/example-06/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/20/example-06/Example.csproj (in 26 ms).\n  Example -> /work/samples/expanded/deep/20/example-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/expanded/deep/20/example-07/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/20/example-07/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/deep/20/example-07/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.96\n"
+  },
+  {
+    "project": "samples/expanded/deep/21/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/21/example-01/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/deep/21/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/deep/21/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/21/example-02/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/21/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n"
+  },
+  {
+    "project": "samples/expanded/deep/21/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/21/example-03/Example.csproj (in 26 ms).\n  Example -> /work/samples/expanded/deep/21/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.04\n"
+  },
+  {
+    "project": "samples/expanded/deep/21/example-04/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/21/example-04/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/deep/21/example-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/deep/21/example-05/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/21/example-05/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/deep/21/example-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.05\n"
+  },
+  {
+    "project": "samples/expanded/deep/21/example-06/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/21/example-06/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/deep/21/example-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.02\n"
+  },
+  {
+    "project": "samples/expanded/deep/22/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/22/example-01/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/deep/22/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/deep/22/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/22/example-02/Example.csproj (in 26 ms).\n  Example -> /work/samples/expanded/deep/22/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/deep/22/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/22/example-03/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/deep/22/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n"
+  },
+  {
+    "project": "samples/expanded/deep/22/example-05/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/22/example-05/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/deep/22/example-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/expanded/deep/22/example-06/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/22/example-06/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/22/example-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/deep/22/example-07/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/22/example-07/Example.csproj (in 27 ms).\n  Example -> /work/samples/expanded/deep/22/example-07/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/expanded/deep/22/example-08/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/22/example-08/Example.csproj (in 26 ms).\n  Example -> /work/samples/expanded/deep/22/example-08/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n"
+  },
+  {
+    "project": "samples/expanded/deep/22/example-09/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/22/example-09/Example.csproj (in 20 ms).\n  Example -> /work/samples/expanded/deep/22/example-09/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/deep/23/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/23/example-01/Example.csproj (in 29 ms).\n  Example -> /work/samples/expanded/deep/23/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/deep/23/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/23/example-02/Example.csproj (in 22 ms).\n  Example -> /work/samples/expanded/deep/23/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/deep/23/example-04/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/23/example-04/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/deep/23/example-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/deep/23/example-05/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/23/example-05/Example.csproj (in 32 ms).\n  Example -> /work/samples/expanded/deep/23/example-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/deep/24/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/24/example-01/Example.csproj (in 29 ms).\n  Example -> /work/samples/expanded/deep/24/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.03\n"
+  },
+  {
+    "project": "samples/expanded/deep/24/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/24/example-02/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/24/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/deep/24/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/24/example-03/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/24/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.03\n"
+  },
+  {
+    "project": "samples/expanded/deep/24/example-04/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/24/example-04/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/deep/24/example-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.10\n"
+  },
+  {
+    "project": "samples/expanded/deep/24/example-06/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/24/example-06/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/24/example-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.12\n"
+  },
+  {
+    "project": "samples/expanded/deep/24/example-07/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/24/example-07/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/deep/24/example-07/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.11\n"
+  },
+  {
+    "project": "samples/expanded/deep/25/example-04/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/25/example-04/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/25/example-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.08\n"
+  },
+  {
+    "project": "samples/expanded/deep/26/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/26/example-01/Example.csproj (in 27 ms).\n  Example -> /work/samples/expanded/deep/26/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/deep/26/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/26/example-02/Example.csproj (in 20 ms).\n  Example -> /work/samples/expanded/deep/26/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/deep/26/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/26/example-03/Example.csproj (in 28 ms).\n  Example -> /work/samples/expanded/deep/26/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/expanded/deep/26/example-05/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/26/example-05/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/deep/26/example-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/deep/27/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/27/example-01/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/deep/27/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.02\n"
+  },
+  {
+    "project": "samples/expanded/deep/27/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/27/example-02/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/deep/27/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/deep/27/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/27/example-03/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/deep/27/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/deep/27/example-04/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/27/example-04/Example.csproj (in 22 ms).\n  Example -> /work/samples/expanded/deep/27/example-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/deep/28/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/28/example-01/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/deep/28/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/expanded/deep/28/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/28/example-03/Example.csproj (in 28 ms).\n  Example -> /work/samples/expanded/deep/28/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/expanded/deep/29/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/29/example-01/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/29/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.37\n"
+  },
+  {
+    "project": "samples/expanded/deep/29/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/29/example-02/Example.csproj (in 28 ms).\n  Example -> /work/samples/expanded/deep/29/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.38\n"
+  },
+  {
+    "project": "samples/expanded/deep/29/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/29/example-03/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/29/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.31\n"
+  },
+  {
+    "project": "samples/expanded/deep/30/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/30/example-01/Example.csproj (in 21 ms).\n  Example -> /work/samples/expanded/deep/30/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.31\n"
+  },
+  {
+    "project": "samples/expanded/deep/30/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/30/example-02/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/30/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.31\n"
+  },
+  {
+    "project": "samples/expanded/deep/31/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/31/example-01/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/31/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/deep/31/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/31/example-02/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/31/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.26\n"
+  },
+  {
+    "project": "samples/expanded/deep/31/example-05/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/31/example-05/Example.csproj (in 21 ms).\n  Example -> /work/samples/expanded/deep/31/example-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.32\n"
+  },
+  {
+    "project": "samples/expanded/deep/32/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/deep/32/example-01/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/deep/32/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.33\n"
+  },
+  {
+    "project": "samples/expanded/guides/async-timeline/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/async-timeline/example-01/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/guides/async-timeline/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/guides/async-timeline/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/async-timeline/example-02/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/guides/async-timeline/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.05\n"
+  },
+  {
+    "project": "samples/expanded/guides/async-timeline/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/async-timeline/example-03/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/guides/async-timeline/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/expanded/guides/async-timeline/example-04/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/async-timeline/example-04/Example.csproj (in 26 ms).\n  Example -> /work/samples/expanded/guides/async-timeline/example-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/guides/choosing-features/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/choosing-features/example-01/Example.csproj (in 31 ms).\n  Example -> /work/samples/expanded/guides/choosing-features/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n"
+  },
+  {
+    "project": "samples/expanded/guides/choosing-features/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/choosing-features/example-02/Example.csproj (in 27 ms).\n  Example -> /work/samples/expanded/guides/choosing-features/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/guides/choosing-features/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/choosing-features/example-03/Example.csproj (in 29 ms).\n  Example -> /work/samples/expanded/guides/choosing-features/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/guides/errors/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/errors/example-02/Example.csproj (in 28 ms).\n  Example -> /work/samples/expanded/guides/errors/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n"
+  },
+  {
+    "project": "samples/expanded/guides/errors/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/errors/example-03/Example.csproj (in 31 ms).\n  Example -> /work/samples/expanded/guides/errors/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/expanded/guides/errors/example-04/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/errors/example-04/Example.csproj (in 32 ms).\n  Example -> /work/samples/expanded/guides/errors/example-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/guides/errors/example-06/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/errors/example-06/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/guides/errors/example-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/guides/errors/example-08/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/errors/example-08/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/guides/errors/example-08/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.03\n"
+  },
+  {
+    "project": "samples/expanded/guides/errors/example-10/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/errors/example-10/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/guides/errors/example-10/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.06\n"
+  },
+  {
+    "project": "samples/expanded/guides/errors/example-11/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/errors/example-11/Example.csproj (in 40 ms).\n  Example -> /work/samples/expanded/guides/errors/example-11/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.06\n"
+  },
+  {
+    "project": "samples/expanded/guides/errors/example-12/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/errors/example-12/Example.csproj (in 47 ms).\n  Example -> /work/samples/expanded/guides/errors/example-12/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.06\n"
+  },
+  {
+    "project": "samples/expanded/guides/errors/example-14/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/errors/example-14/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/guides/errors/example-14/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/guides/errors/example-16/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/errors/example-16/Example.csproj (in 26 ms).\n  Example -> /work/samples/expanded/guides/errors/example-16/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.05\n"
+  },
+  {
+    "project": "samples/expanded/guides/errors/example-17/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/errors/example-17/Example.csproj (in 27 ms).\n  Example -> /work/samples/expanded/guides/errors/example-17/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/guides/errors/example-18/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/errors/example-18/Example.csproj (in 21 ms).\n  Example -> /work/samples/expanded/guides/errors/example-18/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/guides/errors/example-19/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/errors/example-19/Example.csproj (in 26 ms).\n  Example -> /work/samples/expanded/guides/errors/example-19/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/expanded/guides/errors/example-20/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/errors/example-20/Example.csproj (in 27 ms).\n  Example -> /work/samples/expanded/guides/errors/example-20/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/guides/errors/example-22/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/errors/example-22/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/guides/errors/example-22/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.02\n"
+  },
+  {
+    "project": "samples/expanded/guides/errors/example-24/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/errors/example-24/Example.csproj (in 24 ms).\n  Example -> /work/samples/expanded/guides/errors/example-24/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/guides/http-di-path/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/http-di-path/example-01/Example.csproj (in 26 ms).\n  Example -> /work/samples/expanded/guides/http-di-path/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/guides/http-di-path/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/http-di-path/example-02/Example.csproj (in 27 ms).\n  Example -> /work/samples/expanded/guides/http-di-path/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/guides/learning-workflow/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/learning-workflow/example-01/Example.csproj (in 34 ms).\n  Example -> /work/samples/expanded/guides/learning-workflow/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/expanded/guides/reading-code/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/reading-code/example-01/Example.csproj (in 30 ms).\n  Example -> /work/samples/expanded/guides/reading-code/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/guides/reading-code/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/reading-code/example-02/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/guides/reading-code/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/expanded/guides/reading-code/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/reading-code/example-03/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/guides/reading-code/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n"
+  },
+  {
+    "project": "samples/expanded/guides/reading-code/example-05/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/reading-code/example-05/Example.csproj (in 26 ms).\n  Example -> /work/samples/expanded/guides/reading-code/example-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.03\n"
+  },
+  {
+    "project": "samples/expanded/guides/runtime-memory/example-01/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/runtime-memory/example-01/Example.csproj (in 41 ms).\n  Example -> /work/samples/expanded/guides/runtime-memory/example-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.06\n"
+  },
+  {
+    "project": "samples/expanded/guides/runtime-memory/example-02/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/runtime-memory/example-02/Example.csproj (in 41 ms).\n  Example -> /work/samples/expanded/guides/runtime-memory/example-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.08\n"
+  },
+  {
+    "project": "samples/expanded/guides/runtime-memory/example-03/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/runtime-memory/example-03/Example.csproj (in 23 ms).\n  Example -> /work/samples/expanded/guides/runtime-memory/example-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.04\n"
+  },
+  {
+    "project": "samples/expanded/guides/runtime-memory/example-04/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/expanded/guides/runtime-memory/example-04/Example.csproj (in 25 ms).\n  Example -> /work/samples/expanded/guides/runtime-memory/example-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/lessons/lesson-01/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-01/Lesson.csproj (in 34 ms).\n  Lesson -> /work/samples/lessons/lesson-01/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.02\n"
+  },
+  {
+    "project": "samples/lessons/lesson-02/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-02/Lesson.csproj (in 28 ms).\n  Lesson -> /work/samples/lessons/lesson-02/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/lessons/lesson-03/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-03/Lesson.csproj (in 24 ms).\n  Lesson -> /work/samples/lessons/lesson-03/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.96\n"
+  },
+  {
+    "project": "samples/lessons/lesson-04/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-04/Lesson.csproj (in 40 ms).\n  Lesson -> /work/samples/lessons/lesson-04/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.02\n"
+  },
+  {
+    "project": "samples/lessons/lesson-05/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-05/Lesson.csproj (in 37 ms).\n  Lesson -> /work/samples/lessons/lesson-05/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/lessons/lesson-06/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-06/Lesson.csproj (in 22 ms).\n  Lesson -> /work/samples/lessons/lesson-06/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/lessons/lesson-07/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-07/Lesson.csproj (in 23 ms).\n  Lesson -> /work/samples/lessons/lesson-07/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/lessons/lesson-08/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-08/Lesson.csproj (in 23 ms).\n  Lesson -> /work/samples/lessons/lesson-08/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/lessons/lesson-09/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-09/Lesson.csproj (in 22 ms).\n  Lesson -> /work/samples/lessons/lesson-09/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/lessons/lesson-10/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-10/Lesson.csproj (in 27 ms).\n  Lesson -> /work/samples/lessons/lesson-10/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/lessons/lesson-11/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-11/Lesson.csproj (in 26 ms).\n  Lesson -> /work/samples/lessons/lesson-11/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n"
+  },
+  {
+    "project": "samples/lessons/lesson-12/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-12/Lesson.csproj (in 25 ms).\n  Lesson -> /work/samples/lessons/lesson-12/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/lessons/lesson-13/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-13/Lesson.csproj (in 27 ms).\n  Lesson -> /work/samples/lessons/lesson-13/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.02\n"
+  },
+  {
+    "project": "samples/lessons/lesson-14/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-14/Lesson.csproj (in 27 ms).\n  Lesson -> /work/samples/lessons/lesson-14/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.02\n"
+  },
+  {
+    "project": "samples/lessons/lesson-15/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-15/Lesson.csproj (in 24 ms).\n  Lesson -> /work/samples/lessons/lesson-15/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.05\n"
+  },
+  {
+    "project": "samples/lessons/lesson-16/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-16/Lesson.csproj (in 31 ms).\n  Lesson -> /work/samples/lessons/lesson-16/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.03\n"
+  },
+  {
+    "project": "samples/lessons/lesson-17/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-17/Lesson.csproj (in 27 ms).\n  Lesson -> /work/samples/lessons/lesson-17/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.07\n"
+  },
+  {
+    "project": "samples/lessons/lesson-18/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-18/Lesson.csproj (in 36 ms).\n  Lesson -> /work/samples/lessons/lesson-18/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.08\n"
+  },
+  {
+    "project": "samples/lessons/lesson-19/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-19/Lesson.csproj (in 26 ms).\n  Lesson -> /work/samples/lessons/lesson-19/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.04\n"
+  },
+  {
+    "project": "samples/lessons/lesson-20/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-20/Lesson.csproj (in 22 ms).\n  Lesson -> /work/samples/lessons/lesson-20/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/lessons/lesson-21/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-21/Lesson.csproj (in 23 ms).\n  Lesson -> /work/samples/lessons/lesson-21/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.02\n"
+  },
+  {
+    "project": "samples/lessons/lesson-22/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-22/Lesson.csproj (in 32 ms).\n  Lesson -> /work/samples/lessons/lesson-22/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/lessons/lesson-23/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-23/Lesson.csproj (in 30 ms).\n  Lesson -> /work/samples/lessons/lesson-23/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.03\n"
+  },
+  {
+    "project": "samples/lessons/lesson-24/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-24/Lesson.csproj (in 26 ms).\n  Lesson -> /work/samples/lessons/lesson-24/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.03\n"
+  },
+  {
+    "project": "samples/lessons/lesson-25/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-25/Lesson.csproj (in 29 ms).\n  Lesson -> /work/samples/lessons/lesson-25/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/lessons/lesson-26/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-26/Lesson.csproj (in 23 ms).\n  Lesson -> /work/samples/lessons/lesson-26/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.03\n"
+  },
+  {
+    "project": "samples/lessons/lesson-27/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-27/Lesson.csproj (in 28 ms).\n  Lesson -> /work/samples/lessons/lesson-27/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/lessons/lesson-28/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-28/Lesson.csproj (in 26 ms).\n  Lesson -> /work/samples/lessons/lesson-28/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.96\n"
+  },
+  {
+    "project": "samples/lessons/lesson-29/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-29/Lesson.csproj (in 23 ms).\n  Lesson -> /work/samples/lessons/lesson-29/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.24\n"
+  },
+  {
+    "project": "samples/lessons/lesson-30/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-30/Lesson.csproj (in 23 ms).\n  Lesson -> /work/samples/lessons/lesson-30/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.29\n"
+  },
+  {
+    "project": "samples/lessons/lesson-31/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-31/Lesson.csproj (in 26 ms).\n  Lesson -> /work/samples/lessons/lesson-31/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.29\n"
+  },
+  {
+    "project": "samples/lessons/lesson-32/Lesson.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/lessons/lesson-32/Lesson.csproj (in 23 ms).\n  Lesson -> /work/samples/lessons/lesson-32/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.34\n"
+  },
+  {
+    "project": "samples/projects/expense-cli/Project.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/projects/expense-cli/Project.csproj (in 33 ms).\n  Project -> /work/samples/projects/expense-cli/bin/Debug/net10.0/Project.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.07\n"
+  },
+  {
+    "project": "samples/projects/task-api/Project.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/projects/task-api/Project.csproj (in 32 ms).\n  Project -> /work/samples/projects/task-api/bin/Debug/net10.0/Project.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.33\n"
+  },
+  {
+    "project": "samples/projects/task-cli/Project.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/projects/task-cli/Project.csproj (in 35 ms).\n  Project -> /work/samples/projects/task-cli/bin/Debug/net10.0/Project.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.09\n"
+  },
+  {
+    "project": "samples/visual/01/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  All projects are up-to-date for restore.\n  Example -> /work/samples/visual/01/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.39\n"
+  },
+  {
+    "project": "samples/visual/01/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/01/detail/Example.csproj (in 21 ms).\n  Example -> /work/samples/visual/01/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.95\n"
+  },
+  {
+    "project": "samples/visual/02/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/02/case/Example.csproj (in 27 ms).\n  Example -> /work/samples/visual/02/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.94\n"
+  },
+  {
+    "project": "samples/visual/02/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/02/detail/Example.csproj (in 24 ms).\n  Example -> /work/samples/visual/02/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.95\n"
+  },
+  {
+    "project": "samples/visual/03/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/03/case/Example.csproj (in 30 ms).\n  Example -> /work/samples/visual/03/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.95\n"
+  },
+  {
+    "project": "samples/visual/03/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/03/detail/Example.csproj (in 29 ms).\n  Example -> /work/samples/visual/03/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/visual/04/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/04/case/Example.csproj (in 27 ms).\n  Example -> /work/samples/visual/04/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/visual/04/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/04/detail/Example.csproj (in 28 ms).\n  Example -> /work/samples/visual/04/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.95\n"
+  },
+  {
+    "project": "samples/visual/05/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/05/case/Example.csproj (in 37 ms).\n  Example -> /work/samples/visual/05/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/visual/05/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/05/detail/Example.csproj (in 27 ms).\n  Example -> /work/samples/visual/05/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.95\n"
+  },
+  {
+    "project": "samples/visual/06/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/06/case/Example.csproj (in 24 ms).\n  Example -> /work/samples/visual/06/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n"
+  },
+  {
+    "project": "samples/visual/06/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/06/detail/Example.csproj (in 25 ms).\n  Example -> /work/samples/visual/06/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/visual/07/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/07/case/Example.csproj (in 36 ms).\n  Example -> /work/samples/visual/07/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/visual/07/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/07/detail/Example.csproj (in 29 ms).\n  Example -> /work/samples/visual/07/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/visual/08/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/08/case/Example.csproj (in 26 ms).\n  Example -> /work/samples/visual/08/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.02\n"
+  },
+  {
+    "project": "samples/visual/08/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/08/detail/Example.csproj (in 25 ms).\n  Example -> /work/samples/visual/08/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.05\n"
+  },
+  {
+    "project": "samples/visual/09/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/09/case/Example.csproj (in 30 ms).\n  Example -> /work/samples/visual/09/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.07\n"
+  },
+  {
+    "project": "samples/visual/09/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/09/detail/Example.csproj (in 28 ms).\n  Example -> /work/samples/visual/09/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/visual/10/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/10/case/Example.csproj (in 23 ms).\n  Example -> /work/samples/visual/10/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.95\n"
+  },
+  {
+    "project": "samples/visual/10/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/10/detail/Example.csproj (in 26 ms).\n  Example -> /work/samples/visual/10/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.96\n"
+  },
+  {
+    "project": "samples/visual/11/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/11/case/Example.csproj (in 32 ms).\n  Example -> /work/samples/visual/11/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/visual/11/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/11/detail/Example.csproj (in 25 ms).\n  Example -> /work/samples/visual/11/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n"
+  },
+  {
+    "project": "samples/visual/12/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/12/case/Example.csproj (in 26 ms).\n  Example -> /work/samples/visual/12/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.96\n"
+  },
+  {
+    "project": "samples/visual/12/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/12/detail/Example.csproj (in 25 ms).\n  Example -> /work/samples/visual/12/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/visual/13/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/13/case/Example.csproj (in 27 ms).\n  Example -> /work/samples/visual/13/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.96\n"
+  },
+  {
+    "project": "samples/visual/13/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/13/detail/Example.csproj (in 25 ms).\n  Example -> /work/samples/visual/13/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/visual/14/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/14/case/Example.csproj (in 27 ms).\n  Example -> /work/samples/visual/14/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/visual/14/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/14/detail/Example.csproj (in 24 ms).\n  Example -> /work/samples/visual/14/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n"
+  },
+  {
+    "project": "samples/visual/15/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/15/case/Example.csproj (in 26 ms).\n  Example -> /work/samples/visual/15/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/visual/15/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/15/detail/Example.csproj (in 30 ms).\n  Example -> /work/samples/visual/15/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.95\n"
+  },
+  {
+    "project": "samples/visual/16/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/16/case/Example.csproj (in 30 ms).\n  Example -> /work/samples/visual/16/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n"
+  },
+  {
+    "project": "samples/visual/16/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/16/detail/Example.csproj (in 26 ms).\n  Example -> /work/samples/visual/16/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.96\n"
+  },
+  {
+    "project": "samples/visual/17/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/17/case/Example.csproj (in 35 ms).\n  Example -> /work/samples/visual/17/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.05\n"
+  },
+  {
+    "project": "samples/visual/17/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/17/detail/Example.csproj (in 49 ms).\n  Example -> /work/samples/visual/17/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.04\n"
+  },
+  {
+    "project": "samples/visual/18/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/18/case/Example.csproj (in 22 ms).\n  Example -> /work/samples/visual/18/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.04\n"
+  },
+  {
+    "project": "samples/visual/18/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/18/detail/Example.csproj (in 24 ms).\n  Example -> /work/samples/visual/18/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.05\n"
+  },
+  {
+    "project": "samples/visual/19/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/19/case/Example.csproj (in 23 ms).\n  Example -> /work/samples/visual/19/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/visual/19/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/19/detail/Example.csproj (in 24 ms).\n  Example -> /work/samples/visual/19/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/visual/20/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/20/case/Example.csproj (in 25 ms).\n  Example -> /work/samples/visual/20/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n"
+  },
+  {
+    "project": "samples/visual/20/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/20/detail/Example.csproj (in 22 ms).\n  Example -> /work/samples/visual/20/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n"
+  },
+  {
+    "project": "samples/visual/21/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/21/case/Example.csproj (in 38 ms).\n  Example -> /work/samples/visual/21/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.02\n"
+  },
+  {
+    "project": "samples/visual/21/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/21/detail/Example.csproj (in 23 ms).\n  Example -> /work/samples/visual/21/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.96\n"
+  },
+  {
+    "project": "samples/visual/22/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/22/case/Example.csproj (in 29 ms).\n  Example -> /work/samples/visual/22/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/visual/22/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/22/detail/Example.csproj (in 22 ms).\n  Example -> /work/samples/visual/22/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.96\n"
+  },
+  {
+    "project": "samples/visual/23/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/23/case/Example.csproj (in 27 ms).\n  Example -> /work/samples/visual/23/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/visual/23/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/23/detail/Example.csproj (in 25 ms).\n  Example -> /work/samples/visual/23/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.02\n"
+  },
+  {
+    "project": "samples/visual/24/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/24/case/Example.csproj (in 26 ms).\n  Example -> /work/samples/visual/24/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.99\n"
+  },
+  {
+    "project": "samples/visual/24/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/24/detail/Example.csproj (in 29 ms).\n  Example -> /work/samples/visual/24/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/visual/25/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/25/case/Example.csproj (in 38 ms).\n  Example -> /work/samples/visual/25/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/visual/25/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/25/detail/Example.csproj (in 34 ms).\n  Example -> /work/samples/visual/25/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00\n"
+  },
+  {
+    "project": "samples/visual/26/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/26/case/Example.csproj (in 22 ms).\n  Example -> /work/samples/visual/26/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.07\n"
+  },
+  {
+    "project": "samples/visual/26/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/26/detail/Example.csproj (in 24 ms).\n  Example -> /work/samples/visual/26/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.11\n"
+  },
+  {
+    "project": "samples/visual/27/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/27/case/Example.csproj (in 37 ms).\n  Example -> /work/samples/visual/27/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.11\n"
+  },
+  {
+    "project": "samples/visual/27/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/27/detail/Example.csproj (in 23 ms).\n  Example -> /work/samples/visual/27/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n"
+  },
+  {
+    "project": "samples/visual/28/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/28/case/Example.csproj (in 24 ms).\n  Example -> /work/samples/visual/28/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/visual/28/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/28/detail/Example.csproj (in 25 ms).\n  Example -> /work/samples/visual/28/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/visual/29/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/29/case/Example.csproj (in 29 ms).\n  Example -> /work/samples/visual/29/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.22\n"
+  },
+  {
+    "project": "samples/visual/29/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/29/detail/Example.csproj (in 22 ms).\n  Example -> /work/samples/visual/29/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.94\n"
+  },
+  {
+    "project": "samples/visual/30/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/30/case/Example.csproj (in 25 ms).\n  Example -> /work/samples/visual/30/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.23\n"
+  },
+  {
+    "project": "samples/visual/30/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/30/detail/Example.csproj (in 26 ms).\n  Example -> /work/samples/visual/30/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.94\n"
+  },
+  {
+    "project": "samples/visual/31/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/31/case/Example.csproj (in 22 ms).\n  Example -> /work/samples/visual/31/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n"
+  },
+  {
+    "project": "samples/visual/31/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/31/detail/Example.csproj (in 26 ms).\n  Example -> /work/samples/visual/31/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.93\n"
+  },
+  {
+    "project": "samples/visual/32/case/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/32/case/Example.csproj (in 23 ms).\n  Example -> /work/samples/visual/32/case/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.90\n"
+  },
+  {
+    "project": "samples/visual/32/detail/Example.csproj",
+    "exitCode": 0,
+    "output": "  Determining projects to restore...\n  Restored /work/samples/visual/32/detail/Example.csproj (in 26 ms).\n  Example -> /work/samples/visual/32/detail/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.85\n"
+  }
+]

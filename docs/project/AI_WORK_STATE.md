@@ -1,15 +1,18 @@
 # AI work state
 
-Date: 2026-09-14 Asia/Tokyo
+Updated: 2026-10-01 / Asia-Tokyo
 Repository: Shota-Zaki/C-study
 Development: work / Publication: main
-Initial commit: 939a0f3e31c53acc1a8ec77164446ea0d55d6ee5
-Rules: 2.0.0 / aa9fcf26a5c463e37591438ed3e6f410974c9878
-Goal: in_progress
-Current: CS02/CS03 → CS04
+Current: CS07 IN_PROGRESS
+Rules provenance: docs/rules/RULES_SOURCE.md (2.0.0; full snapshot remains deferred)
 
-Source HTML/ZIP retrieved from Library; 32 lessons confirmed. Local explicit comparison migration and 32 foundations exist. Lesson16 standard exercise contained a literal newline inside an ordinary string and was corrected. Not final-audited.
+教材5.1の公開完了履歴はroot AI_WORK_STATEに維持。今回の実測ソースは33308554299df79d59574469ba24defb2b904ad1。
 
-Chromium and Python Playwright available. .NET SDK absent; official download attempt failed. User-PC connector tunnel unavailable after retry. GitHub connector works. Full rules snapshot cross-repository blob reuse failed with422 and is deferred, not a blocker for site implementation.
+- 300/300 C# projects build successfully under SDK10.0.401/runtime10.0.12.
+- 62/62 additional console examples match expected.txt exactly after newline normalization.
+- 10 web examples pass31 HTTP assertions.
+- Existing console/original-project semantic validation remains incomplete.
+- Evidence: docs/validation/2026-10-01-dotnet/README.md.
+- Dedicated network-isolated Docker container stopped/removed; no deployment or main change.
 
-Remaining: source upload, new UI, tests, C# execution, static publication. Resume via AGENTS.md and NEXT_WORK.md; confirmed requirements need not be asked again.
+Resume: AGENTS → RULES_SOURCE → docs/project/TASKS → NEXT_WORK → evidence. 古い2026-09-14 checkpointはdocs/archive/2026-10-01-stale-project-stateへ保存済み。

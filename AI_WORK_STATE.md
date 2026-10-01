@@ -19,7 +19,7 @@ GitHub Actions `Build and publish visual release` は復元・依存導入・ビ
 
 ## 未実装・未検証
 
-ブラウザー内C#ランナーは未実装。.NET SDK不足と外部取得制約によりC#サンプルの実ビルド・実行は未検証。GitHub Pagesへのデプロイ自体は成功済みですが、公開URLの通常ナビゲーション・実オリジン永続保存、実機Safari/iPhone/iPadは未検証です。無料枠で不可能と判断したわけではありません。
+ブラウザー内C#ランナーは未実装。2026-10-01に既存Docker SDKで300件のビルド、追加Console62件の出力照合、Web10例31HTTP検査が成功。既存Console/元教材の意味的な出力照合は未完了。証拠は `docs/validation/2026-10-01-dotnet/README.md`。GitHub Pagesへのデプロイ自体は成功済みですが、公開URLの通常ナビゲーション・実オリジン永続保存、実機Safari/iPhone/iPadは未検証です。無料枠で不可能と判断したわけではありません。
 
 ## 正本
 

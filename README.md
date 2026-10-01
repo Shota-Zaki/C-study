@@ -37,7 +37,7 @@ dotnet build samples/visual/05/case/Example.csproj
 dotnet run --project samples/visual/05/case/Example.csproj
 ```
 
-.NETのビルド・実行は今回未検証です。WebサンプルはローカルのWebアプリとして動作するコードであり、この教材サイトにサーバー機能を追加するものではありません。
+2026-10-01に全300プロジェクトのビルド、追加Console62件の出力照合、Web10例31HTTP検査が成功しました。既存Console/元教材の意味的な出力照合は残っています。実測証拠は [SDK検証記録](docs/validation/2026-10-01-dotnet/README.md) です。WebサンプルはローカルのWebアプリとして動作するコードであり、この教材サイトにサーバー機能を追加するものではありません。
 
 ## 再生成
 
@@ -55,6 +55,6 @@ python scripts/audit_visual.py
 
 80ページの内部参照・見出しID・画像参照を検査し、参照切れとID重複はありませんでした。ChromiumにHTMLとローカルアセットを直接読み込ませ、3画面幅の表示と操作、および図版・追加コードの静的検査を含む213項目を確認しました。
 
-ブラウザーのURL直接移動が環境の管理制限で拒否されたため、実配信URLのE2E、実オリジンの永続保存、Safari/iPhone/iPad実機、C#のコンパイル・実行、Cloudflare/GitHubへの公開は未検証です。保存ロジックのテストには明示的なメモリ上の代替保存領域を使っています。
+ブラウザーのURL直接移動が環境の管理制限で拒否されたため、実配信URLのE2E、実オリジンの永続保存、Safari/iPhone/iPad実機は未検証です。C#検証の更新は上記SDK検証記録、公開履歴はAI_WORK_STATE.mdを参照してください。保存ロジックのテストには明示的なメモリ上の代替保存領域を使っています。
 
 現在版の証拠は `validation/visual/` にあります。`docs/archive/v4/` は入力版の過去記録であり、現在版の検証結果ではありません。

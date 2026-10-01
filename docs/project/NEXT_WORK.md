@@ -1,7 +1,11 @@
 # Next work
 
-Current unit: CS02/CS03 → CS04。
+Updated: 2026-10-01。Current: CS07（C#実測検証）。
 
-単独化contentを保存し、32レッスンの構造と残存表現を検証。UI_UX_RESEARCH.mdを15観点で完成。新規静的ビルダー・CSS・ブラウザー機能を実装。全ページ/サンプル/保存を検証し、mainへ選別反映。
+1. `docs/validation/2026-10-01-dotnet/README.md`で固定ソースと実測範囲を確認。
+2. 既存Console例191件と元教材35プロジェクト等について、対応本文を読み、意味的期待値を用意して実行結果を照合。入力・ファイル操作例は専用一時領域で検査。意図的エラー・部分例を正常実行扱いしない。
+3. 教材UIの実HTTP/HTTPS・永続保存・サブパスを検査。Safari/iPhone/iPad実機は利用可能な環境で確認。
 
-This checkpoint is not a completed site. Local sources are in the active build container; upload is in progress. If resumed before upload, recover the named expanded HTML/ZIP from Library and follow the design. Never invent unseen manuscript text.
+300プロジェクトのビルド、追加Console62件の全文出力照合、Web10例31リクエストは完了済み。SDK10.0.401の既存Docker imageを利用可能。専用検証コンテナーは終了済み。教材コード・生成物・main・公開環境は今回変更していない。
+
+単元ごとの説明順・本文図解、32レッスン・96演習・160問・保存IDを維持。生成入口はscripts/build_visual.py。任意のブラウザー内ランナーを暗黙に追加しない。

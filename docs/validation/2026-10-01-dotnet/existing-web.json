@@ -1,0 +1,416 @@
+[
+  {
+    "example": "29/01",
+    "method": "GET",
+    "path": "/hello",
+    "request": null,
+    "expectedStatus": 200,
+    "expectedBody": {
+      "message": "Hello, C#"
+    },
+    "actualStatus": 200,
+    "body": {
+      "message": "Hello, C#"
+    },
+    "passed": true
+  },
+  {
+    "example": "29/02",
+    "method": "GET",
+    "path": "/items/7",
+    "request": null,
+    "expectedStatus": 200,
+    "expectedBody": {
+      "id": 7,
+      "name": "Item-7"
+    },
+    "actualStatus": 200,
+    "body": {
+      "id": 7,
+      "name": "Item-7"
+    },
+    "passed": true
+  },
+  {
+    "example": "29/02",
+    "method": "GET",
+    "path": "/items/abc",
+    "request": null,
+    "expectedStatus": 404,
+    "expectedBody": null,
+    "actualStatus": 404,
+    "body": null,
+    "passed": true
+  },
+  {
+    "example": "29/03",
+    "method": "GET",
+    "path": "/greet",
+    "request": null,
+    "expectedStatus": 200,
+    "expectedBody": {
+      "message": "Hello, Guest"
+    },
+    "actualStatus": 200,
+    "body": {
+      "message": "Hello, Guest"
+    },
+    "passed": true
+  },
+  {
+    "example": "29/03",
+    "method": "GET",
+    "path": "/greet?name=%20Aoi%20",
+    "request": null,
+    "expectedStatus": 200,
+    "expectedBody": {
+      "message": "Hello, Aoi"
+    },
+    "actualStatus": 200,
+    "body": {
+      "message": "Hello, Aoi"
+    },
+    "passed": true
+  },
+  {
+    "example": "30/01",
+    "method": "POST",
+    "path": "/validate-title",
+    "request": {
+      "title": "  Review  "
+    },
+    "expectedStatus": 200,
+    "expectedBody": {
+      "title": "Review"
+    },
+    "actualStatus": 200,
+    "body": {
+      "title": "Review"
+    },
+    "passed": true
+  },
+  {
+    "example": "30/01",
+    "method": "POST",
+    "path": "/validate-title",
+    "request": {
+      "title": " "
+    },
+    "expectedStatus": 400,
+    "expectedBody": null,
+    "actualStatus": 400,
+    "body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "title": [
+          "タイトルを入力してください。"
+        ]
+      }
+    },
+    "passed": true
+  },
+  {
+    "example": "30/01",
+    "method": "POST",
+    "path": "/validate-title",
+    "request": {
+      "title": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "expectedStatus": 200,
+    "expectedBody": {
+      "title": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "actualStatus": 200,
+    "body": {
+      "title": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "passed": true
+  },
+  {
+    "example": "30/01",
+    "method": "POST",
+    "path": "/validate-title",
+    "request": {
+      "title": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "expectedStatus": 400,
+    "expectedBody": null,
+    "actualStatus": 400,
+    "body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "title": [
+          "タイトルは100以内で入力してください。"
+        ]
+      }
+    },
+    "passed": true
+  },
+  {
+    "example": "30/02",
+    "method": "POST",
+    "path": "/todos",
+    "request": {
+      "title": " "
+    },
+    "expectedStatus": 400,
+    "expectedBody": null,
+    "actualStatus": 400,
+    "body": {
+      "error": "タイトルは必須です"
+    },
+    "passed": true
+  },
+  {
+    "example": "30/02",
+    "method": "POST",
+    "path": "/todos",
+    "request": {
+      "title": " Review "
+    },
+    "expectedStatus": 201,
+    "expectedBody": {
+      "id": 1,
+      "title": "Review",
+      "done": false
+    },
+    "actualStatus": 201,
+    "body": {
+      "id": 1,
+      "title": "Review",
+      "done": false
+    },
+    "passed": true
+  },
+  {
+    "example": "30/02",
+    "method": "GET",
+    "path": "/todos/1",
+    "request": null,
+    "expectedStatus": 200,
+    "expectedBody": {
+      "id": 1,
+      "title": "Review",
+      "done": false
+    },
+    "actualStatus": 200,
+    "body": {
+      "id": 1,
+      "title": "Review",
+      "done": false
+    },
+    "passed": true
+  },
+  {
+    "example": "30/02",
+    "method": "DELETE",
+    "path": "/todos/1",
+    "request": null,
+    "expectedStatus": 204,
+    "expectedBody": null,
+    "actualStatus": 204,
+    "body": null,
+    "passed": true
+  },
+  {
+    "example": "30/02",
+    "method": "GET",
+    "path": "/todos/1",
+    "request": null,
+    "expectedStatus": 404,
+    "expectedBody": null,
+    "actualStatus": 404,
+    "body": null,
+    "passed": true
+  },
+  {
+    "example": "30/02",
+    "method": "DELETE",
+    "path": "/todos/1",
+    "request": null,
+    "expectedStatus": 404,
+    "expectedBody": null,
+    "actualStatus": 404,
+    "body": null,
+    "passed": true
+  },
+  {
+    "example": "31/02",
+    "method": "GET",
+    "path": "/greeting",
+    "request": null,
+    "expectedStatus": 200,
+    "expectedBody": {
+      "message": "UTC年:2026"
+    },
+    "actualStatus": 200,
+    "body": {
+      "message": "UTC年:2026"
+    },
+    "passed": true
+  },
+  {
+    "example": "31/05",
+    "method": "GET",
+    "path": "/settings-summary",
+    "request": null,
+    "expectedStatus": 200,
+    "expectedBody": {
+      "title": "C# Learning Lab",
+      "maxItems": 100
+    },
+    "actualStatus": 200,
+    "body": {
+      "title": "C# Learning Lab",
+      "maxItems": 100
+    },
+    "passed": true
+  },
+  {
+    "example": "32/01",
+    "method": "GET",
+    "path": "/todos",
+    "request": null,
+    "expectedStatus": 200,
+    "expectedBody": [],
+    "actualStatus": 200,
+    "body": [],
+    "passed": true
+  },
+  {
+    "example": "32/01",
+    "method": "POST",
+    "path": "/todos",
+    "request": {
+      "title": " "
+    },
+    "expectedStatus": 400,
+    "expectedBody": null,
+    "actualStatus": 400,
+    "body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "title": [
+          "タイトルは必須です。"
+        ]
+      },
+      "traceId": "00-b9ec0527f749414db7504ab466e6c779-465ffce411222332-00"
+    },
+    "passed": true
+  },
+  {
+    "example": "32/01",
+    "method": "POST",
+    "path": "/todos",
+    "request": {
+      "title": "Review"
+    },
+    "expectedStatus": 201,
+    "expectedBody": {
+      "id": 1,
+      "title": "Review",
+      "done": false
+    },
+    "actualStatus": 201,
+    "body": {
+      "id": 1,
+      "title": "Review",
+      "done": false
+    },
+    "passed": true
+  },
+  {
+    "example": "32/01",
+    "method": "PUT",
+    "path": "/todos/1/completion",
+    "request": {},
+    "expectedStatus": 400,
+    "expectedBody": null,
+    "actualStatus": 400,
+    "body": {
+      "error": "doneを指定してください"
+    },
+    "passed": true
+  },
+  {
+    "example": "32/01",
+    "method": "PUT",
+    "path": "/todos/1/completion",
+    "request": {
+      "done": true
+    },
+    "expectedStatus": 200,
+    "expectedBody": {
+      "id": 1,
+      "title": "Review",
+      "done": true
+    },
+    "actualStatus": 200,
+    "body": {
+      "id": 1,
+      "title": "Review",
+      "done": true
+    },
+    "passed": true
+  },
+  {
+    "example": "32/01",
+    "method": "GET",
+    "path": "/todos/1",
+    "request": null,
+    "expectedStatus": 200,
+    "expectedBody": {
+      "id": 1,
+      "title": "Review",
+      "done": true
+    },
+    "actualStatus": 200,
+    "body": {
+      "id": 1,
+      "title": "Review",
+      "done": true
+    },
+    "passed": true
+  },
+  {
+    "example": "32/01",
+    "method": "PUT",
+    "path": "/todos/9/completion",
+    "request": {
+      "done": true
+    },
+    "expectedStatus": 404,
+    "expectedBody": null,
+    "actualStatus": 404,
+    "body": null,
+    "passed": true
+  },
+  {
+    "example": "32/01",
+    "method": "DELETE",
+    "path": "/todos/1",
+    "request": null,
+    "expectedStatus": 204,
+    "expectedBody": null,
+    "actualStatus": 204,
+    "body": null,
+    "passed": true
+  },
+  {
+    "example": "32/01",
+    "method": "GET",
+    "path": "/todos",
+    "request": null,
+    "expectedStatus": 200,
+    "expectedBody": [],
+    "actualStatus": 200,
+    "body": [],
+    "passed": true
+  }
+]

@@ -1,0 +1,573 @@
+{
+  "console": [
+    {
+      "project": "samples/visual/01/case",
+      "expected": "合計: 125分\n2時間5分\n",
+      "exitCode": 0,
+      "output": "合計: 125分\n2時間5分\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/01/detail",
+      "expected": "125\n200\n",
+      "exitCode": 0,
+      "output": "125\n200\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/02/case",
+      "expected": "注文番号: A001\n商品: ノート\n発送準備中\n",
+      "exitCode": 0,
+      "output": "注文番号: A001\n商品: ノート\n発送準備中\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/02/detail",
+      "expected": "True\nAB\n",
+      "exitCode": 0,
+      "output": "True\nAB\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/03/case",
+      "expected": "小計: 594円\n税込: 653円\n",
+      "exitCode": 0,
+      "output": "小計: 594円\n税込: 653円\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/03/detail",
+      "expected": "商品ごと: 230\n注文全体: 231\n",
+      "exitCode": 0,
+      "output": "商品ごと: 230\n注文全体: 231\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/04/case",
+      "expected": "3: 3個を受け付けました\n0: 1以上を入力してください\nabc: 整数を入力してください\n",
+      "exitCode": 0,
+      "output": "3: 3個を受け付けました\n0: 1以上を入力してください\nabc: 整数を入力してください\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/04/detail",
+      "expected": "SAVE\nTrue\n",
+      "exitCode": 0,
+      "output": "SAVE\nTrue\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/05/case",
+      "expected": "送料: 300円\n支払合計: 4500円\n",
+      "exitCode": 0,
+      "output": "送料: 300円\n支払合計: 4500円\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/05/detail",
+      "expected": "4999円 → 送料600円\n5000円 → 送料0円\n5001円 → 送料0円\n",
+      "exitCode": 0,
+      "output": "4999円 → 送料600円\n5000円 → 送料0円\n5001円 → 送料0円\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/06/case",
+      "expected": "合計: 360分\n100分以上: 2日\n",
+      "exitCode": 0,
+      "output": "合計: 360分\n100分以上: 2日\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/06/detail",
+      "expected": "1. 設計\n2. 実装\n3. テスト\n",
+      "exitCode": 0,
+      "output": "1. 設計\n2. 実装\n3. テスト\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/07/case",
+      "expected": "1100円\n2750円\n",
+      "exitCode": 0,
+      "output": "1100円\n2750円\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/07/detail",
+      "expected": "元: 10\n戻り値: 9\n",
+      "exitCode": 0,
+      "output": "元: 10\n戻り値: 9\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/08/case",
+      "expected": "ゲスト\nゲスト\nゲスト\nAoi\n",
+      "exitCode": 0,
+      "output": "ゲスト\nゲスト\nゲスト\nAoi\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/08/detail",
+      "expected": "-1\n0\n",
+      "exitCode": 0,
+      "output": "-1\n0\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/09/case",
+      "expected": "ノート: 200円\nペン: 120円\n",
+      "exitCode": 0,
+      "output": "ノート: 200円\nペン: 120円\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/09/detail",
+      "expected": "価格が不正です\n",
+      "exitCode": 0,
+      "output": "価格が不正です\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/10/case",
+      "expected": "True\nFalse\n2\n",
+      "exitCode": 0,
+      "output": "True\nFalse\n2\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/10/detail",
+      "expected": "360\n",
+      "exitCode": 0,
+      "output": "360\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/11/case",
+      "expected": "メール: 発送完了\n画面: 発送完了\n",
+      "exitCode": 0,
+      "output": "メール: 発送完了\n画面: 発送完了\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/11/detail",
+      "expected": "注文を確認しました / 発送待ち\n",
+      "exitCode": 0,
+      "output": "注文を確認しました / 発送待ち\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/12/case",
+      "expected": "注文A001を確定しました\n",
+      "exitCode": 0,
+      "output": "注文A001を確定しました\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/12/detail",
+      "expected": "発送完了\n",
+      "exitCode": 0,
+      "output": "発送完了\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/13/case",
+      "expected": "ノート, ペン\nノート\nTrue\nFalse\n",
+      "exitCode": 0,
+      "output": "ノート, ペン\nノート\nTrue\nFalse\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/13/detail",
+      "expected": "2\n",
+      "exitCode": 0,
+      "output": "2\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/14/case",
+      "expected": "True\nFalse\n変更前: 200円\n変更後: 220円\n",
+      "exitCode": 0,
+      "output": "True\nFalse\n変更前: 200円\n変更後: 220円\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/14/detail",
+      "expected": "False\nTrue\n",
+      "exitCode": 0,
+      "output": "False\nTrue\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/15/case",
+      "expected": "P01: 200円\nP99: 未登録\n",
+      "exitCode": 0,
+      "output": "P01: 200円\nP99: 未登録\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/15/detail",
+      "expected": "True\nFalse\n1\n",
+      "exitCode": 0,
+      "output": "True\nFalse\n1\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/16/case",
+      "expected": "ノート\nペン\n読み取り終了\n",
+      "exitCode": 0,
+      "output": "ノート\nペン\n読み取り終了\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/16/detail",
+      "expected": "Dispose\ncatch\n",
+      "exitCode": 0,
+      "output": "Dispose\ncatch\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/17/case",
+      "expected": "1400\n1350\n",
+      "exitCode": 0,
+      "output": "1400\n1350\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/17/detail",
+      "expected": "800\n",
+      "exitCode": 0,
+      "output": "800\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/18/case",
+      "expected": "ノート: 200円\nファイル: 500円\n",
+      "exitCode": 0,
+      "output": "ノート: 200円\nファイル: 500円\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/18/detail",
+      "expected": "200, 300\n4\n",
+      "exitCode": 0,
+      "output": "200, 300\n4\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/19/case",
+      "expected": "再評価: 2, 4\n保存済み: 2\n",
+      "exitCode": 0,
+      "output": "再評価: 2, 4\n保存済み: 2\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/19/detail",
+      "expected": "文具: 300円\n本: 1500円\n",
+      "exitCode": 0,
+      "output": "文具: 300円\n本: 1500円\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/20/case",
+      "expected": "支払い済み\n",
+      "exitCode": 0,
+      "output": "支払い済み\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/20/detail",
+      "expected": "True\nFalse\n",
+      "exitCode": 0,
+      "output": "True\nFalse\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/21/case",
+      "expected": "{\"Id\":1,\"Title\":\"Review\",\"Done\":false}\nReview\n",
+      "exitCode": 0,
+      "output": "{\"Id\":1,\"Title\":\"Review\",\"Done\":false}\nReview\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/21/detail",
+      "expected": "JSONの形式が不正です\n",
+      "exitCode": 0,
+      "output": "JSONの形式が不正です\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/22/case",
+      "expected": "2026-01-01 00:00 +00:00\n2026-01-01 09:00 +09:00\nTrue\n",
+      "exitCode": 0,
+      "output": "2026-01-01 00:00 +00:00\n2026-01-01 09:00 +09:00\nTrue\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/22/detail",
+      "expected": "1234.50\n1,234.50\n",
+      "exitCode": 0,
+      "output": "1234.50\n1,234.50\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/23/case",
+      "expected": "開始\n取得完了\n終了\n",
+      "exitCode": 0,
+      "output": "開始\n取得完了\n終了\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/23/detail",
+      "expected": "A\n42\nB\n",
+      "exitCode": 0,
+      "output": "A\n42\nB\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/24/case",
+      "expected": "10, 20\n",
+      "exitCode": 0,
+      "output": "10, 20\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/24/detail",
+      "expected": "中止を確認しました\n",
+      "exitCode": 0,
+      "output": "中止を確認しました\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/25/case",
+      "expected": "2026-01-01: 集計完了\n",
+      "exitCode": 0,
+      "output": "2026-01-01: 集計完了\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/25/detail",
+      "expected": "1100\n",
+      "exitCode": 0,
+      "output": "1100\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/26/case",
+      "expected": "4999: PASS\n5000: PASS\n5001: PASS\n",
+      "exitCode": 0,
+      "output": "4999: PASS\n5000: PASS\n5001: PASS\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/26/detail",
+      "expected": "PASS\n",
+      "exitCode": 0,
+      "output": "PASS\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/27/case",
+      "expected": "合計: 360円\n",
+      "exitCode": 0,
+      "output": "合計: 360円\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/27/detail",
+      "expected": "レビュー\n入力エラー\n",
+      "exitCode": 0,
+      "output": "レビュー\n入力エラー\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/28/case",
+      "expected": "対象が見つかりません\n",
+      "exitCode": 0,
+      "output": "対象が見つかりません\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/28/detail",
+      "expected": "200: True\n201: True\n204: True\n400: False\n404: False\n500: False\n",
+      "exitCode": 0,
+      "output": "200: True\n201: True\n204: True\n400: False\n404: False\n500: False\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/29/detail",
+      "expected": "Notebook\n見つかりません\n",
+      "exitCode": 0,
+      "output": "Notebook\n見つかりません\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/30/detail",
+      "expected": "False\nFalse\nTrue\nFalse\n",
+      "exitCode": 0,
+      "output": "False\nFalse\nTrue\nFalse\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/31/case",
+      "expected": "作成日: 2026-01-01\n",
+      "exitCode": 0,
+      "output": "作成日: 2026-01-01\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/31/detail",
+      "expected": "600\n",
+      "exitCode": 0,
+      "output": "600\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/32/case",
+      "expected": "True\nTrue\nFalse\nFalse\n",
+      "exitCode": 0,
+      "output": "True\nTrue\nFalse\nFalse\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "project": "samples/visual/32/detail",
+      "expected": "False\n0\n",
+      "exitCode": 0,
+      "output": "False\n0\n",
+      "stderr": "",
+      "passed": true
+    }
+  ],
+  "http": [
+    {
+      "lesson": "29",
+      "method": "GET",
+      "path": "/health",
+      "request": null,
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "body": {
+        "status": "ok"
+      },
+      "passed": true
+    },
+    {
+      "lesson": "29",
+      "method": "GET",
+      "path": "/products/1",
+      "request": null,
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "body": {
+        "id": 1,
+        "name": "Notebook"
+      },
+      "passed": true
+    },
+    {
+      "lesson": "29",
+      "method": "GET",
+      "path": "/products/9",
+      "request": null,
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "body": null,
+      "passed": true
+    },
+    {
+      "lesson": "30",
+      "method": "POST",
+      "path": "/tasks/validate",
+      "request": {
+        "title": "  Review  "
+      },
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "body": {
+        "title": "Review"
+      },
+      "passed": true
+    },
+    {
+      "lesson": "30",
+      "method": "POST",
+      "path": "/tasks/validate",
+      "request": {
+        "title": "   "
+      },
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "body": {
+        "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+        "title": "One or more validation errors occurred.",
+        "status": 400,
+        "errors": {
+          "title": [
+            "タイトルは必須です"
+          ]
+        }
+      },
+      "passed": true
+    }
+  ],
+  "allPassed": true
+}
