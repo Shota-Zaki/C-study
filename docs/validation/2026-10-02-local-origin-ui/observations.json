@@ -1,0 +1,97 @@
+{
+  "sourceSHA": "c50c2ae70634fa43edb41f8c57784148f5f06b5b",
+  "environment": "macOS Codex in-app browser through cua_repl; engine/version not measured; not claimed native Safari or Chromium",
+  "origin": "http://127.0.0.1:61775",
+  "subpath": "/course/",
+  "mode": "Native HTTP navigation and real origin persistence; copied rendered source; no in-memory injection/storage substitute",
+  "recordType": "Manual observations copied from returned browser-tool results, not an independently rerun automated suite",
+  "checks": [
+    {
+      "criterion": "subpath-link-navigation",
+      "status": "PASS",
+      "observation": "Native index link opened http://127.0.0.1:61775/course/lessons/01.html."
+    },
+    {
+      "criterion": "draft-reload",
+      "status": "PASS",
+      "observation": "Fill Console.WriteLine(\"task6 reload persistence\"); then request native reload; exact textarea value restored. Time relative to250ms debounce was not measured, so no proof of a specific flush mechanism."
+    },
+    {
+      "criterion": "mixed-quiz-result",
+      "status": "PASS",
+      "observation": "Q1=0,Q2=1,Q3=0(wrong),Q4=3,Q5 unanswered rendered exactly 確認問題：3 / 5 正解。全選択肢の解説を表示しました。 DOM5graded questions/5correct choices/1wrong choice; progress1/32."
+    },
+    {
+      "criterion": "quiz-progress-reload",
+      "status": "PASS",
+      "observation": "After native reload answers[0,1,0,3,null], ✓ 完了済み and ★ 復習対象 restored."
+    },
+    {
+      "criterion": "draft-cross-page-interruption",
+      "status": "PASS",
+      "observation": "Fill Console.WriteLine(\"task6 pagehide navigation\"); native next-lesson01→02 link then browserBack restored exact draft. Sub250ms interruption not measured."
+    },
+    {
+      "criterion": "search-no-match",
+      "status": "PASS",
+      "observation": "Query task6-no-match-61775 rendered 該当する教材がありません。"
+    },
+    {
+      "criterion": "search-escape",
+      "status": "PASS",
+      "observation": "Native Escape from search field closed 教材検索 dialog."
+    },
+    {
+      "criterion": "search-result-navigation",
+      "status": "PASS",
+      "observation": "LINQ search result link navigated natively to /course/deep-dives/06.html; search indexes body text, not only titles."
+    },
+    {
+      "criterion": "theme-reload",
+      "status": "PASS",
+      "observation": "Select dark then native reload; document data-theme remained dark."
+    },
+    {
+      "criterion": "invalid-import-error-rendering",
+      "status": "PASS",
+      "observation": "Real chooser with synthetic {\"version\":99} rendered 読み込み失敗：versionは2である必要があります。現在のデータは維持しました。 No subsequent independent byte/state comparison was completed."
+    }
+  ],
+  "blocked": [
+    {
+      "criterion": "export-download",
+      "reason": "waitForEvent(download) timed out after requested10000ms; no captured export file, no acceptance claim"
+    },
+    {
+      "criterion": "further chooser/import tests",
+      "reason": "File-chooser operation with requested10000ms event timeout returned only after tool-reported34846.1773 seconds. Invalid-version message eventually observed; long wait mechanism not diagnosed. Stop dependent browser scope; no repeated chooser calls."
+    },
+    {
+      "criterion": "published-origin HTTPS navigation/persistence",
+      "reason": "Registered URL resolved read-only as https://shota-zaki.github.io/C-study/; no browser acceptance performed in this turn."
+    },
+    {
+      "criterion": "native Safari / physical iPhone/iPad",
+      "reason": "Not attempted before browser control stall; discovery listed running Safari but provides no acceptance. Physical device availability was not determined."
+    },
+    {
+      "criterion": "screenshots/responsive/keyboard-wide/storage failure branches",
+      "reason": "Not completed; no screenshot or full visual/platform acceptance claim."
+    }
+  ],
+  "cleanup": {
+    "pid": 40552,
+    "command": "Python /tmp/cstudy_browser_server.py",
+    "listener": "127.0.0.1:61775",
+    "ownershipVerified": true,
+    "action": "SIGTERM40552 only",
+    "followup": "lsof listener and ps PID produced no entries; no other service stopped",
+    "confirmedAtUTC": "2026-10-02 23:16:41 UTC"
+  },
+  "notes": [
+    "Drafts are not a C# runtime; no runner cancellation/infinite-loop acceptance claimed.",
+    "Read-only browser evaluate lacked localStorage access; no raw-storage inspection or write injection used.",
+    "One early locator used native AX checkbox semantics whereas DOM was BUTTON; corrected after DOM inspection; no product defect.",
+    "Source-output scope retained without reruns; source/main/public deployment/settings unchanged."
+  ]
+}
