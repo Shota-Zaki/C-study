@@ -1,0 +1,1458 @@
+{
+  "sourceSHA": "7bb393a6f7c68db07bec517b9a310ab2c393a3c6",
+  "image": "sha256:35d40304542c8689331f8cab17c65926cdf48fe711e289321d71924b230a7d29",
+  "lifecycle": {
+    "create": {
+      "command": [
+        "docker",
+        "run",
+        "-d",
+        "--pull=never",
+        "--name",
+        "cstudy-task6-2026-10-02-existing-console-guides",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "2g",
+        "sha256:35d40304542c8689331f8cab17c65926cdf48fe711e289321d71924b230a7d29",
+        "sleep",
+        "900"
+      ],
+      "exitCode": 0,
+      "stdout": "8c2f4fd5d0831d5b199c90736ee68c91bc441b4aae11c8ca34ccae5bdfd980a4\n",
+      "stderr": ""
+    },
+    "copy": {
+      "command": [
+        "docker",
+        "cp",
+        "/var/folders/ct/75ylq_m57wn16_6fm_0zznlm0000gn/T/cstudy-private-s4ps1y51/.",
+        "cstudy-task6-2026-10-02-existing-console-guides:/verify"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "sdk": {
+      "command": [
+        "docker",
+        "exec",
+        "cstudy-task6-2026-10-02-existing-console-guides",
+        "dotnet",
+        "--info"
+      ],
+      "exitCode": 0,
+      "stdout": ".NET SDK:\n Version:           10.0.401\n Commit:            e34a38d2ae\n Workload version:  10.0.400-manifests.63b36e85\n MSBuild version:   18.9.11+e34a38d2a\n\nRuntime Environment:\n OS Name:     ubuntu\n OS Version:  24.04\n OS Platform: Linux\n RID:         linux-arm64\n Base Path:   /usr/share/dotnet/sdk/10.0.401/\n\n.NET workloads installed:\nThere are no installed workloads to display.\nConfigured to use workload sets when installing new manifests.\nNo workload sets are installed. Run \"dotnet workload restore\" to install a workload set.\n\nHost:\n  Version:      10.0.12\n  Architecture: arm64\n  Commit:       95017c711e\n\n.NET SDKs installed:\n  10.0.401 [/usr/share/dotnet/sdk]\n\n.NET runtimes installed:\n  Microsoft.AspNetCore.App 10.0.12 [/usr/share/dotnet/shared/Microsoft.AspNetCore.App]\n  Microsoft.NETCore.App 10.0.12 [/usr/share/dotnet/shared/Microsoft.NETCore.App]\n\nOther architectures found:\n  None\n\nEnvironment variables:\n  DOTNET_GENERATE_ASPNET_CERTIFICATE       [false]\n  DOTNET_NOLOGO                            [true]\n  DOTNET_RUNNING_IN_CONTAINER              [true]\n  DOTNET_SDK_VERSION                       [10.0.401]\n  DOTNET_USE_POLLING_FILE_WATCHER          [true]\n  DOTNET_VERSION                           [10.0.12]\n\nglobal.json file:\n  Not found\n\nLearn more:\n  https://aka.ms/dotnet/info\n\nDownload .NET:\n  https://aka.ms/dotnet/download\n",
+      "stderr": ""
+    },
+    "cleanup": {
+      "command": [
+        "docker",
+        "rm",
+        "-f",
+        "cstudy-task6-2026-10-02-existing-console-guides"
+      ],
+      "exitCode": 0,
+      "stdout": "cstudy-task6-2026-10-02-existing-console-guides\n",
+      "stderr": ""
+    }
+  },
+  "results": [
+    {
+      "id": "guides-learning-workflow-01",
+      "expected": "残り3回\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-learning-workflow-01/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-learning-workflow-01/Example.csproj (in 23 ms).\n  Example -> /verify/guides-learning-workflow-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.82\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-learning-workflow-01",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-learning-workflow-01/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "残り3回\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-runtime-memory-01",
+      "expected": "10\n15\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-runtime-memory-01/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-runtime-memory-01/Example.csproj (in 28 ms).\n  Example -> /verify/guides-runtime-memory-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.85\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-runtime-memory-01",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-runtime-memory-01/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "10\n15\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-runtime-memory-02",
+      "expected": "3/9\n3,9\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-runtime-memory-02/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-runtime-memory-02/Example.csproj (in 26 ms).\n  Example -> /verify/guides-runtime-memory-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.85\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-runtime-memory-02",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-runtime-memory-02/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "3/9\n3,9\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-runtime-memory-03",
+      "expected": "本,ペン\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-runtime-memory-03/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-runtime-memory-03/Example.csproj (in 21 ms).\n  Example -> /verify/guides-runtime-memory-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.87\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-runtime-memory-03",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-runtime-memory-03/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "本,ペン\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-runtime-memory-04",
+      "expected": "一行目\n二行目\n読み取り終了\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-runtime-memory-04/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-runtime-memory-04/Example.csproj (in 20 ms).\n  Example -> /verify/guides-runtime-memory-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.82\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-runtime-memory-04",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-runtime-memory-04/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "一行目\n二行目\n読み取り終了\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-reading-code-01",
+      "expected": "340\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-reading-code-01/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-reading-code-01/Example.csproj (in 23 ms).\n  Example -> /verify/guides-reading-code-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.82\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-reading-code-01",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-reading-code-01/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "340\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-reading-code-02",
+      "expected": "開始\n計算中\n5\n終了\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-reading-code-02/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-reading-code-02/Example.csproj (in 30 ms).\n  Example -> /verify/guides-reading-code-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.83\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-reading-code-02",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-reading-code-02/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "開始\n計算中\n5\n終了\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-reading-code-03",
+      "expected": "0,1,2\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-reading-code-03/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-reading-code-03/Example.csproj (in 21 ms).\n  Example -> /verify/guides-reading-code-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-reading-code-03",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-reading-code-03/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "0,1,2\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-reading-code-05",
+      "expected": "0\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-reading-code-05/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-reading-code-05/Example.csproj (in 23 ms).\n  Example -> /verify/guides-reading-code-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.92\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-reading-code-05",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-reading-code-05/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "0\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-errors-02",
+      "expected": "4\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-errors-02/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-errors-02/Example.csproj (in 24 ms).\n  Example -> /verify/guides-errors-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.87\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-errors-02",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-errors-02/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "4\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-errors-03",
+      "expected": "True\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-errors-03/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-errors-03/Example.csproj (in 31 ms).\n  Example -> /verify/guides-errors-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.88\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-errors-03",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-errors-03/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "True\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-errors-04",
+      "expected": "True\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-errors-04/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-errors-04/Example.csproj (in 21 ms).\n  Example -> /verify/guides-errors-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.91\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-errors-04",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-errors-04/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "True\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-errors-06",
+      "expected": "名前が未指定です\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-errors-06/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-errors-06/Example.csproj (in 26 ms).\n  Example -> /verify/guides-errors-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.85\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-errors-06",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-errors-06/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "名前が未指定です\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-errors-08",
+      "expected": "10\n20\n30\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-errors-08/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-errors-08/Example.csproj (in 21 ms).\n  Example -> /verify/guides-errors-08/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.83\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-errors-08",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-errors-08/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "10\n20\n30\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-errors-10",
+      "expected": "0\n2\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-errors-10/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-errors-10/Example.csproj (in 21 ms).\n  Example -> /verify/guides-errors-10/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.81\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-errors-10",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-errors-10/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "0\n2\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-errors-11",
+      "expected": "3\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-errors-11/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-errors-11/Example.csproj (in 29 ms).\n  Example -> /verify/guides-errors-11/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.85\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-errors-11",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-errors-11/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "3\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-errors-12",
+      "expected": "2\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-errors-12/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-errors-12/Example.csproj (in 20 ms).\n  Example -> /verify/guides-errors-12/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.80\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-errors-12",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-errors-12/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "2\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-errors-14",
+      "expected": "3\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-errors-14/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-errors-14/Example.csproj (in 34 ms).\n  Example -> /verify/guides-errors-14/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.90\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-errors-14",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-errors-14/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "3\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-errors-16",
+      "expected": "True\n3\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-errors-16/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-errors-16/Example.csproj (in 32 ms).\n  Example -> /verify/guides-errors-16/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.85\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-errors-16",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-errors-16/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "True\n3\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-errors-17",
+      "expected": "False\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-errors-17/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-errors-17/Example.csproj (in 23 ms).\n  Example -> /verify/guides-errors-17/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.81\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-errors-17",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-errors-17/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "False\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-errors-18",
+      "expected": "True\nFalse\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-errors-18/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-errors-18/Example.csproj (in 29 ms).\n  Example -> /verify/guides-errors-18/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.84\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-errors-18",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-errors-18/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "True\nFalse\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-errors-19",
+      "expected": "2,3\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-errors-19/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-errors-19/Example.csproj (in 24 ms).\n  Example -> /verify/guides-errors-19/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.82\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-errors-19",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-errors-19/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "2,3\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-errors-20",
+      "expected": "2\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-errors-20/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-errors-20/Example.csproj (in 20 ms).\n  Example -> /verify/guides-errors-20/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.83\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-errors-20",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-errors-20/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "2\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-errors-22",
+      "expected": "保存相当の処理が完了\nメイン終了\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-errors-22/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-errors-22/Example.csproj (in 21 ms).\n  Example -> /verify/guides-errors-22/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.87\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-errors-22",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-errors-22/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "保存相当の処理が完了\nメイン終了\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-errors-24",
+      "expected": "保存に失敗しました。入力は保持します。\nFalse\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-errors-24/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-errors-24/Example.csproj (in 35 ms).\n  Example -> /verify/guides-errors-24/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.87\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-errors-24",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-errors-24/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "保存に失敗しました。入力は保持します。\nFalse\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-choosing-features-01",
+      "expected": "2,3\n5,3\nTrue\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-choosing-features-01/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-choosing-features-01/Example.csproj (in 21 ms).\n  Example -> /verify/guides-choosing-features-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.84\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-choosing-features-01",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-choosing-features-01/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "2,3\n5,3\nTrue\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-choosing-features-02",
+      "expected": "ペン\nTrue\nFalse\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-choosing-features-02/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-choosing-features-02/Example.csproj (in 24 ms).\n  Example -> /verify/guides-choosing-features-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.91\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-choosing-features-02",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-choosing-features-02/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "ペン\nTrue\nFalse\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-choosing-features-03",
+      "expected": "8\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-choosing-features-03/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-choosing-features-03/Example.csproj (in 21 ms).\n  Example -> /verify/guides-choosing-features-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.84\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-choosing-features-03",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-choosing-features-03/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "8\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-async-timeline-01",
+      "expected": "1:呼び出し前\n2:待機の直前\n3:まだ合図していない\n4:結果は7\n5:観察が完了\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-async-timeline-01/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-async-timeline-01/Example.csproj (in 20 ms).\n  Example -> /verify/guides-async-timeline-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.01\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-async-timeline-01",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-async-timeline-01/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "1:呼び出し前\n2:待機の直前\n3:まだ合図していない\n4:結果は7\n5:観察が完了\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-async-timeline-02",
+      "expected": "False\n10,20\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-async-timeline-02/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-async-timeline-02/Example.csproj (in 22 ms).\n  Example -> /verify/guides-async-timeline-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.88\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-async-timeline-02",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-async-timeline-02/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "False\n10,20\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-async-timeline-03",
+      "expected": "処理の失敗を受け取りました\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-async-timeline-03/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-async-timeline-03/Example.csproj (in 25 ms).\n  Example -> /verify/guides-async-timeline-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.88\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-async-timeline-03",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-async-timeline-03/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "処理の失敗を受け取りました\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-async-timeline-04",
+      "expected": "中止されました\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-async-timeline-04/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-async-timeline-04/Example.csproj (in 21 ms).\n  Example -> /verify/guides-async-timeline-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.87\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-async-timeline-04",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-async-timeline-04/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "中止されました\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-http-di-path-01",
+      "expected": "1:学習:False\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-http-di-path-01/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-http-di-path-01/Example.csproj (in 20 ms).\n  Example -> /verify/guides-http-di-path-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.86\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-http-di-path-01",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-http-di-path-01/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "1:学習:False\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "guides-http-di-path-02",
+      "expected": "こんにちは、学習者\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "build",
+          "/verify/guides-http-di-path-02/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/guides-http-di-path-02/Example.csproj (in 26 ms).\n  Example -> /verify/guides-http-di-path-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.87\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/guides-http-di-path-02",
+          "cstudy-task6-2026-10-02-existing-console-guides",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/guides-http-di-path-02/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "こんにちは、学習者\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    }
+  ]
+}

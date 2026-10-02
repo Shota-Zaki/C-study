@@ -36,3 +36,7 @@ Inventory correction: expanded201 projects =8Web +193Console (191 ordinary cshar
 2026-10-02-existing-console-middle: existing Console123/193 PASS, remaining70; originals35/35 selected contracts covered. Evidence: `docs/validation/2026-10-02-existing-console-middle/README.md`. CS07 IN_PROGRESS.
 
 2026-10-02-existing-console-late: existing Console159/193 PASS, remaining34; originals35/35 selected contracts covered. Evidence: `docs/validation/2026-10-02-existing-console-late/README.md`. CS07 IN_PROGRESS.
+
+2026-10-02-existing-console-guides: existing Console193/193 PASS, remaining0; originals35/35 selected contracts covered. Evidence: `docs/validation/2026-10-02-existing-console-guides/README.md`. CS07 IN_PROGRESS.
+
+Current handoff: assigned source-output verification COMPLETE (original35/35 selected scenarios; expanded Console193/193 includingstdin/file). Full ledger `docs/validation/2026-10-02-existing-console-coverage/README.md`; no source defect/fix. CS07 overall stays IN_PROGRESS. Next acceptance is real-origin UI navigation/storage/subpath and Safari/device checks; browser runner and rules sync remain separate deferred gates. No main/deployment.

@@ -1,0 +1,546 @@
+[
+  {
+    "id": "guides-learning-workflow-01",
+    "source": "samples/expanded/guides/learning-workflow/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "残り3回\n",
+    "meaning": "Four planned sessions minus one completed session leaves three.",
+    "teachingPath": "content/guides/learning-workflow.md",
+    "teachingExcerpt": "## 最初のコンソールプロジェクト\n\n本教材の対象は.NET 10 / C# 14です。SDKの細かな更新番号は固定して暗記せず、導入する時点の公式配布と対象環境を確認します。既に別のSDKがある場合も、`dotnet --list-sdks`で実際に使えるものを調べます。Runtimeだけではアプリ作成用の道具はそろいません。\n\n```powershell\ndotnet --list-sdks\ndotnet new console -n LearningScratch -f net10.0\ncd LearningScratch\ndotnet build\ndotnet run\n```\n\n①SDKの一覧を見る、②ひな形のフォルダーを作る、③そのフォルダーへ移動する、④ソースから成果物を作る、⑤アプリを起動する、の順です。`cd`は操作対象のフォルダーを変えるコマンドで、C#の文法ではありません。ターミナルの現在位置に.csprojがあることを確認すると、「プロジェクトが見つからない」という失敗を減らせます。\n\n`Program.cs`を次の内容へ置き換えて保存します。同じ名前の変数を持つ例を何本も連結せず、**一つの実験ごとにProgram.cs全体を入れ替えるか、別のプロジェクトを使います。**\n\n```csharp\nint planned = 4;\nint completed = 1;\nint remaining = planned - completed;\nConsole.WriteLine($\"残り{remaining}回\");\n```\n\n期待される出力は`残り3回`です。まずplannedを4、completedを1にし、4-1を計算してremainingへ3を保存します。その後、値を文章へ組み込んで表示します。completedを2へ変更して保存し、もう一度起動すると、同じ式から残り2回となることを確認します。",
+    "sha256": {
+      "Program.cs": "bff14b9121be27d770fa0ebfe7094f29c597d38935accfed5c9c42a2e3c43c0b",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "593c622915ae189ad43f7c066fdd2fa7d3f7fb249f7a83b417c4f60d4b1b9498"
+  },
+  {
+    "id": "guides-runtime-memory-01",
+    "source": "samples/expanded/guides/runtime-memory/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "10\n15\n",
+    "meaning": "Value parameter modification leaves caller total at 10 and returns 15.",
+    "teachingPath": "content/guides/runtime-memory.md",
+    "teachingExcerpt": "## メソッドへ渡るのは何か\n\nメソッドは名前を付けた処理です。呼び出し側が渡す値を引数、受け取る側の型と名前をパラメーター、返す結果を戻り値といいます。次の例では、呼び出し側のtotalと、Addのaは別の変数です。\n\n```csharp\nint total = 10;\nint result = Add(total, 5);\nConsole.WriteLine(total);\nConsole.WriteLine(result);\n\nstatic int Add(int a, int b)\n{\n    a += b;\n    return a;\n}\n```\n\n期待される出力は10、15です。①totalに10を保存、②Addへ10と5を渡す、③aとbが受け取る、④aを15へ変える、⑤returnで15を返す、⑥resultへ15を保存、⑦二つを表示、の順です。aへの代入は呼び出し側totalへ代入したことにはなりません。\n\n| 時点 | total | Add内のa | Add内のb | result |\n|---|---:|---:|---:|---:|\n| 呼び出し前 | 10 | まだない | まだない | まだない |\n| 引数を受け取る | 10 | 10 | 5 | まだない |\n| aへ加算 | 10 | 15 | 5 | まだない |\n| 戻る | 10 | この呼び出しは終了 | この呼び出しは終了 | 15 |\n\nこの呼び出しの積み重なりを追うために、呼び出しスタックという見方を使います。最適化によるインライン化などがあるため、ソースのメソッド呼び出し全てが実際の機械語上で同じ形の領域を必ず作る、とまでは断定しません。",
+    "sha256": {
+      "Program.cs": "09055556ffe8a58d5ed88307dfd93c9ed2817b9f3211b5460f1726c5567298ca",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "6f169bef55b18a02f5d5d09b21200ce59cdd8cd6e1076d89e1c4f0678ec0ffa5"
+  },
+  {
+    "id": "guides-runtime-memory-02",
+    "source": "samples/expanded/guides/runtime-memory/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "3/9\n3,9\n",
+    "meaning": "Integer copy changes separately; both List references observe added 9.",
+    "teachingPath": "content/guides/runtime-memory.md",
+    "teachingExcerpt": "## 値型と参照型は「コピーされるもの」で区別する\n\n値型は代入時に値がコピーされます。参照型は通常、実体へアクセスするための参照の値がコピーされます。**値型は必ずスタック、参照型の変数は必ずヒープという暗記は不正確です。** 値型のフィールドはオブジェクトや配列の一部にもなり、ローカル値は最適化でレジスターに置かれることもあります。分類が決める中心は、代入や引数での意味です。\n\n```csharp\nint first = 3;\nint second = first;\nsecond = 9;\n\nvar a = new List<int> { 3 };\nvar b = a;\nb.Add(9);\nConsole.WriteLine($\"{first}/{second}\");\nConsole.WriteLine(string.Join(\",\", a));\n```\n\n期待される出力は`3/9`と`3,9`です。secondはfirstの値3を受け取った別の変数なので、secondだけを9にしてもfirstは3です。一方、aとbが参照するListの実体は一つです。b経由で要素を増やすと、aから見ても増えています。\n\n```memory\nfirst | 値3\nsecond | コピー後に9へ変更\n変数aの参照 | 実体L：[3,9]\n変数bの参照 | 同じ実体L：[3,9]\n```\n\n参照図の矢印はアクセス先の関係です。参照を、生のメモリアドレスとして自由に計算できる数値だとは扱いません。また、変数b自体を`new List<int>()`で別の実体へ付け替えることと、bの現在の参照先を更新することは別です。",
+    "sha256": {
+      "Program.cs": "b06c53c84689d87bfeb52609275bcdf60caac54769cfb59a031d155b6183ae8c",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "6f169bef55b18a02f5d5d09b21200ce59cdd8cd6e1076d89e1c4f0678ec0ffa5"
+  },
+  {
+    "id": "guides-runtime-memory-03",
+    "source": "samples/expanded/guides/runtime-memory/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "本,ペン\n",
+    "meaning": "Struct copy shares its contained List reference.",
+    "teachingPath": "content/guides/runtime-memory.md",
+    "teachingExcerpt": "## structにも参照は含まれる\n\nstructは値型ですが、フィールドやプロパティにListなどの参照型を持つことがあります。この場合、structをコピーすると、そのメンバーに含まれる参照の値もコピーされます。内部のList全体が自動的に複製されるわけではありません。\n\n```csharp\nvar original = new Basket(new List<string> { \"本\" });\nvar copied = original;\ncopied.Items.Add(\"ペン\");\nConsole.WriteLine(string.Join(\",\", original.Items));\n\nreadonly record struct Basket(List<string> Items);\n```\n\n期待される出力は`本,ペン`です。Basketの値は二つありますが、それぞれのItemsは同じListを参照しています。`readonly`という語があっても、そのListへAddすることまでは禁止しません。「外側が値型」「外側の再代入を制限」「内部が不変」の三つを分けます。\n\n独立したListが必要なら、`new List<string>(original.Items)`で要素をコピーしたListを作り、それを新しいBasketへ渡します。ただし要素が変更可能なclassなら、その要素の実体はさらに共有されます。独立させたい境界を決め、必要な深さだけ明示的に複製します。",
+    "sha256": {
+      "Program.cs": "0e71cd7e123a6e19df91c5943bec8f36022c414f1559bb2270369ed66a42b800",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "6f169bef55b18a02f5d5d09b21200ce59cdd8cd6e1076d89e1c4f0678ec0ffa5"
+  },
+  {
+    "id": "guides-runtime-memory-04",
+    "source": "samples/expanded/guides/runtime-memory/example-04",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "一行目\n二行目\n読み取り終了\n",
+    "meaning": "Read two StringReader lines, dispose at using boundary, then print completion.",
+    "teachingPath": "content/guides/runtime-memory.md",
+    "teachingExcerpt": "## DisposeとGCは別の責任\n\nメモリが将来回収されることと、開いたファイルなどの利用を今終えることは別です。`IDisposable`は使い終えた資源を解放する契約で、`using`は終了時にDisposeを呼ぶ構文です。usingという名前は、名前空間を指定する宣言にも使われますが、役割は異なります。\n\n```csharp\nusing System.IO;\nusing (var reader = new StringReader(\"一行目\\n二行目\"))\n{\n    Console.WriteLine(reader.ReadLine());\n    Console.WriteLine(reader.ReadLine());\n}\nConsole.WriteLine(\"読み取り終了\");\n```\n\n期待される出力は一行目、二行目、読み取り終了です。usingのブロックを抜けるときにreaderをDisposeします。途中で例外が伝わる場合にも、通常のスタック巻き戻しで解放処理が行われます。ただしプロセスの強制終了など全ての状況で必ず最後まで動くという保証ではありません。",
+    "sha256": {
+      "Program.cs": "1982af1f5030d44dff84d81e4b23d56680a33a9e290c8eadb283ce65d9e5bd21",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "6f169bef55b18a02f5d5d09b21200ce59cdd8cd6e1076d89e1c4f0678ec0ffa5"
+  },
+  {
+    "id": "guides-reading-code-01",
+    "source": "samples/expanded/guides/reading-code/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "340\n",
+    "meaning": "120*3=360 meets discount condition and subtracts 20.",
+    "teachingPath": "content/guides/reading-code.md",
+    "teachingExcerpt": "## まず入力・処理・出力を探す\n\n初めて見るコードは一文字ずつ暗記せず、何を受け取り、どう変え、何を外へ渡すかを探します。入力は利用者の文字列だけでなく、メソッドの引数やファイル、既存のオブジェクトの状態も含みます。出力は画面表示だけでなく、戻り値や保存、状態の変更も含みます。\n\n```csharp\nint price = 120;\nint count = 3;\nint total = price * count;\nif (total >= 300)\n{\n    total -= 20;\n}\nConsole.WriteLine(total);\n```\n\nこのコードの入力となる値は120と3、処理は掛け算と割引判定、観察できる出力は340です。①priceを120、②countを3、③totalを360、④360>=300をtrue、⑤totalを340、⑥340を表示、となります。条件がtrueの場合にだけ⑤が行われることを、波かっこの範囲から読みます。",
+    "sha256": {
+      "Program.cs": "9dfff8e7ef0af7162562bd1108ce3c8757e506b2aa1d4e8a118add1dc6fb6243",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "1b3b9203ea04cd63f44e82a93f2b67d15f0cde25c6fdbb90d41f051e1441b1d4"
+  },
+  {
+    "id": "guides-reading-code-02",
+    "source": "samples/expanded/guides/reading-code/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "開始\n計算中\n5\n終了\n",
+    "meaning": "Method body executes at call and returns 5 before caller continues.",
+    "teachingPath": "content/guides/reading-code.md",
+    "teachingExcerpt": "## メソッド呼び出しを往復として読む\n\n次のコードでは、上から一行ずつ進む途中でAddの本体へ入り、戻ってきます。下に書かれたメソッド定義を、上から到達した順で勝手に実行するわけではありません。\n\n```csharp\nConsole.WriteLine(\"開始\");\nint answer = Add(2, 3);\nConsole.WriteLine(answer);\nConsole.WriteLine(\"終了\");\n\nstatic int Add(int left, int right)\n{\n    Console.WriteLine(\"計算中\");\n    return left + right;\n}\n```\n\n期待される出力は開始、計算中、5、終了です。呼び出しの引数2と3を計算し、leftとrightへ渡します。Addが計算中を表示し5を返すと、呼び出しの式全体が結果5として扱われ、answerへ保存されます。`return`の後に同じメソッド内の処理は続かず、呼び出し元の続きへ戻ります。\n\n```flow\n呼び出し前 | answerはまだ初期化されていない\nAdd(2,3) | left=2、right=3として処理へ入る\nreturn 5 | その呼び出しの結果を返す\nanswerへ代入 | 呼び出し元が5を受け取る\n表示 | 保存した5を読む\n```",
+    "sha256": {
+      "Program.cs": "d3f2100f937f856e122579950f16407b284f04e0ac3ac9d92d81f39c49d0cb63",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "1b3b9203ea04cd63f44e82a93f2b67d15f0cde25c6fdbb90d41f051e1441b1d4"
+  },
+  {
+    "id": "guides-reading-code-03",
+    "source": "samples/expanded/guides/reading-code/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "0,1,2\n",
+    "meaning": "Read index before each explicit increment.",
+    "teachingPath": "content/guides/reading-code.md",
+    "teachingExcerpt": "## 評価順を安全な小さな式へ分ける\n\n演算子の優先順位と、値をいつ読むかは関連しますが別の規則です。式が複雑で状態も変えると理解が難しくなります。学習中も実務でも、短くするためだけに副作用を詰めないようにします。副作用とは、変数や外部の状態を変更するなど、戻り値以外に影響を与えることです。\n\n```csharp\nint index = 0;\nint first = index;\nindex++;\nint second = index;\nindex++;\nConsole.WriteLine($\"{first},{second},{index}\");\n```\n\n期待される出力は`0,1,2`です。値を読む行と増やす行が分かれているため、どの時点で何を保存したかを追えます。複雑な式を調べるときも、まず等価な範囲で中間変数へ分け、変更前と結果が一致するかを確認します。短絡評価や例外の発生順を変える分割は等価ではない場合があるため、単純な見た目だけで書き換えません。",
+    "sha256": {
+      "Program.cs": "2de73ff2d0ec82de35c9ec4b16a814f167d2f7fc8b2ed7f2f705b9bb3b2557f0",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "1b3b9203ea04cd63f44e82a93f2b67d15f0cde25c6fdbb90d41f051e1441b1d4"
+  },
+  {
+    "id": "guides-reading-code-05",
+    "source": "samples/expanded/guides/reading-code/example-05",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "0\n",
+    "meaning": "50 fails >=60; both conditional statements are skipped.",
+    "teachingPath": "content/guides/reading-code.md",
+    "teachingExcerpt": "## 修正例：条件の範囲を読み違える\n\n次の例は「60点以上なら合格と表示し、合格者数を増やす」という目的に合っていません。波かっこを省略したifは、直接続く一つの文だけを条件付きにします。\n\n```csharp-error\nint score = 50;\nint passed = 0;\nif (score >= 60)\n    Console.WriteLine(\"合格\");\n    passed++;\nConsole.WriteLine(passed);\n```\n\n起きることはpassedが1になることです。インデントは人に見せる字下げであり、このコードの構文上の範囲を増やしません。修正位置はifの本体です。表示と加算を同じブロックへ入れます。\n\n```csharp\nint score = 50;\nint passed = 0;\nif (score >= 60)\n{\n    Console.WriteLine(\"合格\");\n    passed++;\n}\nConsole.WriteLine(passed);\n```\n\n修正後の期待される出力は0です。scoreを60へ変えると合格と1になります。50だけでなく59・60・61を確認すると、ブロックの範囲と境界条件の両方を調べられます。防止策は、複数の意味のある処理を条件付きにするときにブロックを明示し、整形した見た目と構文を一致させることです。",
+    "sha256": {
+      "Program.cs": "009eeb37cda1d0a61768d3ca0da1332b553cdb424a6177363891d93f06212a7e",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "1b3b9203ea04cd63f44e82a93f2b67d15f0cde25c6fdbb90d41f051e1441b1d4"
+  },
+  {
+    "id": "guides-errors-02",
+    "source": "samples/expanded/guides/errors/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "4\n",
+    "meaning": "TryParse succeeds for string 3 then adds one.",
+    "teachingPath": "content/guides/errors.md",
+    "teachingExcerpt": "## 01：型が違う値を代入する\n\n目的は注文数を整数として保存することです。次の例では文字列をintへ直接入れようとしています。\n\n```csharp-error\nint count = \"3\";\nConsole.WriteLine(count);\n```\n\n起きることはコンパイルエラーです。確認位置はcountの宣言の右辺で、引用符付きの\"3\"は文字列です。数字に見える文字と数値の型は別です。入力が固定値なら`int count = 3;`へ修正します。外から文字列で届くなら、変換の成功を確認してから利用します。\n\n```csharp\nstring input = \"3\";\nif (int.TryParse(input, out int count))\n{\n    Console.WriteLine(count + 1);\n}\nelse\n{\n    Console.WriteLine(\"整数を入力してください\");\n}\n```\n\n期待される出力は4です。入力を`abc`にすれば案内を表示し、countを注文処理へ渡しません。防止策は、表示用の文字列と計算用の型の境界を決め、TryParseの戻り値を無視しないことです。[Lesson 04](../lessons/04.html)で入力と業務条件を分けます。",
+    "sha256": {
+      "Program.cs": "7e20044c159e20a9b32a605efc55ff3a58957388d5ec79d25e665cd0578906fa",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "fd469bd58f68bb5a8f3d533182c8f4bb96daec629ba54c514f6fc897fc916ad9"
+  },
+  {
+    "id": "guides-errors-03",
+    "source": "samples/expanded/guides/errors/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "True\n",
+    "meaning": "Intentional integer-division demonstration truncates 5/2 to 2 before double conversion.",
+    "teachingPath": "content/guides/errors.md",
+    "teachingExcerpt": "## 02：整数除算の後で型を変える\n\n目的は5を2で割った2.5を求めることです。次のコードはビルドできても、計算の順序が目的に合いません。\n\n```csharp\nint total = 5;\nint count = 2;\ndouble average = total / count;\nConsole.WriteLine(average == 2);\n```\n\n期待される表示はTrueです。右辺はint同士なので、先に整数として2を作り、その2をdoubleへ変換します。確認箇所は代入先ではなく割り算の両側の型です。修正位置は右辺で、割る前に片方をdoubleへ変換します。\n\n```csharp\nint total = 5;\nint count = 2;\ndouble average = (double)total / count;\nConsole.WriteLine(average == 2.5);\n```\n\n修正後も表示はTrueですが、今度の比較対象は2.5です。状態表に「演算の型」と「代入の型」を別々に書くと原因を見失いません。countが0のケースは別途契約を決めます。整数除算はゼロ除算で例外になり、浮動小数点の除算とは規則が異なるので同一視しません。",
+    "sha256": {
+      "Program.cs": "a6dc9622def1a7956e23a0d00580d7fe6f177906768ac508dc3941fcb5bc90a9",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "fd469bd58f68bb5a8f3d533182c8f4bb96daec629ba54c514f6fc897fc916ad9"
+  },
+  {
+    "id": "guides-errors-04",
+    "source": "samples/expanded/guides/errors/example-04",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "True\n",
+    "meaning": "Cast before division computes 2.5 and comparison succeeds.",
+    "teachingPath": "content/guides/errors.md",
+    "teachingExcerpt": "## 02：整数除算の後で型を変える\n\n目的は5を2で割った2.5を求めることです。次のコードはビルドできても、計算の順序が目的に合いません。\n\n```csharp\nint total = 5;\nint count = 2;\ndouble average = total / count;\nConsole.WriteLine(average == 2);\n```\n\n期待される表示はTrueです。右辺はint同士なので、先に整数として2を作り、その2をdoubleへ変換します。確認箇所は代入先ではなく割り算の両側の型です。修正位置は右辺で、割る前に片方をdoubleへ変換します。\n\n```csharp\nint total = 5;\nint count = 2;\ndouble average = (double)total / count;\nConsole.WriteLine(average == 2.5);\n```\n\n修正後も表示はTrueですが、今度の比較対象は2.5です。状態表に「演算の型」と「代入の型」を別々に書くと原因を見失いません。countが0のケースは別途契約を決めます。整数除算はゼロ除算で例外になり、浮動小数点の除算とは規則が異なるので同一視しません。",
+    "sha256": {
+      "Program.cs": "d504f6c632559e8dbff1ee52e4e25174f72dc9e87f0f57cfed9e5f42588220f8",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "fd469bd58f68bb5a8f3d533182c8f4bb96daec629ba54c514f6fc897fc916ad9"
+  },
+  {
+    "id": "guides-errors-06",
+    "source": "samples/expanded/guides/errors/example-06",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "名前が未指定です\n",
+    "meaning": "Null guard prints missing-name branch without dereference.",
+    "teachingPath": "content/guides/errors.md",
+    "teachingExcerpt": "## 03：nullの参照先を読もうとする\n\n```csharp-error\nstring? name = null;\nConsole.WriteLine(name!.Length);\n```\n\n起きることはNullReferenceExceptionです。`!`は警告の解析へ意図を伝えるだけで、nullを文字列へ置き換えません。確認位置はLengthの直前の値で、Lengthへ到達するための実体がありません。入力なしを拒否するか、欠損として処理するかを決めます。\n\n```csharp\nstring? name = null;\nif (name is null)\n{\n    Console.WriteLine(\"名前が未指定です\");\n}\nelse\n{\n    Console.WriteLine(name.Length);\n}\n```\n\n期待される出力は名前が未指定です。nullと空文字を区別する仕様なら、安易に`?? \"\"`でまとめません。防止策は、参照を受け取る境界で欠損を表現し、使用する前に必要な条件を確認することです。[Lesson 08](../lessons/08.html)で`?.`と`??`の違いも扱います。",
+    "sha256": {
+      "Program.cs": "68a90e1223cb0121c2bbf40590dc06c75c8a90b623012bfda5489c8524480d3d",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "fd469bd58f68bb5a8f3d533182c8f4bb96daec629ba54c514f6fc897fc916ad9"
+  },
+  {
+    "id": "guides-errors-08",
+    "source": "samples/expanded/guides/errors/example-08",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "10\n20\n30\n",
+    "meaning": "Strict less-than length visits array indices 0,1,2 only.",
+    "teachingPath": "content/guides/errors.md",
+    "teachingExcerpt": "## 04：最後の添字を要素数と間違える\n\n```csharp-error\nint[] values = { 10, 20, 30 };\nfor (int i = 0; i <= values.Length; i++)\n{\n    Console.WriteLine(values[i]);\n}\n```\n\n0、1、2の位置は読めますが、iが3になるとIndexOutOfRangeExceptionです。Lengthは要素数3であり、最後の位置は2です。確認位置は条件式と、values[i]のiです。修正は`<=`を`<`へ変えることです。\n\n```csharp\nint[] values = { 10, 20, 30 };\nfor (int i = 0; i < values.Length; i++)\n{\n    Console.WriteLine(values[i]);\n}\n```\n\n期待される出力は10、20、30です。空配列ならi=0の時点で0<0がfalseになり一度も入りません。防止策は、添字が不要な表示にはforeachを使い、添字が必要な場合は0件・1件・複数件を確認することです。Listの不正な添字で発生する例外型は配列と同じとは限らないため、実際の型と診断を読みます。",
+    "sha256": {
+      "Program.cs": "fc1f3aa09dadef871d024a6d855659e795eb3c570bd1a3293133bf9263d776c4",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "fd469bd58f68bb5a8f3d533182c8f4bb96daec629ba54c514f6fc897fc916ad9"
+  },
+  {
+    "id": "guides-errors-10",
+    "source": "samples/expanded/guides/errors/example-10",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "0\n2\n",
+    "meaning": "For update advances index despite continue at 1.",
+    "teachingPath": "content/guides/errors.md",
+    "teachingExcerpt": "## 05：continueで更新行を飛ばす\n\n次は**起動しない失敗例**です。無限ループを観察するために端末やCPUを使い続ける必要はありません。状態表でiが変わらないことを確かめます。\n\n```csharp-error\nint i = 0;\nwhile (i < 3)\n{\n    if (i == 1) continue;\n    Console.WriteLine(i);\n    i++;\n}\n```\n\n最初は0を表示してiが1になります。その後はcontinueがi++を飛ばし、iが1のまま条件へ戻ります。確認箇所は「全ての経路でループを終了へ近づける値が変わるか」です。修正例では更新式を持つforにして、continueでも次の更新へ進む形にします。\n\n```csharp\nfor (int i = 0; i < 3; i++)\n{\n    if (i == 1) continue;\n    Console.WriteLine(i);\n}\n```\n\n期待される出力は0、2です。防止策は、continue・break・returnの各経路を矢印で描くことです。既に誤って起動した場合、コンソールでは通常Ctrl+Cで中断を試せますが、全ての環境で即時終了を保証するものではありません。",
+    "sha256": {
+      "Program.cs": "74ad9e5ef175d2cc30c6180916e31a2075bd95463847dbcf59c22e7f30e0abeb",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "fd469bd58f68bb5a8f3d533182c8f4bb96daec629ba54c514f6fc897fc916ad9"
+  },
+  {
+    "id": "guides-errors-11",
+    "source": "samples/expanded/guides/errors/example-11",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "3\n",
+    "meaning": "Intentional aliasing demonstration: backup shares original List.",
+    "teachingPath": "content/guides/errors.md",
+    "teachingExcerpt": "## 06：参照の代入を独立コピーと考える\n\n```csharp\nvar original = new List<int> { 1, 2 };\nvar backup = original;\noriginal.Add(3);\nConsole.WriteLine(backup.Count);\n```\n\n期待される出力は3です。退避したつもりのbackupも同じListを参照しています。確認箇所は、独立した実体を作るnewやコピー処理を行ったかです。修正は`new List<int>(original)`で要素をコピーした別のListを作ることです。\n\n```csharp\nvar original = new List<int> { 1, 2 };\nvar backup = new List<int>(original);\noriginal.Add(3);\nConsole.WriteLine(backup.Count);\n```\n\n修正後は2です。この例は要素がintなので独立した値として扱えます。要素が変更可能なclassならListを複製しても各要素の参照先は共有されるため、必要なコピーの深さを別に検討します。防止策は、変数と実体の数を分けて図示することです。",
+    "sha256": {
+      "Program.cs": "61b350c1313307901505c143244f3e0d3ba0da0ded8a320cc142980a92ee7c00",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "fd469bd58f68bb5a8f3d533182c8f4bb96daec629ba54c514f6fc897fc916ad9"
+  },
+  {
+    "id": "guides-errors-12",
+    "source": "samples/expanded/guides/errors/example-12",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "2\n",
+    "meaning": "Copy constructor creates independent List before original is changed.",
+    "teachingPath": "content/guides/errors.md",
+    "teachingExcerpt": "## 06：参照の代入を独立コピーと考える\n\n```csharp\nvar original = new List<int> { 1, 2 };\nvar backup = original;\noriginal.Add(3);\nConsole.WriteLine(backup.Count);\n```\n\n期待される出力は3です。退避したつもりのbackupも同じListを参照しています。確認箇所は、独立した実体を作るnewやコピー処理を行ったかです。修正は`new List<int>(original)`で要素をコピーした別のListを作ることです。\n\n```csharp\nvar original = new List<int> { 1, 2 };\nvar backup = new List<int>(original);\noriginal.Add(3);\nConsole.WriteLine(backup.Count);\n```\n\n修正後は2です。この例は要素がintなので独立した値として扱えます。要素が変更可能なclassならListを複製しても各要素の参照先は共有されるため、必要なコピーの深さを別に検討します。防止策は、変数と実体の数を分けて図示することです。",
+    "sha256": {
+      "Program.cs": "bf1b1444b806ada40f51cf8e9068fc50a5790e1bbab2ebfd16b5938d590eb272",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "fd469bd58f68bb5a8f3d533182c8f4bb96daec629ba54c514f6fc897fc916ad9"
+  },
+  {
+    "id": "guides-errors-14",
+    "source": "samples/expanded/guides/errors/example-14",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "3\n",
+    "meaning": "Instance method reads its Counter instance value.",
+    "teachingPath": "content/guides/errors.md",
+    "teachingExcerpt": "## 07：staticから個別の状態を直接読む\n\n```csharp-error\nConsole.WriteLine(Counter.Read());\nclass Counter\n{\n    public int Value = 3;\n    public static int Read() => Value;\n}\n```\n\nValueは各Counterの状態ですが、staticのReadにはどのCounterかという対象がありません。コンパイル時にインスタンスが必要なことを指摘されます。修正位置はReadの契約と呼び出し側です。個別の状態を読むなら、インスタンスメソッドとして呼びます。\n\n```csharp\nvar counter = new Counter();\nConsole.WriteLine(counter.Read());\nclass Counter\n{\n    public int Value = 3;\n    public int Read() => Value;\n}\n```\n\n期待される出力は3です。エラーを消すために全フィールドへstaticを付けると、今度は全対象で状態を共有してしまいます。防止策は「誰の値か」を決めてからstaticかinstanceかを選ぶことです。",
+    "sha256": {
+      "Program.cs": "45e21d8f99582ebf6c686ef61bb9a0fd704e5faedd470cac7868ef01fed3a562",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "fd469bd58f68bb5a8f3d533182c8f4bb96daec629ba54c514f6fc897fc916ad9"
+  },
+  {
+    "id": "guides-errors-16",
+    "source": "samples/expanded/guides/errors/example-16",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "True\n3\n",
+    "meaning": "Valid withdrawal 2 from stock 5 succeeds and leaves 3.",
+    "teachingPath": "content/guides/errors.md",
+    "teachingExcerpt": "## 08：privateの意味を無視して直接書き換える\n\n```csharp-error\nvar stock = new Stock();\nstock._count = -1;\nclass Stock\n{\n    private int _count = 5;\n}\n```\n\n起きることはアクセスできないというコンパイルエラーです。確認箇所は宣言元のアクセス修飾子で、privateは外部から自由に触る契約ではありません。単にpublicへ変えると在庫が負数になる問題を許します。必要な操作を定義し、条件を守る形へ修正します。\n\n```csharp\nvar stock = new Stock();\nConsole.WriteLine(stock.TryTake(2));\nConsole.WriteLine(stock.Count);\nclass Stock\n{\n    private int _count = 5;\n    public int Count => _count;\n    public bool TryTake(int amount)\n    {\n        if (amount <= 0 || amount > _count) return false;\n        _count -= amount;\n        return true;\n    }\n}\n```\n\n期待される出力はTrue、3です。先に条件を調べてから更新し、読む入口と変える入口を区別しています。防止策はエラーの回避を目的に公開範囲を広げず、外部へ許す操作から設計することです。",
+    "sha256": {
+      "Program.cs": "693d631d564f1c288c33b568afa14f572eab7f324907bc5e9b6989dbf67dbc46",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "fd469bd58f68bb5a8f3d533182c8f4bb96daec629ba54c514f6fc897fc916ad9"
+  },
+  {
+    "id": "guides-errors-17",
+    "source": "samples/expanded/guides/errors/example-17",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "False\n",
+    "meaning": "Ordinary class instances compare unequal by reference identity.",
+    "teachingPath": "content/guides/errors.md",
+    "teachingExcerpt": "## 09：等しい内容と同じ実体を混ぜる\n\n```csharp\nvar a = new Item(\"本\");\nvar b = new Item(\"本\");\nConsole.WriteLine(a == b);\nclass Item\n{\n    public Item(string name) { Name = name; }\n    public string Name { get; }\n}\n```\n\n期待される出力はFalseです。このclassには値比較を定義しておらず、別々に作った実体です。確認位置は型の等値性の契約です。名前の文字列だけを比較したいなら`a.Name == b.Name`、データ全体を値として比較する型ならrecordなどが候補です。\n\n```csharp\nvar a = new Item(\"本\");\nvar b = new Item(\"本\");\nConsole.WriteLine(a == b);\nConsole.WriteLine(ReferenceEquals(a, b));\nrecord Item(string Name);\n```\n\n期待される出力はTrue、Falseです。内容が等しいことと同じ実体であることを別々に検査しています。class・string・record・struct全てで`==`とEqualsが同じ規則だと暗記せず、型が何を比較しているかを確認します。",
+    "sha256": {
+      "Program.cs": "4fd7ffdae9a8637573571c8b14ab739c3cf676cfc6edb211d8b905e5bd122d3d",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "fd469bd58f68bb5a8f3d533182c8f4bb96daec629ba54c514f6fc897fc916ad9"
+  },
+  {
+    "id": "guides-errors-18",
+    "source": "samples/expanded/guides/errors/example-18",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "True\nFalse\n",
+    "meaning": "Record values compare equal while separate instances have distinct references.",
+    "teachingPath": "content/guides/errors.md",
+    "teachingExcerpt": "## 09：等しい内容と同じ実体を混ぜる\n\n```csharp\nvar a = new Item(\"本\");\nvar b = new Item(\"本\");\nConsole.WriteLine(a == b);\nclass Item\n{\n    public Item(string name) { Name = name; }\n    public string Name { get; }\n}\n```\n\n期待される出力はFalseです。このclassには値比較を定義しておらず、別々に作った実体です。確認位置は型の等値性の契約です。名前の文字列だけを比較したいなら`a.Name == b.Name`、データ全体を値として比較する型ならrecordなどが候補です。\n\n```csharp\nvar a = new Item(\"本\");\nvar b = new Item(\"本\");\nConsole.WriteLine(a == b);\nConsole.WriteLine(ReferenceEquals(a, b));\nrecord Item(string Name);\n```\n\n期待される出力はTrue、Falseです。内容が等しいことと同じ実体であることを別々に検査しています。class・string・record・struct全てで`==`とEqualsが同じ規則だと暗記せず、型が何を比較しているかを確認します。",
+    "sha256": {
+      "Program.cs": "7ad8ec1f7889e0a1661a20de6eee146728a25e371a6b43f3033d6ff7e9042488",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "fd469bd58f68bb5a8f3d533182c8f4bb96daec629ba54c514f6fc897fc916ad9"
+  },
+  {
+    "id": "guides-errors-19",
+    "source": "samples/expanded/guides/errors/example-19",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "2,3\n",
+    "meaning": "Deferred Where enumeration sees added 3.",
+    "teachingPath": "content/guides/errors.md",
+    "teachingExcerpt": "## 10：Whereを作った瞬間に結果が固定されると思う\n\n```csharp\nvar values = new List<int> { 1, 2 };\nvar query = values.Where(n => n >= 2);\nvalues.Add(3);\nConsole.WriteLine(string.Join(\",\", query));\n```\n\n期待される出力は`2,3`です。Whereは通常、列挙されるときに条件を評価します。確認箇所はToListなどで結果を保存した時点があるかです。定義時点の結果を保持する修正は、追加前に具象化することです。\n\n```csharp\nvar values = new List<int> { 1, 2 };\nvar snapshot = values.Where(n => n >= 2).ToList();\nvalues.Add(3);\nConsole.WriteLine(string.Join(\",\", snapshot));\n```\n\n修正後は2です。防止策は、クエリ定義、元の変更、列挙を別の行として追うことです。Selectで条件式を書けばboolの列になるなど、操作名と途中の型の誤解は[Lesson 18](../lessons/18.html)と[Lesson 19](../lessons/19.html)で確認します。",
+    "sha256": {
+      "Program.cs": "e27735727678d82455bea9a5c447e63f8b186135a6867a1007685109eb3d5b06",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "fd469bd58f68bb5a8f3d533182c8f4bb96daec629ba54c514f6fc897fc916ad9"
+  },
+  {
+    "id": "guides-errors-20",
+    "source": "samples/expanded/guides/errors/example-20",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "2\n",
+    "meaning": "ToList materializes matching values before added 3.",
+    "teachingPath": "content/guides/errors.md",
+    "teachingExcerpt": "## 10：Whereを作った瞬間に結果が固定されると思う\n\n```csharp\nvar values = new List<int> { 1, 2 };\nvar query = values.Where(n => n >= 2);\nvalues.Add(3);\nConsole.WriteLine(string.Join(\",\", query));\n```\n\n期待される出力は`2,3`です。Whereは通常、列挙されるときに条件を評価します。確認箇所はToListなどで結果を保存した時点があるかです。定義時点の結果を保持する修正は、追加前に具象化することです。\n\n```csharp\nvar values = new List<int> { 1, 2 };\nvar snapshot = values.Where(n => n >= 2).ToList();\nvalues.Add(3);\nConsole.WriteLine(string.Join(\",\", snapshot));\n```\n\n修正後は2です。防止策は、クエリ定義、元の変更、列挙を別の行として追うことです。Selectで条件式を書けばboolの列になるなど、操作名と途中の型の誤解は[Lesson 18](../lessons/18.html)と[Lesson 19](../lessons/19.html)で確認します。",
+    "sha256": {
+      "Program.cs": "fdd10b511d8de75e9569f4fcfacecd5e1482873f6e1845b1e82a65b0f34ede29",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "fd469bd58f68bb5a8f3d533182c8f4bb96daec629ba54c514f6fc897fc916ad9"
+  },
+  {
+    "id": "guides-errors-22",
+    "source": "samples/expanded/guides/errors/example-22",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "保存相当の処理が完了\nメイン終了\n",
+    "meaning": "Await observes task completion before main completion message.",
+    "teachingPath": "content/guides/errors.md",
+    "teachingExcerpt": "## 11：Taskを受け取らず終了する\n\n```csharp-error\nShowAsync();\nConsole.WriteLine(\"メイン終了\");\nstatic async Task ShowAsync()\n{\n    await Task.Delay(100);\n    Console.WriteLine(\"保存相当の処理が完了\");\n}\n```\n\nこの例は呼び出しを待機しておらず、完了表示が出る前にプロセスが終わる可能性があります。表示順を確定値として扱わず、完了が追跡されていないことを問題にします。確認箇所は、返されたTaskを誰がawaitし、失敗を誰が受け取るかです。\n\n```csharp\nawait ShowAsync();\nConsole.WriteLine(\"メイン終了\");\nstatic async Task ShowAsync()\n{\n    await Task.Delay(100);\n    Console.WriteLine(\"保存相当の処理が完了\");\n}\n```\n\n修正後は完了の表示、メイン終了の順です。非同期メソッドは開始したことと終わったことを区別します。防止策は戻り値Taskを無視しないことと、async voidを通常の業務メソッドへ広げないことです。",
+    "sha256": {
+      "Program.cs": "5776438e260b6ecdf4e4810277a444937c7ab505ecbcc5c943fb4f0016e458df",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "fd469bd58f68bb5a8f3d533182c8f4bb96daec629ba54c514f6fc897fc916ad9"
+  },
+  {
+    "id": "guides-errors-24",
+    "source": "samples/expanded/guides/errors/example-24",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "保存に失敗しました。入力は保持します。\nFalse\n",
+    "meaning": "Caught IO failure prints failure and does not change saved to true.",
+    "teachingPath": "content/guides/errors.md",
+    "teachingExcerpt": "## 12：例外を消して成功扱いする\n\n```csharp-error\nbool saved = false;\ntry\n{\n    throw new IOException(\"保存先へ書き込めません\");\n}\ncatch\n{\n    saved = true;\n}\nConsole.WriteLine(saved);\n```\n\n起きることは、保存していないのにTrueを表示することです。catchは失敗を解決した証明ではありません。確認箇所は、状態変更と成功の意味が一致しているかです。修正例では失敗を明示して成功へ進ませません。\n\n```csharp\nbool saved = false;\ntry\n{\n    throw new IOException(\"保存先へ書き込めません\");\n}\ncatch (IOException)\n{\n    Console.WriteLine(\"保存に失敗しました。入力は保持します。\");\n}\nConsole.WriteLine(saved);\n```\n\n期待される出力は案内とFalseです。実際の業務では例外をどの境界へ伝えるかも決めます。再送が二重更新になる処理は、catchして無条件にやり直すだけでは安全になりません。",
+    "sha256": {
+      "Program.cs": "f0d14b104f6a1731de54f0d1a5115d71d47d2dba784920c9374b721b7264e684",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "fd469bd58f68bb5a8f3d533182c8f4bb96daec629ba54c514f6fc897fc916ad9"
+  },
+  {
+    "id": "guides-choosing-features-01",
+    "source": "samples/expanded/guides/choosing-features/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "2,3\n5,3\nTrue\n",
+    "meaning": "With produces changed value without altering first and generated value equality succeeds.",
+    "teachingPath": "content/guides/choosing-features.md",
+    "teachingExcerpt": "## class・struct・record\n\nclassは参照型の定義、structは値型の定義です。recordは値に基づく等値性などを提供する宣言の仕組みで、`record`は通常record class、`record struct`は値型です。recordを第三のメモリ分類と考えないことが重要です。\n\n| 選択肢 | 代入や比較の中心 | 選ぶ例 | 特に確認すること |\n|---|---|---|---|\n| class | 参照をコピー。既定の等値性は参照の同一性 | 状態を持ち操作で変化する在庫 | 更新可能な入口と共有範囲 |\n| struct | 値をコピー | 小さな値のまとまり | 大きな値のコピー、内部の参照、既定値 |\n| record class | 参照型。値に基づく等値性を生成 | 入力データ、変更前後を別の値として扱うモデル | withは深いコピーではない |\n| record struct | 値型。値に基づく等値性を生成 | 値の組で等値比較やコピーを使いたい場面 | 参照メンバーの共有は残る |\n\n```csharp\nvar first = new Position(2, 3);\nvar moved = first with { X = 5 };\nConsole.WriteLine($\"{first.X},{first.Y}\");\nConsole.WriteLine($\"{moved.X},{moved.Y}\");\nConsole.WriteLine(first == new Position(2, 3));\nreadonly record struct Position(int X, int Y);\n```\n\n期待される出力は`2,3`、`5,3`、Trueです。firstの値を元にXだけを変えた別の値を作っています。この例のメンバーはintなので内部の変更可能な実体の共有はありません。Listをメンバーへ追加すると、同じ結論をそのまま適用できません。",
+    "sha256": {
+      "Program.cs": "18c1f73c9bce20a41a50b1bc3cefcf69fca73273c14f3f496f8ca8d9ec194e55",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "12e121066d30df5af61eade9837e48d1c71126277a905b9e64823de606238129"
+  },
+  {
+    "id": "guides-choosing-features-02",
+    "source": "samples/expanded/guides/choosing-features/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "ペン\nTrue\nFalse\n",
+    "meaning": "Dictionary key 20 resolves pen; HashSet first addition succeeds and duplicate fails.",
+    "teachingPath": "content/guides/choosing-features.md",
+    "teachingExcerpt": "## 配列・List・Dictionary・HashSet\n\n| 欲しい操作 | 候補 | 例 | 不向きな選び方 |\n|---|---|---|---|\n| 件数固定で位置を指定 | 配列 | 12か月分の値 | 頻繁な追加のたびに手作業で拡張 |\n| 順序付きで追加・削除 | List<T> | APIから取得した商品の一覧 | ID検索を必ず高速にできると思う |\n| キーから値を参照 | Dictionary<TKey,TValue> | 商品IDから商品を取得 | 同じキーを複数登録する前提 |\n| 要素の存在や重複排除 | HashSet<T> | 処理済みIDの集合 | 順序や添字の保証を期待する |\n\n```csharp\nvar names = new Dictionary<int, string>();\nnames.Add(10, \"ノート\");\nnames.Add(20, \"ペン\");\nif (names.TryGetValue(20, out string? name))\n{\n    Console.WriteLine(name);\n}\nvar processed = new HashSet<int>();\nConsole.WriteLine(processed.Add(20));\nConsole.WriteLine(processed.Add(20));\n```\n\n期待される出力はペン、True、Falseです。Dictionaryは20というキーから値を取り出します。HashSetは最初の20を追加し、二回目は既にあるので追加しません。順序を付けて全件表示することと、識別子で検索することを別の要件として考えます。",
+    "sha256": {
+      "Program.cs": "a7990915fc2115e46afc60d6d9a8370725bed581b3519a695af76598e6a6fb01",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "12e121066d30df5af61eade9837e48d1c71126277a905b9e64823de606238129"
+  },
+  {
+    "id": "guides-choosing-features-03",
+    "source": "samples/expanded/guides/choosing-features/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "8\n",
+    "meaning": "Ref parameter assignment changes caller variable.",
+    "teachingPath": "content/guides/choosing-features.md",
+    "teachingExcerpt": "## 通常の値渡し・ref・out・in\n\nC#の通常の引数渡しは値渡しです。参照型でも通常は参照の値をコピーします。refは変数そのものを参照で渡し、outは呼び出し先が値を設定する契約、inは呼び出し先から読み取り専用の参照として扱う契約です。\n\n| 指定 | 呼び出し前の初期化 | メソッド側からの代入 | 選ぶ例 |\n|---|---|---|---|\n| 通常 | 入力値が必要 | パラメーターへの代入は呼び出し元変数を付け替えない | 通常の計算の入力 |\n| ref | 必要 | 呼び出し元の変数へ反映 | 明確な理由がある変数の更新 |\n| out | 事前の値は不要 | 正常に戻る前に設定が必要 | TryParseの変換結果 |\n| in | 入力値を使う | パラメーター経由の再代入を制限 | 大きな値型を渡す設計の選択肢 |\n\n```csharp\nint value = 3;\nReplace(ref value);\nConsole.WriteLine(value);\nstatic void Replace(ref int target)\n{\n    target = 8;\n}\n```\n\n期待される出力は8です。targetへの代入が、呼び出し元のvalueへ反映されます。通常の計算なら戻り値で新しい値を返す方が読みやすい場合もあります。inを付ければ必ず高速という保証はなく、必要なコピーや最適化を含め実測で判断します。また参照型をinで渡しても、参照先の内部状態が自動的に不変になるわけではありません。",
+    "sha256": {
+      "Program.cs": "25d669bc7d32b6c3cffa225bb63cd415b587ed99662560098ee3482a2522fcfc",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "12e121066d30df5af61eade9837e48d1c71126277a905b9e64823de606238129"
+  },
+  {
+    "id": "guides-async-timeline-01",
+    "source": "samples/expanded/guides/async-timeline/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "1:呼び出し前\n2:待機の直前\n3:まだ合図していない\n4:結果は7\n5:観察が完了\n",
+    "meaning": "Incomplete task suspends observer; explicit signal supplies 7; awaiting observer orders final message after result.",
+    "teachingPath": "content/guides/async-timeline.md",
+    "teachingExcerpt": "## タイマーではなく明示的な合図で追う\n\nTaskCompletionSource<T>は、完了させる時点と結果を別のコードから指定できる部品です。テストや、他の完了通知をTaskへつなぐ場合などに使います。通常のファイルやHTTP操作で、自分で毎回作る必要はありません。ここでは進行の順序を読みやすくするために使います。\n\n```csharp\nvar signal = new TaskCompletionSource<int>();\nConsole.WriteLine(\"1:呼び出し前\");\nTask work = ObserveAsync(signal.Task);\nConsole.WriteLine(\"3:まだ合図していない\");\nsignal.SetResult(7);\nawait work;\nConsole.WriteLine(\"5:観察が完了\");\n\nstatic async Task ObserveAsync(Task<int> source)\n{\n    Console.WriteLine(\"2:待機の直前\");\n    int value = await source;\n    Console.WriteLine($\"4:結果は{value}\");\n}\n```\n\n期待される出力は1、2、3、4、5の番号順です。2までは呼び出しの冒頭で進みます。sourceは未完了なのでObserveAsyncの続きは保留され、呼び出し元が3を表示します。SetResultで7を渡すと続きが進めるようになり、workの完了を待ってから5を表示します。4がSetResultの呼び出し中に進むか後で進むかは、ここでは固定しません。`await work`が4より後に5を表示する関係を作っています。\n\n| 時点 | signal.Task | work | valueの扱い |\n|---|---|---|---|\n| 生成直後 | 未完了 | まだ呼んでいない | 未宣言 |\n| sourceをawait | 未完了 | 未完了 | 結果をまだ受け取れない |\n| SetResult(7) | 成功の結果7を持つ | 続きが進行可能 | 再開時に7を受け取る |\n| ObserveAsync終了 | 成功 | 成功 | 4の表示に使われた |\n| 呼び出し元のawait後 | 成功 | 成功 | 5へ進める |",
+    "sha256": {
+      "Program.cs": "b6ecbacc9d76fe83f1af2b840dee9abe28e322d99a4bc21bc357d4c399ef34e4",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "503e73f035263ca1786173219de17904b26c61f7cadb231975fc83aade5aa263"
+  },
+  {
+    "id": "guides-async-timeline-02",
+    "source": "samples/expanded/guides/async-timeline/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "False\n10,20\n",
+    "meaning": "WhenAll remains incomplete until both finish and returns results in supplied task order.",
+    "teachingPath": "content/guides/async-timeline.md",
+    "teachingExcerpt": "## 一つずつ待つ場合と、先に二つ始める場合\n\n独立した処理を一つずつawaitすると、一つ目の完了後に二つ目を始める構成になります。先に二つのTaskを取得してからWhenAllをawaitすると、両方が進行中である時間を重ねられます。ただし、それぞれの処理が実際に非同期で進められることと、互いに独立していることが前提です。\n\n```csharp\nvar first = new TaskCompletionSource<int>();\nvar second = new TaskCompletionSource<int>();\nTask<int[]> all = Task.WhenAll(first.Task, second.Task);\nsecond.SetResult(20);\nConsole.WriteLine(all.IsCompleted);\nfirst.SetResult(10);\nint[] result = await all;\nConsole.WriteLine(string.Join(\",\", result));\n```\n\n期待される出力はFalse、`10,20`です。二つ目が先に終わっても、最初が未完了なのでallは完了しません。結果の配列は、ここではWhenAllに渡したTaskの順で並びます。完了した時刻の順へ自動的に並び替えるものではありません。\n\n「前の結果を使って次の要求を作る」処理は独立ではありません。利用者IDを取得してからその利用者の注文を取得するなら、最初の結果を受け取る必要があります。速くするためだけに全てをWhenAllへ入れると、必要な前提や資源の上限を壊す場合があります。",
+    "sha256": {
+      "Program.cs": "56250a21044501da825f245615d19d6c03b2680b927f2dc3e1c67c986ac0f276",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "503e73f035263ca1786173219de17904b26c61f7cadb231975fc83aade5aa263"
+  },
+  {
+    "id": "guides-async-timeline-03",
+    "source": "samples/expanded/guides/async-timeline/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "処理の失敗を受け取りました\n",
+    "meaning": "Await receives failed task exception and matching catch prints handling message.",
+    "teachingPath": "content/guides/async-timeline.md",
+    "teachingExcerpt": "## 失敗はどこで受け取るか\n\nTaskが失敗すると、通常はそのTaskをawaitする場所で例外を受け取れます。メソッドを呼んだだけでTaskを放置すると、結果だけでなく失敗も適切に処理できません。try/catchは、待つ操作も含めた範囲へ置きます。\n\n```csharp\ntry\n{\n    await FailAsync();\n}\ncatch (InvalidOperationException)\n{\n    Console.WriteLine(\"処理の失敗を受け取りました\");\n}\n\nstatic async Task FailAsync()\n{\n    await Task.Yield();\n    throw new InvalidOperationException(\"学習用の失敗\");\n}\n```\n\n期待される出力は処理の失敗を受け取りました、です。Task.Yieldはここでいったん非同期的な続きへ回すために使っています。一定時間待つ機能ではありません。例外をcatchしたから業務が成功したことにはならず、失敗の表示・再入力・呼び出し元への伝播などを決めます。\n\nWhenAllは一つが失敗しても他を自動中止しません。全体の完了を表すTaskに複数の失敗が記録される場合があります。通常のawaitで表に出た一つの例外だけで全失敗を見たとは限らないため、必要に応じて全体TaskのExceptionなども調べます。[Lesson 24](../deep-dives/24.html)に具体例があります。",
+    "sha256": {
+      "Program.cs": "fbcb30f835c6ae9b395ea58ad818254510bc0c513b44f7e4efbbd1812d8fc24e",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "503e73f035263ca1786173219de17904b26c61f7cadb231975fc83aade5aa263"
+  },
+  {
+    "id": "guides-async-timeline-04",
+    "source": "samples/expanded/guides/async-timeline/example-04",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "中止されました\n",
+    "meaning": "Already cancelled token cancels Delay and matching catch prints cancellation.",
+    "teachingPath": "content/guides/async-timeline.md",
+    "teachingExcerpt": "## 中止要求は強制終了ではない\n\nCancellationTokenは「もう不要なので止めてほしい」という要求を伝えます。対応したAPIへ渡したり、処理中に確認したりすることで協調的に停止します。トークンを作って変数に置くだけでは、その存在を知らない処理は止まりません。\n\n```csharp\nusing var source = new CancellationTokenSource();\nsource.Cancel();\ntry\n{\n    await Task.Delay(1000, source.Token);\n}\ncatch (OperationCanceledException)\n{\n    Console.WriteLine(\"中止されました\");\n}\n```\n\n期待される出力は中止されました、です。中止済みのトークンをDelayへ渡しているので、完了待ちを成功として扱いません。ここでは指定時間の実測を検証していません。呼び出し元が中止した場合と、タイムアウトによる期限切れをどのように利用者へ伝えるかは、アプリの契約として整理します。",
+    "sha256": {
+      "Program.cs": "f4af17606fdae0cc7a6ffcfc157cc0a395ebd3cf15e163ea2a543782629efd66",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "503e73f035263ca1786173219de17904b26c61f7cadb231975fc83aade5aa263"
+  },
+  {
+    "id": "guides-http-di-path-01",
+    "source": "samples/expanded/guides/http-di-path/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "1:学習:False\n",
+    "meaning": "Trim accepts title and creates fixed ID 1 with incomplete status; no HTTP or persistence occurs.",
+    "teachingPath": "content/guides/http-di-path.md",
+    "teachingExcerpt": "## DTOと保存用モデルを分ける理由\n\n外から受け取るタイトルと、サーバーが決めるIDは責任が違います。利用者がIDや所有者など内部で決める項目を自由に指定できると、意図しない上書きや権限の問題につながります。小さな学習アプリでも、何を入力として許すかを型で分けると契約が明確になります。\n\n```csharp\nvar input = new CreateInput(\"  学習  \");\nstring? title = input.Title?.Trim();\nif (string.IsNullOrWhiteSpace(title))\n{\n    Console.WriteLine(\"入力不正\");\n    return;\n}\nvar saved = new Todo(1, title, false);\nConsole.WriteLine($\"{saved.Id}:{saved.Title}:{saved.Done}\");\n\nrecord CreateInput(string? Title);\nrecord Todo(int Id, string Title, bool Done);\n```\n\nこれは通信を行わないコンソール例です。期待される出力は`1:学習:False`です。入力の空白を除去し、欠損や空白だけを拒否してから保存用の値を作っています。実際のID生成や永続保存はこの例では行っておらず、HTTP全経路を検証したことにもなりません。完成した学習用APIは[Lesson 32の詳細](../deep-dives/32.html)で扱います。",
+    "sha256": {
+      "Program.cs": "8efb1e37e640abe8377643bf43e567469d3b772ee307bc7dac843e2bb83f9ff4",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "0bb69f82a4124abfe33563643f3e3b50d970a1d2e4bb440edbfcdd41c2d8421a"
+  },
+  {
+    "id": "guides-http-di-path-02",
+    "source": "samples/expanded/guides/http-di-path/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "こんにちは、学習者\n",
+    "meaning": "Constructor-injected fixed name source supplies greeting without network.",
+    "teachingPath": "content/guides/http-di-path.md",
+    "teachingExcerpt": "## DIはまず「外から渡す」と理解する\n\n依存関係とは、ある部品が働くために別の部品を必要とする関係です。DIは必要な部品を利用する側の外から渡すことです。DIコンテナーは、登録した規則に基づいて部品を作り、必要な場所へ渡す仕組みです。DIとコンテナーは同じ意味ではなく、手でコンストラクターへ渡すだけでも依存を注入できます。\n\n```csharp\nvar service = new GreetingService(new FixedNameSource());\nConsole.WriteLine(service.Create());\n\ninterface INameSource\n{\n    string GetName();\n}\nclass FixedNameSource : INameSource\n{\n    public string GetName() => \"学習者\";\n}\nclass GreetingService\n{\n    private readonly INameSource _source;\n    public GreetingService(INameSource source) { _source = source; }\n    public string Create() => $\"こんにちは、{_source.GetName()}\";\n}\n```\n\n期待される出力はこんにちは、学習者です。GreetingServiceは具体的な取得元をnewしていません。①外側でFixedNameSourceを作る、②GreetingServiceへ渡す、③Createが契約のGetNameを呼ぶ、④文字列を返す、となります。テストでは同じ契約の別実装を渡せるため、実際の通信や時刻に依存せずに振る舞いを調べられます。",
+    "sha256": {
+      "Program.cs": "0242ff9b95be0c98a8f009465d29f75bec4ba5f73197f25c623b5f323b95b805",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "0bb69f82a4124abfe33563643f3e3b50d970a1d2e4bb440edbfcdd41c2d8421a"
+  }
+]

@@ -5,7 +5,7 @@ Updated: 2026-10-02。古いCS02/CS03時点のcheckpointは`docs/archive/2026-10
 |Task|Status|実績・残件|
 |---|---|---|
 |教材/UI5.1・静的公開|完了履歴|root TASKS / AI_WORK_STATEの2026-09実績を参照。今回再公開していない|
-|CS07 C#実測検証|IN_PROGRESS|300/300ビルド、追加Console62/62出力一致、Web10例31HTTP検査成功。元教材35/35件の選定意味的検証PASS。既存Console159/193件PASS、残り34件。供給入力/選定HTTP検証で全分岐保証ではない|
+|CS07 C#実測検証|IN_PROGRESS|300/300ビルド、追加Console62/62出力一致、Web10例31HTTP検査成功。元教材35/35件の選定意味的検証PASS。既存Console193/193件PASS、残り0件。供給入力/選定HTTP検証で全分岐保証ではない|
 |実オリジンUI E2E|TODO|HTTP/HTTPSナビゲーション、永続保存、サブパス、PC/Safari/iPhone/iPad|
 |ブラウザー内C#ランナー|DEFERRED|配信サイズ・隔離・停止・メモリ制約の検討が必要。未搭載|
 |CS11 Rules全文同期|DEFERRED|既存RULES_SOURCEの未同期事項を維持|
@@ -31,3 +31,7 @@ Inventory correction: expanded201 projects =8Web +193Console (191 ordinary cshar
 2026-10-02-existing-console-middle: existing Console123/193 PASS, remaining70; originals35/35 selected contracts covered. Evidence: `docs/validation/2026-10-02-existing-console-middle/README.md`. CS07 IN_PROGRESS.
 
 2026-10-02-existing-console-late: existing Console159/193 PASS, remaining34; originals35/35 selected contracts covered. Evidence: `docs/validation/2026-10-02-existing-console-late/README.md`. CS07 IN_PROGRESS.
+
+2026-10-02-existing-console-guides: existing Console193/193 PASS, remaining0; originals35/35 selected contracts covered. Evidence: `docs/validation/2026-10-02-existing-console-guides/README.md`. CS07 IN_PROGRESS.
+
+Current handoff: assigned source-output verification COMPLETE (original35/35 selected scenarios; expanded Console193/193 includingstdin/file). Full ledger `docs/validation/2026-10-02-existing-console-coverage/README.md`; no source defect/fix. CS07 overall stays IN_PROGRESS. Next acceptance is real-origin UI navigation/storage/subpath and Safari/device checks; browser runner and rules sync remain separate deferred gates. No main/deployment.

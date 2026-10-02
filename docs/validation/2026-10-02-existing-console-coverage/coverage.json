@@ -1,0 +1,2332 @@
+{
+  "checkedAtSourceSHA": "e58209c7db681f69a73757fb5736a15a44519101",
+  "manifestSha256": "9af9da5d9b5d03ed124a4c0f8afdfbdbfa7e2a53eeb6d9371c95b4dd8fb09832",
+  "totalConsole": 193,
+  "kindCounts": {
+    "csharp": 191,
+    "csharp-input": 1,
+    "csharp-file": 1
+  },
+  "coverageMatchesManifest": true,
+  "duplicateIDs": 0,
+  "entries": [
+    {
+      "id": "deep-01-01",
+      "source": "samples/expanded/deep/01/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "f6b27443f43f2915dcf11252b4a40f6d1ec270d5f295b16d33d6325360f51125",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-01-02",
+      "source": "samples/expanded/deep/01/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "189ba1373d27a924fb59f7ecc2e14be503393f932fbc4cc2b560be95babf712b",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-01-04",
+      "source": "samples/expanded/deep/01/example-04",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "6eea97100744dd179a579c74d93c284fca9692587b7b9cd4b171f815dbc7b9f1",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-01-05",
+      "source": "samples/expanded/deep/01/example-05",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "1184e3e43b96b4ad4e69b9ab1e3b139085d824545db99b3154c0894c2e7c5bef",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-02-01",
+      "source": "samples/expanded/deep/02/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "f5271beee8a1870e7ec7454c19ddd842abb684edbe32ec9ef08f98d893fca4d7",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-02-02",
+      "source": "samples/expanded/deep/02/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "1eb129e52f65a7bbe0303c8924769679b14848c72af40405c603cf49052d4693",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-02-03",
+      "source": "samples/expanded/deep/02/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "0c90fae9c3b453f5b8acbbcfea7b9d8493dadd85c88a0829d82bbac97818890f",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-02-05",
+      "source": "samples/expanded/deep/02/example-05",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "32ef77e84a205551201f579d75e53c50086da8e237c26edf0fe160ac8399a4c4",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-02-07",
+      "source": "samples/expanded/deep/02/example-07",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "6ac0b2d79549d6c46eca8b6d86f3f64c5d6a64c46ac953ea4589560be1d944ef",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-03-01",
+      "source": "samples/expanded/deep/03/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "a7ca3724f2a49f6351944f9944b8777745550d47d836abe1a8d3a5d2af6294f9",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-03-02",
+      "source": "samples/expanded/deep/03/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "ca5d52348791ab19950e3a6d30409efbfc1528c5ca5fd598b902f1d2c3278dd6",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-03-04",
+      "source": "samples/expanded/deep/03/example-04",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "ee7fc36c900520c96568bbf6702b847d116df7844fa32b3844dff0b020baff19",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-03-05",
+      "source": "samples/expanded/deep/03/example-05",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "8c9910b55ff91a393f1b8aa047082bf77081efa06bbeedce9dc40234c3222e40",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-03-06",
+      "source": "samples/expanded/deep/03/example-06",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "34ca10298f12f95cc61fc236acb269f946d127d3380e8648d84f7ab2d39c33de",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-03-07",
+      "source": "samples/expanded/deep/03/example-07",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "cdf8fd8fbc1fef31209a5077fe93d95375656f64cc1b10997a3c8accfa630e96",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-04-01",
+      "source": "samples/expanded/deep/04/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "3cc0d60d17a98274535fdb671e4ceda1882d785c52366e64e14734a65a68905a",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-04-02",
+      "source": "samples/expanded/deep/04/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "8774ba6a95371c446d8555e91300023eef4988ca9dc77cc51f8d6d50e61cf1d6",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-04-03",
+      "source": "samples/expanded/deep/04/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "e8542edf4bce800204a92ab52c3b1d9ca98d1fd49b84cbf713738145f7b8230a",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-04-05",
+      "source": "samples/expanded/deep/04/example-05",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "41d51102c3547c1ff739bd3b6afb34310b813f30494e7bdaa53cc9405cabe06c",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-04-06",
+      "source": "samples/expanded/deep/04/example-06",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "8c846ed167b39efad97297e3f1c46cd2d258a669da50fa2a4cb070c8d04cdd56",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-04-07",
+      "source": "samples/expanded/deep/04/example-07",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "2bfd27c3e975865e2f94b010da624962d7b7aebd2dd1e9fbeb1f9f4ebf952bb3",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-04-08",
+      "source": "samples/expanded/deep/04/example-08",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "8d9f4ebaf4d9cb7206ea9af02f2f1f5c3c1a39c9df006eec70a3870e0ba17064",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-05-01",
+      "source": "samples/expanded/deep/05/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "1e2aa017a57ac324e29c5f404cb3b8d294516ff0769b09e3c94883c21ed88e0e",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-05-02",
+      "source": "samples/expanded/deep/05/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "6ecc6a6db9d91b90295990e3c07f756d8ca1450d62d5d5e6d71546eb094e398b",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-05-03",
+      "source": "samples/expanded/deep/05/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "9cb12871ff7ee9861e16f07af1298c4776d75e94c8e116a82c1f6697330219e2",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-05-04",
+      "source": "samples/expanded/deep/05/example-04",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "fb6879499d8541464479069450308985745f1b4412a108642bde51f2b29c7f0f",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-05-05",
+      "source": "samples/expanded/deep/05/example-05",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "6fa4d049a33e16bbe79f088c76cfc3acaf835da061ae75dedab133d95fd68e6b",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-05-06",
+      "source": "samples/expanded/deep/05/example-06",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "3990b3224b0b57d9fce10a9080068d9fbd5fed5b4e0652ebea64ba221a7e4c73",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-06-01",
+      "source": "samples/expanded/deep/06/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "750847635529171cb661f47a1939164565cb113f7c68505ae883eafd4acba718",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-06-02",
+      "source": "samples/expanded/deep/06/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "61579e809e4e9e96aaa474c33bec5857f7552024fcd03ca38e5c7b1b467d3c33",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-06-03",
+      "source": "samples/expanded/deep/06/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "95e92c1b5c5ab32a5ad326aa2781f75dd7bad0249906633d8c06e41d093f5e72",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-06-04",
+      "source": "samples/expanded/deep/06/example-04",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "0072e5e7be8778fd22b9a8ed04092aa81f353b49fa59917a38dda89767d37bf0",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-06-06",
+      "source": "samples/expanded/deep/06/example-06",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "fc1f3aa09dadef871d024a6d855659e795eb3c570bd1a3293133bf9263d776c4",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-06-08",
+      "source": "samples/expanded/deep/06/example-08",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "74ad9e5ef175d2cc30c6180916e31a2075bd95463847dbcf59c22e7f30e0abeb",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-06-09",
+      "source": "samples/expanded/deep/06/example-09",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "0c54a9785b0a21c486b4ff69cb472ed89d9f8e910c6ddf1c535111c8061f82f2",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-07-01",
+      "source": "samples/expanded/deep/07/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "423278bb938c5a2de51ed2b8162fb16641f151749688fc09d27604a9537b2de2",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-07-02",
+      "source": "samples/expanded/deep/07/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "384643916708dfae96030784ef09a99c4e3ce50549345a778c536490f1a3446f",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-07-03",
+      "source": "samples/expanded/deep/07/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "7e7876ac108beb52041492ecd6ec069c918d64805e500005cd16534a8aec8fc1",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-07-04",
+      "source": "samples/expanded/deep/07/example-04",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "4eeb00d115c23e1da84fb23cf40f4289ff30c42daeb317044e1d01e0afd0cfba",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-07-05",
+      "source": "samples/expanded/deep/07/example-05",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "97b13ac1fe97a3b48be894ea09259c69e1126cafd2f3cdd2a7c28d279f1b6ef7",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-07-06",
+      "source": "samples/expanded/deep/07/example-06",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "0519c3f44b92e1f2e29e42f4fe3f78a13a5597bc34ad4858c6d3b42a32a93a0f",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-08-01",
+      "source": "samples/expanded/deep/08/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "f230c7380b138040076da367be824ef226e96acba972c80c33870f368f141db6",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-08-02",
+      "source": "samples/expanded/deep/08/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "124abb8812d8b64f8674584ce182a96a8861f7aa88cc12fc06870177c20e3a54",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-08-03",
+      "source": "samples/expanded/deep/08/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "698a817a1cb483d3aa8bdebb2916a01ef2ba6c8fef84bbd53047cd04d6e4553b",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-08-05",
+      "source": "samples/expanded/deep/08/example-05",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "496955492fea7127156c4353bd4ca7f6bdfd84171fa90d453d40d767ff361bab",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-08-07",
+      "source": "samples/expanded/deep/08/example-07",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "10a946279d9e8e7bb96dae6b3842ae23d169717760f44cfaf106778258795024",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-08-08",
+      "source": "samples/expanded/deep/08/example-08",
+      "evidence": "docs/validation/2026-10-02-existing-console-early",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "63afec5a88bc1eddb739d76e5fab6de001ac2069cc35b7bb9251051d4ef2dd06",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-09-01",
+      "source": "samples/expanded/deep/09/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "6956739ffca6164fa846d1d6d034002345648aeb3b63b9c8f11698211d32eab6",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-09-02",
+      "source": "samples/expanded/deep/09/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "86352a0f8722762f02a49c1689b2fac2f83e07c80f377243f5f43bc919b7a713",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-09-03",
+      "source": "samples/expanded/deep/09/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "be785831c2c3dd061e6ef82f3d2dca41c12d0a3187359ca8aeb5194d4f3666be",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-09-05",
+      "source": "samples/expanded/deep/09/example-05",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "0bacd69057900bb80de244d9e47368f4afda28fac536a35ed1463dd90a6f3b30",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-09-06",
+      "source": "samples/expanded/deep/09/example-06",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "1aaa478dcc3f1f851640c2b8efec536a3c1d838a2211d1264325853c7805cf1c",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-09-07",
+      "source": "samples/expanded/deep/09/example-07",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "c2581d8613be69ebc251ee1b3e35d7884de5de067a1bb56538d300e7c90affef",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-10-01",
+      "source": "samples/expanded/deep/10/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "73cd0d110b19ce91568614748e5c1718b8f38140050969e4a501b9780da6868d",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-10-02",
+      "source": "samples/expanded/deep/10/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "fc1a84b9e2ab5760ca84823839f8c8601fd403b0ba73cd70a89f16c4629c4ab2",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-10-03",
+      "source": "samples/expanded/deep/10/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "e02abb5750760932c7b4b52d323ba15e2c09a0c99d8a1bedc6862bb17d3fbe41",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-10-05",
+      "source": "samples/expanded/deep/10/example-05",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "0724d9c9f5d1010ba65f585f261c5b6584b8919e41f1a34621ae089bdc6eaed9",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-11-01",
+      "source": "samples/expanded/deep/11/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "e66c0c515e232e7801755733129f50d56cf9e5f4d92b7ccdece9713f90b034df",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-11-02",
+      "source": "samples/expanded/deep/11/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "243d38e2922bfc5f6c5049ae8bb5c0a4265ec77ef52495e8a381f4cc1e5fbfd2",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-11-03",
+      "source": "samples/expanded/deep/11/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "bda4df83a8d6dbbfe79b644bfee770a074ef5a9a0dd75e3f6a42f5151ca7d2fc",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-11-04",
+      "source": "samples/expanded/deep/11/example-04",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "d11278644d1220e398100673171720845f8497560ed10fa01d308566b91cf9b2",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-11-05",
+      "source": "samples/expanded/deep/11/example-05",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "5224ea1ce2fbd86e8db1b5301a4df94727276ac43e4bbfeac8fe643c59ca983e",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-12-01",
+      "source": "samples/expanded/deep/12/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "b7acb3c928b3d7f5f74cc2f63a9ff50790aa0d6dcc33581c6e49328b3b75222d",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-12-02",
+      "source": "samples/expanded/deep/12/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "47a246eb220b5759c30ba5dc6fac9d9c4e5c6c89243274cdd17240c4479b13fb",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-12-03",
+      "source": "samples/expanded/deep/12/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "25ed330b62bad932e6c94fe167042557b990b779635bc4281bc256fdff6cd623",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-12-06",
+      "source": "samples/expanded/deep/12/example-06",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "627c2acd9360f1cd33f10de39f4bdf00bd2680927f1824dd826debb472f27cde",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-13-01",
+      "source": "samples/expanded/deep/13/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "2c07bb5e25a03a9976318ebba6d3d599fafbc0ad12b565e54dd0b2115a866666",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-13-02",
+      "source": "samples/expanded/deep/13/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "76a5fb17be8eea745cbcc61cee012cb31850871e826d246ba1ec809b24ddab11",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-13-03",
+      "source": "samples/expanded/deep/13/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "4ccbdb23c83deaba397e27a2fc0b68915bfd1b265840c6d03e6f0a591faa8e4d",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-13-04",
+      "source": "samples/expanded/deep/13/example-04",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "0cc7f7cea223b0ae415c5e9b98e13b300168d628f1bba19a4ab497cbc9515a9a",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-13-05",
+      "source": "samples/expanded/deep/13/example-05",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "3685da7ae7663d813943fd726cf706586c227c3affa2be627e9445977e457cb8",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-13-06",
+      "source": "samples/expanded/deep/13/example-06",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "525196bd013740401d54133c14a777990ebf45d975cc01b470b2e43ad41cbb31",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-13-07",
+      "source": "samples/expanded/deep/13/example-07",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "ad4dd9bc9e21511aa1998385066b8762e0d8c978582f67c292f605b692bcc47c",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-14-01",
+      "source": "samples/expanded/deep/14/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "bd18f9557ef9917618f22f18a64df3b0e10a4516b7418236b81a5d0df2cc6d6e",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-14-02",
+      "source": "samples/expanded/deep/14/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "a995233719d84ad8536e9075322861e617dafbc4c7720cc6bf46af2c556d4256",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-14-03",
+      "source": "samples/expanded/deep/14/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "5bfa0323a12062d35f19c9723c9f18ad0960bde109f0580af6e7b8b385e60b7a",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-14-04",
+      "source": "samples/expanded/deep/14/example-04",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "6b68afb355f20501b333dfd8f074bcc17af3052411a7d52cb9f43cac25fed9b4",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-14-05",
+      "source": "samples/expanded/deep/14/example-05",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "a14c5609af94bb08a7b098e6e12ab1bf818d5ab9c6c10e6ecbb305ef0537c831",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-14-06",
+      "source": "samples/expanded/deep/14/example-06",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "61ca501484a2afd6b164b87ad53dd808c917d33d95203cd8d854ab01564a804f",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-15-01",
+      "source": "samples/expanded/deep/15/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "667c79ff8d09ca8788788626bf404a1104fd8a8f8d33a8885e01481fe4357d33",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-15-02",
+      "source": "samples/expanded/deep/15/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "0eb18852163bbeca61742ddbb5c6d5551a929c944576b84bcacbaea982f871c4",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-15-03",
+      "source": "samples/expanded/deep/15/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "a1785b226264eb6b04bf8122f8ef40b61f9bfbb1b85c22a4f0e95fb4e736ed1e",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-15-04",
+      "source": "samples/expanded/deep/15/example-04",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "45b51b3606a382c62ee62de0bc302caeaaf907a5614b0d5e8bf7677ac2a6b04a",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-15-06",
+      "source": "samples/expanded/deep/15/example-06",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "05c1af587137c6563b0901e99bee0963885e4e7e5ff52069039172d5d6263a54",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-15-08",
+      "source": "samples/expanded/deep/15/example-08",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "8adc00ad0ce68fad98d5e2b4044ef445a8039abcb404bcff14f6a200e2ae183e",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-16-01",
+      "source": "samples/expanded/deep/16/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "a9c7c3914212756bf29dcb3eb0a068992366d7a552135a51e1af224e2711e03f",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-16-02",
+      "source": "samples/expanded/deep/16/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "80c97bfcb8f42c41a7e6e6ddd1fa4561de48b78550ea61707146b2e679e6a3a3",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-16-03",
+      "source": "samples/expanded/deep/16/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "4802e4643187095db687795bb37b690a14734f724ad62ad451b9d4865c06ccfd",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-16-04",
+      "source": "samples/expanded/deep/16/example-04",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "41d3d469f0645909f2a9d70f3f1a5b0f3b5890a4484c4f786793961e6957a590",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-16-05",
+      "source": "samples/expanded/deep/16/example-05",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "af082b6523edda4e63db4ab91e4cd9cc7fca4ac7bfe27c407c588235d70e6430",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-16-06",
+      "source": "samples/expanded/deep/16/example-06",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "8c1dabf7176fa6915f0a47c4beba5de4ad51ea3e363bfd2baee0a6eaabd8a7b4",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-16-07",
+      "source": "samples/expanded/deep/16/example-07",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "1b3b6dd8368ff6aa44a40a2233e5c524fc8fd45f5795c254d249d27ffd7629fa",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-16-09",
+      "source": "samples/expanded/deep/16/example-09",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "e57debdd8b35829fc32f9dfb1fee889bc0cd56a3de8b84290b55c8eb6a6624c5",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-17-01",
+      "source": "samples/expanded/deep/17/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "3c475b2054823de5d9171376257211df23a8f90f4b32b8a4a471ca18e06dc54c",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-17-02",
+      "source": "samples/expanded/deep/17/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "5f7e95bc4ebe59e64da90188bde228ed050fb6c6db5c372317ae90ea3f5d1643",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-17-03",
+      "source": "samples/expanded/deep/17/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "cbf4d866e5e58faa029bcaf2c9b716c125f739ca42741f0454614b624025480b",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-17-04",
+      "source": "samples/expanded/deep/17/example-04",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "3aa5af8a2e59df008ef2409ba83a0c95be554edac460e6f6d59c946f3317872e",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-17-05",
+      "source": "samples/expanded/deep/17/example-05",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "9ec834c3997b3b570c7bc5a63d599445a7b5447f3ac612e28b4e6684a162f761",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-17-06",
+      "source": "samples/expanded/deep/17/example-06",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "8624644aa428cc32dac560020d9391ee437d92b3a83df49cfdfaa3ae1bc77693",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-17-07",
+      "source": "samples/expanded/deep/17/example-07",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "5b4e71e6d3e790c5355e12e993d38cb45d78c5b444a414413f32402ee5fb5ac8",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-18-01",
+      "source": "samples/expanded/deep/18/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "5b68220e7f53c03271af2031cd32f31f8d3acf409b68ab16b960707be2488771",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-18-02",
+      "source": "samples/expanded/deep/18/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "d89a9a8c05f239957b17a4c9e870d0a8d3cd748f51fcfbab583dec0f029d04d4",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-18-03",
+      "source": "samples/expanded/deep/18/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "ee6f8afe19843ba571b676b65affae58ef7252434377ec4f60ab116a28e8ea0c",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-18-04",
+      "source": "samples/expanded/deep/18/example-04",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "601174c04118da7e6241a69e6c7d0d0c7b8cac7d5ca0f391b18883a1a2a05e4f",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-18-05",
+      "source": "samples/expanded/deep/18/example-05",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "d7ab5f7ce111c8b88333b086bb883d2a9101df7e7005ca10eb1d640790f4c7ef",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-18-06",
+      "source": "samples/expanded/deep/18/example-06",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "effc1bfa18ea03425b8aec49733a4f1cb83a4201e26c3dd0a114f65d651c061b",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-18-07",
+      "source": "samples/expanded/deep/18/example-07",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "508bbaad0a915cbb7ce7ffb42db4c76b2ff3598ad9e14c0be8169639a6ef4506",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-18-08",
+      "source": "samples/expanded/deep/18/example-08",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "bdc5c625aad680797574172bbd37cf67ca5912ba27c0d2b1260047f69d01284e",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-18-09",
+      "source": "samples/expanded/deep/18/example-09",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "600384a68959b3ef65737743cf4b6df5f3f3eb5209446a34b48d30190723d8bc",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-19-01",
+      "source": "samples/expanded/deep/19/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "e7ffc4ed5b13fb989e7a9b2bea97c781fdc4d4c1f01b449bd73c63e4ab7671ac",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-19-02",
+      "source": "samples/expanded/deep/19/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "8f1ae0d0dd564faa6132cd6aaf1240034889ea7d5c05075266b9b9dc4b42c329",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-19-03",
+      "source": "samples/expanded/deep/19/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "383170b570af9474b3155e39c057b87c8cf57b8f752ad2f2c7bf49b9df60a655",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-19-04",
+      "source": "samples/expanded/deep/19/example-04",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "27bd19ca50eafa4d9af5ff12ab114e602a50fcc5fe0ba73d3068b6361dddfe43",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-19-05",
+      "source": "samples/expanded/deep/19/example-05",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "94f99af6c53681142a7a42daa6ea36d3e10bcf69613b87cb232c64cd666acee1",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-19-06",
+      "source": "samples/expanded/deep/19/example-06",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "b1fa1bfe17f061c7f69beabcf736e46823d5fcc48e9735d9858496c9d1e375fe",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-19-08",
+      "source": "samples/expanded/deep/19/example-08",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "f04dc2027c6b569bc882fd8f54d4c6a6f725eee1757548b8ca41707aa88317fb",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-20-01",
+      "source": "samples/expanded/deep/20/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "8995761b7765647444d526d20868a4c91a8fbd2c7594d756ad28ebc706b330e7",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-20-02",
+      "source": "samples/expanded/deep/20/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "56c9167fb954ecd2a42f05e62be5e39d2569965bb08d0cdfbbb1aebecdcdc5e9",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-20-03",
+      "source": "samples/expanded/deep/20/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "2f71b4fbb41fd99b6d1a8550fe46f09b5f048b664ac305e12c9253c15624e29f",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-20-04",
+      "source": "samples/expanded/deep/20/example-04",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "58b85ba7fccaf08c0e1ce5bc94a6c3211cbacdc683d18af273618035007e3557",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-20-05",
+      "source": "samples/expanded/deep/20/example-05",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "2e477a2be5ab6bd34076b76058658bf137bc813ce7e98871ebea0ddb1e3bdc59",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-20-06",
+      "source": "samples/expanded/deep/20/example-06",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "be115f99d0b736e998621fd1936eaf922a4fe329f80a37afe440afdaefa48141",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-20-07",
+      "source": "samples/expanded/deep/20/example-07",
+      "evidence": "docs/validation/2026-10-02-existing-console-middle",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "9986b2eaa2b6cf17ca43dd3cc8bdc60ce33ae9e9022bf88d5705fc4aa4d9687b",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-21-01",
+      "source": "samples/expanded/deep/21/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "b5dfab97c061d1022a95500a46625ce5e49b7e3f2f69cc42a51c5d860e80ca8c",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-21-02",
+      "source": "samples/expanded/deep/21/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "bcfb7be4b5510aaddc97078e1df50faa2210787673d911f5552a595de0bd0c78",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-21-03",
+      "source": "samples/expanded/deep/21/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "e056ae8c4dd40071c2c06449d7bc64841bb6c338f934f0fda97a3322cdc3a655",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-21-04",
+      "source": "samples/expanded/deep/21/example-04",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "fa0f8ec5d487c3803824d06de995e6e561a782894679340f74048b06fc826f18",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-21-05",
+      "source": "samples/expanded/deep/21/example-05",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "769d4eeaf8c4d6611e2ab68178fe781c27f09034de345956220f7e1cddf0ad25",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-21-06",
+      "source": "samples/expanded/deep/21/example-06",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "0bbccd0751af7f71c3604a8dca8882d648984285b2ea43e30a1c2aef8ace56ba",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-22-01",
+      "source": "samples/expanded/deep/22/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "ac8a04a4a41139a6836ea963ad7d654d39b770fecc39f59b5f4f3cf3f18da696",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-22-02",
+      "source": "samples/expanded/deep/22/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "da2d4dd4e0553292867e4ee4da89383ccd9c6e2e70a0ebb6f422a315c02dc173",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-22-03",
+      "source": "samples/expanded/deep/22/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "e7caf75e86f45e04a6db6a130ef3baa109f45ac69a1ffceda5afc271829eb158",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-22-05",
+      "source": "samples/expanded/deep/22/example-05",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "9b45a6e034e8ed6be3e00a4cfe89e0c061e4eb05e7c0ce223cf0fc19ab3eb6da",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-22-06",
+      "source": "samples/expanded/deep/22/example-06",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "18c9db6a0b684657a73383af105963482713a34a354beafca374f83cddc492a8",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-22-07",
+      "source": "samples/expanded/deep/22/example-07",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "a0a41b6ca886b8bf4d3a09ce2c402fb4847ae5215e67c4e86554ee3ba7618e70",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-22-08",
+      "source": "samples/expanded/deep/22/example-08",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "d1a0b03fbd6d18c5d1b41cd53973674b756e61cd1da50eec78a2cc246024a1dd",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-22-09",
+      "source": "samples/expanded/deep/22/example-09",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "c99bfe42b2cf4bd72fefee3a2e9faeaae7ab67600383e0847dbd64a37198d103",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-23-01",
+      "source": "samples/expanded/deep/23/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "6aeb9092e22ee66ccd245a4ff27f238f996ff4fbe7d0632e5e68ca383e6977e0",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-23-02",
+      "source": "samples/expanded/deep/23/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "bdf4a646c86c81f9736027db62fbd6d823af9ea178ba89664a342e07251a4004",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-23-04",
+      "source": "samples/expanded/deep/23/example-04",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "f29bb3c9e74de77c17d86e0f302111c890b0244109433a43d95b87d31f16e1a8",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-23-05",
+      "source": "samples/expanded/deep/23/example-05",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "27ccedb62db8b15b1cefb9eec0adb2bb39a0901302e5f5c02075567189b44f10",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-24-01",
+      "source": "samples/expanded/deep/24/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "9d08558df4b28e48956550621ec151eb6eb76a218515cbe6493a9d1935e5561f",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-24-02",
+      "source": "samples/expanded/deep/24/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "286c3fdc6daa10a296353d9ba0914669ff537a4addeec4cce29a0adee10ffa7c",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-24-03",
+      "source": "samples/expanded/deep/24/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "61e4dcee97b8610c3ee69c9d59579bc4a38b2a9ca62392cb70c6ee4fb225d44d",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-24-04",
+      "source": "samples/expanded/deep/24/example-04",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "8f2ec6173ac222ca456ab649fc7e9eba93ac1482ece434f4435d5a2f7ce37e4e",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-24-06",
+      "source": "samples/expanded/deep/24/example-06",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "de3a7b2da5f2264719cf8e482540b9e91f1b4c06bde14a3f6bfd567ca06bb9ad",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-24-07",
+      "source": "samples/expanded/deep/24/example-07",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "a87375937bbd76a1a36f3c6a6edf333644c55af6629b080098a7f7490f32d165",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-25-04",
+      "source": "samples/expanded/deep/25/example-04",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "a3f8bc7645e2346ebc74383fcaf46e09ea1dc1873b7a4ba16ac899b5ce62bd6b",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-26-01",
+      "source": "samples/expanded/deep/26/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "13c48b799d523567e88247d753130269aa4f669f81d573eef0c22e504ce5270e",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-26-02",
+      "source": "samples/expanded/deep/26/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "356a1530897431f87e002634c2d74a2c3bede0ba6b7e5239eedba13032545baf",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-26-03",
+      "source": "samples/expanded/deep/26/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "4efab4b027adea7a59f4c736d2b4e5483a1d361d08a07bc09f4d3302a7b665c0",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-26-05",
+      "source": "samples/expanded/deep/26/example-05",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "a13cf54826a4d271bb86ba29659cc19c62b0ba4b31e417363fc7ad206b76d18f",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-27-01",
+      "source": "samples/expanded/deep/27/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "0ab8d4df979c9b1a52a154aeec3318b6af1ec7a46306ca23b11a32e5da4512a0",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-27-02",
+      "source": "samples/expanded/deep/27/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "0afd51063ce4f0028d08c74a7a3d6c8b7d0076b317e7b317e0ede04d95b5a6aa",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-27-03",
+      "source": "samples/expanded/deep/27/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "57893a7fec61065a42b373e5bdca1d1030097acdc2a2a221fe09ab8d05625f6d",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-27-04",
+      "source": "samples/expanded/deep/27/example-04",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "be1d9ef684e2250aaf07b65f2dfbe762b6cb2e75adb0f7f634d973173522e033",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-28-01",
+      "source": "samples/expanded/deep/28/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "418b34c8111122f8e403777bc4be6cc33435877f767f004cc15ba5d457fb296b",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-28-03",
+      "source": "samples/expanded/deep/28/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "c7c56d30613ab5040797f68c202017141e654ed546a27a37d08bdd6340acf420",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "deep-31-01",
+      "source": "samples/expanded/deep/31/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-late",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "a59dd1fe62f0598a335a879717b40c654d3be1a0cb611beba59065c6b7046d26",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-learning-workflow-01",
+      "source": "samples/expanded/guides/learning-workflow/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "bff14b9121be27d770fa0ebfe7094f29c597d38935accfed5c9c42a2e3c43c0b",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-runtime-memory-01",
+      "source": "samples/expanded/guides/runtime-memory/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "09055556ffe8a58d5ed88307dfd93c9ed2817b9f3211b5460f1726c5567298ca",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-runtime-memory-02",
+      "source": "samples/expanded/guides/runtime-memory/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "b06c53c84689d87bfeb52609275bcdf60caac54769cfb59a031d155b6183ae8c",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-runtime-memory-03",
+      "source": "samples/expanded/guides/runtime-memory/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "0e71cd7e123a6e19df91c5943bec8f36022c414f1559bb2270369ed66a42b800",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-runtime-memory-04",
+      "source": "samples/expanded/guides/runtime-memory/example-04",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "1982af1f5030d44dff84d81e4b23d56680a33a9e290c8eadb283ce65d9e5bd21",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-reading-code-01",
+      "source": "samples/expanded/guides/reading-code/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "9dfff8e7ef0af7162562bd1108ce3c8757e506b2aa1d4e8a118add1dc6fb6243",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-reading-code-02",
+      "source": "samples/expanded/guides/reading-code/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "d3f2100f937f856e122579950f16407b284f04e0ac3ac9d92d81f39c49d0cb63",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-reading-code-03",
+      "source": "samples/expanded/guides/reading-code/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "2de73ff2d0ec82de35c9ec4b16a814f167d2f7fc8b2ed7f2f705b9bb3b2557f0",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-reading-code-05",
+      "source": "samples/expanded/guides/reading-code/example-05",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "009eeb37cda1d0a61768d3ca0da1332b553cdb424a6177363891d93f06212a7e",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-errors-02",
+      "source": "samples/expanded/guides/errors/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "7e20044c159e20a9b32a605efc55ff3a58957388d5ec79d25e665cd0578906fa",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-errors-03",
+      "source": "samples/expanded/guides/errors/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "a6dc9622def1a7956e23a0d00580d7fe6f177906768ac508dc3941fcb5bc90a9",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-errors-04",
+      "source": "samples/expanded/guides/errors/example-04",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "d504f6c632559e8dbff1ee52e4e25174f72dc9e87f0f57cfed9e5f42588220f8",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-errors-06",
+      "source": "samples/expanded/guides/errors/example-06",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "68a90e1223cb0121c2bbf40590dc06c75c8a90b623012bfda5489c8524480d3d",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-errors-08",
+      "source": "samples/expanded/guides/errors/example-08",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "fc1f3aa09dadef871d024a6d855659e795eb3c570bd1a3293133bf9263d776c4",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-errors-10",
+      "source": "samples/expanded/guides/errors/example-10",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "74ad9e5ef175d2cc30c6180916e31a2075bd95463847dbcf59c22e7f30e0abeb",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-errors-11",
+      "source": "samples/expanded/guides/errors/example-11",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "61b350c1313307901505c143244f3e0d3ba0da0ded8a320cc142980a92ee7c00",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-errors-12",
+      "source": "samples/expanded/guides/errors/example-12",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "bf1b1444b806ada40f51cf8e9068fc50a5790e1bbab2ebfd16b5938d590eb272",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-errors-14",
+      "source": "samples/expanded/guides/errors/example-14",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "45e21d8f99582ebf6c686ef61bb9a0fd704e5faedd470cac7868ef01fed3a562",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-errors-16",
+      "source": "samples/expanded/guides/errors/example-16",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "693d631d564f1c288c33b568afa14f572eab7f324907bc5e9b6989dbf67dbc46",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-errors-17",
+      "source": "samples/expanded/guides/errors/example-17",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "4fd7ffdae9a8637573571c8b14ab739c3cf676cfc6edb211d8b905e5bd122d3d",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-errors-18",
+      "source": "samples/expanded/guides/errors/example-18",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "7ad8ec1f7889e0a1661a20de6eee146728a25e371a6b43f3033d6ff7e9042488",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-errors-19",
+      "source": "samples/expanded/guides/errors/example-19",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "e27735727678d82455bea9a5c447e63f8b186135a6867a1007685109eb3d5b06",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-errors-20",
+      "source": "samples/expanded/guides/errors/example-20",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "fdd10b511d8de75e9569f4fcfacecd5e1482873f6e1845b1e82a65b0f34ede29",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-errors-22",
+      "source": "samples/expanded/guides/errors/example-22",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "5776438e260b6ecdf4e4810277a444937c7ab505ecbcc5c943fb4f0016e458df",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-errors-24",
+      "source": "samples/expanded/guides/errors/example-24",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "f0d14b104f6a1731de54f0d1a5115d71d47d2dba784920c9374b721b7264e684",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-choosing-features-01",
+      "source": "samples/expanded/guides/choosing-features/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "18c1f73c9bce20a41a50b1bc3cefcf69fca73273c14f3f496f8ca8d9ec194e55",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-choosing-features-02",
+      "source": "samples/expanded/guides/choosing-features/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "a7990915fc2115e46afc60d6d9a8370725bed581b3519a695af76598e6a6fb01",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-choosing-features-03",
+      "source": "samples/expanded/guides/choosing-features/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "25d669bc7d32b6c3cffa225bb63cd415b587ed99662560098ee3482a2522fcfc",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-async-timeline-01",
+      "source": "samples/expanded/guides/async-timeline/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "b6ecbacc9d76fe83f1af2b840dee9abe28e322d99a4bc21bc357d4c399ef34e4",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-async-timeline-02",
+      "source": "samples/expanded/guides/async-timeline/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "56250a21044501da825f245615d19d6c03b2680b927f2dc3e1c67c986ac0f276",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-async-timeline-03",
+      "source": "samples/expanded/guides/async-timeline/example-03",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "fbcb30f835c6ae9b395ea58ad818254510bc0c513b44f7e4efbbd1812d8fc24e",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-async-timeline-04",
+      "source": "samples/expanded/guides/async-timeline/example-04",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "f4af17606fdae0cc7a6ffcfc157cc0a395ebd3cf15e163ea2a543782629efd66",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-http-di-path-01",
+      "source": "samples/expanded/guides/http-di-path/example-01",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "8efb1e37e640abe8377643bf43e567469d3b772ee307bc7dac843e2bb83f9ff4",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    },
+    {
+      "id": "guides-http-di-path-02",
+      "source": "samples/expanded/guides/http-di-path/example-02",
+      "evidence": "docs/validation/2026-10-02-existing-console-guides",
+      "semanticMatch": true,
+      "sha256": {
+        "Program.cs": "0242ff9b95be0c98a8f009465d29f75bec4ba5f73197f25c623b5f323b95b805",
+        "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+      }
+    }
+  ],
+  "originalProjectCount": 35,
+  "originalEntries": [
+    {
+      "id": "original-07",
+      "source": "samples/lessons/lesson-07",
+      "evidence": "docs/validation/2026-10-02-semantics",
+      "sha256": {
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b",
+        "Program.cs": "e42f7b3406749a441b07f5f5609f40bb5df96c4553b36e917a764bd9ff91440e"
+      },
+      "teachingPath": "lessons/07.html",
+      "teachingSha256": "f024523ad97191a3b5562a5ac7330b4104ba43c9e5608b9d639f4a320793cdd7"
+    },
+    {
+      "id": "original-12",
+      "source": "samples/lessons/lesson-12",
+      "evidence": "docs/validation/2026-10-02-semantics",
+      "sha256": {
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b",
+        "Program.cs": "94c969746ec7030d824bca53e83b27b26b98cffdd2dcd9efea0108b6ac3005ce"
+      },
+      "teachingPath": "lessons/12.html",
+      "teachingSha256": "5cd71cb98854509b37f6c75aef9737f993e2e0dd06ccf3c6231e25c8c596b757"
+    },
+    {
+      "id": "original-14",
+      "source": "samples/lessons/lesson-14",
+      "evidence": "docs/validation/2026-10-02-semantics",
+      "sha256": {
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b",
+        "Program.cs": "3418be95e8ed28d02d21bf532974e0280e547dc60a3506b2f3088798d4406114"
+      },
+      "teachingPath": "lessons/14.html",
+      "teachingSha256": "03376476937d538016567a433e73679e8d0b495a0380484dc1e376120058391c"
+    },
+    {
+      "id": "original-15",
+      "source": "samples/lessons/lesson-15",
+      "evidence": "docs/validation/2026-10-02-semantics",
+      "sha256": {
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b",
+        "Program.cs": "ce9cef67995252840313e90d7fba646c42e49a7fa918f5b5376b502d30ef9d73"
+      },
+      "teachingPath": "lessons/15.html",
+      "teachingSha256": "ac416a74abb2242b61d50c96f2b4dc9d0a1291d936c2c29a0af257b7720716d7"
+    },
+    {
+      "id": "original-03",
+      "source": "samples/lessons/lesson-03",
+      "evidence": "docs/validation/2026-10-02-semantics-batch2",
+      "sha256": {
+        "Program.cs": "92f583ba6ae6b6f4f48cbe301f67491d84f95b9e68dd85ae0ac88d60c5566fbe",
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+      },
+      "teachingPath": "lessons/03.html",
+      "teachingSha256": "d5e79e9680c38cc7171d24be8caae4fa8c3a47e49b60dbaa9fc1aa80cbf1a357"
+    },
+    {
+      "id": "original-04",
+      "source": "samples/lessons/lesson-04",
+      "evidence": "docs/validation/2026-10-02-semantics-batch2",
+      "sha256": {
+        "Program.cs": "a17e69e83a821270e4a2400b869f4cd9fbde7c62c8c8dc33e56549b785127b8f",
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+      },
+      "teachingPath": "lessons/04.html",
+      "teachingSha256": "674bd0a1fdc49a01e15ce6790e0fbd3923e9e3cc5e07ad3a6969042cd670cc2e"
+    },
+    {
+      "id": "original-05",
+      "source": "samples/lessons/lesson-05",
+      "evidence": "docs/validation/2026-10-02-semantics-batch2",
+      "sha256": {
+        "Program.cs": "fbafb15feb18bffdb861041cab161b5bf8317ce18170382049b220b4748ae983",
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+      },
+      "teachingPath": "lessons/05.html",
+      "teachingSha256": "503b83cba93991190114aa0acc93f7352106dbd88434c3fe73844ac171c3dbde"
+    },
+    {
+      "id": "original-06",
+      "source": "samples/lessons/lesson-06",
+      "evidence": "docs/validation/2026-10-02-semantics-batch2",
+      "sha256": {
+        "Program.cs": "17c334484673c1c718fed5b6da2408efffeda35feda369b0bca3b650d126ee57",
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+      },
+      "teachingPath": "lessons/06.html",
+      "teachingSha256": "c264fbed64804e956f272e4c29791a4586a1c50489338ae3d14b98275e03e8bd"
+    },
+    {
+      "id": "original-08",
+      "source": "samples/lessons/lesson-08",
+      "evidence": "docs/validation/2026-10-02-semantics-batch2",
+      "sha256": {
+        "Program.cs": "76d82806ff7e7e798a5f187653c77dfc90e7b9dd28e21cd93e2887ffcda3d854",
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+      },
+      "teachingPath": "lessons/08.html",
+      "teachingSha256": "671eb38b4efdc19f871654213b8cfc0f71d01cec0e965bf6b06c122aaa7d8e48"
+    },
+    {
+      "id": "original-09",
+      "source": "samples/lessons/lesson-09",
+      "evidence": "docs/validation/2026-10-02-semantics-batch2",
+      "sha256": {
+        "Program.cs": "0cf5b51cf2ae9feecaddbdf82ac0abb1fb3d111184428cda5d3b0e390ed09340",
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+      },
+      "teachingPath": "lessons/09.html",
+      "teachingSha256": "e19b785e699d7657722daaf27bc8f3aa4942f1e83e39a8ca689bd14d936f357d"
+    },
+    {
+      "id": "original-01",
+      "source": "samples/lessons/lesson-01",
+      "evidence": "docs/validation/2026-10-02-semantics-batch3",
+      "sha256": {
+        "Program.cs": "7691c79b46d53b18ed78dd2bdeb090da0c552f8c931cceec4085e6c0f7bc9503",
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+      },
+      "teachingPath": "lessons/01.html",
+      "teachingSha256": "ea49963ecc6e2beb885d18e0c0a534e8148e53484773809fd8468e93dfc951a1"
+    },
+    {
+      "id": "original-02",
+      "source": "samples/lessons/lesson-02",
+      "evidence": "docs/validation/2026-10-02-semantics-batch3",
+      "sha256": {
+        "Program.cs": "d07f6276bdcade596cf85192c0b2fd1eaf8e12a0646c082c0e4abb5576628490",
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+      },
+      "teachingPath": "lessons/02.html",
+      "teachingSha256": "1a5b923007a1babf7bb6a411a526764226c6282f4460517625b665489be0a811"
+    },
+    {
+      "id": "original-10",
+      "source": "samples/lessons/lesson-10",
+      "evidence": "docs/validation/2026-10-02-semantics-batch3",
+      "sha256": {
+        "Program.cs": "4260b9020e9a5a2faece9034ce409074070693fb712e4cecab0c26f3564de488",
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+      },
+      "teachingPath": "lessons/10.html",
+      "teachingSha256": "8a4a313fb7ea837b1eb93ce7de2dc36f501f656520447728606050da3e51a52a"
+    },
+    {
+      "id": "original-11",
+      "source": "samples/lessons/lesson-11",
+      "evidence": "docs/validation/2026-10-02-semantics-batch3",
+      "sha256": {
+        "Program.cs": "5f3f00b22fac46615d0a505919c33c02e3012bc164e01638a4d0a11615d1fb95",
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+      },
+      "teachingPath": "lessons/11.html",
+      "teachingSha256": "6ff2c7ebd2f16a1f84f26b82955287d46af45821c91f24eea26c8808647e68d0"
+    },
+    {
+      "id": "original-13",
+      "source": "samples/lessons/lesson-13",
+      "evidence": "docs/validation/2026-10-02-semantics-batch3",
+      "sha256": {
+        "Program.cs": "d203974138c5b41e22ea957b9d446e46f851fcb2274c8a1b124ea461b8afc6ee",
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+      },
+      "teachingPath": "lessons/13.html",
+      "teachingSha256": "9da88489b6bfd6a14e7dc031b6d27c8d8edfc3d12bfeaf7faf69464afc97a67c"
+    },
+    {
+      "id": "original-16",
+      "source": "samples/lessons/lesson-16",
+      "evidence": "docs/validation/2026-10-02-semantics-batch3",
+      "sha256": {
+        "Program.cs": "27eb9695836f7b6ca6af13c805d92f7308474d6bb64b3910e093ba6454fabdfe",
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+      },
+      "teachingPath": "lessons/16.html",
+      "teachingSha256": "eaa0b13655e55d66eb96f5b52d9edea5b1336cf2cb26588563fa018d3bf1fb1f"
+    },
+    {
+      "id": "original-17",
+      "source": "samples/lessons/lesson-17",
+      "evidence": "docs/validation/2026-10-02-semantics-batch3",
+      "sha256": {
+        "Program.cs": "9f5704b846fba6af37c2d21509a2a3e24652b915bf87ba19675b48bd5e3ed929",
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+      },
+      "teachingPath": "lessons/17.html",
+      "teachingSha256": "9f73514d4bfacf317ef4e16e1da16775a99bc57946245dd7706ea1b2c96f8bc7"
+    },
+    {
+      "id": "original-18",
+      "source": "samples/lessons/lesson-18",
+      "evidence": "docs/validation/2026-10-02-semantics-batch3",
+      "sha256": {
+        "Program.cs": "28f8da74ee0b26cc10f56fe38460f449dd2dbfef60e6413be4aedcc20810d3bc",
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+      },
+      "teachingPath": "lessons/18.html",
+      "teachingSha256": "ed48d4f0dbbbd11ef35de93061daec369fded50fdb9d4ace39dba2c3c7f0ce4f"
+    },
+    {
+      "id": "original-19",
+      "source": "samples/lessons/lesson-19",
+      "evidence": "docs/validation/2026-10-02-semantics-batch3",
+      "sha256": {
+        "Program.cs": "3b8ee1e33fba8a51abee73d3fa0622c4005039cba12924a841d08408d1bf346f",
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+      },
+      "teachingPath": "lessons/19.html",
+      "teachingSha256": "de0b1f6bedbb0d798501be70229ab8a4ad5011e1594f56ef0195f7f3e82b03e2"
+    },
+    {
+      "id": "original-20",
+      "source": "samples/lessons/lesson-20",
+      "evidence": "docs/validation/2026-10-02-semantics-batch3",
+      "sha256": {
+        "Program.cs": "1f377cf5d5cd3dd20e283fcefca106f27b3cc3c0d229e5b7deaeadbf23c1fa79",
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+      },
+      "teachingPath": "lessons/20.html",
+      "teachingSha256": "694bbc97f3faba962f2e406d05f7a6e14e275cdf6f098f1f1726cf1e8616073b"
+    },
+    {
+      "id": "original-21",
+      "source": "samples/lessons/lesson-21",
+      "evidence": "docs/validation/2026-10-02-semantics-batch4",
+      "sha256": {
+        "Program.cs": "1b506a422ca9d3560aff43912fa64f4c704922f38ff979fe953e580dbe2e277a",
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+      },
+      "teachingPath": "lessons/21.html",
+      "teachingSha256": "774bf0e67a8f48d5450c4cf44c9c837ce3bea5f996282542f21b1265c02f43b2"
+    },
+    {
+      "id": "original-22",
+      "source": "samples/lessons/lesson-22",
+      "evidence": "docs/validation/2026-10-02-semantics-batch4",
+      "sha256": {
+        "Program.cs": "03500791a337537002111cb8637d16529bb1635da3dc246c9f8c4020b3f9c890",
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+      },
+      "teachingPath": "lessons/22.html",
+      "teachingSha256": "5e31d37f1d0e9a46b3c08e4c7478f00226e9e181f174331d3a2ccbbc8c79a148"
+    },
+    {
+      "id": "original-23",
+      "source": "samples/lessons/lesson-23",
+      "evidence": "docs/validation/2026-10-02-semantics-batch4",
+      "sha256": {
+        "Program.cs": "3b29db2a1c9b190ba75cb55ba0f60eed58bfe9dded450244504f4e2abbb27518",
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+      },
+      "teachingPath": "lessons/23.html",
+      "teachingSha256": "76f405075b1016d0b62759e5333106d368c9be2c597c9d526972945f07d63edb"
+    },
+    {
+      "id": "original-24",
+      "source": "samples/lessons/lesson-24",
+      "evidence": "docs/validation/2026-10-02-semantics-batch4",
+      "sha256": {
+        "Program.cs": "c64ae5700ccd667c23da2deb6dbb0338b0a2ebdb3bd57365480320c9fdfd4fae",
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+      },
+      "teachingPath": "lessons/24.html",
+      "teachingSha256": "d61fc9d53198612e91d6868301ec3dff5f207ef9a373ed651c48fb32fe02bb23"
+    },
+    {
+      "id": "original-25",
+      "source": "samples/lessons/lesson-25",
+      "evidence": "docs/validation/2026-10-02-semantics-batch4",
+      "sha256": {
+        "Program.cs": "0f0b7d19f36c680ff4f042313d06ad15e3911dee7af9d2668f52bac0c81260dc",
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+      },
+      "teachingPath": "lessons/25.html",
+      "teachingSha256": "23886421dbd19e472e375cef7ef2e590c96f95a1167000cf945271fcd0fad24a"
+    },
+    {
+      "id": "original-26",
+      "source": "samples/lessons/lesson-26",
+      "evidence": "docs/validation/2026-10-02-semantics-batch4",
+      "sha256": {
+        "Program.cs": "a8619bc2e4b6fac1d4155e088899ead2aad8077e551ca9b179576c532dcf447f",
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+      },
+      "teachingPath": "lessons/26.html",
+      "teachingSha256": "7e1aed2b29fa042b31db528f67b678348fd4ba22dded39143f08cc9671bcce24"
+    },
+    {
+      "id": "original-27",
+      "source": "samples/lessons/lesson-27",
+      "evidence": "docs/validation/2026-10-02-semantics-batch4",
+      "sha256": {
+        "Program.cs": "bc341cebd68859b7134541af20ee05cd2691156c25e911f19d18188b46f23822",
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+      },
+      "teachingPath": "lessons/27.html",
+      "teachingSha256": "e81890d435c34588a785e695bfbdb65d3b413829ea7226e03482ce4e7e4d4baa"
+    },
+    {
+      "id": "original-28",
+      "source": "samples/lessons/lesson-28",
+      "evidence": "docs/validation/2026-10-02-semantics-batch4",
+      "sha256": {
+        "Program.cs": "6bf25ddea6aa3ed80ce7bbe01ddd35c7ce682580d8f952cc2c1378a5ad9fd69c",
+        "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+      },
+      "teachingPath": "lessons/28.html",
+      "teachingSha256": "155482f91491caf5c8e7bd1060c24c41494297453e7a67794ed6ce15f7779729"
+    },
+    {
+      "id": "original-29",
+      "source": "samples/lessons/lesson-29",
+      "evidence": "docs/validation/2026-10-02-semantics-batch5",
+      "sha256": {
+        "Program.cs": "47bed34db17d866f368a0def680ec9027a175b3b6b1cfebeee0b52e2df046aec",
+        "Lesson.csproj": "0cbb425335242b73ba1f024d44ecccf4973db1cca9dbae5fa6f8ffda136042e1"
+      },
+      "teachingPath": "lessons/29.html",
+      "teachingSha256": "ea4520b26571cc6d63ef7ba4d00735b7e4f8fc622d7e112eaa7fb33e5719c8c8"
+    },
+    {
+      "id": "original-30",
+      "source": "samples/lessons/lesson-30",
+      "evidence": "docs/validation/2026-10-02-semantics-batch5",
+      "sha256": {
+        "Program.cs": "dbc3eb4556edf50590aa198e1c4153b2abbf18f3cf52e7711ef483ef7105df62",
+        "Lesson.csproj": "0cbb425335242b73ba1f024d44ecccf4973db1cca9dbae5fa6f8ffda136042e1"
+      },
+      "teachingPath": "lessons/30.html",
+      "teachingSha256": "53d314ed1c85342477b3153974c4a0da75f9f7654110a0411daa6c3b81dd4dba"
+    },
+    {
+      "id": "original-31",
+      "source": "samples/lessons/lesson-31",
+      "evidence": "docs/validation/2026-10-02-semantics-batch5",
+      "sha256": {
+        "Program.cs": "86bbe93f634f42568bdd3f2b4d750881c1f928143282e5dd7673e7fc4ec2b376",
+        "Lesson.csproj": "0cbb425335242b73ba1f024d44ecccf4973db1cca9dbae5fa6f8ffda136042e1"
+      },
+      "teachingPath": "lessons/31.html",
+      "teachingSha256": "a5e46fa5164af606d6fe520024eb0f5e84dbc9f8c32d0f0b81ed2c67a86251c6"
+    },
+    {
+      "id": "original-32",
+      "source": "samples/lessons/lesson-32",
+      "evidence": "docs/validation/2026-10-02-semantics-batch5",
+      "sha256": {
+        "Program.cs": "998d614ddf7e96c2935a90bb53ce3461fd7141205620fc8a78988d444b526297",
+        "Lesson.csproj": "0cbb425335242b73ba1f024d44ecccf4973db1cca9dbae5fa6f8ffda136042e1"
+      },
+      "teachingPath": "lessons/32.html",
+      "teachingSha256": "9a94e3b38b79ce88127986f2ca3c922ad8a5eb9d0a4db4e76434d96bf1ce86c7"
+    },
+    {
+      "id": "project-task-api",
+      "source": "samples/projects/task-api",
+      "evidence": "docs/validation/2026-10-02-semantics-batch5",
+      "sha256": {
+        "Program.cs": "c1924bb90f49449f79d12b1a8b6e72711bf4f955c6a5fa4b8979c5f3d568fdfc",
+        "Project.csproj": "b19dec3afebe4c42de28539b77a85153eb56a6c87581ffea0e0729293880fb7e"
+      },
+      "teachingPath": "projects/task-api.html",
+      "teachingSha256": "0b475fb8b285b9d198a7abc655752ef20aee390000b61f783476aabbf7947157"
+    },
+    {
+      "id": "project-expense-cli",
+      "source": "samples/projects/expense-cli",
+      "evidence": "docs/validation/2026-10-02-semantics-batch6",
+      "sha256": {
+        "Program.cs": "ccd8438d9fced7b4a23340b5b191976f9c1a2a89cb6e2fec3796f83d80291b97",
+        "Project.csproj": "38e201f047792df530db8c7d157c2b6b19d1ed2e4134dba5da5c59e97d3b0da2"
+      },
+      "teachingPath": "projects/expense-cli.html",
+      "teachingSha256": "6d9df631a0e835b39f9b23d2420caffe919bb97849eac2771f24ed4843915145"
+    },
+    {
+      "id": "project-task-cli",
+      "source": "samples/projects/task-cli",
+      "evidence": "docs/validation/2026-10-02-semantics-batch6",
+      "sha256": {
+        "Program.cs": "0deb4aeda6ccd7aaa1aa008aba506d13687d3cdb2ecadd1c35c6ad5c24f01991",
+        "Project.csproj": "38e201f047792df530db8c7d157c2b6b19d1ed2e4134dba5da5c59e97d3b0da2"
+      },
+      "teachingPath": "projects/task-cli.html",
+      "teachingSha256": "16f68591c7c3c185db27bd913f62a3cfc3c7631da5f3e19a85f519bf521e7844"
+    }
+  ]
+}

@@ -1,0 +1,275 @@
+[
+  {
+    "id": "deep-01-03",
+    "kind": "csharp-error",
+    "source": "content/deep/01.md",
+    "code": "samples/expanded/deep/01/example-03/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-02-04",
+    "kind": "csharp-error",
+    "source": "content/deep/02.md",
+    "code": "samples/expanded/deep/02/example-04/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-02-06",
+    "kind": "csharp-error",
+    "source": "content/deep/02.md",
+    "code": "samples/expanded/deep/02/example-06/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-03-03",
+    "kind": "csharp-error",
+    "source": "content/deep/03.md",
+    "code": "samples/expanded/deep/03/example-03/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-04-04",
+    "kind": "csharp-error",
+    "source": "content/deep/04.md",
+    "code": "samples/expanded/deep/04/example-04/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-06-05",
+    "kind": "csharp-error",
+    "source": "content/deep/06.md",
+    "code": "samples/expanded/deep/06/example-05/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-06-07",
+    "kind": "csharp-error",
+    "source": "content/deep/06.md",
+    "code": "samples/expanded/deep/06/example-07/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-08-04",
+    "kind": "csharp-error",
+    "source": "content/deep/08.md",
+    "code": "samples/expanded/deep/08/example-04/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-08-06",
+    "kind": "csharp-error",
+    "source": "content/deep/08.md",
+    "code": "samples/expanded/deep/08/example-06/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-09-04",
+    "kind": "csharp-error",
+    "source": "content/deep/09.md",
+    "code": "samples/expanded/deep/09/example-04/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-10-04",
+    "kind": "csharp-error",
+    "source": "content/deep/10.md",
+    "code": "samples/expanded/deep/10/example-04/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-10-06",
+    "kind": "csharp-error",
+    "source": "content/deep/10.md",
+    "code": "samples/expanded/deep/10/example-06/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-12-04",
+    "kind": "csharp-error",
+    "source": "content/deep/12.md",
+    "code": "samples/expanded/deep/12/example-04/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-12-05",
+    "kind": "csharp-error",
+    "source": "content/deep/12.md",
+    "code": "samples/expanded/deep/12/example-05/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-15-05",
+    "kind": "csharp-error",
+    "source": "content/deep/15.md",
+    "code": "samples/expanded/deep/15/example-05/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-15-07",
+    "kind": "csharp-error",
+    "source": "content/deep/15.md",
+    "code": "samples/expanded/deep/15/example-07/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-16-08",
+    "kind": "csharp-error",
+    "source": "content/deep/16.md",
+    "code": "samples/expanded/deep/16/example-08/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-19-07",
+    "kind": "csharp-error",
+    "source": "content/deep/19.md",
+    "code": "samples/expanded/deep/19/example-07/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-22-04",
+    "kind": "csharp-error",
+    "source": "content/deep/22.md",
+    "code": "samples/expanded/deep/22/example-04/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-23-03",
+    "kind": "csharp-error",
+    "source": "content/deep/23.md",
+    "code": "samples/expanded/deep/23/example-03/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-24-05",
+    "kind": "csharp-error",
+    "source": "content/deep/24.md",
+    "code": "samples/expanded/deep/24/example-05/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-25-01",
+    "kind": "csharp-fragment",
+    "source": "content/deep/25.md",
+    "code": "samples/expanded/deep/25/example-01/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-25-02",
+    "kind": "csharp-fragment",
+    "source": "content/deep/25.md",
+    "code": "samples/expanded/deep/25/example-02/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-25-03",
+    "kind": "csharp-error",
+    "source": "content/deep/25.md",
+    "code": "samples/expanded/deep/25/example-03/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-26-04",
+    "kind": "csharp-test",
+    "source": "content/deep/26.md",
+    "code": "samples/expanded/deep/26/example-04/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-26-06",
+    "kind": "csharp-test",
+    "source": "content/deep/26.md",
+    "code": "samples/expanded/deep/26/example-06/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-28-02",
+    "kind": "csharp-error",
+    "source": "content/deep/28.md",
+    "code": "samples/expanded/deep/28/example-02/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-31-03",
+    "kind": "csharp-fragment",
+    "source": "content/deep/31.md",
+    "code": "samples/expanded/deep/31/example-03/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-31-04",
+    "kind": "csharp-fragment",
+    "source": "content/deep/31.md",
+    "code": "samples/expanded/deep/31/example-04/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "deep-31-06",
+    "kind": "csharp-fragment",
+    "source": "content/deep/31.md",
+    "code": "samples/expanded/deep/31/example-06/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "guides-reading-code-04",
+    "kind": "csharp-error",
+    "source": "content/guides/reading-code.md",
+    "code": "samples/expanded/guides/reading-code/example-04/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "guides-errors-01",
+    "kind": "csharp-error",
+    "source": "content/guides/errors.md",
+    "code": "samples/expanded/guides/errors/example-01/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "guides-errors-05",
+    "kind": "csharp-error",
+    "source": "content/guides/errors.md",
+    "code": "samples/expanded/guides/errors/example-05/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "guides-errors-07",
+    "kind": "csharp-error",
+    "source": "content/guides/errors.md",
+    "code": "samples/expanded/guides/errors/example-07/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "guides-errors-09",
+    "kind": "csharp-error",
+    "source": "content/guides/errors.md",
+    "code": "samples/expanded/guides/errors/example-09/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "guides-errors-13",
+    "kind": "csharp-error",
+    "source": "content/guides/errors.md",
+    "code": "samples/expanded/guides/errors/example-13/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "guides-errors-15",
+    "kind": "csharp-error",
+    "source": "content/guides/errors.md",
+    "code": "samples/expanded/guides/errors/example-15/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "guides-errors-21",
+    "kind": "csharp-error",
+    "source": "content/guides/errors.md",
+    "code": "samples/expanded/guides/errors/example-21/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  },
+  {
+    "id": "guides-errors-23",
+    "kind": "csharp-error",
+    "source": "content/guides/errors.md",
+    "code": "samples/expanded/guides/errors/example-23/Example.cs.txt",
+    "reason": "No runnable project; intentional error/partial source is not successful execution evidence"
+  }
+]
