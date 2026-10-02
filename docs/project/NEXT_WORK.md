@@ -3,7 +3,7 @@
 Updated: 2026-10-02。Current: CS07（C#実測検証）。
 
 1. `docs/validation/2026-10-01-dotnet/README.md`で固定ソースと実測範囲を確認。
-2. 既存Console残り70件について、対応本文と既存証拠を読み意味的期待値を用意して照合。元教材35件の選定意味的検証済み。受入済みバッチを新規実績として再実行しない。入力/ファイルは専用一時領域、エラー/部分例は正常例と分ける。
+2. 既存Console残り34件について、対応本文と既存証拠を読み意味的期待値を用意して照合。元教材35件の選定意味的検証済み。受入済みバッチを新規実績として再実行しない。入力/ファイルは専用一時領域、エラー/部分例は正常例と分ける。
 3. 教材UIの実HTTP/HTTPS・永続保存・サブパスを検査。Safari/iPhone/iPad実機は利用可能な環境で確認。
 
 300プロジェクトのビルド、追加Console62件の全文出力照合、Web10例31リクエストは完了済み。SDK10.0.401の既存Docker imageを利用可能。専用検証コンテナーは終了済み。教材コード・生成物・main・公開環境は今回変更していない。
@@ -27,3 +27,5 @@ Inventory correction: expanded201 projects =8Web +193Console (191 ordinary cshar
 2026-10-02-existing-console-early: existing Console47/193 PASS, remaining146; originals35/35 selected contracts covered. Evidence: `docs/validation/2026-10-02-existing-console-early/README.md`. CS07 IN_PROGRESS.
 
 2026-10-02-existing-console-middle: existing Console123/193 PASS, remaining70; originals35/35 selected contracts covered. Evidence: `docs/validation/2026-10-02-existing-console-middle/README.md`. CS07 IN_PROGRESS.
+
+2026-10-02-existing-console-late: existing Console159/193 PASS, remaining34; originals35/35 selected contracts covered. Evidence: `docs/validation/2026-10-02-existing-console-late/README.md`. CS07 IN_PROGRESS.

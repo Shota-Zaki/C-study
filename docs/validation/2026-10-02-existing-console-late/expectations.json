@@ -1,0 +1,602 @@
+[
+  {
+    "id": "deep-21-01",
+    "source": "samples/expanded/deep/21/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/21.md",
+    "teachingExcerpt": "## 最小例：JSONはまず文字列として扱える\n\n```csharp\nusing System.Text.Json;\n\nvar item = new Item(\"Note\", 3);\nstring json = JsonSerializer.Serialize(item);\nConsole.WriteLine(json);\nItem? loaded = JsonSerializer.Deserialize<Item>(json);\nif (loaded is null)\n{\n    Console.WriteLine(\"データなし\");\n}\nelse\n{\n    Console.WriteLine($\"{loaded.Name}:{loaded.Quantity}\");\n}\n\npublic record Item(string Name, int Quantity);\n```\n\n通常の設定で期待されるJSONは`{\"Name\":\"Note\",\"Quantity\":3}`、続く表示はNote:3です。JSONのプロパティ順序を業務の意味として依存しないようにします。`Deserialize<Item>`の型引数は「どんな型へ戻したいか」を指定しています。文字列の中にJSONのnullがあると、参照型の逆シリアル化結果がnullになる可能性があるため、Item?で受けています。\n\nJSONを読むことは、既存のitemをそのまま取り戻すことではありません。この例では同じような値を持つ別のオブジェクトが作られます。参照の同一性ではなく、保存したデータの内容を確認します。",
+    "sha256": {
+      "Program.cs": "b5dfab97c061d1022a95500a46625ce5e49b7e3f2f69cc42a51c5d860e80ca8c",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "08fdd045a39192236361b9364b2c758906e1c1092c7ac8795875986af18e6a22",
+    "expected": "{\"Name\":\"Note\",\"Quantity\":3}\nNote:3\n",
+    "meaning": "JSON roundtrip preserves Name and Quantity; property order observed for these declared properties."
+  },
+  {
+    "id": "deep-21-02",
+    "source": "samples/expanded/deep/21/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/21.md",
+    "teachingExcerpt": "## パスは「どこを基準にするか」が重要\n\nパスはファイルやフォルダーの位置を表すものです。絶対パスは基準からの全体の位置、相対パスは現在の基準からの位置です。`\"data/items.json\"`のような相対パスは通常、現在の作業ディレクトリを基準に解決されます。作業ディレクトリはコマンドを起動した場所などにより変わります。\n\n```csharp\nConsole.WriteLine($\"作業場所:{Environment.CurrentDirectory}\");\nConsole.WriteLine($\"アプリ基準:{AppContext.BaseDirectory}\");\nstring path = Path.Combine(Environment.CurrentDirectory, \"data\", \"items.json\");\nConsole.WriteLine($\"保存先:{Path.GetFullPath(path)}\");\n```\n\n出力の具体的なパスは環境ごとに変わります。Environment.CurrentDirectoryとAppContext.BaseDirectoryは同じとは限りません。後者はアプリケーションの基準ディレクトリです。インストール先への書き込みは権限の問題があるため、本番では利用者のデータ保存先などを設計します。この教材のファイル例は練習用フォルダーで試します。\n\nPath.Combineは区切りをOSに合わせて組み立てる補助です。ただし、利用者が自由入力したパスを安全な保存先へ自動的に制限する機能ではありません。外部入力で任意のパスを作らせないことが基本です。",
+    "sha256": {
+      "Program.cs": "bcfb7be4b5510aaddc97078e1df50faa2210787673d911f5552a595de0bd0c78",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "08fdd045a39192236361b9364b2c758906e1c1092c7ac8795875986af18e6a22",
+    "meaning": "Working directory, application base and combined data path have independent meanings.",
+    "contract": {
+      "lines": 3,
+      "workingDirectory": "Explicit private per-example CWD chosen by harness",
+      "baseDirectory": "/verify/deep-21-02/bin/Debug/net10.0/ for current docker fixture project layout",
+      "savePath": "Path.Combine(workingDirectory, data, items.json) absolute path"
+    },
+    "handlingNotes": "Pin Docker exec --workdir to a private fixture folder, derive complete exact three-line expected stdout BEFORE running from that CWD and compiled output path. Do not accept arbitrary path strings or invent host paths.",
+    "expected": "作業場所:/verify/deep-21-02\nアプリ基準:/verify/deep-21-02/bin/Debug/net10.0/\n保存先:/verify/deep-21-02/data/items.json\n"
+  },
+  {
+    "id": "deep-21-03",
+    "source": "samples/expanded/deep/21/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/21.md",
+    "teachingExcerpt": "## 実用例：一覧の保存と読み込み\n\n次の例は現在の作業フォルダー内に`practice-data/items.json`を作成・上書きします。既存の大切なデータがない練習用の場所で扱います。\n\n```csharp-file\nusing System.Text.Json;\n\nstring directory = Path.Combine(Environment.CurrentDirectory, \"practice-data\");\nDirectory.CreateDirectory(directory);\nstring path = Path.Combine(directory, \"items.json\");\nvar items = new List<Item>\n{\n    new Item(\"Note\", 3),\n    new Item(\"Pen\", 2)\n};\nvar options = new JsonSerializerOptions { WriteIndented = true };\nstring json = JsonSerializer.Serialize(items, options);\nFile.WriteAllText(path, json);\n\nstring saved = File.ReadAllText(path);\nList<Item>? loaded = JsonSerializer.Deserialize<List<Item>>(saved);\nif (loaded is null)\n{\n    Console.WriteLine(\"一覧がnullです\");\n    return;\n}\nforeach (Item item in loaded)\n{\n    Console.WriteLine($\"{item.Name}:{item.Quantity}\");\n}\n\npublic record Item(string Name, int Quantity);\n```\n\n期待出力はNote:3、Pen:2です。CreateDirectoryはフォルダーが既に存在する場合にも使えます。WriteIndentedはJSONを人間が読みやすい改行・字下げ付きにします。WriteAllTextは既存ファイルを上書きします。これらのAPIは短い全体読み書きに便利ですが、巨大なファイルを全て文字列へ読み込むとメモリ使用量も増えます。\n\n| 時点 | メモリ上のitems | ファイル | loaded |\n|---|---|---|---|\n| List作成後 | 2件 | まだ今回の保存なし | 未宣言 |\n| Serialize後 | 同じ2件 | まだ書いていない | 未宣言 |\n| WriteAllText後 | 同じ2件 | JSONが保存済み | 未宣言 |\n| Deserialize後 | 同じ2件 | 同じJSON | 別のListと要素を生成 |",
+    "sha256": {
+      "Program.cs": "e056ae8c4dd40071c2c06449d7bc64841bb6c338f934f0fda97a3322cdc3a655",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "08fdd045a39192236361b9364b2c758906e1c1092c7ac8795875986af18e6a22",
+    "expected": "Note:3\nPen:2\n",
+    "meaning": "Serializes two ordered records into a practice file and reloads their values.",
+    "handlingNotes": "Pin --workdir to a task-private per-example directory: writes/overwrites practice-data/items.json. Check file JSON equals ordered Name/Quantity records Note:3 and Pen:2; stdout already reads saved file. Never use shared working directory.",
+    "expectedFiles": [
+      {
+        "path": "practice-data/items.json",
+        "json": [
+          {
+            "Name": "Note",
+            "Quantity": 3
+          },
+          {
+            "Name": "Pen",
+            "Quantity": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "deep-21-04",
+    "source": "samples/expanded/deep/21/example-04",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/21.md",
+    "teachingExcerpt": "## 間違い：JSONとして読めれば有効な業務データだと思う\n\n```csharp\nusing System.Text.Json;\n\nstring json = \"{\\\"Name\\\":\\\"\\\",\\\"Quantity\\\":-5}\";\nItem? item = JsonSerializer.Deserialize<Item>(json);\nConsole.WriteLine(item?.Quantity);\n\npublic record Item(string Name, int Quantity);\n```\n\n観察結果は-5です。このJSONは構文として正しく、intへも変換できますが、空の商品名と負の数量が業務上正しいかは別です。nullable参照型の注釈だけで、全ての入力制約が実行時に検証されるわけではありません。修正では外部データを受ける型と利用前の検証を明示します。\n\n```csharp\nusing System.Text.Json;\n\nstring json = \"{\\\"Name\\\":\\\"\\\",\\\"Quantity\\\":-5}\";\nItemInput? item = JsonSerializer.Deserialize<ItemInput>(json);\nif (item is null || string.IsNullOrWhiteSpace(item.Name) || item.Quantity <= 0)\n{\n    Console.WriteLine(\"名前と数量を確認してください\");\n    return;\n}\nConsole.WriteLine($\"{item.Name.Trim()}:{item.Quantity}\");\n\npublic sealed class ItemInput\n{\n    public string? Name { get; set; }\n    public int Quantity { get; set; }\n}\n```\n\n期待出力は名前と数量を確認してくださいです。Quantityが省略されたとき0でよいのか、省略と明示的な0を区別する必要があるのかも設計します。区別が必要ならint?などで受けます。",
+    "sha256": {
+      "Program.cs": "fa0f8ec5d487c3803824d06de995e6e561a782894679340f74048b06fc826f18",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "08fdd045a39192236361b9364b2c758906e1c1092c7ac8795875986af18e6a22",
+    "expected": "-5\n",
+    "meaning": "Deliberately invalid business data still deserializes: negative quantity is observed, not repaired."
+  },
+  {
+    "id": "deep-21-05",
+    "source": "samples/expanded/deep/21/example-05",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/21.md",
+    "teachingExcerpt": "## 間違い：JSONとして読めれば有効な業務データだと思う\n\n```csharp\nusing System.Text.Json;\n\nstring json = \"{\\\"Name\\\":\\\"\\\",\\\"Quantity\\\":-5}\";\nItem? item = JsonSerializer.Deserialize<Item>(json);\nConsole.WriteLine(item?.Quantity);\n\npublic record Item(string Name, int Quantity);\n```\n\n観察結果は-5です。このJSONは構文として正しく、intへも変換できますが、空の商品名と負の数量が業務上正しいかは別です。nullable参照型の注釈だけで、全ての入力制約が実行時に検証されるわけではありません。修正では外部データを受ける型と利用前の検証を明示します。\n\n```csharp\nusing System.Text.Json;\n\nstring json = \"{\\\"Name\\\":\\\"\\\",\\\"Quantity\\\":-5}\";\nItemInput? item = JsonSerializer.Deserialize<ItemInput>(json);\nif (item is null || string.IsNullOrWhiteSpace(item.Name) || item.Quantity <= 0)\n{\n    Console.WriteLine(\"名前と数量を確認してください\");\n    return;\n}\nConsole.WriteLine($\"{item.Name.Trim()}:{item.Quantity}\");\n\npublic sealed class ItemInput\n{\n    public string? Name { get; set; }\n    public int Quantity { get; set; }\n}\n```\n\n期待出力は名前と数量を確認してくださいです。Quantityが省略されたとき0でよいのか、省略と明示的な0を区別する必要があるのかも設計します。区別が必要ならint?などで受けます。",
+    "sha256": {
+      "Program.cs": "769d4eeaf8c4d6611e2ab68178fe781c27f09034de345956220f7e1cddf0ad25",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "08fdd045a39192236361b9364b2c758906e1c1092c7ac8795875986af18e6a22",
+    "expected": "名前と数量を確認してください\n",
+    "meaning": "Business validation rejects blank name and negative quantity before use."
+  },
+  {
+    "id": "deep-21-06",
+    "source": "samples/expanded/deep/21/example-06",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/21.md",
+    "teachingExcerpt": "## 名前の大文字・小文字と既定値を確認する\n\n通常のJsonSerializerを既定設定で直接使う場合、プロパティ名の照合は大文字・小文字を区別します。Web向けの既定設定とは違いがあるので、単体のコンソール例とWeb APIを混同しません。\n\n```csharp\nusing System.Text.Json;\n\nstring json = \"{\\\"name\\\":\\\"Note\\\"}\";\nvar exact = JsonSerializer.Deserialize<NameInput>(json);\nvar flexible = JsonSerializer.Deserialize<NameInput>(json,\n    new JsonSerializerOptions { PropertyNameCaseInsensitive = true });\nConsole.WriteLine(exact?.Name ?? \"未設定\");\nConsole.WriteLine(flexible?.Name ?? \"未設定\");\n\npublic sealed class NameInput\n{\n    public string? Name { get; set; }\n}\n```\n\n期待出力は未設定、Noteです。Nameとnameが一致していないことが原因です。見当違いの「ファイルの読み込み失敗」と決めつけず、JSONの実際の内容と型、オプションを確認します。",
+    "sha256": {
+      "Program.cs": "0bbccd0751af7f71c3604a8dca8882d648984285b2ea43e30a1c2aef8ace56ba",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "08fdd045a39192236361b9364b2c758906e1c1092c7ac8795875986af18e6a22",
+    "expected": "未設定\nNote\n",
+    "meaning": "Default JSON property matching is case sensitive; explicitly insensitive matching recognizes name."
+  },
+  {
+    "id": "deep-22-01",
+    "source": "samples/expanded/deep/22/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/22.md",
+    "teachingExcerpt": "## DateOnlyは日付そのものを表す\n\n```csharp\nusing System.Globalization;\n\nvar deadline = new DateOnly(2026, 9, 30);\nDateOnly next = deadline.AddDays(1);\nConsole.WriteLine(deadline.ToString(\"yyyy-MM-dd\", CultureInfo.InvariantCulture));\nConsole.WriteLine(next.ToString(\"yyyy-MM-dd\", CultureInfo.InvariantCulture));\n```\n\n期待出力は2026-09-30、2026-10-01です。AddDaysは元の値を書き換えず、新しい日付を返します。DateOnlyは値型なので、変数deadlineとnextはそれぞれの値を保持します。月末から翌月へ移る計算を、日だけ手動で31に増やすのではなくAPIへ任せています。\n\n`yyyy-MM-dd`では年、月、日を指定し、MMは月です。mmは分なので、大文字と小文字の違いが意味を持ちます。InvariantCultureは利用者の地域設定に左右されない書式処理に使うカルチャーです。データ交換の安定した文字列表現に適しています。",
+    "sha256": {
+      "Program.cs": "ac8a04a4a41139a6836ea963ad7d654d39b770fecc39f59b5f4f3cf3f18da696",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "91ef3f4477c9549bfaadbdd5188e5007c6d757d07c7da9a6e152e8be850d9a35",
+    "expected": "2026-09-30\n2026-10-01\n",
+    "meaning": "AddDays returns next date across month boundary."
+  },
+  {
+    "id": "deep-22-02",
+    "source": "samples/expanded/deep/22/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/22.md",
+    "teachingExcerpt": "## DateTimeOffsetで同じ瞬間を比べる\n\n```csharp\nusing System.Globalization;\n\nvar japan = new DateTimeOffset(2026, 9, 14, 9, 0, 0, TimeSpan.FromHours(9));\nDateTimeOffset utc = japan.ToUniversalTime();\nConsole.WriteLine(japan.ToString(\"yyyy-MM-dd HH:mm zzz\", CultureInfo.InvariantCulture));\nConsole.WriteLine(utc.ToString(\"yyyy-MM-dd HH:mm zzz\", CultureInfo.InvariantCulture));\nConsole.WriteLine(japan == utc);\n```\n\n期待出力は2026-09-14 09:00 +09:00、2026-09-14 00:00 +00:00、Trueです。表示される時計の数字は違いますが、同じ瞬間を表しています。zzzはUTCとの差を表示します。DateTimeOffsetはオフセットを保持しますが、「どの地域の規則を使ったか」というタイムゾーンID自体を保持する型ではありません。\n\n```flow\n日本の表示 | 2026-09-14 09:00 +09:00\nUTCへ変換 | 9時間の差を反映\n同じ瞬間 | 2026-09-14 00:00 +00:00\n別の表示先へ変換 | 表示対象の地域規則を適用\n```\n\n「全てUTCで保存すれば全種類の日付が解決する」とは限りません。誕生日のような日付だけの値や、将来の地域時刻で行う予約では、DateOnlyやタイムゾーンIDなど、意味に合う情報も必要です。",
+    "sha256": {
+      "Program.cs": "da2d4dd4e0553292867e4ee4da89383ccd9c6e2e70a0ebb6f422a315c02dc173",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "91ef3f4477c9549bfaadbdd5188e5007c6d757d07c7da9a6e152e8be850d9a35",
+    "expected": "2026-09-14 09:00 +09:00\n2026-09-14 00:00 +00:00\nTrue\n",
+    "meaning": "Offset representations denote identical instant."
+  },
+  {
+    "id": "deep-22-03",
+    "source": "samples/expanded/deep/22/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/22.md",
+    "teachingExcerpt": "## DateTime.Kindと変換の前提\n\nDateTimeにはUtc、Local、UnspecifiedというKindがあります。UtcはUTC、Localはその環境のローカル時刻、Unspecifiedはどちらかを指定していない状態です。Kindは独立したタイムゾーンIDではありません。\n\n```csharp\nvar unspecified = new DateTime(2026, 9, 14, 9, 0, 0);\nvar utc = new DateTime(2026, 9, 14, 0, 0, 0, DateTimeKind.Utc);\nConsole.WriteLine(unspecified.Kind);\nConsole.WriteLine(utc.Kind);\n```\n\n期待出力はUnspecified、Utcです。new DateTimeで数字を作っただけでは、それが日本時間なのかUTCなのかは決まりません。DateTime.SpecifyKindは区分のラベルを付け替える操作であり、指定した地域から別の地域へ時計の数字を換算する操作ではありません。元のデータが何を意味するか不明なら、適当にUtcを付けて正しい瞬間になったとみなさないでください。",
+    "sha256": {
+      "Program.cs": "e7caf75e86f45e04a6db6a130ef3baa109f45ac69a1ffceda5afc271829eb158",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "91ef3f4477c9549bfaadbdd5188e5007c6d757d07c7da9a6e152e8be850d9a35",
+    "expected": "Unspecified\nUtc\n",
+    "meaning": "Constructor Kind differs; no implicit regional time assumption."
+  },
+  {
+    "id": "deep-22-05",
+    "source": "samples/expanded/deep/22/example-05",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/22.md",
+    "teachingExcerpt": "## 間違い：地域依存の文字列を固定形式として読む\n\n```csharp-error\nusing System.Globalization;\n\nstring input = \"14/09/2026\";\nDateTime date = DateTime.Parse(input, CultureInfo.GetCultureInfo(\"en-US\"));\nConsole.WriteLine(date);\n```\n\nこの形式は指定した解析条件で有効な月・日として読めず、FormatExceptionになる可能性のある入力です。曖昧な日付を利用者環境へ任せず、入力仕様が決まっているなら形式を明示してTryParseExactを使います。\n\n```csharp\nusing System.Globalization;\n\nstring input = \"2026-09-14\";\nbool ok = DateOnly.TryParseExact(input, \"yyyy-MM-dd\",\n    CultureInfo.InvariantCulture, DateTimeStyles.None, out DateOnly date);\nif (ok)\n{\n    Console.WriteLine(date.ToString(\"yyyy-MM-dd\", CultureInfo.InvariantCulture));\n}\nelse\n{\n    Console.WriteLine(\"日付は年-月-日で入力してください\");\n}\n```\n\n期待出力は2026-09-14です。DateTimeStyles.Noneは追加の特別な解析指定を使わないことを表す列挙値です。2026-02-30のような存在しない日付は、形が似ていても失敗します。文字列の形式と、カレンダーとして存在する値の両方が重要です。",
+    "sha256": {
+      "Program.cs": "9b45a6e034e8ed6be3e00a4cfe89e0c061e4eb05e7c0ce223cf0fc19ab3eb6da",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "91ef3f4477c9549bfaadbdd5188e5007c6d757d07c7da9a6e152e8be850d9a35",
+    "expected": "2026-09-14\n",
+    "meaning": "Exact invariant date format parses successfully."
+  },
+  {
+    "id": "deep-22-06",
+    "source": "samples/expanded/deep/22/example-06",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/22.md",
+    "teachingExcerpt": "## 実用例：締め日までの日数を明示的に計算する\n\n```csharp\nvar today = new DateOnly(2026, 9, 14);\nvar deadline = new DateOnly(2026, 9, 20);\nint remaining = deadline.DayNumber - today.DayNumber;\nConsole.WriteLine($\"残り{remaining}日\");\n```\n\n期待出力は残り6日です。DayNumberは基準日から数えた日数を表し、二つの日付の差を整数で求められます。この例ではテスト可能なようにtodayを固定しています。本当の今日を取得する場合、利用者のどの地域で今日を判断するかを決めます。\n\n当日を残り1日に含める業務なら計算規則が変わります。型が正しくても、締め日の含め方という業務ルールは別に決めなければなりません。",
+    "sha256": {
+      "Program.cs": "18c9db6a0b684657a73383af105963482713a34a354beafca374f83cddc492a8",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "91ef3f4477c9549bfaadbdd5188e5007c6d757d07c7da9a6e152e8be850d9a35",
+    "expected": "残り6日\n",
+    "meaning": "Fixed DayNumber subtraction avoids current-clock dependency."
+  },
+  {
+    "id": "deep-22-07",
+    "source": "samples/expanded/deep/22/example-07",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/22.md",
+    "teachingExcerpt": "## 間違い：AddDaysを呼ぶだけで変数が変わると思う\n\n```csharp\nusing System.Globalization;\n\nvar date = new DateOnly(2026, 9, 14);\ndate.AddDays(1);\nConsole.WriteLine(date.ToString(\"yyyy-MM-dd\", CultureInfo.InvariantCulture));\n```\n\n観察結果は2026-09-14のままです。戻り値を捨てています。修正は`date = date.AddDays(1);`です。前の文字列のTrimと同じく、元の値を変える操作なのか新しい値を返す操作なのかを確認します。\n\n```csharp\nusing System.Globalization;\n\nvar date = new DateOnly(2026, 9, 14);\ndate = date.AddDays(1);\nConsole.WriteLine(date.ToString(\"yyyy-MM-dd\", CultureInfo.InvariantCulture));\n```\n\n修正後は2026-09-15です。DateTime、DateTimeOffsetなどの日付計算でも、戻り値の受け取りが必要です。",
+    "sha256": {
+      "Program.cs": "a0a41b6ca886b8bf4d3a09ce2c402fb4847ae5215e67c4e86554ee3ba7618e70",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "91ef3f4477c9549bfaadbdd5188e5007c6d757d07c7da9a6e152e8be850d9a35",
+    "expected": "2026-09-14\n",
+    "meaning": "Intentional discarded AddDays result leaves original value unchanged."
+  },
+  {
+    "id": "deep-22-08",
+    "source": "samples/expanded/deep/22/example-08",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/22.md",
+    "teachingExcerpt": "## 間違い：AddDaysを呼ぶだけで変数が変わると思う\n\n```csharp\nusing System.Globalization;\n\nvar date = new DateOnly(2026, 9, 14);\ndate.AddDays(1);\nConsole.WriteLine(date.ToString(\"yyyy-MM-dd\", CultureInfo.InvariantCulture));\n```\n\n観察結果は2026-09-14のままです。戻り値を捨てています。修正は`date = date.AddDays(1);`です。前の文字列のTrimと同じく、元の値を変える操作なのか新しい値を返す操作なのかを確認します。\n\n```csharp\nusing System.Globalization;\n\nvar date = new DateOnly(2026, 9, 14);\ndate = date.AddDays(1);\nConsole.WriteLine(date.ToString(\"yyyy-MM-dd\", CultureInfo.InvariantCulture));\n```\n\n修正後は2026-09-15です。DateTime、DateTimeOffsetなどの日付計算でも、戻り値の受け取りが必要です。",
+    "sha256": {
+      "Program.cs": "d1a0b03fbd6d18c5d1b41cd53973674b756e61cd1da50eec78a2cc246024a1dd",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "91ef3f4477c9549bfaadbdd5188e5007c6d757d07c7da9a6e152e8be850d9a35",
+    "expected": "2026-09-15\n",
+    "meaning": "Assigning returned AddDays value advances date."
+  },
+  {
+    "id": "deep-22-09",
+    "source": "samples/expanded/deep/22/example-09",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/22.md",
+    "teachingExcerpt": "## 時計の時刻と経過時間を分ける\n\n`DateTime.Now`の差は、OSの時計の変更などの影響を受ける可能性があります。処理時間を測るならStopwatchを使います。Stopwatchは利用可能な高精度タイマーなどを利用する計測用の型です。\n\n```csharp\nusing System.Diagnostics;\n\nvar watch = Stopwatch.StartNew();\nlong total = 0;\nfor (int i = 0; i < 100_000; i++)\n{\n    total += i;\n}\nwatch.Stop();\nConsole.WriteLine(total);\nConsole.WriteLine($\"計測ミリ秒:{watch.Elapsed.TotalMilliseconds}\");\n```\n\n合計の期待値は4999950000です。経過時間の具体的な値は環境・JIT・負荷によって変わるため、固定の正解値を置きません。この短い一回の測定だけで性能の優劣を判断するのも不適切です。実務の性能比較ではウォームアップや複数回の測定、入力条件を揃えることが必要になります。",
+    "sha256": {
+      "Program.cs": "c99bfe42b2cf4bd72fefee3a2e9faeaae7ab67600383e0847dbd64a37198d103",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "91ef3f4477c9549bfaadbdd5188e5007c6d757d07c7da9a6e152e8be850d9a35",
+    "meaning": "Sum is deterministic; elapsed Stopwatch milliseconds are runtime measurement.",
+    "expectedRegex": "\\A4999950000\\n計測ミリ秒:([0-9]+(?:\\.[0-9]+)?(?:[Ee][+-]?[0-9]+)?)\\n\\Z",
+    "handlingNotes": "Require exact two-line structure, sum 4999950000, finite nonnegative parsed milliseconds, no stderr and exit 0. Pin invariant culture or handle culture explicitly. No fixed time or wall-clock bound is taught; only elapsed measurement. Regex permits nonnegative decimal/scientific formatting and rejects extra lines."
+  },
+  {
+    "id": "deep-23-01",
+    "source": "samples/expanded/deep/23/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/23.md",
+    "teachingExcerpt": "## 最小例：awaitで完了後へつなぐ\n\n```csharp\nConsole.WriteLine(\"開始\");\nstring result = await GetMessageAsync();\nConsole.WriteLine(result);\nConsole.WriteLine(\"終了\");\n\nstatic async Task<string> GetMessageAsync()\n{\n    await Task.Delay(10);\n    return \"受信完了\";\n}\n```\n\n期待出力は開始、受信完了、終了です。Task.Delayは指定した時間以上の待機を表すTaskを返します。正確に10ミリ秒で再開する保証ではありません。ここでは外部待ちを簡単に表す練習として使っています。\n\nasyncは、そのメソッド内でawaitを使える非同期メソッドの形を指定します。awaitは対象が既に完了していれば結果をすぐに受け取り、未完了なら後続の処理を続きとして保存して、呼び出し側へ戻ります。Task<string>をawaitした結果の型はstringです。",
+    "sha256": {
+      "Program.cs": "6aeb9092e22ee66ccd245a4ff27f238f996ff4fbe7d0632e5e68ca383e6977e0",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "5d7b9cf761e6b0c5b893327485fa5fdbb6b2e371309ff34b976f91fe9e0be0e8",
+    "expected": "開始\n受信完了\n終了\n",
+    "meaning": "Await keeps final output after asynchronous result."
+  },
+  {
+    "id": "deep-23-02",
+    "source": "samples/expanded/deep/23/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/23.md",
+    "teachingExcerpt": "## 処理の開始と完了待ちは別\n\n次は完了する時点を明示的に制御し、タイミングに左右されず順序を追う例です。TaskCompletionSource<T>は、Taskの完了を外側から知らせるための型です。通常のAPI呼び出しではAPIがTaskを返すので毎回自作する必要はありません。ここでは観察用の信号として使います。\n\n```csharp\nvar signal = new TaskCompletionSource<bool>(\n    TaskCreationOptions.RunContinuationsAsynchronously);\nConsole.WriteLine(\"1:呼び出す前\");\nTask<string> work = ReadAfterSignalAsync(signal.Task);\nConsole.WriteLine(\"3:呼び出し元へ戻った\");\nsignal.SetResult(true);\nConsole.WriteLine(await work);\n\nstatic async Task<string> ReadAfterSignalAsync(Task signal)\n{\n    Console.WriteLine(\"2:最初のawaitより前\");\n    await signal;\n    return \"4:信号の後に完了\";\n}\n```\n\n期待出力は1、2、3、4の番号順です。ReadAfterSignalAsyncを呼び出した直後は、最初の未完了awaitに到達するまで通常どおり処理を進めます。signalはまだ未完了なので、workというTaskを呼び出し元が受け取れます。SetResultで信号を完了させると、待っていた処理が続行可能になります。RunContinuationsAsynchronouslyは、完了通知した呼び出しの中で続きの処理をそのまま同期実行させないための指定です。この例の順序の中心は、SetResultより前に3を表示していることです。\n\n```flow\n呼び出し元 | 1を表示して非同期メソッドを呼ぶ\nメソッドの同期部分 | 2を表示する\n未完了のawait | 続きと必要な状態を保存してTaskを返す\n呼び出し元 | 3を表示し信号を完了させる\nメソッドの続き | 結果文字列を返しTaskを完了\n呼び出し元のawait後 | 結果を表示\n```",
+    "sha256": {
+      "Program.cs": "bdf4a646c86c81f9736027db62fbd6d823af9ea178ba89664a342e07251a4004",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "5d7b9cf761e6b0c5b893327485fa5fdbb6b2e371309ff34b976f91fe9e0be0e8",
+    "expected": "1:呼び出す前\n2:最初のawaitより前\n3:呼び出し元へ戻った\n4:信号の後に完了\n",
+    "meaning": "Synchronous prefix precedes return; incomplete signal enforces later completion ordering."
+  },
+  {
+    "id": "deep-23-04",
+    "source": "samples/expanded/deep/23/example-04",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/23.md",
+    "teachingExcerpt": "## 間違い：Taskを取得しただけで完了したと思う\n\n```csharp-error\nSaveAsync();\nConsole.WriteLine(\"保存できました\");\n\nstatic async Task SaveAsync()\n{\n    await Task.Delay(100);\n    Console.WriteLine(\"実際の保存処理が完了\");\n}\n```\n\nCS4014の警告対象となる形です。待たずに「保存できました」を表示し、コンソールのメイン処理が先に終わると、保存の続きが完了する前にプロセスが終了する可能性があります。出力順や完了の有無を固定して期待してはいけません。確認する場所は呼び出し行のawaitと、返されたTaskを誰が監視しているかです。\n\n```csharp\nawait SaveAsync();\nConsole.WriteLine(\"保存できました\");\n\nstatic async Task SaveAsync()\n{\n    await Task.Delay(10);\n    Console.WriteLine(\"実際の保存処理が完了\");\n}\n```\n\n修正後は実際の保存処理が完了、保存できましたの順です。名前をAsyncで終える慣習は非同期メソッドと気づく助けになりますが、名前だけで待機を自動挿入するわけではありません。",
+    "sha256": {
+      "Program.cs": "f29bb3c9e74de77c17d86e0f302111c890b0244109433a43d95b87d31f16e1a8",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "5d7b9cf761e6b0c5b893327485fa5fdbb6b2e371309ff34b976f91fe9e0be0e8",
+    "expected": "実際の保存処理が完了\n保存できました\n",
+    "meaning": "Await saves before claiming successful save."
+  },
+  {
+    "id": "deep-23-05",
+    "source": "samples/expanded/deep/23/example-05",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/23.md",
+    "teachingExcerpt": "## 失敗はawaitする側で扱う\n\n```csharp\ntry\n{\n    int result = await LoadAsync();\n    Console.WriteLine(result);\n}\ncatch (InvalidOperationException ex)\n{\n    Console.WriteLine($\"読み込み失敗:{ex.Message}\");\n}\n\nstatic async Task<int> LoadAsync()\n{\n    await Task.Delay(1);\n    throw new InvalidOperationException(\"形式が不正です\");\n}\n```\n\n期待出力は読み込み失敗:形式が不正ですです。非同期メソッドの失敗は返されたTaskへ保持され、await時に例外として観察できます。Taskを放置すると成功・失敗のどちらも呼び出し側が扱えなくなります。\n\nasync voidはTaskを返さないため、呼び出し元がawaitできません。主にイベントハンドラーなど戻り値voidが要求される場面に限定し、通常の業務処理ではTaskまたはTask<T>を返します。イベントの入り口がasync voidでも、実際の処理はTaskを返すメソッドへ分けると検証しやすくなります。",
+    "sha256": {
+      "Program.cs": "27ccedb62db8b15b1cefb9eec0adb2bb39a0901302e5f5c02075567189b44f10",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "5d7b9cf761e6b0c5b893327485fa5fdbb6b2e371309ff34b976f91fe9e0be0e8",
+    "expected": "読み込み失敗:形式が不正です\n",
+    "meaning": "Await observes async exception and typed handler prints failure."
+  },
+  {
+    "id": "deep-24-01",
+    "source": "samples/expanded/deep/24/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/24.md",
+    "teachingExcerpt": "## 最小例：開始してからWhenAllで待つ\n\n```csharp\nTask<int> first = LoadAsync(10);\nTask<int> second = LoadAsync(20);\nint[] results = await Task.WhenAll(first, second);\nConsole.WriteLine(string.Join(\",\", results));\n\nstatic async Task<int> LoadAsync(int value)\n{\n    await Task.Delay(10);\n    return value;\n}\n```\n\n期待出力は10,20です。LoadAsyncを二回呼び出した時点で、それぞれの処理が始まります。WhenAllが各処理を初めて開始するわけではありません。Task.WhenAll<int>の成功結果の配列は、引数で渡したTaskの順序に対応します。どちらが先に完了したかの順ではありません。\n\n| 書き方 | 開始の順序 | 向いている条件 |\n|---|---|---|\n| await A(); await B(); | A完了後にB開始 | BがAに依存する |\n| a=A(); b=B(); await WhenAll(a,b); | 両方開始後にまとめて待つ | 独立した処理 |\n| foreach内でawait | 一件ずつ進む | 順序や負荷制限を優先 |\n| 件数を制限して同時開始 | 一定数まで重ねる | 外部APIや資源を保護 |",
+    "sha256": {
+      "Program.cs": "9d08558df4b28e48956550621ec151eb6eb76a218515cbe6493a9d1935e5561f",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "e1c60520b22064fe361c9b666c1e2e232d0985553209fa0facee8c5a518ca5da",
+    "expected": "10,20\n",
+    "meaning": "WhenAll results retain input task order."
+  },
+  {
+    "id": "deep-24-02",
+    "source": "samples/expanded/deep/24/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/24.md",
+    "teachingExcerpt": "## 完了順を意図的に逆にして確かめる\n\n```csharp\nvar first = new TaskCompletionSource<int>(TaskCreationOptions.RunContinuationsAsynchronously);\nvar second = new TaskCompletionSource<int>(TaskCreationOptions.RunContinuationsAsynchronously);\nTask<int[]> all = Task.WhenAll(first.Task, second.Task);\nsecond.SetResult(20);\nConsole.WriteLine(all.IsCompleted);\nfirst.SetResult(10);\nConsole.WriteLine(string.Join(\",\", await all));\n```\n\n期待出力はFalse、10,20です。secondだけが終わった段階ではallは未完了です。firstも成功して初めて両方の結果を受け取れます。TaskCompletionSourceは観察用に完了を手動制御しています。実際の通信では通信APIが完了を管理します。\n\n```flow\nTask Aを開始 | 未完了\nTask Bを開始 | 未完了\nBが先に完了 | WhenAllはAを待つ\nAも完了 | WhenAllの成功結果を作れる\n結果配列 | 渡した順の[Aの結果,Bの結果]\n```",
+    "sha256": {
+      "Program.cs": "286c3fdc6daa10a296353d9ba0914669ff537a4addeec4cce29a0adee10ffa7c",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "e1c60520b22064fe361c9b666c1e2e232d0985553209fa0facee8c5a518ca5da",
+    "expected": "False\n10,20\n",
+    "meaning": "Completing second task alone does not complete WhenAll; results follow input order."
+  },
+  {
+    "id": "deep-24-03",
+    "source": "samples/expanded/deep/24/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/24.md",
+    "teachingExcerpt": "## WhenAllで失敗・キャンセルが起きたとき\n\n全てのTaskが完了状態になるまでWhenAllのTaskは完了しません。一つでも失敗があれば全体は失敗、失敗がなくキャンセルが含まれれば全体はキャンセル、それ以外は成功です。一つが失敗しただけで残りが自動キャンセルされるわけではありません。\n\nawaitで例外を受け取るときは通常一つの例外が再スローされますが、WhenAllのTaskのExceptionには複数の失敗情報が含まれる場合があります。複数の失敗を記録する必要があるなら、まとめたTaskを変数へ保持して確認します。どの例外が最初にawaitから出るかへ依存した業務判断は避けます。\n\n```csharp\nTask all = Task.WhenAll(FailAsync(\"A\"), FailAsync(\"B\"));\ntry\n{\n    await all;\n}\ncatch\n{\n    int count = all.Exception?.InnerExceptions.Count ?? 0;\n    Console.WriteLine($\"失敗件数:{count}\");\n}\n\nstatic async Task FailAsync(string name)\n{\n    await Task.Delay(1);\n    throw new InvalidOperationException(name);\n}\n```\n\nこの二つの処理が例外を投げる例では、期待表示は失敗件数:2です。catchを空にしていません。実務では必要な情報を記録し、呼び出し側へ失敗を返すなど、回復方針を決めます。",
+    "sha256": {
+      "Program.cs": "61e4dcee97b8610c3ee69c9d59579bc4a38b2a9ca62392cb70c6ee4fb225d44d",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "e1c60520b22064fe361c9b666c1e2e232d0985553209fa0facee8c5a518ca5da",
+    "expected": "失敗件数:2\n",
+    "meaning": "WhenAll stores both failures; aggregate count observed after await failure."
+  },
+  {
+    "id": "deep-24-04",
+    "source": "samples/expanded/deep/24/example-04",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/24.md",
+    "teachingExcerpt": "## キャンセルの役割を分ける\n\nCancellationTokenSourceはキャンセル要求を発生させる側、CancellationTokenは要求の有無を伝える値です。処理を呼ぶ側がSourceを所有し、処理へはTokenを渡します。Tokenを受け取るだけでは止まりません。処理が確認するか、対応するI/O APIへ渡す必要があります。\n\n```csharp\nusing var source = new CancellationTokenSource();\nsource.Cancel();\ntry\n{\n    await LoadAsync(source.Token);\n}\ncatch (OperationCanceledException) when (source.IsCancellationRequested)\n{\n    Console.WriteLine(\"中止しました\");\n}\n\nstatic async Task LoadAsync(CancellationToken token)\n{\n    token.ThrowIfCancellationRequested();\n    await Task.Delay(100, token);\n    Console.WriteLine(\"完了\");\n}\n```\n\n期待出力は中止しましたです。事前にCancelしてあるので、ThrowIfCancellationRequestedでキャンセル例外が発生し、完了は表示されません。catchのwhenは、条件に合う場合だけこのcatchで扱う例外フィルターです。この場合は自分のキャンセル要求があるときに中止として扱っています。\n\nキャンセルを例外で表すのは必ずしも予期しない障害という意味ではありません。成功、失敗、利用者の中止を区別すると、不要なエラー表示や再試行を防げます。",
+    "sha256": {
+      "Program.cs": "8f2ec6173ac222ca456ab649fc7e9eba93ac1482ece434f4435d5a2f7ce37e4e",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "e1c60520b22064fe361c9b666c1e2e232d0985553209fa0facee8c5a518ca5da",
+    "expected": "中止しました\n",
+    "meaning": "Pre-cancelled token throws before completion output; filtered handler recognizes cancellation."
+  },
+  {
+    "id": "deep-24-06",
+    "source": "samples/expanded/deep/24/example-06",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/24.md",
+    "teachingExcerpt": "## 実用例：同時進行を2件に制限する\n\nSemaphoreSlimは、同時に入ってよい処理の数を管理する仕組みです。ここでは最大2件まで処理の本体へ入れるようにします。WaitAsyncで順番を待ち、入れた後はfinallyで必ずReleaseします。\n\n```csharp\nusing System.Linq;\n\nusing var gate = new SemaphoreSlim(2);\nint[] inputs = { 1, 2, 3, 4 };\nTask<int>[] tasks = inputs.Select(ProcessAsync).ToArray();\nint[] results = await Task.WhenAll(tasks);\nConsole.WriteLine(string.Join(\",\", results));\n\nasync Task<int> ProcessAsync(int value)\n{\n    await gate.WaitAsync();\n    try\n    {\n        await Task.Delay(10);\n        return value * 10;\n    }\n    finally\n    {\n        gate.Release();\n    }\n}\n```\n\n期待出力は10,20,30,40です。具体的にどの処理がいつ開始・完了するかは固定していません。gateの枠を取得する前はtryへ入らないので、取得していない枠を誤ってReleaseしません。実務でキャンセルを使うならWaitAsyncと中のI/OへTokenを渡します。\n\nこの例は4件のため単純にTaskを全て作っています。何十万件もある場合、同時本体数を制限しても待機中のTaskが大量にできるので、入力を段階的に読みながら処理する設計も必要です。制限すべきなのが通信数、Task数、メモリ量のどれかを整理します。",
+    "sha256": {
+      "Program.cs": "de3a7b2da5f2264719cf8e482540b9e91f1b4c06bde14a3f6bfd567ca06bb9ad",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "e1c60520b22064fe361c9b666c1e2e232d0985553209fa0facee8c5a518ca5da",
+    "expected": "10,20,30,40\n",
+    "meaning": "Semaphore bounds concurrent work while WhenAll output follows original input order."
+  },
+  {
+    "id": "deep-24-07",
+    "source": "samples/expanded/deep/24/example-07",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/24.md",
+    "teachingExcerpt": "## WhenAnyの二段階を理解する\n\nWhenAnyは、最初に完了したTaskを結果として返すTaskを作ります。外側をawaitしただけでは、勝った内側のTaskの成功結果を受け取ったことにはなりません。内側が失敗していることもあるので、さらにawaitして結果・例外を観察します。\n\n```csharp\nTask<int> first = Task.FromResult(10);\nTask<int> second = Task.FromResult(20);\nTask<int> completed = await Task.WhenAny(first, second);\nint result = await completed;\nConsole.WriteLine(result is 10 or 20);\n```\n\nこの例の期待出力はTrueです。両方完了済みのどちらを選ぶかを、教材の業務仕様として固定しません。また、負けたTaskは自動では止まりません。不要になった処理を止める必要があるなら、別途キャンセルを要求し、終了時の例外も回収する設計にします。",
+    "sha256": {
+      "Program.cs": "a87375937bbd76a1a36f3c6a6edf333644c55af6629b080098a7f7490f32d165",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "e1c60520b22064fe361c9b666c1e2e232d0985553209fa0facee8c5a518ca5da",
+    "expected": "True\n",
+    "meaning": "WhenAny chooses a completed task; chosen value can be either 10 or 20, boolean contract remains true."
+  },
+  {
+    "id": "deep-25-04",
+    "source": "samples/expanded/deep/25/example-04",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/25.md",
+    "teachingExcerpt": "## 間違い：同じ型や入口のコピーを置く\n\n```csharp-error\nConsole.WriteLine(\"開始\");\n\npublic class Product { }\npublic class Product { }\n```\n\n同じ名前空間に同名の型を重複宣言した形で、コンパイルエラーになります。また、複数のファイルにトップレベル文を置く場合も入口が重複する問題があります。確認する場所は「今開いているファイル」だけでなく、プロジェクトへ含まれる全ての.csファイルです。\n\n修正は重複した型や古い入口を除き、独立した例は別のプロジェクトへ置くことです。\n\n```csharp\nConsole.WriteLine(\"開始\");\n\npublic class Product { }\n```\n\nこの教材の各サンプルが独立したフォルダーを持つのは、同じ名前の型や入口が互いに衝突しないためでもあります。",
+    "sha256": {
+      "Program.cs": "a3f8bc7645e2346ebc74383fcaf46e09ea1dc1873b7a4ba16ac899b5ce62bd6b",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "7d9408f197d939a582b90e781c864a6e5cc4d68367f3ae34a4b1d6a7ea07cc33",
+    "expected": "開始\n",
+    "meaning": "Top-level executable statement prints before separate Product type declaration; not the multi-file 360 example."
+  },
+  {
+    "id": "deep-26-01",
+    "source": "samples/expanded/deep/26/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/26.md",
+    "teachingExcerpt": "## 最小例：期待値を固定して比べる\n\n次はテストフレームワークを導入する前に、比較の本質を理解するコンソール例です。このページ上でコードを実行しているわけではありません。\n\n```csharp\nint actual = ShippingFee(5000);\nint expected = 0;\nif (actual != expected)\n{\n    throw new InvalidOperationException($\"期待:{expected} 実際:{actual}\");\n}\nConsole.WriteLine(\"境界5000の比較が一致\");\n\nstatic int ShippingFee(int subtotal)\n{\n    return subtotal >= 5000 ? 0 : 500;\n}\n```\n\n期待出力は境界5000の比較が一致です。「5000以上なら送料0」という仕様をexpected=0で表し、メソッドを呼んだ結果と比較しています。結果を見てから期待値を書き換えると、間違いを正当化するだけになってしまいます。期待値は仕様から決めます。",
+    "sha256": {
+      "Program.cs": "13c48b799d523567e88247d753130269aa4f669f81d573eef0c22e504ce5270e",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "0e71e96fd5ea033bac4252cf71def932039e8f16c9464ec1ffd29342983b69b8",
+    "expected": "境界5000の比較が一致\n",
+    "meaning": "At boundary 5000, inclusive free-shipping condition matches independent expected zero."
+  },
+  {
+    "id": "deep-26-02",
+    "source": "samples/expanded/deep/26/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/26.md",
+    "teachingExcerpt": "## 間違い：境界を一つずらす\n\n```csharp\nConsole.WriteLine(ShippingFee(4999));\nConsole.WriteLine(ShippingFee(5000));\nConsole.WriteLine(ShippingFee(5001));\n\nstatic int ShippingFee(int subtotal)\n{\n    return subtotal > 5000 ? 0 : 500;\n}\n```\n\n観察結果は500、500、0です。仕様が5000以上なら、中央が間違っています。修正箇所は`>`を`>=`へ変える条件式です。4999、5000、5001のように境界の直前・境界・直後を選ぶと、ずれを発見しやすくなります。\n\n```csharp\nConsole.WriteLine(ShippingFee(4999));\nConsole.WriteLine(ShippingFee(5000));\nConsole.WriteLine(ShippingFee(5001));\n\nstatic int ShippingFee(int subtotal)\n{\n    return subtotal >= 5000 ? 0 : 500;\n}\n```\n\n修正後の期待出力は500、0、0です。100や10000だけで確認すると、誤った条件式でも見逃します。",
+    "sha256": {
+      "Program.cs": "356a1530897431f87e002634c2d74a2c3bede0ba6b7e5239eedba13032545baf",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "0e71e96fd5ea033bac4252cf71def932039e8f16c9464ec1ffd29342983b69b8",
+    "expected": "500\n500\n0\n",
+    "meaning": "Intentional exclusive-threshold defect exhibits incorrect boundary value, as lesson teaches."
+  },
+  {
+    "id": "deep-26-03",
+    "source": "samples/expanded/deep/26/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/26.md",
+    "teachingExcerpt": "## 間違い：境界を一つずらす\n\n```csharp\nConsole.WriteLine(ShippingFee(4999));\nConsole.WriteLine(ShippingFee(5000));\nConsole.WriteLine(ShippingFee(5001));\n\nstatic int ShippingFee(int subtotal)\n{\n    return subtotal > 5000 ? 0 : 500;\n}\n```\n\n観察結果は500、500、0です。仕様が5000以上なら、中央が間違っています。修正箇所は`>`を`>=`へ変える条件式です。4999、5000、5001のように境界の直前・境界・直後を選ぶと、ずれを発見しやすくなります。\n\n```csharp\nConsole.WriteLine(ShippingFee(4999));\nConsole.WriteLine(ShippingFee(5000));\nConsole.WriteLine(ShippingFee(5001));\n\nstatic int ShippingFee(int subtotal)\n{\n    return subtotal >= 5000 ? 0 : 500;\n}\n```\n\n修正後の期待出力は500、0、0です。100や10000だけで確認すると、誤った条件式でも見逃します。",
+    "sha256": {
+      "Program.cs": "4efab4b027adea7a59f4c736d2b4e5483a1d361d08a07bc09f4d3302a7b665c0",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "0e71e96fd5ea033bac4252cf71def932039e8f16c9464ec1ffd29342983b69b8",
+    "expected": "500\n0\n0\n",
+    "meaning": "Repaired inclusive threshold matches below/at/above boundary outputs."
+  },
+  {
+    "id": "deep-26-05",
+    "source": "samples/expanded/deep/26/example-05",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/26.md",
+    "teachingExcerpt": "## 状態変更を伴うテスト\n\n```csharp\nvar stock = new Stock(3);\nbool accepted = stock.TryTake(2);\nCheck(accepted, \"2個の要求が通る\");\nCheck(stock.Count == 1, \"残数は1\");\nbool rejected = stock.TryTake(2);\nCheck(!rejected, \"不足時は拒否\");\nCheck(stock.Count == 1, \"拒否時も残数は1\");\nConsole.WriteLine(\"4つの比較が一致\");\n\nstatic void Check(bool condition, string description)\n{\n    if (!condition) throw new InvalidOperationException(description);\n}\n\npublic sealed class Stock\n{\n    public int Count { get; private set; }\n    public Stock(int count)\n    {\n        if (count < 0) throw new ArgumentOutOfRangeException(nameof(count));\n        Count = count;\n    }\n    public bool TryTake(int quantity)\n    {\n        if (quantity <= 0 || quantity > Count) return false;\n        Count -= quantity;\n        return true;\n    }\n}\n```\n\n期待出力は4つの比較が一致です。成功したかだけでなく、成功後の残数、失敗時に状態が変わらないことまで確認しています。状態を持つインスタンスをテスト間で使い回すと、実行順に依存することがあるため、原則として各テストの準備を独立させます。この例は同じシナリオ内の連続操作なので一つのStockを使っています。",
+    "sha256": {
+      "Program.cs": "a13cf54826a4d271bb86ba29659cc19c62b0ba4b31e417363fc7ad206b76d18f",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "0e71e96fd5ea033bac4252cf71def932039e8f16c9464ec1ffd29342983b69b8",
+    "expected": "4つの比較が一致\n",
+    "meaning": "Four assertions check accepted take, remaining count, rejected take, unchanged rejected state."
+  },
+  {
+    "id": "deep-27-01",
+    "source": "samples/expanded/deep/27/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/27.md",
+    "teachingExcerpt": "## 最小例：計算と表示を分ける\n\n```csharp\nint total = CalculateTotal(120, 3);\nConsole.WriteLine($\"合計:{total}\");\n\nstatic int CalculateTotal(int unitPrice, int quantity)\n{\n    if (unitPrice < 0) throw new ArgumentOutOfRangeException(nameof(unitPrice));\n    if (quantity <= 0) throw new ArgumentOutOfRangeException(nameof(quantity));\n    return checked(unitPrice * quantity);\n}\n```\n\n期待出力は合計:360です。CalculateTotalはConsoleへ表示せず、値を返します。画面、ファイル、Web APIのどこから呼んでも同じ計算を利用できます。nameofは変数やメンバーの名前を文字列として得る構文です。引数名を直接文字列で重複記述するより、名前変更に追随しやすくなります。\n\nこのメソッドはプログラム内部から不適切な引数を渡された場合を例外で示します。利用者が何度も入力を間違える通常の流れでは、入口でTryParseしたり、成功・失敗を結果として返したりする設計も適しています。例外と結果型を目的で使い分けます。",
+    "sha256": {
+      "Program.cs": "0ab8d4df979c9b1a52a154aeec3318b6af1ec7a46306ca23b11a32e5da4512a0",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "591185372641ec1da374911c2da45de22d8ea65cd479593d7c2f758d6eaf4b1d",
+    "expected": "合計:360\n",
+    "meaning": "Calculation returns checked 120 times 3 and presentation formats total."
+  },
+  {
+    "id": "deep-27-02",
+    "source": "samples/expanded/deep/27/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/27.md",
+    "teachingExcerpt": "## 実用例：入力・業務・表示の三つの境界\n\n```csharp\nvar stock = new StockService(5);\nHandleInput(\"2\", stock);\nHandleInput(\"10\", stock);\nHandleInput(\"abc\", stock);\nConsole.WriteLine($\"最終在庫:{stock.Count}\");\n\nstatic void HandleInput(string text, StockService stock)\n{\n    if (!int.TryParse(text, out int quantity))\n    {\n        Console.WriteLine(\"整数で入力してください\");\n        return;\n    }\n    TakeResult result = stock.Take(quantity);\n    Console.WriteLine(result.Message);\n}\n\npublic record TakeResult(bool Accepted, string Message);\n\npublic sealed class StockService\n{\n    public int Count { get; private set; }\n    public StockService(int count)\n    {\n        if (count < 0) throw new ArgumentOutOfRangeException(nameof(count));\n        Count = count;\n    }\n    public TakeResult Take(int quantity)\n    {\n        if (quantity <= 0) return new(false, \"数量は1以上です\");\n        if (quantity > Count) return new(false, \"在庫不足です\");\n        Count -= quantity;\n        return new(true, $\"{quantity}個を受け付けました\");\n    }\n}\n```\n\n期待出力は2個を受け付けました、在庫不足です、整数で入力してください、最終在庫:3です。new(false, ...)は、戻り値のTakeResult型が分かる位置なので型名を省略したnewです。同じ部分をnew TakeResult(false, ...)と書いても構いません。\n\n| 入力 | 形式の検証 | 業務の検証 | 在庫の前→後 |\n|---|---|---|---|\n| \"2\" | 整数2にできる | 正数、5以内 | 5→3 |\n| \"10\" | 整数10にできる | 3を超える | 3→3 |\n| \"abc\" | 整数にできない | 業務を呼ばない | 3→3 |\n\nこの例のMessageは学習用に表示文までまとめています。複数言語やHTTPへ展開する場合は、結果に失敗理由のenumなどを持たせ、表示文やHTTPステータスへの変換を入口で行うと、業務層が表現方法へ依存しにくくなります。",
+    "sha256": {
+      "Program.cs": "0afd51063ce4f0028d08c74a7a3d6c8b7d0076b317e7b317e0ede04d95b5a6aa",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "591185372641ec1da374911c2da45de22d8ea65cd479593d7c2f758d6eaf4b1d",
+    "expected": "2個を受け付けました\n在庫不足です\n整数で入力してください\n最終在庫:3\n",
+    "meaning": "Parse/business/presentation separation; accepted take reduces stock, rejected and malformed inputs do not."
+  },
+  {
+    "id": "deep-27-03",
+    "source": "samples/expanded/deep/27/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/27.md",
+    "teachingExcerpt": "## 間違い：先に状態を変更してから検証する\n\n```csharp\nvar stock = new Stock(3);\nConsole.WriteLine(stock.Take(5));\nConsole.WriteLine(stock.Count);\n\npublic sealed class Stock\n{\n    public int Count { get; private set; }\n    public Stock(int count) => Count = count;\n    public bool Take(int quantity)\n    {\n        Count -= quantity;\n        if (Count < 0) return false;\n        return true;\n    }\n}\n```\n\n観察結果はFalse、-2です。失敗と返しているのに、状態は既に壊れています。確認する箇所はreturn falseだけでなく、その前に実行された代入です。修正では変更できる条件を先に確認し、成功する場合だけ更新します。\n\n```csharp\nvar stock = new Stock(3);\nConsole.WriteLine(stock.Take(5));\nConsole.WriteLine(stock.Count);\n\npublic sealed class Stock\n{\n    public int Count { get; private set; }\n    public Stock(int count)\n    {\n        if (count < 0) throw new ArgumentOutOfRangeException(nameof(count));\n        Count = count;\n    }\n    public bool Take(int quantity)\n    {\n        if (quantity <= 0 || quantity > Count) return false;\n        Count -= quantity;\n        return true;\n    }\n}\n```\n\n修正後の期待出力はFalse、3です。成功時だけ変えるというルールを、実際の命令順で保証しています。",
+    "sha256": {
+      "Program.cs": "57893a7fec61065a42b373e5bdca1d1030097acdc2a2a221fe09ab8d05625f6d",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "591185372641ec1da374911c2da45de22d8ea65cd479593d7c2f758d6eaf4b1d",
+    "expected": "False\n-2\n",
+    "meaning": "Intentional mutation-before-validation defect corrupts stock despite rejection."
+  },
+  {
+    "id": "deep-27-04",
+    "source": "samples/expanded/deep/27/example-04",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/27.md",
+    "teachingExcerpt": "## 間違い：先に状態を変更してから検証する\n\n```csharp\nvar stock = new Stock(3);\nConsole.WriteLine(stock.Take(5));\nConsole.WriteLine(stock.Count);\n\npublic sealed class Stock\n{\n    public int Count { get; private set; }\n    public Stock(int count) => Count = count;\n    public bool Take(int quantity)\n    {\n        Count -= quantity;\n        if (Count < 0) return false;\n        return true;\n    }\n}\n```\n\n観察結果はFalse、-2です。失敗と返しているのに、状態は既に壊れています。確認する箇所はreturn falseだけでなく、その前に実行された代入です。修正では変更できる条件を先に確認し、成功する場合だけ更新します。\n\n```csharp\nvar stock = new Stock(3);\nConsole.WriteLine(stock.Take(5));\nConsole.WriteLine(stock.Count);\n\npublic sealed class Stock\n{\n    public int Count { get; private set; }\n    public Stock(int count)\n    {\n        if (count < 0) throw new ArgumentOutOfRangeException(nameof(count));\n        Count = count;\n    }\n    public bool Take(int quantity)\n    {\n        if (quantity <= 0 || quantity > Count) return false;\n        Count -= quantity;\n        return true;\n    }\n}\n```\n\n修正後の期待出力はFalse、3です。成功時だけ変えるというルールを、実際の命令順で保証しています。",
+    "sha256": {
+      "Program.cs": "be1d9ef684e2250aaf07b65f2dfbe762b6cb2e75adb0f7f634d973173522e033",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "591185372641ec1da374911c2da45de22d8ea65cd479593d7c2f758d6eaf4b1d",
+    "expected": "False\n3\n",
+    "meaning": "Validation before mutation preserves rejected stock."
+  },
+  {
+    "id": "deep-28-01",
+    "source": "samples/expanded/deep/28/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/28.md",
+    "teachingExcerpt": "## 最小例：通信処理を差し替えて順序を学ぶ\n\n外部サイトへ依存せず、HttpClientが送った要求と返ってきた応答を学ぶ例です。HttpMessageHandlerはHttpClientの送信を受け持つ部品です。ここでは本物のネットワークの代わりに決まった応答を返します。実際のDNS・TLS・相手サーバーを検証する例ではありません。\n\n```csharp\nusing System.Net;\nusing System.Net.Http.Json;\nusing System.Text;\n\nusing var client = new HttpClient(new DemoHandler());\nusing HttpResponseMessage response = await client.GetAsync(\"https://example.invalid/items/3\");\nConsole.WriteLine((int)response.StatusCode);\nresponse.EnsureSuccessStatusCode();\nItem? item = await response.Content.ReadFromJsonAsync<Item>();\nConsole.WriteLine(item?.Name ?? \"データなし\");\n\npublic record Item(int Id, string Name);\n\npublic sealed class DemoHandler : HttpMessageHandler\n{\n    protected override Task<HttpResponseMessage> SendAsync(\n        HttpRequestMessage request, CancellationToken cancellationToken)\n    {\n        Console.WriteLine($\"要求:{request.Method} {request.RequestUri?.AbsolutePath}\");\n        var response = new HttpResponseMessage(HttpStatusCode.OK)\n        {\n            Content = new StringContent(\"{\\\"id\\\":3,\\\"name\\\":\\\"Note\\\"}\", Encoding.UTF8, \"application/json\")\n        };\n        return Task.FromResult(response);\n    }\n}\n```\n\n期待出力は要求:GET /items/3、200、Noteです。GetAsyncはTask<HttpResponseMessage>を返し、awaitで応答を受け取ります。StatusCodeはHTTPの結果、ReadFromJsonAsyncはJSONを型へ変換する処理です。usingで応答を解放します。Contentは応答の本文を表す部品です。",
+    "sha256": {
+      "Program.cs": "418b34c8111122f8e403777bc4be6cc33435877f767f004cc15ba5d457fb296b",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "0b059196bfae32ef16b7380998194879d6a4bc4e49f6d59ce85523460b0d9c86",
+    "expected": "要求:GET /items/3\n200\nNote\n",
+    "meaning": "In-memory handler observes GET path, returns successful HTTP response and JSON DTO; no actual external network."
+  },
+  {
+    "id": "deep-28-03",
+    "source": "samples/expanded/deep/28/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/28.md",
+    "teachingExcerpt": "## 間違い：404の本文を成功DTOへ読む\n\nDTOは、通信などの境界で受け渡すデータの形をまとめた型です。サーバーがエラー時に別形式のJSONやHTMLを返すことがあります。成功用のDTOへ無条件に逆シリアル化すると、JsonExceptionが発生したり、空のプロパティを持つ値ができたりします。\n\n```csharp-error\nusing System.Net;\nusing System.Net.Http.Json;\nusing System.Text;\n\nusing var response = new HttpResponseMessage(HttpStatusCode.NotFound)\n{\n    Content = new StringContent(\"not found\", Encoding.UTF8, \"text/plain\")\n};\nItem? item = await response.Content.ReadFromJsonAsync<Item>();\nConsole.WriteLine(item?.Name);\n\npublic record Item(int Id, string Name);\n```\n\nこの本文は成功用JSONではありません。確認するのはJSONの型だけではなく、StatusCode、Content-Type、実際の本文です。修正では404を先に分岐します。\n\n```csharp\nusing System.Net;\nusing System.Net.Http.Json;\nusing System.Text;\n\nusing var response = new HttpResponseMessage(HttpStatusCode.NotFound)\n{\n    Content = new StringContent(\"not found\", Encoding.UTF8, \"text/plain\")\n};\nif (response.StatusCode == HttpStatusCode.NotFound)\n{\n    Console.WriteLine(\"対象がありません\");\n}\nelse\n{\n    response.EnsureSuccessStatusCode();\n    Item? item = await response.Content.ReadFromJsonAsync<Item>();\n    Console.WriteLine(item?.Name ?? \"データなし\");\n}\n\npublic record Item(int Id, string Name);\n```\n\n期待出力は対象がありませんです。失敗本文に秘密情報が含まれる場合があるため、無制限にそのまま利用者へ表示したりログへ残したりしないようにします。",
+    "sha256": {
+      "Program.cs": "c7c56d30613ab5040797f68c202017141e654ed546a27a37d08bdd6340acf420",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "0b059196bfae32ef16b7380998194879d6a4bc4e49f6d59ce85523460b0d9c86",
+    "expected": "対象がありません\n",
+    "meaning": "404 branch bypasses success DTO parsing."
+  },
+  {
+    "id": "deep-31-01",
+    "source": "samples/expanded/deep/31/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/31.md",
+    "teachingExcerpt": "## 最小例：手動で依存を渡す\n\n```csharp\nvar service = new GreetingService(new FixedClock());\nConsole.WriteLine(service.Create());\n\npublic interface IClock\n{\n    DateTimeOffset UtcNow { get; }\n}\npublic sealed class FixedClock : IClock\n{\n    public DateTimeOffset UtcNow => new(2026, 9, 14, 0, 0, 0, TimeSpan.Zero);\n}\npublic sealed class GreetingService\n{\n    private readonly IClock _clock;\n    public GreetingService(IClock clock)\n    {\n        _clock = clock ?? throw new ArgumentNullException(nameof(clock));\n    }\n    public string Create() => $\"UTC年:{_clock.UtcNow.Year}\";\n}\n```\n\n期待出力はUTC年:2026です。GreetingServiceは時計を自分でnewせず、外から受け取ります。実際の現在時刻を返す時計と、テスト用の固定時計を差し替えられます。業務処理が時刻の取得方法へ直接結び付かないことが利点です。",
+    "sha256": {
+      "Program.cs": "a59dd1fe62f0598a335a879717b40c654d3be1a0cb611beba59065c6b7046d26",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "3990993c7559e7114e7e008736c9a3e290bfa9e225533b8ff2953ee718058abc",
+    "expected": "UTC年:2026\n",
+    "meaning": "Injected fixed clock makes greeting independent of present date."
+  }
+]

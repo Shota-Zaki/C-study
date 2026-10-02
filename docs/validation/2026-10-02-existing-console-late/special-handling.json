@@ -1,0 +1,41 @@
+[
+  {
+    "id": "deep-21-02",
+    "source": "samples/expanded/deep/21/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/21.md",
+    "teachingExcerpt": "## パスは「どこを基準にするか」が重要\n\nパスはファイルやフォルダーの位置を表すものです。絶対パスは基準からの全体の位置、相対パスは現在の基準からの位置です。`\"data/items.json\"`のような相対パスは通常、現在の作業ディレクトリを基準に解決されます。作業ディレクトリはコマンドを起動した場所などにより変わります。\n\n```csharp\nConsole.WriteLine($\"作業場所:{Environment.CurrentDirectory}\");\nConsole.WriteLine($\"アプリ基準:{AppContext.BaseDirectory}\");\nstring path = Path.Combine(Environment.CurrentDirectory, \"data\", \"items.json\");\nConsole.WriteLine($\"保存先:{Path.GetFullPath(path)}\");\n```\n\n出力の具体的なパスは環境ごとに変わります。Environment.CurrentDirectoryとAppContext.BaseDirectoryは同じとは限りません。後者はアプリケーションの基準ディレクトリです。インストール先への書き込みは権限の問題があるため、本番では利用者のデータ保存先などを設計します。この教材のファイル例は練習用フォルダーで試します。\n\nPath.Combineは区切りをOSに合わせて組み立てる補助です。ただし、利用者が自由入力したパスを安全な保存先へ自動的に制限する機能ではありません。外部入力で任意のパスを作らせないことが基本です。",
+    "sha256": {
+      "Program.cs": "bcfb7be4b5510aaddc97078e1df50faa2210787673d911f5552a595de0bd0c78",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "08fdd045a39192236361b9364b2c758906e1c1092c7ac8795875986af18e6a22",
+    "meaning": "Working directory, application base and combined data path have independent meanings.",
+    "contract": {
+      "lines": 3,
+      "workingDirectory": "Explicit private per-example CWD chosen by harness",
+      "baseDirectory": "/verify/deep-21-02/bin/Debug/net10.0/ for current docker fixture project layout",
+      "savePath": "Path.Combine(workingDirectory, data, items.json) absolute path"
+    },
+    "handlingNotes": "Pin Docker exec --workdir to a private fixture folder, derive complete exact three-line expected stdout BEFORE running from that CWD and compiled output path. Do not accept arbitrary path strings or invent host paths."
+  },
+  {
+    "id": "deep-22-09",
+    "source": "samples/expanded/deep/22/example-09",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "teachingPath": "content/deep/22.md",
+    "teachingExcerpt": "## 時計の時刻と経過時間を分ける\n\n`DateTime.Now`の差は、OSの時計の変更などの影響を受ける可能性があります。処理時間を測るならStopwatchを使います。Stopwatchは利用可能な高精度タイマーなどを利用する計測用の型です。\n\n```csharp\nusing System.Diagnostics;\n\nvar watch = Stopwatch.StartNew();\nlong total = 0;\nfor (int i = 0; i < 100_000; i++)\n{\n    total += i;\n}\nwatch.Stop();\nConsole.WriteLine(total);\nConsole.WriteLine($\"計測ミリ秒:{watch.Elapsed.TotalMilliseconds}\");\n```\n\n合計の期待値は4999950000です。経過時間の具体的な値は環境・JIT・負荷によって変わるため、固定の正解値を置きません。この短い一回の測定だけで性能の優劣を判断するのも不適切です。実務の性能比較ではウォームアップや複数回の測定、入力条件を揃えることが必要になります。",
+    "sha256": {
+      "Program.cs": "c99bfe42b2cf4bd72fefee3a2e9faeaae7ab67600383e0847dbd64a37198d103",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "91ef3f4477c9549bfaadbdd5188e5007c6d757d07c7da9a6e152e8be850d9a35",
+    "meaning": "Sum is deterministic; elapsed Stopwatch milliseconds are runtime measurement.",
+    "expectedRegex": "\\A4999950000\\n計測ミリ秒:([0-9]+(?:\\.[0-9]+)?(?:[Ee][+-]?[0-9]+)?)\\n\\Z",
+    "handlingNotes": "Require exact two-line structure, sum 4999950000, finite nonnegative parsed milliseconds, no stderr and exit 0. Pin invariant culture or handle culture explicitly. No fixed time or wall-clock bound is taught; only elapsed measurement. Regex permits nonnegative decimal/scientific formatting and rejects extra lines."
+  }
+]
