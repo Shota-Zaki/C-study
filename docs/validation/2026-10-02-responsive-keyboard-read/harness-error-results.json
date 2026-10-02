@@ -1,0 +1,558 @@
+{
+  "sourceBase": "7d0048fe6b629f8bb224f7bd3dd405190fa83959",
+  "browser": "153.0.8010.12",
+  "origin": "http://127.0.0.1:58842",
+  "checks": [
+    {
+      "name": "layout/lessons/01.html/1536",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1536,
+        "width": 1536,
+        "height": 16030,
+        "h1": "C#と.NET、最初の実行"
+      }
+    },
+    {
+      "name": "layout/lessons/01.html/1024",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1024,
+        "width": 1024,
+        "height": 16664,
+        "h1": "C#と.NET、最初の実行"
+      }
+    },
+    {
+      "name": "layout/lessons/01.html/390",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 390,
+        "width": 390,
+        "height": 19793,
+        "h1": "C#と.NET、最初の実行"
+      }
+    },
+    {
+      "name": "layout/lessons/05.html/1536",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1536,
+        "width": 1536,
+        "height": 15836,
+        "h1": "条件分岐とパターン"
+      }
+    },
+    {
+      "name": "layout/lessons/05.html/1024",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1024,
+        "width": 1024,
+        "height": 16158,
+        "h1": "条件分岐とパターン"
+      }
+    },
+    {
+      "name": "layout/lessons/05.html/390",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 390,
+        "width": 390,
+        "height": 18575,
+        "h1": "条件分岐とパターン"
+      }
+    },
+    {
+      "name": "layout/lessons/09.html/1536",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1536,
+        "width": 1536,
+        "height": 17711,
+        "h1": "クラスとコンストラクター"
+      }
+    },
+    {
+      "name": "layout/lessons/09.html/1024",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1024,
+        "width": 1024,
+        "height": 17846,
+        "h1": "クラスとコンストラクター"
+      }
+    },
+    {
+      "name": "layout/lessons/09.html/390",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 390,
+        "width": 390,
+        "height": 20453,
+        "h1": "クラスとコンストラクター"
+      }
+    },
+    {
+      "name": "layout/lessons/13.html/1536",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1536,
+        "width": 1536,
+        "height": 15460,
+        "h1": "値型と参照型"
+      }
+    },
+    {
+      "name": "layout/lessons/13.html/1024",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1024,
+        "width": 1024,
+        "height": 15592,
+        "h1": "値型と参照型"
+      }
+    },
+    {
+      "name": "layout/lessons/13.html/390",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 390,
+        "width": 390,
+        "height": 18249,
+        "h1": "値型と参照型"
+      }
+    },
+    {
+      "name": "layout/lessons/18.html/1536",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1536,
+        "width": 1536,
+        "height": 15617,
+        "h1": "LINQで絞り込み・変換"
+      }
+    },
+    {
+      "name": "layout/lessons/18.html/1024",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1024,
+        "width": 1024,
+        "height": 15728,
+        "h1": "LINQで絞り込み・変換"
+      }
+    },
+    {
+      "name": "layout/lessons/18.html/390",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 390,
+        "width": 390,
+        "height": 18036,
+        "h1": "LINQで絞り込み・変換"
+      }
+    },
+    {
+      "name": "layout/lessons/24.html/1536",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1536,
+        "width": 1536,
+        "height": 16000,
+        "h1": "複数タスクとキャンセル"
+      }
+    },
+    {
+      "name": "layout/lessons/24.html/1024",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1024,
+        "width": 1024,
+        "height": 16133,
+        "h1": "複数タスクとキャンセル"
+      }
+    },
+    {
+      "name": "layout/lessons/24.html/390",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 390,
+        "width": 390,
+        "height": 18558,
+        "h1": "複数タスクとキャンセル"
+      }
+    },
+    {
+      "name": "layout/lessons/27.html/1536",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1536,
+        "width": 1536,
+        "height": 16629,
+        "h1": "責務の分離と入力検証"
+      }
+    },
+    {
+      "name": "layout/lessons/27.html/1024",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1024,
+        "width": 1024,
+        "height": 16798,
+        "h1": "責務の分離と入力検証"
+      }
+    },
+    {
+      "name": "layout/lessons/27.html/390",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 390,
+        "width": 390,
+        "height": 18964,
+        "h1": "責務の分離と入力検証"
+      }
+    },
+    {
+      "name": "layout/lessons/32.html/1536",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1536,
+        "width": 1536,
+        "height": 15335,
+        "h1": "APIの検証と統合"
+      }
+    },
+    {
+      "name": "layout/lessons/32.html/1024",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1024,
+        "width": 1024,
+        "height": 15793,
+        "h1": "APIの検証と統合"
+      }
+    },
+    {
+      "name": "layout/lessons/32.html/390",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 390,
+        "width": 390,
+        "height": 18696,
+        "h1": "APIの検証と統合"
+      }
+    },
+    {
+      "name": "layout/deep-dives/21.html/1536",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1536,
+        "width": 1536,
+        "height": 10252,
+        "h1": "21 ファイルとJSON — 詳細解説"
+      }
+    },
+    {
+      "name": "layout/deep-dives/21.html/1024",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1024,
+        "width": 1024,
+        "height": 10454,
+        "h1": "21 ファイルとJSON — 詳細解説"
+      }
+    },
+    {
+      "name": "layout/deep-dives/21.html/390",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 390,
+        "width": 390,
+        "height": 12554,
+        "h1": "21 ファイルとJSON — 詳細解説"
+      }
+    },
+    {
+      "name": "layout/index.html/1536",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1536,
+        "width": 1536,
+        "height": 1716,
+        "h1": "C# / .NET 入門"
+      }
+    },
+    {
+      "name": "layout/index.html/1024",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1024,
+        "width": 1024,
+        "height": 1811,
+        "h1": "C# / .NET 入門"
+      }
+    },
+    {
+      "name": "layout/index.html/390",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 390,
+        "width": 390,
+        "height": 2744,
+        "h1": "C# / .NET 入門"
+      }
+    },
+    {
+      "name": "layout/guides/glossary.html/1536",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1536,
+        "width": 1536,
+        "height": 19728,
+        "h1": "用語集 — 定義から使いどころへ"
+      }
+    },
+    {
+      "name": "layout/guides/glossary.html/1024",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1024,
+        "width": 1024,
+        "height": 19945,
+        "h1": "用語集 — 定義から使いどころへ"
+      }
+    },
+    {
+      "name": "layout/guides/glossary.html/390",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 390,
+        "width": 390,
+        "height": 23995,
+        "h1": "用語集 — 定義から使いどころへ"
+      }
+    },
+    {
+      "name": "layout/guides/learning-workflow.html/1536",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1536,
+        "width": 1536,
+        "height": 3853,
+        "h1": ".NET SDKと実行コマンド"
+      }
+    },
+    {
+      "name": "layout/guides/learning-workflow.html/1024",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1024,
+        "width": 1024,
+        "height": 4026,
+        "h1": ".NET SDKと実行コマンド"
+      }
+    },
+    {
+      "name": "layout/guides/learning-workflow.html/390",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 390,
+        "width": 390,
+        "height": 4826,
+        "h1": ".NET SDKと実行コマンド"
+      }
+    },
+    {
+      "name": "layout/projects/index.html/1536",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1536,
+        "width": 1536,
+        "height": 1040,
+        "h1": "制作課題 3件"
+      }
+    },
+    {
+      "name": "layout/projects/index.html/1024",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1024,
+        "width": 1024,
+        "height": 929,
+        "h1": "制作課題 3件"
+      }
+    },
+    {
+      "name": "layout/projects/index.html/390",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 390,
+        "width": 390,
+        "height": 1189,
+        "h1": "制作課題 3件"
+      }
+    },
+    {
+      "name": "layout/settings.html/1536",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1536,
+        "width": 1536,
+        "height": 1040,
+        "h1": "学習データ設定"
+      }
+    },
+    {
+      "name": "layout/settings.html/1024",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 1024,
+        "width": 1024,
+        "height": 900,
+        "h1": "学習データ設定"
+      }
+    },
+    {
+      "name": "layout/settings.html/390",
+      "status": "PASS",
+      "kind": "actual HTTP UI geometry",
+      "evidence": {
+        "viewport": 390,
+        "width": 390,
+        "height": 988,
+        "h1": "学習データ設定"
+      }
+    },
+    {
+      "name": "drawer-keyboard-open-trap-close",
+      "status": "PASS",
+      "kind": "actual HTTP UI keyboard",
+      "evidence": {
+        "tabTransitions": 62,
+        "focusRestored": true
+      }
+    },
+    {
+      "name": "search-shortcut-Escape-focus",
+      "status": "PASS",
+      "kind": "actual HTTP UI keyboard",
+      "evidence": {
+        "openedAndFocused": true,
+        "closed": true
+      }
+    },
+    {
+      "name": "slash-kept-in-textarea",
+      "status": "PASS",
+      "kind": "actual HTTP UI keyboard",
+      "evidence": {
+        "draft": "/",
+        "searchClosed": true
+      }
+    },
+    {
+      "name": "radio-arrow-and-space-complete",
+      "status": "PASS",
+      "kind": "actual HTTP UI keyboard",
+      "evidence": {
+        "radioArrowSelectsNext": true,
+        "completionSpaceToggles": true
+      }
+    },
+    {
+      "name": "corrupt-json-protect-and-warn",
+      "status": "PASS",
+      "kind": "actual HTTP UI with injected corrupt-json fixture",
+      "evidence": {
+        "warning": "ブラウザーの保存データを読み込めません。元のデータは上書きせず保持します。下書きはコピーして保管し、設定で正常なバックアップを読み込んでください。",
+        "storedBytesBefore": "task-owned malformed preserved",
+        "storedBytesUnchanged": true,
+        "inputRetained": true
+      }
+    },
+    {
+      "name": "corrupt-json-valid-backup-recovery",
+      "status": "FAIL",
+      "kind": "actual HTTP UI with injected corrupt-json fixture",
+      "error": "TypeError [ERR_MISSING_ARGS]: The \"actual\" and \"expected\" arguments must be specified"
+    },
+    {
+      "name": "read-denied-protect-and-warn",
+      "status": "PASS",
+      "kind": "actual HTTP UI with injected read-denied fixture",
+      "evidence": {
+        "warning": "ブラウザーの保存データを読み込めません。元のデータは上書きせず保持します。下書きはコピーして保管し、設定で正常なバックアップを読み込んでください。",
+        "storedBytesBefore": null,
+        "storedBytesUnchanged": true,
+        "inputRetained": true
+      }
+    },
+    {
+      "name": "read-denied-backup-write-fault-persists",
+      "status": "PASS",
+      "kind": "actual HTTP UI with injected read-denied fixture",
+      "evidence": {
+        "storedState": {
+          "version": 2,
+          "updatedAt": "2026-10-02T23:32:43.636Z",
+          "theme": "dark",
+          "completed": [
+            "02"
+          ],
+          "review": [],
+          "quiz": {},
+          "drafts": {
+            "01:base": "recovered draft"
+          },
+          "lastLesson": null
+        },
+        "warningAfterReload": "ブラウザーの保存データを読み込めません。元のデータは上書きせず保持します。下書きはコピーして保管し、設定で正常なバックアップを読み込んでください。",
+        "readFaultPersists": true
+      }
+    }
+  ],
+  "pageErrors": [],
+  "scope": "Loopback HTTP /course/; 14 representative pages x3 established widths; selected keyboard paths; injected corrupt-storage/read-denial cases. Not native Safari, devices, native zoom or published HTTPS."
+}

@@ -1,3 +1,7 @@
+# 最新の追記 — 2026-10-02 実HTTP UI
+
+ローカルHTTP /course/ のインポート/エクスポート/保存10項目と、代表14ページ×3幅・選定キーボード・注入した読取エラー50項目がPASS。[import/storage](validation/2026-10-02-import-storage/README.md)、[responsive/keyboard/read](validation/2026-10-02-responsive-keyboard-read/README.md)。注入状態を自然な保存エラーと同一視しない。公開HTTPS・native Safari/device・native200%zoom・全キーボード受入は未検証。CS07 IN_PROGRESS。
+
 # 最新の追記 — 2026-10-02
 
 元教材35/35件の選定入力・HTTPシナリオと既存Console193/193件（普通191＋入力1＋ファイル1）の意味的照合が完了。[coverage ledger](validation/2026-10-02-existing-console-coverage/README.md)に固定ソースhash・期待値・実測・独立レビューを保存。全入力/分岐/環境を保証する検証ではない。CS07全体はIN_PROGRESSで実オリジンUI/Safari/device受入は未検証。以下の2026-10-01/09-15記述は当時の履歴として保持。
