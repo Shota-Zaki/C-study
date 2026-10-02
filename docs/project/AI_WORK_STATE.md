@@ -32,3 +32,5 @@ Resume: AGENTS → RULES_SOURCE → docs/project/TASKS → NEXT_WORK → evidenc
 Inventory correction: expanded201 projects =8Web +193Console (191 ordinary csharp +1 csharp-input deep-04-03 +1 csharp-file deep-21-03). Earlier191 figures exclude these2 input/file examples; both remain in semantic scope. Current remaining193 Console total, not191.
 
 2026-10-02-existing-console-early: existing Console47/193 PASS, remaining146; originals35/35 selected contracts covered. Evidence: `docs/validation/2026-10-02-existing-console-early/README.md`. CS07 IN_PROGRESS.
+
+2026-10-02-existing-console-middle: existing Console123/193 PASS, remaining70; originals35/35 selected contracts covered. Evidence: `docs/validation/2026-10-02-existing-console-middle/README.md`. CS07 IN_PROGRESS.

@@ -1,0 +1,1218 @@
+[
+  {
+    "id": "deep-09-01",
+    "source": "samples/expanded/deep/09/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "ノート: 200\nペン: 100\n",
+    "meaning": "Each constructor retains its independent supplied name/price.",
+    "teachingPath": "content/deep/09.md",
+    "teachingExcerpt": "```csharp\nvar notebook = new Product(\"ノート\", 200);\nvar pen = new Product(\"ペン\", 100);\nConsole.WriteLine($\"{notebook.Name}: {notebook.Price}\");\nConsole.WriteLine($\"{pen.Name}: {pen.Price}\");\n\npublic class Product\n{\n    public string Name { get; }\n    public int Price { get; }\n\n    public Product(string name, int price)\n    {\n        Name = name;\n        Price = price;\n    }\n}\n```\n\n期待される出力：\n\n```text\nノート: 200\nペン: 100\n```\n\n`new`はここではクラスの新しい実体を作る式です。`Product(...)`はクラス名と同じ名前のコンストラクターへ引数を渡します。コンストラクターには戻り値の型を書きません。`public`は外から利用できることを示すアクセス修飾子です。`Name`と`Price`は各インスタンスが別々の値を持ちます。\n\n```flow\nProductの型定義 | 名前・価格・初期化の規則\nnew Product(\"ノート\", 200) | 実体Aを作り初期化\nnotebook | 実体Aへの参照を受け取る\nnew Product(\"ペン\", 100) | 実体Bを作り初期化\npen | 実体Bへの参照を受け取る\n```\n\n| 処理の位置 | notebook | pen | 完了している初期化 |\n|---|---|---|---|\n| 開始前 | 未宣言 | 未宣言 | なし |\n| 最初のnew後 | Aを参照 | 未宣言 | A: ノート、200 |\n| 二つ目のnew後 | Aを参照 | Bを参照 | B: ペン、100 |\n| 表示後 | Aを参照 | Bを参照 | 状態は変わらない |\n\nnotebook変数の中にクラスの全コードがコピーされるわけではありません。クラスは参照型なので、変数は実体への参照を保持します。参照とは実体をたどるための値です。同じ参照をコピーすると実体を共有し、newを二回使えば別々の実体を作ります。\n\n## 生成時の内部で起きること\n\n通常のクラス生成では、インスタンス",
+    "sha256": {
+      "Program.cs": "6956739ffca6164fa846d1d6d034002345648aeb3b63b9c8f11698211d32eab6",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "c9d95962a397653ceecfb2fedb7e3e9e8dc9d92e71c3458a0655a9a3fceb59a9"
+  },
+  {
+    "id": "deep-09-02",
+    "source": "samples/expanded/deep/09/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "ノート\n",
+    "meaning": "Valid constructor trims the name and retains nonnegative price.",
+    "teachingPath": "content/deep/09.md",
+    "teachingExcerpt": "```csharp\nvar product = new Product(\"ノート\", 200);\nConsole.WriteLine(product.Name);\n\npublic class Product\n{\n    public string Name { get; }\n    public int Price { get; }\n\n    public Product(string name, int price)\n    {\n        if (string.IsNullOrWhiteSpace(name))\n            throw new ArgumentException(\"商品名が必要です\", nameof(name));\n        if (price < 0)\n            throw new ArgumentOutOfRangeException(nameof(price));\n        Name = name.Trim();\n        Price = price;\n    }\n}\n```\n\n期待出力は`ノート`です。例外は処理を通常どおり進められないことを通知する仕組みです。`throw`は例外を発生させ、`ArgumentException`は引数の問題を表します。`nameof(name)`はコード上の名前`name`を文字列として取得し、名前変更時の修正漏れを減らします。例外の受け取りはLesson 16で扱います。\n\n価格-1や空白だけの名前は、この仕様では生成を拒否します。nullableの型注釈だけでは空白や負数を検証できません。メソッドの契約として必要な範囲・状態は、コードで検証する必要があります。実務の業務モデルも「フィールドをまとめるだけ」でなく、不正な状態が入り込む経路を減らす役割を持ちます。\n\n## インスタンスとstaticを分ける\n\nインスタンスメンバーは個々の実体に属します。staticメンバーは型に属し、特定の実体を指定せず利用します。staticフィールドはその型で共有されるため、各商品の価格をstaticへすると、商品ごとの価格を表せなくなります。",
+    "sha256": {
+      "Program.cs": "86352a0f8722762f02a49c1689b2fac2f83e07c80f377243f5f43bc919b7a713",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "c9d95962a397653ceecfb2fedb7e3e9e8dc9d92e71c3458a0655a9a3fceb59a9"
+  },
+  {
+    "id": "deep-09-03",
+    "source": "samples/expanded/deep/09/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "first=2, second=1\n全体=3\n",
+    "meaning": "Two instance counters become 2 and 1 while shared static total is 3.",
+    "teachingPath": "content/deep/09.md",
+    "teachingExcerpt": "```csharp\nvar first = new Counter();\nvar second = new Counter();\nfirst.Increment();\nfirst.Increment();\nsecond.Increment();\nConsole.WriteLine($\"first={first.Value}, second={second.Value}\");\nConsole.WriteLine($\"全体={Counter.TotalIncrements}\");\n\npublic class Counter\n{\n    public int Value { get; private set; }\n    public static int TotalIncrements { get; private set; }\n\n    public void Increment()\n    {\n        Value++;\n        TotalIncrements++;\n    }\n}\n```\n\n期待出力は`first=2, second=1`、`全体=3`です。`private set`は外から値を直接設定させず、クラス内部の操作で更新する指定です。firstとsecondは別のValueを持ちますが、TotalIncrementsは共有されます。この例は単一の処理の流れを前提とし、複数スレッドからの同時更新へそのまま使えるものではありません。スレッドは処理を実行する経路で、同時実行の問題は非同期・Webの章で扱います。\n\n## 間違い：インスタンスの値を型から読む",
+    "sha256": {
+      "Program.cs": "be785831c2c3dd061e6ef82f3d2dca41c12d0a3187359ca8aeb5194d4f3666be",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "c9d95962a397653ceecfb2fedb7e3e9e8dc9d92e71c3458a0655a9a3fceb59a9"
+  },
+  {
+    "id": "deep-09-05",
+    "source": "samples/expanded/deep/09/example-05",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "ノート\n",
+    "meaning": "Default initializer supplies ノート.",
+    "teachingPath": "content/deep/09.md",
+    "teachingExcerpt": "```csharp\nvar product = new Product();\nConsole.WriteLine(product.Name);\npublic class Product\n{\n    public string Name { get; } = \"ノート\";\n}\n```\n\n期待出力はノートです。エラーを消すためにNameをstaticへ変えると、個々の商品名を持つという設計を壊す可能性があります。「その値は個別か共有か」を先に判断し、それに合う呼び出し方へ直します。\n\n## 間違い：自分自身へ代入する",
+    "sha256": {
+      "Program.cs": "0bacd69057900bb80de244d9e47368f4afda28fac536a35ed1463dd90a6f3b30",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "c9d95962a397653ceecfb2fedb7e3e9e8dc9d92e71c3458a0655a9a3fceb59a9"
+  },
+  {
+    "id": "deep-09-06",
+    "source": "samples/expanded/deep/09/example-06",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "[未設定]\n",
+    "meaning": "Intentional parameter self-assignment leaves the instance field 未設定.",
+    "teachingPath": "content/deep/09.md",
+    "teachingExcerpt": "```csharp\nvar person = new Person(\"Aoi\");\nConsole.WriteLine($\"[{person.Name}]\");\npublic class Person\n{\n    private string name = \"未設定\";\n    public string Name => name;\n    public Person(string name)\n    {\n        name = name;\n    }\n}\n```\n\nこの誤った例の期待出力は`[未設定]`です。パラメーターnameがフィールドnameを隠しており、右も左も同じパラメーターです。コンパイラーは同じ変数への代入を警告することがあります。`this`は現在のインスタンスを表すので、`this.name = name;`とすると左はフィールド、右はパラメーターになります。",
+    "sha256": {
+      "Program.cs": "1aaa478dcc3f1f851640c2b8efec536a3c1d838a2211d1264325853c7805cf1c",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "c9d95962a397653ceecfb2fedb7e3e9e8dc9d92e71c3458a0655a9a3fceb59a9"
+  },
+  {
+    "id": "deep-09-07",
+    "source": "samples/expanded/deep/09/example-07",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "Aoi\n",
+    "meaning": "this.name assigns the instance field from Aoi.",
+    "teachingPath": "content/deep/09.md",
+    "teachingExcerpt": "```csharp\nvar person = new Person(\"Aoi\");\nConsole.WriteLine(person.Name);\npublic class Person\n{\n    private string name;\n    public string Name => name;\n    public Person(string name)\n    {\n        this.name = name;\n    }\n}\n```\n\n修正後の期待出力はAoiです。別解はフィールドを`_name`のように区別する命名です。命名規約を統一することは見た目の問題だけでなく、値がどこへ保存されるかを明確にする実務上の意味があります。\n\n## 選択基準と練習\n\n| 選択 | 適する状態・役割 | 例 |\n|---|---|---|\n| インスタンスフィールド・プロパティ | 実体ごとに異なる状態 | 商品名、ユーザーの設定 |\n| staticメソッド | 特定の実体を必要としない処理 | 入力だけで決まる計算 |\n| staticフィールド | 型で共有する状態が本当に必要 | 共有状態には寿命・同時更新の検討が必要 |\n| コンストラクター引数 | 生成に必須の情報 | 商品名、初期価格 |\n\n基礎は、別々の名前を持つPersonを二つ作り、順に表示する課題です。標準は、価格が負なら生成を拒否するProductを作り、0と1は受け付けることを境界値で説明します。応用はCounterのIncrementを合計5回呼ぶコードを書き、各実体のValueの合計とTotalIncrementsが等しくなる理由を説明します。\n\nCounterのValueをstaticへ変えた場合、すべてのCounterから同じValueが見えるため、「各実体ごとの回数」を失います。これはstatic/instanceの混同を観察する実験です。次のLesson 10では、内部状態を誰でも直接書き換えられる設計を避け、操作を通じて有効な状態を保つ方法へ進みます。",
+    "sha256": {
+      "Program.cs": "c2581d8613be69ebc251ee1b3e35d7884de5de067a1bb56538d300e7c90affef",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "c9d95962a397653ceecfb2fedb7e3e9e8dc9d92e71c3458a0655a9a3fceb59a9"
+  },
+  {
+    "id": "deep-10-01",
+    "source": "samples/expanded/deep/10/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "120\n3\n360\n",
+    "meaning": "Stored unit price120 and quantity3 yield computed total360.",
+    "teachingPath": "content/deep/10.md",
+    "teachingExcerpt": "```csharp\nvar item = new LineItem(120, 3);\nConsole.WriteLine(item.UnitPrice);\nConsole.WriteLine(item.Quantity);\nConsole.WriteLine(item.Total);\n\npublic class LineItem\n{\n    public int UnitPrice { get; }\n    public int Quantity { get; }\n    public int Total => UnitPrice * Quantity;\n\n    public LineItem(int unitPrice, int quantity)\n    {\n        UnitPrice = unitPrice;\n        Quantity = quantity;\n    }\n}\n```\n\n期待出力は120、3、360です。UnitPriceとQuantityは生成時に設定する自動実装プロパティです。Totalは読み取り時に計算するプロパティで、別のtotalフィールドへ360を保存していません。`=>`は一つの式の結果を返す記法です。\n\n```flow\nnew LineItem(120, 3) | 単価120・数量3を保存\nUnitPriceを読む | 120を返す\nQuantityを読む | 3を返す\nTotalを読む | 120×3を計算して360を返す\n```\n\n計算結果まで重複して保存すると、数量だけ変えた後でtotalを更新し忘れる可能性があります。軽い計算なら元の値から求めることで不整合を減らせます。ただし、プロパティを読むだけで重い通信やファイル書き込みが起こると利用者が予測しにくくなるため、そのような処理は意図の分かるメソッドにします。\n\n## get・set・init・requiredの違い\n\n| 記法 | 読み取り | 設定できる主なタイミング | 選択場面 |\n|---|---|---|---|\n| `{ get; set; }` | 外部から可能 | 外部から随時 | 自由な編集が本当に許されるデータ |\n| `{ get; private set; }` | 外部から可能 | 型の内部から | 更新を操作メソッドへ集める |\n| `{ get; }` | 外部から可能 | 自動実装なら宣言やコンストラクターなど | 生成後に固定する値 |\n| `{ get; init; }` | 外部から可能 | オブジェクト初期化段階など | 作成時",
+    "sha256": {
+      "Program.cs": "73cd0d110b19ce91568614748e5c1718b8f38140050969e4a501b9780da6868d",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "8d2cf011be4f3f4e5d9cc19a9cf4c3743985c4239d80451179994f727c6c4e8e"
+  },
+  {
+    "id": "deep-10-02",
+    "source": "samples/expanded/deep/10/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "True\n3\nFalse\n3\n",
+    "meaning": "Taking2 succeeds and leaves3; taking10 fails without changing3.",
+    "teachingPath": "content/deep/10.md",
+    "teachingExcerpt": "```csharp\nvar stock = new Stock(5);\nConsole.WriteLine(stock.TryTake(2));\nConsole.WriteLine(stock.Quantity);\nConsole.WriteLine(stock.TryTake(10));\nConsole.WriteLine(stock.Quantity);\n\npublic class Stock\n{\n    public int Quantity { get; private set; }\n\n    public Stock(int quantity)\n    {\n        if (quantity < 0)\n            throw new ArgumentOutOfRangeException(nameof(quantity));\n        Quantity = quantity;\n    }\n\n    public bool TryTake(int amount)\n    {\n        if (amount <= 0 || amount > Quantity)\n            return false;\n        Quantity -= amount;\n        return true;\n    }\n}\n```\n\n期待出力はTrue、3、False、3です。TryTakeは「指定数を引き出せたか」をboolで返します。要求数が正か、在庫以内かを先に検証し、失敗なら状態を変えません。成功した場合だけ減らします。例外は初期値が不正な呼び出しを拒否するために使い、通常に起こり得る在庫不足はfalseで表しています。\n\n| 呼び出し前 | 要求 | 判定 | 呼び出し後 | 戻り値 |\n|---:|---:|---|---:|---|\n| 5 | 2 | 0より大きく、在庫以下 | 3 | true |\n| 3 | 10 | 在庫を超える | 3 | false |\n| 3 | 0 | 正の数量ではない | 3 | false |\n| 3 | -1 | 負の数量 | 3 | false |\n\n「先に減らしてから負なら戻す」設計よりも、検証後に一度だけ更新する方が失敗時の状態を追いやすくなります。この例は単一の呼び出しの流れを想定しています。Web APIなどで同時にTryTakeを呼ぶ場合は、判定と更新を一体として守る同期やデータベース側の制約が必要で、private setだけでは同時更新の問題を防げません。\n\n## 明示的なフィールドとsetアクセサー",
+    "sha256": {
+      "Program.cs": "fc1a84b9e2ab5760ca84823839f8c8601fd403b0ba73cd70a89f16c4629c4ab2",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "8d2cf011be4f3f4e5d9cc19a9cf4c3743985c4239d80451179994f727c6c4e8e"
+  },
+  {
+    "id": "deep-10-03",
+    "source": "samples/expanded/deep/10/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "Aoi\n",
+    "meaning": "Setter trims surrounding spaces before getter reads Aoi.",
+    "teachingPath": "content/deep/10.md",
+    "teachingExcerpt": "```csharp\nvar person = new Person();\nperson.Name = \"  Aoi  \";\nConsole.WriteLine(person.Name);\n\npublic class Person\n{\n    private string _name = \"未設定\";\n\n    public string Name\n    {\n        get { return _name; }\n        set\n        {\n            if (string.IsNullOrWhiteSpace(value))\n                throw new ArgumentException(\"名前が必要です\");\n            _name = value.Trim();\n        }\n    }\n}\n```\n\n期待出力はAoiです。set内の`value`は代入された右側の値を受け取る特別な名前です。`person.Name = \"  Aoi  \";`でsetが呼ばれ、検証し、空白を除いた結果を_nameへ保存します。Nameを読むとgetが_nameを返します。privateフィールドへ外から直接触らせず、加工・検証の道筋を一つへまとめています。\n\nC# 14では`field`キーワードを使ってコンパイラー生成の保存フィールドにアクセスするプロパティも書けます。ただし、この教材の基礎例は明示的なフィールドで保存先を見えるようにしています。短い新構文へ置き換える前に、getとsetが何をしているかを説明できることを重視します。\n\n## 間違い：プロパティから自分自身を呼ぶ",
+    "sha256": {
+      "Program.cs": "e02abb5750760932c7b4b52d323ba15e2c09a0c99d8a1bedc6862bb17d3fbe41",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "8d2cf011be4f3f4e5d9cc19a9cf4c3743985c4239d80451179994f727c6c4e8e"
+  },
+  {
+    "id": "deep-10-05",
+    "source": "samples/expanded/deep/10/example-05",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "Aoi\n",
+    "meaning": "Getter reads backing field Aoi rather than recurring.",
+    "teachingPath": "content/deep/10.md",
+    "teachingExcerpt": "```csharp\nvar person = new Person();\nConsole.WriteLine(person.Name);\npublic class Person\n{\n    private string _name = \"Aoi\";\n    public string Name => _name;\n}\n```\n\n期待出力はAoiです。プロパティと保存用フィールドを別の名前にします。setで`Name = value;`と書いて自分自身を呼ぶ場合も同じ問題です。アクセサー内で何へアクセスしているか、メンバーの種類まで確認します。\n\n## 間違い：privateのエラーをpublic化で回避する",
+    "sha256": {
+      "Program.cs": "0724d9c9f5d1010ba65f585f261c5b6584b8919e41f1a34621ae089bdc6eaed9",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "8d2cf011be4f3f4e5d9cc19a9cf4c3743985c4239d80451179994f727c6c4e8e"
+  },
+  {
+    "id": "deep-11-01",
+    "source": "samples/expanded/deep/11/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "12\n",
+    "meaning": "Virtual dispatch selects Rectangle.Area, 3×4.",
+    "teachingPath": "content/deep/11.md",
+    "teachingExcerpt": "```csharp\nShape shape = new Rectangle(3, 4);\nConsole.WriteLine(shape.Area());\n\npublic class Shape\n{\n    public virtual int Area() => 0;\n}\n\npublic class Rectangle : Shape\n{\n    private readonly int _width;\n    private readonly int _height;\n\n    public Rectangle(int width, int height)\n    {\n        _width = width;\n        _height = height;\n    }\n\n    public override int Area() => _width * _height;\n}\n```\n\n期待出力は12です。`Rectangle : Shape`はRectangleがShapeを継承する宣言です。`virtual`は派生型で上書き可能なメソッドを宣言し、`override`はその上書きを実装します。shape変数の宣言型はShape、参照する実体の型はRectangleです。virtual呼び出しでは実体に対応する上書き処理が選ばれます。\n\n```flow\nShape型の変数shape | 使える操作をコンパイル時に確認\nRectangleの実体 | 幅3・高さ4を保持\nshape.Area() | virtualな呼び出し\nRectangle.Area | 3×4を計算\n戻り値12 | 呼び出し側で表示\n```\n\n型情報と実際のメソッドへの対応によって呼び出しが選ばれます。JITが対象を確定できる場合は最適化も行いますが、言語上の振る舞いはこの対応で理解します。「変数の型だけで常に呼び出す本体が決まる」と覚えるとvirtualの例を説明できません。\n\n## メソッドの隠蔽との違い\n\n`new`をメンバー宣言へ付けると、ここでは継承した同名メンバーを隠す意味になります。オブジェクトを生成する式のnewとは役割が異なります。隠蔽はoverrideによる実行時の差し替えと同じではありません。",
+    "sha256": {
+      "Program.cs": "e66c0c515e232e7801755733129f50d56cf9e5f4d92b7ccdece9713f90b034df",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "32c2027eab8434e5b58c7f9469c26df4ad62d126ec381b50a63e8d61e3756fde"
+  },
+  {
+    "id": "deep-11-02",
+    "source": "samples/expanded/deep/11/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "基本\n詳細\n",
+    "meaning": "Nonvirtual hidden method selection follows the declared variable type.",
+    "teachingPath": "content/deep/11.md",
+    "teachingExcerpt": "```csharp\nBaseLabel asBase = new DetailedLabel();\nDetailedLabel asDerived = new DetailedLabel();\nConsole.WriteLine(asBase.GetLabel());\nConsole.WriteLine(asDerived.GetLabel());\n\npublic class BaseLabel\n{\n    public string GetLabel() => \"基本\";\n}\npublic class DetailedLabel : BaseLabel\n{\n    public new string GetLabel() => \"詳細\";\n}\n```\n\n期待出力は基本、詳細です。呼び出しで見ている型によって、利用する隠蔽メンバーが変わります。実体が派生型だから必ず派生側が呼ばれるわけではありません。\n\n| 宣言 | 目的 | 呼び出しの特徴 |\n|---|---|---|\n| virtual + override | 基底型越しの振る舞いを差し替える | 実体の上書きに対応 |\n| newによる隠蔽 | 同名の別メンバーを宣言する | 呼び出し側から見える型が重要 |\n| 通常の非virtualメソッド | 上書きを公開しない処理 | overrideできない |\n| sealed override | その上書きでさらに派生側のoverrideを止める | 設計上の境界を固定 |\n\n## abstractは未完成な契約を明示する\n\n抽象クラスはそれ自身を直接newできないクラスです。抽象メソッドは本体を持たず、具体的な派生型に実装を要求します。上のShape.Areaが0を返すと「どんな図形でも面積0でよい」と誤解される可能性があります。共通の正しい既定実装がないならabstractで未実装を明示できます。",
+    "sha256": {
+      "Program.cs": "243d38e2922bfc5f6c5049ae8bb5c0a4265ec77ef52495e8a381f4cc1e5fbfd2",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "32c2027eab8434e5b58c7f9469c26df4ad62d126ec381b50a63e8d61e3756fde"
+  },
+  {
+    "id": "deep-11-03",
+    "source": "samples/expanded/deep/11/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "12\n25\n",
+    "meaning": "Abstract dispatch yields rectangle12 and square25 in array order.",
+    "teachingPath": "content/deep/11.md",
+    "teachingExcerpt": "```csharp\nShape[] shapes = { new Rectangle(3, 4), new Square(5) };\nforeach (Shape shape in shapes)\n{\n    Console.WriteLine(shape.Area());\n}\n\npublic abstract class Shape\n{\n    public abstract int Area();\n}\npublic sealed class Rectangle : Shape\n{\n    private readonly int _width;\n    private readonly int _height;\n    public Rectangle(int width, int height)\n    {\n        _width = width;\n        _height = height;\n    }\n    public override int Area() => _width * _height;\n}\npublic sealed class Square : Shape\n{\n    private readonly int _side;\n    public Square(int side) { _side = side; }\n    public override int Area() => _side * _side;\n}\n```\n\n期待出力は12、25です。配列の要素型はShapeですが、実体はRectangleとSquareです。ループは型別のifを書かず、共通のAreaを呼びます。`sealed`はそのクラスからの継承を禁止する指定です。ここではさらに派生させる設計がないことを明示しています。\n\n幅や辺の長さの負数検証は、この小さな面積例では別の課題としています。製品の型として利用するなら、生成時の範囲検証と掛け算の範囲超過も設計します。継承が正しいことと、数値の業務ルールが正しいことは別の観点です。\n\n## コンストラクターの連鎖を観察する",
+    "sha256": {
+      "Program.cs": "bda4df83a8d6dbbfe79b644bfee770a074ef5a9a0dd75e3f6a42f5151ca7d2fc",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "32c2027eab8434e5b58c7f9469c26df4ad62d126ec381b50a63e8d61e3756fde"
+  },
+  {
+    "id": "deep-11-04",
+    "source": "samples/expanded/deep/11/example-04",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "Parent本体\nChild本体\nAoi\n",
+    "meaning": "Base constructor body runs before derived body, then saved name is read.",
+    "teachingPath": "content/deep/11.md",
+    "teachingExcerpt": "```csharp\nvar child = new Child(\"Aoi\");\nConsole.WriteLine(child.Name);\n\npublic class Parent\n{\n    public string Name { get; }\n    public Parent(string name)\n    {\n        Name = name;\n        Console.WriteLine(\"Parent本体\");\n    }\n}\npublic class Child : Parent\n{\n    public Child(string name) : base(name)\n    {\n        Console.WriteLine(\"Child本体\");\n    }\n}\n```\n\n期待出力はParent本体、Child本体、Aoiです。`: base(name)`は基底クラスのどのコンストラクターを呼ぶか指定します。派生側のコンストラクター本体に入る前に基底側の本体が完了します。フィールド初期化子の評価順序はこの単純な本体の表示順だけから一般化しません。\n\n初期化中のコンストラクターからvirtualメソッドを呼ぶと、派生側の本体による初期化が終わる前に派生実装へ入る場合があります。未完成の状態を利用しないため、コンストラクターから上書き可能な処理を呼ばない設計を基本にします。初期化順の細かい暗記より、初期状態が完成するまで外の振る舞いへ渡さないことが重要です。\n\n## 間違い：overrideしたつもりでnewにする\n\n症状は、派生型を直接使うと期待どおりなのに、基底型の変数を経由すると別の結果になることです。先ほどのBaseLabelの例がそのまま再現例です。確認位置は基底メソッドのvirtual指定と、派生側のoverride指定です。",
+    "sha256": {
+      "Program.cs": "d11278644d1220e398100673171720845f8497560ed10fa01d308566b91cf9b2",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "32c2027eab8434e5b58c7f9469c26df4ad62d126ec381b50a63e8d61e3756fde"
+  },
+  {
+    "id": "deep-11-05",
+    "source": "samples/expanded/deep/11/example-05",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "詳細\n",
+    "meaning": "Virtual override selects 詳細 through base reference.",
+    "teachingPath": "content/deep/11.md",
+    "teachingExcerpt": "```csharp\nBaseLabel label = new DetailedLabel();\nConsole.WriteLine(label.GetLabel());\npublic class BaseLabel\n{\n    public virtual string GetLabel() => \"基本\";\n}\npublic class DetailedLabel : BaseLabel\n{\n    public override string GetLabel() => \"詳細\";\n}\n```\n\n修正後の期待出力は詳細です。修正前は`public string`と`public new string`、修正後は`public virtual string`と`public override string`です。警告を消すためにnewを付けるのではなく、共通の型から差し替える設計なのかを先に判断します。\n\n## 継承と委譲の使い分け\n\n委譲とは、自分の仕事の一部を保持している別のオブジェクトへ依頼することです。部品を持って組み合わせる設計を合成とも呼びます。メール送信機能を使いたい注文サービスが「メール送信機能を継承」するより、「送信用の部品を持って呼び出す」方が関係を自然に表せることがあります。\n\n| 方式 | 適する関係 | 注意点 |\n|---|---|---|\n| 継承 | 派生型を基底型として扱える | 基底の変更が派生へ影響する |\n| 合成・委譲 | 部品を持ち、その役割を利用する | どの部品を受け取るかを明示する |\n| インターフェイス | 共通の操作を約束する | 共通実装の再利用とは別 |\n\nC#のクラスは直接の基底クラスを一つだけ持ちます。一方、複数のインターフェイスを実装できます。継承階層を増やすほど分かりやすくなるわけではありません。共通の契約だけ必要なら次のLesson 12のインターフェイスも選択肢です。\n\n## 段階別の練習\n\n基礎課題はShape型の変数へSquare(4)を入れ、Areaが16になる理由を説明することです。標準課題は面積を返す新しい具体型を一つ追加し、ループ本体を変えずに扱うことです。追加した型で抽象メソッドを実装し",
+    "sha256": {
+      "Program.cs": "5224ea1ce2fbd86e8db1b5301a4df94727276ac43e4bbfeac8fe643c59ca983e",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "32c2027eab8434e5b58c7f9469c26df4ad62d126ec381b50a63e8d61e3756fde"
+  },
+  {
+    "id": "deep-12-01",
+    "source": "samples/expanded/deep/12/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "通知: 保存しました\n",
+    "meaning": "Interface dispatch calls the console implementation.",
+    "teachingPath": "content/deep/12.md",
+    "teachingExcerpt": "```csharp\nINotifier notifier = new ConsoleNotifier();\nnotifier.Send(\"保存しました\");\n\npublic interface INotifier\n{\n    void Send(string message);\n}\npublic class ConsoleNotifier : INotifier\n{\n    public void Send(string message)\n    {\n        Console.WriteLine($\"通知: {message}\");\n    }\n}\n```\n\n期待出力は`通知: 保存しました`です。`interface`で契約を宣言し、クラス名の後の`: INotifier`で実装することを示します。通常の暗黙的実装では要求されるメンバーをpublicとして提供します。`void`は戻り値を返さない指定です。\n\n```flow\n利用側 | INotifier.Sendを必要とする\nINotifier | Send(string)という契約\nConsoleNotifierの実体 | Sendの具体的な実装\n画面表示 | 「通知: 保存しました」\n```\n\nnotifier変数の宣言型はINotifier、実体はConsoleNotifierです。コンパイラーは契約を通して使える操作を確認し、実行時はその実体の実装へ呼び出しをつなぎます。interfaceという独立した送信機械が裏側で生成されるわけではありません。\n\n## 依存関係をコンストラクターで受け取る\n\n依存関係とは、ある処理が動くために必要とする別の部品です。ReportServiceが通知部品を必要とするなら、通知部品への依存があります。依存性の注入、DIは、その部品を内部で固定してnewするのではなく外から渡す設計です。特定のフレームワークがなくても、コンストラクターで手渡せばDIになります。",
+    "sha256": {
+      "Program.cs": "b7acb3c928b3d7f5f74cc2f63a9ff50790aa0d6dcc33581c6e49328b3b75222d",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "9bea583142dca1f6f3eefdeaa4ee2764abb6a400f88c47c07b901039f68282b6"
+  },
+  {
+    "id": "deep-12-02",
+    "source": "samples/expanded/deep/12/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "通知: 売上集計が完了しました\n",
+    "meaning": "ReportService composes the report name and delegates notification.",
+    "teachingPath": "content/deep/12.md",
+    "teachingExcerpt": "```csharp\nvar service = new ReportService(new ConsoleNotifier());\nservice.Complete(\"売上集計\");\n\npublic interface INotifier\n{\n    void Send(string message);\n}\npublic class ConsoleNotifier : INotifier\n{\n    public void Send(string message)\n    {\n        Console.WriteLine($\"通知: {message}\");\n    }\n}\npublic class ReportService\n{\n    private readonly INotifier _notifier;\n\n    public ReportService(INotifier notifier)\n    {\n        _notifier = notifier;\n    }\n\n    public void Complete(string reportName)\n    {\n        _notifier.Send($\"{reportName}が完了しました\");\n    }\n}\n```\n\n期待出力は`通知: 売上集計が完了しました`です。まず通知部品を作り、その参照をReportServiceへ渡します。コンストラクターで_notifierへ保存し、Completeで利用します。`readonly`はこのフィールドを後から別の参照へ差し替える箇所を制限します。参照先の部品の内部状態まで変更不能になるわけではありません。\n\n| 時点 | 生成・処理 | 保持する関係 |\n|---|---|---|\n| ① | ConsoleNotifierを生成 | 通知実体A |\n| ② | ReportServiceを生成 | サービスBがAを参照 |\n| ③ | Completeを呼ぶ | 通知文を組み立てる |\n| ④ | _notifier.Sendを呼ぶ | Aが表示処理を行う |\n\nASP.NET CoreではDIコンテナーという「登録に基づき部品を生成・供給する仕組み」を使えますが、その前にこの手渡しの関係を理解します。Lesson 31の登録・解決・寿命も、魔法ではなくこのオブジェクトのつながりの管理です。\n\n## 実用例：出力せず記録する部品へ差し替える\n\n検証では、画面や外部サービスへ本当に通知せず、どんな内容が渡されたかを調べたいことがあります。この例は最後のメッセージを保持する実装に差し替えます。",
+    "sha256": {
+      "Program.cs": "47a246eb220b5759c30ba5dc6fac9d9c4e5c6c89243274cdd17240c4479b13fb",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "9bea583142dca1f6f3eefdeaa4ee2764abb6a400f88c47c07b901039f68282b6"
+  },
+  {
+    "id": "deep-12-03",
+    "source": "samples/expanded/deep/12/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "在庫集計が完了しました\n",
+    "meaning": "Recording implementation captures the composed message without printing until inspected.",
+    "teachingPath": "content/deep/12.md",
+    "teachingExcerpt": "```csharp\nvar recorder = new RecordingNotifier();\nvar service = new ReportService(recorder);\nservice.Complete(\"在庫集計\");\nConsole.WriteLine(recorder.LastMessage);\n\npublic interface INotifier\n{\n    void Send(string message);\n}\npublic class RecordingNotifier : INotifier\n{\n    public string? LastMessage { get; private set; }\n    public void Send(string message)\n    {\n        LastMessage = message;\n    }\n}\npublic class ReportService\n{\n    private readonly INotifier _notifier;\n    public ReportService(INotifier notifier)\n    {\n        _notifier = notifier;\n    }\n    public void Complete(string reportName)\n    {\n        _notifier.Send($\"{reportName}が完了しました\");\n    }\n}\n```\n\n期待出力は`在庫集計が完了しました`です。通知の呼び出し前はLastMessage=null、呼び出し後は組み立てられた文字列です。ReportServiceのコードは通知先の変更を知る必要がありません。記録する実装を利用して、正しいメッセージが渡されたかを検証できます。これがLesson 26の単体テストへつながります。\n\nこの小さな実装は最後の一件だけを記録します。呼び出し回数やすべての通知内容を検証するなら、Listなどで履歴を持つ設計へ広げます。何を検証したいかによってテスト用の部品の状態も決めます。\n\n## 間違い：インターフェイスをnewする",
+    "sha256": {
+      "Program.cs": "25ed330b62bad932e6c94fe167042557b990b779635bc4281bc256fdff6cd623",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "9bea583142dca1f6f3eefdeaa4ee2764abb6a400f88c47c07b901039f68282b6"
+  },
+  {
+    "id": "deep-12-06",
+    "source": "samples/expanded/deep/12/example-06",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "確認\n",
+    "meaning": "Explicit implementation is reachable through INotifier.",
+    "teachingPath": "content/deep/12.md",
+    "teachingExcerpt": "```csharp\nINotifier notifier = new ConsoleNotifier();\nnotifier.Send(\"確認\");\n\npublic interface INotifier\n{\n    void Send(string message);\n}\npublic class ConsoleNotifier : INotifier\n{\n    void INotifier.Send(string message)\n    {\n        Console.WriteLine(message);\n    }\n}\n```\n\n期待出力は確認です。`void INotifier.Send`はインターフェイス経由で利用する明示的な実装です。このメソッドへ通常のpublic/privateを付ける書き方ではありません。具体型からそのまま`new ConsoleNotifier().Send(...)`とは呼べない点も、暗黙的実装と異なります。\n\n## abstract classとの比較\n\n| 観点 | 抽象クラス | インターフェイス | 判断の目安 |\n|---|---|---|---|\n| 主な目的 | 共通の土台と状態・実装をまとめる | 必要な能力・操作の契約を定める | 共有したいのは実装か、契約か |\n| クラスからの利用 | 直接の基底クラスは一つ | 複数を実装できる | 別系統の型にも契約を付けたいか |\n| インスタンス状態 | フィールドやコンストラクターを持てる | 通常のインスタンスフィールドは持たない | 共通の保存状態が必要か |\n| 実装 | 一部を共通化できる | 既定実装を持てる機能もある | 機能があることと乱用することは別 |\n\n現行C#のインターフェイスは「すべて本体なしのメソッドだけ」とは限りません。既定実装やstatic関連のメンバーもあります。ただし、この段階ではインスタンス操作の契約と、別のクラスによる実装という基本に集中します。複雑な機能を知っていても、利用側に不要な操作を大量に要求する契約は避けます。\n\nインターフェイスを全クラスへ機械的に一つずつ作る必要もありません。差し替え、テスト、複数実装、外部部品との境界など、実際の変更理由を考えます。小さな",
+    "sha256": {
+      "Program.cs": "627c2acd9360f1cd33f10de39f4bdf00bd2680927f1824dd826debb472f27cde",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "9bea583142dca1f6f3eefdeaa4ee2764abb6a400f88c47c07b901039f68282b6"
+  },
+  {
+    "id": "deep-13-01",
+    "source": "samples/expanded/deep/13/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "a=10, b=20\n",
+    "meaning": "Value assignment copies10; assigning20 to b leaves a10.",
+    "teachingPath": "content/deep/13.md",
+    "teachingExcerpt": "```csharp\nint a = 10;\nint b = a;\nb = 20;\nConsole.WriteLine($\"a={a}, b={b}\");\n```\n\n期待出力は`a=10, b=20`です。bはaに追従する名前ではなく、aからコピーした10を最初に保持する別の変数です。bへの代入はaを変えません。\n\n| 時点 | a | b | 説明 |\n|---|---:|---:|---|\n| aの初期化後 | 10 | 未宣言 | aへ10を保存 |\n| b=aの後 | 10 | 10 | 整数値10をコピー |\n| b=20の後 | 10 | 20 | bだけ更新 |\n\n## 参照のコピー：変数は二つ、実体は一つ",
+    "sha256": {
+      "Program.cs": "2c07bb5e25a03a9976318ebba6d3d599fafbc0ad12b565e54dd0b2115a866666",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "5939ceca8c1eb51d2b5a76ad0f36da9551312329b0bc9b4f9061d46d03debbed"
+  },
+  {
+    "id": "deep-13-02",
+    "source": "samples/expanded/deep/13/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "20\nTrue\n",
+    "meaning": "Reference copy aliases one Box; mutation20 is shared.",
+    "teachingPath": "content/deep/13.md",
+    "teachingExcerpt": "```csharp\nvar first = new Box { Value = 10 };\nBox second = first;\nsecond.Value = 20;\nConsole.WriteLine(first.Value);\nConsole.WriteLine(ReferenceEquals(first, second));\n\npublic class Box\n{\n    public int Value { get; set; }\n}\n```\n\n期待出力は20、Trueです。ReferenceEqualsは二つの参照が同じオブジェクトを指すかを調べます。最初にBoxの実体Aを作り、firstがAを参照します。second=firstでAへの参照をコピーするので、secondからValueを変えるとfirstからも20が見えます。\n\n```memory\nfirst | 実体A\nsecond | 実体A\n実体A | Box { Value = 20 }\n```\n\nこの図の「実体A」は説明用の名前で、実際のメモリアドレスを表していません。GCがオブジェクトを移動する可能性もあるため、参照を固定の生アドレスとして説明しません。重要なのは二つの変数から同じ実体へ到達できることです。\n\nさらに`second = new Box { Value = 30 };`とすると、secondは新しい実体Bを参照し、firstはAを参照したままです。プロパティの変更と変数への再代入は異なります。",
+    "sha256": {
+      "Program.cs": "76a5fb17be8eea745cbcc61cee012cb31850871e826d246ba1ec809b24ddab11",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "5939ceca8c1eb51d2b5a76ad0f36da9551312329b0bc9b4f9061d46d03debbed"
+  },
+  {
+    "id": "deep-13-03",
+    "source": "samples/expanded/deep/13/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "first=20, second=30\nFalse\n",
+    "meaning": "Mutation20 remains on first after second is rebound to new Box30.",
+    "teachingPath": "content/deep/13.md",
+    "teachingExcerpt": "```csharp\nvar first = new Box { Value = 10 };\nBox second = first;\nsecond.Value = 20;\nsecond = new Box { Value = 30 };\nConsole.WriteLine($\"first={first.Value}, second={second.Value}\");\nConsole.WriteLine(ReferenceEquals(first, second));\npublic class Box\n{\n    public int Value { get; set; }\n}\n```\n\n期待出力は`first=20, second=30`、Falseです。以前の共有状態でfirst側も20になったことは残ります。secondを差し替えたからといって、過去の変更まで取り消されるわけではありません。\n\n## struct内に参照があるとどうなるか\n\nstructは値型を定義する構文です。ただし、structのフィールドに参照型を含められます。そのstructをコピーするとフィールドの値がコピーされ、参照型フィールドでは参照の値がコピーされます。内部にある可変オブジェクトまで自動で複製されるわけではありません。",
+    "sha256": {
+      "Program.cs": "4ccbdb23c83deaba397e27a2fc0b68915bfd1b265840c6d03e6f0a591faa8e4d",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "5939ceca8c1eb51d2b5a76ad0f36da9551312329b0bc9b4f9061d46d03debbed"
+  },
+  {
+    "id": "deep-13-04",
+    "source": "samples/expanded/deep/13/example-04",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "元\n99\n",
+    "meaning": "Struct copy separates Name assignment but shares Scores array mutation99.",
+    "teachingPath": "content/deep/13.md",
+    "teachingExcerpt": "```csharp\nvar original = new Group { Name = \"元\", Scores = new[] { 10, 20 } };\nGroup copied = original;\ncopied.Name = \"コピー\";\ncopied.Scores[0] = 99;\nConsole.WriteLine(original.Name);\nConsole.WriteLine(original.Scores[0]);\n\npublic struct Group\n{\n    public string Name;\n    public int[] Scores;\n}\n```\n\n期待出力は元、99です。Nameの参照の再代入はcopied側だけを変更します。一方、Scoresは同じ配列を参照しているため、要素の変更はoriginalからも見えます。\n\n| 操作 | original.Name | copied.Name | 共有するScores |\n|---|---|---|---|\n| コピー直後 | 元 | 元 | [10,20] |\n| Nameを再代入 | 元 | コピー | [10,20] |\n| Scores[0]を書き換え | 元 | コピー | [99,20] |\n\nstructを使うと自動的に「すべて独立した安全なコピー」になる、という誤解を避けます。小さな値のまとまりを表すならstructやreadonly structが候補になりますが、大きい値や共有状態を持つ型を無計画にstructへ変えても保守性・性能が改善するとは限りません。\n\n## 浅いコピーと深いコピー\n\n浅いコピーは、直接の要素やフィールドをコピーし、内部の参照先は共有する場合があるコピーです。深いコピーは、目的に応じて内部のオブジェクトまで独立に複製することです。どこまで複製すべきかは、共有してよいものと独立させたいものの設計によって変わります。",
+    "sha256": {
+      "Program.cs": "0cc7f7cea223b0ae415c5e9b98e13b300168d628f1bba19a4ab497cbc9515a9a",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "5939ceca8c1eb51d2b5a76ad0f36da9551312329b0bc9b4f9061d46d03debbed"
+  },
+  {
+    "id": "deep-13-05",
+    "source": "samples/expanded/deep/13/example-05",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "9\nFalse\nTrue\n",
+    "meaning": "Array Clone creates a new array but shares its Item, changing source Count to9.",
+    "teachingPath": "content/deep/13.md",
+    "teachingExcerpt": "```csharp\nvar source = new[] { new Item { Name = \"A\", Count = 1 } };\nItem[] shallow = (Item[])source.Clone();\nshallow[0].Count = 9;\nConsole.WriteLine(source[0].Count);\nConsole.WriteLine(ReferenceEquals(source, shallow));\nConsole.WriteLine(ReferenceEquals(source[0], shallow[0]));\n\npublic class Item\n{\n    public string Name { get; set; } = \"\";\n    public int Count { get; set; }\n}\n```\n\n期待出力は9、False、Trueです。配列自体は別ですが、要素のItemは同じ実体です。`Clone`という名前だけで深い複製だと判断しないことが大切です。\n\n修正位置は要素の作り方です。独立したItemが必要なら、それぞれnewします。",
+    "sha256": {
+      "Program.cs": "3685da7ae7663d813943fd726cf706586c227c3affa2be627e9445977e457cb8",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "5939ceca8c1eb51d2b5a76ad0f36da9551312329b0bc9b4f9061d46d03debbed"
+  },
+  {
+    "id": "deep-13-06",
+    "source": "samples/expanded/deep/13/example-06",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "1\n9\n",
+    "meaning": "Each Item is constructed separately, preserving source1 and copy9.",
+    "teachingPath": "content/deep/13.md",
+    "teachingExcerpt": "```csharp\nvar source = new[] { new Item { Name = \"A\", Count = 1 } };\nItem[] independent = new Item[source.Length];\nfor (int i = 0; i < source.Length; i++)\n{\n    independent[i] = new Item { Name = source[i].Name, Count = source[i].Count };\n}\nindependent[0].Count = 9;\nConsole.WriteLine(source[0].Count);\nConsole.WriteLine(independent[0].Count);\npublic class Item\n{\n    public string Name { get; set; } = \"\";\n    public int Count { get; set; }\n}\n```\n\n期待出力は1、9です。Nameの文字列は不変なので共有してもこの変更では困りません。将来Itemへ可変の子オブジェクトを追加した場合は、そのコピー方針を改めて設計します。循環参照や共有関係を持つデータでは、単純にすべてnewするだけでも元の関係を壊す場合があるため、「深いコピー」の要件を具体化します。\n\n## Boxingは値をobjectとして扱うときの変換\n\nobjectはC#の型体系の共通の基底型です。値型をobjectとして扱うときに、その値をオブジェクトとして包む変換をboxingと呼びます。通常は値のコピーを含みます。取り出すunboxingでは、元の値型との一致に注意が必要です。",
+    "sha256": {
+      "Program.cs": "525196bd013740401d54133c14a777990ebf45d975cc01b470b2e43ad41cbb31",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "5939ceca8c1eb51d2b5a76ad0f36da9551312329b0bc9b4f9061d46d03debbed"
+  },
+  {
+    "id": "deep-13-07",
+    "source": "samples/expanded/deep/13/example-07",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "10\n10\n",
+    "meaning": "Boxing preserves original int10; unbox to int then widen to long10.",
+    "teachingPath": "content/deep/13.md",
+    "teachingExcerpt": "```csharp\nint number = 10;\nobject boxed = number;\nnumber = 20;\nint restored = (int)boxed;\nConsole.WriteLine(restored);\nlong widened = (int)boxed;\nConsole.WriteLine(widened);\n```\n\n期待出力は10、10です。boxedに包まれたのは最初の10で、numberの後の変更は反映されません。`long widened = (int)boxed;`はintとして取り出してからlongへ広げます。boxedの中身がintなのに直接`(long)boxed`とすると、単に数値範囲が広いから取り出せるわけではなく、通常InvalidCastExceptionになります。\n\nジェネリックな`List<int>`などを使うと、objectへの変換を必要とせず型を保ったまま操作しやすくなります。boxingの具体的な割り当てがJITで最適化される場合はありますが、値のコピーという意味や型変換の規則は変わりません。\n\n## GC：到達可能性と寿命を分ける\n\nGCは、アプリが今後利用できる参照のつながりを調べ、到達できなくなったオブジェクトを回収対象にします。調査の起点をルートと呼び、実行中に使われる参照やstaticフィールドなどが関係します。単純に「参照の個数を一つずつ数え、0になった瞬間に削除する」仕組みとしては理解しません。相互に参照し合う二つのオブジェクトでも、外から到達できなければ回収対象になり得ます。\n\nマネージドヒープは世代という区分で管理されます。短命なオブジェクトが多いという性質を利用して回収の効率を高めます。ただし、世代番号を覚えることより、参照を不必要に保持すると回収対象にならないことを理解します。長生きするイベント発行元へ購読を残し、画面の実体が保持され続ける問題はLesson 17のイベントにも関係します。\n\nnullを代入しても回収の時刻を指定したこ",
+    "sha256": {
+      "Program.cs": "ad4dd9bc9e21511aa1998385066b8762e0d8c978582f67c292f605b692bcc47c",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "5939ceca8c1eb51d2b5a76ad0f36da9551312329b0bc9b4f9061d46d03debbed"
+  },
+  {
+    "id": "deep-14-01",
+    "source": "samples/expanded/deep/14/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "False\nFalse\nTrue\nFalse\n",
+    "meaning": "Plain classes compare references; records compare values while distinct instances remain distinct.",
+    "teachingPath": "content/deep/14.md",
+    "teachingExcerpt": "```csharp\nvar first = new ProductClass(\"Pen\", 100);\nvar second = new ProductClass(\"Pen\", 100);\nConsole.WriteLine(first == second);\nConsole.WriteLine(first.Equals(second));\n\nvar one = new ProductRecord(\"Pen\", 100);\nvar two = new ProductRecord(\"Pen\", 100);\nConsole.WriteLine(one == two);\nConsole.WriteLine(ReferenceEquals(one, two));\n\npublic class ProductClass\n{\n    public string Name { get; }\n    public int Price { get; }\n    public ProductClass(string name, int price)\n    {\n        Name = name;\n        Price = price;\n    }\n}\npublic record ProductRecord(string Name, int Price);\n```\n\n期待出力はFalse、False、True、Falseです。このProductClassは等値性をカスタマイズしていないので、別の実体は等しくありません。record classには値に基づく等値性のためのメンバーが生成されるので、同じ実行時のrecord型で対応する値が等しい二つは等しいと扱われます。ただし実体は別です。\n\nrecordは、データを中心とする型で等値性・表示・コピーなどの定型的な実装をコンパイラーに生成させる機能です。`record`だけならrecord class、`record struct`なら値型です。recordを使えばデータベース上の同じ行か自動で判断されるわけではありません。何を同じ値とするかは設計の問題です。\n\n## recordの構文を分解する\n\n`public record ProductRecord(string Name, int Price);`では、ProductRecordが型名、かっこ内が位置指定パラメーターです。このrecord classでは、対応する公開のinitプロパティなどが生成されます。NameとPriceを受け取るコンストラクター、値に基づくEqualsやGetHashCode、表示用のToStringなどの定型的な処理も用意されます。\n\ninitは初期化段階などに代入を制限するアクセサーです。すべてのrecordが自動的に完全不変になるという意味ではありません。自分でset可能なプロパティを持たせることもでき、参照型のプロパティが可変オブジェクトを指す場合は内部を変更できることもあります。\n\n## withで一部",
+    "sha256": {
+      "Program.cs": "bd18f9557ef9917618f22f18a64df3b0e10a4516b7418236b81a5d0df2cc6d6e",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "2dad0238fc9b74c1d5a346ac29998441581f71415004fc56748437efd6012ac9"
+  },
+  {
+    "id": "deep-14-02",
+    "source": "samples/expanded/deep/14/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "Pen:100\nPen:80\nFalse\n",
+    "meaning": "with copies the record and changes only copied price80.",
+    "teachingPath": "content/deep/14.md",
+    "teachingExcerpt": "```csharp\nvar original = new Product(\"Pen\", 100);\nvar discounted = original with { Price = 80 };\nConsole.WriteLine($\"{original.Name}:{original.Price}\");\nConsole.WriteLine($\"{discounted.Name}:{discounted.Price}\");\nConsole.WriteLine(ReferenceEquals(original, discounted));\n\npublic record Product(string Name, int Price);\n```\n\n期待出力は`Pen:100`、`Pen:80`、Falseです。with式は元のrecordからコピーを作り、指定した値を新しい方へ設定します。originalを直接80へ変更しているわけではありません。\n\n| 時点 | original | discounted | 内容 |\n|---|---|---|---|\n| 生成後 | 実体A | 未宣言 | A=(Pen,100) |\n| コピー | 実体A | 実体B | Bもいったんコピーした状態 |\n| Price設定 | 実体A | 実体B | A=(Pen,100), B=(Pen,80) |\n\n```flow\n元のrecord | Product(Pen, 100)\nwith | フィールド等をコピーした別のrecordを作る\nPrice = 80 | 新しい側の値を変更\n結果 | 元100、新80\n```\n\nrecord structでは値型のコピーとして扱います。どちらも参照先の子オブジェクトまで自動で深いコピーになるわけではありません。`with`という文法を見たら「何が直接コピーされるか」を確認します。\n\n## 間違い：withを深いコピーだと思う",
+    "sha256": {
+      "Program.cs": "a995233719d84ad8536e9075322861e617dafbc4c7720cc6bf46af2c556d4256",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "2dad0238fc9b74c1d5a346ac29998441581f71415004fc56748437efd6012ac9"
+  },
+  {
+    "id": "deep-14-03",
+    "source": "samples/expanded/deep/14/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "Pen,Book\nTrue\n",
+    "meaning": "Intentional shallow with copy shares List and reveals Pen,Book on original.",
+    "teachingPath": "content/deep/14.md",
+    "teachingExcerpt": "```csharp\nvar original = new Basket(new List<string> { \"Pen\" });\nvar copied = original with { };\ncopied.Items.Add(\"Book\");\nConsole.WriteLine(string.Join(\",\", original.Items));\nConsole.WriteLine(ReferenceEquals(original.Items, copied.Items));\n\npublic record Basket(List<string> Items);\n```\n\n誤解を観察する例の期待出力は`Pen,Book`、Trueです。Listは追加・削除できるコレクションです。recordの実体は別でもItemsが持つListへの参照は共有されています。そのListへAddすると元からも変更が見えます。\n\n修正位置はwithで設定するItemsです。",
+    "sha256": {
+      "Program.cs": "5bfa0323a12062d35f19c9723c9f18ad0960bde109f0580af6e7b8b385e60b7a",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "2dad0238fc9b74c1d5a346ac29998441581f71415004fc56748437efd6012ac9"
+  },
+  {
+    "id": "deep-14-04",
+    "source": "samples/expanded/deep/14/example-04",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "Pen\nPen,Book\n",
+    "meaning": "Replacing Items with new List separates later Add from original.",
+    "teachingPath": "content/deep/14.md",
+    "teachingExcerpt": "```csharp\nvar original = new Basket(new List<string> { \"Pen\" });\nvar copied = original with { Items = new List<string>(original.Items) };\ncopied.Items.Add(\"Book\");\nConsole.WriteLine(string.Join(\",\", original.Items));\nConsole.WriteLine(string.Join(\",\", copied.Items));\npublic record Basket(List<string> Items);\n```\n\n修正後の期待出力はPen、次の行に`Pen,Book`です。新しいListを用意し、要素をコピーしています。要素がstringなので、この例では文字列の不変性を利用できます。要素が可変の参照型なら、その要素のコピー方針も別途決める必要があります。\n\n## 配列プロパティの等値性に注意する\n\nrecordが対応するプロパティを比較しても、配列が自動的に要素ごとの比較へ変わるわけではありません。配列は通常のEqualsで参照の同一性を比較します。",
+    "sha256": {
+      "Program.cs": "6b68afb355f20501b333dfd8f074bcc17af3052411a7d52cb9f43cac25fed9b4",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "2dad0238fc9b74c1d5a346ac29998441581f71415004fc56748437efd6012ac9"
+  },
+  {
+    "id": "deep-14-05",
+    "source": "samples/expanded/deep/14/example-05",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "False\nTrue\n",
+    "meaning": "Record array property compares references; SequenceEqual compares values.",
+    "teachingPath": "content/deep/14.md",
+    "teachingExcerpt": "```csharp\nvar a = new Scores(new[] { 80, 90 });\nvar b = new Scores(new[] { 80, 90 });\nConsole.WriteLine(a == b);\nConsole.WriteLine(a.Values.SequenceEqual(b.Values));\n\npublic record Scores(int[] Values);\n```\n\n期待出力はFalse、Trueです。SequenceEqualは並びの要素が順に等しいかを調べるLINQメソッドです。LINQはデータ操作の共通の仕組みで、Lesson 18から詳しく学びます。ここでは「配列の実体が同じ」と「要素の並びが同じ」を分けるために使っています。\n\nデータを値として比較したいからrecordにしたのに、内部のコレクションは期待と違う規則で比較される場合があります。入れ子の型の等値性を含めて確認することが必要です。記録された順序を意味のあるものとするか、順不同の集合として比較するかも要件で決めます。\n\n## string・object・Equalsの違い",
+    "sha256": {
+      "Program.cs": "a14c5609af94bb08a7b098e6e12ab1bf818d5ab9c6c10e6ecbb305ef0537c831",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "2dad0238fc9b74c1d5a346ac29998441581f71415004fc56748437efd6012ac9"
+  },
+  {
+    "id": "deep-14-06",
+    "source": "samples/expanded/deep/14/example-06",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "True\nFalse\nTrue\n",
+    "meaning": "string == compares contents, object == references, virtual Equals string contents.",
+    "teachingPath": "content/deep/14.md",
+    "teachingExcerpt": "```csharp\nstring first = new string(new[] { 'A', 'B' });\nstring second = new string(new[] { 'A', 'B' });\nConsole.WriteLine(first == second);\nobject left = first;\nobject right = second;\nConsole.WriteLine(left == right);\nConsole.WriteLine(left.Equals(right));\n```\n\n期待出力はTrue、False、Trueです。string型としての`==`は文字列の値の等しさを比較します。object型の変数同士の`==`はこの例では参照比較です。一方、Equalsは実体のstringの実装を利用するため内容が等しいと判断されます。\n\n演算子の選択では式の型が重要で、メソッドの実行ではオーバーライドなども関係します。`left.Equals(right)`はleftがnullなら呼べないので、nullを含む比較では`object.Equals(left, right)`や適切な型の比較方法を検討します。比較対象の型と目的を明示する方が、記号だけの暗記より確実です。\n\n## GetHashCodeとコレクションのキー\n\nハッシュコードは、値を効率よく分類・検索するための数値です。DictionaryやHashSetなどで利用されます。「等しい値なら同じハッシュコードになる」ことが必要ですが、「同じハッシュコードなら等しい」とは限りません。異なる値が同じコードになる衝突があり得ます。\n\nEqualsを自分で上書きする場合は、GetHashCodeとの整合性を保ちます。キーに使った後で等値性に関わる状態を変えると、登録時と検索時のハッシュが変わり、見つからなくなる原因になります。recordも変更可能なメンバーを持てるため、recordならどんな状態でも安全なキーになるわけではありません。\n\nハッシュコードをデータベースの永続IDや秘密情報の安全なハッシュとして流用しません。実行や環境をまたいで同じ値が保証される識別子とは目的が違います。業務上のIDと、検索の",
+    "sha256": {
+      "Program.cs": "61ca501484a2afd6b164b87ad53dd808c917d33d95203cd8d854ab01564a804f",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "2dad0238fc9b74c1d5a346ac29998441581f71415004fc56748437efd6012ac9"
+  },
+  {
+    "id": "deep-15-01",
+    "source": "samples/expanded/deep/15/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "10,3,4\n3\n",
+    "meaning": "Add4, Remove2 and replacement of index0 produce10,3,4 and Count3.",
+    "teachingPath": "content/deep/15.md",
+    "teachingExcerpt": "```csharp\nvar numbers = new List<int> { 1, 2, 3 };\nnumbers.Add(4);\nnumbers.Remove(2);\nnumbers[0] = 10;\nConsole.WriteLine(string.Join(\",\", numbers));\nConsole.WriteLine(numbers.Count);\n```\n\n期待出力は`10,3,4`、3です。Addは末尾へ追加、Removeは一致する最初の要素を削除、`[0]`は先頭要素へのアクセスです。Countは現在入っている要素数です。\n\n| 操作 | 前の状態 | 後の状態 | Count |\n|---|---|---|---:|\n| 初期化 | なし | [1,2,3] | 3 |\n| Add(4) | [1,2,3] | [1,2,3,4] | 4 |\n| Remove(2) | [1,2,3,4] | [1,3,4] | 3 |\n| [0]=10 | [1,3,4] | [10,3,4] | 3 |\n\nListは通常、内部の配列に要素を保存します。Capacityは内部で確保している要素の収納能力、Countは現在入っている要素数です。Capacityを100にしても、要素が100個あるとは限りません。追加時に容量が足りなければ、より大きな領域へ要素をコピーする場合があります。具体的な容量増加の数値へ依存したコードは書きません。\n\n```flow\nCount=3のList | 3個の要素を保持\nAdd(4) | 末尾へ追加する場所を確保\n容量が足りる場合 | 既存領域へ追加\n容量が足りない場合 | 新しい内部配列へコピーして追加\nCount=4 | 利用可能な要素が一つ増える\n```\n\n末尾追加は通常効率的ですが、途中のInsertやRemoveAtでは後ろの要素をずらす処理が必要です。要素が少なければ読みやすさを優先し、非常に大量のデータでは操作回数や計算量を測ります。計算量とは要素数に応じて必要な処理がどう増えるかという見方です",
+    "sha256": {
+      "Program.cs": "667c79ff8d09ca8788788626bf404a1104fd8a8f8d33a8885e01481fe4357d33",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "878151119b9dcd0be0a1ffa593d145d63be25335434bc3a1833204be8a5fcf99"
+  },
+  {
+    "id": "deep-15-02",
+    "source": "samples/expanded/deep/15/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "4\nFalse\n",
+    "meaning": "Case-insensitive PEN/pen lookup returns decremented4; absent CLIP returns False.",
+    "teachingPath": "content/deep/15.md",
+    "teachingExcerpt": "```csharp\nvar stock = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase)\n{\n    [\"PEN\"] = 5,\n    [\"BOOK\"] = 2\n};\nstock[\"PEN\"] = stock[\"PEN\"] - 1;\nif (stock.TryGetValue(\"pen\", out int quantity))\n{\n    Console.WriteLine(quantity);\n}\nConsole.WriteLine(stock.TryGetValue(\"CLIP\", out _));\n```\n\n期待出力は4、Falseです。`Dictionary<string,int>`はキーがstring、値がintの型です。OrdinalIgnoreCaseはこの教材のコード識別子を大文字小文字を区別せず比較する指定です。`out _`は取得した値を使わず、成功したかだけ受け取る書き方です。\n\n| 時点 | PEN | BOOK | CLIP |\n|---|---:|---:|---|\n| 初期化 | 5 | 2 | 登録なし |\n| PENを減らす | 4 | 2 | 登録なし |\n| penで検索 | 4を取得 | 変化なし | 登録なし |\n| CLIPで検索 | 変化なし | 変化なし | false、追加はしない |\n\nDictionaryはハッシュを利用して候補を探し、等値性の比較でキーを識別します。ハッシュコードが同じだけで同じキーと決めるわけではありません。列挙順を表示仕様の保証として使わず、順序が必要なら明示的に並べ替えます。\n\n## 実用例：コマンドの件数を数える",
+    "sha256": {
+      "Program.cs": "0eb18852163bbeca61742ddbb5c6d5551a929c944576b84bcacbaea982f871c4",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "878151119b9dcd0be0a1ffa593d145d63be25335434bc3a1833204be8a5fcf99"
+  },
+  {
+    "id": "deep-15-03",
+    "source": "samples/expanded/deep/15/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "save=3\nload=2\n",
+    "meaning": "Case-insensitive frequency counting yields save3/load2.",
+    "teachingPath": "content/deep/15.md",
+    "teachingExcerpt": "```csharp\nstring[] commands = { \"save\", \"load\", \"save\", \"SAVE\", \"load\" };\nvar counts = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);\nforeach (string command in commands)\n{\n    counts.TryGetValue(command, out int current);\n    counts[command] = current + 1;\n}\nConsole.WriteLine($\"save={counts[\"save\"]}\");\nConsole.WriteLine($\"load={counts[\"load\"]}\");\n```\n\n期待出力は`save=3`、`load=2`です。初回はキーがないためTryGetValueはfalseを返し、currentはintの既定値0になります。この例では「未登録なら0回」という仕様なので、その0を利用して1を設定して構いません。変換失敗時の0を無条件で使う例とは、0の意味が明確な点が違います。\n\n最初のsaveで1、loadで1、二度目のsaveで2、SAVEでも同じキーとして3、最後のloadで2になります。インデクサー`counts[command] = ...`は、キーがなければ追加し、既存なら値を更新します。Addは重複キーを拒否する操作なので、どちらを選ぶかで不正入力の検出方法が変わります。\n\n## IEnumerable・ICollection・Listを区別する\n\nインターフェイスは利用できる操作の契約です。`IEnumerable<T>`は順に要素を取り出せることを表します。CountやAddが必ずある契約ではありません。`ICollection<T>`はCountや追加・削除などの操作を持ちますが、実装によっては読み取り専用で、変更操作が許されない場合があります。Listはそれらを実装する具体的なコレクションです。\n\n| 型 | 主に表すもの | 選択場面 | 注意 |\n|---|---|---|---|\n| T[] | 長さ固定の具体的配列 | 要素数が決まる結果 | 要素は変更可能 |\n| List<T> | 変更可能な順序付きコレクション | 追加・削除しながら作るデータ | CapacityとCountは別 |\n| Dictionary<",
+    "sha256": {
+      "Program.cs": "a1785b226264eb6b04bf8122f8ef40b61f9bfbb1b85c22a4f0e95fb4e736ed1e",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "878151119b9dcd0be0a1ffa593d145d63be25335434bc3a1833204be8a5fcf99"
+  },
+  {
+    "id": "deep-15-04",
+    "source": "samples/expanded/deep/15/example-04",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "10\nAoi\n",
+    "meaning": "Closed generic boxes retain int10 and string Aoi.",
+    "teachingPath": "content/deep/15.md",
+    "teachingExcerpt": "```csharp\nvar numberBox = new Box<int>(10);\nvar nameBox = new Box<string>(\"Aoi\");\nConsole.WriteLine(numberBox.Value);\nConsole.WriteLine(nameBox.Value);\n\npublic class Box<T>\n{\n    public T Value { get; }\n    public Box(T value)\n    {\n        Value = value;\n    }\n}\n```\n\n期待出力は10、Aoiです。Tは実際に使う型へ置き換わる型パラメーターです。実行時には構築されたジェネリック型の情報も扱われます。値型と参照型でJITがコードを共有・特殊化する方法は異なる場合がありますが、学習の中心は型安全な再利用です。\n\nTに何の制約もなければ、Tが必ずLengthやPriceを持つとは言えません。`where T : IHasPrice`のような制約は、Tが満たす能力を指定する仕組みです。必要な操作をコンパイラーへ示せます。ただし、まだ必要でない拡張を見越して複雑な制約を増やすのではなく、具体的な重複と契約から導きます。\n\n## 間違い：列挙中にListを追加・削除する",
+    "sha256": {
+      "Program.cs": "45b51b3606a382c62ee62de0bc302caeaaf907a5614b0d5e8bf7677ac2a6b04a",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "878151119b9dcd0be0a1ffa593d145d63be25335434bc3a1833204be8a5fcf99"
+  },
+  {
+    "id": "deep-15-06",
+    "source": "samples/expanded/deep/15/example-06",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "1,3\n",
+    "meaning": "RemoveAll deletes even values and preserves1,3.",
+    "teachingPath": "content/deep/15.md",
+    "teachingExcerpt": "```csharp\nvar values = new List<int> { 1, 2, 3, 4 };\nvalues.RemoveAll(value => value % 2 == 0);\nConsole.WriteLine(string.Join(\",\", values));\n```\n\n期待出力は`1,3`です。`value => ...`は条件を判定する処理を値として渡すラムダ式です。Lesson 17で詳しく扱います。ここではRemoveAllに「削除する要素の条件」を渡しています。別解は後ろから位置を調べてRemoveAtする方法で、削除後のずれが未処理部分へ影響しない順にします。\n\n## 間違い：ないキーをインデクサーで読む",
+    "sha256": {
+      "Program.cs": "05c1af587137c6563b0901e99bee0963885e4e7e5ff52069039172d5d6263a54",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "878151119b9dcd0be0a1ffa593d145d63be25335434bc3a1833204be8a5fcf99"
+  },
+  {
+    "id": "deep-15-08",
+    "source": "samples/expanded/deep/15/example-08",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "商品コードが未登録です\n",
+    "meaning": "Missing key is explicitly reported rather than treated as zero.",
+    "teachingPath": "content/deep/15.md",
+    "teachingExcerpt": "```csharp\nvar stock = new Dictionary<string, int>();\nif (stock.TryGetValue(\"PEN\", out int quantity))\n    Console.WriteLine(quantity);\nelse\n    Console.WriteLine(\"商品コードが未登録です\");\n```\n\n期待出力は`商品コードが未登録です`です。見つからない場合を0と扱うか、未登録として返すかは仕様次第です。「在庫0の商品」と「存在しない商品」は異なる状態なので、業務上必要なら区別を残します。\n\n## 段階別の練習\n\n基礎はListへAdd・Remove・インデクサー代入を順に行い、各時点のCountを追う課題です。標準は商品コードの件数集計を、大文字小文字を区別する仕様へ変更する課題です。Ordinalを使うとsaveとSAVEは別のキーで、save=2、SAVE=1となります。\n\n応用は、Listの先頭要素の削除を繰り返す処理と、先頭から読み進める処理の違いを考える課題です。大量の先頭削除は要素移動を繰り返すため、先入れ先出しが目的ならQueueという専用コレクションも候補です。構文だけでなく、行いたい操作から部品を選ぶことが目標です。次のLesson 16では、コレクション操作などで起きる例外をどこで受け取り、資源をどう片付けるかを学びます。",
+    "sha256": {
+      "Program.cs": "8adc00ad0ce68fad98d5e2b4044ef445a8039abcb404bcff14f6a200e2ae183e",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "878151119b9dcd0be0a1ffa593d145d63be25335434bc3a1833204be8a5fcf99"
+  },
+  {
+    "id": "deep-16-01",
+    "source": "samples/expanded/deep/16/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "開始\n変換前\n整数の形式ではありません\n後片付け\n終了\n",
+    "meaning": "Intentional FormatException jumps over value printing, catch reports, finally cleans, then execution resumes.",
+    "teachingPath": "content/deep/16.md",
+    "teachingExcerpt": "```csharp\nConsole.WriteLine(\"開始\");\ntry\n{\n    Console.WriteLine(\"変換前\");\n    int value = int.Parse(\"abc\");\n    Console.WriteLine(value);\n}\ncatch (FormatException)\n{\n    Console.WriteLine(\"整数の形式ではありません\");\n}\nfinally\n{\n    Console.WriteLine(\"後片付け\");\n}\nConsole.WriteLine(\"終了\");\n```\n\n期待される出力：\n\n```text\n開始\n変換前\n整数の形式ではありません\n後片付け\n終了\n```\n\ntryは例外が起こり得る処理の範囲です。catchは対応する型の例外を受け取ります。finallyは通常の終了・例外の伝播・returnなどで対象の範囲を抜ける際の後片付けに使います。プロセスの強制終了やOS障害など、どんな状況でも必ず動くという保証ではありません。\n\n| 段階 | 処理 | 次へ進まない文 |\n|---|---|---|\n| ① | 開始、変換前を表示 | なし |\n| ② | ParseがFormatExceptionを発生 | `Console.WriteLine(value)` |\n| ③ | 対応するcatchへ移動 | tryの途中へ戻らない |\n| ④ | finallyを実行 | なし |\n| ⑤ | catchで処理できたので続行 | 終了を表示 |\n\ncatchで処理した後に、失敗したParseの次へ自動的に戻るわけではありません。やり直しが必要なら、再試行の回数と条件を自分で設計します。無条件に繰り返すと、解決しない失敗を延々と繰り返します。\n\n## どこでcatchするか\n\n呼び出し先で対応できるcatchがないと、例外は呼び出し元へ伝わります。各層で何でもcatchする必要はありません。「入力を求め直せる」「代替結果を返せる」「要求をエラー応答へ変換できる」など、適切な対応ができる境界で受け取ります。",
+    "sha256": {
+      "Program.cs": "a9c7c3914212756bf29dcb3eb0a068992366d7a552135a51e1af224e2711e03f",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "8357149ab16d73146597528563a404c754b7f61f40fe43c4c1cd0fea9cfcdd30"
+  },
+  {
+    "id": "deep-16-02",
+    "source": "samples/expanded/deep/16/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "数量を入力し直してください\n",
+    "meaning": "ReadQuantity FormatException propagates to caller catch, which reports a recovery instruction.",
+    "teachingPath": "content/deep/16.md",
+    "teachingExcerpt": "```csharp\ntry\n{\n    Console.WriteLine(ReadQuantity(\"abc\"));\n}\ncatch (FormatException)\n{\n    Console.WriteLine(\"数量を入力し直してください\");\n}\n\nstatic int ReadQuantity(string input)\n{\n    return int.Parse(input);\n}\n```\n\n期待出力は`数量を入力し直してください`です。ReadQuantity内の例外が呼び出し側のcatchへ届きます。これは伝播を理解する教材例で、ユーザー入力の実装ではTryParseも検討します。下位メソッドで勝手に画面表示するより、利用側がどう知らせるかを決めやすくなります。\n\ncatchを複数書く場合は、具体的な型を先、広い基底型を後へ置きます。`Exception`を先に受け取ると、派生する多くの例外を先に捕まえてしまいます。コンパイラーが到達不能なcatchを指摘する場合もあります。\n\n## IDisposableとusingの目的\n\nGCは不要なマネージドメモリを回収対象にします。しかし、ファイル、ネットワーク接続、OSのハンドルなどは、必要な時点で利用を終える必要があります。ハンドルはOSが管理する資源を識別・操作するための値です。資源を閉じる処理を`Dispose`として提供する契約が`IDisposable`です。\n\nusing文・using宣言は、対象を使う範囲を抜けるときにDisposeを呼ぶための構文です。名前空間を取り込む`using System;`とは別の役割です。usingを付けてもオブジェクトのメモリがその瞬間に必ず回収されるわけではありません。",
+    "sha256": {
+      "Program.cs": "80c97bfcb8f42c41a7e6e6ddd1fa4561de48b78550ea61707146b2e679e6a3a3",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "8357149ab16d73146597528563a404c754b7f61f40fe43c4c1cd0fea9cfcdd30"
+  },
+  {
+    "id": "deep-16-03",
+    "source": "samples/expanded/deep/16/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "外側の開始\n生成\n利用中\n解放処理\n外側の続き\n",
+    "meaning": "using block constructs resource then disposes before outside continuation.",
+    "teachingPath": "content/deep/16.md",
+    "teachingExcerpt": "```csharp\nConsole.WriteLine(\"外側の開始\");\nusing (var resource = new TraceResource())\n{\n    Console.WriteLine(\"利用中\");\n}\nConsole.WriteLine(\"外側の続き\");\n\npublic sealed class TraceResource : IDisposable\n{\n    public TraceResource() { Console.WriteLine(\"生成\"); }\n    public void Dispose() { Console.WriteLine(\"解放処理\"); }\n}\n```\n\n期待出力は外側の開始、生成、利用中、解放処理、外側の続きです。このTraceResourceは順序を観察するための教材用クラスで、実際のOS資源を保持していません。Disposeのタイミングが、実体を使う範囲の終わりへ結び付いていることを確認します。\n\n```flow\n生成に成功 | 資源を受け取る\nusingの本体 | 必要な処理をする\n範囲から出る | 正常終了・例外・returnなど\nDispose | 資源の利用を終える\n外側へ | メモリ回収の時刻とは別\n```\n\n概念的には、生成後の利用をtryで囲み、finallyでDisposeを行う形に近いものです。ただし、対象の型や構文に応じた言語上の規則があるため、生成コードの細部を完全に同一とは扱いません。生成そのものが失敗した場合は、まだ受け取れていない実体に対してDisposeする流れにはなりません。\n\n## using宣言と早期return",
+    "sha256": {
+      "Program.cs": "4802e4643187095db687795bb37b690a14734f724ad62ad451b9d4865c06ccfd",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "8357149ab16d73146597528563a404c754b7f61f40fe43c4c1cd0fea9cfcdd30"
+  },
+  {
+    "id": "deep-16-04",
+    "source": "samples/expanded/deep/16/example-04",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "生成\n処理\n解放処理\n",
+    "meaning": "using declaration disposes on return from Process.",
+    "teachingPath": "content/deep/16.md",
+    "teachingExcerpt": "```csharp\nProcess();\n\nstatic void Process()\n{\n    using var resource = new TraceResource();\n    Console.WriteLine(\"処理\");\n    return;\n}\n\npublic sealed class TraceResource : IDisposable\n{\n    public TraceResource() { Console.WriteLine(\"生成\"); }\n    public void Dispose() { Console.WriteLine(\"解放処理\"); }\n}\n```\n\n期待出力は生成、処理、解放処理です。using宣言はその宣言を含むスコープの終わりでDisposeします。必要な範囲より広いメソッドの先頭へ置くと、資源を長く保持してしまう場合があります。狭い範囲で閉じたいならusing文のブロックを使います。\n\n非同期で解放処理を待つ`IAsyncDisposable`と`await using`もあります。非同期とは待ち時間に実行スレッドを占有し続けない形で処理を組み立てることで、Lesson 23以降で扱います。今はDisposeとGCを分け、usingのスコープが寿命を決めることを理解します。\n\n## 実用例：文字列を一行ずつ読む",
+    "sha256": {
+      "Program.cs": "41d3d469f0645909f2a9d70f3f1a5b0f3b5890a4484c4f786793961e6957a590",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "8357149ab16d73146597528563a404c754b7f61f40fe43c4c1cd0fea9cfcdd30"
+  },
+  {
+    "id": "deep-16-05",
+    "source": "samples/expanded/deep/16/example-05",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "1: C#\n2: .NET\n3: Web API\n",
+    "meaning": "StringReader advances through three literal lines and stops at EOF null.",
+    "teachingPath": "content/deep/16.md",
+    "teachingExcerpt": "```csharp\nusing var reader = new StringReader(\"C#\\n.NET\\nWeb API\");\nstring? line;\nint lineNumber = 0;\nwhile ((line = reader.ReadLine()) is not null)\n{\n    lineNumber++;\n    Console.WriteLine($\"{lineNumber}: {line}\");\n}\n```\n\n期待出力は`1: C#`、`2: .NET`、`3: Web API`です。StringReaderは文字列を読み取り元として扱う部品です。`\\n`はコード上で改行文字を表すエスケープです。通常の引用符付き文字列へ、意図せずソースの実改行をそのまま入れると別の構文エラーになるため注意します。\n\n条件式のかっこ内でReadLineの結果をlineへ代入し、それがnullでない間だけ本体を実行します。最後の行の後はnullになり、ループを抜けます。各回でReadLineが進むので、状態が変わらない無限ループではありません。using宣言により、スコープを終えるとreaderのDisposeが呼ばれます。StringReaderはOSのファイルハンドルを持つ例ではありませんが、同じ利用パターンを安全に学べます。\n\n## 間違い：例外を握りつぶす",
+    "sha256": {
+      "Program.cs": "af082b6523edda4e63db4ab91e4cd9cc7fca4ac7bfe27c407c588235d70e6430",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "8357149ab16d73146597528563a404c754b7f61f40fe43c4c1cd0fea9cfcdd30"
+  },
+  {
+    "id": "deep-16-06",
+    "source": "samples/expanded/deep/16/example-06",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "数量=0\n",
+    "meaning": "Intentional empty catch swallows parse failure and leaves quantity0; preserve problem demonstration.",
+    "teachingPath": "content/deep/16.md",
+    "teachingExcerpt": "```csharp\nint quantity = 0;\ntry\n{\n    quantity = int.Parse(\"abc\");\n}\ncatch (Exception)\n{\n}\nConsole.WriteLine($\"数量={quantity}\");\n```\n\nこの問題例の期待出力は`数量=0`です。変換に失敗したのに、正常に0を入力したかのように続いてしまいます。空のcatchは原因の情報を失わせ、不正な状態を成功に見せることがあります。catchした事実と、回復できたことは同じではありません。\n\n修正位置は例外の扱いと続行条件です。入力ならTryParseへ変えて失敗を明示する方法があります。",
+    "sha256": {
+      "Program.cs": "8c1dabf7176fa6915f0a47c4beba5de4ad51ea3e363bfd2baee0a6eaabd8a7b4",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "8357149ab16d73146597528563a404c754b7f61f40fe43c4c1cd0fea9cfcdd30"
+  },
+  {
+    "id": "deep-16-07",
+    "source": "samples/expanded/deep/16/example-07",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "数量の変換に失敗しました\n",
+    "meaning": "TryParse failure prints error then returns before quantity printing.",
+    "teachingPath": "content/deep/16.md",
+    "teachingExcerpt": "```csharp\nif (!int.TryParse(\"abc\", out int quantity))\n{\n    Console.WriteLine(\"数量の変換に失敗しました\");\n    return;\n}\nConsole.WriteLine($\"数量={quantity}\");\n```\n\n期待出力は`数量の変換に失敗しました`です。内部処理で回復不能なら例外を上へ伝えます。catch内から同じ例外を再送出するときは通常`throw;`を使い、`throw ex;`で元の発生位置の情報を損なわないようにします。例外へ文脈を追加する場合は、元例外をinner exceptionとして保持する設計もあります。\n\n## 間違い：使い終わる前にDisposeする",
+    "sha256": {
+      "Program.cs": "1b3b6dd8368ff6aa44a40a2233e5c524fc8fd45f5795c254d249d27ffd7629fa",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "8357149ab16d73146597528563a404c754b7f61f40fe43c4c1cd0fea9cfcdd30"
+  },
+  {
+    "id": "deep-16-09",
+    "source": "samples/expanded/deep/16/example-09",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "C#\n",
+    "meaning": "Reader is used within its lifetime and reads C#.",
+    "teachingPath": "content/deep/16.md",
+    "teachingExcerpt": "```csharp\nusing var reader = new StringReader(\"C#\");\nConsole.WriteLine(reader.ReadLine());\n```\n\n期待出力はC#です。誰が生成し、誰が所有し、どこで利用を終えるかを決めます。DIから渡された部品を利用側が勝手にDisposeすると、他の利用側が壊れる場合もあります。所有権と寿命はLesson 31で再登場します。\n\n## 選択基準と段階別の練習\n\n| 仕組み | 解決すること | 解決しないこと |\n|---|---|---|\n| Try系API | 想定される失敗を結果で分ける | すべての予期しない障害の回復 |\n| try/catch | 対応できる例外を受け取る | 不正な状態を自動で元に戻す |\n| finally | スコープを抜ける際の後片付け | プロセス強制終了時の完全保証 |\n| using / Dispose | 所有する資源の利用終了 | メモリをその瞬間に必ず回収 |\n| GC | 到達不能なマネージドメモリの回収 | 外部資源を必要時刻に必ず閉じる |\n\n基礎課題はtryのParseを`\"12\"`へ変え、どの表示がなくなるかを説明することです。catchは実行されず、finallyは実行されます。標準課題はTraceResourceのusing本体で例外を投げ、外側でcatchし、Disposeがcatchの前に行われる流れを追うことです。\n\n応用課題は処理の各段階をログへ残す場合、同じ例外をすべての層で重複記録しない方針を考えることです。利用者向けの短い説明と、開発者向けの原因・発生位置は役割を分けます。認証情報や個人情報を例外ログへ無条件に書かない配慮も必要です。次の章では処理自体を値として渡すラムダ・デリゲートを学びます。",
+    "sha256": {
+      "Program.cs": "e57debdd8b35829fc32f9dfb1fee889bc0cd56a3de8b84290b55c8eb6a6624c5",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "8357149ab16d73146597528563a404c754b7f61f40fe43c4c1cd0fea9cfcdd30"
+  },
+  {
+    "id": "deep-17-01",
+    "source": "samples/expanded/deep/17/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "8\n",
+    "meaning": "Delegate invokes Double with4, returning8.",
+    "teachingPath": "content/deep/17.md",
+    "teachingExcerpt": "```csharp\nFunc<int, int> operation = Double;\nint result = operation(4);\nConsole.WriteLine(result);\n\nstatic int Double(int value)\n{\n    return value * 2;\n}\n```\n\n期待出力は8です。Func<int, int>の最後の型引数は戻り値、それより前は引数です。この場合「intを一つ受け取り、intを返す処理」です。Doubleの後ろに()を付けずに代入している点が重要です。ここではDoubleを実行せず、後から呼べるものとして渡しています。operation(4)で初めて4を渡して呼び出します。\n\n```flow\n① operationを初期化 | Doubleを呼び出せるデリゲートを保持\n② operation(4) | Doubleのvalueに4を渡す\n③ return value * 2 | 8を返す\n④ resultに受け取る | Consoleへ8を表示\n```\n\nDouble(4)の戻り値8をデリゲートへ代入することはできません。処理と処理結果は別の種類の値です。\n\n## ラムダ式へ置き換える",
+    "sha256": {
+      "Program.cs": "3c475b2054823de5d9171376257211df23a8f90f4b32b8a4a471ca18e06dc54c",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "56b8d707c71339859bc63d9f4bfaac3781a3012b66ce7380f7c69b6445c7c76b"
+  },
+  {
+    "id": "deep-17-02",
+    "source": "samples/expanded/deep/17/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "8\n8\n集計完了\n",
+    "meaning": "Lambda double4/add3+5 produce8 each, then Action reports completion.",
+    "teachingPath": "content/deep/17.md",
+    "teachingExcerpt": "```csharp\nFunc<int, int> operation = value => value * 2;\nConsole.WriteLine(operation(4));\n\nFunc<int, int, int> add = (left, right) => left + right;\nConsole.WriteLine(add(3, 5));\n\nAction<string> report = message => Console.WriteLine(message);\nreport(\"集計完了\");\n```\n\n期待出力は8、8、集計完了です。=>の左は受け取る引数、右は計算する式です。引数が二つなら括弧で囲みます。Action<string>はstringを受け取って値を返さない処理です。「戻り値がない」ことを表すvoidは、結果を使わず表示などの作業を行うメソッドに使います。\n\n複数の文が必要な場合は`value => { int doubled = value * 2; return doubled; }`のように波括弧とreturnを書きます。短く書くこと自体が目的ではありません。処理が長くなったら、目的が分かる名前のメソッドへ分けるほうが読みやすくなります。\n\n| 書き方 | 引数 | 戻り値 | 選ぶ場面 |\n|---|---|---|---|\n| Action | なし | なし | 完了後の通知処理 |\n| Action<string> | 文字列 | なし | メッセージを表示・記録 |\n| Func<int, bool> | 整数 | 真偽値 | 数値を残す条件 |\n| Func<int, string> | 整数 | 文字列 | 数値を表示用文字列へ変換 |\n\n## 実用例：ループの手順と条件を分ける",
+    "sha256": {
+      "Program.cs": "5f7e95bc4ebe59e64da90188bde228ed050fb6c6db5c372317ae90ea3f5d1643",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "56b8d707c71339859bc63d9f4bfaac3781a3012b66ce7380f7c69b6445c7c76b"
+  },
+  {
+    "id": "deep-17-03",
+    "source": "samples/expanded/deep/17/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "2\n1\n",
+    "meaning": "Predicate counts >=60 as2 and >=80 as1.",
+    "teachingPath": "content/deep/17.md",
+    "teachingExcerpt": "```csharp\nint[] scores = { 40, 70, 85 };\nConsole.WriteLine(CountMatching(scores, score => score >= 60));\nConsole.WriteLine(CountMatching(scores, score => score >= 80));\n\nstatic int CountMatching(int[] values, Func<int, bool> condition)\n{\n    int count = 0;\n    foreach (int value in values)\n    {\n        if (condition(value))\n        {\n            count++;\n        }\n    }\n    return count;\n}\n```\n\n期待出力は2、1です。CountMatchingは「配列を順に見て、条件がtrueなら数える」という共通の手順だけを持ちます。60以上か80以上かは呼び出す側が決めます。condition(value)はラムダ式へ各得点を渡す呼び出しです。次のレッスンのWhereも、各要素を残すかどうかを判定する処理を受け取ります。\n\n| 1回目の要素 | conditionの結果 | countの前→後 |\n|---:|---|---|\n| 40 | false | 0→0 |\n| 70 | true | 0→1 |\n| 85 | true | 1→2 |\n\n## 外側の変数を使うと何が保存されるか\n\nクロージャーとは、関数が外側の変数を後からも使える仕組みです。単に「作った時点の値を必ずコピーする」と覚えてはいけません。次の例では同じlimit変数を参照するため、呼び出す時点の値が使われます。",
+    "sha256": {
+      "Program.cs": "cbf4d866e5e58faa029bcaf2c9b716c125f739ca42741f0454614b624025480b",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "56b8d707c71339859bc63d9f4bfaac3781a3012b66ce7380f7c69b6445c7c76b"
+  },
+  {
+    "id": "deep-17-04",
+    "source": "samples/expanded/deep/17/example-04",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "True\nFalse\n",
+    "meaning": "Closure observes updated limit60 then80, yielding True then False for70.",
+    "teachingPath": "content/deep/17.md",
+    "teachingExcerpt": "```csharp\nint limit = 60;\nFunc<int, bool> isPassing = score => score >= limit;\nConsole.WriteLine(isPassing(70));\nlimit = 80;\nConsole.WriteLine(isPassing(70));\n```\n\n期待出力はTrue、Falseです。最初は70>=60、次は70>=80です。コンパイラーは必要に応じて、外側の変数を後から参照できる保持用のオブジェクトなどを生成します。具体的な生成形状は実装に依存します。重要なのは、元のメソッドの呼び出しが終わっても、デリゲートから使われる変数の寿命が延びる場合があることです。\n\n## 間違い：forの変数をそのまま覚えさせる\n\n次は構文エラーではありませんが、0、1、2を表示する目的には合いません。",
+    "sha256": {
+      "Program.cs": "3aa5af8a2e59df008ef2409ba83a0c95be554edac460e6f6d59c946f3317872e",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "56b8d707c71339859bc63d9f4bfaac3781a3012b66ce7380f7c69b6445c7c76b"
+  },
+  {
+    "id": "deep-17-05",
+    "source": "samples/expanded/deep/17/example-05",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "3\n3\n3\n",
+    "meaning": "Intentional shared loop variable is3 when all deferred actions run.",
+    "teachingPath": "content/deep/17.md",
+    "teachingExcerpt": "```csharp\nvar actions = new List<Action>();\nfor (int i = 0; i < 3; i++)\n{\n    actions.Add(() => Console.WriteLine(i));\n}\nforeach (Action action in actions)\n{\n    action();\n}\n```\n\n期待される観察結果は3、3、3です。ループ中に表示しているのではなく、同じi変数を参照する処理を三つ保存しています。呼び出す頃にはiが3です。確認する場所はラムダ式の作成位置と、実際に呼び出す位置です。各回の値を残すなら、その回ごとの変数を作ります。",
+    "sha256": {
+      "Program.cs": "9ec834c3997b3b570c7bc5a63d599445a7b5447f3ac612e28b4e6684a162f761",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "56b8d707c71339859bc63d9f4bfaac3781a3012b66ce7380f7c69b6445c7c76b"
+  },
+  {
+    "id": "deep-17-06",
+    "source": "samples/expanded/deep/17/example-06",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "0\n1\n2\n",
+    "meaning": "Per-iteration captured variables retain0,1,2.",
+    "teachingPath": "content/deep/17.md",
+    "teachingExcerpt": "```csharp\nvar actions = new List<Action>();\nfor (int i = 0; i < 3; i++)\n{\n    int captured = i;\n    actions.Add(() => Console.WriteLine(captured));\n}\nforeach (Action action in actions)\n{\n    action();\n}\n```\n\n修正後の期待出力は0、1、2です。capturedはループ本体に入るたびに別の変数になります。問題はラムダ式が遅いことではなく、何を共有しているかです。\n\n## イベント：通知する側と受け取る側を分ける",
+    "sha256": {
+      "Program.cs": "8624644aa428cc32dac560020d9391ee437d92b3a83df49cfdfaa3ae1bc77693",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "56b8d707c71339859bc63d9f4bfaac3781a3012b66ce7380f7c69b6445c7c76b"
+  },
+  {
+    "id": "deep-17-07",
+    "source": "samples/expanded/deep/17/example-07",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "残り:2\n最終:1\n",
+    "meaning": "Only first removal notifies2; handler unsubscribe suppresses second notification; final count1.",
+    "teachingPath": "content/deep/17.md",
+    "teachingExcerpt": "```csharp\nvar stock = new Stock();\nAction<int> handler = remaining => Console.WriteLine($\"残り:{remaining}\");\nstock.Changed += handler;\nstock.TakeOne();\nstock.Changed -= handler;\nstock.TakeOne();\nConsole.WriteLine($\"最終:{stock.Count}\");\n\npublic sealed class Stock\n{\n    public int Count { get; private set; } = 3;\n    public event Action<int>? Changed;\n\n    public void TakeOne()\n    {\n        if (Count == 0) return;\n        Count--;\n        Changed?.Invoke(Count);\n    }\n}\n```\n\n期待出力は残り:2、最終:1です。+=は購読、つまり通知を受ける処理の登録です。-=は登録解除です。Changed?.Invokeは購読者がいれば呼び出し、いなければ呼び出しません。eventを宣言した型の外からは、通常そのイベントへ直接値を代入したり通知を発生させたりできません。Stockが状態を変更した後だけ通知する、という管理ができます。\n\n通常のデリゲート呼び出しは呼び出し元のスレッドで同期的に行われます。スレッドとはCPU上で処理を進める実行の流れです。eventを付けても自動で別のスレッドにはなりません。登録された処理が例外を投げると、そのまま呼び出し元へ伝わり、後続の処理が呼ばれないことがあります。「通知は必ず安全」という前提を置かないでください。\n\n## 間違い：解除するとき別のラムダ式を書く\n\n`stock.Changed += n => Console.WriteLine(n);`の後に見た目が同じラムダ式で-=しても、同じデリゲートとして解除できるとは限りません。上の完成例のようにhandler変数へ保持して同じ登録を解除します。長期間存在する通知元が購読先を保持し続けると、不要になった画面などがGCで回収されない原因になります。\n\n現段階では「通知元は購読処理への参照を持つ」「必要がなくなったら購読を解除する」を理解すれば十分です。イベントを非同期にする設計や複数スレッド間の通知は、Taskとキャンセルを学んでから扱います。\n\n## 3段階の練習と読み直す場所\n\n**基礎**：Func<int, int>で3倍にする処理を作り、入力4に対して12を表示し",
+    "sha256": {
+      "Program.cs": "5b4e71e6d3e790c5355e12e993d38cb45d78c5b444a414413f32402ee5fb5ac8",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "56b8d707c71339859bc63d9f4bfaac3781a3012b66ce7380f7c69b6445c7c76b"
+  },
+  {
+    "id": "deep-18-01",
+    "source": "samples/expanded/deep/18/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "80, 90\n",
+    "meaning": "Index loop filters >=70 preserving80,90 order.",
+    "teachingPath": "content/deep/18.md",
+    "teachingExcerpt": "```csharp\nint[] scores = { 40, 80, 65, 90 };\nvar passing = new List<int>();\nfor (int i = 0; i < scores.Length; i++)\n{\n    if (scores[i] >= 70)\n    {\n        passing.Add(scores[i]);\n    }\n}\nConsole.WriteLine(string.Join(\", \", passing));\n```\n\n期待出力は80, 90です。string.Joinは複数の値の間に区切り文字を挟んで、一つの文字列へまとめます。最初に空のListを作り、iで各得点を読み、条件を満たしたときだけ追加しています。元のscoresは変わりません。\n\n| 読む値 | 条件 | passingの変化 |\n|---:|---|---|\n| 40 | false | []のまま |\n| 80 | true | []→[80] |\n| 65 | false | [80]のまま |\n| 90 | true | [80]→[80,90] |\n\n## ② foreachで「値を順番に読む」と表す",
+    "sha256": {
+      "Program.cs": "5b68220e7f53c03271af2031cd32f31f8d3acf409b68ab16b960707be2488771",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "5479a08ac24bf89b7a2504267b845b17466b2b8ccf49e0396fb08414aaf054a7"
+  },
+  {
+    "id": "deep-18-02",
+    "source": "samples/expanded/deep/18/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "80, 90\n",
+    "meaning": "Foreach filter is equivalent to index loop.",
+    "teachingPath": "content/deep/18.md",
+    "teachingExcerpt": "```csharp\nint[] scores = { 40, 80, 65, 90 };\nvar passing = new List<int>();\nforeach (int score in scores)\n{\n    if (score >= 70)\n    {\n        passing.Add(score);\n    }\n}\nConsole.WriteLine(string.Join(\", \", passing));\n```\n\n出力は同じです。添字が必要ないので、iの管理をforeachへ任せました。ここで省けたのはループ変数の管理であり、「順番に読み、条件を調べる」という仕事が消えたわけではありません。\n\n## ③ 条件を渡してWhereへ進む",
+    "sha256": {
+      "Program.cs": "d89a9a8c05f239957b17a4c9e870d0a8d3cd748f51fcfbab583dec0f029d04d4",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "5479a08ac24bf89b7a2504267b845b17466b2b8ccf49e0396fb08414aaf054a7"
+  },
+  {
+    "id": "deep-18-03",
+    "source": "samples/expanded/deep/18/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "80, 90\n",
+    "meaning": "Where filters >=70 during Join enumeration, preserving source order.",
+    "teachingPath": "content/deep/18.md",
+    "teachingExcerpt": "```csharp\nusing System.Linq;\n\nint[] scores = { 40, 80, 65, 90 };\nIEnumerable<int> passing = scores.Where(score => score >= 70);\nConsole.WriteLine(string.Join(\", \", passing));\n```\n\n期待出力は80, 90です。IEnumerable<int>は「intを順に取り出せる」という約束を表す型です。Listのように必ず全要素を内部保存していることや、添字で読めることまでは約束しません。Whereは要素を受け取りboolを返す条件を使い、trueになった要素だけを順に渡します。\n\nscoreは元の配列の各要素です。`score => score >= 70`は前のレッスンで学んだラムダ式です。Whereの呼び出しでは通常、まだ全ての条件判定を終えていません。この例ではJoinが要素を列挙、つまり順番に取り出すときに条件が評価されます。詳しい実行時点は次のレッスンで追います。\n\n## ④ Selectで要素の形を変える",
+    "sha256": {
+      "Program.cs": "ee6f8afe19843ba571b676b65affae58ef7252434377ec4f60ab116a28e8ea0c",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "5479a08ac24bf89b7a2504267b845b17466b2b8ccf49e0396fb08414aaf054a7"
+  },
+  {
+    "id": "deep-18-04",
+    "source": "samples/expanded/deep/18/example-04",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "40点 / 80点 / 65点 / 90点\n",
+    "meaning": "Select transforms every score into a label without removing elements.",
+    "teachingPath": "content/deep/18.md",
+    "teachingExcerpt": "```csharp\nusing System.Linq;\n\nint[] scores = { 40, 80, 65, 90 };\nIEnumerable<string> labels = scores.Select(score => $\"{score}点\");\nConsole.WriteLine(string.Join(\" / \", labels));\n```\n\n期待出力は40点 / 80点 / 65点 / 90点です。Selectは各要素を一つずつ別の値へ変換します。この例ではintからstringへ変換しています。Whereのように条件不成立の要素を除外する操作ではありません。入力が4要素なら、このSelectも4要素を生成します。\n\n| 操作 | ラムダ式の意味 | この例の出力要素型 | 要素数 |\n|---|---|---|---|\n| Where(n => n >= 70) | 残すか | int | 0〜元の数 |\n| Select(n => $\"{n}点\") | 何へ変えるか | string | 元と同じ |\n| OrderBy(n => n) | 何を基準に並べるか | int | 元と同じ |\n| ToList() | 今の列挙結果をListへ保存 | intなど | 列挙した数 |\n\n## ⑤ メソッドチェーンで順に組み合わせる",
+    "sha256": {
+      "Program.cs": "601174c04118da7e6241a69e6c7d0d0c7b8cac7d5ca0f391b18883a1a2a05e4f",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "5479a08ac24bf89b7a2504267b845b17466b2b8ccf49e0396fb08414aaf054a7"
+  },
+  {
+    "id": "deep-18-05",
+    "source": "samples/expanded/deep/18/example-05",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "合格:90点 / 合格:80点\n",
+    "meaning": "Filter then descending sort then labels yields90 before80.",
+    "teachingPath": "content/deep/18.md",
+    "teachingExcerpt": "```csharp\nusing System.Linq;\n\nint[] scores = { 40, 80, 65, 90 };\nList<string> labels = scores\n    .Where(score => score >= 70)\n    .OrderByDescending(score => score)\n    .Select(score => $\"合格:{score}点\")\n    .ToList();\nConsole.WriteLine(string.Join(\" / \", labels));\n```\n\n期待出力は合格:90点 / 合格:80点です。メソッドチェーンとは、メソッドの戻り値に続けて次のメソッドを呼ぶ記述です。「配列→抽出できる列→並べ替えた列→文字列へ変換した列→List」と型と意味が変わります。\n\n```flow\n入力 int[] | [40,80,65,90]\nWhereで抽出 | [80,90]に相当する列\nOrderByDescendingで整列 | [90,80]に相当する列\nSelectで表示用へ | [合格:90点,合格:80点]に相当する列\nToListで確定 | この時点の結果を新しいList<string>へ保存\n```\n\nこれは論理上の段階を表す図です。各段階で必ず別のListを作っているわけではありません。WhereやSelectは列挙要求に応じて要素を渡し、OrderBy系は並べ替えのために入力を保持してから結果を返します。ToListは最後まで列挙して保存します。\n\n## 実用例：注文から発送対象を作る",
+    "sha256": {
+      "Program.cs": "d7ab5f7ce111c8b88333b086bb883d2a9101df7e7005ca10eb1d640790f4c7ef",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "5479a08ac24bf89b7a2504267b845b17466b2b8ccf49e0396fb08414aaf054a7"
+  },
+  {
+    "id": "deep-18-06",
+    "source": "samples/expanded/deep/18/example-06",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "注文1:ノート×2\n注文3:付箋×3\n",
+    "meaning": "Paid orders1 and3 survive and retain input order.",
+    "teachingPath": "content/deep/18.md",
+    "teachingExcerpt": "```csharp\nusing System.Linq;\n\nOrder[] orders =\n{\n    new Order(1, \"ノート\", 2, true),\n    new Order(2, \"ペン\", 1, false),\n    new Order(3, \"付箋\", 3, true)\n};\nList<string> shipping = orders\n    .Where(order => order.IsPaid)\n    .Select(order => $\"注文{order.Id}:{order.Name}×{order.Quantity}\")\n    .ToList();\nforeach (string line in shipping)\n{\n    Console.WriteLine(line);\n}\n\npublic record Order(int Id, string Name, int Quantity, bool IsPaid);\n```\n\n期待出力は注文1:ノート×2、注文3:付箋×3です。recordは値をまとめるための型で、第14レッスンで学んだ等値性の生成も持ちます。Whereの条件は既にboolのIsPaidなので、`== true`を書かなくても意味が明確です。Selectで画面に必要な文字列だけを作っています。実務ではAPIから受け取った複数データや、既に読み込んだ業務データの表示用加工に使えます。\n\nAPIは別のプログラムから機能を呼び出すための窓口です。通信そのものは第28レッスン以降で学びます。ここでは通信済みの結果がOrderの配列に入っていると考えてください。\n\n## 間違い：Selectで条件を書くと抽出されると思う",
+    "sha256": {
+      "Program.cs": "effc1bfa18ea03425b8aec49733a4f1cb83a4201e26c3dd0a114f65d651c061b",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "5479a08ac24bf89b7a2504267b845b17466b2b8ccf49e0396fb08414aaf054a7"
+  },
+  {
+    "id": "deep-18-07",
+    "source": "samples/expanded/deep/18/example-07",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "False, True, False, True\n",
+    "meaning": "Intentional Select maps each score to boolean; it does not filter.",
+    "teachingPath": "content/deep/18.md",
+    "teachingExcerpt": "```csharp\nusing System.Linq;\n\nint[] scores = { 40, 80, 65, 90 };\nvar result = scores.Select(score => score >= 70);\nConsole.WriteLine(string.Join(\", \", result));\n```\n\n観察結果はFalse, True, False, Trueです。Selectは各得点をboolへ変換しています。配列内の値が残ると思った場合は、resultの要素型がIEnumerable<bool>になっている点を確認します。抽出するにはWhereへ修正します。",
+    "sha256": {
+      "Program.cs": "508bbaad0a915cbb7ce7ffb42db4c76b2ff3598ad9e14c0be8169639a6ef4506",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "5479a08ac24bf89b7a2504267b845b17466b2b8ccf49e0396fb08414aaf054a7"
+  },
+  {
+    "id": "deep-18-08",
+    "source": "samples/expanded/deep/18/example-08",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "80, 90\n",
+    "meaning": "Corrected Where retains80 and90.",
+    "teachingPath": "content/deep/18.md",
+    "teachingExcerpt": "```csharp\nusing System.Linq;\n\nint[] scores = { 40, 80, 65, 90 };\nvar result = scores.Where(score => score >= 70);\nConsole.WriteLine(string.Join(\", \", result));\n```\n\n修正後は80, 90です。「条件を書けたか」だけではなく「メソッドはその条件を何に使うか」を考えます。Whereは残す判定、Selectは出力値の計算です。\n\n## 間違い：並べ替えで元の配列も変わると思う",
+    "sha256": {
+      "Program.cs": "bdc5c625aad680797574172bbd37cf67ca5912ba27c0d2b1260047f69d01284e",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "5479a08ac24bf89b7a2504267b845b17466b2b8ccf49e0396fb08414aaf054a7"
+  },
+  {
+    "id": "deep-18-09",
+    "source": "samples/expanded/deep/18/example-09",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "3,1,2\n1,2,3\n",
+    "meaning": "OrderBy creates ordered result while source remains3,1,2.",
+    "teachingPath": "content/deep/18.md",
+    "teachingExcerpt": "```csharp\nusing System.Linq;\n\nint[] numbers = { 3, 1, 2 };\nvar sorted = numbers.OrderBy(number => number).ToArray();\nConsole.WriteLine(string.Join(\",\", numbers));\nConsole.WriteLine(string.Join(\",\", sorted));\n```\n\n期待出力は3,1,2、1,2,3です。OrderByは並べ替え結果を取得する操作であり、元の配列を書き換える操作ではありません。元のList自体を並べ替える必要があるならList.Sortなど、状態を変更する別の操作を検討します。結果を返す処理と、対象を直接変更する処理を混同しないでください。\n\n## LINQを使わないほうが伝わる場合\n\n途中で何度も状態を書き換える、外部へ通知する、複数の条件でbreakする、といった手順はforeachのほうが分かりやすいことがあります。Selectの中で別のListへAddするような副作用を詰め込むと、いつ実行されるかが分かりにくくなります。副作用とは、戻り値を返す以外に外部の状態を変えることです。\n\nまずは「入力を読む→必要な結果を作る」部分をLINQにし、表示・保存などの作業は明示的なループやメソッドに分けると追跡しやすくなります。\n\n## 3段階の練習\n\n**基礎**：{1,2,3,4,5}から3以上を抽出し、3,4,5を表示してください。解答の中心は`numbers.Where(n => n >= 3)`です。同じ処理をforeachとifでも書き、どちらにも同じ判定があることを説明します。\n\n**標準**：偶数だけを残して10倍し、{1,2,3,4}から20,40を作ってください。`Where(n => n % 2 == 0).Select(n => n * 10)`が解答です。WhereとSelectを逆にしてから偶数判定すると、元は奇数だった値も10倍後は偶数になり、目的が変わります。\n\n**応用**：発送対象を注文IDの降",
+    "sha256": {
+      "Program.cs": "600384a68959b3ef65737743cf4b6df5f3f3eb5209446a34b48d30190723d8bc",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "5479a08ac24bf89b7a2504267b845b17466b2b8ccf49e0396fb08414aaf054a7"
+  },
+  {
+    "id": "deep-19-01",
+    "source": "samples/expanded/deep/19/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "A:列を取得\nB:列挙を開始\nC:生成開始\n受取:10\nD:次へ進む\n受取:20\n",
+    "meaning": "Iterator body is deferred until enumeration and resumes across each yield.",
+    "teachingPath": "content/deep/19.md",
+    "teachingExcerpt": "```csharp\nConsole.WriteLine(\"A:列を取得\");\nIEnumerable<int> numbers = CreateNumbers();\nConsole.WriteLine(\"B:列挙を開始\");\nforeach (int number in numbers)\n{\n    Console.WriteLine($\"受取:{number}\");\n}\n\nstatic IEnumerable<int> CreateNumbers()\n{\n    Console.WriteLine(\"C:生成開始\");\n    yield return 10;\n    Console.WriteLine(\"D:次へ進む\");\n    yield return 20;\n}\n```\n\n期待出力は次の順です。\n\n```text\nA:列を取得\nB:列挙を開始\nC:生成開始\n受取:10\nD:次へ進む\n受取:20\n```\n\nyield returnは、列挙している側へ一つ値を渡し、次に要求されたときに続きから進める構文です。通常のreturnのように処理全体を終了するわけではありません。コンパイラーは途中の位置や必要なローカル変数を保持できる形へ変換します。こうした「状態と、次にする処理を保持する仕組み」を状態機械と呼びます。asyncでも別の目的で似た発想が使われますが、yield自体が非同期になるわけではありません。\n\n## 遅延実行で値を見る時点を追う",
+    "sha256": {
+      "Program.cs": "e7ffc4ed5b13fb989e7a9b2bea97c781fdc4d4c1f01b449bd73c63e4ab7671ac",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "e99b99a77458b7bf619e9742a897a4295ae39f00cbd78902c076d9f1ee046664"
+  },
+  {
+    "id": "deep-19-02",
+    "source": "samples/expanded/deep/19/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "2,3,4\n3,4\n",
+    "meaning": "Deferred query sees Add4 on first enumeration then Remove2 on second.",
+    "teachingPath": "content/deep/19.md",
+    "teachingExcerpt": "```csharp\nusing System.Linq;\n\nvar numbers = new List<int> { 1, 2, 3 };\nIEnumerable<int> query = numbers.Where(number => number >= 2);\nnumbers.Add(4);\nConsole.WriteLine(string.Join(\",\", query));\nnumbers.Remove(2);\nConsole.WriteLine(string.Join(\",\", query));\n```\n\n期待出力は2,3,4、3,4です。Whereを呼んだ時点の要素を凍結しているのではありません。Joinが列挙するとき、その時点のListから条件に合う値を読みます。二回目の列挙ではListの状態が変わっています。\n\n| 時点 | numbers | queryについて起きたこと |\n|---|---|---|\n| Whereを呼ぶ | [1,2,3] | 抽出を表す列を作る |\n| Add(4) | [1,2,3,4] | まだ結果を保存していない |\n| 1回目のJoin | [1,2,3,4] | 2,3,4を取り出す |\n| Remove(2) | [1,3,4] | 元のListを変更 |\n| 2回目のJoin | [1,3,4] | 3,4を取り出す |\n\n列挙中に同じListを変更すると、別の問題としてInvalidOperationExceptionが起きる場合があります。「列挙する前に変更する」と「列挙中に変更する」を区別します。\n\n## ToListでその時点の結果を保存する",
+    "sha256": {
+      "Program.cs": "8f1ae0d0dd564faa6132cd6aaf1240034889ea7d5c05075266b9b9dc4b42c329",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "e99b99a77458b7bf619e9742a897a4295ae39f00cbd78902c076d9f1ee046664"
+  },
+  {
+    "id": "deep-19-03",
+    "source": "samples/expanded/deep/19/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "2,3\n1,2,3,4\n",
+    "meaning": "ToList snapshots2,3 before source Add4.",
+    "teachingPath": "content/deep/19.md",
+    "teachingExcerpt": "```csharp\nusing System.Linq;\n\nvar numbers = new List<int> { 1, 2, 3 };\nList<int> snapshot = numbers.Where(number => number >= 2).ToList();\nnumbers.Add(4);\nConsole.WriteLine(string.Join(\",\", snapshot));\nConsole.WriteLine(string.Join(\",\", numbers));\n```\n\n期待出力は2,3、1,2,3,4です。ToListが呼び出されたところで最後まで列挙し、その結果を新しいListへ入れます。スナップショットとは、ある時点の状態を記録したものです。ただし、要素が参照型なら参照をコピーするため、オブジェクト内部まで独立した深いコピーにはなりません。第13・14レッスンのコピーの境界がここにもつながります。\n\n## 間違い：同じ列挙結果が無料で再利用されると思う",
+    "sha256": {
+      "Program.cs": "383170b570af9474b3155e39c057b87c8cf57b8f752ad2f2c7bf49b9df60a655",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "e99b99a77458b7bf619e9742a897a4295ae39f00cbd78902c076d9f1ee046664"
+  },
+  {
+    "id": "deep-19-04",
+    "source": "samples/expanded/deep/19/example-04",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "判定:1\n判定:2\n判定:3\n2\n判定:1\n判定:2\n判定:3\n5\n",
+    "meaning": "Count and Sum independently enumerate Where, repeating predicate side effects for1,2,3.",
+    "teachingPath": "content/deep/19.md",
+    "teachingExcerpt": "```csharp\nusing System.Linq;\n\nIEnumerable<int> query = new[] { 1, 2, 3 }.Where(number =>\n{\n    Console.WriteLine($\"判定:{number}\");\n    return number >= 2;\n});\nConsole.WriteLine(query.Count());\nConsole.WriteLine(query.Sum());\n```\n\nこのWhereの例では、Countのために1、2、3を判定し、2を表示した後、Sumのために再び1、2、3を判定して5を表示します。一部の列や操作には要素を実際に読み進めず件数を得る最適化もあるため、「全てのCountが必ず全列挙」と一般化してはいけません。ここでは条件を評価するWhereに表示処理を入れて、読み直しを観察しています。\n\n一回の結果を複数回使うなら、用途に応じてToListで保存します。",
+    "sha256": {
+      "Program.cs": "27bd19ca50eafa4d9af5ff12ab114e602a50fcc5fe0ba73d3068b6361dddfe43",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "e99b99a77458b7bf619e9742a897a4295ae39f00cbd78902c076d9f1ee046664"
+  },
+  {
+    "id": "deep-19-05",
+    "source": "samples/expanded/deep/19/example-05",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "2\n5\n",
+    "meaning": "Materialized List count2 and sum5 require no repeated predicates.",
+    "teachingPath": "content/deep/19.md",
+    "teachingExcerpt": "```csharp\nusing System.Linq;\n\nList<int> result = new[] { 1, 2, 3 }\n    .Where(number => number >= 2)\n    .ToList();\nConsole.WriteLine(result.Count);\nConsole.WriteLine(result.Sum());\n```\n\n期待出力は2、5です。ListのCountプロパティは保持している件数を読みます。必要以上のToListはメモリの使用と先行処理を増やすので、何回使うか、いつ確定したいかで選びます。\n\n## 遅延・逐次・一括保持を分ける\n\n| 操作 | 主なタイミング | 結果を出すために必要なこと | 選ぶ目的 |\n|---|---|---|---|\n| Where / Select | 列挙時 | 各要素を判定・変換 | 順に加工 |\n| Take(3) | 列挙時 | 必要な先頭部分を読む | 先頭だけ欲しい |\n| OrderBy | 列挙時 | 並べ替え対象を保持して整列 | 全体の順序を決める |\n| ToList / ToArray | 呼び出し時 | 最後まで読み結果を保存 | 今の結果を再利用 |\n| Any | 呼び出し時 | 存在が分かれば止められる | あるかどうか |\n| Sum / Average | 呼び出し時 | 集計に必要な値を読む | 一つの集計値を得る |\n\n遅延実行は「一つずつ低メモリで必ず処理する」という意味ではありません。OrderByも開始は遅延しますが、最初の結果を返すために入力を保持して並べる必要があります。\n\n## 集計と空の列を一緒に設計する",
+    "sha256": {
+      "Program.cs": "94f99af6c53681142a7a42daa6ea36d3e10bcf69613b87cb232c64cd666acee1",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "e99b99a77458b7bf619e9742a897a4295ae39f00cbd78902c076d9f1ee046664"
+  },
+  {
+    "id": "deep-19-06",
+    "source": "samples/expanded/deep/19/example-06",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "False\n240\n80\n100\n",
+    "meaning": "No score below60; sum240, average80, maximum100.",
+    "teachingPath": "content/deep/19.md",
+    "teachingExcerpt": "```csharp\nusing System.Linq;\n\nint[] scores = { 60, 80, 100 };\nConsole.WriteLine(scores.Any(score => score < 60));\nConsole.WriteLine(scores.Sum());\nConsole.WriteLine(scores.Average());\nConsole.WriteLine(scores.Max());\n```\n\n期待出力はFalse、240、80、100です。Anyは条件を満たす値が存在するか、Sumは合計、Averageは平均、Maxは最大値です。Sumの返す型などは要素型により異なります。intのSumでは合計が範囲を超えると例外になるので、業務の最大値も検討します。\n\n| 操作：intの列 | 空の場合 | 何を決めるべきか |\n|---|---|---|\n| Any() | false | 空を正常として扱うか |\n| Count() | 0 | 件数の意味 |\n| Sum() | 0 | 空の合計0で業務上よいか |\n| Average() / Max() | InvalidOperationException | データなしを別表示にするか |\n| First() | InvalidOperationException | 必ず一つ以上ある根拠 |\n| FirstOrDefault() | 0 | 本物の0と区別できるか |\n| Single() | 0件でも2件以上でも例外 | 必ず一件という制約 |\n\nnullable数値用のオーバーロードなどは挙動が異なります。上表はintの列に範囲を限定しています。FirstOrDefaultに変えるだけで全て安全とは言えません。\n\n## 間違い：空の平均をそのまま計算する",
+    "sha256": {
+      "Program.cs": "b1fa1bfe17f061c7f69beabcf736e46823d5fcc48e9735d9858496c9d1e375fe",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "e99b99a77458b7bf619e9742a897a4295ae39f00cbd78902c076d9f1ee046664"
+  },
+  {
+    "id": "deep-19-08",
+    "source": "samples/expanded/deep/19/example-08",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "平均なし\n",
+    "meaning": "Empty input is handled with 平均なし without calling Average.",
+    "teachingPath": "content/deep/19.md",
+    "teachingExcerpt": "```csharp\nusing System.Linq;\n\nint[] scores = Array.Empty<int>();\nif (scores.Length == 0)\n{\n    Console.WriteLine(\"平均なし\");\n}\nelse\n{\n    Console.WriteLine(scores.Average());\n}\n```\n\n期待出力は平均なしです。一般のIEnumerableをAnyとAverageで二回読む設計では、読み直せるか、入力が変わらないかも考えます。必要なら一度ToArrayなどで確定します。\n\n## IEnumerableとIQueryableの境界\n\nIQueryable<T>は、処理を表す式を受け取り、提供元が別の処理へ翻訳できる仕組みです。式とはここでは計算の構造をデータとして表したものです。データベース用の提供元ならSQLという問い合わせ命令へ翻訳する場合があります。ただし、全てのC#メソッドを翻訳できるわけではありません。\n\n本レッスンのEnumerableによるメモリ上の処理と、データベースへの問い合わせを同一視しないでください。まず「処理を組み立てる時点」と「結果が必要になる時点」を分けるところまで理解し、実際のデータベース連携で翻訳範囲と通信回数を学びます。\n\n## 3段階の練習\n\n**基礎**：{1,2,3}にWhere(n => n > 1)を設定した後、列挙前に4を追加した結果を予想してください。2,3,4です。ToListを追加前に置いた別解では2,3になり、読む時点が異なります。\n\n**標準**：空かもしれないint配列から最大値を表示し、空なら「対象なし」にしてください。Length==0で分岐した後にMaxを呼ぶ方法が解答です。例外を握りつぶして0にする方法では、負の値だけのデータと区別できません。\n\n**応用**：商品一覧を価格順にして先頭3件を表示するとき、OrderByとTakeの順を交換したら何が変わるか説明してください。OrderBy→Take",
+    "sha256": {
+      "Program.cs": "f04dc2027c6b569bc882fd8f54d4c6a6f725eee1757548b8ca41707aa88317fb",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "e99b99a77458b7bf619e9742a897a4295ae39f00cbd78902c076d9f1ee046664"
+  },
+  {
+    "id": "deep-20-01",
+    "source": "samples/expanded/deep/20/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "Todo\nDoing\n2\n",
+    "meaning": "Enum ToString gives declared names, explicit int cast gives Done2.",
+    "teachingPath": "content/deep/20.md",
+    "teachingExcerpt": "```csharp\nWorkStatus status = WorkStatus.Todo;\nConsole.WriteLine(status);\nstatus = WorkStatus.Doing;\nConsole.WriteLine(status);\nstatus = WorkStatus.Done;\nConsole.WriteLine((int)status);\n\npublic enum WorkStatus\n{\n    Todo = 0,\n    Doing = 1,\n    Done = 2\n}\n```\n\n期待出力はTodo、Doing、2です。enumの基になる整数型は指定しなければintです。`(int)status`は名前ではなく対応する数値を取り出します。初期状態TodoからDoing、Doneへ代入で変化しています。enum自身が順序や遷移の可否を判断しているのではありません。\n\n| 状態 | 値 | この教材での意味 | 次に許可する状態の例 |\n|---|---:|---|---|\n| Todo | 0 | まだ開始していない | Doing |\n| Doing | 1 | 作業中 | Done / Todo |\n| Done | 2 | 完了 | 業務ルール次第 |\n\n状態遷移とは、現在の状態から別の状態へ移ることです。DoneからTodoへ戻せるかはenum宣言ではなく業務の処理で決めます。\n\n## 間違い：整数から変換できれば定義済みだと思う",
+    "sha256": {
+      "Program.cs": "8995761b7765647444d526d20868a4c91a8fbd2c7594d756ad28ebc706b330e7",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "51bc4e93626813008df8bfe5f9c0371c40e3c1d57e0d5314e1e106c0f9c97de8"
+  },
+  {
+    "id": "deep-20-02",
+    "source": "samples/expanded/deep/20/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "99\nFalse\n",
+    "meaning": "Undefined enum numeric value formats99 and IsDefined is False.",
+    "teachingPath": "content/deep/20.md",
+    "teachingExcerpt": "```csharp\nWorkStatus status = (WorkStatus)99;\nConsole.WriteLine(status);\nConsole.WriteLine(Enum.IsDefined(status));\n\npublic enum WorkStatus { Todo, Doing, Done }\n```\n\n観察結果は99、Falseです。定義されていない整数もenum型の値にできるため、外から受け取った値は検証します。Enum.IsDefinedは、その値が宣言されているかを確認します。TryParseで変換が成功した場合でも、数値文字列によって未定義の値になる場合があります。",
+    "sha256": {
+      "Program.cs": "56c9167fb954ecd2a42f05e62be5e39d2569965bb08d0cdfbbb1aebecdcdc5e9",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "51bc4e93626813008df8bfe5f9c0371c40e3c1d57e0d5314e1e106c0f9c97de8"
+  },
+  {
+    "id": "deep-20-03",
+    "source": "samples/expanded/deep/20/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "状態を確認してください\n",
+    "meaning": "TryParse accepts99 but IsDefined rejects it and error branch prints.",
+    "teachingPath": "content/deep/20.md",
+    "teachingExcerpt": "```csharp\nstring input = \"99\";\nif (Enum.TryParse<WorkStatus>(input, ignoreCase: true, out var status)\n    && Enum.IsDefined(status))\n{\n    Console.WriteLine(status);\n}\nelse\n{\n    Console.WriteLine(\"状態を確認してください\");\n}\n\npublic enum WorkStatus { Todo, Doing, Done }\n```\n\n期待出力は状態を確認してくださいです。入力をDoneへ変えるとDoneになります。Flags属性を使う組み合わせ型では、単一の定義に一致するかとは別の検証が必要です。属性は宣言へ追加情報を付ける構文です。権限の組み合わせなどを学ぶときに、許可するビットの範囲を別途設計します。現段階では単一選択のenumを確実に検証します。\n\n## タプル：複数の結果を返す",
+    "sha256": {
+      "Program.cs": "2f71b4fbb41fd99b6d1a8550fe46f09b5f048b664ac305e12c9253c15624e29f",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "51bc4e93626813008df8bfe5f9c0371c40e3c1d57e0d5314e1e106c0f9c97de8"
+  },
+  {
+    "id": "deep-20-04",
+    "source": "samples/expanded/deep/20/example-04",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "件数:3, 合計:60\n件数:2, 合計:9\n",
+    "meaning": "Named tuple computes count3/total60 and decomposes count2/total9.",
+    "teachingPath": "content/deep/20.md",
+    "teachingExcerpt": "```csharp\nvar result = Calculate(new[] { 10, 20, 30 });\nConsole.WriteLine($\"件数:{result.Count}, 合計:{result.Total}\");\n(int count, int total) = Calculate(new[] { 4, 5 });\nConsole.WriteLine($\"件数:{count}, 合計:{total}\");\n\nstatic (int Count, int Total) Calculate(int[] values)\n{\n    int total = 0;\n    foreach (int value in values)\n    {\n        total += value;\n    }\n    return (values.Length, total);\n}\n```\n\n期待出力は件数:3, 合計:60、件数:2, 合計:9です。戻り値の型`(int Count, int Total)`は二つのintをまとめ、各要素へ名前を付けています。`return (values.Length, total)`で一組の値を返します。二つ目の呼び出しでは分解し、countとtotalという別の変数へ受け取っています。\n\nタプル構文で一般に使うSystem.ValueTupleは値型です。代入ではタプルの値がコピーされますが、内部の要素が参照型なら参照がコピーされます。要素名は読みやすさを助けますが、別の業務型として厳密に区別するものではありません。長期間使う公開データや複雑な制約には、専用のclassやrecordのほうが意図を表しやすい場合があります。\n\n## 間違い：同じ型の要素を逆順に返す",
+    "sha256": {
+      "Program.cs": "58b85ba7fccaf08c0e1ce5bc94a6c3211cbacdc683d18af273618035007e3557",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "51bc4e93626813008df8bfe5f9c0371c40e3c1d57e0d5314e1e106c0f9c97de8"
+  },
+  {
+    "id": "deep-20-05",
+    "source": "samples/expanded/deep/20/example-05",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "件数:60, 合計:3\n",
+    "meaning": "Intentional reversed return binds total60 to Count and count3 to Total.",
+    "teachingPath": "content/deep/20.md",
+    "teachingExcerpt": "```csharp\nvar result = Calculate();\nConsole.WriteLine($\"件数:{result.Count}, 合計:{result.Total}\");\n\nstatic (int Count, int Total) Calculate()\n{\n    int count = 3;\n    int total = 60;\n    return (total, count);\n}\n```\n\n観察結果は件数:60, 合計:3です。両方intなので、型の検査だけでは入れ替えを検出できません。修正する場所はreturnの並びです。",
+    "sha256": {
+      "Program.cs": "2e477a2be5ab6bd34076b76058658bf137bc813ce7e98871ebea0ddb1e3bdc59",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "51bc4e93626813008df8bfe5f9c0371c40e3c1d57e0d5314e1e106c0f9c97de8"
+  },
+  {
+    "id": "deep-20-06",
+    "source": "samples/expanded/deep/20/example-06",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "件数:3, 合計:60\n",
+    "meaning": "Named return assigns correct Count3/Total60.",
+    "teachingPath": "content/deep/20.md",
+    "teachingExcerpt": "```csharp\nvar result = Calculate();\nConsole.WriteLine($\"件数:{result.Count}, 合計:{result.Total}\");\n\nstatic (int Count, int Total) Calculate()\n{\n    int count = 3;\n    int total = 60;\n    return (Count: count, Total: total);\n}\n```\n\n修正後は件数:3, 合計:60です。要素名を明示し、値の意味が合うか確認します。テストでも件数だけでなく合計も検証します。分解先の変数名を変えるだけでは、返す値の入れ替わりは直りません。\n\n## 拡張メソッド：型を変更せず便利な操作を置く",
+    "sha256": {
+      "Program.cs": "be115f99d0b736e998621fd1936eaf922a4fe329f80a37afe440afdaefa48141",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "51bc4e93626813008df8bfe5f9c0371c40e3c1d57e0d5314e1e106c0f9c97de8"
+  },
+  {
+    "id": "deep-20-07",
+    "source": "samples/expanded/deep/20/example-07",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "C#\nC#\n",
+    "meaning": "Extension syntax and direct static call both trim same C# text.",
+    "teachingPath": "content/deep/20.md",
+    "teachingExcerpt": "```csharp\nstring text = \"  C#  \";\nConsole.WriteLine(text.NormalizeLabel());\nConsole.WriteLine(LabelExtensions.NormalizeLabel(text));\n\npublic static class LabelExtensions\n{\n    public static string NormalizeLabel(this string value)\n    {\n        ArgumentNullException.ThrowIfNull(value);\n        return value.Trim();\n    }\n}\n```\n\n期待出力はC#、C#です。二つの呼び出しはこの例では同じ静的メソッドを呼びます。static classはインスタンスを作らず使う型です。従来形式の拡張メソッドではstaticメソッドの最初の引数にthisを付け、どの型を受け手として使うかを示します。`text.NormalizeLabel()`ではtextがvalueへ渡ります。\n\n拡張メソッドはstringの実装そのものを書き換えたり、stringへ新しいフィールドを追加したりしません。呼び出し候補の解決はコンパイル時の型などに基づきます。通常の適用可能なインスタンスメソッドがあればそちらが優先されます。見た目だけでvirtualのような実行時の差し替えと同じだと思わないでください。\n\n.NET 10 / C# 14ではextensionブロックによる拡張メンバーの記述も利用できます。本教材ではまず広く読まれるthis引数形式を基礎にします。新しい構文へ移っても、元の型のprivateな状態を自由に触れる仕組みに変わるわけではありません。\n\n## 拡張メソッドとLINQがつながる\n\nWhereやSelectが配列やListからメソッドのように呼べるのは、Enumerableが提供する拡張メソッドだからです。必要な名前空間System.Linqがスコープ内にあると候補になります。名前空間をusingすることと、外部パッケージを追加することは別です。\n\n```flow\nnumbers.Where(...) | 受け手はIEnumerable<int>として扱える\n拡張メソッドの解決 | EnumerableのWhereが候補に",
+    "sha256": {
+      "Program.cs": "9986b2eaa2b6cf17ca43dd3cc8bdc60ce33ae9e9022bf88d5705fc4aa4d9687b",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "51bc4e93626813008df8bfe5f9c0371c40e3c1d57e0d5314e1e106c0f9c97de8"
+  }
+]

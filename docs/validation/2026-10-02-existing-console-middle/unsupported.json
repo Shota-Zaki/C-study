@@ -1,0 +1,83 @@
+[
+  {
+    "id": "deep-09-04",
+    "status": "NOT_STANDALONE",
+    "kind": "csharp-error",
+    "code": "samples/expanded/deep/09/example-04/Example.cs.txt",
+    "reason": "`Name`は特定の商品の状態ですが、Productという型名だけではどの実体か決まりません。インスタンスを必要とするメンバーを型から使おうとしてコンパイルエラーになります。修正位置は利用側で、実体を作って参照します。",
+    "teachingPath": "content/deep/09.md",
+    "teachingSha256": "c9d95962a397653ceecfb2fedb7e3e9e8dc9d92e71c3458a0655a9a3fceb59a9"
+  },
+  {
+    "id": "deep-10-04",
+    "status": "NOT_STANDALONE",
+    "kind": "csharp-error",
+    "code": "samples/expanded/deep/10/example-04/Example.cs.txt",
+    "reason": "Nameを読むとget相当の処理へ入り、その中で再びNameを読むため、終わらず自分自身を呼び続けます。これを再帰呼び出しといいます。再帰は問題を小さくしながら解く場合には役立ちますが、この例は終了条件がなく、StackOverflowExceptionなどによってプロセスが停止する原因になります。通常のcatchで安全に回復できる前提にしません。",
+    "teachingPath": "content/deep/10.md",
+    "teachingSha256": "8d2cf011be4f3f4e5d9cc19a9cf4c3743985c4239d80451179994f727c6c4e8e"
+  },
+  {
+    "id": "deep-10-06",
+    "status": "NOT_STANDALONE",
+    "kind": "csharp-error",
+    "code": "samples/expanded/deep/10/example-06/Example.cs.txt",
+    "reason": "外部からprivate setへ代入できないためコンパイルエラーになります。これは保護したい設計が機能している状態です。修正はsetをpublicへ変えることではなく、実用例のTryTakeのように意味のある操作を用意し、許された変更を依頼することです。",
+    "teachingPath": "content/deep/10.md",
+    "teachingSha256": "8d2cf011be4f3f4e5d9cc19a9cf4c3743985c4239d80451179994f727c6c4e8e"
+  },
+  {
+    "id": "deep-12-04",
+    "status": "NOT_STANDALONE",
+    "kind": "csharp-error",
+    "code": "samples/expanded/deep/12/example-04/Example.cs.txt",
+    "reason": "インターフェイスは通常の具体的な実体を直接生成する型ではないため、コンパイルエラーになります。契約だけでは、通知の具体的な処理とインスタンスの作り方が決まっていません。",
+    "teachingPath": "content/deep/12.md",
+    "teachingSha256": "9bea583142dca1f6f3eefdeaa4ee2764abb6a400f88c47c07b901039f68282b6"
+  },
+  {
+    "id": "deep-12-05",
+    "status": "NOT_STANDALONE",
+    "kind": "csharp-error",
+    "code": "samples/expanded/deep/12/example-05/Example.cs.txt",
+    "reason": "この例は通常の暗黙的実装として契約を満たしません。外から呼べる契約なのに、対応するメソッドをprivateにしています。修正位置は実装のアクセス修飾子です。`public void Send`へ変えます。",
+    "teachingPath": "content/deep/12.md",
+    "teachingSha256": "9bea583142dca1f6f3eefdeaa4ee2764abb6a400f88c47c07b901039f68282b6"
+  },
+  {
+    "id": "deep-15-05",
+    "status": "NOT_STANDALONE",
+    "kind": "csharp-error",
+    "code": "samples/expanded/deep/15/example-05/Example.cs.txt",
+    "reason": "Listをforeachで列挙している途中に構造を変更すると、通常は列挙子が変更を検出してInvalidOperationExceptionになります。削除によって位置がずれることもあり、どの要素が次かという前提を壊すからです。更新箇所と列挙対象が同じ実体かを確認します。",
+    "teachingPath": "content/deep/15.md",
+    "teachingSha256": "878151119b9dcd0be0a1ffa593d145d63be25335434bc3a1833204be8a5fcf99"
+  },
+  {
+    "id": "deep-15-07",
+    "status": "NOT_STANDALONE",
+    "kind": "csharp-error",
+    "code": "samples/expanded/deep/15/example-07/Example.cs.txt",
+    "reason": "この読み取りは登録がないためKeyNotFoundExceptionになります。空のDictionaryだから0を返すわけではありません。ないことが通常の入力ならTryGetValueで分けます。",
+    "teachingPath": "content/deep/15.md",
+    "teachingSha256": "878151119b9dcd0be0a1ffa593d145d63be25335434bc3a1833204be8a5fcf99"
+  },
+  {
+    "id": "deep-16-08",
+    "status": "NOT_STANDALONE",
+    "kind": "csharp-error",
+    "code": "samples/expanded/deep/16/example-08/Example.cs.txt",
+    "reason": "解放後のreaderを利用しようとして、ObjectDisposedExceptionが起こります。nullとは異なり、参照は存在しても利用が終わった状態です。修正はDisposeをなくして永久に保持することではなく、利用を終えた後へ寿命を合わせることです。",
+    "teachingPath": "content/deep/16.md",
+    "teachingSha256": "8357149ab16d73146597528563a404c754b7f61f40fe43c4c1cd0fea9cfcdd30"
+  },
+  {
+    "id": "deep-19-07",
+    "status": "NOT_STANDALONE",
+    "kind": "csharp-error",
+    "code": "samples/expanded/deep/19/example-07/Example.cs.txt",
+    "reason": "コンパイル可能な形ですが、実行すると平均対象がなくInvalidOperationExceptionになります。確認するのは例外の行だけでなく、抽出後の件数です。次は「データなし」を別の状態として扱います。",
+    "teachingPath": "content/deep/19.md",
+    "teachingSha256": "e99b99a77458b7bf619e9742a897a4295ae39f00cbd78902c076d9f1ee046664"
+  }
+]
