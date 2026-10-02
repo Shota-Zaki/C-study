@@ -26,3 +26,7 @@ Resume: AGENTS → RULES_SOURCE → docs/project/TASKS → NEXT_WORK → evidenc
 2026-10-02-semantics-batch4: 8/8 selected originals PASS; cumulative28/35, remaining7 originals +191 existing Console examples. Evidence: `docs/validation/2026-10-02-semantics-batch4/README.md`. CS07 IN_PROGRESS; task container removed.
 
 2026-10-02-semantics-batch5: cumulative originals33/35, existing Console0/191; remaining2 originals +191 existing Console. Evidence: `docs/validation/2026-10-02-semantics-batch5/README.md`. CS07 IN_PROGRESS; task container removed.
+
+2026-10-02-semantics-batch6: cumulative originals35/35, existing Console0/191; remaining0 originals +191 existing Console. Evidence: `docs/validation/2026-10-02-semantics-batch6/README.md`. CS07 IN_PROGRESS; task container removed.
+
+Inventory correction: expanded201 projects =8Web +193Console (191 ordinary csharp +1 csharp-input deep-04-03 +1 csharp-file deep-21-03). Earlier191 figures exclude these2 input/file examples; both remain in semantic scope. Current remaining193 Console total, not191.
