@@ -1,0 +1,2143 @@
+{
+  "sourceSHA": "be97af2ea921a039472a4105628fd3944f84c0a1",
+  "image": "sha256:35d40304542c8689331f8cab17c65926cdf48fe711e289321d71924b230a7d29",
+  "lifecycle": {
+    "create": {
+      "command": [
+        "docker",
+        "run",
+        "-d",
+        "--pull=never",
+        "--name",
+        "cstudy-task6-2026-10-02-semantics-batch5",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "2g",
+        "sha256:35d40304542c8689331f8cab17c65926cdf48fe711e289321d71924b230a7d29",
+        "sleep",
+        "900"
+      ],
+      "exitCode": 0,
+      "stdout": "c24cb6a46d6cca58f766bcb65a68bf21752c38af7b0f5adf4c779b7b4dd9a4ab\n",
+      "stderr": ""
+    },
+    "copy": {
+      "command": [
+        "docker",
+        "cp",
+        "/var/folders/ct/75ylq_m57wn16_6fm_0zznlm0000gn/T/cstudy-private-t3hwo1me/.",
+        "cstudy-task6-2026-10-02-semantics-batch5:/verify"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "sdk": {
+      "command": [
+        "docker",
+        "exec",
+        "cstudy-task6-2026-10-02-semantics-batch5",
+        "dotnet",
+        "--info"
+      ],
+      "exitCode": 0,
+      "stdout": ".NET SDK:\n Version:           10.0.401\n Commit:            e34a38d2ae\n Workload version:  10.0.400-manifests.63b36e85\n MSBuild version:   18.9.11+e34a38d2a\n\nRuntime Environment:\n OS Name:     ubuntu\n OS Version:  24.04\n OS Platform: Linux\n RID:         linux-arm64\n Base Path:   /usr/share/dotnet/sdk/10.0.401/\n\n.NET workloads installed:\nThere are no installed workloads to display.\nConfigured to use workload sets when installing new manifests.\nNo workload sets are installed. Run \"dotnet workload restore\" to install a workload set.\n\nHost:\n  Version:      10.0.12\n  Architecture: arm64\n  Commit:       95017c711e\n\n.NET SDKs installed:\n  10.0.401 [/usr/share/dotnet/sdk]\n\n.NET runtimes installed:\n  Microsoft.AspNetCore.App 10.0.12 [/usr/share/dotnet/shared/Microsoft.AspNetCore.App]\n  Microsoft.NETCore.App 10.0.12 [/usr/share/dotnet/shared/Microsoft.NETCore.App]\n\nOther architectures found:\n  None\n\nEnvironment variables:\n  DOTNET_GENERATE_ASPNET_CERTIFICATE       [false]\n  DOTNET_NOLOGO                            [true]\n  DOTNET_RUNNING_IN_CONTAINER              [true]\n  DOTNET_SDK_VERSION                       [10.0.401]\n  DOTNET_USE_POLLING_FILE_WATCHER          [true]\n  DOTNET_VERSION                           [10.0.12]\n\nglobal.json file:\n  Not found\n\nLearn more:\n  https://aka.ms/dotnet/info\n\nDownload .NET:\n  https://aka.ms/dotnet/download\n",
+      "stderr": ""
+    },
+    "original-29Stop": {
+      "command": [
+        "docker",
+        "exec",
+        "cstudy-task6-2026-10-02-semantics-batch5",
+        "pkill",
+        "-f",
+        "/verify/original-29/bin/Debug/net10.0/Lesson.dll"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "original-30Stop": {
+      "command": [
+        "docker",
+        "exec",
+        "cstudy-task6-2026-10-02-semantics-batch5",
+        "pkill",
+        "-f",
+        "/verify/original-30/bin/Debug/net10.0/Lesson.dll"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "original-31Stop": {
+      "command": [
+        "docker",
+        "exec",
+        "cstudy-task6-2026-10-02-semantics-batch5",
+        "pkill",
+        "-f",
+        "/verify/original-31/bin/Debug/net10.0/Lesson.dll"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "original-32Stop": {
+      "command": [
+        "docker",
+        "exec",
+        "cstudy-task6-2026-10-02-semantics-batch5",
+        "pkill",
+        "-f",
+        "/verify/original-32/bin/Debug/net10.0/Lesson.dll"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "project-task-apiStop": {
+      "command": [
+        "docker",
+        "exec",
+        "cstudy-task6-2026-10-02-semantics-batch5",
+        "pkill",
+        "-f",
+        "/verify/project-task-api/bin/Debug/net10.0/Project.dll"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "cleanup": {
+      "command": [
+        "docker",
+        "rm",
+        "-f",
+        "cstudy-task6-2026-10-02-semantics-batch5"
+      ],
+      "exitCode": 0,
+      "stdout": "cstudy-task6-2026-10-02-semantics-batch5\n",
+      "stderr": ""
+    }
+  },
+  "results": [
+    {
+      "id": "original-29",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/original-29/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-29/Lesson.csproj (in 23 ms).\n  Lesson -> /verify/original-29/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.16\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "GET",
+        "path": "/hello",
+        "request": null,
+        "expectedStatus": 200,
+        "expectedBody": {
+          "message": "Hello CSharp"
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "GET",
+            "http://127.0.0.1:5080/hello"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 200 OK\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:51 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n{\"message\":\"Hello CSharp\"}",
+          "stderr": ""
+        },
+        "actualStatus": 200,
+        "actualBody": {
+          "message": "Hello CSharp"
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-29",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/original-29/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-29/Lesson.csproj (in 23 ms).\n  Lesson -> /verify/original-29/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.16\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "GET",
+        "path": "/lessons/3",
+        "request": null,
+        "expectedStatus": 200,
+        "expectedBody": {
+          "id": 3,
+          "title": "Lesson 3"
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "GET",
+            "http://127.0.0.1:5080/lessons/3"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 200 OK\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:51 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n{\"id\":3,\"title\":\"Lesson 3\"}",
+          "stderr": ""
+        },
+        "actualStatus": 200,
+        "actualBody": {
+          "id": 3,
+          "title": "Lesson 3"
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-29",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/original-29/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-29/Lesson.csproj (in 23 ms).\n  Lesson -> /verify/original-29/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.16\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "GET",
+        "path": "/lessons/abc",
+        "request": null,
+        "expectedStatus": 404,
+        "expectedBody": null,
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "GET",
+            "http://127.0.0.1:5080/lessons/abc"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 404 Not Found\nContent-Length: 0\nDate: Fri, 02 Oct 2026 13:08:51 GMT\nServer: Kestrel\n\n",
+          "stderr": ""
+        },
+        "actualStatus": 404,
+        "actualBody": null,
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-30",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/original-30/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-30/Lesson.csproj (in 22 ms).\n  Lesson -> /verify/original-30/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.12\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "POST",
+        "path": "/preview",
+        "request": {
+          "title": "  C#  "
+        },
+        "expectedStatus": 200,
+        "expectedBody": {
+          "title": "C#"
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "POST",
+            "-H",
+            "Content-Type: application/json",
+            "--data",
+            "{\"title\": \"  C#  \"}",
+            "http://127.0.0.1:5080/preview"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 200 OK\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:53 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n{\"title\":\"C#\"}",
+          "stderr": ""
+        },
+        "actualStatus": 200,
+        "actualBody": {
+          "title": "C#"
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-30",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/original-30/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-30/Lesson.csproj (in 22 ms).\n  Lesson -> /verify/original-30/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.12\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "POST",
+        "path": "/preview",
+        "request": {
+          "title": " "
+        },
+        "expectedStatus": 400,
+        "expectedBody": {
+          "error": "Titleは1〜100文字です"
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "POST",
+            "-H",
+            "Content-Type: application/json",
+            "--data",
+            "{\"title\": \" \"}",
+            "http://127.0.0.1:5080/preview"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 400 Bad Request\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:53 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n{\"error\":\"Titleは1〜100文字です\"}",
+          "stderr": ""
+        },
+        "actualStatus": 400,
+        "actualBody": {
+          "error": "Titleは1〜100文字です"
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-30",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/original-30/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-30/Lesson.csproj (in 22 ms).\n  Lesson -> /verify/original-30/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.12\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "POST",
+        "path": "/preview",
+        "request": {},
+        "expectedStatus": 400,
+        "expectedBody": {
+          "error": "Titleは1〜100文字です"
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "POST",
+            "-H",
+            "Content-Type: application/json",
+            "--data",
+            "{}",
+            "http://127.0.0.1:5080/preview"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 400 Bad Request\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:53 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n{\"error\":\"Titleは1〜100文字です\"}",
+          "stderr": ""
+        },
+        "actualStatus": 400,
+        "actualBody": {
+          "error": "Titleは1〜100文字です"
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-30",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/original-30/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-30/Lesson.csproj (in 22 ms).\n  Lesson -> /verify/original-30/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.12\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "POST",
+        "path": "/preview",
+        "request": {
+          "title": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "expectedStatus": 200,
+        "expectedBody": {
+          "title": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "POST",
+            "-H",
+            "Content-Type: application/json",
+            "--data",
+            "{\"title\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}",
+            "http://127.0.0.1:5080/preview"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 200 OK\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:53 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n{\"title\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}",
+          "stderr": ""
+        },
+        "actualStatus": 200,
+        "actualBody": {
+          "title": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-30",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/original-30/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-30/Lesson.csproj (in 22 ms).\n  Lesson -> /verify/original-30/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.12\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "POST",
+        "path": "/preview",
+        "request": {
+          "title": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "expectedStatus": 400,
+        "expectedBody": {
+          "error": "Titleは1〜100文字です"
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "POST",
+            "-H",
+            "Content-Type: application/json",
+            "--data",
+            "{\"title\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}",
+            "http://127.0.0.1:5080/preview"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 400 Bad Request\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:53 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n{\"error\":\"Titleは1〜100文字です\"}",
+          "stderr": ""
+        },
+        "actualStatus": 400,
+        "actualBody": {
+          "error": "Titleは1〜100文字です"
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-30",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/original-30/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-30/Lesson.csproj (in 22 ms).\n  Lesson -> /verify/original-30/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.12\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "POST",
+        "path": "/preview",
+        "request": {
+          "title": " aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "
+        },
+        "expectedStatus": 400,
+        "expectedBody": {
+          "error": "Titleは1〜100文字です"
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "POST",
+            "-H",
+            "Content-Type: application/json",
+            "--data",
+            "{\"title\": \" aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa \"}",
+            "http://127.0.0.1:5080/preview"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 400 Bad Request\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:53 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n{\"error\":\"Titleは1〜100文字です\"}",
+          "stderr": ""
+        },
+        "actualStatus": 400,
+        "actualBody": {
+          "error": "Titleは1〜100文字です"
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-31",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/original-31/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-31/Lesson.csproj (in 24 ms).\n  Lesson -> /verify/original-31/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.16\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "GET",
+        "path": "/visits",
+        "request": null,
+        "expectedStatus": 200,
+        "expectedBody": {
+          "count": 1
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "GET",
+            "http://127.0.0.1:5080/visits"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 200 OK\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:55 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n{\"count\":1}",
+          "stderr": ""
+        },
+        "actualStatus": 200,
+        "actualBody": {
+          "count": 1
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-31",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/original-31/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-31/Lesson.csproj (in 24 ms).\n  Lesson -> /verify/original-31/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.16\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "GET",
+        "path": "/visits",
+        "request": null,
+        "expectedStatus": 200,
+        "expectedBody": {
+          "count": 2
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "GET",
+            "http://127.0.0.1:5080/visits"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 200 OK\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:55 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n{\"count\":2}",
+          "stderr": ""
+        },
+        "actualStatus": 200,
+        "actualBody": {
+          "count": 2
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-31",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/original-31/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-31/Lesson.csproj (in 24 ms).\n  Lesson -> /verify/original-31/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.16\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "GET",
+        "path": "/visits",
+        "request": null,
+        "expectedStatus": 200,
+        "expectedBody": {
+          "count": 3
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "GET",
+            "http://127.0.0.1:5080/visits"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 200 OK\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:55 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n{\"count\":3}",
+          "stderr": ""
+        },
+        "actualStatus": 200,
+        "actualBody": {
+          "count": 3
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-32",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/original-32/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-32/Lesson.csproj (in 23 ms).\n  Lesson -> /verify/original-32/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.27\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "GET",
+        "path": "/lessons/1",
+        "request": null,
+        "expectedStatus": 200,
+        "expectedBody": {
+          "id": 1,
+          "title": "Lesson 1"
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "GET",
+            "http://127.0.0.1:5080/lessons/1"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 200 OK\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:57 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n{\"id\":1,\"title\":\"Lesson 1\"}",
+          "stderr": ""
+        },
+        "actualStatus": 200,
+        "actualBody": {
+          "id": 1,
+          "title": "Lesson 1"
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-32",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/original-32/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-32/Lesson.csproj (in 23 ms).\n  Lesson -> /verify/original-32/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.27\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "GET",
+        "path": "/lessons/32",
+        "request": null,
+        "expectedStatus": 200,
+        "expectedBody": {
+          "id": 32,
+          "title": "Lesson 32"
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "GET",
+            "http://127.0.0.1:5080/lessons/32"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 200 OK\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:57 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n{\"id\":32,\"title\":\"Lesson 32\"}",
+          "stderr": ""
+        },
+        "actualStatus": 200,
+        "actualBody": {
+          "id": 32,
+          "title": "Lesson 32"
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-32",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/original-32/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-32/Lesson.csproj (in 23 ms).\n  Lesson -> /verify/original-32/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.27\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "GET",
+        "path": "/lessons/0",
+        "request": null,
+        "expectedStatus": 404,
+        "expectedBody": {
+          "error": "レッスンがありません"
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "GET",
+            "http://127.0.0.1:5080/lessons/0"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 404 Not Found\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:57 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n{\"error\":\"レッスンがありません\"}",
+          "stderr": ""
+        },
+        "actualStatus": 404,
+        "actualBody": {
+          "error": "レッスンがありません"
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-32",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/original-32/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-32/Lesson.csproj (in 23 ms).\n  Lesson -> /verify/original-32/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.27\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "GET",
+        "path": "/lessons/33",
+        "request": null,
+        "expectedStatus": 404,
+        "expectedBody": {
+          "error": "レッスンがありません"
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "GET",
+            "http://127.0.0.1:5080/lessons/33"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 404 Not Found\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:57 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n{\"error\":\"レッスンがありません\"}",
+          "stderr": ""
+        },
+        "actualStatus": 404,
+        "actualBody": {
+          "error": "レッスンがありません"
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-32",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/original-32/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-32/Lesson.csproj (in 23 ms).\n  Lesson -> /verify/original-32/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.27\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "GET",
+        "path": "/lessons/-1",
+        "request": null,
+        "expectedStatus": 404,
+        "expectedBody": {
+          "error": "レッスンがありません"
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "GET",
+            "http://127.0.0.1:5080/lessons/-1"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 404 Not Found\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:57 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n{\"error\":\"レッスンがありません\"}",
+          "stderr": ""
+        },
+        "actualStatus": 404,
+        "actualBody": {
+          "error": "レッスンがありません"
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-32",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/original-32/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-32/Lesson.csproj (in 23 ms).\n  Lesson -> /verify/original-32/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.27\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "GET",
+        "path": "/lessons/abc",
+        "request": null,
+        "expectedStatus": 404,
+        "expectedBody": null,
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "GET",
+            "http://127.0.0.1:5080/lessons/abc"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 404 Not Found\nContent-Length: 0\nDate: Fri, 02 Oct 2026 13:08:57 GMT\nServer: Kestrel\n\n",
+          "stderr": ""
+        },
+        "actualStatus": 404,
+        "actualBody": null,
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "project-task-api",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/project-task-api/Project.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/project-task-api/Project.csproj (in 32 ms).\n  Project -> /verify/project-task-api/bin/Debug/net10.0/Project.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.15\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "GET",
+        "path": "/health",
+        "request": null,
+        "expectedStatus": 200,
+        "expectedBody": {
+          "status": "ok"
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "GET",
+            "http://127.0.0.1:5080/health"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 200 OK\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:58 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n{\"status\":\"ok\"}",
+          "stderr": ""
+        },
+        "actualStatus": 200,
+        "actualBody": {
+          "status": "ok"
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "project-task-api",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/project-task-api/Project.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/project-task-api/Project.csproj (in 32 ms).\n  Project -> /verify/project-task-api/bin/Debug/net10.0/Project.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.15\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "GET",
+        "path": "/tasks",
+        "request": null,
+        "expectedStatus": 200,
+        "expectedBody": [],
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "GET",
+            "http://127.0.0.1:5080/tasks"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 200 OK\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:58 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n[]",
+          "stderr": ""
+        },
+        "actualStatus": 200,
+        "actualBody": [],
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "project-task-api",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/project-task-api/Project.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/project-task-api/Project.csproj (in 32 ms).\n  Project -> /verify/project-task-api/bin/Debug/net10.0/Project.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.15\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "POST",
+        "path": "/tasks",
+        "request": {
+          "title": "   "
+        },
+        "expectedStatus": 400,
+        "expectedBody": {
+          "error": "タイトルは1〜100文字です。"
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "POST",
+            "-H",
+            "Content-Type: application/json",
+            "--data",
+            "{\"title\": \"   \"}",
+            "http://127.0.0.1:5080/tasks"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 400 Bad Request\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:58 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n{\"error\":\"タイトルは1〜100文字です。\"}",
+          "stderr": ""
+        },
+        "actualStatus": 400,
+        "actualBody": {
+          "error": "タイトルは1〜100文字です。"
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "project-task-api",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/project-task-api/Project.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/project-task-api/Project.csproj (in 32 ms).\n  Project -> /verify/project-task-api/bin/Debug/net10.0/Project.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.15\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "POST",
+        "path": "/tasks",
+        "request": {},
+        "expectedStatus": 400,
+        "expectedBody": {
+          "error": "タイトルは1〜100文字です。"
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "POST",
+            "-H",
+            "Content-Type: application/json",
+            "--data",
+            "{}",
+            "http://127.0.0.1:5080/tasks"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 400 Bad Request\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:58 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n{\"error\":\"タイトルは1〜100文字です。\"}",
+          "stderr": ""
+        },
+        "actualStatus": 400,
+        "actualBody": {
+          "error": "タイトルは1〜100文字です。"
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "project-task-api",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/project-task-api/Project.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/project-task-api/Project.csproj (in 32 ms).\n  Project -> /verify/project-task-api/bin/Debug/net10.0/Project.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.15\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "POST",
+        "path": "/tasks",
+        "request": {
+          "title": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "expectedStatus": 400,
+        "expectedBody": {
+          "error": "タイトルは1〜100文字です。"
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "POST",
+            "-H",
+            "Content-Type: application/json",
+            "--data",
+            "{\"title\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}",
+            "http://127.0.0.1:5080/tasks"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 400 Bad Request\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:58 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n{\"error\":\"タイトルは1〜100文字です。\"}",
+          "stderr": ""
+        },
+        "actualStatus": 400,
+        "actualBody": {
+          "error": "タイトルは1〜100文字です。"
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "project-task-api",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/project-task-api/Project.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/project-task-api/Project.csproj (in 32 ms).\n  Project -> /verify/project-task-api/bin/Debug/net10.0/Project.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.15\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "GET",
+        "path": "/tasks",
+        "request": null,
+        "expectedStatus": 200,
+        "expectedBody": [],
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "GET",
+            "http://127.0.0.1:5080/tasks"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 200 OK\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:58 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n[]",
+          "stderr": ""
+        },
+        "actualStatus": 200,
+        "actualBody": [],
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "project-task-api",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/project-task-api/Project.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/project-task-api/Project.csproj (in 32 ms).\n  Project -> /verify/project-task-api/bin/Debug/net10.0/Project.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.15\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "POST",
+        "path": "/tasks",
+        "request": {
+          "title": "  Learn CSharp  ",
+          "id": 999,
+          "done": true
+        },
+        "expectedStatus": 201,
+        "expectedBody": {
+          "id": 1,
+          "title": "Learn CSharp",
+          "done": false
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "POST",
+            "-H",
+            "Content-Type: application/json",
+            "--data",
+            "{\"title\": \"  Learn CSharp  \", \"id\": 999, \"done\": true}",
+            "http://127.0.0.1:5080/tasks"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 201 Created\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:58 GMT\nServer: Kestrel\nLocation: /tasks/1\nTransfer-Encoding: chunked\n\n{\"id\":1,\"title\":\"Learn CSharp\",\"done\":false}",
+          "stderr": ""
+        },
+        "actualStatus": 201,
+        "actualBody": {
+          "id": 1,
+          "title": "Learn CSharp",
+          "done": false
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "project-task-api",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/project-task-api/Project.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/project-task-api/Project.csproj (in 32 ms).\n  Project -> /verify/project-task-api/bin/Debug/net10.0/Project.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.15\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "GET",
+        "path": "/tasks/1",
+        "request": null,
+        "expectedStatus": 200,
+        "expectedBody": {
+          "id": 1,
+          "title": "Learn CSharp",
+          "done": false
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "GET",
+            "http://127.0.0.1:5080/tasks/1"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 200 OK\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:58 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n{\"id\":1,\"title\":\"Learn CSharp\",\"done\":false}",
+          "stderr": ""
+        },
+        "actualStatus": 200,
+        "actualBody": {
+          "id": 1,
+          "title": "Learn CSharp",
+          "done": false
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "project-task-api",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/project-task-api/Project.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/project-task-api/Project.csproj (in 32 ms).\n  Project -> /verify/project-task-api/bin/Debug/net10.0/Project.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.15\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "PUT",
+        "path": "/tasks/1/complete",
+        "request": null,
+        "expectedStatus": 200,
+        "expectedBody": {
+          "id": 1,
+          "title": "Learn CSharp",
+          "done": true
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "PUT",
+            "http://127.0.0.1:5080/tasks/1/complete"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 200 OK\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:58 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n{\"id\":1,\"title\":\"Learn CSharp\",\"done\":true}",
+          "stderr": ""
+        },
+        "actualStatus": 200,
+        "actualBody": {
+          "id": 1,
+          "title": "Learn CSharp",
+          "done": true
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "project-task-api",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/project-task-api/Project.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/project-task-api/Project.csproj (in 32 ms).\n  Project -> /verify/project-task-api/bin/Debug/net10.0/Project.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.15\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "PUT",
+        "path": "/tasks/1/complete",
+        "request": null,
+        "expectedStatus": 200,
+        "expectedBody": {
+          "id": 1,
+          "title": "Learn CSharp",
+          "done": true
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "PUT",
+            "http://127.0.0.1:5080/tasks/1/complete"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 200 OK\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:58 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n{\"id\":1,\"title\":\"Learn CSharp\",\"done\":true}",
+          "stderr": ""
+        },
+        "actualStatus": 200,
+        "actualBody": {
+          "id": 1,
+          "title": "Learn CSharp",
+          "done": true
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "project-task-api",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/project-task-api/Project.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/project-task-api/Project.csproj (in 32 ms).\n  Project -> /verify/project-task-api/bin/Debug/net10.0/Project.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.15\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "GET",
+        "path": "/tasks",
+        "request": null,
+        "expectedStatus": 200,
+        "expectedBody": [
+          {
+            "id": 1,
+            "title": "Learn CSharp",
+            "done": true
+          }
+        ],
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "GET",
+            "http://127.0.0.1:5080/tasks"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 200 OK\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:58 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n[{\"id\":1,\"title\":\"Learn CSharp\",\"done\":true}]",
+          "stderr": ""
+        },
+        "actualStatus": 200,
+        "actualBody": [
+          {
+            "id": 1,
+            "title": "Learn CSharp",
+            "done": true
+          }
+        ],
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "project-task-api",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/project-task-api/Project.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/project-task-api/Project.csproj (in 32 ms).\n  Project -> /verify/project-task-api/bin/Debug/net10.0/Project.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.15\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "DELETE",
+        "path": "/tasks/1",
+        "request": null,
+        "expectedStatus": 204,
+        "expectedBody": null,
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "DELETE",
+            "http://127.0.0.1:5080/tasks/1"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 204 No Content\nDate: Fri, 02 Oct 2026 13:08:58 GMT\nServer: Kestrel\n\n",
+          "stderr": ""
+        },
+        "actualStatus": 204,
+        "actualBody": null,
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "project-task-api",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/project-task-api/Project.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/project-task-api/Project.csproj (in 32 ms).\n  Project -> /verify/project-task-api/bin/Debug/net10.0/Project.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.15\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "GET",
+        "path": "/tasks/1",
+        "request": null,
+        "expectedStatus": 404,
+        "expectedBody": null,
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "GET",
+            "http://127.0.0.1:5080/tasks/1"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 404 Not Found\nContent-Length: 0\nDate: Fri, 02 Oct 2026 13:08:58 GMT\nServer: Kestrel\n\n",
+          "stderr": ""
+        },
+        "actualStatus": 404,
+        "actualBody": null,
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "project-task-api",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/project-task-api/Project.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/project-task-api/Project.csproj (in 32 ms).\n  Project -> /verify/project-task-api/bin/Debug/net10.0/Project.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.15\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "DELETE",
+        "path": "/tasks/1",
+        "request": null,
+        "expectedStatus": 404,
+        "expectedBody": null,
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "DELETE",
+            "http://127.0.0.1:5080/tasks/1"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 404 Not Found\nContent-Length: 0\nDate: Fri, 02 Oct 2026 13:08:58 GMT\nServer: Kestrel\n\n",
+          "stderr": ""
+        },
+        "actualStatus": 404,
+        "actualBody": null,
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "project-task-api",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/project-task-api/Project.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/project-task-api/Project.csproj (in 32 ms).\n  Project -> /verify/project-task-api/bin/Debug/net10.0/Project.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.15\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "PUT",
+        "path": "/tasks/1/complete",
+        "request": null,
+        "expectedStatus": 404,
+        "expectedBody": null,
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "PUT",
+            "http://127.0.0.1:5080/tasks/1/complete"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 404 Not Found\nContent-Length: 0\nDate: Fri, 02 Oct 2026 13:08:58 GMT\nServer: Kestrel\n\n",
+          "stderr": ""
+        },
+        "actualStatus": 404,
+        "actualBody": null,
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "project-task-api",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/project-task-api/Project.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/project-task-api/Project.csproj (in 32 ms).\n  Project -> /verify/project-task-api/bin/Debug/net10.0/Project.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.15\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "GET",
+        "path": "/tasks/abc",
+        "request": null,
+        "expectedStatus": 404,
+        "expectedBody": null,
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "GET",
+            "http://127.0.0.1:5080/tasks/abc"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 404 Not Found\nContent-Length: 0\nDate: Fri, 02 Oct 2026 13:08:58 GMT\nServer: Kestrel\n\n",
+          "stderr": ""
+        },
+        "actualStatus": 404,
+        "actualBody": null,
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "project-task-api",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/project-task-api/Project.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/project-task-api/Project.csproj (in 32 ms).\n  Project -> /verify/project-task-api/bin/Debug/net10.0/Project.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.15\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "POST",
+        "path": "/tasks",
+        "request": {
+          "title": " aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "
+        },
+        "expectedStatus": 201,
+        "expectedBody": {
+          "id": 2,
+          "title": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "done": false
+        },
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "POST",
+            "-H",
+            "Content-Type: application/json",
+            "--data",
+            "{\"title\": \" aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa \"}",
+            "http://127.0.0.1:5080/tasks"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 201 Created\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:58 GMT\nServer: Kestrel\nLocation: /tasks/2\nTransfer-Encoding: chunked\n\n{\"id\":2,\"title\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"done\":false}",
+          "stderr": ""
+        },
+        "actualStatus": 201,
+        "actualBody": {
+          "id": 2,
+          "title": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "done": false
+        },
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "project-task-api",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch5",
+          "dotnet",
+          "build",
+          "/verify/project-task-api/Project.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/project-task-api/Project.csproj (in 32 ms).\n  Project -> /verify/project-task-api/bin/Debug/net10.0/Project.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.15\n",
+        "stderr": ""
+      },
+      "check": {
+        "method": "GET",
+        "path": "/tasks",
+        "request": null,
+        "expectedStatus": 200,
+        "expectedBody": [
+          {
+            "id": 2,
+            "title": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "done": false
+          }
+        ],
+        "response": {
+          "command": [
+            "docker",
+            "exec",
+            "cstudy-task6-2026-10-02-semantics-batch5",
+            "curl",
+            "-sS",
+            "--max-time",
+            "3",
+            "-D",
+            "-",
+            "-X",
+            "GET",
+            "http://127.0.0.1:5080/tasks"
+          ],
+          "exitCode": 0,
+          "stdout": "HTTP/1.1 200 OK\nContent-Type: application/json; charset=utf-8\nDate: Fri, 02 Oct 2026 13:08:58 GMT\nServer: Kestrel\nTransfer-Encoding: chunked\n\n[{\"id\":2,\"title\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"done\":false}]",
+          "stderr": ""
+        },
+        "actualStatus": 200,
+        "actualBody": [
+          {
+            "id": 2,
+            "title": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "done": false
+          }
+        ],
+        "semanticMatch": true
+      },
+      "semanticMatch": true
+    }
+  ]
+}
