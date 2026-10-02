@@ -1,0 +1,162 @@
+[
+  {
+    "id": "original-01",
+    "source": "samples/lessons/lesson-01",
+    "project": "Lesson.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "C#の学習を始めます\n全32レッスン\n",
+    "meaning": "WriteLine order and interpolation of32",
+    "teachingPath": "lessons/01.html",
+    "teachingExcerpt": "想定出力  C#の学習を始めます\n全32レッスン  処理順   Console.WriteLineが1行目の文字列を表示する。  lessonsに整数32を入れる。  $\"...{lessons}...\"が値を文字列に埋め込み、2行目を表示する。     表示順と変数の値を実行順に分ける      csharp  Copy  折り返し    string topic = \"C#\";\nint days = 7;\nint minutesPerDay = 30;\nint total = days * minutesPerDay;\nConsole.WriteLine($\"テーマ: {topic}\");\nConsole.WriteLine($\"{days}日 × {minutesPerDay}分 = ",
+    "sha256": {
+      "Program.cs": "7691c79b46d53b18ed78dd2bdeb090da0c552f8c931cceec4085e6c0f7bc9503",
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+    },
+    "teachingSha256": "ea49963ecc6e2beb885d18e0c0a534e8148e53484773809fd8468e93dfc951a1"
+  },
+  {
+    "id": "original-02",
+    "source": "samples/lessons/lesson-02",
+    "project": "Lesson.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "Hello C#\n",
+    "meaning": "Append order and ToString",
+    "teachingPath": "lessons/02.html",
+    "teachingExcerpt": "想定出力  Hello C#  処理順   System.Text内の型を短い名前で使えるようにする。  StringBuilderのインスタンスを生成する。  2回のAppendで文字を追加し、ToStringで文字列にする。     完全修飾名と別名は同じ型を指す      csharp  Copy  折り返し    using TextBuffer = System.Text.StringBuilder;\n\nvar first = new TextBuffer();\nfirst.Append(\"C#\");\nfirst.Append(\" Learning \");\nfirst.Append(\"Lab\");\nSystem.Text.StringBuilder second = first;\n",
+    "sha256": {
+      "Program.cs": "d07f6276bdcade596cf85192c0b2fd1eaf8e12a0646c082c0e4abb5576628490",
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+    },
+    "teachingSha256": "1a5b923007a1babf7bb6a411a526764226c6282f4460517625b665489be0a811"
+  },
+  {
+    "id": "original-10",
+    "source": "samples/lessons/lesson-10",
+    "project": "Lesson.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "3\n",
+    "meaning": "positive Add changes private-set Count0→3",
+    "teachingPath": "lessons/10.html",
+    "teachingExcerpt": "想定出力  3  処理順   Countは初期値0で始まる。  Addが正の数量か確認し、Countを3にする。  外からはCountを読み取れるが、直接設定はできない。     在庫を変更できる操作を限定する   状態の変更を操作として表す  在庫ならCount = -100を外から許可するのではなく、AddやRemoveで条件を検証して変更します。プロパティを公開しただけで カプセル化 できたとは限りません。get/setが何でも許す状態なら、不正なデータが入り込む点はpublicフィールドと変わりません。    残高の変更を意味のある操作へ限定する  Balanceにpublic setを付けると、外側から-100の代入や根拠のない上書きができます。private setにしてDepo",
+    "sha256": {
+      "Program.cs": "4260b9020e9a5a2faece9034ce409074070693fb712e4cecab0c26f3564de488",
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+    },
+    "teachingSha256": "8a4a313fb7ea837b1eb93ce7de2dc36f501f656520447728606050da3e51a52a"
+  },
+  {
+    "id": "original-11",
+    "source": "samples/lessons/lesson-11",
+    "project": "Lesson.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "メール通知\n",
+    "meaning": "runtime override dispatch to EmailNotice",
+    "teachingPath": "lessons/11.html",
+    "teachingExcerpt": "想定出力  メール通知  処理順   変数noticeの型はNotice、実体はEmailNotice。  Sendはvirtualなので実体の型に応じて呼び先が選ばれる。  EmailNoticeのoverrideされた実装が返される。     同じ基底型から異なるoverrideを呼ぶ      csharp  Copy  折り返し    Notice[] notices = { new Notice(), new MailNotice(), new ScreenNotice() };\nforeach (Notice notice in notices) Console.WriteLine(notice.Send());\npublic class Notice\n{\n    public ",
+    "sha256": {
+      "Program.cs": "5f3f00b22fac46615d0a505919c33c02e3012bc164e01638a4d0a11615d1fb95",
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+    },
+    "teachingSha256": "6ff2c7ebd2f16a1f84f26b82955287d46af45821c91f24eea26c8808647e68d0"
+  },
+  {
+    "id": "original-13",
+    "source": "samples/lessons/lesson-13",
+    "project": "Lesson.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "1\n9\n",
+    "meaning": "struct copy independent; class references share state",
+    "teachingPath": "lessons/13.html",
+    "teachingExcerpt": "想定出力  1\n9  処理順   Pointは値型なので、secondにはX=1がコピーされる。  second.Xの変更はfirst.Xへ反映されない。  Counterは参照型なのでaとbが同じオブジェクトを指す。     structの数値は独立し、内部Listは共有する      csharp  Copy  折り返し    var original = new TaggedValue { Number = 1, Tags = new List<string> { \"A\" } };\nvar copy = original;\ncopy.Number = 9;\ncopy.Tags.Add(\"B\");\nConsole.WriteLine($\"{original.Number}: {strin",
+    "sha256": {
+      "Program.cs": "d203974138c5b41e22ea957b9d446e46f851fcb2274c8a1b124ea461b8afc6ee",
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+    },
+    "teachingSha256": "9da88489b6bfd6a14e7dc031b6d27c8d8edfc3d12bfeaf7faf69464afc97a67c"
+  },
+  {
+    "id": "original-16",
+    "source": "samples/lessons/lesson-16",
+    "project": "Lesson.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "C#\n整数として読めませんでした\n",
+    "meaning": "StringReader first line; invalid integer caught as FormatException",
+    "teachingPath": "lessons/16.html",
+    "teachingExcerpt": "想定出力  C#\n整数として読めませんでした  処理順   readerはスコープの終わりで破棄されるように管理される。  ParseがFormatExceptionを投げる。  対応するcatchで表示し、スコープ終了時にはDisposeも行われる。     try・catch・finallyの処理順   例外は通常の戻り値とは別の経路で失敗を伝える \n メソッドは戻り値を返して呼び出し側へ戻ります。しかし、ファイルが読めない、必要な状態が壊れているなど、通常の結果を作れない場合があります。例外はその異常をオブジェクトとして通知し、通常の次の文ではなく対応する例外処理へ移る仕組みです。 \n 例外オブジェクトには型、メッセージ、呼び出し経路を示すスタックトレースなどがあります。スタックトレー",
+    "sha256": {
+      "Program.cs": "27eb9695836f7b6ca6af13c805d92f7308474d6bb64b3910e093ba6454fabdfe",
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+    },
+    "teachingSha256": "eaa0b13655e55d66eb96f5b52d9edea5b1336cf2cb26588563fa018d3bf1fb1f"
+  },
+  {
+    "id": "original-17",
+    "source": "samples/lessons/lesson-17",
+    "project": "Lesson.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "結果: 8\n12\n",
+    "meaning": "lambda doubles4; closure observes updated factor3",
+    "teachingPath": "lessons/17.html",
+    "teachingExcerpt": "想定出力  結果: 8\n12  処理順   doubleValueには計算結果ではなく処理が格納される。  呼び出すと4×2が計算され、logに表示用の文字列を渡す。  multiplyが取り込んだfactorは呼び出し時には3になっている。     外側の変数を使うラムダ式   キャプチャするのは変数であって当時の値とは限らない  ラムダから外側のローカル変数を参照すると、その変数を後でも使えるようにキャプチャします。threshold=10でラムダを作った後threshold=20へ変更すれば、呼び出し時に20を読む例になります。登録時の値を固定したいなら別のローカル変数へスナップショットを作り、その変数を変更しないようにします。  forの制御変数をそのまま複数のラムダへキャプチャする",
+    "sha256": {
+      "Program.cs": "9f5704b846fba6af37c2d21509a2a3e24652b915bf87ba19675b48bd5e3ed929",
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+    },
+    "teachingSha256": "9f73514d4bfacf317ef4e16e1da16775a99bc57946245dd7706ea1b2c96f8bc7"
+  },
+  {
+    "id": "original-18",
+    "source": "samples/lessons/lesson-18",
+    "project": "Lesson.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "ペン, ノート\n",
+    "meaning": "filter price<=500, order ascending then select names",
+    "teachingPath": "lessons/18.html",
+    "teachingExcerpt": "想定出力  ペン, ノート  処理順   Whereで本を除外し、ノートとペンを残す。  OrderByで価格の低いペン、ノートの順にする。  Selectで名前だけへ変え、ToListで結果を確定する。     在庫ありの商品を安い順に名前へ変換      csharp  Copy  折り返し    var products = new[]\n{\n    new Product(\"Pen\", 120, 3), new Product(\"Book\", 500, 0),\n    new Product(\"Clip\", 120, 8), new Product(\"File\", 250, 2)\n};\nvar available = products.Where(x => x.Stock > 0);\n",
+    "sha256": {
+      "Program.cs": "28f8da74ee0b26cc10f56fe38460f449dd2dbfef60e6413be4aedcc20810d3bc",
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+    },
+    "teachingSha256": "ed48d4f0dbbbd11ef35de93061daec369fded50fdb9d4ace39dba2c3c7f0ce4f"
+  },
+  {
+    "id": "original-19",
+    "source": "samples/lessons/lesson-19",
+    "project": "Lesson.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "2,3,4\n2,3\n9\n",
+    "meaning": "deferred query sees added4, materialized snapshot does not, sum9",
+    "teachingPath": "lessons/19.html",
+    "teachingExcerpt": "想定出力  2,3,4\n2,3\n9  処理順   queryは2以上を選ぶ手順。snapshotはこの時点の2,3を保持する。  元のListに4を追加する。  後からqueryを列挙すると4が含まれ、Sumも9になる。     クエリと保存済み配列の違い      csharp  Copy  折り返し    var values = new List<int> { 1, 2, 3 };\nvar query = values.Where(x => x >= 2);\nint[] snapshot = query.ToArray();\nvalues.Add(4);\nConsole.WriteLine(string.Join(\",\", query));\nConsole.WriteLine(stri",
+    "sha256": {
+      "Program.cs": "3b8ee1e33fba8a51abee73d3fa0622c4005039cba12924a841d08408d1bf346f",
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+    },
+    "teachingSha256": "de0b1f6bedbb0d798501be70229ab8a4ad5011e1594f56ef0195f7f3e82b03e2"
+  },
+  {
+    "id": "original-20",
+    "source": "samples/lessons/lesson-20",
+    "project": "Lesson.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "Doing\n2件 / 30\nTrue\n",
+    "meaning": "enum member name, tuple count/sum, nonblank extension",
+    "teachingPath": "lessons/20.html",
+    "teachingExcerpt": "想定出力  Doing\n2件 / 30\nTrue  処理順   数値1に対応する名前Doingを表示する。  タプルで件数と合計を返し、分解して受け取る。  HasTextは実際には静的メソッドで、stringを第1引数として扱う。     未定義enumを変換成功と混同しない      csharp  Copy  折り返し    foreach (string input in new[] { \"Todo\", \"99\", \"invalid\" })\n{\n    bool valid = Enum.TryParse<State>(input, out var state) && Enum.IsDefined(state);\n    Console.WriteLine($\"{input}: {v",
+    "sha256": {
+      "Program.cs": "1f377cf5d5cd3dd20e283fcefca106f27b3cc3c0d229e5b7deaeadbf23c1fa79",
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+    },
+    "teachingSha256": "694bbc97f3faba962f2e406d05f7a6e14e275cdf6f098f1f1726cf1e8616073b"
+  }
+]

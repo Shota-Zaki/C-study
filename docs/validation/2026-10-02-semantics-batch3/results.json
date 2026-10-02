@@ -1,0 +1,444 @@
+{
+  "sourceSHA": "b27ba4c3b2abf30c3e147d9c7efddb6654741783",
+  "image": "sha256:35d40304542c8689331f8cab17c65926cdf48fe711e289321d71924b230a7d29",
+  "lifecycle": {
+    "create": {
+      "command": [
+        "docker",
+        "run",
+        "-d",
+        "--pull=never",
+        "--name",
+        "cstudy-task6-2026-10-02-semantics-batch3",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "2g",
+        "sha256:35d40304542c8689331f8cab17c65926cdf48fe711e289321d71924b230a7d29",
+        "sleep",
+        "900"
+      ],
+      "exitCode": 0,
+      "stdout": "8cf9630e9ab7862059e0f835249fbb8b125e318cca52388c0603f3d171d741ea\n",
+      "stderr": ""
+    },
+    "copy": {
+      "command": [
+        "docker",
+        "cp",
+        "/var/folders/ct/75ylq_m57wn16_6fm_0zznlm0000gn/T/cstudy-private-3k3eubht/.",
+        "cstudy-task6-2026-10-02-semantics-batch3:/verify"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "sdk": {
+      "command": [
+        "docker",
+        "exec",
+        "cstudy-task6-2026-10-02-semantics-batch3",
+        "dotnet",
+        "--info"
+      ],
+      "exitCode": 0,
+      "stdout": ".NET SDK:\n Version:           10.0.401\n Commit:            e34a38d2ae\n Workload version:  10.0.400-manifests.63b36e85\n MSBuild version:   18.9.11+e34a38d2a\n\nRuntime Environment:\n OS Name:     ubuntu\n OS Version:  24.04\n OS Platform: Linux\n RID:         linux-arm64\n Base Path:   /usr/share/dotnet/sdk/10.0.401/\n\n.NET workloads installed:\nThere are no installed workloads to display.\nConfigured to use workload sets when installing new manifests.\nNo workload sets are installed. Run \"dotnet workload restore\" to install a workload set.\n\nHost:\n  Version:      10.0.12\n  Architecture: arm64\n  Commit:       95017c711e\n\n.NET SDKs installed:\n  10.0.401 [/usr/share/dotnet/sdk]\n\n.NET runtimes installed:\n  Microsoft.AspNetCore.App 10.0.12 [/usr/share/dotnet/shared/Microsoft.AspNetCore.App]\n  Microsoft.NETCore.App 10.0.12 [/usr/share/dotnet/shared/Microsoft.NETCore.App]\n\nOther architectures found:\n  None\n\nEnvironment variables:\n  DOTNET_GENERATE_ASPNET_CERTIFICATE       [false]\n  DOTNET_NOLOGO                            [true]\n  DOTNET_RUNNING_IN_CONTAINER              [true]\n  DOTNET_SDK_VERSION                       [10.0.401]\n  DOTNET_USE_POLLING_FILE_WATCHER          [true]\n  DOTNET_VERSION                           [10.0.12]\n\nglobal.json file:\n  Not found\n\nLearn more:\n  https://aka.ms/dotnet/info\n\nDownload .NET:\n  https://aka.ms/dotnet/download\n",
+      "stderr": ""
+    },
+    "cleanup": {
+      "command": [
+        "docker",
+        "rm",
+        "-f",
+        "cstudy-task6-2026-10-02-semantics-batch3"
+      ],
+      "exitCode": 0,
+      "stdout": "cstudy-task6-2026-10-02-semantics-batch3\n",
+      "stderr": ""
+    }
+  },
+  "results": [
+    {
+      "id": "original-01",
+      "expected": "C#の学習を始めます\n全32レッスン\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch3",
+          "dotnet",
+          "build",
+          "/verify/original-01/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-01/Lesson.csproj (in 24 ms).\n  Lesson -> /verify/original-01/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.10\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch3",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/original-01/Lesson.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "C#の学習を始めます\n全32レッスン\n",
+        "stderr": ""
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-02",
+      "expected": "Hello C#\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch3",
+          "dotnet",
+          "build",
+          "/verify/original-02/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-02/Lesson.csproj (in 22 ms).\n  Lesson -> /verify/original-02/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.93\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch3",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/original-02/Lesson.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "Hello C#\n",
+        "stderr": ""
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-10",
+      "expected": "3\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch3",
+          "dotnet",
+          "build",
+          "/verify/original-10/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-10/Lesson.csproj (in 24 ms).\n  Lesson -> /verify/original-10/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.82\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch3",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/original-10/Lesson.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "3\n",
+        "stderr": ""
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-11",
+      "expected": "メール通知\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch3",
+          "dotnet",
+          "build",
+          "/verify/original-11/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-11/Lesson.csproj (in 26 ms).\n  Lesson -> /verify/original-11/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.91\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch3",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/original-11/Lesson.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "メール通知\n",
+        "stderr": ""
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-13",
+      "expected": "1\n9\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch3",
+          "dotnet",
+          "build",
+          "/verify/original-13/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-13/Lesson.csproj (in 22 ms).\n  Lesson -> /verify/original-13/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.85\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch3",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/original-13/Lesson.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "1\n9\n",
+        "stderr": ""
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-16",
+      "expected": "C#\n整数として読めませんでした\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch3",
+          "dotnet",
+          "build",
+          "/verify/original-16/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-16/Lesson.csproj (in 22 ms).\n  Lesson -> /verify/original-16/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.87\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch3",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/original-16/Lesson.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "C#\n整数として読めませんでした\n",
+        "stderr": ""
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-17",
+      "expected": "結果: 8\n12\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch3",
+          "dotnet",
+          "build",
+          "/verify/original-17/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-17/Lesson.csproj (in 20 ms).\n  Lesson -> /verify/original-17/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.87\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch3",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/original-17/Lesson.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "結果: 8\n12\n",
+        "stderr": ""
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-18",
+      "expected": "ペン, ノート\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch3",
+          "dotnet",
+          "build",
+          "/verify/original-18/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-18/Lesson.csproj (in 20 ms).\n  Lesson -> /verify/original-18/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.85\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch3",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/original-18/Lesson.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "ペン, ノート\n",
+        "stderr": ""
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-19",
+      "expected": "2,3,4\n2,3\n9\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch3",
+          "dotnet",
+          "build",
+          "/verify/original-19/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-19/Lesson.csproj (in 31 ms).\n  Lesson -> /verify/original-19/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.90\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch3",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/original-19/Lesson.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "2,3,4\n2,3\n9\n",
+        "stderr": ""
+      },
+      "semanticMatch": true
+    },
+    {
+      "id": "original-20",
+      "expected": "Doing\n2件 / 30\nTrue\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch3",
+          "dotnet",
+          "build",
+          "/verify/original-20/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/original-20/Lesson.csproj (in 33 ms).\n  Lesson -> /verify/original-20/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.07\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-semantics-batch3",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/original-20/Lesson.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "Doing\n2件 / 30\nTrue\n",
+        "stderr": ""
+      },
+      "semanticMatch": true
+    }
+  ]
+}
