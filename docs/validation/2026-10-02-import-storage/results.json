@@ -1,0 +1,144 @@
+{
+  "sourceBase": "f013ecf4f60498ce80e8d63909933de1535a9fb9",
+  "browser": "153.0.8010.12",
+  "origin": "http://127.0.0.1:58617",
+  "checks": [
+    {
+      "name": "invalid-version",
+      "status": "PASS",
+      "kind": "actual HTTP UI",
+      "evidence": {
+        "message": "読み込み失敗：versionは2である必要があります。現在のデータは維持しました。",
+        "storedBytesUnchanged": true
+      }
+    },
+    {
+      "name": "malformed",
+      "status": "PASS",
+      "kind": "actual HTTP UI",
+      "evidence": {
+        "message": "読み込み失敗：JSONとして解析できません。現在のデータは維持しました。",
+        "storedBytesUnchanged": true
+      }
+    },
+    {
+      "name": "oversize",
+      "status": "PASS",
+      "kind": "actual HTTP UI",
+      "evidence": {
+        "message": "読み込み失敗：512 KiBを超えています。現在のデータは維持しました。",
+        "storedBytesUnchanged": true
+      }
+    },
+    {
+      "name": "invalid-draft-key",
+      "status": "PASS",
+      "kind": "actual HTTP UI",
+      "evidence": {
+        "message": "読み込み失敗：下書きのキーまたは長さが不正です。現在のデータは維持しました。",
+        "storedBytesUnchanged": true
+      }
+    },
+    {
+      "name": "invalid-quiz-answer",
+      "status": "PASS",
+      "kind": "actual HTTP UI",
+      "evidence": {
+        "message": "読み込み失敗：quizの回答が不正です。現在のデータは維持しました。",
+        "storedBytesUnchanged": true
+      }
+    },
+    {
+      "name": "valid-import-reload",
+      "status": "PASS",
+      "kind": "actual HTTP UI",
+      "evidence": {
+        "state": {
+          "version": 2,
+          "updatedAt": "2026-10-02T23:25:30.187Z",
+          "theme": "light",
+          "completed": [
+            "02"
+          ],
+          "review": [
+            "01"
+          ],
+          "quiz": {
+            "01": {
+              "answers": [
+                0,
+                1,
+                0,
+                3,
+                null
+              ],
+              "score": 3
+            }
+          },
+          "drafts": {
+            "01:base": "Console.WriteLine(\"valid import task6\");"
+          },
+          "lastLesson": "01"
+        },
+        "theme": "light"
+      }
+    },
+    {
+      "name": "export-download",
+      "status": "PASS",
+      "kind": "actual HTTP UI",
+      "evidence": {
+        "filename": "cstudy-learning-data.json",
+        "matchesStoredState": true,
+        "bytes": 238
+      }
+    },
+    {
+      "name": "import-restored-lesson",
+      "status": "PASS",
+      "kind": "actual HTTP UI",
+      "evidence": {
+        "draft": "Console.WriteLine(\"valid import task6\");",
+        "checkedAnswers": [
+          0,
+          1,
+          0,
+          3
+        ],
+        "review": true
+      }
+    },
+    {
+      "name": "quota-draft-visible-failure",
+      "status": "PASS",
+      "kind": "actual HTTP UI with injected Storage.setItem fault",
+      "evidence": {
+        "warning": "端末へ保存できませんでした。現在の入力はこの画面にあります。下書きをコピーするか、設定で書き出して保管してください。 task-owned quota fault",
+        "inputRetained": true,
+        "storedValue": null
+      }
+    },
+    {
+      "name": "quota-import-rollback",
+      "status": "PASS",
+      "kind": "actual HTTP UI with injected Storage.setItem fault",
+      "evidence": {
+        "inMemoryExport": {
+          "version": 2,
+          "updatedAt": "2026-10-02T23:25:31.023Z",
+          "theme": "system",
+          "completed": [],
+          "review": [],
+          "quiz": {},
+          "drafts": {},
+          "lastLesson": null
+        },
+        "message": "読み込み失敗：端末へ保存できません。現在のデータは維持しました。",
+        "themeRemains": "system",
+        "storedValue": null
+      }
+    }
+  ],
+  "pageErrors": [],
+  "scope": "Loopback HTTP /course/ subpath; fresh contexts. Native file-input setInputFiles and real Blob download. Quota faults explicitly injected. No published HTTPS/native Safari/physical device acceptance."
+}
