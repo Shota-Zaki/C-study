@@ -1,0 +1,62 @@
+[
+  {
+    "lesson": 3,
+    "expected": "2400\n3\n3.5\n",
+    "lessonExpectedExcerpt": "想定出力  2400\n3\n3.5  処理順   countはintに決まり、unitPriceはdecimalの定数になる。  掛け算ではintからdecimalへ暗黙変換でき、2400になる。  整数除算は3、小数を含む除算は3.5になる。     代入先が小数型でも整数除算は終わっている      csharp  Copy  折り返し    using System.Globalization;\nint total = 7;\nint count = 2;\ndouble lost = total / count;\ndouble exact = (double)total / count;\ndecimal price = 125m;\ndecimal taxIncluded = price *",
+    "sha256": {
+      "Program.cs": "92f583ba6ae6b6f4f48cbe301f67491d84f95b9e68dd85ae0ac88d60c5566fbe",
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+    },
+    "lessonSha256": "d5e79e9680c38cc7171d24be8caae4fa8c3a47e49b60dbaa9fc1aa80cbf1a357"
+  },
+  {
+    "lesson": 4,
+    "expected": "今月は24時間学習\nTrue\n",
+    "lessonExpectedExcerpt": "想定出力  今月は24時間学習\nTrue  処理順   Trimで前後の空白を除いた文字列を取得する。  TryParseが成功してhoursが24になり、0以上も満たす。  別に生成した文字列でも、string同士の内容が一致すればTrueになる。     実コード例  実例：購入数量の入力検証  フォームで受け取った数量を想定します。変換失敗と範囲外で表示を分けます。    C# · Program.cs  コピー  折り返し     string  []     inputs     =     {     \"3\"  ,     \"0\"  ,     \"abc\"     }; \n foreach     (  string     input     in     inputs  ) ",
+    "sha256": {
+      "Program.cs": "a17e69e83a821270e4a2400b869f4cd9fbde7c62c8c8dc33e56549b785127b8f",
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+    },
+    "lessonSha256": "674bd0a1fdc49a01e15ce6790e0fbd3923e9e3cc5e07ad3a6969042cd670cc2e"
+  },
+  {
+    "lesson": 5,
+    "expected": "よくできました\n",
+    "lessonExpectedExcerpt": "想定出力  よくできました  処理順   82は0〜100の範囲内なので最初の条件を通らない。  >= 80に一致し、対応する文字列が選ばれる。  それより下の条件は選ばれず、resultを表示する。     送料の分岐を境界値で追う      csharp  Copy  折り返し    int[] amounts = { -1, 0, 2999, 3000, 5000 };\nforeach (int amount in amounts)\n{\n    string shipping = amount switch\n    {\n        < 0 => \"不正\",\n        >= 3000 => \"無料\",\n        _ => \"300円\"\n    };\n    Console",
+    "sha256": {
+      "Program.cs": "fbafb15feb18bffdb861041cab161b5bf8317ce18170382049b220b4748ae983",
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+    },
+    "lessonSha256": "503b83cba93991190114aa0acc93f7352106dbd88434c3fe73844ac171c3dbde"
+  },
+  {
+    "lesson": 6,
+    "expected": "人数: 3\n合計: 245\n",
+    "lessonExpectedExcerpt": "想定出力  人数: 3\n合計: 245  処理順   sumは0から始まる。  70を足して70、85を足して155、90を足して245になる。  Lengthは要素数3。配列の添字の最大値は2である。     読み飛ばしを含む合計と件数      csharp  Copy  折り返し    int[] values = { 10, -5, 20, 0 };\nint sum = 0;\nint count = 0;\nforeach (int value in values)\n{\n    if (value < 0) continue;\n    sum += value;\n    count++;\n    Console.WriteLine($\"value={value}, sum={sum},",
+    "sha256": {
+      "Program.cs": "17c334484673c1c718fed5b6da2408efffeda35feda369b0bca3b650d126ee57",
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+    },
+    "lessonSha256": "c264fbed64804e956f272e4c29791a4586a1c50489338ae3d14b98275e03e8bd"
+  },
+  {
+    "lesson": 8,
+    "expected": "0\n6\n-1\n",
+    "lessonExpectedExcerpt": "想定出力  0\n6\n-1  処理順   nameがnullなので?.Lengthはnull、??で0を選ぶ。  代入後にis not nullで確認し、安全にLengthを読む。  scoreがnullなので代替値-1を表示する。     実コード例  実例：表示名の既定値  名前が未指定・空文字・空白だけなら「ゲスト」を表示します。    C# · Program.cs  コピー  折り返し     string?  []     names     =     {     null  ,     \"\"  ,     \"   \"  ,     \" Aoi \"     }; \n foreach     (  string?     name     in     names  ) \n { \n",
+    "sha256": {
+      "Program.cs": "76d82806ff7e7e798a5f187653c77dfc90e7b9dd28e21cd93e2887ffcda3d854",
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+    },
+    "lessonSha256": "671eb38b4efdc19f871654213b8cfc0f71d01cec0e965bf6b06c122aaa7d8e48"
+  },
+  {
+    "lesson": 9,
+    "expected": "ざきです。C#を学習中です。\n",
+    "lessonExpectedExcerpt": "想定出力  ざきです。C#を学習中です。  処理順   new Learnerでコンストラクターへ名前を渡す。  入力を検証してNameへ設定する。  インスタンスのIntroduceが、その人の名前を使った文字列を返す。     二つのインスタンスの状態   クラスによる状態と操作の定義 \n 商品の名前、価格、在庫を別々の変数で管理すると、二つ目の商品を追加するときに組み合わせを間違えやすくなります。クラスは、関連する値と操作を一つの型として定義します。型は値の種類と利用可能な操作の規則です。商品型なら、商品ごとに保持する状態と、その状態をどう変更できるかをまとめます。 \n クラスの宣言は型の定義であって、個々の商品のデータではありません。 new Product(...) で実行中に作ら",
+    "sha256": {
+      "Program.cs": "0cf5b51cf2ae9feecaddbdf82ac0abb1fb3d111184428cda5d3b0e390ed09340",
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+    },
+    "lessonSha256": "e19b785e699d7657722daaf27bc8f3aa4942f1e83e39a8ca689bd14d936f357d"
+  }
+]

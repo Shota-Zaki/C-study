@@ -1,0 +1,18 @@
+{
+  "imageInspect": {
+    "exitCode": 0,
+    "output": "sha256:35d40304542c8689331f8cab17c65926cdf48fe711e289321d71924b230a7d29\n"
+  },
+  "creationAndCopy": "Runner asserted exit0 before builds; full logs not retained",
+  "cleanup": {
+    "command": [
+      "docker",
+      "rm",
+      "-f",
+      "cstudy-semantic-task6-batch2-20261002"
+    ],
+    "exitCode": 0,
+    "output": "cstudy-semantic-task6-batch2-20261002\n"
+  },
+  "sdkRuntime": "10.0.401/10.0.12 previously measured for this pinned image; no fresh version query in batch2"
+}
