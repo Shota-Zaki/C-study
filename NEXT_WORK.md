@@ -5,7 +5,7 @@
 
 ## 次のWork Unit
 
-2026-10-01に300プロジェクトの実ビルド、追加Console62件の出力一致、Web10例31HTTP検査が成功しました。証拠は `docs/validation/2026-10-01-dotnet/README.md`。次は既存Console/元教材プロジェクトの意味的な出力照合です。最新正本は `docs/project/NEXT_WORK.md`。
+2026-10-01に300プロジェクトの実ビルド、追加Console62件の出力一致、Web10例31HTTP検査が成功しました。証拠は `docs/validation/2026-10-01-dotnet/README.md`。2026-10-02に元教材07/12/14/15の4例も意味的出力照合に成功しました。次は残り31元教材プロジェクト・191既存Console例の出力照合です。証拠は `docs/validation/2026-10-02-semantics/README.md`。最新正本は `docs/project/NEXT_WORK.md`。
 
 続いて実HTTP/HTTPSでPCとSafariの操作、永続保存、サブパス配置を検査します。実機確認ではiPhone/iPadの狭幅表示、横スクロール表、本文途中の図解、Chapter内目次の操作を重点確認します。
 

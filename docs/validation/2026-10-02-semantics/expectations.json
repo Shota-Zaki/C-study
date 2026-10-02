@@ -1,0 +1,42 @@
+[
+  {
+    "lesson": 7,
+    "expected": "6\n8\n2\n",
+    "lessonExpectedExcerpt": "想定出力  6\n8\n2  処理順   Add(5)では既定値1が使われ6を返す。  名前付き引数でstepを3に変更すると8を返す。  ref countによりIncrement内の変更が呼び出し元の変数に反映される。     値渡しとrefを同じ入力で比べる      csharp  Copy  折り返し    int count = 5;\nIncreaseCopy(count);\nConsol",
+    "sha256": {
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b",
+      "Program.cs": "e42f7b3406749a441b07f5f5609f40bb5df96c4553b36e917a764bd9ff91440e"
+    },
+    "lessonSha256": "f024523ad97191a3b5562a5ac7330b4104ba43c9e5608b9d639f4a320793cdd7"
+  },
+  {
+    "lesson": 12,
+    "expected": "学習完了\n",
+    "lessonExpectedExcerpt": "想定出力  学習完了  処理順   ConsoleSenderを作り、StudyServiceへ渡す。  StudyServiceは具体的なクラスではなくIMessageSenderとして保持する。  CompleteからSendを呼ぶと、渡された実装が実行される。     実コード例  実例：注文サービスへ通知処理を渡す  注文確定後の通知だけを別クラスへ",
+    "sha256": {
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b",
+      "Program.cs": "94c969746ec7030d824bca53e83b27b26b98cffdd2dcd9efea0108b6ac3005ce"
+    },
+    "lessonSha256": "5cd71cb98854509b37f6c75aef9737f993e2e0dd06ccf3c6231e25c8c596b757"
+  },
+  {
+    "lesson": 14,
+    "expected": "True\nFalse\n80 → 95\n",
+    "lessonExpectedExcerpt": "想定出力  True\nFalse\n80 → 95  処理順   firstとsecondは別インスタンスだが、レコードの値は等しい。  ReferenceEqualsは同じインスタンスかを調べるのでFalse。  withは新しいレコードを作り、first.Scoreは80のまま残る。     classとrecordの比較   参照の同一性と値の等値性 \n",
+    "sha256": {
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b",
+      "Program.cs": "3418be95e8ed28d02d21bf532974e0280e547dc60a3506b2f3088798d4406114"
+    },
+    "lessonSha256": "03376476937d538016567a433e73679e8d0b495a0380484dc1e376120058391c"
+  },
+  {
+    "lesson": 15,
+    "expected": "80\n2\n10\n",
+    "lessonExpectedExcerpt": "想定出力  80\n2\n10  処理順   C#というキーが存在し、scoreへ80が入る。  HashSetでは重複したC#が1つとして扱われる。  First<T>のTはintに推論され、先頭の10を返す。     大文字小文字を無視してタグを数える      csharp  Copy  折り返し    string[] inputs = { \"C#\", ",
+    "sha256": {
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b",
+      "Program.cs": "ce9cef67995252840313e90d7fba646c42e49a7fa918f5b5376b502d30ef9d73"
+    },
+    "lessonSha256": "ac416a74abb2242b61d50c96f2b4dc9d0a1291d936c2c29a0af257b7720716d7"
+  }
+]

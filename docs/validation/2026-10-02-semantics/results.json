@@ -1,0 +1,146 @@
+{
+  "sourceSHA": "39e495c3108e46459a74606029a559a9302b84e5",
+  "image": "sha256:35d40304542c8689331f8cab17c65926cdf48fe711e289321d71924b230a7d29",
+  "results": [
+    {
+      "lesson": 7,
+      "expected": "6\n8\n2\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-semantic-task3-20261002",
+          "dotnet",
+          "build",
+          "/verify/samples/lesson-07/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "output": "  Determining projects to restore...\n  Restored /verify/samples/lesson-07/Lesson.csproj (in 22 ms).\n  Lesson -> /verify/samples/lesson-07/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.83\n"
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-semantic-task3-20261002",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/samples/lesson-07/Lesson.csproj",
+          "--no-build"
+        ],
+        "exitCode": 0,
+        "output": "6\n8\n2\n"
+      },
+      "semanticMatch": true
+    },
+    {
+      "lesson": 12,
+      "expected": "学習完了\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-semantic-task3-20261002",
+          "dotnet",
+          "build",
+          "/verify/samples/lesson-12/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "output": "  Determining projects to restore...\n  Restored /verify/samples/lesson-12/Lesson.csproj (in 20 ms).\n  Lesson -> /verify/samples/lesson-12/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.82\n"
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-semantic-task3-20261002",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/samples/lesson-12/Lesson.csproj",
+          "--no-build"
+        ],
+        "exitCode": 0,
+        "output": "学習完了\n"
+      },
+      "semanticMatch": true
+    },
+    {
+      "lesson": 14,
+      "expected": "True\nFalse\n80 → 95\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-semantic-task3-20261002",
+          "dotnet",
+          "build",
+          "/verify/samples/lesson-14/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "output": "  Determining projects to restore...\n  Restored /verify/samples/lesson-14/Lesson.csproj (in 22 ms).\n  Lesson -> /verify/samples/lesson-14/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.76\n"
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-semantic-task3-20261002",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/samples/lesson-14/Lesson.csproj",
+          "--no-build"
+        ],
+        "exitCode": 0,
+        "output": "True\nFalse\n80 → 95\n"
+      },
+      "semanticMatch": true
+    },
+    {
+      "lesson": 15,
+      "expected": "80\n2\n10\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-semantic-task3-20261002",
+          "dotnet",
+          "build",
+          "/verify/samples/lesson-15/Lesson.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "output": "  Determining projects to restore...\n  Restored /verify/samples/lesson-15/Lesson.csproj (in 20 ms).\n  Lesson -> /verify/samples/lesson-15/bin/Debug/net10.0/Lesson.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.75\n"
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-semantic-task3-20261002",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/samples/lesson-15/Lesson.csproj",
+          "--no-build"
+        ],
+        "exitCode": 0,
+        "output": "80\n2\n10\n"
+      },
+      "semanticMatch": true
+    }
+  ]
+}
