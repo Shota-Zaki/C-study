@@ -1,0 +1,130 @@
+[
+  {
+    "id": "original-21",
+    "source": "samples/lessons/lesson-21",
+    "project": "Lesson.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "{\"Subject\":\"CSharp\",\"Minutes\":30}\n30\n",
+    "meaning": "serialize record fields then deserialize Minutes30",
+    "teachingPath": "lessons/21.html",
+    "teachingExcerpt": "想定出力  {\"Subject\":\"CSharp\",\"Minutes\":30}\n30  処理順   レコードをJSON文字列へ変換する。  Deserializeは指定した型へ読み込む。  nullの結果を拒否してからMinutesへアクセスする。     メモリ上の値と保存する文字列   ファイルとJSONによるデータ保存 \n 変数やListに入れたデータは、アプリケーションが終了すると通常そのままでは次回へ引き継がれません。ファイルへ保存し、次の起動時に読み込むことで、実行中の状態と保存済みの状態をつなぎます。こうしてデータを終了後も残すことを永続化と呼びます。 \n JSONは、名前と値、配列、数値、文字列、true/false、nullなどをテキストで表すデータ形式です。オブジェクトを",
+    "sha256": {
+      "Program.cs": "1b506a422ca9d3560aff43912fa64f4c704922f38ff979fe953e580dbe2e277a",
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+    },
+    "teachingSha256": "774bf0e67a8f48d5450c4cf44c9c837ce3bea5f996282542f21b1265c02f43b2"
+  },
+  {
+    "id": "original-22",
+    "source": "samples/lessons/lesson-22",
+    "project": "Lesson.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "2026-09-14 00:00 UTC\n45分\n1234.50\n",
+    "meaning": "UTC conversion subtracts9h, duration45min, invariant decimal2digits",
+    "teachingPath": "lessons/22.html",
+    "teachingExcerpt": "想定出力  2026-09-14 00:00 UTC\n45分\n1234.50  処理順   9時の+09:00はUTCでは同日の0時を表す。  日時の差はTimeSpanとなり、TotalMinutesで45を得る。  固定カルチャーとF2で小数点以下2桁を明示する。     同じ瞬間を日本オフセットとUTCで比べる      csharp  Copy  折り返し    using System.Globalization;\nvar japan = new DateTimeOffset(2026, 9, 14, 9, 0, 0, TimeSpan.FromHours(9));\nvar utc = japan.ToUniversalTime();\nConsole.WriteLine(japan",
+    "sha256": {
+      "Program.cs": "03500791a337537002111cb8637d16529bb1635da3dc246c9f8c4020b3f9c890",
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+    },
+    "teachingSha256": "5e31d37f1d0e9a46b3c08e4c7478f00226e9e181f174331d3a2ccbbc8c79a148"
+  },
+  {
+    "id": "original-23",
+    "source": "samples/lessons/lesson-23",
+    "project": "Lesson.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "開始\n読み込み結果\n完了\n",
+    "meaning": "await resumes before result and completion output",
+    "teachingPath": "lessons/23.html",
+    "teachingExcerpt": "想定出力  開始\n読み込み結果\n完了  処理順   開始を表示し、Task<string>を返す処理を呼ぶ。  未完了の待機をawaitし、完了後に文字列を受け取る。  結果、完了の順に表示する。処理順は読みやすく保てる。     明示的な合図でawait前後の順番を追う      csharp  Copy  折り返し    var gate = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);\nConsole.WriteLine(\"1: 呼び出し前\");\nTask<int> task = LoadAsync(gate.Task);\nConsole.WriteLine($\"3",
+    "sha256": {
+      "Program.cs": "3b29db2a1c9b190ba75cb55ba0f60eed58bfe9dded450244504f4e2abbb27518",
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+    },
+    "teachingSha256": "76f405075b1016d0b62759e5333106d368c9be2c597c9d526972945f07d63edb"
+  },
+  {
+    "id": "original-24",
+    "source": "samples/lessons/lesson-24",
+    "project": "Lesson.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "30\nキャンセルしました\n",
+    "meaning": "WhenAll results10+20; pre-canceled token causes caught cancellation",
+    "teachingPath": "lessons/24.html",
+    "teachingExcerpt": "想定出力  30\nキャンセルしました  処理順   2つのLoadAsyncを開始してからWhenAllで両方の完了を待つ。  結果を合計して30を表示する。  すでにキャンセル済みのトークンを渡し、停止要求を捕捉する。     実コード例  実例：二つの取得結果をまとめる  待ち時間の異なる独立した処理から結果を集めます。    C# · Program.cs  コピー  折り返し     Task  <  int  >     first     =     LoadAsync  (  10  ,     30  ); \n Task  <  int  >     second     =     LoadAsync  (  20  ,     10  ); \n int  []     r",
+    "sha256": {
+      "Program.cs": "c64ae5700ccd667c23da2deb6dbb0338b0a2ebdb3bd57365480320c9fdfd4fae",
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+    },
+    "teachingSha256": "d61fc9d53198612e91d6868301ec3dff5f207ef9a373ed651c48fb32fe02bb23"
+  },
+  {
+    "id": "original-25",
+    "source": "samples/lessons/lesson-25",
+    "project": "Lesson.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": ".NET学習プロジェクト\nSystem.String\n標準ライブラリだけで動作します\n",
+    "meaning": "string alias resolves System.String; standard library only",
+    "teachingPath": "lessons/25.html",
+    "teachingExcerpt": "想定出力  .NET学習プロジェクト\nSystem.String\n標準ライブラリだけで動作します  処理順   Program.csをプロジェクト設定に従ってコンパイルする。  stringはSystem.Stringの別名なので完全名を確認できる。  Consoleやstringを使うためだけに追加NuGetは必要ない。     実コード例  実例：依存パッケージなしの小さなアプリ  まず標準ライブラリだけで日付付きメッセージを作ります。ConsoleプロジェクトのProgram.csに置く例です。    C# · Program.cs  コピー  折り返し     using     System.Globalization  ; \n var     date     =     new",
+    "sha256": {
+      "Program.cs": "0f0b7d19f36c680ff4f042313d06ad15e3911dee7af9d2668f52bac0c81260dc",
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+    },
+    "teachingSha256": "23886421dbd19e472e375cef7ef2e590c96f95a1167000cf945271fcd0fad24a"
+  },
+  {
+    "id": "original-26",
+    "source": "samples/lessons/lesson-26",
+    "project": "Lesson.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "3件の検証に成功\n",
+    "meaning": "59 false/60 true/61 true assertions permit success output",
+    "teachingPath": "lessons/26.html",
+    "teachingExcerpt": "想定出力  3件の検証に成功  処理順   閾値60に対し、59/60/61という境界を選ぶ。  IsPassedを実行し、期待値と実値を比較する。  不一致なら例外で止まるため、成功表示に到達すれば3件一致している。     実コード例  実例：送料の境界を検査する  外部テストライブラリなしで、入力と期待値を表にして比較します。    C# · Program.cs  コピー  折り返し     var     cases     =     new  []     {     (  Price  :     4999  ,     Expected  :     600  ),     (  Price  :     5000  ,     Expected  :     0  ), ",
+    "sha256": {
+      "Program.cs": "a8619bc2e4b6fac1d4155e088899ead2aad8077e551ca9b179576c532dcf447f",
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+    },
+    "teachingSha256": "7e1aed2b29fa042b31db528f67b678348fd4ba22dded39143f08cc9671bcce24"
+  },
+  {
+    "id": "original-27",
+    "source": "samples/lessons/lesson-27",
+    "project": "Lesson.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "合計: 1500\n",
+    "meaning": "parse positive quantity3, price500→1500",
+    "teachingPath": "lessons/27.html",
+    "teachingExcerpt": "想定出力  合計: 1500  処理順   文字列の変換とユーザー向けエラー表示を入口で行う。  計算クラスは価格と個数を受け取り、自分の前提条件を守る。  戻った計算結果を表示側で文字列にする。     実コード例  実例：入力検証付きの商品合計  文字列入力から金額計算までを、Try形式のメソッドへまとめます。    C# · Program.cs  コピー  折り返し     if     (  TryCalculate  (  \" 3 \"  ,     120m  ,     out     decimal     total  )) \n       Console  .  WriteLine  (  $\"合計: {total:0}円\"  ); \n else \n       Cons",
+    "sha256": {
+      "Program.cs": "bc341cebd68859b7134541af20ee05cd2691156c25e911f19d18188b46f23822",
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+    },
+    "teachingSha256": "e81890d435c34588a785e695bfbdb65d3b413829ea7226e03482ce4e7e4d4baa"
+  },
+  {
+    "id": "original-28",
+    "source": "samples/lessons/lesson-28",
+    "project": "Lesson.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "80\n",
+    "meaning": "local DemoHandler returns200JSON score80 without external network",
+    "teachingPath": "lessons/28.html",
+    "teachingExcerpt": "想定出力  80  処理順   HttpClientが差し替えたハンドラーへリクエストを渡す。  ハンドラーが200とJSONを返す。実ネットワークは使わない。  応答コードを確認し、Scoreへ読み取って80を表示する。     HTTP成功後にJSONと必須値を確認する      csharp  Copy  折り返し    using System.Net;\nusing System.Text.Json;\nusing var client = new HttpClient(new DemoHandler());\nusing var response = await client.GetAsync(\"https://example.invalid/score\");\nresponse.Ens",
+    "sha256": {
+      "Program.cs": "6bf25ddea6aa3ed80ce7bbe01ddd35c7ce682580d8f952cc2c1378a5ad9fd69c",
+      "Lesson.csproj": "cdd6f0b4e4b9c72196431282fc7f42508e52e0f6a10b88a948a157bbdabd220b"
+    },
+    "teachingSha256": "155482f91491caf5c8e7bd1060c24c41494297453e7a67794ed6ce15f7779729"
+  }
+]
