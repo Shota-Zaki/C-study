@@ -1,0 +1,802 @@
+[
+  {
+    "id": "deep-01-01",
+    "source": "samples/expanded/deep/01/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "学習開始\n30\n30\n",
+    "meaning": "total stores20+10 and is unchanged by later minutes50",
+    "kind": "csharp",
+    "teachingPath": "content/deep/01.md",
+    "teachingExcerpt": "ビルド | エラーの有無と最初の診断 |\n| `run` | 必要なビルドを行って起動 | アプリ自身の表示内容 |\n\n`Program.cs`はC#のソース、`.csproj`は対象.NETなどを指定する設定ファイルです。`bin`は主な成果物、`obj`は中間生成物の置き場所です。表示内容を変えるときは`Program.cs`を編集します。生成された`.dll`や`obj`内のファイルを直接直しても、次のビルドで置き換えられます。\n\n## 最小例：一行ずつ値を確定する\n\n```csharp\nConsole.WriteLine(\"学習開始\");\nint minutes = 20;\nint total = minutes + 10;\nConsole.WriteLine(total);\nminutes = 50;\nConsole.WriteLine(total);\n```\n\n期待される出力：\n\n```text\n学習開始\n30\n30\n```\n\n| 順序 | コードの意味 | minutes | total | 画面への追加 |\n|---|---|---:|---:|---|\n| ① | 文字列を表示する | 未宣言 | 未宣言 | 学習開始 |\n| ② | minutesを20で初期化する | 20 | 未宣言 | なし |\n| ③ | 20+10を計算してtotalへ保存する | 20 | 30 | なし |\n| ④ | totalを読む | 20 | 30 | 30 |\n| ⑤ | minutesだけを50へ変更する | 50 | 30 | なし |\n| ⑥ | totalを再び読む | 50 | 30 | 30 |\n\n`=`は数学の等式を宣言する記号ではなく、右側を評価して左側へ代入する記号です。`total`に保存されたのは「minutes+10という将来も更新される式」ではなく、その時点で計算した30です。`minutes`を変えても`total`が連動しないことは、後の参照型の学習でも基礎になります。\n\n`\"学習開始\"`は文字列リテラルです。リテラルはコードに直接記述した値を意味します。`20`も整数リテラルです。文末の`;`は文の終わりを示し、改行の位置だけで文が終了するわけではありません。`//`以降はその行のコメントで、人向けの説明として使い、実行処理にはなりません。\n\n## 実用例：学習記録の小さな集計\n\n```csharp\nint morningMinutes = 25;\nint eveningMinutes = 40;\nint totalMinutes = morningMinutes + eveningMinutes;\nint goalMinutes = 90;\nint remainingMinutes = goalMinutes - totalMinutes;\nConsole.WriteLine($\"合計: {totalMinutes}分\");\nConsole.WriteLine($\"目標まで: {remainingMinutes}分\");\n```\n\n期待される出力：\n\n```text\n合計: 65分\n目標まで: 25分\n```\n\n最初の二行は入力データの準備です。三行目が合計の計算、五行目が差の計算、最後の二行が表示です。`$\"...{totalMinutes}...\"`は文字列補間で、`{}`内の式の結果を文字へ変換して埋め込みます。変数名自体を表示するのではありません。変数名に単位の`Minutes`を含めると、時間と金額のような別の数値を足し合わせる誤りに気付きやすくなります。\n\n現在の仕様では合計が目標を超えると残りが負になります。これは文法エラーではなく、表示の要件がまだ決まっていない問題です。「超過を負数で表示する」「0に抑える」のどちらも設計としてあり得ます。Lesson 05の条件分岐で、超過時の扱いを明示する方法へつながります。\n\n## 失敗例：止まった段階を区別する\n\n### セミコロンがない場合\n\n```csharp-error\nConsole.WriteLine(\"学習開始\")\nint minutes = 20;\nConsole.WriteLine(minutes);\n```\n\nこれは文の区切りが欠けているためコンパイルで失敗します。診断の正確な文面や位置はSDKや周囲のコードで変わりますが、`;`不足を示す診断が手掛かりになります。エラーが次の行に表示されても、その直前に閉じ忘れがないか確認します。この場合はアプリの表示処理まで到達していません。\n\n修正位置は一行目の末尾です。\n\n```csharp\nConsole.WriteLine(\"学習開始\"",
+    "sha256": {
+      "Program.cs": "f6b27443f43f2915dcf11252b4a40f6d1ec270d5f295b16d33d6325360f51125",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "acabe0551e34d1bc7284b34a94257c70751444c0e3d52ef140420ee5113c4bce"
+  },
+  {
+    "id": "deep-01-02",
+    "source": "samples/expanded/deep/01/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "合計: 65分\n目標まで: 25分\n",
+    "meaning": "25+40=65;90-65=25",
+    "kind": "csharp",
+    "teachingPath": "content/deep/01.md",
+    "teachingExcerpt": "いう将来も更新される式」ではなく、その時点で計算した30です。`minutes`を変えても`total`が連動しないことは、後の参照型の学習でも基礎になります。\n\n`\"学習開始\"`は文字列リテラルです。リテラルはコードに直接記述した値を意味します。`20`も整数リテラルです。文末の`;`は文の終わりを示し、改行の位置だけで文が終了するわけではありません。`//`以降はその行のコメントで、人向けの説明として使い、実行処理にはなりません。\n\n## 実用例：学習記録の小さな集計\n\n```csharp\nint morningMinutes = 25;\nint eveningMinutes = 40;\nint totalMinutes = morningMinutes + eveningMinutes;\nint goalMinutes = 90;\nint remainingMinutes = goalMinutes - totalMinutes;\nConsole.WriteLine($\"合計: {totalMinutes}分\");\nConsole.WriteLine($\"目標まで: {remainingMinutes}分\");\n```\n\n期待される出力：\n\n```text\n合計: 65分\n目標まで: 25分\n```\n\n最初の二行は入力データの準備です。三行目が合計の計算、五行目が差の計算、最後の二行が表示です。`$\"...{totalMinutes}...\"`は文字列補間で、`{}`内の式の結果を文字へ変換して埋め込みます。変数名自体を表示するのではありません。変数名に単位の`Minutes`を含めると、時間と金額のような別の数値を足し合わせる誤りに気付きやすくなります。\n\n現在の仕様では合計が目標を超えると残りが負になります。これは文法エラーではなく、表示の要件がまだ決まっていない問題です。「超過を負数で表示する」「0に抑える」のどちらも設計としてあり得ます。Lesson 05の条件分岐で、超過時の扱いを明示する方法へつながります。\n\n## 失敗例：止まった段階を区別する\n\n### セミコロンがない場合\n\n```csharp-error\nConsole.WriteLine(\"学習開始\")\nint minutes = 20;\nConsole.WriteLine(minutes);\n```\n\nこれは文の区切りが欠けているためコンパイルで失敗します。診断の正確な文面や位置はSDKや周囲のコードで変わりますが、`;`不足を示す診断が手掛かりになります。エラーが次の行に表示されても、その直前に閉じ忘れがないか確認します。この場合はアプリの表示処理まで到達していません。\n\n修正位置は一行目の末尾です。\n\n```csharp\nConsole.WriteLine(\"学習開始\");\nint minutes = 20;\nConsole.WriteLine(minutes);\n```\n\n修正後の期待出力は「学習開始」、次の行に`20`です。SDKの再インストールや別のクラスの追加ではなく、欠けた区切りだけを補います。一つの構文誤りが複数の診断を引き起こすことがあるため、まず最初の診断から修正して再ビルドします。\n\n### 編集したのに表示が変わらない場合\n\n保存していない、違うプロジェクトを起動している、ビルドを省略して古い成果物を動かしている、という順に確認します。`dotnet run --project \"対象フォルダー\"`で対象を明示し、ソースを保存してから実行します。画面の表示だけを見て、どのソースが動いたかを推測しないことが大切です。\n\n## 手を動かす課題：予測・修正・再確認\n\n基礎課題は、最小例の`minutes = 50;`を`minutes = 80;`へ変え、最後の表示を先に予測することです。入力はコード内の80、期待出力の最後は30です。式の結果を保存したという説明ができれば正解です。\n\n標準課題は、変更後の`minutes`を使って`total`も更新することです。ヒントは、五行目と最後の表示の間で計算をもう一度行うことです。\n\n```csharp\nint minutes = 20;\nint total = minutes + 10;\nminutes = 80;\ntotal = minutes + 10;\nConsole.WriteLine(total);\n```\n\n期待出力は90です。最初の初期化を消して偶然90にするのではなく、更新が必要な時点で再計算しています。別解として表示時に`minutes + 10`を直接計算できますが、同じ結果を複数箇所で使うなら名前付きの変数が役立ちます。\n\n応用課題は、学習集計の入力を朝45分、夜50分、目標90分へ変更し、現在の仕様の結果を説明することです。合計95分、残り-5分になります。負数を「実行できていない」と誤認せず、コードの計算は正しいが表示要件の検討が必要、と区別します。基礎・標準・応用の制作演習は親レッス",
+    "sha256": {
+      "Program.cs": "189ba1373d27a924fb59f7ecc2e14be503393f932fbc4cc2b560be95babf712b",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "acabe0551e34d1bc7284b34a94257c70751444c0e3d52ef140420ee5113c4bce"
+  },
+  {
+    "id": "deep-01-04",
+    "source": "samples/expanded/deep/01/example-04",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "学習開始\n20\n",
+    "meaning": "sequential literal then variable output",
+    "kind": "csharp",
+    "teachingPath": "content/deep/01.md",
+    "teachingExcerpt": "p-error\nConsole.WriteLine(\"学習開始\")\nint minutes = 20;\nConsole.WriteLine(minutes);\n```\n\nこれは文の区切りが欠けているためコンパイルで失敗します。診断の正確な文面や位置はSDKや周囲のコードで変わりますが、`;`不足を示す診断が手掛かりになります。エラーが次の行に表示されても、その直前に閉じ忘れがないか確認します。この場合はアプリの表示処理まで到達していません。\n\n修正位置は一行目の末尾です。\n\n```csharp\nConsole.WriteLine(\"学習開始\");\nint minutes = 20;\nConsole.WriteLine(minutes);\n```\n\n修正後の期待出力は「学習開始」、次の行に`20`です。SDKの再インストールや別のクラスの追加ではなく、欠けた区切りだけを補います。一つの構文誤りが複数の診断を引き起こすことがあるため、まず最初の診断から修正して再ビルドします。\n\n### 編集したのに表示が変わらない場合\n\n保存していない、違うプロジェクトを起動している、ビルドを省略して古い成果物を動かしている、という順に確認します。`dotnet run --project \"対象フォルダー\"`で対象を明示し、ソースを保存してから実行します。画面の表示だけを見て、どのソースが動いたかを推測しないことが大切です。\n\n## 手を動かす課題：予測・修正・再確認\n\n基礎課題は、最小例の`minutes = 50;`を`minutes = 80;`へ変え、最後の表示を先に予測することです。入力はコード内の80、期待出力の最後は30です。式の結果を保存したという説明ができれば正解です。\n\n標準課題は、変更後の`minutes`を使って`total`も更新することです。ヒントは、五行目と最後の表示の間で計算をもう一度行うことです。\n\n```csharp\nint minutes = 20;\nint total = minutes + 10;\nminutes = 80;\ntotal = minutes + 10;\nConsole.WriteLine(total);\n```\n\n期待出力は90です。最初の初期化を消して偶然90にするのではなく、更新が必要な時点で再計算しています。別解として表示時に`minutes + 10`を直接計算できますが、同じ結果を複数箇所で使うなら名前付きの変数が役立ちます。\n\n応用課題は、学習集計の入力を朝45分、夜50分、目標90分へ変更し、現在の仕様の結果を説明することです。合計95分、残り-5分になります。負数を「実行できていない」と誤認せず、コードの計算は正しいが表示要件の検討が必要、と区別します。基礎・標準・応用の制作演習は親レッスンにもあり、この実験と合わせて取り組めます。\n\n## 理解の境界と次の接続\n\nこの段階では、変数は名前の付いた値、メソッドは呼び出せる処理、SDKは作る道具、Runtimeは動かす土台、と説明できることを重視します。`Console`の内部のOS呼び出しやJITの最適化方式の暗記は必要ありません。次のLesson 02では、ソースを増やしても入口と名前が衝突しない構成を学びます。Lesson 03では型の違いが計算と代入をどう制限するかを詳しく扱います。\n",
+    "sha256": {
+      "Program.cs": "6eea97100744dd179a579c74d93c284fca9692587b7b9cd4b171f815dbc7b9f1",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "acabe0551e34d1bc7284b34a94257c70751444c0e3d52ef140420ee5113c4bce"
+  },
+  {
+    "id": "deep-01-05",
+    "source": "samples/expanded/deep/01/example-05",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "90\n",
+    "meaning": "recompute total after minutes80",
+    "kind": "csharp",
+    "teachingPath": "content/deep/01.md",
+    "teachingExcerpt": "示だけを見て、どのソースが動いたかを推測しないことが大切です。\n\n## 手を動かす課題：予測・修正・再確認\n\n基礎課題は、最小例の`minutes = 50;`を`minutes = 80;`へ変え、最後の表示を先に予測することです。入力はコード内の80、期待出力の最後は30です。式の結果を保存したという説明ができれば正解です。\n\n標準課題は、変更後の`minutes`を使って`total`も更新することです。ヒントは、五行目と最後の表示の間で計算をもう一度行うことです。\n\n```csharp\nint minutes = 20;\nint total = minutes + 10;\nminutes = 80;\ntotal = minutes + 10;\nConsole.WriteLine(total);\n```\n\n期待出力は90です。最初の初期化を消して偶然90にするのではなく、更新が必要な時点で再計算しています。別解として表示時に`minutes + 10`を直接計算できますが、同じ結果を複数箇所で使うなら名前付きの変数が役立ちます。\n\n応用課題は、学習集計の入力を朝45分、夜50分、目標90分へ変更し、現在の仕様の結果を説明することです。合計95分、残り-5分になります。負数を「実行できていない」と誤認せず、コードの計算は正しいが表示要件の検討が必要、と区別します。基礎・標準・応用の制作演習は親レッスンにもあり、この実験と合わせて取り組めます。\n\n## 理解の境界と次の接続\n\nこの段階では、変数は名前の付いた値、メソッドは呼び出せる処理、SDKは作る道具、Runtimeは動かす土台、と説明できることを重視します。`Console`の内部のOS呼び出しやJITの最適化方式の暗記は必要ありません。次のLesson 02では、ソースを増やしても入口と名前が衝突しない構成を学びます。Lesson 03では型の違いが計算と代入をどう制限するかを詳しく扱います。\n",
+    "sha256": {
+      "Program.cs": "1184e3e43b96b4ad4e69b9ab1e3b139085d824545db99b3154c0894c2e7c5bef",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "acabe0551e34d1bc7284b34a94257c70751444c0e3d52ef140420ee5113c4bce"
+  },
+  {
+    "id": "deep-02-01",
+    "source": "samples/expanded/deep/02/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "入口\n呼び出された処理\n終了\n",
+    "meaning": "top-level call returns before final output",
+    "kind": "csharp",
+    "teachingPath": "content/deep/02.md",
+    "teachingExcerpt": "型を短い名前で参照できるようにする宣言です。部品をインストールしたり、すべての型の処理を実行したりする命令ではありません。名前空間を探す範囲をコンパイラーへ知らせています。\n\n## トップレベル文とMainの対応\n\nトップレベルステートメントは、外側の`Program`クラスや`Main`メソッドを自分で書かず、入口で行う文を直接書く形式です。コンパイラーが入口を含む構造を生成します。入口が存在しないわけでも、ファイル内のすべての宣言が順番に実行されるわけでもありません。\n\n```csharp\nConsole.WriteLine(\"入口\");\nPrintMessage();\nConsole.WriteLine(\"終了\");\n\nstatic void PrintMessage()\n{\n    Console.WriteLine(\"呼び出された処理\");\n}\n```\n\n期待される出力：\n\n```text\n入口\n呼び出された処理\n終了\n```\n\n`PrintMessage`の定義は、その場所に到達したから自動実行されるものではありません。二行目の呼び出しでメソッド本体へ移り、`Console.WriteLine`を行い、終わったら呼び出した場所の次へ戻ります。この定義はトップレベル文から利用できるローカル関数です。`static`は周囲のローカル変数へ暗黙に依存しないことを示します。引数や戻り値はLesson 07で拡張します。\n\n同じ内容を明示的な入口で書くと次のようになります。これは**上の例と入れ替えて使用する独立した例**です。一つのプロジェクトに両方の入口を追加する練習ではありません。\n\n```csharp\nusing System;\n\ninternal class Program\n{\n    private static void Main()\n    {\n        Console.WriteLine(\"入口\");\n        PrintMessage();\n        Console.WriteLine(\"終了\");\n    }\n\n    private static void PrintMessage()\n    {\n        Console.WriteLine(\"呼び出された処理\");\n    }\n}\n```\n\n`class`は型を定義し、`Main`はこの形式の入口です。`void`は結果の値を返さないことを示します。`private`は同じ型の内部からの利用に限定し、`internal`は原則として同じアセンブリ内から型を利用できることを表します。今は外側の構造を読めれば十分で、クラスの設計はLesson 09以降で学びます。\n\n```flow\nアプリ開始 | 入口に入る\n最初のWriteLine | 「入口」を表示\nPrintMessage呼び出し | 定義した処理へ移る\nPrintMessage終了 | 呼び出し元へ戻る\n最後のWriteLine | 「終了」を表示\n```\n\n## usingの文法を分解する\n\n| 記述 | 意味 | 行わないこと |\n|---|---|---|\n| `using System;` | System内の型を短い名前で探す | ライブラリのダウンロード |\n| `System.Console.WriteLine` | 型の完全な名前から指定する | System全体の処理の起動 |\n| `using Text = System.Text;` | 名前空間に別名を付ける | 名前空間そのものの名前変更 |\n| `namespace Study;` | 以降の型をStudy名前空間に所属させる | フォルダーの自動作成 |\n| `global using System;` | プロジェクト全体のソースで使えるusingにする | 参照していないアセンブリの追加 |\n\n新しいSDKのひな形では、よく使う名前空間を暗黙のusingで利用できることがあります。`.csproj`の`ImplicitUsings`設定や`obj`内の生成ソースで確認できます。`using System;`がないのに`Console`が使えるのは、コンパイラーが型の規則を無視しているからではありません。生成された宣言を含めて名前を解決しています。\n\n`namespace`とフォルダー名を合わせるのは分かりやすくする慣習です。通常のC#では、ファイルをフォルダーから移すだけで宣言済みの名前空間が変わるわけではありません。また、同じ名前空間の型を複数ファイルに分けられます。名前のまとまりと保存先を混同しないことがチーム開発の変更ミスを減らします。\n\n## ",
+    "sha256": {
+      "Program.cs": "f5271beee8a1870e7ec7454c19ddd842abb684edbe32ec9ef08f98d893fca4d7",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "b5ab1a67b444c4fb1e72bbedf8af88d8a05b086781a791102a86c2f99d3b3a3e"
+  },
+  {
+    "id": "deep-02-02",
+    "source": "samples/expanded/deep/02/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "入口\n呼び出された処理\n終了\n",
+    "meaning": "Main has same call order",
+    "kind": "csharp",
+    "teachingPath": "content/deep/02.md",
+    "teachingExcerpt": "りません。二行目の呼び出しでメソッド本体へ移り、`Console.WriteLine`を行い、終わったら呼び出した場所の次へ戻ります。この定義はトップレベル文から利用できるローカル関数です。`static`は周囲のローカル変数へ暗黙に依存しないことを示します。引数や戻り値はLesson 07で拡張します。\n\n同じ内容を明示的な入口で書くと次のようになります。これは**上の例と入れ替えて使用する独立した例**です。一つのプロジェクトに両方の入口を追加する練習ではありません。\n\n```csharp\nusing System;\n\ninternal class Program\n{\n    private static void Main()\n    {\n        Console.WriteLine(\"入口\");\n        PrintMessage();\n        Console.WriteLine(\"終了\");\n    }\n\n    private static void PrintMessage()\n    {\n        Console.WriteLine(\"呼び出された処理\");\n    }\n}\n```\n\n`class`は型を定義し、`Main`はこの形式の入口です。`void`は結果の値を返さないことを示します。`private`は同じ型の内部からの利用に限定し、`internal`は原則として同じアセンブリ内から型を利用できることを表します。今は外側の構造を読めれば十分で、クラスの設計はLesson 09以降で学びます。\n\n```flow\nアプリ開始 | 入口に入る\n最初のWriteLine | 「入口」を表示\nPrintMessage呼び出し | 定義した処理へ移る\nPrintMessage終了 | 呼び出し元へ戻る\n最後のWriteLine | 「終了」を表示\n```\n\n## usingの文法を分解する\n\n| 記述 | 意味 | 行わないこと |\n|---|---|---|\n| `using System;` | System内の型を短い名前で探す | ライブラリのダウンロード |\n| `System.Console.WriteLine` | 型の完全な名前から指定する | System全体の処理の起動 |\n| `using Text = System.Text;` | 名前空間に別名を付ける | 名前空間そのものの名前変更 |\n| `namespace Study;` | 以降の型をStudy名前空間に所属させる | フォルダーの自動作成 |\n| `global using System;` | プロジェクト全体のソースで使えるusingにする | 参照していないアセンブリの追加 |\n\n新しいSDKのひな形では、よく使う名前空間を暗黙のusingで利用できることがあります。`.csproj`の`ImplicitUsings`設定や`obj`内の生成ソースで確認できます。`using System;`がないのに`Console`が使えるのは、コンパイラーが型の規則を無視しているからではありません。生成された宣言を含めて名前を解決しています。\n\n`namespace`とフォルダー名を合わせるのは分かりやすくする慣習です。通常のC#では、ファイルをフォルダーから移すだけで宣言済みの名前空間が変わるわけではありません。また、同じ名前空間の型を複数ファイルに分けられます。名前のまとまりと保存先を混同しないことがチーム開発の変更ミスを減らします。\n\n## 実用例：同名の型を正確に選ぶ\n\n業務には在庫の`Product`と注文の`Product`のように同名が現れます。この例は一つの`Program.cs`で確認できます。`Product`の実体生成は行わず、型に属する`static`メソッドを呼び出しています。\n\n```csharp\nusing InventoryProduct = Inventory.Product;\nusing OrderProduct = Orders.Product;\n\nConsole.WriteLine(InventoryProduct.Label());\nConsole.WriteLine(OrderProduct.Label());\n\nnamespace Inventory\n{\n    public static class Product\n    {\n        public static string Label() => \"在庫の商品\";\n    }\n}\n\nnamespace Orders\n{\n    public static class Product\n    {\n        public static string Label() => \"注文の商品\";\n    }\n}\n```\n\n期待出力は「在庫の商品」、次の行に「注文の商品」です。別名がどの型に対応するかはビルド時に決まります。実行",
+    "sha256": {
+      "Program.cs": "1eb129e52f65a7bbe0303c8924769679b14848c72af40405c603cf49052d4693",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "b5ab1a67b444c4fb1e72bbedf8af88d8a05b086781a791102a86c2f99d3b3a3e"
+  },
+  {
+    "id": "deep-02-03",
+    "source": "samples/expanded/deep/02/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "在庫の商品\n注文の商品\n",
+    "meaning": "aliases resolve two distinct namespace Product types",
+    "kind": "csharp",
+    "teachingPath": "content/deep/02.md",
+    "teachingExcerpt": "ファイルをフォルダーから移すだけで宣言済みの名前空間が変わるわけではありません。また、同じ名前空間の型を複数ファイルに分けられます。名前のまとまりと保存先を混同しないことがチーム開発の変更ミスを減らします。\n\n## 実用例：同名の型を正確に選ぶ\n\n業務には在庫の`Product`と注文の`Product`のように同名が現れます。この例は一つの`Program.cs`で確認できます。`Product`の実体生成は行わず、型に属する`static`メソッドを呼び出しています。\n\n```csharp\nusing InventoryProduct = Inventory.Product;\nusing OrderProduct = Orders.Product;\n\nConsole.WriteLine(InventoryProduct.Label());\nConsole.WriteLine(OrderProduct.Label());\n\nnamespace Inventory\n{\n    public static class Product\n    {\n        public static string Label() => \"在庫の商品\";\n    }\n}\n\nnamespace Orders\n{\n    public static class Product\n    {\n        public static string Label() => \"注文の商品\";\n    }\n}\n```\n\n期待出力は「在庫の商品」、次の行に「注文の商品」です。別名がどの型に対応するかはビルド時に決まります。実行時には一行目の呼び出しが`Inventory.Product.Label`へ進み、戻った文字列を表示してから、次の呼び出しへ進みます。`=>`は一つの式で処理を書く簡略形で、ここでは右側の文字列を返します。\n\n| 時点 | 名前解決・処理 | 画面 |\n|---|---|---|\n| ビルド時 | 二つの別名が異なる完全名へ対応する | まだ何も表示しない |\n| 最初の呼び出し | InventoryのLabelが文字列を返す | 在庫の商品 |\n| 次の呼び出し | OrdersのLabelが文字列を返す | 注文の商品 |\n\nこの区別は、後にNuGetで外部部品を導入したときにも役立ちます。「その型を含むアセンブリを参照しているか」「名前空間を取り込んでいるか」「型の利用が公開されているか」を別々に確認します。usingだけで不足している参照を補うことはできません。\n\n## 失敗例：型宣言の後にトップレベル文を書く\n\n```csharp-error\nclass Marker { }\nConsole.WriteLine(\"開始\");\n```\n\nトップレベル文は、そのファイル内の名前空間・型の宣言より前に置く必要があります。この例では型宣言後の実行文が規則に反します。コンパイラーがすべてを上から読みながらその場で実行している、と考えると混乱します。「文の配置規則」と「実行順」は別です。\n\n修正位置は実行文の配置です。\n\n```csharp\nConsole.WriteLine(\"開始\");\nclass Marker { }\n```\n\n期待出力は「開始」です。別解として明示的な`Main`内へ表示処理を置けますが、ここでは不要な構成変更を増やさず文の位置だけ直します。一つのプロジェクトでトップレベル文を書けるソースファイルは一つです。入口用のファイルを一つ、その他は型定義用という構成にすると、後でファイルを増やしやすくなります。\n\n## 失敗例：名前の衝突をusingの追加で悪化させる\n\n```csharp-error\nusing Inventory;\nusing Orders;\nConsole.WriteLine(Product.Label());\nnamespace Inventory { public static class Product { public static string Label() => \"在庫\"; } }\nnamespace Orders { public static class Product { public static string Label() => \"注文\"; } }\n```\n\n二つの名前空間に公開された`Product`があるため、短い名前だけではどちらか決められません。まずエラーに示された候補の完全名を読みます。usingをさらに追加するのではなく、`Inventory.Product.Label()`と完全名で指定するか、実用例のような別名を付けます。\n\n```csharp\nConsole.WriteLine(Inventory.Product.Label());\nnamespace Inventory { public static class Product { public static string Label() => \"在庫\"; } }\nnamespace Orders { public static class Product { public static string Label() => \"注文\"; } }\n```\n\n期待出力は「在庫」です。明示的な名前は長",
+    "sha256": {
+      "Program.cs": "0c90fae9c3b453f5b8acbbcfea7b9d8493dadd85c88a0829d82bbac97818890f",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "b5ab1a67b444c4fb1e72bbedf8af88d8a05b086781a791102a86c2f99d3b3a3e"
+  },
+  {
+    "id": "deep-02-05",
+    "source": "samples/expanded/deep/02/example-05",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "開始\n",
+    "meaning": "top-level statement precedes type declaration repaired example",
+    "kind": "csharp",
+    "teachingPath": "content/deep/02.md",
+    "teachingExcerpt": "うことはできません。\n\n## 失敗例：型宣言の後にトップレベル文を書く\n\n```csharp-error\nclass Marker { }\nConsole.WriteLine(\"開始\");\n```\n\nトップレベル文は、そのファイル内の名前空間・型の宣言より前に置く必要があります。この例では型宣言後の実行文が規則に反します。コンパイラーがすべてを上から読みながらその場で実行している、と考えると混乱します。「文の配置規則」と「実行順」は別です。\n\n修正位置は実行文の配置です。\n\n```csharp\nConsole.WriteLine(\"開始\");\nclass Marker { }\n```\n\n期待出力は「開始」です。別解として明示的な`Main`内へ表示処理を置けますが、ここでは不要な構成変更を増やさず文の位置だけ直します。一つのプロジェクトでトップレベル文を書けるソースファイルは一つです。入口用のファイルを一つ、その他は型定義用という構成にすると、後でファイルを増やしやすくなります。\n\n## 失敗例：名前の衝突をusingの追加で悪化させる\n\n```csharp-error\nusing Inventory;\nusing Orders;\nConsole.WriteLine(Product.Label());\nnamespace Inventory { public static class Product { public static string Label() => \"在庫\"; } }\nnamespace Orders { public static class Product { public static string Label() => \"注文\"; } }\n```\n\n二つの名前空間に公開された`Product`があるため、短い名前だけではどちらか決められません。まずエラーに示された候補の完全名を読みます。usingをさらに追加するのではなく、`Inventory.Product.Label()`と完全名で指定するか、実用例のような別名を付けます。\n\n```csharp\nConsole.WriteLine(Inventory.Product.Label());\nnamespace Inventory { public static class Product { public static string Label() => \"在庫\"; } }\nnamespace Orders { public static class Product { public static string Label() => \"注文\"; } }\n```\n\n期待出力は「在庫」です。明示的な名前は長くなりますが、呼び出し対象が読者に伝わります。コード量の少なさよりも、「どの部品を使っているかが間違いなく分かること」を優先します。\n\n## 比較と段階別の練習\n\n| 選択肢 | 選ぶ場面 | 注意 |\n|---|---|---|\n| トップレベル文 | 小さなアプリの入口を読みやすくする | 一つのファイルへ限定 |\n| 明示的なMain | 入口のクラスと構造を明示したい | トップレベル文と混在させない |\n| using | 衝突がなく短い名前が読みやすい | パッケージの導入とは別 |\n| 完全名・別名 | 同名がある、由来を強調する | 不要な別名を大量に作らない |\n| ファイル分割 | 型や責務ごとに見通しを改善する | 分割だけでは実行順は決まらない |\n\n基礎課題は、最小例の`PrintMessage();`を二回書いたときの出力を予測することです。「入口→呼び出された処理→呼び出された処理→終了」になります。定義を二つに増やす必要はありません。\n\n標準課題は、実用例で注文の商品を先に表示することです。usingや名前空間を移すのではなく、二つの呼び出し文の順番を入れ替えます。宣言の順番と処理の順番の違いが、この課題の目的です。\n\n応用課題は、`Inventory.Product`だけ別ファイルへ分割することです。`Product.cs`には`namespace Inventory;`と`Product`型を置き、`Program.cs`の該当する型宣言を削除します。型を二重定義したままにすると衝突します。入力はファイル配置、期待結果は分割前と同じ出力です。「ファイルが増えたから自動で追加の処理が走る」とは考えません。",
+    "sha256": {
+      "Program.cs": "32ef77e84a205551201f579d75e53c50086da8e237c26edf0fe160ac8399a4c4",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "b5ab1a67b444c4fb1e72bbedf8af88d8a05b086781a791102a86c2f99d3b3a3e"
+  },
+  {
+    "id": "deep-02-07",
+    "source": "samples/expanded/deep/02/example-07",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "在庫\n",
+    "meaning": "fully qualified Inventory.Product resolves namespace",
+    "kind": "csharp",
+    "teachingPath": "content/deep/02.md",
+    "teachingExcerpt": "namespace Orders { public static class Product { public static string Label() => \"注文\"; } }\n```\n\n二つの名前空間に公開された`Product`があるため、短い名前だけではどちらか決められません。まずエラーに示された候補の完全名を読みます。usingをさらに追加するのではなく、`Inventory.Product.Label()`と完全名で指定するか、実用例のような別名を付けます。\n\n```csharp\nConsole.WriteLine(Inventory.Product.Label());\nnamespace Inventory { public static class Product { public static string Label() => \"在庫\"; } }\nnamespace Orders { public static class Product { public static string Label() => \"注文\"; } }\n```\n\n期待出力は「在庫」です。明示的な名前は長くなりますが、呼び出し対象が読者に伝わります。コード量の少なさよりも、「どの部品を使っているかが間違いなく分かること」を優先します。\n\n## 比較と段階別の練習\n\n| 選択肢 | 選ぶ場面 | 注意 |\n|---|---|---|\n| トップレベル文 | 小さなアプリの入口を読みやすくする | 一つのファイルへ限定 |\n| 明示的なMain | 入口のクラスと構造を明示したい | トップレベル文と混在させない |\n| using | 衝突がなく短い名前が読みやすい | パッケージの導入とは別 |\n| 完全名・別名 | 同名がある、由来を強調する | 不要な別名を大量に作らない |\n| ファイル分割 | 型や責務ごとに見通しを改善する | 分割だけでは実行順は決まらない |\n\n基礎課題は、最小例の`PrintMessage();`を二回書いたときの出力を予測することです。「入口→呼び出された処理→呼び出された処理→終了」になります。定義を二つに増やす必要はありません。\n\n標準課題は、実用例で注文の商品を先に表示することです。usingや名前空間を移すのではなく、二つの呼び出し文の順番を入れ替えます。宣言の順番と処理の順番の違いが、この課題の目的です。\n\n応用課題は、`Inventory.Product`だけ別ファイルへ分割することです。`Product.cs`には`namespace Inventory;`と`Product`型を置き、`Program.cs`の該当する型宣言を削除します。型を二重定義したままにすると衝突します。入力はファイル配置、期待結果は分割前と同じ出力です。「ファイルが増えたから自動で追加の処理が走る」とは考えません。\n\n## 次へつながる理解\n\nコンパイラーは名前と型を解決し、実行時には入口から呼び出しに沿って処理が進みます。変数の保持場所をStackかHeapかで説明する前に、どの文が実行されるかを追えることが必要です。次のLesson 03で、宣言した型と式の型がどのように代入・計算を制限するかを学びます。\n",
+    "sha256": {
+      "Program.cs": "6ac0b2d79549d6c46eca8b6d86f3f64c5d6a64c46ac953ea4589560be1d944ef",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "b5ab1a67b444c4fb1e72bbedf8af88d8a05b086781a791102a86c2f99d3b3a3e"
+  },
+  {
+    "id": "deep-03-01",
+    "source": "samples/expanded/deep/03/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "360\n",
+    "meaning": "3*120",
+    "kind": "csharp",
+    "teachingPath": "content/deep/03.md",
+    "teachingExcerpt": "べての実行経路で値が決まるかをコンパイラーが検査します。フィールドや配列要素の既定値とは規則が異なります。\n\n整数には範囲があります。`int`は符号付き32ビット整数で、-2,147,483,648から2,147,483,647までを表せます。`long`はより広い範囲の符号付き64ビット整数です。範囲を超える可能性がある件数や合計は、業務上の最大値を考えて選びます。型が大きければすべて解決するわけではなく、必要な範囲・精度・単位を先に定めます。\n\n## 構文と式の評価\n\n```csharp\nint quantity = 3;\nint unitPrice = 120;\nint total = quantity * unitPrice;\nConsole.WriteLine(total);\n```\n\n期待出力は360です。`int`は型、`quantity`は名前、`=`は代入、`3`は初期値、`;`は文の終わりです。`quantity * unitPrice`は値を計算する式です。この式にも型があり、この例では二つの`int`から`int`の結果を作ります。\n\n| 順序 | 式が読む値 | 計算・保存 | 状態 |\n|---|---|---|---|\n| ① | 3 | quantityを初期化 | quantity=3 |\n| ② | 120 | unitPriceを初期化 | quantity=3, unitPrice=120 |\n| ③ | 3と120 | 360をtotalへ保存 | total=360 |\n| ④ | totalの360 | 文字へ変換して表示 | 変数の値は変わらない |\n\n型情報はコンパイル時の検査に使われ、生成物にも型・メンバーの情報が含まれます。実行時のメモリ配置はCLRやJITの最適化にも関係します。「intなので必ずStackにある」と断定する必要はありません。まず`int`の代入では値がコピーされるという言語の意味を理解します。メモリの詳細はLesson 13と補助教材で扱います。\n\n## varは型をなくさない\n\n`var`は、初期化式からローカル変数の型をコンパイラーに推論させる記法です。推論とは、この場合はソースを検査する段階で型を決めることです。`var count = 3;`は`int`の変数になります。実行中に値に応じて型が自由に変わる宣言ではありません。\n\n```csharp\nvar count = 3;\nvar label = \"在庫\";\nvar price = 120.5m;\nConsole.WriteLine($\"{label}: {count}\");\nConsole.WriteLine(price == 120.5m);\n```\n\n期待出力は`在庫: 3`、次の行に`True`です。数値リテラル末尾の`m`は`decimal`を指定します。`var`そのものではなく初期化式が型を決めているため、`120.5`なら通常`double`、`120.5m`なら`decimal`です。右側を見れば型が明らかなときに`var`は読みやすくなります。結果の型が分かりにくい式では型を明示して構いません。\n\n```csharp-error\nvar count = 3;\ncount = \"三個\";\n```\n\nこの例は`int`の変数へ`string`を代入するのでコンパイルエラーです。修正位置は表示用の文字列を代入する箇所です。数値データと表示文字列を分けます。\n\n```csharp\nvar count = 3;\nstring label = $\"{count}個\";\nConsole.WriteLine(label);\n```\n\n期待出力は`3個`です。何でも文字列に変えて型エラーを避けると、後の計算が難しくなります。数値として使うものは数値で保持し、表示するときに文字列を作るという分担にします。\n\n## 整数除算と変換する位置\n\n```csharp\nint total = 5;\nint people = 2;\ndouble wrongAverage = total / people;\ndouble correctAverage = (double)total / people;\nConsole.WriteLine(wrongAverage == 2);\nConsole.WriteLine(correctAverage == 2.5);\n```\n\n期待出力は二行とも`True`です。`wrongAverage`は`double`ですが、右側の`total / people`は`in",
+    "sha256": {
+      "Program.cs": "a7ca3724f2a49f6351944f9944b8777745550d47d836abe1a8d3a5d2af6294f9",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "6dfaa0fe44e7e5f9e5265b520cdd07ae1f8b1e06c08bf16228f3dc4c5dc4aa27"
+  },
+  {
+    "id": "deep-03-02",
+    "source": "samples/expanded/deep/03/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "在庫: 3\nTrue\n",
+    "meaning": "var inferred int/string/decimal; equality decimal true",
+    "kind": "csharp",
+    "teachingPath": "content/deep/03.md",
+    "teachingExcerpt": "ntなので必ずStackにある」と断定する必要はありません。まず`int`の代入では値がコピーされるという言語の意味を理解します。メモリの詳細はLesson 13と補助教材で扱います。\n\n## varは型をなくさない\n\n`var`は、初期化式からローカル変数の型をコンパイラーに推論させる記法です。推論とは、この場合はソースを検査する段階で型を決めることです。`var count = 3;`は`int`の変数になります。実行中に値に応じて型が自由に変わる宣言ではありません。\n\n```csharp\nvar count = 3;\nvar label = \"在庫\";\nvar price = 120.5m;\nConsole.WriteLine($\"{label}: {count}\");\nConsole.WriteLine(price == 120.5m);\n```\n\n期待出力は`在庫: 3`、次の行に`True`です。数値リテラル末尾の`m`は`decimal`を指定します。`var`そのものではなく初期化式が型を決めているため、`120.5`なら通常`double`、`120.5m`なら`decimal`です。右側を見れば型が明らかなときに`var`は読みやすくなります。結果の型が分かりにくい式では型を明示して構いません。\n\n```csharp-error\nvar count = 3;\ncount = \"三個\";\n```\n\nこの例は`int`の変数へ`string`を代入するのでコンパイルエラーです。修正位置は表示用の文字列を代入する箇所です。数値データと表示文字列を分けます。\n\n```csharp\nvar count = 3;\nstring label = $\"{count}個\";\nConsole.WriteLine(label);\n```\n\n期待出力は`3個`です。何でも文字列に変えて型エラーを避けると、後の計算が難しくなります。数値として使うものは数値で保持し、表示するときに文字列を作るという分担にします。\n\n## 整数除算と変換する位置\n\n```csharp\nint total = 5;\nint people = 2;\ndouble wrongAverage = total / people;\ndouble correctAverage = (double)total / people;\nConsole.WriteLine(wrongAverage == 2);\nConsole.WriteLine(correctAverage == 2.5);\n```\n\n期待出力は二行とも`True`です。`wrongAverage`は`double`ですが、右側の`total / people`は`int`同士の除算です。結果2が作られた後で`double`へ変換されるため、失われた小数部分は戻りません。`(double)total`は明示的な型変換で、除算をする前に一方を`double`へ変えます。そのため二行目の計算では小数を含む結果2.5になります。\n\n```flow\n誤った平均 | int 5 ÷ int 2\n整数除算 | 小数部分を落として2\ndoubleへ代入 | 2.0になっても0.5は復活しない\n修正した平均 | double 5.0 ÷ 2 → 2.5\n```\n\n整数除算は0へ向かって小数部分を切り捨てます。正数では切り下げのように見えますが、負数にも常に「小さい整数へ丸める」と考えると間違います。`-5 / 2`は-2です。金額の割り勘なら、端数を誰が負担するかは型変換だけでは決まらず、別の業務ルールが必要です。\n\n## 金額・小数・丸めを分ける\n\n`double`は広い範囲を扱える2進の浮動小数点数です。浮動小数点とは桁の位置を調整して幅広い数を表す方式で、すべての小数を正確に保持するわけではありません。`decimal`は10進の計算に向く有限精度の型です。金額によく使いますが、無限精度ではなく、循環小数や極端に大きな数を無制限に表せるわけではありません。\n\n```csharp\nusing System.Globalization;\n\ndecimal unitPrice = 198.5m;\nint quantity = 3;\ndecimal subtotal = unitPrice * quantity;\ndecimal tax = Math.Round(subtotal * 0.10m, 0, MidpointRounding.AwayFromZero);\ndecimal total = subtotal + tax;\nConsole.WriteLine(subtotal",
+    "sha256": {
+      "Program.cs": "ca5d52348791ab19950e3a6d30409efbfc1528c5ca5fd598b902f1d2c3278dd6",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "6dfaa0fe44e7e5f9e5265b520cdd07ae1f8b1e06c08bf16228f3dc4c5dc4aa27"
+  },
+  {
+    "id": "deep-03-04",
+    "source": "samples/expanded/deep/03/example-04",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "3個\n",
+    "meaning": "interpolate inferred int3 into string",
+    "kind": "csharp",
+    "teachingPath": "content/deep/03.md",
+    "teachingExcerpt": "を決めているため、`120.5`なら通常`double`、`120.5m`なら`decimal`です。右側を見れば型が明らかなときに`var`は読みやすくなります。結果の型が分かりにくい式では型を明示して構いません。\n\n```csharp-error\nvar count = 3;\ncount = \"三個\";\n```\n\nこの例は`int`の変数へ`string`を代入するのでコンパイルエラーです。修正位置は表示用の文字列を代入する箇所です。数値データと表示文字列を分けます。\n\n```csharp\nvar count = 3;\nstring label = $\"{count}個\";\nConsole.WriteLine(label);\n```\n\n期待出力は`3個`です。何でも文字列に変えて型エラーを避けると、後の計算が難しくなります。数値として使うものは数値で保持し、表示するときに文字列を作るという分担にします。\n\n## 整数除算と変換する位置\n\n```csharp\nint total = 5;\nint people = 2;\ndouble wrongAverage = total / people;\ndouble correctAverage = (double)total / people;\nConsole.WriteLine(wrongAverage == 2);\nConsole.WriteLine(correctAverage == 2.5);\n```\n\n期待出力は二行とも`True`です。`wrongAverage`は`double`ですが、右側の`total / people`は`int`同士の除算です。結果2が作られた後で`double`へ変換されるため、失われた小数部分は戻りません。`(double)total`は明示的な型変換で、除算をする前に一方を`double`へ変えます。そのため二行目の計算では小数を含む結果2.5になります。\n\n```flow\n誤った平均 | int 5 ÷ int 2\n整数除算 | 小数部分を落として2\ndoubleへ代入 | 2.0になっても0.5は復活しない\n修正した平均 | double 5.0 ÷ 2 → 2.5\n```\n\n整数除算は0へ向かって小数部分を切り捨てます。正数では切り下げのように見えますが、負数にも常に「小さい整数へ丸める」と考えると間違います。`-5 / 2`は-2です。金額の割り勘なら、端数を誰が負担するかは型変換だけでは決まらず、別の業務ルールが必要です。\n\n## 金額・小数・丸めを分ける\n\n`double`は広い範囲を扱える2進の浮動小数点数です。浮動小数点とは桁の位置を調整して幅広い数を表す方式で、すべての小数を正確に保持するわけではありません。`decimal`は10進の計算に向く有限精度の型です。金額によく使いますが、無限精度ではなく、循環小数や極端に大きな数を無制限に表せるわけではありません。\n\n```csharp\nusing System.Globalization;\n\ndecimal unitPrice = 198.5m;\nint quantity = 3;\ndecimal subtotal = unitPrice * quantity;\ndecimal tax = Math.Round(subtotal * 0.10m, 0, MidpointRounding.AwayFromZero);\ndecimal total = subtotal + tax;\nConsole.WriteLine(subtotal.ToString(\"F1\", CultureInfo.InvariantCulture));\nConsole.WriteLine(tax.ToString(\"F0\", CultureInfo.InvariantCulture));\nConsole.WriteLine(total.ToString(\"F1\", CultureInfo.InvariantCulture));\n```\n\n期待される出力：\n\n```text\n595.5\n60\n655.5\n```\n\n`Math.Round`は丸めるメソッドです。ここでは「小計に税率を掛け、0桁へ四捨五入相当の規則で丸める」という教材用の仕様を明示しています。実際の金額計算では適用する規則を要件として確認します。`CultureInfo.InvariantCulture`は環境に依存しない書式を選ぶ指定です。カルチャーは小数点や日付の表記などの文",
+    "sha256": {
+      "Program.cs": "ee7fc36c900520c96568bbf6702b847d116df7844fa32b3844dff0b020baff19",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "6dfaa0fe44e7e5f9e5265b520cdd07ae1f8b1e06c08bf16228f3dc4c5dc4aa27"
+  },
+  {
+    "id": "deep-03-05",
+    "source": "samples/expanded/deep/03/example-05",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "True\nTrue\n",
+    "meaning": "int division5/2=2 assigned double; cast before division2.5",
+    "kind": "csharp",
+    "teachingPath": "content/deep/03.md",
+    "teachingExcerpt": "でコンパイルエラーです。修正位置は表示用の文字列を代入する箇所です。数値データと表示文字列を分けます。\n\n```csharp\nvar count = 3;\nstring label = $\"{count}個\";\nConsole.WriteLine(label);\n```\n\n期待出力は`3個`です。何でも文字列に変えて型エラーを避けると、後の計算が難しくなります。数値として使うものは数値で保持し、表示するときに文字列を作るという分担にします。\n\n## 整数除算と変換する位置\n\n```csharp\nint total = 5;\nint people = 2;\ndouble wrongAverage = total / people;\ndouble correctAverage = (double)total / people;\nConsole.WriteLine(wrongAverage == 2);\nConsole.WriteLine(correctAverage == 2.5);\n```\n\n期待出力は二行とも`True`です。`wrongAverage`は`double`ですが、右側の`total / people`は`int`同士の除算です。結果2が作られた後で`double`へ変換されるため、失われた小数部分は戻りません。`(double)total`は明示的な型変換で、除算をする前に一方を`double`へ変えます。そのため二行目の計算では小数を含む結果2.5になります。\n\n```flow\n誤った平均 | int 5 ÷ int 2\n整数除算 | 小数部分を落として2\ndoubleへ代入 | 2.0になっても0.5は復活しない\n修正した平均 | double 5.0 ÷ 2 → 2.5\n```\n\n整数除算は0へ向かって小数部分を切り捨てます。正数では切り下げのように見えますが、負数にも常に「小さい整数へ丸める」と考えると間違います。`-5 / 2`は-2です。金額の割り勘なら、端数を誰が負担するかは型変換だけでは決まらず、別の業務ルールが必要です。\n\n## 金額・小数・丸めを分ける\n\n`double`は広い範囲を扱える2進の浮動小数点数です。浮動小数点とは桁の位置を調整して幅広い数を表す方式で、すべての小数を正確に保持するわけではありません。`decimal`は10進の計算に向く有限精度の型です。金額によく使いますが、無限精度ではなく、循環小数や極端に大きな数を無制限に表せるわけではありません。\n\n```csharp\nusing System.Globalization;\n\ndecimal unitPrice = 198.5m;\nint quantity = 3;\ndecimal subtotal = unitPrice * quantity;\ndecimal tax = Math.Round(subtotal * 0.10m, 0, MidpointRounding.AwayFromZero);\ndecimal total = subtotal + tax;\nConsole.WriteLine(subtotal.ToString(\"F1\", CultureInfo.InvariantCulture));\nConsole.WriteLine(tax.ToString(\"F0\", CultureInfo.InvariantCulture));\nConsole.WriteLine(total.ToString(\"F1\", CultureInfo.InvariantCulture));\n```\n\n期待される出力：\n\n```text\n595.5\n60\n655.5\n```\n\n`Math.Round`は丸めるメソッドです。ここでは「小計に税率を掛け、0桁へ四捨五入相当の規則で丸める」という教材用の仕様を明示しています。実際の金額計算では適用する規則を要件として確認します。`CultureInfo.InvariantCulture`は環境に依存しない書式を選ぶ指定です。カルチャーは小数点や日付の表記などの文化的な規則で、Lesson 22で扱います。ここでは実験結果の小数点を揃えるために使っています。\n\n三つの段階を分けて追います。小計は595.5、丸める前の税は59.55、丸めた税は60、合計は655.5です。表示の`F1`は小数一桁の表示書式です。書式を変えることと、保存する計算値を丸めることは別の処理です。\n\n## const・readonly・通常の変数\n\n`const`はコンパイル時に値を決める定数です。宣言後に代入し直せません。`readonly`フィールドは、通常は宣言時やそのフィールドを持つ型のコンストラクターなど、代入できる場所を制限します。フィールドとは型やオブジェクトに属する保存領域、コンストラクターと",
+    "sha256": {
+      "Program.cs": "8c9910b55ff91a393f1b8aa047082bf77081efa06bbeedce9dc40234c3222e40",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "6dfaa0fe44e7e5f9e5265b520cdd07ae1f8b1e06c08bf16228f3dc4c5dc4aa27"
+  },
+  {
+    "id": "deep-03-06",
+    "source": "samples/expanded/deep/03/example-06",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "595.5\n60\n655.5\n",
+    "meaning": "198.5*3=595.5;round59.55→60; invariant formats",
+    "kind": "csharp",
+    "teachingPath": "content/deep/03.md",
+    "teachingExcerpt": "す。`-5 / 2`は-2です。金額の割り勘なら、端数を誰が負担するかは型変換だけでは決まらず、別の業務ルールが必要です。\n\n## 金額・小数・丸めを分ける\n\n`double`は広い範囲を扱える2進の浮動小数点数です。浮動小数点とは桁の位置を調整して幅広い数を表す方式で、すべての小数を正確に保持するわけではありません。`decimal`は10進の計算に向く有限精度の型です。金額によく使いますが、無限精度ではなく、循環小数や極端に大きな数を無制限に表せるわけではありません。\n\n```csharp\nusing System.Globalization;\n\ndecimal unitPrice = 198.5m;\nint quantity = 3;\ndecimal subtotal = unitPrice * quantity;\ndecimal tax = Math.Round(subtotal * 0.10m, 0, MidpointRounding.AwayFromZero);\ndecimal total = subtotal + tax;\nConsole.WriteLine(subtotal.ToString(\"F1\", CultureInfo.InvariantCulture));\nConsole.WriteLine(tax.ToString(\"F0\", CultureInfo.InvariantCulture));\nConsole.WriteLine(total.ToString(\"F1\", CultureInfo.InvariantCulture));\n```\n\n期待される出力：\n\n```text\n595.5\n60\n655.5\n```\n\n`Math.Round`は丸めるメソッドです。ここでは「小計に税率を掛け、0桁へ四捨五入相当の規則で丸める」という教材用の仕様を明示しています。実際の金額計算では適用する規則を要件として確認します。`CultureInfo.InvariantCulture`は環境に依存しない書式を選ぶ指定です。カルチャーは小数点や日付の表記などの文化的な規則で、Lesson 22で扱います。ここでは実験結果の小数点を揃えるために使っています。\n\n三つの段階を分けて追います。小計は595.5、丸める前の税は59.55、丸めた税は60、合計は655.5です。表示の`F1`は小数一桁の表示書式です。書式を変えることと、保存する計算値を丸めることは別の処理です。\n\n## const・readonly・通常の変数\n\n`const`はコンパイル時に値を決める定数です。宣言後に代入し直せません。`readonly`フィールドは、通常は宣言時やそのフィールドを持つ型のコンストラクターなど、代入できる場所を制限します。フィールドとは型やオブジェクトに属する保存領域、コンストラクターとはオブジェクト生成時に初期状態を整える処理です。クラスを学ぶLesson 09で具体化します。\n\n| 種類 | 値を決める主な時点 | 選ぶ場面 | 誤解しやすいこと |\n|---|---|---|---|\n| 通常のローカル変数 | 実行時 | 合計や入力など処理で変わる値 | 後から型まで変わるわけではない |\n| `const` | コンパイル時 | 本質的に固定の定数 | 設定ファイルの値は直接使えない |\n| `readonly`フィールド | 宣言・生成時など | オブジェクトごとに決めて差し替えない値 | 参照先の内部まで不変とは限らない |\n\n公開する`const`の値は利用側へ埋め込まれることがあるため、ライブラリの更新だけで利用側の値が変わるとは限りません。頻繁に変わる料金や設定を安易に公開定数へ固定しない判断にもつながります。\n\n## オーバーフローの発見と修正\n\n```csharp\nint value = int.MaxValue;\ntry\n{\n    int next = checked(value + 1);\n    Console.WriteLine(next);\n}\ncatch (OverflowException)\n{\n    Console.WriteLine(\"intの範囲を超えました\");\n}\n```\n\n期待出力は`intの範囲を超えました`です。`checked`は対象の整数演算などで範囲超過を検査します。例外は実行中の異常を伝える仕組み、`try/catch`はその異常を受け取る構文です。ここでは失敗を安全に観察するために使用し、詳しい設計はLesson 16で学びます。検査しない整数演算では値が回り込む場合があります。\n\n合計の範囲を広げる修正なら、**計算前に**`long`へ変換します。`long total = (long)price * quantity;`とすることで、`int`の乗算後に代入する誤りを防げます。失敗を消すために`unchecked`を付けるのではなく、扱う最大値が仕様に合うかを確認します。\n\n## 段階別の練習と解き方\n\n基礎は、`var value = 10m;`の型と、`value = 20m;`ができるかを説明する課題です。型は`decimal`で、同じ型の代入はできます。`var`を定数の宣言と混同しないことが目的です。\n\n標準は、7件を2日で処理した一日平均を小数として求めます。入力7と2に対して出力3.5が要件です。`doub",
+    "sha256": {
+      "Program.cs": "34ca10298f12f95cc61fc236acb269f946d127d3380e8648d84f7ab2d39c33de",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "6dfaa0fe44e7e5f9e5265b520cdd07ae1f8b1e06c08bf16228f3dc4c5dc4aa27"
+  },
+  {
+    "id": "deep-03-07",
+    "source": "samples/expanded/deep/03/example-07",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "intの範囲を超えました\n",
+    "meaning": "checked max+1 caught OverflowException",
+    "kind": "csharp",
+    "teachingPath": "content/deep/03.md",
+    "teachingExcerpt": "| `const` | コンパイル時 | 本質的に固定の定数 | 設定ファイルの値は直接使えない |\n| `readonly`フィールド | 宣言・生成時など | オブジェクトごとに決めて差し替えない値 | 参照先の内部まで不変とは限らない |\n\n公開する`const`の値は利用側へ埋め込まれることがあるため、ライブラリの更新だけで利用側の値が変わるとは限りません。頻繁に変わる料金や設定を安易に公開定数へ固定しない判断にもつながります。\n\n## オーバーフローの発見と修正\n\n```csharp\nint value = int.MaxValue;\ntry\n{\n    int next = checked(value + 1);\n    Console.WriteLine(next);\n}\ncatch (OverflowException)\n{\n    Console.WriteLine(\"intの範囲を超えました\");\n}\n```\n\n期待出力は`intの範囲を超えました`です。`checked`は対象の整数演算などで範囲超過を検査します。例外は実行中の異常を伝える仕組み、`try/catch`はその異常を受け取る構文です。ここでは失敗を安全に観察するために使用し、詳しい設計はLesson 16で学びます。検査しない整数演算では値が回り込む場合があります。\n\n合計の範囲を広げる修正なら、**計算前に**`long`へ変換します。`long total = (long)price * quantity;`とすることで、`int`の乗算後に代入する誤りを防げます。失敗を消すために`unchecked`を付けるのではなく、扱う最大値が仕様に合うかを確認します。\n\n## 段階別の練習と解き方\n\n基礎は、`var value = 10m;`の型と、`value = 20m;`ができるかを説明する課題です。型は`decimal`で、同じ型の代入はできます。`var`を定数の宣言と混同しないことが目的です。\n\n標準は、7件を2日で処理した一日平均を小数として求めます。入力7と2に対して出力3.5が要件です。`double average = (double)7 / 2;`が解答例で、`(double)(7 / 2)`では3になります。別解は`7.0 / 2`です。変換するタイミングを説明できることを採点基準にします。\n\n応用は、単価1,500,000,000円、数量3の合計を`long`で保持することです。`long total = (long)1_500_000_000 * 3;`で4,500,000,000になります。数値内の`_`は読みやすくする区切りです。`long`の変数へ代入するだけで右側の計算まで自動的に`long`になる、という誤解を避けます。\n\n## 学習の接続\n\n型を見れば何を代入できるか、式の型を見ればどのような計算になるかが予測できます。次のLesson 04では、画面から得る文字列を数値へ変換し、変換できない入力も扱います。型が正しいことと、入力が業務上妥当であることは別で、後の入力検証につながります。\n",
+    "sha256": {
+      "Program.cs": "cdf8fd8fbc1fef31209a5077fe93d95375656f64cc1b10997a3c8accfa630e96",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "6dfaa0fe44e7e5f9e5265b520cdd07ae1f8b1e06c08bf16228f3dc4c5dc4aa27"
+  },
+  {
+    "id": "deep-04-01",
+    "source": "samples/expanded/deep/04/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "[  C#  ]\n[C#]\n6\n2\n",
+    "meaning": "Trim returns new string, original6 UTF16 units and trimmed2",
+    "kind": "csharp",
+    "teachingPath": "content/deep/04.md",
+    "teachingExcerpt": "ります。入力を計算へ使うには、文字列の意味を読み取って数値へ変換する必要があります。この読み取りを解析、英語でparseと呼びます。\n\n文字列は`string`型の値です。C#の`string`は内容をその場で変更できない性質を持ちます。この性質を不変と呼びます。`Trim`や`Replace`は元の文字列の内容を書き換えるのではなく、結果となる文字列を返します。変数へ別の文字列を再代入することはできます。**内容が不変であることと、変数へ再代入できないことは別です。**\n\n```csharp\nstring text = \"  C#  \";\nstring cleaned = text.Trim();\nConsole.WriteLine($\"[{text}]\");\nConsole.WriteLine($\"[{cleaned}]\");\nConsole.WriteLine(text.Length);\nConsole.WriteLine(cleaned.Length);\n```\n\n期待される出力：\n\n```text\n[  C#  ]\n[C#]\n6\n2\n```\n\n`Trim()`は前後の空白を除いた結果を返します。`[]`を付けるのは、目に見えにくい空白の違いを観察するためです。`Length`は文字列の長さを読むプロパティで、UTF-16コード単位の数です。UTF-16は文字を数値単位で表現する方式で、絵文字などは見た目の一文字が複数単位になる場合があります。人が見た一文字を数えたい場合は単純な`Length`と要件が一致するか検討します。\n\n## 入力の三つの状態\n\n`Console.ReadLine()`は通常、一行の入力を文字列で返します。何も入力せずにEnterを押すと空文字列`\"\"`になります。入力の終わりを受け取った場合は`null`を返し得ます。`null`は文字列の内容ではなく「参照する値がない」ことを表す特別な値です。空文字、空白だけの文字列、nullは別々に考えます。\n\n| 値 | 意味 | 数値へ変換できるか |\n|---|---|---|\n| `\"25\"` | 二つの文字からなる入力 | intの範囲なら変換できる |\n| `\"\"` | 長さ0の文字列 | 数字がなく失敗 |\n| `\"   \"` | 空白だけの文字列 | 数字がなく失敗 |\n| `\"abc\"` | 数字でない文字列 | 失敗 |\n| `null` | 入力終端などで文字列自体がない | TryParseは失敗として扱える |\n| `\"9999999999999999\"` | 数字だがintの範囲外 | 失敗 |\n\nこの段階では、`string?`の`?`はnullの可能性を表す注釈、と理解してください。詳しいコンパイラーの検査はLesson 08で扱います。どんな入力も必ず数値になると仮定せず、成功と失敗の二つの流れを設計することが重要です。\n\n## TryParseの文法と処理順\n\n```csharp\nstring? input = \"25\";\nbool success = int.TryParse(input, out int quantity);\nConsole.WriteLine(success);\nConsole.WriteLine(quantity);\n```\n\n期待出力は`True`、次の行に25です。`TryParse`は成功したかを`bool`で返します。`bool`は`true`または`false`の二値を扱う型です。変換された整数は`out`を付けた変数へ書き出されます。`out`はメソッドから呼び出し側へ値を書き戻す引数の形式で、Lesson 07で詳しく学びます。\n\n```flow\n文字列を用意 | input = \"25\"\nTryParseに渡す | 数字の形式と範囲を検査\n二つの結果を受け取る | success = true / quantity = 25\n成功を確認 | 成功時だけ数値を利用\n表示または計算 | 結果を次の処理へ渡す\n```\n\n入力を`\"abc\"`へ変えた場合、`success`はfalse、`quantity`は0になります。0は変換に成功した値とは限りません。`\"0\"`を渡した場合もquantityは0ですが、successはtrueです。そのため結果の数値だけで成功したかを判断してはいけません。\n\n## 実用例：数量を受け取って合計する\n\n次の例は対話入力を行います。入力を待つため、実行したターミナルに値を入力してEnterを押します。ブラウザー内の下書き欄ではこの処理は動きません。\n\n```csharp-input\nConsole.Write(\"数量を入力: \");\nstring? input = Console.ReadLine();\nif (!int.Tr",
+    "sha256": {
+      "Program.cs": "3cc0d60d17a98274535fdb671e4ceda1882d785c52366e64e14734a65a68905a",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "795cc0756c6742d225ed1c740abea23d655bf4a1c1e017cff20d1b3c3b44b945"
+  },
+  {
+    "id": "deep-04-02",
+    "source": "samples/expanded/deep/04/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "True\n25\n",
+    "meaning": "TryParse25 success with out25",
+    "kind": "csharp",
+    "teachingPath": "content/deep/04.md",
+    "teachingExcerpt": " | 失敗 |\n| `null` | 入力終端などで文字列自体がない | TryParseは失敗として扱える |\n| `\"9999999999999999\"` | 数字だがintの範囲外 | 失敗 |\n\nこの段階では、`string?`の`?`はnullの可能性を表す注釈、と理解してください。詳しいコンパイラーの検査はLesson 08で扱います。どんな入力も必ず数値になると仮定せず、成功と失敗の二つの流れを設計することが重要です。\n\n## TryParseの文法と処理順\n\n```csharp\nstring? input = \"25\";\nbool success = int.TryParse(input, out int quantity);\nConsole.WriteLine(success);\nConsole.WriteLine(quantity);\n```\n\n期待出力は`True`、次の行に25です。`TryParse`は成功したかを`bool`で返します。`bool`は`true`または`false`の二値を扱う型です。変換された整数は`out`を付けた変数へ書き出されます。`out`はメソッドから呼び出し側へ値を書き戻す引数の形式で、Lesson 07で詳しく学びます。\n\n```flow\n文字列を用意 | input = \"25\"\nTryParseに渡す | 数字の形式と範囲を検査\n二つの結果を受け取る | success = true / quantity = 25\n成功を確認 | 成功時だけ数値を利用\n表示または計算 | 結果を次の処理へ渡す\n```\n\n入力を`\"abc\"`へ変えた場合、`success`はfalse、`quantity`は0になります。0は変換に成功した値とは限りません。`\"0\"`を渡した場合もquantityは0ですが、successはtrueです。そのため結果の数値だけで成功したかを判断してはいけません。\n\n## 実用例：数量を受け取って合計する\n\n次の例は対話入力を行います。入力を待つため、実行したターミナルに値を入力してEnterを押します。ブラウザー内の下書き欄ではこの処理は動きません。\n\n```csharp-input\nConsole.Write(\"数量を入力: \");\nstring? input = Console.ReadLine();\nif (!int.TryParse(input, out int quantity))\n{\n    Console.WriteLine(\"整数を入力してください\");\n    return;\n}\nif (quantity < 1 || quantity > 100)\n{\n    Console.WriteLine(\"数量は1〜100で入力してください\");\n    return;\n}\nint total = quantity * 120;\nConsole.WriteLine($\"合計: {total}円\");\n```\n\n入力例は3、出力例は`合計: 360円`です。`Console.Write`は改行せず表示します。`!`はtrue/falseを反転する演算子なので、最初の`if`は変換失敗時に入る分岐です。`return`は現在の処理を終了して戻る文で、ここではアプリの入口を終えます。`||`は「どちらかがtrue」を表し、数量が範囲外なら計算へ進みません。これらの条件の読み方はLesson 05で扱います。\n\n| 入力 | 変換結果 | 範囲の判定 | 最終結果 |\n|---|---|---|---|\n| 3 | 成功、quantity=3 | 範囲内 | 360円 |\n| abc | 失敗、quantity=0 | 判定まで進まない | 整数を入力してください |\n| 0 | 成功、quantity=0 | 範囲外 | 数量は1〜100で入力してください |\n| 100 | 成功、quantity=100 | 範囲内 | 12000円 |\n| 101 | 成功、quantity=101 | 範囲外 | 数量は1〜100で入力してください |\n\n処理は「文字列として受け取る→整数にできるか→数量として妥当か→計算→表示」の順です。整数へ変換できることと注文として受け付けてよいことは別の検証です。この分離はWeb APIで受け取る入力にもそのまま役立ちます。\n\n## 間違い：Parseを無条件に使う\n\n```csharp-error\nstring input = \"abc\";\nint quantity = int.Parse(input);\nConsole.WriteLine(quantity * 120);",
+    "sha256": {
+      "Program.cs": "8774ba6a95371c446d8555e91300023eef4988ca9dc77cc51f8d6d50e61cf1d6",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "795cc0756c6742d225ed1c740abea23d655bf4a1c1e017cff20d1b3c3b44b945"
+  },
+  {
+    "id": "deep-04-03",
+    "source": "samples/expanded/deep/04/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "数量を入力: 合計: 360円\n",
+    "meaning": "stdin3 passes parse/range; Write prompt has no newline and pipe has no echo",
+    "kind": "csharp-input",
+    "teachingPath": "content/deep/04.md",
+    "teachingExcerpt": "`\"abc\"`へ変えた場合、`success`はfalse、`quantity`は0になります。0は変換に成功した値とは限りません。`\"0\"`を渡した場合もquantityは0ですが、successはtrueです。そのため結果の数値だけで成功したかを判断してはいけません。\n\n## 実用例：数量を受け取って合計する\n\n次の例は対話入力を行います。入力を待つため、実行したターミナルに値を入力してEnterを押します。ブラウザー内の下書き欄ではこの処理は動きません。\n\n```csharp-input\nConsole.Write(\"数量を入力: \");\nstring? input = Console.ReadLine();\nif (!int.TryParse(input, out int quantity))\n{\n    Console.WriteLine(\"整数を入力してください\");\n    return;\n}\nif (quantity < 1 || quantity > 100)\n{\n    Console.WriteLine(\"数量は1〜100で入力してください\");\n    return;\n}\nint total = quantity * 120;\nConsole.WriteLine($\"合計: {total}円\");\n```\n\n入力例は3、出力例は`合計: 360円`です。`Console.Write`は改行せず表示します。`!`はtrue/falseを反転する演算子なので、最初の`if`は変換失敗時に入る分岐です。`return`は現在の処理を終了して戻る文で、ここではアプリの入口を終えます。`||`は「どちらかがtrue」を表し、数量が範囲外なら計算へ進みません。これらの条件の読み方はLesson 05で扱います。\n\n| 入力 | 変換結果 | 範囲の判定 | 最終結果 |\n|---|---|---|---|\n| 3 | 成功、quantity=3 | 範囲内 | 360円 |\n| abc | 失敗、quantity=0 | 判定まで進まない | 整数を入力してください |\n| 0 | 成功、quantity=0 | 範囲外 | 数量は1〜100で入力してください |\n| 100 | 成功、quantity=100 | 範囲内 | 12000円 |\n| 101 | 成功、quantity=101 | 範囲外 | 数量は1〜100で入力してください |\n\n処理は「文字列として受け取る→整数にできるか→数量として妥当か→計算→表示」の順です。整数へ変換できることと注文として受け付けてよいことは別の検証です。この分離はWeb APIで受け取る入力にもそのまま役立ちます。\n\n## 間違い：Parseを無条件に使う\n\n```csharp-error\nstring input = \"abc\";\nint quantity = int.Parse(input);\nConsole.WriteLine(quantity * 120);\n```\n\nこれはコンパイルできても、整数として読めない文字列を`Parse`へ渡すため実行時に`FormatException`が起こります。範囲外の整数文字列なら`OverflowException`になり得ます。例外は通常の次の文へ進めない異常を伝える仕組みです。入力文字列、例外の型、発生した行の三点を確認します。\n\n修正位置は変換と、その結果を使う前の確認です。\n\n```csharp\nstring input = \"abc\";\nif (int.TryParse(input, out int quantity))\n{\n    Console.WriteLine(quantity * 120);\n}\nelse\n{\n    Console.WriteLine(\"数量の形式が正しくありません\");\n}\n```\n\n期待出力は`数量の形式が正しくありません`です。変換の失敗を普通に予想する入力では`TryParse`が流れを明確にします。`Parse`が常に悪いのではなく、内部の保証されたデータを読み、失敗を異常として扱いたい場面などでは選択肢になります。利用場面の失敗の扱いを先に決めます。\n\n## 間違い：Trimの結果を捨てる\n\n```csharp\nstring name = \"  Aoi  \";\nname.Trim();\nConsole.WriteLine($\"[{name}]\");\n```\n\nこのコードは正常な構文ですが、期待した空白除去は保存されません。期待される実際の出力は`[  Aoi  ]`です。`Trim`の戻り値を受け取らず捨てているからです。修正位置はメソッド呼び出しの行です。\n\n```csharp\nstring name = \"  Aoi  \";\nname = name.Trim();\nConsole.WriteLine($\"[{name}]\");\n```\n\n修正後の期待出力は`[Aoi]`です。変数`name`が参照する文字列が変わり、元の文字列を直接削っているわけではありません。戻り値とは呼び出した処理が返す値です。",
+    "sha256": {
+      "Program.cs": "e8542edf4bce800204a92ab52c3b1d9ca98d1fd49b84cbf713738145f7b8230a",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "795cc0756c6742d225ed1c740abea23d655bf4a1c1e017cff20d1b3c3b44b945",
+    "stdin": "3\n"
+  },
+  {
+    "id": "deep-04-05",
+    "source": "samples/expanded/deep/04/example-05",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "数量の形式が正しくありません\n",
+    "meaning": "abc fails TryParse and uses else",
+    "kind": "csharp",
+    "teachingPath": "content/deep/04.md",
+    "teachingExcerpt": "int.Parse(input);\nConsole.WriteLine(quantity * 120);\n```\n\nこれはコンパイルできても、整数として読めない文字列を`Parse`へ渡すため実行時に`FormatException`が起こります。範囲外の整数文字列なら`OverflowException`になり得ます。例外は通常の次の文へ進めない異常を伝える仕組みです。入力文字列、例外の型、発生した行の三点を確認します。\n\n修正位置は変換と、その結果を使う前の確認です。\n\n```csharp\nstring input = \"abc\";\nif (int.TryParse(input, out int quantity))\n{\n    Console.WriteLine(quantity * 120);\n}\nelse\n{\n    Console.WriteLine(\"数量の形式が正しくありません\");\n}\n```\n\n期待出力は`数量の形式が正しくありません`です。変換の失敗を普通に予想する入力では`TryParse`が流れを明確にします。`Parse`が常に悪いのではなく、内部の保証されたデータを読み、失敗を異常として扱いたい場面などでは選択肢になります。利用場面の失敗の扱いを先に決めます。\n\n## 間違い：Trimの結果を捨てる\n\n```csharp\nstring name = \"  Aoi  \";\nname.Trim();\nConsole.WriteLine($\"[{name}]\");\n```\n\nこのコードは正常な構文ですが、期待した空白除去は保存されません。期待される実際の出力は`[  Aoi  ]`です。`Trim`の戻り値を受け取らず捨てているからです。修正位置はメソッド呼び出しの行です。\n\n```csharp\nstring name = \"  Aoi  \";\nname = name.Trim();\nConsole.WriteLine($\"[{name}]\");\n```\n\n修正後の期待出力は`[Aoi]`です。変数`name`が参照する文字列が変わり、元の文字列を直接削っているわけではありません。戻り値とは呼び出した処理が返す値です。文字列を操作するときは、そのメソッドが結果を返すのか、対象を変更するのかを確認します。\n\n## 書式と文字の比較\n\n表示のために数値を文字へ変えることと、入力を数値へ解析することは逆向きの処理です。`$\"{price:F2}\"`は小数二桁の見た目を作りますが、元の数値の型や値を文字列型へ変えるわけではありません。数値の小数点や桁区切りは環境のカルチャーに影響されるため、保存形式と人向けの表示を分けます。\n\n識別子や固定のコマンドを比較するなら、文化的な並び順ではなく明示的な文字比較を選びます。`string.Equals(input, \"quit\", StringComparison.OrdinalIgnoreCase)`は大文字小文字を区別しないOrdinal比較です。Ordinalとは文字のコード上の値に基づく比較で、言語文化による単語の扱いに依存させたくない識別子に向きます。人名の並び順などは別の要件です。\n\n| 操作 | 使うもの | 選ぶ理由 |\n|---|---|---|\n| 文字と値を読みやすく組み合わせる | 文字列補間 | どこに何が入るか分かる |\n| ユーザーの整数入力を調べる | TryParse | 成功と失敗を分けやすい |\n| 前後の空白を取り除く | Trimの戻り値 | 元文字列が変わると誤認しない |\n| 大文字小文字を無視したコマンド比較 | OrdinalIgnoreCase | 比較規則を明示できる |\n| 大量に文字を追加する | StringBuilderを検討 | 連続生成のコストを抑えられる場合がある |\n\nStringBuilderは変更可能な文字列組み立て用の部品です。短い表示文まで何でも置き換える必要はありません。まず読みやすいコードを作り、量や性能に問題がある場合に選びます。\n\n## 段階別の練習\n\n基礎課題は`\"12\" + \"3\"`と`12 + 3`の結果を説明することです。前者は文字列結合で123、後者は数値加算で15になります。出力だけが似ていても、保存している型と操作の意味が違います。\n\n標準課題は、固定入力`\" 42 \"`を`int.TryParse`で読み、成功なら2倍を表示することです。期待出力は84です。通常の整数解析では前後の空白は許容されますが、入力全体の仕様として空白を禁止するなら追加検証が必要です。\n\n```csharp\nstring input = \" 42 \";\nif (int.TryParse(input, out ",
+    "sha256": {
+      "Program.cs": "41d51102c3547c1ff739bd3b6afb34310b813f30494e7bdaa53cc9405cabe06c",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "795cc0756c6742d225ed1c740abea23d655bf4a1c1e017cff20d1b3c3b44b945"
+  },
+  {
+    "id": "deep-04-06",
+    "source": "samples/expanded/deep/04/example-06",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "[  Aoi  ]\n",
+    "meaning": "discarded Trim return leaves immutable string unchanged; intentional wrong example",
+    "kind": "csharp",
+    "teachingPath": "content/deep/04.md",
+    "teachingExcerpt": "ine(quantity * 120);\n}\nelse\n{\n    Console.WriteLine(\"数量の形式が正しくありません\");\n}\n```\n\n期待出力は`数量の形式が正しくありません`です。変換の失敗を普通に予想する入力では`TryParse`が流れを明確にします。`Parse`が常に悪いのではなく、内部の保証されたデータを読み、失敗を異常として扱いたい場面などでは選択肢になります。利用場面の失敗の扱いを先に決めます。\n\n## 間違い：Trimの結果を捨てる\n\n```csharp\nstring name = \"  Aoi  \";\nname.Trim();\nConsole.WriteLine($\"[{name}]\");\n```\n\nこのコードは正常な構文ですが、期待した空白除去は保存されません。期待される実際の出力は`[  Aoi  ]`です。`Trim`の戻り値を受け取らず捨てているからです。修正位置はメソッド呼び出しの行です。\n\n```csharp\nstring name = \"  Aoi  \";\nname = name.Trim();\nConsole.WriteLine($\"[{name}]\");\n```\n\n修正後の期待出力は`[Aoi]`です。変数`name`が参照する文字列が変わり、元の文字列を直接削っているわけではありません。戻り値とは呼び出した処理が返す値です。文字列を操作するときは、そのメソッドが結果を返すのか、対象を変更するのかを確認します。\n\n## 書式と文字の比較\n\n表示のために数値を文字へ変えることと、入力を数値へ解析することは逆向きの処理です。`$\"{price:F2}\"`は小数二桁の見た目を作りますが、元の数値の型や値を文字列型へ変えるわけではありません。数値の小数点や桁区切りは環境のカルチャーに影響されるため、保存形式と人向けの表示を分けます。\n\n識別子や固定のコマンドを比較するなら、文化的な並び順ではなく明示的な文字比較を選びます。`string.Equals(input, \"quit\", StringComparison.OrdinalIgnoreCase)`は大文字小文字を区別しないOrdinal比較です。Ordinalとは文字のコード上の値に基づく比較で、言語文化による単語の扱いに依存させたくない識別子に向きます。人名の並び順などは別の要件です。\n\n| 操作 | 使うもの | 選ぶ理由 |\n|---|---|---|\n| 文字と値を読みやすく組み合わせる | 文字列補間 | どこに何が入るか分かる |\n| ユーザーの整数入力を調べる | TryParse | 成功と失敗を分けやすい |\n| 前後の空白を取り除く | Trimの戻り値 | 元文字列が変わると誤認しない |\n| 大文字小文字を無視したコマンド比較 | OrdinalIgnoreCase | 比較規則を明示できる |\n| 大量に文字を追加する | StringBuilderを検討 | 連続生成のコストを抑えられる場合がある |\n\nStringBuilderは変更可能な文字列組み立て用の部品です。短い表示文まで何でも置き換える必要はありません。まず読みやすいコードを作り、量や性能に問題がある場合に選びます。\n\n## 段階別の練習\n\n基礎課題は`\"12\" + \"3\"`と`12 + 3`の結果を説明することです。前者は文字列結合で123、後者は数値加算で15になります。出力だけが似ていても、保存している型と操作の意味が違います。\n\n標準課題は、固定入力`\" 42 \"`を`int.TryParse`で読み、成功なら2倍を表示することです。期待出力は84です。通常の整数解析では前後の空白は許容されますが、入力全体の仕様として空白を禁止するなら追加検証が必要です。\n\n```csharp\nstring input = \" 42 \";\nif (int.TryParse(input, out int value))\n    Console.WriteLine(value * 2);\nelse\n    Console.WriteLine(\"変換できません\");\n```\n\n応用課題は、数量入力例の仕様へ「前後の空白は許可、範囲は1〜100、abcと0で別のメッセージ」を保ったまま、単価を変数へ分けることです。計算行だけでなく、入力チェックの順序が変わっていないか確認します。よくある間違いは、TryParseのboolを確認せずquantity=0を利用し、形式エラーも範囲エラーとし",
+    "sha256": {
+      "Program.cs": "8c846ed167b39efad97297e3f1c46cd2d258a669da50fa2a4cb070c8d04cdd56",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "795cc0756c6742d225ed1c740abea23d655bf4a1c1e017cff20d1b3c3b44b945"
+  },
+  {
+    "id": "deep-04-07",
+    "source": "samples/expanded/deep/04/example-07",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "[Aoi]\n",
+    "meaning": "assign returned trimmed string",
+    "kind": "csharp",
+    "teachingPath": "content/deep/04.md",
+    "teachingExcerpt": "どでは選択肢になります。利用場面の失敗の扱いを先に決めます。\n\n## 間違い：Trimの結果を捨てる\n\n```csharp\nstring name = \"  Aoi  \";\nname.Trim();\nConsole.WriteLine($\"[{name}]\");\n```\n\nこのコードは正常な構文ですが、期待した空白除去は保存されません。期待される実際の出力は`[  Aoi  ]`です。`Trim`の戻り値を受け取らず捨てているからです。修正位置はメソッド呼び出しの行です。\n\n```csharp\nstring name = \"  Aoi  \";\nname = name.Trim();\nConsole.WriteLine($\"[{name}]\");\n```\n\n修正後の期待出力は`[Aoi]`です。変数`name`が参照する文字列が変わり、元の文字列を直接削っているわけではありません。戻り値とは呼び出した処理が返す値です。文字列を操作するときは、そのメソッドが結果を返すのか、対象を変更するのかを確認します。\n\n## 書式と文字の比較\n\n表示のために数値を文字へ変えることと、入力を数値へ解析することは逆向きの処理です。`$\"{price:F2}\"`は小数二桁の見た目を作りますが、元の数値の型や値を文字列型へ変えるわけではありません。数値の小数点や桁区切りは環境のカルチャーに影響されるため、保存形式と人向けの表示を分けます。\n\n識別子や固定のコマンドを比較するなら、文化的な並び順ではなく明示的な文字比較を選びます。`string.Equals(input, \"quit\", StringComparison.OrdinalIgnoreCase)`は大文字小文字を区別しないOrdinal比較です。Ordinalとは文字のコード上の値に基づく比較で、言語文化による単語の扱いに依存させたくない識別子に向きます。人名の並び順などは別の要件です。\n\n| 操作 | 使うもの | 選ぶ理由 |\n|---|---|---|\n| 文字と値を読みやすく組み合わせる | 文字列補間 | どこに何が入るか分かる |\n| ユーザーの整数入力を調べる | TryParse | 成功と失敗を分けやすい |\n| 前後の空白を取り除く | Trimの戻り値 | 元文字列が変わると誤認しない |\n| 大文字小文字を無視したコマンド比較 | OrdinalIgnoreCase | 比較規則を明示できる |\n| 大量に文字を追加する | StringBuilderを検討 | 連続生成のコストを抑えられる場合がある |\n\nStringBuilderは変更可能な文字列組み立て用の部品です。短い表示文まで何でも置き換える必要はありません。まず読みやすいコードを作り、量や性能に問題がある場合に選びます。\n\n## 段階別の練習\n\n基礎課題は`\"12\" + \"3\"`と`12 + 3`の結果を説明することです。前者は文字列結合で123、後者は数値加算で15になります。出力だけが似ていても、保存している型と操作の意味が違います。\n\n標準課題は、固定入力`\" 42 \"`を`int.TryParse`で読み、成功なら2倍を表示することです。期待出力は84です。通常の整数解析では前後の空白は許容されますが、入力全体の仕様として空白を禁止するなら追加検証が必要です。\n\n```csharp\nstring input = \" 42 \";\nif (int.TryParse(input, out int value))\n    Console.WriteLine(value * 2);\nelse\n    Console.WriteLine(\"変換できません\");\n```\n\n応用課題は、数量入力例の仕様へ「前後の空白は許可、範囲は1〜100、abcと0で別のメッセージ」を保ったまま、単価を変数へ分けることです。計算行だけでなく、入力チェックの順序が変わっていないか確認します。よくある間違いは、TryParseのboolを確認せずquantity=0を利用し、形式エラーも範囲エラーとして表示してしまうことです。\n\n## 次の学習で何が増えるか\n\n今回は条件分岐を「成功と失敗を分ける道具」として使いました。次のLesson 05では条件式、短絡評価、分岐の順序を自分で組み立てます。nullの可能性はLesson 08、例外を受け取る方法はLesson 16、表示と保存の文化的な違いはLesson 22でさらに深めます。\n",
+    "sha256": {
+      "Program.cs": "2bfd27c3e975865e2f94b010da624962d7b7aebd2dd1e9fbeb1f9f4ebf952bb3",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "795cc0756c6742d225ed1c740abea23d655bf4a1c1e017cff20d1b3c3b44b945"
+  },
+  {
+    "id": "deep-04-08",
+    "source": "samples/expanded/deep/04/example-08",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "84\n",
+    "meaning": "TryParse accepts leading/trailing whitespace;42*2",
+    "kind": "csharp",
+    "teachingPath": "content/deep/04.md",
+    "teachingExcerpt": "ある場合に選びます。\n\n## 段階別の練習\n\n基礎課題は`\"12\" + \"3\"`と`12 + 3`の結果を説明することです。前者は文字列結合で123、後者は数値加算で15になります。出力だけが似ていても、保存している型と操作の意味が違います。\n\n標準課題は、固定入力`\" 42 \"`を`int.TryParse`で読み、成功なら2倍を表示することです。期待出力は84です。通常の整数解析では前後の空白は許容されますが、入力全体の仕様として空白を禁止するなら追加検証が必要です。\n\n```csharp\nstring input = \" 42 \";\nif (int.TryParse(input, out int value))\n    Console.WriteLine(value * 2);\nelse\n    Console.WriteLine(\"変換できません\");\n```\n\n応用課題は、数量入力例の仕様へ「前後の空白は許可、範囲は1〜100、abcと0で別のメッセージ」を保ったまま、単価を変数へ分けることです。計算行だけでなく、入力チェックの順序が変わっていないか確認します。よくある間違いは、TryParseのboolを確認せずquantity=0を利用し、形式エラーも範囲エラーとして表示してしまうことです。\n\n## 次の学習で何が増えるか\n\n今回は条件分岐を「成功と失敗を分ける道具」として使いました。次のLesson 05では条件式、短絡評価、分岐の順序を自分で組み立てます。nullの可能性はLesson 08、例外を受け取る方法はLesson 16、表示と保存の文化的な違いはLesson 22でさらに深めます。\n",
+    "sha256": {
+      "Program.cs": "8d9f4ebaf4d9cb7206ea9af02f2f1f5c3c1a39c9df006eec70a3870e0ba17064",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "795cc0756c6742d225ed1c740abea23d655bf4a1c1e017cff20d1b3c3b44b945"
+  },
+  {
+    "id": "deep-05-01",
+    "source": "samples/expanded/deep/05/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "合格・優秀\n判定終了\n",
+    "meaning": "80 chooses first >=80; common continuation",
+    "kind": "csharp",
+    "teachingPath": "content/deep/05.md",
+    "teachingExcerpt": "tock)`ではなく、`if (stock > 0)`のように判断を明示します。何を真とするのかを条件式へ書くことで、境界の値や業務ルールをレビューできます。\n\n`if`・`else if`・`else`が連なっている場合は、上から条件を調べ、最初にtrueになった一つの枝へ進みます。一方、独立した`if`を複数書くと、それぞれの条件を別々に検査します。この違いを理解しないと、複数の料金区分を表示したり、同じ値へ二重に割引したりする問題が起こります。\n\n## 文法と最小例\n\n```csharp\nint score = 80;\nif (score >= 80)\n{\n    Console.WriteLine(\"合格・優秀\");\n}\nelse if (score >= 60)\n{\n    Console.WriteLine(\"合格\");\n}\nelse\n{\n    Console.WriteLine(\"再挑戦\");\n}\nConsole.WriteLine(\"判定終了\");\n```\n\n期待出力は「合格・優秀」、次の行に「判定終了」です。かっこ内が条件式、`{}`内が条件に対応する文のまとまりです。このまとまりをブロックと呼びます。今回は80が最初の条件を満たすため、60以上かどうかの二つ目の条件は評価しません。\n\n| 段階 | 調べること | 結果 | 次の動き |\n|---|---|---|---|\n| ① | scoreを80で初期化 | score=80 | 最初のifへ |\n| ② | 80 >= 80 | true | 最初のブロックへ |\n| ③ | 表示 | 合格・優秀 | else ifとelseを飛ばす |\n| ④ | 分岐の後の文 | 判定終了 | 終了 |\n\n分岐の内部ではscoreを書き換えていないため、処理の前後でscoreは80のままです。「条件を調べること」と「状態を変更すること」を分けて読むと追跡しやすくなります。コンパイラーはブロックや条件をIL上の制御の流れへ変換し、実行時には選ばれた経路の処理が進みます。ソースの全ブロックを毎回実行してから不要な結果を捨てるわけではありません。\n\n## 境界値から設計する\n\n境界値とは、結果が切り替わる付近の値です。上の例なら59・60・79・80が重要です。70と90だけを試しても、`>=`を`>`と書いてしまう間違いには気付けません。条件を文章へ戻し、「80点を含むか」を明示します。\n\n| 条件 | 数学的な範囲 | 典型的な確認値 |\n|---|---|---|\n| `score >= 80` | 80以上 | 79、80、81 |\n| `score > 80` | 80を除く、それより大きい値 | 80、81 |\n| `score >= 60 && score < 80` | 60以上80未満 | 59、60、79、80 |\n| `score < 0 || score > 100` | 0〜100の外側 | -1、0、100、101 |\n\n`&&`は両方がtrueの場合だけtrue、`||`は少なくとも一方がtrueならtrueです。`!`はtrueとfalseを反転します。`=`は代入、`==`は等しいかの比較です。役割の似ていない記号でも一文字しか違わないため、エラーを調べるときは意図を日本語へ戻します。\n\n## 短絡評価は右側を実行しない場合がある\n\n短絡評価とは、左側だけで結論が決まった場合に右側を評価しないことです。`&&`は左がfalseなら、`||`は左がtrueなら右を評価しません。これは速度だけでなく、安全に値へアクセスする順序に関わります。\n\n```csharp\nint value = 0;\nbool canCalculate = value != 0 && 10 / value > 1;\nConsole.WriteLine(canCalculate);\n```\n\n期待出力はFalseです。左の`value != 0`がfalseなので`10 / value`は実行されず、整数の0除算を避けられます。右側が先に評価されるように式を並べ替えると安全ではありません。\n\n```flow\nvalue = 0 | 現在の値を読む\nvalue != 0 | false\n&&の判断 | 全体はfalseと確定\n右側は評価しない | 10 / 0へ進まない\nFalseを表示 | valueは0のまま\n```\n\n`bool`の`&`や`|`は短絡せず両側を評価します。論理条件を書きたいのに記号を一つ落とすと、避けたい処理まで実行される場合があります。副作用とは、値を返すだけでなく外側の状態を書き換えることです。条件式の中で代入やカウンター更新を多用すると、評価を省略したときの状態も変わるので、まずは判定と更新を分けます。\n\n## ",
+    "sha256": {
+      "Program.cs": "1e2aa017a57ac324e29c5f404cb3b8d294516ff0769b09e3c94883c21ed88e0e",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "11cd69ca81f77e34cbe3cc52e929a7efcf6bd198caab085e42d24063258a1184"
+  },
+  {
+    "id": "deep-05-02",
+    "source": "samples/expanded/deep/05/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "False\n",
+    "meaning": "short circuit false guard avoids divide by zero",
+    "kind": "csharp",
+    "teachingPath": "content/deep/05.md",
+    "teachingExcerpt": "少なくとも一方がtrueならtrueです。`!`はtrueとfalseを反転します。`=`は代入、`==`は等しいかの比較です。役割の似ていない記号でも一文字しか違わないため、エラーを調べるときは意図を日本語へ戻します。\n\n## 短絡評価は右側を実行しない場合がある\n\n短絡評価とは、左側だけで結論が決まった場合に右側を評価しないことです。`&&`は左がfalseなら、`||`は左がtrueなら右を評価しません。これは速度だけでなく、安全に値へアクセスする順序に関わります。\n\n```csharp\nint value = 0;\nbool canCalculate = value != 0 && 10 / value > 1;\nConsole.WriteLine(canCalculate);\n```\n\n期待出力はFalseです。左の`value != 0`がfalseなので`10 / value`は実行されず、整数の0除算を避けられます。右側が先に評価されるように式を並べ替えると安全ではありません。\n\n```flow\nvalue = 0 | 現在の値を読む\nvalue != 0 | false\n&&の判断 | 全体はfalseと確定\n右側は評価しない | 10 / 0へ進まない\nFalseを表示 | valueは0のまま\n```\n\n`bool`の`&`や`|`は短絡せず両側を評価します。論理条件を書きたいのに記号を一つ落とすと、避けたい処理まで実行される場合があります。副作用とは、値を返すだけでなく外側の状態を書き換えることです。条件式の中で代入やカウンター更新を多用すると、評価を省略したときの状態も変わるので、まずは判定と更新を分けます。\n\n## 実用例：入力検証と価格区分\n\n```csharp\nint age = 12;\nif (age < 0 || age > 120)\n{\n    Console.WriteLine(\"年齢の範囲を確認してください\");\n    return;\n}\nint fee;\nif (age < 6)\n{\n    fee = 0;\n}\nelse if (age < 18)\n{\n    fee = 500;\n}\nelse\n{\n    fee = 1000;\n}\nConsole.WriteLine($\"料金: {fee}円\");\n```\n\n期待出力は`料金: 500円`です。まず入力の範囲を検証し、不正なら終了します。その後に有効な値を区分します。`fee`は宣言時には未代入ですが、後の`if/else if/else`のすべての経路で代入されるため、その後に読むことができます。`else`をなくしてどの条件にも入らない経路が残ると、未代入の読み取りをコンパイラーが指摘します。\n\nこの例の年齢範囲・料金区分は教材の仕様です。現実の料金ルールとして一般化しません。実務では同じ`int`でも何を表すか、どの範囲なら有効かを仕様として決めます。入力の妥当性と料金の計算を分けると、Lesson 27の責務の分離にもつながります。\n\n## 間違い：広い条件を先に書く\n\n```csharp\nint score = 90;\nif (score >= 60)\n    Console.WriteLine(\"通常合格\");\nelse if (score >= 80)\n    Console.WriteLine(\"優秀合格\");\n```\n\nこれはコンパイルエラーではありませんが、90点で`通常合格`になります。80以上の値は必ず60以上なので、最初の分岐で捕まります。二つ目の条件が役立たないのは、記号の問題ではなく条件の範囲の包含関係が原因です。\n\n修正位置は条件の並びです。\n\n```csharp\nint score = 90;\nif (score >= 80)\n    Console.WriteLine(\"優秀合格\");\nelse if (score >= 60)\n    Console.WriteLine(\"通常合格\");\nelse\n    Console.WriteLine(\"再挑戦\");\n```\n\n期待出力は`優秀合格`です。確認するときは60・80だけでなく59・79も使います。条件を修正する前に表へ範囲を書けば、順序によって到達できない枝がないかを見つけやすくなります。\n\n## switch式とパターンを読む\n\nパターンは値の形や条件を照合する表現です。関係パターンなら`>= 80`、型パターンなら「この型である」、プロパティパターンなら「このプロパティの状態である」を調べられます。いまは数値を範囲へ分類する例か",
+    "sha256": {
+      "Program.cs": "6ecc6a6db9d91b90295990e3c07f756d8ca1450d62d5d5e6d71546eb094e398b",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "11cd69ca81f77e34cbe3cc52e929a7efcf6bd198caab085e42d24063258a1184"
+  },
+  {
+    "id": "deep-05-03",
+    "source": "samples/expanded/deep/05/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "料金: 500円\n",
+    "meaning": "age12 valid then6<=age<18",
+    "kind": "csharp",
+    "teachingPath": "content/deep/05.md",
+    "teachingExcerpt": " 全体はfalseと確定\n右側は評価しない | 10 / 0へ進まない\nFalseを表示 | valueは0のまま\n```\n\n`bool`の`&`や`|`は短絡せず両側を評価します。論理条件を書きたいのに記号を一つ落とすと、避けたい処理まで実行される場合があります。副作用とは、値を返すだけでなく外側の状態を書き換えることです。条件式の中で代入やカウンター更新を多用すると、評価を省略したときの状態も変わるので、まずは判定と更新を分けます。\n\n## 実用例：入力検証と価格区分\n\n```csharp\nint age = 12;\nif (age < 0 || age > 120)\n{\n    Console.WriteLine(\"年齢の範囲を確認してください\");\n    return;\n}\nint fee;\nif (age < 6)\n{\n    fee = 0;\n}\nelse if (age < 18)\n{\n    fee = 500;\n}\nelse\n{\n    fee = 1000;\n}\nConsole.WriteLine($\"料金: {fee}円\");\n```\n\n期待出力は`料金: 500円`です。まず入力の範囲を検証し、不正なら終了します。その後に有効な値を区分します。`fee`は宣言時には未代入ですが、後の`if/else if/else`のすべての経路で代入されるため、その後に読むことができます。`else`をなくしてどの条件にも入らない経路が残ると、未代入の読み取りをコンパイラーが指摘します。\n\nこの例の年齢範囲・料金区分は教材の仕様です。現実の料金ルールとして一般化しません。実務では同じ`int`でも何を表すか、どの範囲なら有効かを仕様として決めます。入力の妥当性と料金の計算を分けると、Lesson 27の責務の分離にもつながります。\n\n## 間違い：広い条件を先に書く\n\n```csharp\nint score = 90;\nif (score >= 60)\n    Console.WriteLine(\"通常合格\");\nelse if (score >= 80)\n    Console.WriteLine(\"優秀合格\");\n```\n\nこれはコンパイルエラーではありませんが、90点で`通常合格`になります。80以上の値は必ず60以上なので、最初の分岐で捕まります。二つ目の条件が役立たないのは、記号の問題ではなく条件の範囲の包含関係が原因です。\n\n修正位置は条件の並びです。\n\n```csharp\nint score = 90;\nif (score >= 80)\n    Console.WriteLine(\"優秀合格\");\nelse if (score >= 60)\n    Console.WriteLine(\"通常合格\");\nelse\n    Console.WriteLine(\"再挑戦\");\n```\n\n期待出力は`優秀合格`です。確認するときは60・80だけでなく59・79も使います。条件を修正する前に表へ範囲を書けば、順序によって到達できない枝がないかを見つけやすくなります。\n\n## switch式とパターンを読む\n\nパターンは値の形や条件を照合する表現です。関係パターンなら`>= 80`、型パターンなら「この型である」、プロパティパターンなら「このプロパティの状態である」を調べられます。いまは数値を範囲へ分類する例から始めます。\n\n```csharp\nint score = 75;\nstring label = score switch\n{\n    < 0 or > 100 => \"範囲外\",\n    >= 80 => \"優秀\",\n    >= 60 => \"合格\",\n    _ => \"再挑戦\"\n};\nConsole.WriteLine(label);\n```\n\n期待出力は`合格`です。`score switch`はscoreを照合対象にし、各行を上から調べます。`=>`の右側はその枝が返す値、`_`はそれまで一致しなかったすべてを受けるパターンです。`or`はパターン同士を組み合わせます。`switch`式は値を返すため、結果を変数へ保存できます。\n\n| 選択肢 | 適する場面 | 判断の理由 |\n|---|---|---|\n| `if` | 条件ごとに複数の処理を行う | 手順を明示しやすい |\n| `switch`式 | 一つの対象から値を選ぶ | 変換表として読める |\n| 条件演算子`?:` | 小さな二択の値 | 入れ子が深いと読みにくい |\n| 独立した複数のif | 複数の条件を同時に適用する | 一つだけ選ぶならelse ifと区別 |\n\n## 段階別の練習\n\n基礎課題は、点数79・80・81を最小例へ入れて結果を説明することです。79は合格、80と81は合格・優秀です。`>=`の等号が境界を含めています。\n\n標準課題は、点数の範囲0〜100の検証を最小例へ追",
+    "sha256": {
+      "Program.cs": "9cb12871ff7ee9861e16f07af1298c4776d75e94c8e116a82c1f6697330219e2",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "11cd69ca81f77e34cbe3cc52e929a7efcf6bd198caab085e42d24063258a1184"
+  },
+  {
+    "id": "deep-05-04",
+    "source": "samples/expanded/deep/05/example-04",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "通常合格\n",
+    "meaning": "intentional wrong condition order:90 first matches>=60",
+    "kind": "csharp",
+    "teachingPath": "content/deep/05.md",
+    "teachingExcerpt": "if/else if/else`のすべての経路で代入されるため、その後に読むことができます。`else`をなくしてどの条件にも入らない経路が残ると、未代入の読み取りをコンパイラーが指摘します。\n\nこの例の年齢範囲・料金区分は教材の仕様です。現実の料金ルールとして一般化しません。実務では同じ`int`でも何を表すか、どの範囲なら有効かを仕様として決めます。入力の妥当性と料金の計算を分けると、Lesson 27の責務の分離にもつながります。\n\n## 間違い：広い条件を先に書く\n\n```csharp\nint score = 90;\nif (score >= 60)\n    Console.WriteLine(\"通常合格\");\nelse if (score >= 80)\n    Console.WriteLine(\"優秀合格\");\n```\n\nこれはコンパイルエラーではありませんが、90点で`通常合格`になります。80以上の値は必ず60以上なので、最初の分岐で捕まります。二つ目の条件が役立たないのは、記号の問題ではなく条件の範囲の包含関係が原因です。\n\n修正位置は条件の並びです。\n\n```csharp\nint score = 90;\nif (score >= 80)\n    Console.WriteLine(\"優秀合格\");\nelse if (score >= 60)\n    Console.WriteLine(\"通常合格\");\nelse\n    Console.WriteLine(\"再挑戦\");\n```\n\n期待出力は`優秀合格`です。確認するときは60・80だけでなく59・79も使います。条件を修正する前に表へ範囲を書けば、順序によって到達できない枝がないかを見つけやすくなります。\n\n## switch式とパターンを読む\n\nパターンは値の形や条件を照合する表現です。関係パターンなら`>= 80`、型パターンなら「この型である」、プロパティパターンなら「このプロパティの状態である」を調べられます。いまは数値を範囲へ分類する例から始めます。\n\n```csharp\nint score = 75;\nstring label = score switch\n{\n    < 0 or > 100 => \"範囲外\",\n    >= 80 => \"優秀\",\n    >= 60 => \"合格\",\n    _ => \"再挑戦\"\n};\nConsole.WriteLine(label);\n```\n\n期待出力は`合格`です。`score switch`はscoreを照合対象にし、各行を上から調べます。`=>`の右側はその枝が返す値、`_`はそれまで一致しなかったすべてを受けるパターンです。`or`はパターン同士を組み合わせます。`switch`式は値を返すため、結果を変数へ保存できます。\n\n| 選択肢 | 適する場面 | 判断の理由 |\n|---|---|---|\n| `if` | 条件ごとに複数の処理を行う | 手順を明示しやすい |\n| `switch`式 | 一つの対象から値を選ぶ | 変換表として読める |\n| 条件演算子`?:` | 小さな二択の値 | 入れ子が深いと読みにくい |\n| 独立した複数のif | 複数の条件を同時に適用する | 一つだけ選ぶならelse ifと区別 |\n\n## 段階別の練習\n\n基礎課題は、点数79・80・81を最小例へ入れて結果を説明することです。79は合格、80と81は合格・優秀です。`>=`の等号が境界を含めています。\n\n標準課題は、点数の範囲0〜100の検証を最小例へ追加することです。不正入力-1と101は範囲外とし、その後の成績判定へ進めないようにします。ヒントは最初に範囲外を検査してreturnすることです。別解は外側の`if/else`で有効な値だけ判定する方法です。\n\n応用課題は、年齢料金へ会員割引100円を追加し、無料区分は0円のままにすることです。`bool isMember = true;`は会員かどうかの状態を表します。料金を先に区分し、`if (isMember && fee >= 100) fee -= 100;`と適用します。入力12歳・会員なら400円、5歳・会員なら0円です。割引を各枝へ重複記述する別解は修正漏れを生みやすいため、共通処理へ分けられるかを考えます。\n\n## 学習の接続\n\n条件式がtrueになる範囲と、実際に通る経路を説明できれば、繰り返しを安全に組み立てる準備ができています。次のLesson 06では条件を繰り返し評価し、いつ続けていつ止めるかを設計します。ここで学んだ境界値の考え方が、配列の最後を越えない",
+    "sha256": {
+      "Program.cs": "fb6879499d8541464479069450308985745f1b4412a108642bde51f2b29c7f0f",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "11cd69ca81f77e34cbe3cc52e929a7efcf6bd198caab085e42d24063258a1184"
+  },
+  {
+    "id": "deep-05-05",
+    "source": "samples/expanded/deep/05/example-05",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "優秀合格\n",
+    "meaning": "corrected descending threshold order",
+    "kind": "csharp",
+    "teachingPath": "content/deep/05.md",
+    "teachingExcerpt": "score = 90;\nif (score >= 60)\n    Console.WriteLine(\"通常合格\");\nelse if (score >= 80)\n    Console.WriteLine(\"優秀合格\");\n```\n\nこれはコンパイルエラーではありませんが、90点で`通常合格`になります。80以上の値は必ず60以上なので、最初の分岐で捕まります。二つ目の条件が役立たないのは、記号の問題ではなく条件の範囲の包含関係が原因です。\n\n修正位置は条件の並びです。\n\n```csharp\nint score = 90;\nif (score >= 80)\n    Console.WriteLine(\"優秀合格\");\nelse if (score >= 60)\n    Console.WriteLine(\"通常合格\");\nelse\n    Console.WriteLine(\"再挑戦\");\n```\n\n期待出力は`優秀合格`です。確認するときは60・80だけでなく59・79も使います。条件を修正する前に表へ範囲を書けば、順序によって到達できない枝がないかを見つけやすくなります。\n\n## switch式とパターンを読む\n\nパターンは値の形や条件を照合する表現です。関係パターンなら`>= 80`、型パターンなら「この型である」、プロパティパターンなら「このプロパティの状態である」を調べられます。いまは数値を範囲へ分類する例から始めます。\n\n```csharp\nint score = 75;\nstring label = score switch\n{\n    < 0 or > 100 => \"範囲外\",\n    >= 80 => \"優秀\",\n    >= 60 => \"合格\",\n    _ => \"再挑戦\"\n};\nConsole.WriteLine(label);\n```\n\n期待出力は`合格`です。`score switch`はscoreを照合対象にし、各行を上から調べます。`=>`の右側はその枝が返す値、`_`はそれまで一致しなかったすべてを受けるパターンです。`or`はパターン同士を組み合わせます。`switch`式は値を返すため、結果を変数へ保存できます。\n\n| 選択肢 | 適する場面 | 判断の理由 |\n|---|---|---|\n| `if` | 条件ごとに複数の処理を行う | 手順を明示しやすい |\n| `switch`式 | 一つの対象から値を選ぶ | 変換表として読める |\n| 条件演算子`?:` | 小さな二択の値 | 入れ子が深いと読みにくい |\n| 独立した複数のif | 複数の条件を同時に適用する | 一つだけ選ぶならelse ifと区別 |\n\n## 段階別の練習\n\n基礎課題は、点数79・80・81を最小例へ入れて結果を説明することです。79は合格、80と81は合格・優秀です。`>=`の等号が境界を含めています。\n\n標準課題は、点数の範囲0〜100の検証を最小例へ追加することです。不正入力-1と101は範囲外とし、その後の成績判定へ進めないようにします。ヒントは最初に範囲外を検査してreturnすることです。別解は外側の`if/else`で有効な値だけ判定する方法です。\n\n応用課題は、年齢料金へ会員割引100円を追加し、無料区分は0円のままにすることです。`bool isMember = true;`は会員かどうかの状態を表します。料金を先に区分し、`if (isMember && fee >= 100) fee -= 100;`と適用します。入力12歳・会員なら400円、5歳・会員なら0円です。割引を各枝へ重複記述する別解は修正漏れを生みやすいため、共通処理へ分けられるかを考えます。\n\n## 学習の接続\n\n条件式がtrueになる範囲と、実際に通る経路を説明できれば、繰り返しを安全に組み立てる準備ができています。次のLesson 06では条件を繰り返し評価し、いつ続けていつ止めるかを設計します。ここで学んだ境界値の考え方が、配列の最後を越えない条件にも使われます。\n",
+    "sha256": {
+      "Program.cs": "6fa4d049a33e16bbe79f088c76cfc3acaf835da061ae75dedab133d95fd68e6b",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "11cd69ca81f77e34cbe3cc52e929a7efcf6bd198caab085e42d24063258a1184"
+  },
+  {
+    "id": "deep-05-06",
+    "source": "samples/expanded/deep/05/example-06",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "合格\n",
+    "meaning": "75 first matching switch arm>=60",
+    "kind": "csharp",
+    "teachingPath": "content/deep/05.md",
+    "teachingExcerpt": "eLine(\"再挑戦\");\n```\n\n期待出力は`優秀合格`です。確認するときは60・80だけでなく59・79も使います。条件を修正する前に表へ範囲を書けば、順序によって到達できない枝がないかを見つけやすくなります。\n\n## switch式とパターンを読む\n\nパターンは値の形や条件を照合する表現です。関係パターンなら`>= 80`、型パターンなら「この型である」、プロパティパターンなら「このプロパティの状態である」を調べられます。いまは数値を範囲へ分類する例から始めます。\n\n```csharp\nint score = 75;\nstring label = score switch\n{\n    < 0 or > 100 => \"範囲外\",\n    >= 80 => \"優秀\",\n    >= 60 => \"合格\",\n    _ => \"再挑戦\"\n};\nConsole.WriteLine(label);\n```\n\n期待出力は`合格`です。`score switch`はscoreを照合対象にし、各行を上から調べます。`=>`の右側はその枝が返す値、`_`はそれまで一致しなかったすべてを受けるパターンです。`or`はパターン同士を組み合わせます。`switch`式は値を返すため、結果を変数へ保存できます。\n\n| 選択肢 | 適する場面 | 判断の理由 |\n|---|---|---|\n| `if` | 条件ごとに複数の処理を行う | 手順を明示しやすい |\n| `switch`式 | 一つの対象から値を選ぶ | 変換表として読める |\n| 条件演算子`?:` | 小さな二択の値 | 入れ子が深いと読みにくい |\n| 独立した複数のif | 複数の条件を同時に適用する | 一つだけ選ぶならelse ifと区別 |\n\n## 段階別の練習\n\n基礎課題は、点数79・80・81を最小例へ入れて結果を説明することです。79は合格、80と81は合格・優秀です。`>=`の等号が境界を含めています。\n\n標準課題は、点数の範囲0〜100の検証を最小例へ追加することです。不正入力-1と101は範囲外とし、その後の成績判定へ進めないようにします。ヒントは最初に範囲外を検査してreturnすることです。別解は外側の`if/else`で有効な値だけ判定する方法です。\n\n応用課題は、年齢料金へ会員割引100円を追加し、無料区分は0円のままにすることです。`bool isMember = true;`は会員かどうかの状態を表します。料金を先に区分し、`if (isMember && fee >= 100) fee -= 100;`と適用します。入力12歳・会員なら400円、5歳・会員なら0円です。割引を各枝へ重複記述する別解は修正漏れを生みやすいため、共通処理へ分けられるかを考えます。\n\n## 学習の接続\n\n条件式がtrueになる範囲と、実際に通る経路を説明できれば、繰り返しを安全に組み立てる準備ができています。次のLesson 06では条件を繰り返し評価し、いつ続けていつ止めるかを設計します。ここで学んだ境界値の考え方が、配列の最後を越えない条件にも使われます。\n",
+    "sha256": {
+      "Program.cs": "3990b3224b0b57d9fce10a9080068d9fbd5fed5b4e0652ebea64ba221a7e4c73",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "11cd69ca81f77e34cbe3cc52e929a7efcf6bd198caab085e42d24063258a1184"
+  },
+  {
+    "id": "deep-06-01",
+    "source": "samples/expanded/deep/06/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "20\n40\n3\n",
+    "meaning": "read element0, update1, Length3",
+    "kind": "csharp",
+    "teachingPath": "content/deep/06.md",
+    "teachingExcerpt": "先頭が0、最後が`Length - 1`です。Lengthは要素数なので、要素数そのものの位置は存在しません。3要素なら位置は0・1・2です。この「個数」と「最後の位置」の違いが範囲外アクセスを防ぐ基礎です。\n\n配列の長さは生成後に変更できません。要素の値は代入で変更できます。配列変数へ別の配列を代入することもできますが、それは元の配列の長さを伸ばしたわけではありません。追加や削除を繰り返す場合に使う`List<T>`はLesson 15で扱います。\n\n## 文法と最小例\n\n```csharp\nint[] minutes = { 20, 35, 15 };\nConsole.WriteLine(minutes[0]);\nminutes[1] = 40;\nConsole.WriteLine(minutes[1]);\nConsole.WriteLine(minutes.Length);\n```\n\n期待出力は20、40、3です。`int[]`はintの配列型、`{20,35,15}`は初期値の並び、`minutes[1]`は二番目の要素です。配列の名前自体と、要素へのアクセスを区別します。\n\n| 順序 | 操作 | 配列の状態 | 表示 |\n|---|---|---|---|\n| ① | 初期化 | [20, 35, 15] | なし |\n| ② | 位置0を読む | [20, 35, 15] | 20 |\n| ③ | 位置1へ40を代入 | [20, 40, 15] | なし |\n| ④ | 位置1を読む | [20, 40, 15] | 40 |\n| ⑤ | Lengthを読む | 要素数は3のまま | 3 |\n\n配列は参照型であり、変数は配列の実体への参照を保持します。参照とは実体をたどるための値です。いまは「要素の変更」と「別の配列への差し替え」が異なる、と把握してください。コピー時の共有はLesson 13で詳しく確認します。\n\n## forを四つの仕事に分解する\n\n```csharp\nint[] minutes = { 20, 35, 15 };\nint total = 0;\nfor (int i = 0; i < minutes.Length; i++)\n{\n    total += minutes[i];\n    Console.WriteLine($\"i={i}, total={total}\");\n}\nConsole.WriteLine($\"合計={total}\");\n```\n\n期待される出力：\n\n```text\ni=0, total=20\ni=1, total=55\ni=2, total=70\n合計=70\n```\n\n`for (初期化; 条件; 更新)`の初期化は最初に一度だけ行います。条件を検査してtrueなら本体、続いて更新、再び条件という順です。`i++`はiへ1を加える処理です。`total += minutes[i]`はこの例では現在のtotalと要素を加え、totalへ戻す意味です。\n\n```flow\n初期化 | i=0、total=0\n条件 | i < Length ?\n本体 | totalへminutes[i]を加える\n更新 | iを1増やす\n条件へ戻る | falseになればループの外へ\n```\n\n| 条件検査の時点 | 条件 | 加える値 | 本体後のtotal | 更新後のi |\n|---|---|---:|---:|---:|\n| i=0 | 0 < 3、true | 20 | 20 | 1 |\n| i=1 | 1 < 3、true | 35 | 55 | 2 |\n| i=2 | 2 < 3、true | 15 | 70 | 3 |\n| i=3 | 3 < 3、false | 読まない | 70 | 更新しない |\n\n最後の条件はfalseなので`minutes[3]`にはアクセスしません。条件が境界を守っています。最初から空の配列ならLengthが0なので、本体は一度も実行されずtotalは0です。0件の扱いも自然に設計できています。\n\n## foreach・while・doの選択\n\n```csharp\nint[] minutes = { 20, 35, 15 };\nint total = 0;\nforeach (int value in minutes)\n{\n    total += value;\n}\nConsole.WriteLine(total);\n```\n\n期待出力は70です。`foreach`は対象から順に要素を受け取ります。`value`はその回の要素を読むための変数です。位置番号が不要なら、配列範囲の管理を自分で書かずに済みます。一般の列挙可能な対象では「次の要素を",
+    "sha256": {
+      "Program.cs": "750847635529171cb661f47a1939164565cb113f7c68505ae883eafd4acba718",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "d659e105e96cc5487be4a0e7e425f2b50175659ad9390dea8bad1f6bedce931b"
+  },
+  {
+    "id": "deep-06-02",
+    "source": "samples/expanded/deep/06/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "i=0, total=20\ni=1, total=55\ni=2, total=70\n合計=70\n",
+    "meaning": "for accumulator20→55→70",
+    "kind": "csharp",
+    "teachingPath": "content/deep/06.md",
+    "teachingExcerpt": "\n| ③ | 位置1へ40を代入 | [20, 40, 15] | なし |\n| ④ | 位置1を読む | [20, 40, 15] | 40 |\n| ⑤ | Lengthを読む | 要素数は3のまま | 3 |\n\n配列は参照型であり、変数は配列の実体への参照を保持します。参照とは実体をたどるための値です。いまは「要素の変更」と「別の配列への差し替え」が異なる、と把握してください。コピー時の共有はLesson 13で詳しく確認します。\n\n## forを四つの仕事に分解する\n\n```csharp\nint[] minutes = { 20, 35, 15 };\nint total = 0;\nfor (int i = 0; i < minutes.Length; i++)\n{\n    total += minutes[i];\n    Console.WriteLine($\"i={i}, total={total}\");\n}\nConsole.WriteLine($\"合計={total}\");\n```\n\n期待される出力：\n\n```text\ni=0, total=20\ni=1, total=55\ni=2, total=70\n合計=70\n```\n\n`for (初期化; 条件; 更新)`の初期化は最初に一度だけ行います。条件を検査してtrueなら本体、続いて更新、再び条件という順です。`i++`はiへ1を加える処理です。`total += minutes[i]`はこの例では現在のtotalと要素を加え、totalへ戻す意味です。\n\n```flow\n初期化 | i=0、total=0\n条件 | i < Length ?\n本体 | totalへminutes[i]を加える\n更新 | iを1増やす\n条件へ戻る | falseになればループの外へ\n```\n\n| 条件検査の時点 | 条件 | 加える値 | 本体後のtotal | 更新後のi |\n|---|---|---:|---:|---:|\n| i=0 | 0 < 3、true | 20 | 20 | 1 |\n| i=1 | 1 < 3、true | 35 | 55 | 2 |\n| i=2 | 2 < 3、true | 15 | 70 | 3 |\n| i=3 | 3 < 3、false | 読まない | 70 | 更新しない |\n\n最後の条件はfalseなので`minutes[3]`にはアクセスしません。条件が境界を守っています。最初から空の配列ならLengthが0なので、本体は一度も実行されずtotalは0です。0件の扱いも自然に設計できています。\n\n## foreach・while・doの選択\n\n```csharp\nint[] minutes = { 20, 35, 15 };\nint total = 0;\nforeach (int value in minutes)\n{\n    total += value;\n}\nConsole.WriteLine(total);\n```\n\n期待出力は70です。`foreach`は対象から順に要素を受け取ります。`value`はその回の要素を読むための変数です。位置番号が不要なら、配列範囲の管理を自分で書かずに済みます。一般の列挙可能な対象では「次の要素を求める」仕組みを利用しますが、配列ではコンパイラーが効率的な形へ変換する場合もあります。必ず列挙子オブジェクトが生成されるとは断定しません。\n\n| 構文 | 選ぶ場面 | 主に管理するもの |\n|---|---|---|\n| for | 位置を使う、飛ばしながら処理する | 初期値・条件・更新 |\n| foreach | 全要素を順に読む | 要素に対する処理 |\n| while | 回数より終了条件が中心 | 条件と状態更新 |\n| do/while | 必ず一度は行ってから続行を判断 | 初回処理と条件 |\n\nwhileは条件がfalseなら一度も本体を実行しません。do/whileは本体の後で条件を検査するため、最低一回実行します。入力し直しを促す場合など、最初に必ず行いたい処理かどうかで選びます。\n\n## 実用例：条件に合う日だけ集計する\n\n```csharp\nint[] minutes = { 20, 0, 45, 10, 30 };\nint activeDays = 0;\nint total = 0;\nforeach (int value in minutes)\n{\n    if (value == 0)\n    {\n        continue;\n    }\n    activeDays++;\n    total += value;\n}\nConsole.WriteLine($\"学習日={activeDays}\");\nConsole.WriteLine($\"合計={total}\");\n`",
+    "sha256": {
+      "Program.cs": "61579e809e4e9e96aaa474c33bec5857f7552024fcd03ca38e5c7b1b467d3c33",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "d659e105e96cc5487be4a0e7e425f2b50175659ad9390dea8bad1f6bedce931b"
+  },
+  {
+    "id": "deep-06-03",
+    "source": "samples/expanded/deep/06/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "70\n",
+    "meaning": "foreach20+35+15",
+    "kind": "csharp",
+    "teachingPath": "content/deep/06.md",
+    "teachingExcerpt": "< 3、true | 35 | 55 | 2 |\n| i=2 | 2 < 3、true | 15 | 70 | 3 |\n| i=3 | 3 < 3、false | 読まない | 70 | 更新しない |\n\n最後の条件はfalseなので`minutes[3]`にはアクセスしません。条件が境界を守っています。最初から空の配列ならLengthが0なので、本体は一度も実行されずtotalは0です。0件の扱いも自然に設計できています。\n\n## foreach・while・doの選択\n\n```csharp\nint[] minutes = { 20, 35, 15 };\nint total = 0;\nforeach (int value in minutes)\n{\n    total += value;\n}\nConsole.WriteLine(total);\n```\n\n期待出力は70です。`foreach`は対象から順に要素を受け取ります。`value`はその回の要素を読むための変数です。位置番号が不要なら、配列範囲の管理を自分で書かずに済みます。一般の列挙可能な対象では「次の要素を求める」仕組みを利用しますが、配列ではコンパイラーが効率的な形へ変換する場合もあります。必ず列挙子オブジェクトが生成されるとは断定しません。\n\n| 構文 | 選ぶ場面 | 主に管理するもの |\n|---|---|---|\n| for | 位置を使う、飛ばしながら処理する | 初期値・条件・更新 |\n| foreach | 全要素を順に読む | 要素に対する処理 |\n| while | 回数より終了条件が中心 | 条件と状態更新 |\n| do/while | 必ず一度は行ってから続行を判断 | 初回処理と条件 |\n\nwhileは条件がfalseなら一度も本体を実行しません。do/whileは本体の後で条件を検査するため、最低一回実行します。入力し直しを促す場合など、最初に必ず行いたい処理かどうかで選びます。\n\n## 実用例：条件に合う日だけ集計する\n\n```csharp\nint[] minutes = { 20, 0, 45, 10, 30 };\nint activeDays = 0;\nint total = 0;\nforeach (int value in minutes)\n{\n    if (value == 0)\n    {\n        continue;\n    }\n    activeDays++;\n    total += value;\n}\nConsole.WriteLine($\"学習日={activeDays}\");\nConsole.WriteLine($\"合計={total}\");\n```\n\n期待出力は`学習日=4`、`合計=105`です。`continue`はその回の残りを飛ばして次の繰り返しへ進みます。ループ全体を終わる`break`とは違います。0分の日は件数にも合計にも加えません。20の後は日数1・合計20、0の後も同じ、45の後は2・65、10の後は3・75、30の後は4・105です。\n\n業務では「複数データを確認し、条件に合うものを集計する」処理が頻繁に現れます。後でLINQを使うと短く表現できますが、このループを読めないまま式だけ覚えると、件数と合計の違いや除外条件を見失います。まず状態を一回ずつ追います。\n\n## 間違い：Lengthを最後の位置だと思う\n\n```csharp-error\nint[] values = { 10, 20, 30 };\nfor (int i = 0; i <= values.Length; i++)\n{\n    Console.WriteLine(values[i]);\n}\n```\n\n10・20・30を表示した後、i=3でも条件がtrueになり、存在しない位置3を読みます。通常の配列アクセスで`IndexOutOfRangeException`が発生します。例外は実行中の異常を知らせる仕組みです。「最初の三つは表示できた」ことから、SDKよりループ終端を疑います。\n\n修正位置は条件の`<=`です。\n\n```csharp\nint[] values = { 10, 20, 30 };\nfor (int i = 0; i < values.Length; i++)\n{\n    Console.WriteLine(values[i]);\n}\n```\n\n修正後は10・20・30だけを表示します。別解はforeachです。手で固定値2まで回す修正は、要素数が変わると壊れるため、Lengthとの関係で条件を表します。0件・1件・複数件の入力で確認すると境界のミスを見つ",
+    "sha256": {
+      "Program.cs": "95e92c1b5c5ab32a5ad326aa2781f75dd7bad0249906633d8c06e41d093f5e72",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "d659e105e96cc5487be4a0e7e425f2b50175659ad9390dea8bad1f6bedce931b"
+  },
+  {
+    "id": "deep-06-04",
+    "source": "samples/expanded/deep/06/example-04",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "学習日=4\n合計=105\n",
+    "meaning": "skip0;20+45+10+30 and count4",
+    "kind": "csharp",
+    "teachingPath": "content/deep/06.md",
+    "teachingExcerpt": "値・条件・更新 |\n| foreach | 全要素を順に読む | 要素に対する処理 |\n| while | 回数より終了条件が中心 | 条件と状態更新 |\n| do/while | 必ず一度は行ってから続行を判断 | 初回処理と条件 |\n\nwhileは条件がfalseなら一度も本体を実行しません。do/whileは本体の後で条件を検査するため、最低一回実行します。入力し直しを促す場合など、最初に必ず行いたい処理かどうかで選びます。\n\n## 実用例：条件に合う日だけ集計する\n\n```csharp\nint[] minutes = { 20, 0, 45, 10, 30 };\nint activeDays = 0;\nint total = 0;\nforeach (int value in minutes)\n{\n    if (value == 0)\n    {\n        continue;\n    }\n    activeDays++;\n    total += value;\n}\nConsole.WriteLine($\"学習日={activeDays}\");\nConsole.WriteLine($\"合計={total}\");\n```\n\n期待出力は`学習日=4`、`合計=105`です。`continue`はその回の残りを飛ばして次の繰り返しへ進みます。ループ全体を終わる`break`とは違います。0分の日は件数にも合計にも加えません。20の後は日数1・合計20、0の後も同じ、45の後は2・65、10の後は3・75、30の後は4・105です。\n\n業務では「複数データを確認し、条件に合うものを集計する」処理が頻繁に現れます。後でLINQを使うと短く表現できますが、このループを読めないまま式だけ覚えると、件数と合計の違いや除外条件を見失います。まず状態を一回ずつ追います。\n\n## 間違い：Lengthを最後の位置だと思う\n\n```csharp-error\nint[] values = { 10, 20, 30 };\nfor (int i = 0; i <= values.Length; i++)\n{\n    Console.WriteLine(values[i]);\n}\n```\n\n10・20・30を表示した後、i=3でも条件がtrueになり、存在しない位置3を読みます。通常の配列アクセスで`IndexOutOfRangeException`が発生します。例外は実行中の異常を知らせる仕組みです。「最初の三つは表示できた」ことから、SDKよりループ終端を疑います。\n\n修正位置は条件の`<=`です。\n\n```csharp\nint[] values = { 10, 20, 30 };\nfor (int i = 0; i < values.Length; i++)\n{\n    Console.WriteLine(values[i]);\n}\n```\n\n修正後は10・20・30だけを表示します。別解はforeachです。手で固定値2まで回す修正は、要素数が変わると壊れるため、Lengthとの関係で条件を表します。0件・1件・複数件の入力で確認すると境界のミスを見つけやすくなります。\n\n## 間違い：continueで更新を飛ばす\n\n```csharp-error\nint i = 0;\nwhile (i < 3)\n{\n    if (i == 1) continue;\n    Console.WriteLine(i);\n    i++;\n}\n```\n\n0を表示してi=1になった後、continueがi++を飛ばします。次回もi=1なので同じ状態から抜けられず、無限ループになります。この例は停止しなくなるため、そのままの実行を課題にしません。既に動かした場合はターミナルでCtrl+Cなどを使って中断します。\n\n修正位置は更新の管理です。\n\n```csharp\nfor (int i = 0; i < 3; i++)\n{\n    if (i == 1) continue;\n    Console.WriteLine(i);\n}\n```\n\n期待出力は0、次の行に2です。forのcontinueは更新処理を経て次の条件検査へ進むため、iは増えます。防止するには、各経路で終了へ近づく状態変化があるかを調べます。whileで書く別解なら、continueする経路にも更新を入れる必要があります。\n\n## 段階別の練習\n\n基礎課題は配列`{2,4,6}`の合計をforとforeachで求めることです。期待出力は12です。二つのコードが同じ結果でも、forは位置を管理しforeachは要素を直接読むという違いを説明します。\n\n標準課題は`{40,80,60,90}`から60以上の件数と合計を求めることです。期待は件数3、合計230です。合計用変数と件数用変数を分け、条件に合ったときだけ両方を更新します。すべてを加えてから不合格を引く別解より、条件に一致した要素を加える方が追跡しやすくなります。\n\n```c",
+    "sha256": {
+      "Program.cs": "0072e5e7be8778fd22b9a8ed04092aa81f353b49fa59917a38dda89767d37bf0",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "d659e105e96cc5487be4a0e7e425f2b50175659ad9390dea8bad1f6bedce931b"
+  },
+  {
+    "id": "deep-06-06",
+    "source": "samples/expanded/deep/06/example-06",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "10\n20\n30\n",
+    "meaning": "fixed strict <Length avoids out of range",
+    "kind": "csharp",
+    "teachingPath": "content/deep/06.md",
+    "teachingExcerpt": "int i = 0; i <= values.Length; i++)\n{\n    Console.WriteLine(values[i]);\n}\n```\n\n10・20・30を表示した後、i=3でも条件がtrueになり、存在しない位置3を読みます。通常の配列アクセスで`IndexOutOfRangeException`が発生します。例外は実行中の異常を知らせる仕組みです。「最初の三つは表示できた」ことから、SDKよりループ終端を疑います。\n\n修正位置は条件の`<=`です。\n\n```csharp\nint[] values = { 10, 20, 30 };\nfor (int i = 0; i < values.Length; i++)\n{\n    Console.WriteLine(values[i]);\n}\n```\n\n修正後は10・20・30だけを表示します。別解はforeachです。手で固定値2まで回す修正は、要素数が変わると壊れるため、Lengthとの関係で条件を表します。0件・1件・複数件の入力で確認すると境界のミスを見つけやすくなります。\n\n## 間違い：continueで更新を飛ばす\n\n```csharp-error\nint i = 0;\nwhile (i < 3)\n{\n    if (i == 1) continue;\n    Console.WriteLine(i);\n    i++;\n}\n```\n\n0を表示してi=1になった後、continueがi++を飛ばします。次回もi=1なので同じ状態から抜けられず、無限ループになります。この例は停止しなくなるため、そのままの実行を課題にしません。既に動かした場合はターミナルでCtrl+Cなどを使って中断します。\n\n修正位置は更新の管理です。\n\n```csharp\nfor (int i = 0; i < 3; i++)\n{\n    if (i == 1) continue;\n    Console.WriteLine(i);\n}\n```\n\n期待出力は0、次の行に2です。forのcontinueは更新処理を経て次の条件検査へ進むため、iは増えます。防止するには、各経路で終了へ近づく状態変化があるかを調べます。whileで書く別解なら、continueする経路にも更新を入れる必要があります。\n\n## 段階別の練習\n\n基礎課題は配列`{2,4,6}`の合計をforとforeachで求めることです。期待出力は12です。二つのコードが同じ結果でも、forは位置を管理しforeachは要素を直接読むという違いを説明します。\n\n標準課題は`{40,80,60,90}`から60以上の件数と合計を求めることです。期待は件数3、合計230です。合計用変数と件数用変数を分け、条件に合ったときだけ両方を更新します。すべてを加えてから不合格を引く別解より、条件に一致した要素を加える方が追跡しやすくなります。\n\n```csharp\nint[] scores = { 40, 80, 60, 90 };\nint count = 0;\nint total = 0;\nforeach (int score in scores)\n{\n    if (score >= 60)\n    {\n        count++;\n        total += score;\n    }\n}\nConsole.WriteLine($\"件数={count}, 合計={total}\");\n```\n\n応用課題は、最初の60以上の点を見つけたら探索を終えることです。入力が`{40,80,60,90}`なら80、`{10,20}`なら「見つかりません」です。見つかったかを`bool found`で保持するか、見つかった位置を-1で初期化する方法があります。最初に見つけた後でbreakしないと、最後の一致へ変わってしまうので要件と停止条件を照合します。\n\n## 次の学習で処理を部品へする\n\n合計処理を複数の場所で使いたくなったら、ループをコピーするより、入力と結果を持つメソッドへ分けます。次のLesson 07ではメソッドの引数で配列や値を受け取り、戻り値で結果を渡します。ループ中の変数の状態を追う力が、呼び出しをまたぐ追跡へ広がります。\n",
+    "sha256": {
+      "Program.cs": "fc1f3aa09dadef871d024a6d855659e795eb3c570bd1a3293133bf9263d776c4",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "d659e105e96cc5487be4a0e7e425f2b50175659ad9390dea8bad1f6bedce931b"
+  },
+  {
+    "id": "deep-06-08",
+    "source": "samples/expanded/deep/06/example-08",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "0\n2\n",
+    "meaning": "continue skips1; for increment still happens",
+    "kind": "csharp",
+    "teachingPath": "content/deep/06.md",
+    "teachingExcerpt": "nt i = 0;\nwhile (i < 3)\n{\n    if (i == 1) continue;\n    Console.WriteLine(i);\n    i++;\n}\n```\n\n0を表示してi=1になった後、continueがi++を飛ばします。次回もi=1なので同じ状態から抜けられず、無限ループになります。この例は停止しなくなるため、そのままの実行を課題にしません。既に動かした場合はターミナルでCtrl+Cなどを使って中断します。\n\n修正位置は更新の管理です。\n\n```csharp\nfor (int i = 0; i < 3; i++)\n{\n    if (i == 1) continue;\n    Console.WriteLine(i);\n}\n```\n\n期待出力は0、次の行に2です。forのcontinueは更新処理を経て次の条件検査へ進むため、iは増えます。防止するには、各経路で終了へ近づく状態変化があるかを調べます。whileで書く別解なら、continueする経路にも更新を入れる必要があります。\n\n## 段階別の練習\n\n基礎課題は配列`{2,4,6}`の合計をforとforeachで求めることです。期待出力は12です。二つのコードが同じ結果でも、forは位置を管理しforeachは要素を直接読むという違いを説明します。\n\n標準課題は`{40,80,60,90}`から60以上の件数と合計を求めることです。期待は件数3、合計230です。合計用変数と件数用変数を分け、条件に合ったときだけ両方を更新します。すべてを加えてから不合格を引く別解より、条件に一致した要素を加える方が追跡しやすくなります。\n\n```csharp\nint[] scores = { 40, 80, 60, 90 };\nint count = 0;\nint total = 0;\nforeach (int score in scores)\n{\n    if (score >= 60)\n    {\n        count++;\n        total += score;\n    }\n}\nConsole.WriteLine($\"件数={count}, 合計={total}\");\n```\n\n応用課題は、最初の60以上の点を見つけたら探索を終えることです。入力が`{40,80,60,90}`なら80、`{10,20}`なら「見つかりません」です。見つかったかを`bool found`で保持するか、見つかった位置を-1で初期化する方法があります。最初に見つけた後でbreakしないと、最後の一致へ変わってしまうので要件と停止条件を照合します。\n\n## 次の学習で処理を部品へする\n\n合計処理を複数の場所で使いたくなったら、ループをコピーするより、入力と結果を持つメソッドへ分けます。次のLesson 07ではメソッドの引数で配列や値を受け取り、戻り値で結果を渡します。ループ中の変数の状態を追う力が、呼び出しをまたぐ追跡へ広がります。\n",
+    "sha256": {
+      "Program.cs": "74ad9e5ef175d2cc30c6180916e31a2075bd95463847dbcf59c22e7f30e0abeb",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "d659e105e96cc5487be4a0e7e425f2b50175659ad9390dea8bad1f6bedce931b"
+  },
+  {
+    "id": "deep-06-09",
+    "source": "samples/expanded/deep/06/example-09",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "件数=3, 合計=230\n",
+    "meaning": "scores>=60 are80,60,90",
+    "kind": "csharp",
+    "teachingPath": "content/deep/06.md",
+    "teachingExcerpt": "礎課題は配列`{2,4,6}`の合計をforとforeachで求めることです。期待出力は12です。二つのコードが同じ結果でも、forは位置を管理しforeachは要素を直接読むという違いを説明します。\n\n標準課題は`{40,80,60,90}`から60以上の件数と合計を求めることです。期待は件数3、合計230です。合計用変数と件数用変数を分け、条件に合ったときだけ両方を更新します。すべてを加えてから不合格を引く別解より、条件に一致した要素を加える方が追跡しやすくなります。\n\n```csharp\nint[] scores = { 40, 80, 60, 90 };\nint count = 0;\nint total = 0;\nforeach (int score in scores)\n{\n    if (score >= 60)\n    {\n        count++;\n        total += score;\n    }\n}\nConsole.WriteLine($\"件数={count}, 合計={total}\");\n```\n\n応用課題は、最初の60以上の点を見つけたら探索を終えることです。入力が`{40,80,60,90}`なら80、`{10,20}`なら「見つかりません」です。見つかったかを`bool found`で保持するか、見つかった位置を-1で初期化する方法があります。最初に見つけた後でbreakしないと、最後の一致へ変わってしまうので要件と停止条件を照合します。\n\n## 次の学習で処理を部品へする\n\n合計処理を複数の場所で使いたくなったら、ループをコピーするより、入力と結果を持つメソッドへ分けます。次のLesson 07ではメソッドの引数で配列や値を受け取り、戻り値で結果を渡します。ループ中の変数の状態を追う力が、呼び出しをまたぐ追跡へ広がります。\n",
+    "sha256": {
+      "Program.cs": "0c54a9785b0a21c486b4ff69cb472ed89d9f8e910c6ddf1c535111c8061f82f2",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "d659e105e96cc5487be4a0e7e425f2b50175659ad9390dea8bad1f6bedce931b"
+  },
+  {
+    "id": "deep-07-01",
+    "source": "samples/expanded/deep/07/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "360\n",
+    "meaning": "method120*3 return",
+    "kind": "csharp",
+    "teachingPath": "content/deep/07.md",
+    "teachingExcerpt": "側は目的を名前で読み、実装は一か所へ集められます。ただし、何でも大きな共通処理へ詰め込むと逆に理解しにくくなるため、入力と出力を説明できる単位にします。\n\n引数は呼び出しで渡す値、パラメーターは定義側でその値を受け取る変数です。戻り値は処理の結果として呼び出し側へ返す値です。たとえば`CalculateTotal(120, 3)`の120と3が引数、定義にある`unitPrice`と`quantity`がパラメーター、360が戻り値になります。\n\n## 構文を一つずつ読む\n\n```csharp\nint result = CalculateTotal(120, 3);\nConsole.WriteLine(result);\n\nstatic int CalculateTotal(int unitPrice, int quantity)\n{\n    int total = unitPrice * quantity;\n    return total;\n}\n```\n\n期待出力は360です。`static int CalculateTotal`の`int`は戻り値の型です。かっこ内の二つの`int`は受け取る値の型です。`return total;`はtotalを結果として返し、メソッドの処理を終えます。ここで定義しているのはトップレベル文から呼べるstaticローカル関数です。型に属するメソッドにも、引数と戻り値の考え方は共通です。\n\n| 順序 | 実行する場所 | 状態 |\n|---|---|---|\n| ① | 呼び出し側 | 引数120と3を用意 |\n| ② | CalculateTotalに入る | unitPrice=120, quantity=3 |\n| ③ | メソッド内 | total=360 |\n| ④ | return | 360を呼び出し側へ返す |\n| ⑤ | 呼び出し側 | result=360として受け取る |\n| ⑥ | 表示 | 360 |\n\nメソッド内の`total`と呼び出し側の`result`は別の変数です。同じ名前にしても自動的に共有されるわけではありません。スコープとは名前を使える範囲です。メソッドのパラメーターとローカル変数はそのメソッドの中で利用し、外から直接名前で読むことはできません。\n\n## 呼び出しのStackを概念として理解する\n\n実行中のメソッドには、どこへ戻るかや処理に必要な状態があります。呼び出しが重なる関係はコールスタックで観察できます。Stackは後から積んだものから戻る構造です。AがBを呼び、BがCを呼べば、通常はCからB、BからAへ戻ります。デバッガーのコールスタックは、エラーがどの呼び出し経路から来たかを調べるのに役立ちます。\n\n```flow\n入口 | CalculateTotalを呼ぶ\nCalculateTotal | 引数を受け取り計算\nreturn 360 | 呼び出し元へ結果を渡す\n入口の続き | resultへ代入し表示\n```\n\nこれは呼び出しの概念図です。JITによるインライン化で実際の呼び出し構造が最適化されることもあります。ローカル変数が必ず一つずつ物理Stack上の箱に置かれる、とまでは考えません。初心者段階では「変数の有効範囲」「どこへ戻るか」「何が渡るか」が説明できることを優先します。\n\n## 値渡し：パラメーターは原則コピーを受け取る\n\n```csharp\nint score = 10;\nIncrease(score);\nConsole.WriteLine(score);\n\nstatic void Increase(int value)\n{\n    value += 5;\n    Console.WriteLine(value);\n}\n```\n\n期待出力は15、次の行に10です。`void`は戻り値がないことを示します。パラメーターvalueはscoreの値10のコピーを受け取り、15へ変わりますが、呼び出し側のscoreは10のままです。変更した値を利用したいなら、戻り値で返すと分かりやすくなります。\n\n```csharp\nint score = 10;\nscore = Increase(score);\nConsole.WriteLine(score);\n\nstatic int Increase(int value)\n{\n    return value + 5;\n}\n```\n\n修正後の期待出力は15です。修正位置は戻り値の型・return・呼び出し側の代入の三か所です。変更した結果を返して明示的に受け取るため、どの変数が更新されるかを読み取りやすくなります。\n\n## 参照型でも「参照の値」がコピーされる\n\n配列は参照型です。参照とは配列の実体を指し示す値です。通常の引数ではこの参照がコピーされ",
+    "sha256": {
+      "Program.cs": "423278bb938c5a2de51ed2b8162fb16641f151749688fc09d27604a9537b2de2",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "175bdcacc16df7a2b542c1e3b0dbaa22e66cf8a12d0bf9e5c30ad5bd1e5f4b72"
+  },
+  {
+    "id": "deep-07-02",
+    "source": "samples/expanded/deep/07/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "15\n10\n",
+    "meaning": "callee modifies copy and prints15; caller10 unchanged",
+    "kind": "csharp",
+    "teachingPath": "content/deep/07.md",
+    "teachingExcerpt": "lculateTotal | 引数を受け取り計算\nreturn 360 | 呼び出し元へ結果を渡す\n入口の続き | resultへ代入し表示\n```\n\nこれは呼び出しの概念図です。JITによるインライン化で実際の呼び出し構造が最適化されることもあります。ローカル変数が必ず一つずつ物理Stack上の箱に置かれる、とまでは考えません。初心者段階では「変数の有効範囲」「どこへ戻るか」「何が渡るか」が説明できることを優先します。\n\n## 値渡し：パラメーターは原則コピーを受け取る\n\n```csharp\nint score = 10;\nIncrease(score);\nConsole.WriteLine(score);\n\nstatic void Increase(int value)\n{\n    value += 5;\n    Console.WriteLine(value);\n}\n```\n\n期待出力は15、次の行に10です。`void`は戻り値がないことを示します。パラメーターvalueはscoreの値10のコピーを受け取り、15へ変わりますが、呼び出し側のscoreは10のままです。変更した値を利用したいなら、戻り値で返すと分かりやすくなります。\n\n```csharp\nint score = 10;\nscore = Increase(score);\nConsole.WriteLine(score);\n\nstatic int Increase(int value)\n{\n    return value + 5;\n}\n```\n\n修正後の期待出力は15です。修正位置は戻り値の型・return・呼び出し側の代入の三か所です。変更した結果を返して明示的に受け取るため、どの変数が更新されるかを読み取りやすくなります。\n\n## 参照型でも「参照の値」がコピーされる\n\n配列は参照型です。参照とは配列の実体を指し示す値です。通常の引数ではこの参照がコピーされます。そのため要素の変更は同じ実体へ届きますが、パラメーターを別の配列へ差し替えても、呼び出し側の変数そのものは差し替わりません。\n\n```csharp\nint[] values = { 1, 2 };\nChange(values);\nConsole.WriteLine(string.Join(\",\", values));\n\nstatic void Change(int[] data)\n{\n    data[0] = 9;\n    data = new[] { 7, 8 };\n    Console.WriteLine(string.Join(\",\", data));\n}\n```\n\n期待出力は`7,8`、次の行に`9,2`です。`string.Join`は複数の値を区切り文字で結合した文字列を返します。メソッド内でdataが新しい配列を参照しても、valuesは最初の配列を参照したままです。\n\n| 時点 | values | data | 何が変わったか |\n|---|---|---|---|\n| 呼び出し前 | 配列A [1,2] | まだない | なし |\n| 呼び出し直後 | 配列A | 配列A | 参照のコピー |\n| data[0]=9 | 配列A [9,2] | 配列A [9,2] | 共有する要素 |\n| dataへnewを代入 | 配列A [9,2] | 配列B [7,8] | dataだけ差し替え |\n| 呼び出し後 | 配列A [9,2] | 利用範囲を終える | valuesはAのまま |\n\n「参照型だから自動的にref渡し」という説明は誤りです。型が値型か参照型かと、引数を値渡しするか参照渡しするかは別の軸です。Lesson 13でも同じ図を使えるよう、変数と実体を分けて描きます。\n\n## ref・out・inの選び方\n\n```csharp\nint count = 5;\nIncrease(ref count);\nConsole.WriteLine(count);\nbool success = int.TryParse(\"12\", out int parsed);\nConsole.WriteLine($\"{success}, {parsed}\");\n\nstatic void Increase(ref int value)\n{\n    value++;\n}\n```\n\n期待出力は6、次の行に`True, 12`です。`ref`は呼び出し側の保存場所を参照して扱います。値を読む可能性があるため、呼び出す前に変数を初期化します。`out`は呼び出し先が値を設定して返す形式で、メソッドは正常に戻るすべての経路で値を設定する必要があります。\n\n| 形式 | 呼び出し前の",
+    "sha256": {
+      "Program.cs": "384643916708dfae96030784ef09a99c4e3ce50549345a778c536490f1a3446f",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "175bdcacc16df7a2b542c1e3b0dbaa22e66cf8a12d0bf9e5c30ad5bd1e5f4b72"
+  },
+  {
+    "id": "deep-07-03",
+    "source": "samples/expanded/deep/07/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "15\n",
+    "meaning": "caller assigns returned value",
+    "kind": "csharp",
+    "teachingPath": "content/deep/07.md",
+    "teachingExcerpt": ".WriteLine(score);\n\nstatic void Increase(int value)\n{\n    value += 5;\n    Console.WriteLine(value);\n}\n```\n\n期待出力は15、次の行に10です。`void`は戻り値がないことを示します。パラメーターvalueはscoreの値10のコピーを受け取り、15へ変わりますが、呼び出し側のscoreは10のままです。変更した値を利用したいなら、戻り値で返すと分かりやすくなります。\n\n```csharp\nint score = 10;\nscore = Increase(score);\nConsole.WriteLine(score);\n\nstatic int Increase(int value)\n{\n    return value + 5;\n}\n```\n\n修正後の期待出力は15です。修正位置は戻り値の型・return・呼び出し側の代入の三か所です。変更した結果を返して明示的に受け取るため、どの変数が更新されるかを読み取りやすくなります。\n\n## 参照型でも「参照の値」がコピーされる\n\n配列は参照型です。参照とは配列の実体を指し示す値です。通常の引数ではこの参照がコピーされます。そのため要素の変更は同じ実体へ届きますが、パラメーターを別の配列へ差し替えても、呼び出し側の変数そのものは差し替わりません。\n\n```csharp\nint[] values = { 1, 2 };\nChange(values);\nConsole.WriteLine(string.Join(\",\", values));\n\nstatic void Change(int[] data)\n{\n    data[0] = 9;\n    data = new[] { 7, 8 };\n    Console.WriteLine(string.Join(\",\", data));\n}\n```\n\n期待出力は`7,8`、次の行に`9,2`です。`string.Join`は複数の値を区切り文字で結合した文字列を返します。メソッド内でdataが新しい配列を参照しても、valuesは最初の配列を参照したままです。\n\n| 時点 | values | data | 何が変わったか |\n|---|---|---|---|\n| 呼び出し前 | 配列A [1,2] | まだない | なし |\n| 呼び出し直後 | 配列A | 配列A | 参照のコピー |\n| data[0]=9 | 配列A [9,2] | 配列A [9,2] | 共有する要素 |\n| dataへnewを代入 | 配列A [9,2] | 配列B [7,8] | dataだけ差し替え |\n| 呼び出し後 | 配列A [9,2] | 利用範囲を終える | valuesはAのまま |\n\n「参照型だから自動的にref渡し」という説明は誤りです。型が値型か参照型かと、引数を値渡しするか参照渡しするかは別の軸です。Lesson 13でも同じ図を使えるよう、変数と実体を分けて描きます。\n\n## ref・out・inの選び方\n\n```csharp\nint count = 5;\nIncrease(ref count);\nConsole.WriteLine(count);\nbool success = int.TryParse(\"12\", out int parsed);\nConsole.WriteLine($\"{success}, {parsed}\");\n\nstatic void Increase(ref int value)\n{\n    value++;\n}\n```\n\n期待出力は6、次の行に`True, 12`です。`ref`は呼び出し側の保存場所を参照して扱います。値を読む可能性があるため、呼び出す前に変数を初期化します。`out`は呼び出し先が値を設定して返す形式で、メソッドは正常に戻るすべての経路で値を設定する必要があります。\n\n| 形式 | 呼び出し前の初期化 | 呼び出し先での代入 | 選ぶ場面 |\n|---|---|---|---|\n| 通常 | 値を渡すため必要 | パラメーターの再代入は呼び出し側を変えない | 原則の選択、戻り値と組み合わせる |\n| ref | 必要 | 呼び出し側の変数へ書き戻せる | 既存値を直接更新することが明確なAPI |\n| out | 不要 | 正常終了までに必ず設定 | TryParseのような追加の出力 |\n| in | 値を用意する | パラメーターへ再代入できない | 大きな値型を読み取り専用参照で受ける検討 |\n\n`in`は参照先のすべてを",
+    "sha256": {
+      "Program.cs": "7e7876ac108beb52041492ecd6ec069c918d64805e500005cd16534a8aec8fc1",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "175bdcacc16df7a2b542c1e3b0dbaa22e66cf8a12d0bf9e5c30ad5bd1e5f4b72"
+  },
+  {
+    "id": "deep-07-04",
+    "source": "samples/expanded/deep/07/example-04",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "7,8\n9,2\n",
+    "meaning": "array object mutation shared; parameter reassign local only",
+    "kind": "csharp",
+    "teachingPath": "content/deep/07.md",
+    "teachingExcerpt": "+ 5;\n}\n```\n\n修正後の期待出力は15です。修正位置は戻り値の型・return・呼び出し側の代入の三か所です。変更した結果を返して明示的に受け取るため、どの変数が更新されるかを読み取りやすくなります。\n\n## 参照型でも「参照の値」がコピーされる\n\n配列は参照型です。参照とは配列の実体を指し示す値です。通常の引数ではこの参照がコピーされます。そのため要素の変更は同じ実体へ届きますが、パラメーターを別の配列へ差し替えても、呼び出し側の変数そのものは差し替わりません。\n\n```csharp\nint[] values = { 1, 2 };\nChange(values);\nConsole.WriteLine(string.Join(\",\", values));\n\nstatic void Change(int[] data)\n{\n    data[0] = 9;\n    data = new[] { 7, 8 };\n    Console.WriteLine(string.Join(\",\", data));\n}\n```\n\n期待出力は`7,8`、次の行に`9,2`です。`string.Join`は複数の値を区切り文字で結合した文字列を返します。メソッド内でdataが新しい配列を参照しても、valuesは最初の配列を参照したままです。\n\n| 時点 | values | data | 何が変わったか |\n|---|---|---|---|\n| 呼び出し前 | 配列A [1,2] | まだない | なし |\n| 呼び出し直後 | 配列A | 配列A | 参照のコピー |\n| data[0]=9 | 配列A [9,2] | 配列A [9,2] | 共有する要素 |\n| dataへnewを代入 | 配列A [9,2] | 配列B [7,8] | dataだけ差し替え |\n| 呼び出し後 | 配列A [9,2] | 利用範囲を終える | valuesはAのまま |\n\n「参照型だから自動的にref渡し」という説明は誤りです。型が値型か参照型かと、引数を値渡しするか参照渡しするかは別の軸です。Lesson 13でも同じ図を使えるよう、変数と実体を分けて描きます。\n\n## ref・out・inの選び方\n\n```csharp\nint count = 5;\nIncrease(ref count);\nConsole.WriteLine(count);\nbool success = int.TryParse(\"12\", out int parsed);\nConsole.WriteLine($\"{success}, {parsed}\");\n\nstatic void Increase(ref int value)\n{\n    value++;\n}\n```\n\n期待出力は6、次の行に`True, 12`です。`ref`は呼び出し側の保存場所を参照して扱います。値を読む可能性があるため、呼び出す前に変数を初期化します。`out`は呼び出し先が値を設定して返す形式で、メソッドは正常に戻るすべての経路で値を設定する必要があります。\n\n| 形式 | 呼び出し前の初期化 | 呼び出し先での代入 | 選ぶ場面 |\n|---|---|---|---|\n| 通常 | 値を渡すため必要 | パラメーターの再代入は呼び出し側を変えない | 原則の選択、戻り値と組み合わせる |\n| ref | 必要 | 呼び出し側の変数へ書き戻せる | 既存値を直接更新することが明確なAPI |\n| out | 不要 | 正常終了までに必ず設定 | TryParseのような追加の出力 |\n| in | 値を用意する | パラメーターへ再代入できない | 大きな値型を読み取り専用参照で受ける検討 |\n\n`in`は参照先のすべてを深く不変にする機能ではありません。参照型のオブジェクトの内部状態まで凍結する意味ではありません。また、小さなintを何でもinにして速くなると決めつけません。複雑さと性能の効果を測り、APIの意図が伝わる選択をします。\n\n## 実用例：税抜き合計をメソッドへ分離する\n\n```csharp\nint[] prices = { 120, 250, 180 };\nint subtotal = Sum(prices);\nint discount = 50;\nint payment = ApplyDiscount(subtotal, discount);\nConsole.WriteLine($\"小計={subtotal}, 支払={payment}\");\n\nstatic int Sum(int[] values)\n{\n    int total = 0;\n    foreach (int value in values) total += value;\n    return total;\n}\n\nstatic i",
+    "sha256": {
+      "Program.cs": "4eeb00d115c23e1da84fb23cf40f4289ff30c42daeb317044e1d01e0afd0cfba",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "175bdcacc16df7a2b542c1e3b0dbaa22e66cf8a12d0bf9e5c30ad5bd1e5f4b72"
+  },
+  {
+    "id": "deep-07-05",
+    "source": "samples/expanded/deep/07/example-05",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "6\nTrue, 12\n",
+    "meaning": "ref increments caller;out parses12",
+    "kind": "csharp",
+    "teachingPath": "content/deep/07.md",
+    "teachingExcerpt": "配列A [9,2] | 共有する要素 |\n| dataへnewを代入 | 配列A [9,2] | 配列B [7,8] | dataだけ差し替え |\n| 呼び出し後 | 配列A [9,2] | 利用範囲を終える | valuesはAのまま |\n\n「参照型だから自動的にref渡し」という説明は誤りです。型が値型か参照型かと、引数を値渡しするか参照渡しするかは別の軸です。Lesson 13でも同じ図を使えるよう、変数と実体を分けて描きます。\n\n## ref・out・inの選び方\n\n```csharp\nint count = 5;\nIncrease(ref count);\nConsole.WriteLine(count);\nbool success = int.TryParse(\"12\", out int parsed);\nConsole.WriteLine($\"{success}, {parsed}\");\n\nstatic void Increase(ref int value)\n{\n    value++;\n}\n```\n\n期待出力は6、次の行に`True, 12`です。`ref`は呼び出し側の保存場所を参照して扱います。値を読む可能性があるため、呼び出す前に変数を初期化します。`out`は呼び出し先が値を設定して返す形式で、メソッドは正常に戻るすべての経路で値を設定する必要があります。\n\n| 形式 | 呼び出し前の初期化 | 呼び出し先での代入 | 選ぶ場面 |\n|---|---|---|---|\n| 通常 | 値を渡すため必要 | パラメーターの再代入は呼び出し側を変えない | 原則の選択、戻り値と組み合わせる |\n| ref | 必要 | 呼び出し側の変数へ書き戻せる | 既存値を直接更新することが明確なAPI |\n| out | 不要 | 正常終了までに必ず設定 | TryParseのような追加の出力 |\n| in | 値を用意する | パラメーターへ再代入できない | 大きな値型を読み取り専用参照で受ける検討 |\n\n`in`は参照先のすべてを深く不変にする機能ではありません。参照型のオブジェクトの内部状態まで凍結する意味ではありません。また、小さなintを何でもinにして速くなると決めつけません。複雑さと性能の効果を測り、APIの意図が伝わる選択をします。\n\n## 実用例：税抜き合計をメソッドへ分離する\n\n```csharp\nint[] prices = { 120, 250, 180 };\nint subtotal = Sum(prices);\nint discount = 50;\nint payment = ApplyDiscount(subtotal, discount);\nConsole.WriteLine($\"小計={subtotal}, 支払={payment}\");\n\nstatic int Sum(int[] values)\n{\n    int total = 0;\n    foreach (int value in values) total += value;\n    return total;\n}\n\nstatic int ApplyDiscount(int total, int discount)\n{\n    int result = total - discount;\n    return result < 0 ? 0 : result;\n}\n```\n\n期待出力は`小計=550, 支払=500`です。`?:`は条件で二つの値を選ぶ演算子で、resultが負なら0、そうでなければresultを返します。入力配列を合計する役割と、割引を適用する役割を分けました。画面へ表示する処理は入口に残しています。\n\nこの分離ならSumへ空配列を渡したときに0、ApplyDiscountへ100と150を渡したときに0、という小さな検証ができます。一つのメソッドで入力・計算・表示をすべて行うと、自動的に検証するためにも入力や画面が必要になります。副作用の少ない計算を分けることがLesson 26のテストへつながります。\n\n## 戻り値の捨て忘れ・引数の順番\n\n計算メソッドを呼んでも、戻り値を使わなければ呼び出し側の変数は更新されません。`ApplyDiscount(subtotal, 50);`と書くだけでsubtotalが減るとは限りません。`int payment = ApplyDiscount(subtotal, 50);`と受け取り、元値と結果を分けます。\n\n同じ型の引数が複数あると順番を逆にしてもコンパイルできることがあります。名前付き引数`ApplyDiscount(total: 550, discount: 50)`なら役割が明確になります。省略可能引数は呼び出しを短くできますが、どの値が既定で入るかを理解して使います。オ",
+    "sha256": {
+      "Program.cs": "97b13ac1fe97a3b48be894ea09259c69e1126cafd2f3cdd2a7c28d279f1b6ef7",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "175bdcacc16df7a2b542c1e3b0dbaa22e66cf8a12d0bf9e5c30ad5bd1e5f4b72"
+  },
+  {
+    "id": "deep-07-06",
+    "source": "samples/expanded/deep/07/example-06",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "小計=550, 支払=500\n",
+    "meaning": "sum120+250+180=550 discount50",
+    "kind": "csharp",
+    "teachingPath": "content/deep/07.md",
+    "teachingExcerpt": " 正常終了までに必ず設定 | TryParseのような追加の出力 |\n| in | 値を用意する | パラメーターへ再代入できない | 大きな値型を読み取り専用参照で受ける検討 |\n\n`in`は参照先のすべてを深く不変にする機能ではありません。参照型のオブジェクトの内部状態まで凍結する意味ではありません。また、小さなintを何でもinにして速くなると決めつけません。複雑さと性能の効果を測り、APIの意図が伝わる選択をします。\n\n## 実用例：税抜き合計をメソッドへ分離する\n\n```csharp\nint[] prices = { 120, 250, 180 };\nint subtotal = Sum(prices);\nint discount = 50;\nint payment = ApplyDiscount(subtotal, discount);\nConsole.WriteLine($\"小計={subtotal}, 支払={payment}\");\n\nstatic int Sum(int[] values)\n{\n    int total = 0;\n    foreach (int value in values) total += value;\n    return total;\n}\n\nstatic int ApplyDiscount(int total, int discount)\n{\n    int result = total - discount;\n    return result < 0 ? 0 : result;\n}\n```\n\n期待出力は`小計=550, 支払=500`です。`?:`は条件で二つの値を選ぶ演算子で、resultが負なら0、そうでなければresultを返します。入力配列を合計する役割と、割引を適用する役割を分けました。画面へ表示する処理は入口に残しています。\n\nこの分離ならSumへ空配列を渡したときに0、ApplyDiscountへ100と150を渡したときに0、という小さな検証ができます。一つのメソッドで入力・計算・表示をすべて行うと、自動的に検証するためにも入力や画面が必要になります。副作用の少ない計算を分けることがLesson 26のテストへつながります。\n\n## 戻り値の捨て忘れ・引数の順番\n\n計算メソッドを呼んでも、戻り値を使わなければ呼び出し側の変数は更新されません。`ApplyDiscount(subtotal, 50);`と書くだけでsubtotalが減るとは限りません。`int payment = ApplyDiscount(subtotal, 50);`と受け取り、元値と結果を分けます。\n\n同じ型の引数が複数あると順番を逆にしてもコンパイルできることがあります。名前付き引数`ApplyDiscount(total: 550, discount: 50)`なら役割が明確になります。省略可能引数は呼び出しを短くできますが、どの値が既定で入るかを理解して使います。オーバーロードは同じ名前でパラメーターの組み合わせが異なるメソッドを定義する仕組みで、戻り値の型だけを変えて区別することはできません。\n\n## 段階別の練習\n\n基礎は`Square(int value)`で二乗を返す課題です。入力4なら16です。解答例は`static int Square(int value) => value * value;`で、呼び出し側が戻り値を表示します。メソッド内で表示するだけの解答は「返す」という要件と異なります。\n\n標準は配列の60以上の件数を返すメソッドです。`{40,60,80}`なら2、空配列なら0です。前のレッスンのループをメソッド内へ移し、引数の配列を変更せず、件数をreturnします。入力と出力を日本語で説明してからコードを書きます。\n\n応用は、通常の引数版とref版の更新の違いを説明する課題です。開始値10へ5を加え、通常版は戻り値を受け取らなければ10、ref版は15になります。よくある誤解は「staticだから共有される」です。staticと参照渡しは別で、どの保存場所へ書くかを根拠に説明します。\n\n## 学習の接続\n\nここでは値と参照をどう受け渡すかを学びました。次のLesson 08では、受け取った参照が「何も指していない」場合を扱います。メソッドの契約としてnullを許すか、許すならどう戻るかを決めることが、呼び出し側と実装側の双方を読みやすくします。\n",
+    "sha256": {
+      "Program.cs": "0519c3f44b92e1f2e29e42f4fe3f78a13a5597bc34ad4858c6d3b42a32a93a0f",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "175bdcacc16df7a2b542c1e3b0dbaa22e66cf8a12d0bf9e5c30ad5bd1e5f4b72"
+  },
+  {
+    "id": "deep-08-01",
+    "source": "samples/expanded/deep/08/example-01",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "名前がありません\n",
+    "meaning": "null branch prevents member access",
+    "kind": "csharp",
+    "teachingPath": "content/deep/08.md",
+    "teachingExcerpt": "路や代替値を決める |\n| `int` | 整数値 | 0も有効な整数 |\n| `int?` | 値なし、または整数 | `HasValue`やパターン、`??`を使う |\n\n0を「値がない」の代わりに使うと、無料価格0や点数0と区別できないことがあります。`int?`なら値なしと0を別の状態として保持できます。ただしnullを認めればよいのではなく、その状態が業務として何を意味するかも定義します。\n\n## 最小例：分岐で安全な経路を作る\n\n```csharp\n#nullable enable\nstring? name = null;\nif (name is null)\n{\n    Console.WriteLine(\"名前がありません\");\n}\nelse\n{\n    Console.WriteLine(name.Length);\n}\n```\n\n期待出力は`名前がありません`です。`is null`はnullのパターン判定です。else側ではnameがnullでないことが分かるため、コンパイラーもその経路のLengthアクセスを安全と判断できます。このように各経路でnullの可能性を追うことをフロー解析と呼びます。\n\n| 入力 | 判定 | 通る経路 | 出力 |\n|---|---|---|---|\n| null | true | 最初のブロック | 名前がありません |\n| `\"\"` | false | else | 0 |\n| `\"Aoi\"` | false | else | 3 |\n\n同じ変数でも、ifの前とelseの中では分かっている情報が違います。いったんnullを除外しても、後でその変数へnullを再代入すれば状況は変わります。古い確認を根拠に、その後すべてのアクセスが安全だとは判断しません。\n\n## ?. と ?? を別々に読む\n\nnull条件演算子`?.`は、左側がnullなら右のメンバーへアクセスせずnullを返します。null合体演算子`??`は、左の値がnullの場合に右の代替値を使います。この二つを組み合わせると、値なしの扱いを小さな式で書けます。\n\n```csharp\nstring? name = null;\nint? length = name?.Length;\nint displayLength = length ?? 0;\nstring displayName = name ?? \"未登録\";\nConsole.WriteLine(length.HasValue);\nConsole.WriteLine(displayLength);\nConsole.WriteLine(displayName);\n```\n\n期待出力はFalse、0、未登録です。通常の`Length`はintですが、`?.`で呼ばれなかった場合も表すため、この式の結果はint?になります。`HasValue`はNullable値型に実際の値があるかを読むプロパティです。\n\n| 時点 | name | length | displayLength |\n|---|---|---|---|\n| 初期化 | null | 未宣言 | 未宣言 |\n| `name?.Length` | null | null | 未宣言 |\n| `length ?? 0` | null | nullのまま | 0 |\n\n`??`は左の変数を自動的に書き換えません。代入もしたい場合の`??=`は別の演算子です。たとえば`name ??= \"未登録\";`ならnameがnullのときだけ代替値を代入します。\n\n空文字を「未登録」にしたいなら`??`だけでは足りません。`\"\"`はnullではないのでそのまま返ります。`string.IsNullOrWhiteSpace(name)`はnull・空文字・空白だけをまとめて調べるメソッドです。これらを同じ扱いにするかどうかは入力仕様で決めます。\n\n## 実用例：表示名の正規化\n\n正規化とは、複数の表記を扱いやすい形へ揃えることです。この例では前後の空白を除き、null・空文字・空白だけは`匿名`へ統一します。元の入力を壊さず、表示用の結果を戻します。\n\n```csharp\nstring?[] inputs = { null, \"\", \"   \", \"  Aoi  \" };\nforeach (string? input in inputs)\n{\n    Console.WriteLine(GetDisplayName(input));\n}\n\nstatic string GetDisplayName(string? input)\n{\n    if (string.IsNu",
+    "sha256": {
+      "Program.cs": "f230c7380b138040076da367be824ef226e96acba972c80c33870f368f141db6",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "69051ffa13ad5ad29f7ebbfbfefaccb69ed742a287c34e623f6a4467d4435b70"
+  },
+  {
+    "id": "deep-08-02",
+    "source": "samples/expanded/deep/08/example-02",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "False\n0\n未登録\n",
+    "meaning": "conditional access produces nullable without value, coalescing fallbacks",
+    "kind": "csharp",
+    "teachingPath": "content/deep/08.md",
+    "teachingExcerpt": "ifの前とelseの中では分かっている情報が違います。いったんnullを除外しても、後でその変数へnullを再代入すれば状況は変わります。古い確認を根拠に、その後すべてのアクセスが安全だとは判断しません。\n\n## ?. と ?? を別々に読む\n\nnull条件演算子`?.`は、左側がnullなら右のメンバーへアクセスせずnullを返します。null合体演算子`??`は、左の値がnullの場合に右の代替値を使います。この二つを組み合わせると、値なしの扱いを小さな式で書けます。\n\n```csharp\nstring? name = null;\nint? length = name?.Length;\nint displayLength = length ?? 0;\nstring displayName = name ?? \"未登録\";\nConsole.WriteLine(length.HasValue);\nConsole.WriteLine(displayLength);\nConsole.WriteLine(displayName);\n```\n\n期待出力はFalse、0、未登録です。通常の`Length`はintですが、`?.`で呼ばれなかった場合も表すため、この式の結果はint?になります。`HasValue`はNullable値型に実際の値があるかを読むプロパティです。\n\n| 時点 | name | length | displayLength |\n|---|---|---|---|\n| 初期化 | null | 未宣言 | 未宣言 |\n| `name?.Length` | null | null | 未宣言 |\n| `length ?? 0` | null | nullのまま | 0 |\n\n`??`は左の変数を自動的に書き換えません。代入もしたい場合の`??=`は別の演算子です。たとえば`name ??= \"未登録\";`ならnameがnullのときだけ代替値を代入します。\n\n空文字を「未登録」にしたいなら`??`だけでは足りません。`\"\"`はnullではないのでそのまま返ります。`string.IsNullOrWhiteSpace(name)`はnull・空文字・空白だけをまとめて調べるメソッドです。これらを同じ扱いにするかどうかは入力仕様で決めます。\n\n## 実用例：表示名の正規化\n\n正規化とは、複数の表記を扱いやすい形へ揃えることです。この例では前後の空白を除き、null・空文字・空白だけは`匿名`へ統一します。元の入力を壊さず、表示用の結果を戻します。\n\n```csharp\nstring?[] inputs = { null, \"\", \"   \", \"  Aoi  \" };\nforeach (string? input in inputs)\n{\n    Console.WriteLine(GetDisplayName(input));\n}\n\nstatic string GetDisplayName(string? input)\n{\n    if (string.IsNullOrWhiteSpace(input))\n    {\n        return \"匿名\";\n    }\n    return input.Trim();\n}\n```\n\n期待出力は匿名、匿名、匿名、Aoiです。`string?[]`はnullになり得る文字列を要素に持つ配列です。メソッドの戻り値はstringなので、このメソッドはnullではなく表示可能な文字列を返す契約になります。引数はstring?なので、呼び出し側は値がない場合も渡せます。\n\n判定を先に行ってreturnする書き方をガード節と呼びます。不正や特別な条件を早めに処理して戻る方法です。残りの本体では有効な入力に集中できます。標準ライブラリのnull解析用の注釈により、`IsNullOrWhiteSpace`がfalseだった経路のinputはnullでないと解析できます。\n\n## 間違い：!で問題を解決したつもりになる\n\n```csharp-error\n#nullable enable\nstring? name = null;\nConsole.WriteLine(name!.Length);\n```\n\n`!`はここではnull抑制演算子で、コンパイラーへnullではないと扱うよう伝えます。値を生成したり、nullを空文字へ変換したり、実行時の検査を追加したりしません。そのため上のコードは警告を抑えられても、実行時にはNullReferenceExceptionが起こります。\n\n修正位置はLengthを読む前の処理です。値なしを0文字として表示する仕様なら次のように書きます。\n\n```csharp\nstring? name = null;\nConsole.WriteLine(name?.Length ?? 0);\n```\n",
+    "sha256": {
+      "Program.cs": "124abb8812d8b64f8674584ce182a96a8861f7aa88cc12fc06870177c20e3a54",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "69051ffa13ad5ad29f7ebbfbfefaccb69ed742a287c34e623f6a4467d4435b70"
+  },
+  {
+    "id": "deep-08-03",
+    "source": "samples/expanded/deep/08/example-03",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "匿名\n匿名\n匿名\nAoi\n",
+    "meaning": "null empty whitespace fallback; trim valid name",
+    "kind": "csharp",
+    "teachingPath": "content/deep/08.md",
+    "teachingExcerpt": "」にしたいなら`??`だけでは足りません。`\"\"`はnullではないのでそのまま返ります。`string.IsNullOrWhiteSpace(name)`はnull・空文字・空白だけをまとめて調べるメソッドです。これらを同じ扱いにするかどうかは入力仕様で決めます。\n\n## 実用例：表示名の正規化\n\n正規化とは、複数の表記を扱いやすい形へ揃えることです。この例では前後の空白を除き、null・空文字・空白だけは`匿名`へ統一します。元の入力を壊さず、表示用の結果を戻します。\n\n```csharp\nstring?[] inputs = { null, \"\", \"   \", \"  Aoi  \" };\nforeach (string? input in inputs)\n{\n    Console.WriteLine(GetDisplayName(input));\n}\n\nstatic string GetDisplayName(string? input)\n{\n    if (string.IsNullOrWhiteSpace(input))\n    {\n        return \"匿名\";\n    }\n    return input.Trim();\n}\n```\n\n期待出力は匿名、匿名、匿名、Aoiです。`string?[]`はnullになり得る文字列を要素に持つ配列です。メソッドの戻り値はstringなので、このメソッドはnullではなく表示可能な文字列を返す契約になります。引数はstring?なので、呼び出し側は値がない場合も渡せます。\n\n判定を先に行ってreturnする書き方をガード節と呼びます。不正や特別な条件を早めに処理して戻る方法です。残りの本体では有効な入力に集中できます。標準ライブラリのnull解析用の注釈により、`IsNullOrWhiteSpace`がfalseだった経路のinputはnullでないと解析できます。\n\n## 間違い：!で問題を解決したつもりになる\n\n```csharp-error\n#nullable enable\nstring? name = null;\nConsole.WriteLine(name!.Length);\n```\n\n`!`はここではnull抑制演算子で、コンパイラーへnullではないと扱うよう伝えます。値を生成したり、nullを空文字へ変換したり、実行時の検査を追加したりしません。そのため上のコードは警告を抑えられても、実行時にはNullReferenceExceptionが起こります。\n\n修正位置はLengthを読む前の処理です。値なしを0文字として表示する仕様なら次のように書きます。\n\n```csharp\nstring? name = null;\nConsole.WriteLine(name?.Length ?? 0);\n```\n\n期待出力は0です。名前が必須の処理なら0を補うのではなく、入力を要求するか、呼び出しを拒否する必要があります。正しい修正はnullを隠すことではなく、「ない場合に何をすべきか」を決めることです。\n\n## 間違い：Nullable値型のValueを無条件に読む\n\n```csharp-error\nint? score = null;\nConsole.WriteLine(score.Value);\n```\n\nこれは参照がnullである例とは違い、値を持たないNullableからValueを取得しようとしています。実行時には通常`InvalidOperationException`になります。例外の型まで同じだと決めつけず、対象が参照型なのかNullable値型なのかを確認します。\n\n```csharp\nint? score = null;\nif (score is int actualScore)\n{\n    Console.WriteLine(actualScore);\n}\nelse\n{\n    Console.WriteLine(\"未受験\");\n}\n```\n\n期待出力は`未受験`です。`is int actualScore`は実際の整数値があるときに、その値をactualScoreへ受け取るパターンです。score=0なら0を表示できるので、未受験と0点を区別できます。別解はHasValueを確認してからValueを読む方法です。\n\n## null対策を選ぶ基準\n\n| 方法 | 選ぶ場面 | 避けたい使い方 |\n|---|---|---|\n| ガード節 | 値なしでは本体を進められない | 何も説明せず黙って失敗を隠す |\n| `?.` | 値があればアクセスする | 必須処理の未実行を見逃す |\n| `??` | 適切な代替値が決まっている | 値なしと本当の0を不用意に同一視 |\n| nullable注釈 | APIの契約を示す | 外部データの実行時検証の代用 |\n| `!` | 他の仕組みで非nullを保証でき、その根拠がある | 警告を一括で消すために乱用 |\n\nGCは不要なオブジェクトのメモリを再利用",
+    "sha256": {
+      "Program.cs": "698a817a1cb483d3aa8bdebb2916a01ef2ba6c8fef84bbd53047cd04d6e4553b",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "69051ffa13ad5ad29f7ebbfbfefaccb69ed742a287c34e623f6a4467d4435b70"
+  },
+  {
+    "id": "deep-08-05",
+    "source": "samples/expanded/deep/08/example-05",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "0\n",
+    "meaning": "null conditional+fallback0",
+    "kind": "csharp",
+    "teachingPath": "content/deep/08.md",
+    "teachingExcerpt": "me = null;\nConsole.WriteLine(name!.Length);\n```\n\n`!`はここではnull抑制演算子で、コンパイラーへnullではないと扱うよう伝えます。値を生成したり、nullを空文字へ変換したり、実行時の検査を追加したりしません。そのため上のコードは警告を抑えられても、実行時にはNullReferenceExceptionが起こります。\n\n修正位置はLengthを読む前の処理です。値なしを0文字として表示する仕様なら次のように書きます。\n\n```csharp\nstring? name = null;\nConsole.WriteLine(name?.Length ?? 0);\n```\n\n期待出力は0です。名前が必須の処理なら0を補うのではなく、入力を要求するか、呼び出しを拒否する必要があります。正しい修正はnullを隠すことではなく、「ない場合に何をすべきか」を決めることです。\n\n## 間違い：Nullable値型のValueを無条件に読む\n\n```csharp-error\nint? score = null;\nConsole.WriteLine(score.Value);\n```\n\nこれは参照がnullである例とは違い、値を持たないNullableからValueを取得しようとしています。実行時には通常`InvalidOperationException`になります。例外の型まで同じだと決めつけず、対象が参照型なのかNullable値型なのかを確認します。\n\n```csharp\nint? score = null;\nif (score is int actualScore)\n{\n    Console.WriteLine(actualScore);\n}\nelse\n{\n    Console.WriteLine(\"未受験\");\n}\n```\n\n期待出力は`未受験`です。`is int actualScore`は実際の整数値があるときに、その値をactualScoreへ受け取るパターンです。score=0なら0を表示できるので、未受験と0点を区別できます。別解はHasValueを確認してからValueを読む方法です。\n\n## null対策を選ぶ基準\n\n| 方法 | 選ぶ場面 | 避けたい使い方 |\n|---|---|---|\n| ガード節 | 値なしでは本体を進められない | 何も説明せず黙って失敗を隠す |\n| `?.` | 値があればアクセスする | 必須処理の未実行を見逃す |\n| `??` | 適切な代替値が決まっている | 値なしと本当の0を不用意に同一視 |\n| nullable注釈 | APIの契約を示す | 外部データの実行時検証の代用 |\n| `!` | 他の仕組みで非nullを保証でき、その根拠がある | 警告を一括で消すために乱用 |\n\nGCは不要なオブジェクトのメモリを再利用可能にする仕組みです。変数へnullを代入すると、その変数からは元の実体へ到達できなくなります。しかし別の参照が残っていれば、実体はそこから利用できます。nullを代入した瞬間にオブジェクトが必ず削除されるわけではありません。これはLesson 13の参照共有・GCへつながる理解です。\n\n## 段階別の練習\n\n基礎課題はnull・空文字・`\"0\"`を区別することです。`name?.Length ?? -1`なら順に-1・0・1になります。-1はこの練習で値なしを識別する表示上の値であり、文字列の実際の長さではありません。\n\n標準課題は未受験を表す`int? score`から表示用の文字列を返すことです。nullなら`未受験`、0なら`0点`、80なら`80点`が要件です。\n\n```csharp\nConsole.WriteLine(FormatScore(null));\nConsole.WriteLine(FormatScore(0));\nConsole.WriteLine(FormatScore(80));\n\nstatic string FormatScore(int? score)\n{\n    return score is int value ? $\"{value}点\" : \"未受験\";\n}\n```\n\n応用課題は表示名の正規化へ最大20文字という教材上の制約を加えることです。この段階ではLengthによるUTF-16コード単位数を基準とする、と要件へ明示します。null確認前にLengthを読むと本末転倒です。まず正規化",
+    "sha256": {
+      "Program.cs": "496955492fea7127156c4353bd4ca7f6bdfd84171fa90d453d40d767ff361bab",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "69051ffa13ad5ad29f7ebbfbfefaccb69ed742a287c34e623f6a4467d4435b70"
+  },
+  {
+    "id": "deep-08-07",
+    "source": "samples/expanded/deep/08/example-07",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "未受験\n",
+    "meaning": "nullable score null does not match int pattern",
+    "kind": "csharp",
+    "teachingPath": "content/deep/08.md",
+    "teachingExcerpt": "違い：Nullable値型のValueを無条件に読む\n\n```csharp-error\nint? score = null;\nConsole.WriteLine(score.Value);\n```\n\nこれは参照がnullである例とは違い、値を持たないNullableからValueを取得しようとしています。実行時には通常`InvalidOperationException`になります。例外の型まで同じだと決めつけず、対象が参照型なのかNullable値型なのかを確認します。\n\n```csharp\nint? score = null;\nif (score is int actualScore)\n{\n    Console.WriteLine(actualScore);\n}\nelse\n{\n    Console.WriteLine(\"未受験\");\n}\n```\n\n期待出力は`未受験`です。`is int actualScore`は実際の整数値があるときに、その値をactualScoreへ受け取るパターンです。score=0なら0を表示できるので、未受験と0点を区別できます。別解はHasValueを確認してからValueを読む方法です。\n\n## null対策を選ぶ基準\n\n| 方法 | 選ぶ場面 | 避けたい使い方 |\n|---|---|---|\n| ガード節 | 値なしでは本体を進められない | 何も説明せず黙って失敗を隠す |\n| `?.` | 値があればアクセスする | 必須処理の未実行を見逃す |\n| `??` | 適切な代替値が決まっている | 値なしと本当の0を不用意に同一視 |\n| nullable注釈 | APIの契約を示す | 外部データの実行時検証の代用 |\n| `!` | 他の仕組みで非nullを保証でき、その根拠がある | 警告を一括で消すために乱用 |\n\nGCは不要なオブジェクトのメモリを再利用可能にする仕組みです。変数へnullを代入すると、その変数からは元の実体へ到達できなくなります。しかし別の参照が残っていれば、実体はそこから利用できます。nullを代入した瞬間にオブジェクトが必ず削除されるわけではありません。これはLesson 13の参照共有・GCへつながる理解です。\n\n## 段階別の練習\n\n基礎課題はnull・空文字・`\"0\"`を区別することです。`name?.Length ?? -1`なら順に-1・0・1になります。-1はこの練習で値なしを識別する表示上の値であり、文字列の実際の長さではありません。\n\n標準課題は未受験を表す`int? score`から表示用の文字列を返すことです。nullなら`未受験`、0なら`0点`、80なら`80点`が要件です。\n\n```csharp\nConsole.WriteLine(FormatScore(null));\nConsole.WriteLine(FormatScore(0));\nConsole.WriteLine(FormatScore(80));\n\nstatic string FormatScore(int? score)\n{\n    return score is int value ? $\"{value}点\" : \"未受験\";\n}\n```\n\n応用課題は表示名の正規化へ最大20文字という教材上の制約を加えることです。この段階ではLengthによるUTF-16コード単位数を基準とする、と要件へ明示します。null確認前にLengthを読むと本末転倒です。まず正規化し、返された非nullの文字列へ長さの規則を適用します。ユーザーが見る文字数で制限する場合は別の文字の数え方を検討します。\n\n## 学習の接続\n\n「nullかどうか」の分岐は、ただ例外を防ぐ小技ではなく、データの状態とメソッドの契約を表す手段です。次のLesson 09ではクラスへ名前・状態・操作をまとめ、生成時点で必要な値が揃うように設計します。最初から有効なオブジェクトを作ることが、後からnullチェックを増やすだけでない対策になります。\n",
+    "sha256": {
+      "Program.cs": "10a946279d9e8e7bb96dae6b3842ae23d169717760f44cfaf106778258795024",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "69051ffa13ad5ad29f7ebbfbfefaccb69ed742a287c34e623f6a4467d4435b70"
+  },
+  {
+    "id": "deep-08-08",
+    "source": "samples/expanded/deep/08/example-08",
+    "project": "Example.csproj",
+    "args": [],
+    "exitCode": 0,
+    "expected": "未受験\n0点\n80点\n",
+    "meaning": "null distinguished from valid0 and80",
+    "kind": "csharp",
+    "teachingPath": "content/deep/08.md",
+    "teachingExcerpt": "るわけではありません。これはLesson 13の参照共有・GCへつながる理解です。\n\n## 段階別の練習\n\n基礎課題はnull・空文字・`\"0\"`を区別することです。`name?.Length ?? -1`なら順に-1・0・1になります。-1はこの練習で値なしを識別する表示上の値であり、文字列の実際の長さではありません。\n\n標準課題は未受験を表す`int? score`から表示用の文字列を返すことです。nullなら`未受験`、0なら`0点`、80なら`80点`が要件です。\n\n```csharp\nConsole.WriteLine(FormatScore(null));\nConsole.WriteLine(FormatScore(0));\nConsole.WriteLine(FormatScore(80));\n\nstatic string FormatScore(int? score)\n{\n    return score is int value ? $\"{value}点\" : \"未受験\";\n}\n```\n\n応用課題は表示名の正規化へ最大20文字という教材上の制約を加えることです。この段階ではLengthによるUTF-16コード単位数を基準とする、と要件へ明示します。null確認前にLengthを読むと本末転倒です。まず正規化し、返された非nullの文字列へ長さの規則を適用します。ユーザーが見る文字数で制限する場合は別の文字の数え方を検討します。\n\n## 学習の接続\n\n「nullかどうか」の分岐は、ただ例外を防ぐ小技ではなく、データの状態とメソッドの契約を表す手段です。次のLesson 09ではクラスへ名前・状態・操作をまとめ、生成時点で必要な値が揃うように設計します。最初から有効なオブジェクトを作ることが、後からnullチェックを増やすだけでない対策になります。\n",
+    "sha256": {
+      "Program.cs": "63afec5a88bc1eddb739d76e5fab6de001ac2069cc35b7bb9251051d4ef2dd06",
+      "Example.csproj": "1aa95a0b119c77e386ec424a9914c5bc090f4f64c6a26692b8b7695916ff1e81"
+    },
+    "teachingSha256": "69051ffa13ad5ad29f7ebbfbfefaccb69ed742a287c34e623f6a4467d4435b70"
+  }
+]

@@ -3,7 +3,7 @@
 Updated: 2026-10-02。Current: CS07（C#実測検証）。
 
 1. `docs/validation/2026-10-01-dotnet/README.md`で固定ソースと実測範囲を確認。
-2. 既存Console残り193件（普通191＋入力1＋ファイル1）について、対応本文と既存証拠を読み、意味的期待値を用意して照合。受入済みバッチを新規実績として再実行しない。入力・ファイル操作例は専用一時領域。意図的エラー・部分例を正常実行扱いしない。
+2. 既存Console残り146件について、対応本文と既存証拠を読み意味的期待値を用意して照合。元教材35件の選定意味的検証済み。受入済みバッチを新規実績として再実行しない。入力/ファイルは専用一時領域、エラー/部分例は正常例と分ける。
 3. 教材UIの実HTTP/HTTPS・永続保存・サブパスを検査。Safari/iPhone/iPad実機は利用可能な環境で確認。
 
 300プロジェクトのビルド、追加Console62件の全文出力照合、Web10例31リクエストは完了済み。SDK10.0.401の既存Docker imageを利用可能。専用検証コンテナーは終了済み。教材コード・生成物・main・公開環境は今回変更していない。
@@ -23,3 +23,5 @@ Updated: 2026-10-02。Current: CS07（C#実測検証）。
 2026-10-02-semantics-batch6: cumulative originals35/35, existing Console0/191; remaining0 originals +191 existing Console. Evidence: `docs/validation/2026-10-02-semantics-batch6/README.md`. CS07 IN_PROGRESS; task container removed.
 
 Inventory correction: expanded201 projects =8Web +193Console (191 ordinary csharp +1 csharp-input deep-04-03 +1 csharp-file deep-21-03). Earlier191 figures exclude these2 input/file examples; both remain in semantic scope. Current remaining193 Console total, not191.
+
+2026-10-02-existing-console-early: existing Console47/193 PASS, remaining146; originals35/35 selected contracts covered. Evidence: `docs/validation/2026-10-02-existing-console-early/README.md`. CS07 IN_PROGRESS.

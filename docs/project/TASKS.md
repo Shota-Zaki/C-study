@@ -5,7 +5,7 @@ Updated: 2026-10-02。古いCS02/CS03時点のcheckpointは`docs/archive/2026-10
 |Task|Status|実績・残件|
 |---|---|---|
 |教材/UI5.1・静的公開|完了履歴|root TASKS / AI_WORK_STATEの2026-09実績を参照。今回再公開していない|
-|CS07 C#実測検証|IN_PROGRESS|300/300ビルド、追加Console62/62出力一致、Web10例31HTTP検査成功。元教材35/35件の選定意味的検証PASS。既存Console0/193件PASS。残り元教材0件・既存Console193件。供給入力/選定HTTPシナリオの検証で全分岐保証ではない|
+|CS07 C#実測検証|IN_PROGRESS|300/300ビルド、追加Console62/62出力一致、Web10例31HTTP検査成功。元教材35/35件の選定意味的検証PASS。既存Console47/193件PASS、残り146件。供給入力/選定HTTP検証で全分岐保証ではない|
 |実オリジンUI E2E|TODO|HTTP/HTTPSナビゲーション、永続保存、サブパス、PC/Safari/iPhone/iPad|
 |ブラウザー内C#ランナー|DEFERRED|配信サイズ・隔離・停止・メモリ制約の検討が必要。未搭載|
 |CS11 Rules全文同期|DEFERRED|既存RULES_SOURCEの未同期事項を維持|
@@ -25,3 +25,5 @@ Evidence: `docs/validation/2026-10-01-dotnet/README.md`。コンパイル成功�
 2026-10-02-semantics-batch6: cumulative originals35/35, existing Console0/191; remaining0 originals +191 existing Console. Evidence: `docs/validation/2026-10-02-semantics-batch6/README.md`. CS07 IN_PROGRESS; task container removed.
 
 Inventory correction: expanded201 projects =8Web +193Console (191 ordinary csharp +1 csharp-input deep-04-03 +1 csharp-file deep-21-03). Earlier191 figures exclude these2 input/file examples; both remain in semantic scope. Current remaining193 Console total, not191.
+
+2026-10-02-existing-console-early: existing Console47/193 PASS, remaining146; originals35/35 selected contracts covered. Evidence: `docs/validation/2026-10-02-existing-console-early/README.md`. CS07 IN_PROGRESS.

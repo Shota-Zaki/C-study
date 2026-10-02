@@ -1,0 +1,1992 @@
+{
+  "sourceSHA": "5aa116852eee28c046356eeb8e751796857db908",
+  "image": "sha256:35d40304542c8689331f8cab17c65926cdf48fe711e289321d71924b230a7d29",
+  "lifecycle": {
+    "create": {
+      "command": [
+        "docker",
+        "run",
+        "-d",
+        "--pull=never",
+        "--name",
+        "cstudy-task6-2026-10-02-existing-console-early",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "2g",
+        "sha256:35d40304542c8689331f8cab17c65926cdf48fe711e289321d71924b230a7d29",
+        "sleep",
+        "900"
+      ],
+      "exitCode": 0,
+      "stdout": "80f96e912597d9cd45dbd2a26733171f6dc4d13c3260de1edad2461ef9fcf551\n",
+      "stderr": ""
+    },
+    "copy": {
+      "command": [
+        "docker",
+        "cp",
+        "/var/folders/ct/75ylq_m57wn16_6fm_0zznlm0000gn/T/cstudy-private-t4qc7qbl/.",
+        "cstudy-task6-2026-10-02-existing-console-early:/verify"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "sdk": {
+      "command": [
+        "docker",
+        "exec",
+        "cstudy-task6-2026-10-02-existing-console-early",
+        "dotnet",
+        "--info"
+      ],
+      "exitCode": 0,
+      "stdout": ".NET SDK:\n Version:           10.0.401\n Commit:            e34a38d2ae\n Workload version:  10.0.400-manifests.63b36e85\n MSBuild version:   18.9.11+e34a38d2a\n\nRuntime Environment:\n OS Name:     ubuntu\n OS Version:  24.04\n OS Platform: Linux\n RID:         linux-arm64\n Base Path:   /usr/share/dotnet/sdk/10.0.401/\n\n.NET workloads installed:\nThere are no installed workloads to display.\nConfigured to use workload sets when installing new manifests.\nNo workload sets are installed. Run \"dotnet workload restore\" to install a workload set.\n\nHost:\n  Version:      10.0.12\n  Architecture: arm64\n  Commit:       95017c711e\n\n.NET SDKs installed:\n  10.0.401 [/usr/share/dotnet/sdk]\n\n.NET runtimes installed:\n  Microsoft.AspNetCore.App 10.0.12 [/usr/share/dotnet/shared/Microsoft.AspNetCore.App]\n  Microsoft.NETCore.App 10.0.12 [/usr/share/dotnet/shared/Microsoft.NETCore.App]\n\nOther architectures found:\n  None\n\nEnvironment variables:\n  DOTNET_GENERATE_ASPNET_CERTIFICATE       [false]\n  DOTNET_NOLOGO                            [true]\n  DOTNET_RUNNING_IN_CONTAINER              [true]\n  DOTNET_SDK_VERSION                       [10.0.401]\n  DOTNET_USE_POLLING_FILE_WATCHER          [true]\n  DOTNET_VERSION                           [10.0.12]\n\nglobal.json file:\n  Not found\n\nLearn more:\n  https://aka.ms/dotnet/info\n\nDownload .NET:\n  https://aka.ms/dotnet/download\n",
+      "stderr": ""
+    },
+    "cleanup": {
+      "command": [
+        "docker",
+        "rm",
+        "-f",
+        "cstudy-task6-2026-10-02-existing-console-early"
+      ],
+      "exitCode": 0,
+      "stdout": "cstudy-task6-2026-10-02-existing-console-early\n",
+      "stderr": ""
+    }
+  },
+  "results": [
+    {
+      "id": "deep-01-01",
+      "expected": "学習開始\n30\n30\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-01-01/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-01-01/Example.csproj (in 21 ms).\n  Example -> /verify/deep-01-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.86\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-01-01",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-01-01/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "学習開始\n30\n30\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-01-02",
+      "expected": "合計: 65分\n目標まで: 25分\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-01-02/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-01-02/Example.csproj (in 22 ms).\n  Example -> /verify/deep-01-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.85\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-01-02",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-01-02/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "合計: 65分\n目標まで: 25分\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-01-04",
+      "expected": "学習開始\n20\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-01-04/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-01-04/Example.csproj (in 27 ms).\n  Example -> /verify/deep-01-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.94\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-01-04",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-01-04/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "学習開始\n20\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-01-05",
+      "expected": "90\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-01-05/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-01-05/Example.csproj (in 23 ms).\n  Example -> /verify/deep-01-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.85\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-01-05",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-01-05/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "90\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-02-01",
+      "expected": "入口\n呼び出された処理\n終了\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-02-01/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-02-01/Example.csproj (in 34 ms).\n  Example -> /verify/deep-02-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.85\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-02-01",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-02-01/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "入口\n呼び出された処理\n終了\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-02-02",
+      "expected": "入口\n呼び出された処理\n終了\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-02-02/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-02-02/Example.csproj (in 20 ms).\n  Example -> /verify/deep-02-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.82\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-02-02",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-02-02/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "入口\n呼び出された処理\n終了\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-02-03",
+      "expected": "在庫の商品\n注文の商品\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-02-03/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-02-03/Example.csproj (in 20 ms).\n  Example -> /verify/deep-02-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.85\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-02-03",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-02-03/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "在庫の商品\n注文の商品\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-02-05",
+      "expected": "開始\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-02-05/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-02-05/Example.csproj (in 28 ms).\n  Example -> /verify/deep-02-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.84\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-02-05",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-02-05/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "開始\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-02-07",
+      "expected": "在庫\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-02-07/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-02-07/Example.csproj (in 22 ms).\n  Example -> /verify/deep-02-07/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.80\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-02-07",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-02-07/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "在庫\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-03-01",
+      "expected": "360\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-03-01/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-03-01/Example.csproj (in 21 ms).\n  Example -> /verify/deep-03-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.11\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-03-01",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-03-01/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "360\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-03-02",
+      "expected": "在庫: 3\nTrue\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-03-02/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-03-02/Example.csproj (in 24 ms).\n  Example -> /verify/deep-03-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.11\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-03-02",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-03-02/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "在庫: 3\nTrue\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-03-04",
+      "expected": "3個\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-03-04/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-03-04/Example.csproj (in 22 ms).\n  Example -> /verify/deep-03-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.42\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-03-04",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-03-04/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "3個\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-03-05",
+      "expected": "True\nTrue\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-03-05/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-03-05/Example.csproj (in 23 ms).\n  Example -> /verify/deep-03-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.05\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-03-05",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-03-05/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "True\nTrue\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-03-06",
+      "expected": "595.5\n60\n655.5\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-03-06/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-03-06/Example.csproj (in 34 ms).\n  Example -> /verify/deep-03-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.95\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-03-06",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-03-06/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "595.5\n60\n655.5\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-03-07",
+      "expected": "intの範囲を超えました\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-03-07/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-03-07/Example.csproj (in 21 ms).\n  Example -> /verify/deep-03-07/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.83\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-03-07",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-03-07/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "intの範囲を超えました\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-04-01",
+      "expected": "[  C#  ]\n[C#]\n6\n2\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-04-01/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-04-01/Example.csproj (in 22 ms).\n  Example -> /verify/deep-04-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.95\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-04-01",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-04-01/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "[  C#  ]\n[C#]\n6\n2\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-04-02",
+      "expected": "True\n25\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-04-02/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-04-02/Example.csproj (in 23 ms).\n  Example -> /verify/deep-04-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.83\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-04-02",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-04-02/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "True\n25\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-04-03",
+      "expected": "数量を入力: 合計: 360円\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-04-03/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-04-03/Example.csproj (in 28 ms).\n  Example -> /verify/deep-04-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.82\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-i",
+          "-w",
+          "/verify/deep-04-03",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-04-03/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "数量を入力: 合計: 360円\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-04-05",
+      "expected": "数量の形式が正しくありません\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-04-05/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-04-05/Example.csproj (in 21 ms).\n  Example -> /verify/deep-04-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.82\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-04-05",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-04-05/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "数量の形式が正しくありません\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-04-06",
+      "expected": "[  Aoi  ]\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-04-06/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-04-06/Example.csproj (in 22 ms).\n  Example -> /verify/deep-04-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.86\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-04-06",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-04-06/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "[  Aoi  ]\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-04-07",
+      "expected": "[Aoi]\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-04-07/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-04-07/Example.csproj (in 36 ms).\n  Example -> /verify/deep-04-07/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-04-07",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-04-07/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "[Aoi]\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-04-08",
+      "expected": "84\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-04-08/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-04-08/Example.csproj (in 21 ms).\n  Example -> /verify/deep-04-08/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.87\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-04-08",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-04-08/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "84\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-05-01",
+      "expected": "合格・優秀\n判定終了\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-05-01/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-05-01/Example.csproj (in 24 ms).\n  Example -> /verify/deep-05-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.84\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-05-01",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-05-01/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "合格・優秀\n判定終了\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-05-02",
+      "expected": "False\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-05-02/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-05-02/Example.csproj (in 27 ms).\n  Example -> /verify/deep-05-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.79\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-05-02",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-05-02/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "False\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-05-03",
+      "expected": "料金: 500円\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-05-03/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-05-03/Example.csproj (in 25 ms).\n  Example -> /verify/deep-05-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.08\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-05-03",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-05-03/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "料金: 500円\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-05-04",
+      "expected": "通常合格\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-05-04/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-05-04/Example.csproj (in 29 ms).\n  Example -> /verify/deep-05-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.92\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-05-04",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-05-04/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "通常合格\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-05-05",
+      "expected": "優秀合格\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-05-05/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-05-05/Example.csproj (in 22 ms).\n  Example -> /verify/deep-05-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.82\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-05-05",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-05-05/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "優秀合格\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-05-06",
+      "expected": "合格\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-05-06/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-05-06/Example.csproj (in 21 ms).\n  Example -> /verify/deep-05-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.87\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-05-06",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-05-06/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "合格\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-06-01",
+      "expected": "20\n40\n3\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-06-01/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-06-01/Example.csproj (in 24 ms).\n  Example -> /verify/deep-06-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.90\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-06-01",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-06-01/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "20\n40\n3\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-06-02",
+      "expected": "i=0, total=20\ni=1, total=55\ni=2, total=70\n合計=70\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-06-02/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-06-02/Example.csproj (in 21 ms).\n  Example -> /verify/deep-06-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.89\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-06-02",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-06-02/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "i=0, total=20\ni=1, total=55\ni=2, total=70\n合計=70\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-06-03",
+      "expected": "70\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-06-03/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-06-03/Example.csproj (in 21 ms).\n  Example -> /verify/deep-06-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.97\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-06-03",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-06-03/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "70\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-06-04",
+      "expected": "学習日=4\n合計=105\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-06-04/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-06-04/Example.csproj (in 27 ms).\n  Example -> /verify/deep-06-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.86\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-06-04",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-06-04/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "学習日=4\n合計=105\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-06-06",
+      "expected": "10\n20\n30\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-06-06/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-06-06/Example.csproj (in 21 ms).\n  Example -> /verify/deep-06-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.83\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-06-06",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-06-06/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "10\n20\n30\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-06-08",
+      "expected": "0\n2\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-06-08/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-06-08/Example.csproj (in 20 ms).\n  Example -> /verify/deep-06-08/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.82\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-06-08",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-06-08/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "0\n2\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-06-09",
+      "expected": "件数=3, 合計=230\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-06-09/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-06-09/Example.csproj (in 28 ms).\n  Example -> /verify/deep-06-09/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.87\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-06-09",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-06-09/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "件数=3, 合計=230\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-07-01",
+      "expected": "360\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-07-01/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-07-01/Example.csproj (in 34 ms).\n  Example -> /verify/deep-07-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.86\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-07-01",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-07-01/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "360\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-07-02",
+      "expected": "15\n10\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-07-02/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-07-02/Example.csproj (in 20 ms).\n  Example -> /verify/deep-07-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.87\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-07-02",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-07-02/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "15\n10\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-07-03",
+      "expected": "15\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-07-03/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-07-03/Example.csproj (in 22 ms).\n  Example -> /verify/deep-07-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.87\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-07-03",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-07-03/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "15\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-07-04",
+      "expected": "7,8\n9,2\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-07-04/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-07-04/Example.csproj (in 29 ms).\n  Example -> /verify/deep-07-04/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.88\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-07-04",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-07-04/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "7,8\n9,2\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-07-05",
+      "expected": "6\nTrue, 12\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-07-05/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-07-05/Example.csproj (in 21 ms).\n  Example -> /verify/deep-07-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.82\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-07-05",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-07-05/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "6\nTrue, 12\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-07-06",
+      "expected": "小計=550, 支払=500\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-07-06/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-07-06/Example.csproj (in 21 ms).\n  Example -> /verify/deep-07-06/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.87\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-07-06",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-07-06/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "小計=550, 支払=500\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-08-01",
+      "expected": "名前がありません\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-08-01/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-08-01/Example.csproj (in 33 ms).\n  Example -> /verify/deep-08-01/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.09\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-08-01",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-08-01/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "名前がありません\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-08-02",
+      "expected": "False\n0\n未登録\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-08-02/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-08-02/Example.csproj (in 41 ms).\n  Example -> /verify/deep-08-02/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.14\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-08-02",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-08-02/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "False\n0\n未登録\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-08-03",
+      "expected": "匿名\n匿名\n匿名\nAoi\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-08-03/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-08-03/Example.csproj (in 35 ms).\n  Example -> /verify/deep-08-03/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.05\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-08-03",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-08-03/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "匿名\n匿名\n匿名\nAoi\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-08-05",
+      "expected": "0\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-08-05/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-08-05/Example.csproj (in 43 ms).\n  Example -> /verify/deep-08-05/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.17\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-08-05",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-08-05/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "0\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-08-07",
+      "expected": "未受験\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-08-07/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-08-07/Example.csproj (in 22 ms).\n  Example -> /verify/deep-08-07/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.98\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-08-07",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-08-07/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "未受験\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    },
+    {
+      "id": "deep-08-08",
+      "expected": "未受験\n0点\n80点\n",
+      "build": {
+        "command": [
+          "docker",
+          "exec",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "build",
+          "/verify/deep-08-08/Example.csproj",
+          "--nologo",
+          "--disable-build-servers",
+          "--configfile",
+          "/verify/NuGet.Config"
+        ],
+        "exitCode": 0,
+        "stdout": "  Determining projects to restore...\n  Restored /verify/deep-08-08/Example.csproj (in 25 ms).\n  Example -> /verify/deep-08-08/bin/Debug/net10.0/Example.dll\n\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:00.88\n",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "docker",
+          "exec",
+          "-w",
+          "/verify/deep-08-08",
+          "cstudy-task6-2026-10-02-existing-console-early",
+          "dotnet",
+          "run",
+          "--project",
+          "/verify/deep-08-08/Example.csproj",
+          "--no-build",
+          "--"
+        ],
+        "exitCode": 0,
+        "stdout": "未受験\n0点\n80点\n",
+        "stderr": ""
+      },
+      "semanticMatch": true,
+      "fileChecks": []
+    }
+  ]
+}
